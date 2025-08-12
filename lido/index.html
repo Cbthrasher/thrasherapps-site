@@ -3,38 +3,193 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lido Massage – Gainesville, GA | Relax. Rejuvenate. Restore.</title>
-  <meta name="description" content="Lido Massage in Gainesville, GA. Professional massage therapy—Deep Tissue, Swedish, Hot Stone, Couples. Walk‑ins welcome. Call (470) 252‑5055." />
-  <link rel="canonical" href="https://thrasherapps.com/lido/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Lido Massage – Gainesville, GA" />
-  <meta property="og:description" content="Professional massage therapy—Deep Tissue, Swedish, Hot Stone, Couples. Walk‑ins welcome." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://thrasherapps.com/lido/" />
+  <title>Lido Massage — Gainesville, GA | Relax. Rejuvenate. Restore.</title>
+  <meta name="description" content="Lido Massage in Gainesville, GA. Professional massage therapy — Body, Foot, and Combo services. Call (470) 252-5055." />
+  <link rel="stylesheet" href="assets/site.css">
 
   <style>
+    /* page palette (keeps your base /assets/site.css) */
     :root{
-      --ink:#1b1b1f;
-      --muted:#5b5b67;
-      --bg:#ffffff;
-      --subtle:#f5f7f8;
-      --brand:#0a84ff;      /* Apple-ish blue */
-      --accent:#e6f0ff;
-      --radius:14px;
-      --shadow:0 8px 30px rgba(0,0,0,.06);
-      font-synthesis-weight:none;
-      color-scheme:light;
+      --lido-primary:#6ea68b; /* spa green */
+      --lido-ink:#213032;     /* deep text */
+      --lido-pale:#f4faf7;    /* very light mint */
+      --lido-accent:#9fd9c1;  /* soft accent */
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font:16px ui-sans-serif, -apple-system, "SF Pro Text", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
-      color:var(--ink); background:var(--bg);
+    body{color:var(--lido-ink)}
+    .lido-header{background:#fff;}
+    .lido-header .brand{font-weight:700}
+    .lido-hero{
+      position:relative; overflow:hidden; color:#0d1a16; 
+      background: radial-gradient(90% 70% at 10% 10%, #ffffff 0 40%, #eef7f3 60%, #e7f4ef 100%);
+      padding:64px 0 40px;
     }
-    a{color:var(--brand); text-decoration:none}
-    a:hover{text-decoration:underline}
+    .lido-hero .badge{
+      display:inline-block; padding:6px 10px; border-radius:999px;
+      background:var(--lido-pale); border:1px solid #e2ece8; font-size:13px;
+    }
+    .lido-hero h1{font-size:clamp(28px,6vw,44px); margin:12px 0 8px}
+    .lido-hero p{font-size:clamp(16px,2.6vw,19px); max-width:60ch}
 
-    /* Header */
+    .btn-primary{
+      background:var(--lido-primary); color:#fff; border:0;
+    }
+    .btn-outline{
+      background:#fff; border:1px solid #cfe5db; color:var(--lido-ink);
+    }
+
+    /* section wrappers */
+    .section{padding:48px 0}
+    .section--soft{background:var(--lido-pale)}
+    .h2{font-size:clamp(22px,3.8vw,30px); margin:0 0 6px}
+
+    /* service cards */
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
+    .card{
+      background:#fff; border:1px solid #e6efe9; border-radius:16px; padding:18px;
+      box-shadow:0 2px 10px rgba(0,0,0,.03);
+    }
+    .card h3{margin:4px 0 10px}
+    .price-list{margin:0; padding:0; list-style:none; line-height:1.7}
+    .price-list li{display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed #e6efe9; padding:6px 0}
+    .price-list li:last-child{border-bottom:0}
+    .muted{color:#6b7c79; font-size:14px}
+
+    /* info blocks */
+    .info-grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .info{
+      background:#fff; border:1px solid #e6efe9; border-radius:14px; padding:16px;
+    }
+
+    /* footer */
+    .site-footer{background:#fff; border-top:1px solid #eef3f1}
+
+    /* tiny reveal (works with your base helper if present) */
+    .reveal{opacity:0; transform:translateY(12px); transition:all .5s}
+    .reveal.in{opacity:1; transform:none}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header lido-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="lido-hero">
+    <div class="container">
+      <span class="badge">Lido Massage • Gainesville, GA</span>
+      <h1>Relax. Rejuvenate. Restore.</h1>
+      <p>Professional massage therapy with Body, Foot, and Combo services. Friendly, clean, and focused on your well‑being.</p>
+      <div class="mt-2" style="display:flex; gap:10px; flex-wrap:wrap">
+        <a class="btn btn-primary" href="tel:+14702525055">Call (470) 252‑5055</a>
+        <a class="btn btn-outline" target="_blank"
+           href="https://maps.apple.com/?address=1310%20Dawsonville%20Hwy%20D,%20Gainesville,%20GA%2030501,%20United%20States&ll=34.300,-83.855">
+           Directions</a>
+      </div>
+      <p class="muted mt-2">Hot Stone &amp; Coconut Oil available (+$10).</p>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section section--soft">
+    <div class="container">
+      <h2 class="h2">Services &amp; Pricing</h2>
+      <p class="muted">Transparent, easy pricing. Walk‑ins welcome when available.</p>
+
+      <div class="cards mt-3 reveal">
+        <!-- BODY -->
+        <article class="card">
+          <h3>Body</h3>
+          <ul class="price-list">
+            <li><span>30 mins</span><strong>$45</strong></li>
+            <li><span>60 mins Swedish</span><strong>$70</strong></li>
+            <li><span>60 mins Medium/Deep</span><strong>$70</strong></li>
+            <li><span>60 mins Thai Massage</span><strong>$80</strong></li>
+            <li><span>60 mins Shiatsu</span><strong>$80</strong></li>
+            <li><span>90 mins Medium/Deep</span><strong>$100</strong></li>
+          </ul>
+        </article>
+
+        <!-- COMBO -->
+        <article class="card">
+          <h3>Combo (Body + Foot)</h3>
+          <ul class="price-list">
+            <li><span>1 Hour</span><strong>$70</strong></li>
+            <li><span>90 mins</span><strong>$100</strong></li>
+            <li><span>2 Hours (Swedish)</span><strong>$130</strong></li>
+            <li><span>2 Hours (Deep)</span><strong>$140</strong></li>
+          </ul>
+        </article>
+
+        <!-- FOOT -->
+        <article class="card">
+          <h3>Foot Massage</h3>
+          <ul class="price-list">
+            <li><span>30 mins</span><strong>$30</strong></li>
+            <li><span>60 mins</span><strong>$50</strong></li>
+            <li><span>60 mins (includes 10 mins Free Body)</span><strong>$55</strong></li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="muted mt-2">Hot Stone or Coconut Oil add‑on: +$10.</p>
+    </div>
+  </section>
+
+  <!-- Visit info -->
+  <section class="section">
+    <div class="container info-grid reveal">
+      <div class="info">
+        <h3>Location</h3>
+        <p>1310 Dawsonville Hwy, Ste D<br>Gainesville, GA 30501</p>
+        <p><a class="btn btn-outline" target="_blank"
+              href="https://maps.apple.com/?address=1310%20Dawsonville%20Hwy%20D,%20Gainesville,%20GA%2030501,%20United%20States&ll=34.300,-83.855">
+              Open in Maps</a></p>
+      </div>
+      <div class="info">
+        <h3>Contact</h3>
+        <p>Phone: <a href="tel:+14702525055">(470) 252‑5055</a></p>
+        <p class="muted">Call for availability or to schedule.</p>
+      </div>
+      <div class="info">
+        <h3>Hours</h3>
+        <p>Mon–Sun • 10:00am – 9:00pm<br><span class="muted">(Adjust as needed.)</span></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>Demo built by ThrasherApps for Lido Massage • Gainesville, GA</div>
+      <div class="mt-2">
+        <a href="/">Back to ThrasherApps</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // graceful scroll-reveal (no dependency)
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+    })();
+  </script>
+</body>
+</html>    /* Header */
     .nav{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px);
       background:color-mix(in oklab, white 82%, transparent); border-bottom:1px solid #eceff1}
     .nav-inner{max-width:1100px; margin:0 auto; padding:14px 20px; display:flex; gap:20px; align-items:center; justify-content:space-between}
