@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — ThrasherApps</title>
+  <meta name="description" content="Get in touch about iOS apps or AI solutions. Quick scope, clear pricing, fast prototypes." />
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    /* lightweight form styles specific to this page */
+    .form {max-width:740px; margin:0 auto}
+    .field {margin-top:16px}
+    .field label {display:block; font-weight:600; margin-bottom:6px}
+    .field input, .field select, .field textarea {
+      width:100%; padding:12px 14px; border:1px solid var(--border);
+      border-radius:10px; background:#fff; font:inherit;
+    }
+    .field textarea {min-height:140px; resize:vertical}
+    .note {color:var(--text-muted); font-size:14px}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a class="active" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="h2">Start a Project</h1>
+      <p class="lead">Tell me a little about what you need. I usually reply within 1–2 business days.</p>
+
+      <form class="form card reveal"
+        action="https://formspree.io/f/REPLACE_WITH_YOUR_ID"  <!-- we'll replace this together -->
+        method="POST"
+        id="contactForm"
+        >
+        <!-- Honeypot (spam trap) -->
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" placeholder="Jane Doe" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="jane@example.com" required>
+        </div>
+
+        <div class="field">
+          <label for="company">Company (optional)</label>
+          <input id="company" name="company" type="text" placeholder="Company, team, or solo">
+        </div>
+
+        <div class="field">
+          <label for="type">Project type</label>
+          <select id="type" name="project_type" required>
+            <option value="" disabled selected>Select one</option>
+            <option>AI Assistant / Chatbot</option>
+            <option>Workflow Automation</option>
+            <option>AI‑Powered Mobile App</option>
+            <option>Data / Dashboard</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="A few sentences about the problem, goals, and timeline." required></textarea>
+        </div>
+
+        <!-- Optional subject to help sort inbox -->
+        <input type="hidden" name="_subject" value="New inquiry from ThrasherApps.com">
+
+        <div class="mt-3">
+          <button class="btn" type="submit">Send message</button>
+          <span class="note">or email me directly: <a href="mailto:cbthrasher2020@gmail.com">cbthrasher2020@gmail.com</a></span>
+        </div>
+
+        <p class="note mt-2">No spam ever. I’ll only use your info to respond to your message.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Scroll reveal
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+
+      // Nav highlight
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        if (a.getAttribute('href') === 'contact.html') a.classList.add('active');
+      });
+
+      // Until Formspree is connected, catch submits and show a helpful message
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function (e) {
+        const action = form.getAttribute('action') || '';
+        if (action.includes('REPLACE_WITH_YOUR_ID')) {
+          e.preventDefault();
+          alert("Form not connected yet.\n\nPlease email me at cbthrasher2020@gmail.com, or we’ll hook this form to Formspree shortly.");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
