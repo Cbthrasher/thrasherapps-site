@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apps — ThrasherApps</title>
+  <meta name="description" content="A selection of shipped iOS apps designed for real users." />
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <!-- Sticky Header / Nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a class="active" href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Intro -->
+  <section class="section">
+    <div class="container">
+      <h1 class="h2">Apps</h1>
+      <p class="lead">A selection of shipped projects built with a focus on clarity, performance, and real‑world use.</p>
+
+      <div class="grid grid-3 mt-4 reveal">
+        <!-- BlockThrasher -->
+        <article class="card">
+          <h3>🧱 BlockThrasher (iOS)</h3>
+          <p class="mt-1">
+            Match colorful blocks, clear rows with Block Busters, and chase high scores. Clean controls and quick sessions.
+          </p>
+          <p class="mt-2">
+            <a class="btn btn-secondary" target="_blank" href="https://apps.apple.com/us/app/blockthrasher/id6746172717">View on App Store</a>
+          </p>
+        </article>
+
+        <!-- Lava Dash -->
+        <article class="card">
+          <h3>🔥 Lava Dash (iOS)</h3>
+          <p class="mt-1">
+            Fast‑paced reflex game where the floor is lava. Polished UI, instant restarts, and a satisfying score chase.
+          </p>
+          <p class="mt-2">
+            <a class="btn btn-secondary" target="_blank" href="https://apps.apple.com/app/id6742521742">View on App Store</a>
+          </p>
+        </article>
+
+        <!-- DropTubeBuilder -->
+        <article class="card">
+          <h3>🛢️ DropTubeBuilder (iOS)</h3>
+          <p class="mt-1">
+            Field utility for fuel technicians: calculate drop tube lengths and overfill valve placement with confidence.
+          </p>
+          <p class="mt-2">
+            <a class="btn btn-secondary" target="_blank" href="https://apps.apple.com/us/app/droptubebuilder/id6740597739">View on App Store</a>
+          </p>
+        </article>
+
+        <!-- TrialMate -->
+        <article class="card">
+          <h3>⚖️ TrialMate (iOS)</h3>
+          <p class="mt-1">
+            A trial‑prep assistant for legal teams—case notes, checklists, witness Q&A, and AI‑assisted drafting.
+          </p>
+          <p class="mt-2">
+            <!-- Update this href to the real App Store link when ready -->
+            <a class="btn btn-secondary" href="#">App Store link coming soon</a>
+          </p>
+          <p class="mt-1">
+            <a href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/" target="_blank">EULA</a>
+          </p>
+        </article>
+      </div>
+
+      <p class="mt-4">
+        Looking for something specific? <a href="contact.html">Start a Project →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll reveal -->
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+
+      // highlight current nav
+      const here = 'apps.html';
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        if (a.getAttribute('href') === here) a.classList.add('active');
+      });
+    })();
+  </script>
+</body>
+</html>
