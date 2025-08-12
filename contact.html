@@ -41,10 +41,9 @@
       <p class="lead">Tell me a little about what you need. I usually reply within 1–2 business days.</p>
 
       <form class="form card reveal"
-        action="https://formspree.io/f/REPLACE_WITH_YOUR_ID"  <!-- we'll replace this together -->
+        action="https://formspree.io/f/mgvzdljj"
         method="POST"
-        id="contactForm"
-        >
+        id="contactForm">
         <!-- Honeypot (spam trap) -->
         <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
 
@@ -119,15 +118,31 @@
         if (a.getAttribute('href') === 'contact.html') a.classList.add('active');
       });
 
-      // Until Formspree is connected, catch submits and show a helpful message
+      // Submit to Formspree (free plan) and redirect client-side
       const form = document.getElementById('contactForm');
-      form.addEventListener('submit', function (e) {
-        const action = form.getAttribute('action') || '';
-        if (action.includes('REPLACE_WITH_YOUR_ID')) {
+      if (form) {
+        form.addEventListener('submit', async function (e) {
           e.preventDefault();
-          alert("Form not connected yet.\n\nPlease email me at cbthrasher2020@gmail.com, or we’ll hook this form to Formspree shortly.");
-        }
-      });
+          const data = new FormData(form);
+          try {
+            const res = await fetch(form.getAttribute('action'), {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+              window.location.href = 'thank-you.html';
+              form.reset();
+            } else {
+              const json = await res.json().catch(()=>null);
+              const msg = json && json.errors ? json.errors.map(x=>x.message).join('\n') : 'Something went wrong.';
+              alert(msg + '\n\nYou can also email me: cbthrasher2020@gmail.com');
+            }
+          } catch (err) {
+            alert('Network error. Please email me: cbthrasher2020@gmail.com');
+          }
+        });
+      }
     })();
   </script>
 </body>
