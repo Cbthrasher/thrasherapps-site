@@ -1,132 +1,154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ThrasherApps - Developer Portfolio by Chris Thrasher" />
-  <meta name="keywords" content="iOS, Android, mobile apps, Chris Thrasher, DropTubeBuilder, Lava Dash, BlockThrasher, TrialMate" />
-  <meta name="author" content="Chris Thrasher" />
-  <title>ThrasherApps — Mobile Developer</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 2rem;
-    }
-    header h1 {
-      margin: 0;
-    }
-    .container {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    h2 {
-      color: #222;
-      margin-top: 2rem;
-    }
-    .btn {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: #007bff;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 1rem;
-    }
-    .btn:hover {
-      background: #0056b3;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.85rem;
-      color: #666;
-    }
-    .small-links a {
-      color: #666;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    .small-links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ThrasherApps — Practical Apps. Real‑World AI.</title>
+  <meta name="description" content="ThrasherApps builds iOS apps and real‑world AI solutions for industry pros, small businesses, and teams that need results." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
-  <header>
-    <h1>ThrasherApps</h1>
-    <p>Developer Portfolio by Chris Thrasher</p>
+  <!-- Sticky Header / Nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a class="active" href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <div class="container">
-    <h2>Welcome</h2>
-    <p>
-      Thanks for visiting ThrasherApps. I'm an independent mobile app developer focused on creating practical and fun tools for iOS and Android. Below are a few of my published apps available on the App Store.
-    </p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Practical Apps. Real‑World AI.</h1>
+      <p class="lead">
+        From field tools to enterprise workflows, I build iOS apps and AI solutions that ship fast and deliver results.
+      </p>
+      <div class="mt-2">
+        <a class="btn" href="contact.html">Start a Project</a>
+        <a class="btn btn-secondary" href="ai.html">Explore AI Solutions</a>
+      </div>
+    </div>
+  </section>
 
-    <h2>🧱 BlockThrasher (iOS)</h2>
-    <p>
-      BlockThrasher is a colorful puzzle game where you match and clear blocks by threes or more, rack up points, and earn special combos. It's designed to be satisfying, addictive, and perfect for a few minutes of play or long streaks.
-    </p>
-    <a class="btn" href="https://apps.apple.com/us/app/blockthrasher/id6746172717" target="_blank">View BlockThrasher on App Store</a>
+  <!-- Value Pillars -->
+  <section class="section section--tight">
+    <div class="container pillars reveal">
+      <div class="card">
+        <span class="badge">Built for the field</span>
+        <h3 class="mt-2">Hands‑on expertise</h3>
+        <p>20+ years of technical work informs everything I ship—useful tools, minimal friction.</p>
+      </div>
+      <div class="card">
+        <span class="badge">Speed to value</span>
+        <h3 class="mt-2">Prototypes in weeks</h3>
+        <p>Lightweight process, demoable milestones, and clear checkpoints to move fast.</p>
+      </div>
+      <div class="card">
+        <span class="badge">Straightforward pricing</span>
+        <h3 class="mt-2">Fixed bids or sprints</h3>
+        <p>Simple scopes, predictable costs, and communication you can count on.</p>
+      </div>
+    </div>
+  </section>
 
-    <h2>🔥 Lava Dash (iOS)</h2>
-    <p>
-      Lava Dash is a fast-paced reflex game where the floor is literally lava. Jump between platforms and survive as long as you can. The game features quick restarts, a clean UI, and a high score system that keeps you coming back for more.
-    </p>
-    <a class="btn" href="https://apps.apple.com/app/id6742521742" target="_blank">View Lava Dash on App Store</a>
+  <!-- Featured Apps Preview -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">Featured Apps</h2>
+      <p class="lead">A few shipped projects designed for real users.</p>
+      <div class="grid grid-3 mt-3 reveal">
+        <div class="card">
+          <h3>🧱 BlockThrasher (iOS)</h3>
+          <p class="mt-1">Match colorful blocks, clear rows, and chase high scores with clean, satisfying gameplay.</p>
+          <p class="mt-2"><a class="btn btn-secondary" target="_blank" href="https://apps.apple.com/us/app/blockthrasher/id6746172717">View on App Store</a></p>
+        </div>
+        <div class="card">
+          <h3>🔥 Lava Dash (iOS)</h3>
+          <p class="mt-1">Fast‑paced reflex game: the floor is lava. Quick restarts, polished UI, high‑score chase.</p>
+          <p class="mt-2"><a class="btn btn-secondary" target="_blank" href="https://apps.apple.com/app/id6742521742">View on App Store</a></p>
+        </div>
+        <div class="card">
+          <h3>🛢️ DropTubeBuilder (iOS)</h3>
+          <p class="mt-1">Field utility for fuel techs: precise drop tube calculations and overfill valve placement.</p>
+          <p class="mt-2"><a class="btn btn-secondary" target="_blank" href="https://apps.apple.com/us/app/droptubebuilder/id6740597739">View on App Store</a></p>
+        </div>
+      </div>
+      <p class="mt-3">
+        <a href="apps.html">See all apps →</a>
+      </p>
+    </div>
+  </section>
 
-    <h2>🛢️ DropTubeBuilder (iOS)</h2>
-    <p>
-      DropTubeBuilder is a utility app designed for fuel system technicians. It calculates precise drop tube measurements based on tank dimensions and ensures accurate overfill valve placement, helping you stay compliant and efficient in the field.
-    </p>
-    <a class="btn" href="https://apps.apple.com/us/app/droptubebuilder/id6740597739" target="_blank">View DropTubeBuilder on App Store</a>
+  <!-- AI Solutions Preview -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">AI Solutions</h2>
+      <p class="lead">Hire me to build AI that actually helps your workday.</p>
+      <div class="grid grid-3 mt-3 reveal">
+        <div class="card">
+          <h3>🤖 Custom AI Assistants</h3>
+          <p class="mt-1">Chatbots for intake, FAQs, customer support, or internal knowledge—fast and reliable.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="ai.html">Learn more</a></p>
+        </div>
+        <div class="card">
+          <h3>⚙️ Workflow Automation</h3>
+          <p class="mt-1">Reduce manual work: scheduling, document flows, invoicing, and back‑office ops.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="ai.html">Learn more</a></p>
+        </div>
+        <div class="card">
+          <h3>📈 Data & Dashboards</h3>
+          <p class="mt-1">Turn raw data into decisions—reports, alerts, and visual insights your team will use.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="ai.html">Learn more</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <h2>⚖️ TrialMate (iOS)</h2>
-    <p>
-      TrialMate is a professional legal assistant app for attorneys, investigators, and legal professionals. It streamlines case preparation with AI-powered tools, cross-examination builders, trial checklists, document scanning, and more.
-    </p>
-    <a class="btn" href="#" target="_blank">View TrialMate on App Store</a>
-    <p>
-      <a href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/" target="_blank">End User License Agreement (EULA)</a> | 
-      <a href="https://christhrasher.wordpress.com/2025/02/02/%f0%9f%93%9c-privacy-policy-for-droptubebuilder/" target="_blank">Privacy Policy</a>
-    </p>
+  <!-- CTA Band -->
+  <section class="section cta-band">
+    <div class="container wrap">
+      <p class="lead">Have a problem that needs solving? Let’s scope it quickly and get you a plan.</p>
+      <p><a class="btn" href="contact.html">Start a Project</a></p>
+    </div>
+  </section>
 
-    <h2>Privacy & Legal</h2>
-    <p>
-      Your privacy matters. No personal information is collected or stored through this website. For app-specific privacy policies, please refer to the app's App Store listing or contact me directly.
-    </p>
-    <p>
-      All apps are provided as-is without warranty of any kind. Use of any app or service is at your own discretion and risk.
-    </p>
-
-    <h2>About Me</h2>
-    <p>
-      I'm Chris Thrasher, a mobile developer based in Georgia, USA. With over 20 years of technical experience and a passion for problem-solving, I build tools that improve efficiency and bring value to people’s lives.
-    </p>
-    <p>
-      You can reach me at <strong>cbthrasher2020@gmail.com</strong>.
-    </p>
-  </div>
-
-  <footer>
-    © 2025 ThrasherApps.com — Built by Chris Thrasher
-    <div class="small-links">
-      <a href="mailto:cbthrasher2020@gmail.com">Contact</a> |
-      <a href="https://christhrasher.wordpress.com/2025/02/02/%f0%9f%93%9c-privacy-policy-for-droptubebuilder/" target="_blank">Privacy Policy</a> |
-      <a href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/" target="_blank">EULA</a>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
     </div>
   </footer>
 
+  <!-- Tiny scroll‑reveal helper -->
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+
+      // highlight current nav link
+      const here = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        const target = a.getAttribute('href');
+        if ((here === 'index.html' && target === '/') || here === target) a.classList.add('active');
+      });
+    })();
+  </script>
 </body>
 </html>
