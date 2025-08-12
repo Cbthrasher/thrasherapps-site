@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy — ThrasherApps</title>
+  <meta name="description" content="Privacy policy for ThrasherApps.com and links to app privacy policies." />
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="h2">Privacy</h1>
+      <p class="lead">ThrasherApps.com does not collect personal information beyond what you voluntarily submit through the contact form or email.</p>
+
+      <div class="grid grid-2 mt-4 reveal">
+        <article class="card">
+          <h3>Website</h3>
+          <p class="mt-1">This site is static and uses no tracking cookies. If you contact me, your message and email are used only to reply to you.</p>
+          <p class="mt-1">When we connect the contact form, submissions will be sent securely to my inbox.</p>
+        </article>
+
+        <article class="card">
+          <h3>App Policies</h3>
+          <ul style="margin:8px 0 0; padding-left:18px;">
+            <li><a target="_blank" href="https://apps.apple.com/us/app/blockthrasher/id6746172717">BlockThrasher (App Store)</a></li>
+            <li><a target="_blank" href="https://apps.apple.com/app/id6742521742">Lava Dash (App Store)</a></li>
+            <li><a target="_blank" href="https://apps.apple.com/us/app/droptubebuilder/id6740597739">DropTubeBuilder (App Store)</a> • <a target="_blank" href="https://christhrasher.wordpress.com/2025/02/02/%F0%9F%93%9C-privacy-policy-for-droptubebuilder/">Privacy Policy</a></li>
+            <li>TrialMate • <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a></li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="mt-4">Questions? <a href="mailto:cbthrasher2020@gmail.com">cbthrasher2020@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+    })();
+  </script>
+</body>
+</html>
