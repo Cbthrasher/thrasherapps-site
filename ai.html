@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Solutions — ThrasherApps</title>
+  <meta name="description" content="Custom AI assistants, workflow automation, AI-powered mobile tools, data dashboards, and document intelligence." />
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <!-- Sticky Header / Nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a class="active" href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section class="section">
+    <div class="container">
+      <h1 class="h2">AI Solutions</h1>
+      <p class="lead">Hire me to build AI that actually helps your workday—clear scope, fast prototypes, and measurable wins.</p>
+
+      <!-- Services Grid -->
+      <div class="grid grid-3 mt-4 reveal">
+        <article class="card">
+          <span class="badge">Service</span>
+          <h3 class="mt-2">🤖 Custom AI Assistants & Chatbots</h3>
+          <p class="mt-1">Customer intake, FAQs, internal knowledge, and routing. Embed on your site or run internally.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="contact.html">Start a Project</a></p>
+        </article>
+
+        <article class="card">
+          <span class="badge">Service</span>
+          <h3 class="mt-2">⚙️ Workflow Automation</h3>
+          <p class="mt-1">Scheduling, document handling, invoice generation, alerts. Cut manual steps and errors.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="contact.html">Start a Project</a></p>
+        </article>
+
+        <article class="card">
+          <span class="badge">Service</span>
+          <h3 class="mt-2">📱 AI‑Powered Mobile Tools</h3>
+          <p class="mt-1">Industry apps (field services, legal, operations) with on‑device AI where it makes sense.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="contact.html">Start a Project</a></p>
+        </article>
+
+        <article class="card">
+          <span class="badge">Service</span>
+          <h3 class="mt-2">📈 Data Processing & Dashboards</h3>
+          <p class="mt-1">Turn raw data into decisions—cleaning, enrichment, KPIs, and simple dashboards teams use.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="contact.html">Start a Project</a></p>
+        </article>
+
+        <article class="card">
+          <span class="badge">Service</span>
+          <h3 class="mt-2">📄 Document Intelligence</h3>
+          <p class="mt-1">Extract, classify, and summarize contracts, forms, and reports. Reduce back‑and‑forth time.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="contact.html">Start a Project</a></p>
+        </article>
+
+        <article class="card">
+          <span class="badge">Pricing</span>
+          <h3 class="mt-2">Simple Engagements</h3>
+          <p class="mt-1">Fixed‑bid for small projects or sprint‑based for ongoing work. Clear deliverables, weekly demos.</p>
+          <p class="mt-2"><a class="btn btn-secondary" href="contact.html">Request a Quote</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section cta-band">
+    <div class="container">
+      <h2 class="h2">How We’ll Work</h2>
+      <div class="grid grid-2 mt-3 reveal">
+        <div class="card">
+          <h3>1) Discover</h3>
+          <p class="mt-1">Scope the problem, define success, pick the fastest path to value.</p>
+        </div>
+        <div class="card">
+          <h3>2) Prototype (1–2 weeks)</h3>
+          <p class="mt-1">Clickable or working prototype you can try with real data/users.</p>
+        </div>
+        <div class="card">
+          <h3>3) Deliver</h3>
+          <p class="mt-1">Ship a focused v1. Integrate with your tools and workflows.</p>
+        </div>
+        <div class="card">
+          <h3>4) Iterate</h3>
+          <p class="mt-1">Refine with feedback. Add automations once value is proven.</p>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <a class="btn" href="contact.html">Start a Project</a>
+        <a class="btn btn-secondary" href="apps.html">See Apps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <!-- We'll add a local privacy.html later; using your current hosted policy for now -->
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/02/02/%f0%9f%93%9c-privacy-policy-for-droptubebuilder/">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll reveal + nav highlight -->
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+
+      const here = 'ai.html';
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        if (a.getAttribute('href') === here) a.classList.add('active');
+      });
+    })();
+  </script>
+</body>
+</html>
