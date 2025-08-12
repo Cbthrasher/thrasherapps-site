@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — ThrasherApps</title>
+  <meta name="description" content="About ThrasherApps — mobile apps and AI solutions built by Chris Thrasher." />
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a class="active" href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="h2">About</h1>
+      <p class="lead">I’m Chris Thrasher, an independent developer in Georgia. I build practical iOS apps and real‑world AI solutions for industry pros, small businesses, and teams.</p>
+
+      <div class="grid grid-2 mt-4 reveal">
+        <article class="card">
+          <h3>Background</h3>
+          <p class="mt-1">20+ years of hands‑on technical work, including field systems and service operations. I care about reliability, clear scope, and getting to value fast.</p>
+          <p class="mt-1">Recent work spans game apps, field utilities like DropTubeBuilder, and AI assistants that reduce repetitive tasks.</p>
+        </article>
+
+        <article class="card">
+          <h3>Industries Served</h3>
+          <p class="mt-1">Fuel systems & field services • Small business ops • Legal tools • Internal team utilities</p>
+          <p class="mt-1"><span class="badge">Mobile</span> <span class="badge">AI</span> <span class="badge">Automation</span></p>
+        </article>
+
+        <article class="card">
+          <h3>How I Work</h3>
+          <ul class="mt-1" style="margin:0; padding-left:18px;">
+            <li>Clear scope and success criteria</li>
+            <li>Prototype in 1–2 weeks with demoable milestones</li>
+            <li>Fixed‑bid or sprint pricing</li>
+            <li>Weekly check‑ins; ship small, iterate</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Tech & Tools</h3>
+          <p class="mt-1">Swift / SwiftUI • iOS SDKs • HTML/CSS/JS • Lightweight backend‑less forms • Practical AI integrations</p>
+        </article>
+      </div>
+
+      <p class="mt-4">
+        Want to talk through an idea? <a class="btn" href="contact.html">Start a Project</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+
+      const here = 'about.html';
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        if (a.getAttribute('href') === here) a.classList.add('active');
+      });
+    })();
+  </script>
+</body>
+</html>
