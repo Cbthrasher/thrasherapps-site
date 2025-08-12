@@ -295,6 +295,267 @@
     })();
   </script>
 </body>
+</html>    .site-header{background:#fff}
+    .site-header .brand{font-weight:700}
+    .site-header .nav-links a{font-weight:500}
+
+    /* Hero */
+    .hero{
+      position:relative; color:#0d1715; overflow:hidden;
+      background:
+        radial-gradient(1200px 500px at -20% -10%, #ffffff 0 50%, transparent 60%),
+        radial-gradient(900px 450px at 120% 10%, #eaf5f0 0 45%, transparent 55%),
+        linear-gradient(180deg,#f7fbf9 0,#ecf6f1 100%);
+      padding:72px 0 56px;
+      border-bottom:1px solid #e8f0ec;
+    }
+    .hero .kicker{
+      display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid #d8e9e2;
+      background:#ffffffcc; font-size:13px
+    }
+    .hero h1{font-size:clamp(30px,6.2vw,48px); margin:12px 0 10px}
+    .hero p{font-size:clamp(16px,2.6vw,19px); max-width:60ch}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn-primary{background:var(--lido-primary); color:#fff; border:0}
+    .btn-outline{background:#fff; border:1px solid #cfe5db; color:var(--lido-ink)}
+
+    /* Sections */
+    .section{padding:56px 0}
+    .section--soft{background:var(--lido-mint)}
+    .h2{font-size:clamp(22px,3.8vw,30px); margin:0 0 8px}
+
+    /* Cards & grids */
+    .grid{display:grid; gap:18px}
+    .grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .card{
+      background:#fff; border:1px solid #e6efe9; border-radius:16px; padding:18px;
+      box-shadow:0 2px 10px rgba(0,0,0,.03);
+    }
+    .card h3{margin:4px 0 8px}
+
+    /* Price list */
+    .price-list{list-style:none; padding:0; margin:0; line-height:1.7}
+    .price-list li{display:flex; justify-content:space-between; gap:12px; border-bottom:1px dashed #e6efe9; padding:7px 0}
+    .price-list li:last-child{border-bottom:0}
+    .muted{color:#6f817f; font-size:14px}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px}
+    .gallery img{width:100%; height:200px; object-fit:cover; border-radius:12px; border:1px solid #e6efe9}
+
+    /* Reviews */
+    .quote{font-style:italic}
+    .stars{color:#f2b01e}
+
+    /* Reveal */
+    .reveal{opacity:0; transform:translateY(12px); transition:all .6s}
+    .reveal.in{opacity:1; transform:none}
+
+    /* Footer */
+    .site-footer{background:#fff; border-top:1px solid #eef3f1}
+  </style>
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Lido Massage",
+    "telephone": "+1-470-252-5055",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1310 Dawsonville Hwy Ste D",
+      "addressLocality": "Gainesville",
+      "addressRegion": "GA",
+      "postalCode": "30501",
+      "addressCountry": "US"
+    },
+    "url": "https://thrasherapps.com/lido.html",
+    "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop",
+    "openingHoursSpecification": [{
+      "@type":"OpeningHoursSpecification","dayOfWeek":[ "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday" ],
+      "opens":"10:00","closes":"21:00"
+    }],
+    "priceRange":"$$"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header / reuse your site’s nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/"><span class="display">ThrasherApps</span></a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="kicker">Lido Massage • Gainesville, GA</span>
+      <h1 class="display">Relax. Rejuvenate. Restore.</h1>
+      <p>Professional massage therapy with Body, Foot, and Combo services. Friendly, clean, and focused on your well‑being.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+14702525055">Call (470) 252‑5055</a>
+        <a class="btn btn-outline" target="_blank"
+           href="https://maps.apple.com/?address=1310%20Dawsonville%20Hwy%20D,%20Gainesville,%20GA%2030501,%20United%20States">
+          Directions</a>
+      </div>
+      <p class="muted mt-2">Hot Stone &amp; Coconut Oil available (+$10).</p>
+    </div>
+  </section>
+
+  <!-- Services & Pricing -->
+  <section class="section section--soft">
+    <div class="container">
+      <h2 class="h2">Services &amp; Pricing</h2>
+      <p class="muted">Straightforward prices. Walk‑ins welcome when available.</p>
+
+      <div class="grid grid-3 mt-3 reveal">
+        <article class="card">
+          <h3>Body</h3>
+          <ul class="price-list">
+            <li><span>30 mins</span><strong>$45</strong></li>
+            <li><span>60 mins Swedish</span><strong>$70</strong></li>
+            <li><span>60 mins Medium/Deep</span><strong>$70</strong></li>
+            <li><span>60 mins Thai Massage</span><strong>$80</strong></li>
+            <li><span>60 mins Shiatsu</span><strong>$80</strong></li>
+            <li><span>90 mins Medium/Deep</span><strong>$100</strong></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Combo (Body + Foot)</h3>
+          <ul class="price-list">
+            <li><span>1 Hour</span><strong>$70</strong></li>
+            <li><span>90 mins</span><strong>$100</strong></li>
+            <li><span>2 Hours (Swedish)</span><strong>$130</strong></li>
+            <li><span>2 Hours (Deep)</span><strong>$140</strong></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Foot</h3>
+          <ul class="price-list">
+            <li><span>30 mins</span><strong>$30</strong></li>
+            <li><span>60 mins</span><strong>$50</strong></li>
+            <li><span>60 mins (includes 10 mins free Body)</span><strong>$55</strong></li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="muted mt-2">Add Hot Stone or Coconut Oil: +$10.</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">Inside the Spa</h2>
+      <p class="muted">Clean, calm, and welcoming.</p>
+      <div class="gallery mt-2 reveal">
+        <!-- Replace these URLs with real shop photos when you have them -->
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=900&auto=format&fit=crop" alt="Massage room">
+        <img src="https://images.unsplash.com/photo-1585218336021-3bd2fe7c0037?q=80&w=900&auto=format&fit=crop" alt="Spa stones">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=900&auto=format&fit=crop" alt="Relaxing atmosphere">
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="section section--soft">
+    <div class="container">
+      <h2 class="h2">What Clients Say</h2>
+      <div class="grid grid-3 mt-2 reveal">
+        <div class="card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">“Super friendly and the deep‑tissue combo was exactly what I needed.”</p>
+          <p class="muted">— Local Guide</p>
+        </div>
+        <div class="card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">“Clean rooms, great prices, and I left feeling brand new.”</p>
+          <p class="muted">— J.S.</p>
+        </div>
+        <div class="card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">“Best foot massage in Gainesville. Ask for the hot stone add‑on!”</p>
+          <p class="muted">— M.R.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ / Policies -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">FAQs &amp; Policies</h2>
+      <div class="grid grid-3 mt-2 reveal">
+        <div class="card">
+          <h3>Hours</h3>
+          <p>Mon–Sun • 10:00am – 9:00pm</p>
+          <p class="muted">Subject to therapist availability.</p>
+        </div>
+        <div class="card">
+          <h3>How to book</h3>
+          <p>Fastest way is to call: <a href="tel:+14702525055">(470) 252‑5055</a>.</p>
+          <p class="muted">Walk‑ins welcome when available.</p>
+        </div>
+        <div class="card">
+          <h3>Add‑ons</h3>
+          <p>Hot Stone or Coconut Oil <strong>+$10</strong>.</p>
+          <p class="muted">Mention when booking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map / Contact -->
+  <section class="section section--soft">
+    <div class="container">
+      <h2 class="h2">Visit Us</h2>
+      <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:18px">
+        <div class="card">
+          <h3>Address</h3>
+          <p>1310 Dawsonville Hwy, Ste D<br>Gainesville, GA 30501</p>
+          <p><a class="btn btn-outline" target="_blank"
+                href="https://maps.apple.com/?address=1310%20Dawsonville%20Hwy%20D,%20Gainesville,%20GA%2030501,%20United%20States">Open in Maps</a></p>
+        </div>
+        <div class="card">
+          <h3>Call to Book</h3>
+          <p>Phone: <a href="tel:+14702525055">(470) 252‑5055</a></p>
+          <p class="muted">Have a preferred time? We’ll do our best to match it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>Demo page built by ThrasherApps for Lido Massage • Gainesville, GA</div>
+      <div class="mt-2"><a href="/">Back to ThrasherApps</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple reveal on scroll
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+    })();
+  </script>
+</body>
 </html>      background:#fff; border:1px solid #cfe5db; color:var(--lido-ink);
     }
 
