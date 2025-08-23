@@ -12,13 +12,14 @@
   <meta property="og:description" content="Professional body and foot massage. $60 Full-Body Special (limited time). Call 470-252-5055 or text 470-618-1995." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://thrasherapps.com/lido/" />
-  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Yin_yang_green.svg/512px-Yin_yang_green.svg.png" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1200&auto=format&fit=crop" />
 
   <style>
+    /* Page-specific tweaks (keeps your /assets/site.css as the base) */
     :root{
-      --lido-primary:#6e856b;
-      --lido-accent:#e9f4f1;
-      --lido-ink:#223;
+      --lido-primary:#6e856b;  /* spa green */
+      --lido-accent:#e9f4f1;   /* soft mint */
+      --lido-ink:#223;         /* dark text */
     }
     body{color:var(--lido-ink)}
     .lido-header{background:#fff;}
@@ -37,6 +38,7 @@
     .address{line-height:1.5}
     .badge-soft{background:#eef4f1; color:#234; padding:4px 8px; border-radius:999px; font-size:12px}
     .grid.grid-3.tight > *{padding:18px}
+    /* responsive helpers */
     @media (max-width:840px){ .circle{width:180px; height:180px} }
   </style>
 </head>
@@ -58,10 +60,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="container hero-inner" style="text-align:center;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Yin_yang_green.svg/512px-Yin_yang_green.svg.png"
-           alt="Green Yin-Yang symbol"
-           style="width:90px; margin-bottom:20px;">
+    <div class="container hero-inner">
       <h1>Lido Massage — Gainesville, GA</h1>
       <p class="lead">Healing, relaxing massage with organic oils and a calm, friendly atmosphere.</p>
       <p class="cta-inline">
@@ -85,7 +84,7 @@
     </div>
   </section>
 
-  <!-- Three features -->
+  <!-- Three features (images are placeholders; swap later) -->
   <section class="section section--tight">
     <div class="container grid grid-3 tight reveal">
       <div class="card center">
@@ -141,7 +140,7 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- About / Copy from owner -->
   <section class="section section--tight">
     <div class="container">
       <h2 class="h2">Why Choose Lido Massage</h2>
@@ -183,5 +182,41 @@
       </div>
     </div>
   </footer>
+
+  <!-- Simple reveal + nav highlight (same pattern as your site) -->
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+    })();
+  </script>
+
+  <!-- LocalBusiness schema for SEO / Siri-style lookups -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Lido Massage",
+    "image": "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?q=80&w=1200&auto=format&fit=crop",
+    "url": "https://thrasherapps.com/lido/",
+    "telephone": "+1-470-252-5055",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1310 Dawsonville Hwy, Suite D",
+      "addressLocality": "Gainesville",
+      "addressRegion": "GA",
+      "postalCode": "30501",
+      "addressCountry": "US"
+    },
+    "priceRange": "$$",
+    "servesCuisine": "N/A",
+    "description": "Professional body and foot massage in Gainesville, GA. Organic oils. Walk-ins welcome.",
+    "sameAs": []
+  }
+  </script>
 </body>
 </html>
