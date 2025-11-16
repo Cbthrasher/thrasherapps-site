@@ -3,103 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GRC Lab — Compliance & AI Governance Demo | ThrasherApps</title>
-  <meta name="description" content="Interactive GRC and AI governance demo showing how I think about controls, risk, automation, and troubleshooting." />
+  <title>GRC Lab — Compliance & AI Governance | ThrasherApps</title>
+  <meta name="description" content="GRC Lab: interactive compliance and AI governance demos plus a full GRC dashboard app built with Convex, React, and TypeScript." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/site.css">
-
-  <!-- Local styles just for the GRC Lab page -->
-  <style>
-    .dashboard-grid{
-      display:grid;
-      gap:var(--space-4);
-    }
-    @media (min-width:900px){
-      .dashboard-grid{
-        grid-template-columns: 2fr 3fr;
-      }
-    }
-
-    .metric-cards{
-      display:grid;
-      gap:var(--space-3);
-    }
-    @media (min-width:720px){
-      .metric-cards{
-        grid-template-columns: repeat(3,1fr);
-      }
-    }
-    .metric-label{
-      font-size:13px;
-      color:var(--text-muted);
-      text-transform:uppercase;
-      letter-spacing:.04em;
-    }
-    .metric-value{
-      font-size:22px;
-      font-weight:600;
-      margin-top:4px;
-    }
-
-    .risk-bars{
-      margin-top: var(--space-2);
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .risk-bar-row{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      font-size:14px;
-    }
-    .risk-bar-row-label{
-      min-width:90px;
-      font-weight:500;
-    }
-    .risk-bar{
-      flex:1;
-      height:10px;
-      border-radius:999px;
-      background:#E5E7EB;
-      overflow:hidden;
-    }
-    .risk-bar-fill{
-      height:100%;
-      background:var(--color-primary);
-      width:0%;
-      transition:width .25s ease;
-    }
-    .risk-bar-score{
-      font-size:12px;
-      color:var(--text-muted);
-      min-width:60px;
-      text-align:right;
-    }
-
-    .dept-priorities{
-      margin-top:var(--space-2);
-      display:flex;
-      flex-direction:column;
-      gap:var(--space-2);
-    }
-    .dept-block h4{
-      font-size:15px;
-      margin:0 0 4px;
-    }
-    .dept-block ul{
-      margin:0;
-      padding-left:18px;
-      font-size:14px;
-      color:var(--text-muted);
-    }
-
-    .section-caption{
-      font-size:13px;
-      color:var(--text-muted);
-      margin-top:4px;
-    }
-  </style>
 </head>
 <body>
 
@@ -111,7 +18,7 @@
         <a href="index.html">Home</a>
         <a href="apps.html">Apps</a>
         <a href="ai.html">AI Solutions</a>
-        <a href="grc-lab.html">GRC Lab</a>
+        <a href="grc-lab.html" class="active">GRC Lab</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -121,88 +28,106 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container hero-inner">
-      <h1>GRC Lab — Technical Compliance & AI Governance</h1>
+      <h1>GRC Lab — Compliance & AI Governance</h1>
       <p class="lead">
-        This interactive dashboard shows how I troubleshoot controls, quantify risk, analyze audit logs,
-        and evaluate AI use cases—exactly the kind of work I want to do for a GRC / technical compliance team.
+        This lab is where I prototype how I think as a technical GRC / AI governance engineer:
+        real-time control health, AI risk scoring, and audit log checks.
       </p>
-      <p class="mt-2">
-        Change control statuses, explore department-level risk, run quick log checks, and score AI use cases.
-        The goal is to think like a GRC engineer: <strong>find what’s broken, understand why, and recommend fixes.</strong>
+      <p class="mt-1">
+        Below you’ll find an interactive lab plus a full **GRC Dashboard App** I built with React,
+        TypeScript, Tailwind, and Convex (backend + database).
       </p>
+
+      <div class="mt-2">
+        <a class="btn" target="_blank" href="https://cool-lemming-794.convex.app/">
+          Open Full GRC Dashboard App
+        </a>
+        <a class="btn btn-secondary" target="_blank" href="https://github.com/Cbthrasher/-grc-dashboard-Project">
+          View GRC Dashboard Source on GitHub
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Executive Dashboard -->
+  <!-- Overview Cards -->
   <section class="section section--tight">
     <div class="container">
-      <h2 class="h2">Executive Dashboard</h2>
+      <h2 class="h2">At-a-glance posture</h2>
       <p class="lead">
-        A high-level view for leadership: current posture, failing controls, and where to focus first by department.
+        A simplified snapshot like what I’d surface for leadership: current risk posture,
+        failing controls, and focus areas by department.
       </p>
 
-      <div class="dashboard-grid mt-3">
-        <!-- Left: Key metrics -->
+      <div class="grid grid-4 mt-3 reveal">
         <div class="card">
-          <div class="metric-cards">
-            <div>
-              <div class="metric-label">Overall risk</div>
-              <div class="metric-value" id="summary-risk">—</div>
-              <div class="section-caption" id="summary-risk-caption">
-                Driven by failing / at-risk controls.
-              </div>
-            </div>
-            <div>
-              <div class="metric-label">Failing controls</div>
-              <div class="metric-value" id="summary-fails">0</div>
-              <div class="section-caption">
-                Highest severity items requiring remediation.
-              </div>
-            </div>
-            <div>
-              <div class="metric-label">Departments impacted</div>
-              <div class="metric-value" id="summary-depts">0</div>
-              <div class="section-caption">
-                Teams with at least one failing or at-risk control.
-              </div>
-            </div>
-          </div>
-
-          <p class="section-caption mt-3">
-            These metrics automatically update as you adjust control statuses below,
-            mirroring a live GRC dashboard tied to your control library.
-          </p>
+          <span class="badge">Overall risk</span>
+          <h3 class="mt-2">Medium</h3>
+          <p class="mt-1">1 failing AI control and 1 backup control under review.</p>
         </div>
-
-        <!-- Right: Risk by department + priorities -->
         <div class="card">
-          <h3 class="h3">Risk by Department</h3>
-          <p class="section-caption">
-            Simple scoring: failing controls count more than “needs review”.
-          </p>
-          <div class="risk-bars" id="risk-bars">
-            <!-- Filled by JS -->
-          </div>
-
-          <h3 class="h3 mt-3">Priority Queue</h3>
-          <p class="section-caption">
-            Controls are grouped and ordered by severity so each team knows what to fix first.
-          </p>
-          <div class="dept-priorities" id="dept-priorities">
-            <!-- Filled by JS -->
-          </div>
+          <span class="badge">Controls</span>
+          <h3 class="mt-2">4 key controls</h3>
+          <p class="mt-1">Access reviews, logging, backups, and AI model governance.</p>
+        </div>
+        <div class="card">
+          <span class="badge">AI focus</span>
+          <h3 class="mt-2">High attention</h3>
+          <p class="mt-1">Bias & misuse risk for production models needs remediation.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Audit readiness</span>
+          <h3 class="mt-2">Good</h3>
+          <p class="mt-1">Most logs include evidence IDs; failures are clearly flagged.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section: Control Status Overview -->
+  <!-- Priority by Department -->
   <section class="section section--tight">
     <div class="container">
-      <h2 class="h2">Control Status Overview</h2>
+      <h2 class="h2">Priority list by domain</h2>
       <p class="lead">
-        Representative controls from security, platform, operations, and AI governance.
-        Updating their status drives the dashboard above.
+        Example of how I’d talk through “what to do next” with each team.
+      </p>
+
+      <div class="grid grid-3 mt-3 reveal">
+        <div class="card">
+          <h3 class="h3">IT / Security</h3>
+          <ul class="mt-1">
+            <li>✅ Keep quarterly access reviews on schedule.</li>
+            <li>✅ Ensure all critical systems log to the SIEM.</li>
+            <li>⬆️ Add alerts for failed model deployments.</li>
+            <li>⬆️ Map evidence IDs directly to tickets.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="h3">Ops / SRE</h3>
+          <ul class="mt-1">
+            <li>⚠️ Validate backup restore tests for all core services.</li>
+            <li>⬆️ Document RTO/RPO assumptions per system.</li>
+            <li>✅ Keep backup logs tied to change tickets.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="h3">AI / Product</h3>
+          <ul class="mt-1">
+            <li>⚠️ Complete bias & misuse reviews for AI-01.</li>
+            <li>⬆️ Add model cards and approved use cases.</li>
+            <li>⬆️ Put human-in-the-loop checks on high-impact decisions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controls Section -->
+  <section class="section section--tight">
+    <div class="container">
+      <h2 class="h2">1. Control Health Dashboard</h2>
+      <p class="lead">
+        Example controls you’d see in a SOC 2 / ISO 27001 style environment. Update status
+        to see the overall posture change.
       </p>
 
       <div class="card mt-2">
@@ -212,16 +137,16 @@
               <tr>
                 <th>Control ID</th>
                 <th>Description</th>
-                <th>Owner / Department</th>
+                <th>Owner</th>
                 <th>Status</th>
                 <th>Last Check</th>
               </tr>
             </thead>
             <tbody>
-              <tr data-control-row data-dept="Security">
+              <tr data-control-row>
                 <td>AC-01</td>
                 <td>User access reviews performed quarterly</td>
-                <td>IT Security</td>
+                <td>IT / Security</td>
                 <td>
                   <select data-status>
                     <option value="pass" selected>Pass</option>
@@ -231,10 +156,10 @@
                 </td>
                 <td>2025-10-01</td>
               </tr>
-              <tr data-control-row data-dept="Platform">
+              <tr data-control-row>
                 <td>LOG-02</td>
                 <td>Critical systems send logs to centralized SIEM</td>
-                <td>Platform / SRE</td>
+                <td>Platform</td>
                 <td>
                   <select data-status>
                     <option value="pass" selected>Pass</option>
@@ -244,10 +169,10 @@
                 </td>
                 <td>2025-10-10</td>
               </tr>
-              <tr data-control-row data-dept="Operations">
+              <tr data-control-row>
                 <td>BCP-03</td>
                 <td>Backups tested and restore validated</td>
-                <td>Operations</td>
+                <td>Ops</td>
                 <td>
                   <select data-status>
                     <option value="pass">Pass</option>
@@ -257,7 +182,7 @@
                 </td>
                 <td>2025-09-20</td>
               </tr>
-              <tr data-control-row data-dept="AI / Product">
+              <tr data-control-row>
                 <td>AI-01</td>
                 <td>AI models reviewed for bias and misuse risk</td>
                 <td>AI / Product</td>
@@ -282,13 +207,13 @@
     </div>
   </section>
 
-  <!-- Section: AI Use Case Risk Checker -->
+  <!-- AI Risk Checker -->
   <section class="section">
     <div class="container">
-      <h2 class="h2">AI Use Case Risk Checker</h2>
+      <h2 class="h2">2. AI Use Case Risk Checker</h2>
       <p class="lead">
-        Quick, rule-of-thumb risk scoring based on data sensitivity, impact, and region. Not a legal tool—just a way to
-        demonstrate structured thinking for AI governance.
+        Quick, rule-of-thumb scoring based on data sensitivity, impact, and region. This is not legal advice —
+        it’s a structured way to think through risk before deployment.
       </p>
 
       <div class="grid grid-2 mt-3">
@@ -342,20 +267,21 @@
     </div>
   </section>
 
-  <!-- Section: Audit Log Quick Check -->
+  <!-- Audit Log Checker -->
   <section class="section section--tight">
     <div class="container">
-      <h2 class="h2">Audit Log Quick Check</h2>
+      <h2 class="h2">3. Audit Log Quick Check</h2>
       <p class="lead">
-        Paste a few sample log lines. The checker flags entries that are missing an evidence ID or show a failure status,
-        similar to a lightweight control for monitoring audit completeness.
+        Paste a few sample log lines. The checker flags entries that are missing an evidence ID
+        or look like failures.
       </p>
 
       <div class="grid grid-2 mt-3">
         <div class="card">
           <h3>Sample Logs</h3>
           <p class="mt-1 small">
-            Example format: <code>2025-10-01T09:14Z USER=alice ACTION=ACCESS_REVIEW STATUS=OK EVIDENCE_ID=12345</code>
+            Example format:
+            <code>2025-10-01T09:14Z USER=alice ACTION=ACCESS_REVIEW STATUS=OK EVIDENCE_ID=12345</code>
           </p>
           <textarea id="log-input" rows="10" class="textarea">
 2025-10-01T09:14Z USER=alice ACTION=ACCESS_REVIEW STATUS=OK EVIDENCE_ID=12345
@@ -390,54 +316,27 @@
 
   <!-- Page JS -->
   <script>
-    // DASHBOARD + CONTROL SCORE
+    // CONTROL SCORE
     (function () {
       const rows = document.querySelectorAll('[data-control-row]');
       const badge = document.getElementById('control-score');
 
-      const summaryRisk = document.getElementById('summary-risk');
-      const summaryRiskCaption = document.getElementById('summary-risk-caption');
-      const summaryFails = document.getElementById('summary-fails');
-      const summaryDepts = document.getElementById('summary-depts');
-      const riskBarsEl = document.getElementById('risk-bars');
-      const deptPrioritiesEl = document.getElementById('dept-priorities');
-
       function recompute() {
-        let totals = { pass: 0, watch: 0, fail: 0 };
-        const depts = {}; // dept -> { pass, watch, fail, controls: [{id, desc, status}] }
-
+        let pass = 0, watch = 0, fail = 0;
         rows.forEach(row => {
           const status = row.querySelector('[data-status]').value;
-          const dept = row.getAttribute('data-dept') || 'Other';
-          const id = row.children[0].textContent.trim();
-          const desc = row.children[1].textContent.trim();
-
-          if (!depts[dept]) {
-            depts[dept] = { pass: 0, watch: 0, fail: 0, controls: [] };
-          }
-
-          if (status === 'pass') {
-            totals.pass++;
-            depts[dept].pass++;
-          } else if (status === 'watch') {
-            totals.watch++;
-            depts[dept].watch++;
-          } else if (status === 'fail') {
-            totals.fail++;
-            depts[dept].fail++;
-          }
-
-          depts[dept].controls.push({ id, desc, status });
+          if (status === 'pass') pass++;
+          else if (status === 'watch') watch++;
+          else if (status === 'fail') fail++;
         });
 
-        // Overall control posture badge
         let label = '';
         let cls = '';
 
-        if (totals.fail > 0) {
+        if (fail > 0) {
           label = 'High Risk – Failing controls';
           cls = 'badge-danger';
-        } else if (totals.watch > 0) {
+        } else if (watch > 0) {
           label = 'Medium Risk – Items need review';
           cls = 'badge-warn';
         } else {
@@ -445,91 +344,8 @@
           cls = '';
         }
 
-        badge.textContent = label || 'No controls configured';
+        badge.textContent = label;
         badge.className = 'badge ' + cls;
-
-        // Summary cards
-        let overall = 'Low';
-        let caption = 'All controls currently passing.';
-        if (totals.fail > 0) {
-          overall = 'High';
-          caption = 'At least one failing control requires immediate remediation.';
-        } else if (totals.watch > 0) {
-          overall = 'Medium';
-          caption = 'Some controls are at risk and need follow-up.';
-        }
-
-        summaryRisk.textContent = overall;
-        summaryRiskCaption.textContent = caption;
-        summaryFails.textContent = String(totals.fail);
-
-        const impactedDepts = Object.values(depts).filter(d => d.fail > 0 || d.watch > 0).length;
-        summaryDepts.textContent = String(impactedDepts);
-
-        // Risk by department bars
-        const deptEntries = Object.entries(depts);
-        const scores = deptEntries.map(([name, d]) => {
-          const score = d.fail * 2 + d.watch * 1;
-          return { name, data: d, score };
-        }).sort((a, b) => b.score - a.score);
-
-        const maxScore = scores.reduce((m, s) => Math.max(m, s.score), 0) || 1;
-
-        riskBarsEl.innerHTML = '';
-        scores.forEach(s => {
-          const pct = (s.score / maxScore) * 100;
-          let labelText = 'Low';
-          if (s.data.fail > 0 && (s.data.watch > 0 || s.data.fail > 1)) {
-            labelText = 'High';
-          } else if (s.data.fail > 0 || s.data.watch > 0) {
-            labelText = 'Medium';
-          }
-
-          const row = document.createElement('div');
-          row.className = 'risk-bar-row';
-          row.innerHTML = `
-            <span class="risk-bar-row-label">${s.name}</span>
-            <div class="risk-bar"><div class="risk-bar-fill" style="width:${pct}%;"></div></div>
-            <span class="risk-bar-score">${labelText}</span>
-          `;
-          riskBarsEl.appendChild(row);
-        });
-
-        if (!scores.length) {
-          riskBarsEl.innerHTML = '<div class="section-caption">No departments configured.</div>';
-        }
-
-        // Department priorities
-        deptPrioritiesEl.innerHTML = '';
-        scores.forEach(s => {
-          const riskyControls = s.data.controls
-            .filter(c => c.status === 'fail' || c.status === 'watch')
-            .sort((a, b) => {
-              // fail before watch
-              const sa = a.status === 'fail' ? 1 : 0;
-              const sb = b.status === 'fail' ? 1 : 0;
-              return sb - sa;
-            });
-
-          if (!riskyControls.length) return;
-
-          const block = document.createElement('div');
-          block.className = 'dept-block';
-          const listItems = riskyControls.map(c => {
-            const label = c.status === 'fail' ? 'Failing' : 'Needs review';
-            return `<li><strong>${c.id}</strong> — ${label}: ${c.desc}</li>`;
-          }).join('');
-
-          block.innerHTML = `
-            <h4>${s.name}</h4>
-            <ul>${listItems}</ul>
-          `;
-          deptPrioritiesEl.appendChild(block);
-        });
-
-        if (!deptPrioritiesEl.children.length) {
-          deptPrioritiesEl.innerHTML = '<div class="section-caption">All departments are currently passing their controls.</div>';
-        }
       }
 
       rows.forEach(row => {
@@ -556,29 +372,29 @@
 
         if (modelType === 'decision') {
           score += 2;
-          concerns.push('High-impact decisions (loans, hiring, legal) need strict oversight and explainability.');
+          concerns.push('High-impact decisions (loans, hiring, legal) need strict oversight.');
           controls.push('Human-in-the-loop approvals for final decisions.');
-          controls.push('Documented decision criteria and fairness / bias testing.');
+          controls.push('Documented decision criteria and fairness testing.');
         } else if (modelType === 'customer') {
           score += 1;
-          concerns.push('Customer-facing systems can impact brand, trust, and regulatory exposure.');
-          controls.push('Clear user disclaimers, escalation paths, and monitoring of responses.');
+          concerns.push('Customer-facing systems can impact brand and user trust.');
+          controls.push('Clear user disclaimers and escalation to humans.');
         }
 
         if (data === 'high') {
           score += 2;
-          concerns.push('High-sensitivity data requires strict privacy, retention, and access controls.');
-          controls.push('Data minimization, encryption in transit and at rest, and strict role-based access.');
-          controls.push('Formal DPIA / risk assessments for the use case.');
+          concerns.push('High-sensitivity data requires strict privacy and security controls.');
+          controls.push('Data minimization and strong access controls.');
+          controls.push('DPIA / risk assessments for sensitive data.');
         } else if (data === 'medium') {
           score += 1;
-          concerns.push('Internal data still needs classification, retention, and usage policies.');
+          concerns.push('Internal data still needs governance and retention rules.');
         }
 
         if (region === 'eu' || region === 'global') {
           score += 1;
           concerns.push('EU / global deployments must consider GDPR and EU AI Act obligations.');
-          controls.push('Data processing records, DPO involvement where needed, and lawful basis tracking.');
+          controls.push('Data processing records and lawful basis tracking.');
         }
 
         let level = 'Low';
@@ -642,17 +458,6 @@
 
         if (issues === 0) {
           findings.innerHTML = '<li>All log lines look healthy and include evidence IDs.</li>';
-        }
-      });
-    })();
-
-    // NAV HIGHLIGHT (same pattern as index)
-    (function () {
-      const here = location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        const target = a.getAttribute('href');
-        if ((here === 'index.html' && target === '/') || here === target) {
-          a.classList.add('active');
         }
       });
     })();
