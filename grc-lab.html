@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GRC Lab — Compliance & AI Governance Demo | ThrasherApps</title>
+  <meta name="description" content="Interactive GRC and AI governance demo showing how I think about controls, risk, and automation." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+  <!-- Sticky Header / Nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>GRC Lab — Compliance & AI Governance Demo</h1>
+      <p class="lead">
+        A simple, interactive example of how I think about controls, risk, audit evidence, and AI governance.
+      </p>
+      <p class="mt-2">
+        This page is a portfolio piece: something I use to explore modern GRC concepts and show how troubleshooting,
+        automation, and real-world compliance experience come together.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section: Control Status Overview -->
+  <section class="section section--tight">
+    <div class="container">
+      <h2 class="h2">Control Status Overview</h2>
+      <p class="lead">
+        Example controls you’d see in a SOC 2 / ISO 27001 style environment. Update status to see overall risk change.
+      </p>
+
+      <div class="card mt-2">
+        <div class="table-wrapper">
+          <table class="simple-table" id="controls-table">
+            <thead>
+              <tr>
+                <th>Control ID</th>
+                <th>Description</th>
+                <th>Owner</th>
+                <th>Status</th>
+                <th>Last Check</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-control-row>
+                <td>AC-01</td>
+                <td>User access reviews performed quarterly</td>
+                <td>IT / Security</td>
+                <td>
+                  <select data-status>
+                    <option value="pass" selected>Pass</option>
+                    <option value="watch">Needs Review</option>
+                    <option value="fail">Fail</option>
+                  </select>
+                </td>
+                <td>2025-10-01</td>
+              </tr>
+              <tr data-control-row>
+                <td>LOG-02</td>
+                <td>Critical systems send logs to centralized SIEM</td>
+                <td>Platform</td>
+                <td>
+                  <select data-status>
+                    <option value="pass" selected>Pass</option>
+                    <option value="watch">Needs Review</option>
+                    <option value="fail">Fail</option>
+                  </select>
+                </td>
+                <td>2025-10-10</td>
+              </tr>
+              <tr data-control-row>
+                <td>BCP-03</td>
+                <td>Backups tested and restore validated</td>
+                <td>Ops</td>
+                <td>
+                  <select data-status>
+                    <option value="pass">Pass</option>
+                    <option value="watch" selected>Needs Review</option>
+                    <option value="fail">Fail</option>
+                  </select>
+                </td>
+                <td>2025-09-20</td>
+              </tr>
+              <tr data-control-row>
+                <td>AI-01</td>
+                <td>AI models reviewed for bias and misuse risk</td>
+                <td>AI / Product</td>
+                <td>
+                  <select data-status>
+                    <option value="pass">Pass</option>
+                    <option value="watch">Needs Review</option>
+                    <option value="fail" selected>Fail</option>
+                  </select>
+                </td>
+                <td>2025-08-15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-2">
+          <strong>Overall control posture:</strong>
+          <span id="control-score" class="badge">Calculating…</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: AI Use Case Risk Checker -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">AI Use Case Risk Checker</h2>
+      <p class="lead">
+        Quick, rule-of-thumb risk scoring based on data sensitivity, impact, and region. Not a legal tool—just a way to
+        show thinking and structure.
+      </p>
+
+      <div class="grid grid-2 mt-3">
+        <div class="card">
+          <h3>Describe the AI use case</h3>
+          <label class="mt-1">
+            Model Type
+            <select id="model-type">
+              <option value="internal">Internal assistant / knowledge bot</option>
+              <option value="customer">Customer-facing chatbot</option>
+              <option value="decision">Decision-support (loan, hiring, legal)</option>
+              <option value="content">Content / marketing generation</option>
+            </select>
+          </label>
+
+          <label class="mt-1">
+            Data Sensitivity
+            <select id="data-sensitivity">
+              <option value="low">Low (public or non-sensitive)</option>
+              <option value="medium">Medium (internal business data)</option>
+              <option value="high">High (PII, financial, health, legal)</option>
+            </select>
+          </label>
+
+          <label class="mt-1">
+            Region / Regulatory Environment
+            <select id="region">
+              <option value="us">US-focused</option>
+              <option value="eu">EU / EEA (GDPR / EU AI Act)</option>
+              <option value="global">Global / mixed</option>
+            </select>
+          </label>
+
+          <button class="btn mt-2" id="calc-ai-risk">Calculate Risk</button>
+        </div>
+
+        <div class="card" id="ai-risk-output">
+          <h3>Risk Summary</h3>
+          <p class="mt-1"><strong>Risk Level:</strong> <span id="ai-risk-level">—</span></p>
+          <p class="mt-1"><strong>Key Concerns:</strong></p>
+          <ul id="ai-risk-concerns">
+            <li>Fill out the form and click “Calculate Risk”.</li>
+          </ul>
+          <p class="mt-1"><strong>Suggested Controls:</strong></p>
+          <ul id="ai-risk-controls">
+            <li>Model cards / documentation</li>
+            <li>Human-in-the-loop review for high-impact decisions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Audit Log Quick Check -->
+  <section class="section section--tight">
+    <div class="container">
+      <h2 class="h2">Audit Log Quick Check</h2>
+      <p class="lead">
+        Paste a few sample log lines. The checker flags entries that are missing an evidence ID or look like failures.
+      </p>
+
+      <div class="grid grid-2 mt-3">
+        <div class="card">
+          <h3>Sample Logs</h3>
+          <p class="mt-1 small">
+            Example format: <code>2025-10-01T09:14Z USER=alice ACTION=ACCESS_REVIEW STATUS=OK EVIDENCE_ID=12345</code>
+          </p>
+          <textarea id="log-input" rows="10" class="textarea">
+2025-10-01T09:14Z USER=alice ACTION=ACCESS_REVIEW STATUS=OK EVIDENCE_ID=12345
+2025-10-01T10:02Z USER=bob ACTION=BACKUP_RESTORE_TEST STATUS=OK EVIDENCE_ID=88231
+2025-10-01T11:25Z USER=service-bot ACTION=MODEL_DEPLOY STATUS=FAILED
+2025-10-01T11:32Z USER=carol ACTION=AI_POLICY_ACK STATUS=OK
+          </textarea>
+          <button class="btn mt-2" id="check-logs">Run Check</button>
+        </div>
+
+        <div class="card">
+          <h3>Findings</h3>
+          <ul id="log-findings" class="mt-1">
+            <li>Click “Run Check” to see flagged entries.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page JS -->
+  <script>
+    // CONTROL SCORE
+    (function () {
+      const rows = document.querySelectorAll('[data-control-row]');
+      const badge = document.getElementById('control-score');
+
+      function recompute() {
+        let pass = 0, watch = 0, fail = 0;
+        rows.forEach(row => {
+          const status = row.querySelector('[data-status]').value;
+          if (status === 'pass') pass++;
+          else if (status === 'watch') watch++;
+          else if (status === 'fail') fail++;
+        });
+
+        let label = '';
+        let cls = '';
+
+        if (fail > 0) {
+          label = 'High Risk – Failing controls';
+          cls = 'badge-danger';
+        } else if (watch > 0) {
+          label = 'Medium Risk – Items need review';
+          cls = 'badge-warn';
+        } else {
+          label = 'Low Risk – All controls passing';
+          cls = 'badge';
+        }
+
+        badge.textContent = label;
+        badge.className = 'badge ' + cls;
+      }
+
+      rows.forEach(row => {
+        row.querySelector('[data-status]').addEventListener('change', recompute);
+      });
+      recompute();
+    })();
+
+    // AI RISK CHECKER
+    (function () {
+      const btn = document.getElementById('calc-ai-risk');
+      const levelEl = document.getElementById('ai-risk-level');
+      const concernsEl = document.getElementById('ai-risk-concerns');
+      const controlsEl = document.getElementById('ai-risk-controls');
+
+      btn.addEventListener('click', () => {
+        const modelType = document.getElementById('model-type').value;
+        const data = document.getElementById('data-sensitivity').value;
+        const region = document.getElementById('region').value;
+
+        let score = 0;
+        const concerns = [];
+        const controls = [];
+
+        if (modelType === 'decision') {
+          score += 2;
+          concerns.push('High-impact decisions (loans, hiring, legal) need strict oversight.');
+          controls.push('Human-in-the-loop approvals for final decisions.');
+          controls.push('Documented decision criteria and fairness testing.');
+        } else if (modelType === 'customer') {
+          score += 1;
+          concerns.push('Customer-facing systems can impact brand and user trust.');
+          controls.push('Clear user disclaimers and escalation to humans.');
+        }
+
+        if (data === 'high') {
+          score += 2;
+          concerns.push('High-sensitivity data requires strict privacy and security controls.');
+          controls.push('Data minimization and strong access controls.');
+          controls.push('DPIA / risk assessments for sensitive data.');
+        } else if (data === 'medium') {
+          score += 1;
+          concerns.push('Internal data still needs governance and retention rules.');
+        }
+
+        if (region === 'eu' || region === 'global') {
+          score += 1;
+          concerns.push('EU / global deployments must consider GDPR and EU AI Act obligations.');
+          controls.push('Data processing records and lawful basis tracking.');
+        }
+
+        let level = 'Low';
+        if (score >= 4) level = 'High';
+        else if (score >= 2) level = 'Medium';
+
+        levelEl.textContent = level + ' Risk';
+
+        concernsEl.innerHTML = '';
+        controlsEl.innerHTML = '';
+
+        if (!concerns.length) {
+          concernsEl.innerHTML = '<li>Relatively low inherent risk, but basic governance still required.</li>';
+        } else {
+          concerns.forEach(c => {
+            const li = document.createElement('li');
+            li.textContent = c;
+            concernsEl.appendChild(li);
+          });
+        }
+
+        if (!controls.length) {
+          controlsEl.innerHTML = '<li>Document the use case, owners, and basic monitoring.</li>';
+        } else {
+          controls.forEach(c => {
+            const li = document.createElement('li');
+            li.textContent = c;
+            controlsEl.appendChild(li);
+          });
+        }
+      });
+    })();
+
+    // LOG CHECKER
+    (function () {
+      const btn = document.getElementById('check-logs');
+      const input = document.getElementById('log-input');
+      const findings = document.getElementById('log-findings');
+
+      btn.addEventListener('click', () => {
+        const lines = input.value.split('\n').map(l => l.trim()).filter(Boolean);
+        findings.innerHTML = '';
+
+        if (!lines.length) {
+          findings.innerHTML = '<li>No log lines provided.</li>';
+          return;
+        }
+
+        let issues = 0;
+        lines.forEach((line, idx) => {
+          const hasEvidence = line.includes('EVIDENCE_ID=');
+          const failed = line.includes('FAILED') || line.includes('ERROR');
+
+          if (!hasEvidence || failed) {
+            issues++;
+            const li = document.createElement('li');
+            li.textContent = `Line ${idx + 1}: ${!hasEvidence ? 'Missing EVIDENCE_ID; ' : ''}${failed ? 'Status indicates failure.' : ''}`;
+            findings.appendChild(li);
+          }
+        });
+
+        if (issues === 0) {
+          findings.innerHTML = '<li>All log lines look healthy and include evidence IDs.</li>';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
