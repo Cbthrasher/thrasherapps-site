@@ -220,3 +220,21 @@ a:hover{text-decoration:underline}
   color:#92400E;
   border-color:#FDE68A;
 }
+/* ---------- Hero callout for GRC Lab ---------- */
+
+.hero-callout{
+  margin-top: var(--space-3);
+  padding: 10px 14px;
+  border-radius: 10px;
+  background:#EFF6FF;
+  border:1px solid #DBEAFE;
+  display:inline-flex;
+  flex-wrap:wrap;
+  gap:var(--space-2);
+  align-items:center;
+  font-size:14px;
+  color:var(--text-muted);
+}
+.hero-callout a{
+  font-weight:600;
+}
