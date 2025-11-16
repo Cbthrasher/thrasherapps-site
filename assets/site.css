@@ -170,3 +170,53 @@ a:hover{text-decoration:underline}
 .mb-1{margin-bottom:var(--space-1)} .mb-2{margin-bottom:var(--space-2)} .mb-3{margin-bottom:var(--space-3)} .mb-4{margin-bottom:var(--space-4)} .mb-5{margin-bottom:var(--space-5)}
 .center{text-align:center}
 .hidden{display:none}
+/* ---------- GRC Lab Helpers ---------- */
+
+.table-wrapper{
+  margin-top: var(--space-2);
+  overflow-x:auto;
+}
+
+.simple-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+.simple-table th,
+.simple-table td{
+  padding:8px 10px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+.simple-table thead th{
+  background:#F8FAFC;
+  font-weight:600;
+}
+
+.textarea{
+  width:100%;
+  border-radius:8px;
+  border:1px solid var(--border);
+  padding:var(--space-2);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size:13px;
+  resize:vertical;
+  background:#FFFFFF;
+}
+
+.small{
+  font-size:13px;
+  color:var(--text-muted);
+}
+
+/* badge variants for risk levels */
+.badge.badge-danger{
+  background:#FEF2F2;
+  color:#B91C1C;
+  border-color:#FECACA;
+}
+.badge.badge-warn{
+  background:#FFFBEB;
+  color:#92400E;
+  border-color:#FDE68A;
+}
