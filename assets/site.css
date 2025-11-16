@@ -224,6 +224,8 @@ a:hover{text-decoration:underline}
 
 /* ---------- Hero callout for GRC Lab ---------- */
 
+/* ---------- Hero callout for GRC Lab ---------- */
+
 .hero-callout{
   margin-top: var(--space-3);
   padding: 10px 14px;
@@ -237,6 +239,7 @@ a:hover{text-decoration:underline}
   font-size:14px;
   color:var(--text-muted);
   text-decoration:none;
+  cursor:pointer;              /* show hand cursor */
 }
 .hero-callout:hover{
   background:#E0ECFF;
