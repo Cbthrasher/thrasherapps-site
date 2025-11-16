@@ -222,19 +222,32 @@ a:hover{text-decoration:underline}
 }
 /* ---------- Hero callout for GRC Lab ---------- */
 
+/* ---------- Hero callout for GRC Lab ---------- */
+
 .hero-callout{
   margin-top: var(--space-3);
   padding: 10px 14px;
   border-radius: 10px;
   background:#EFF6FF;
   border:1px solid #DBEAFE;
-  display:inline-flex;
+  display:flex;
   flex-wrap:wrap;
   gap:var(--space-2);
   align-items:center;
   font-size:14px;
   color:var(--text-muted);
+  text-decoration:none;
 }
-.hero-callout a{
+.hero-callout:hover{
+  background:#E0ECFF;
+}
+.hero-callout .badge{
+  margin-right:4px;
+}
+.hero-callout-link{
   font-weight:600;
+  color:var(--color-primary);
+}
+.hero-callout-link:hover{
+  text-decoration:underline;
 }
