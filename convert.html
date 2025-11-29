@@ -2,94 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Video to Audio Converter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video to MP3 Converter — ThrasherApps</title>
+  <meta name="description" content="Convert a local video file to MP3 directly in your browser. No uploads, no servers — all on-device." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      background: #0f172a;
-      color: #e5e7eb;
-    }
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-    p {
-      font-size: 0.95rem;
-      color: #cbd5f5;
-    }
-    .card {
-      background: #020617;
-      border-radius: 0.75rem;
-      padding: 1.25rem;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      border: 1px solid #1f2937;
-      margin-top: 1rem;
-    }
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    input[type="file"] {
+    /* Page-specific small tweaks */
+    #videoFile {
       width: 100%;
-      margin-bottom: 1rem;
-    }
-    button {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #020617;
-      margin-top: 0.25rem;
-    }
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+      margin-top: 4px;
     }
     #status {
-      margin-top: 0.75rem;
-      font-size: 0.9rem;
       min-height: 1.2em;
-      color: #a5b4fc;
-    }
-    .note {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
-  <h1>Video → Audio (MP3)</h1>
-  <p>
-    1️⃣ Download your video from YouTube.<br />
-    2️⃣ Select it below.<br />
-    3️⃣ Convert it to MP3 – all in your browser (no upload to a server).
-  </p>
 
-  <div class="card">
-    <form id="convertForm">
-      <label for="videoFile">Choose a video file</label>
-      <input type="file" id="videoFile" accept="video/*" required />
-      <button id="convertBtn" type="submit" disabled>Loading converter…</button>
-    </form>
-    <div id="status"></div>
-    <p class="note">
-      Note: First conversion can be slow (your phone/computer is doing the work).
-      Very large videos may take a while.
-    </p>
-  </div>
+  <!-- Sticky Header / Nav (same as index.html) -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="grc-lab.html">GRC Lab</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- ffmpeg.wasm via CDN, used as ES module -->
+  <!-- Main Section -->
+  <section class="section">
+    <div class="container">
+      <h1 class="h2">Video to MP3 Converter</h1>
+      <p class="lead">
+        Download your video (for example, from YouTube), then convert it here to an MP3 you can play offline on your
+        iPhone or Android. Everything runs in your browser—nothing is uploaded to my server.
+      </p>
+
+      <div class="card mt-3">
+        <form id="convertForm">
+          <label for="videoFile">Choose a video file</label>
+          <input type="file" id="videoFile" accept="video/*" required />
+          <button class="btn mt-2" id="convertBtn" type="submit" disabled>
+            Loading converter…
+          </button>
+        </form>
+
+        <p id="status" class="small mt-2"></p>
+
+        <p class="small mt-2">
+          Tip: The first time you use this, it may take a bit while the converter loads. Very large videos can be slow,
+          especially on older phones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band (optional reuse for consistency) -->
+  <section class="section cta-band">
+    <div class="container wrap">
+      <p class="lead">Need a custom tool like this for your team or business?</p>
+      <p><a class="btn" href="contact.html">Start a Project</a></p>
+    </div>
+  </section>
+
+  <!-- Footer (same as index.html) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tiny scroll-reveal helper + nav highlighter (same as index.html) -->
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+
+      // highlight current nav link
+      const here = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        const target = a.getAttribute('href');
+        if ((here === 'index.html' && target === '/') || here === target) a.classList.add('active');
+      });
+    })();
+  </script>
+
+  <!-- FFmpeg WASM converter: all in-browser -->
   <script type="module">
     import { createFFmpeg, fetchFile } from 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/ffmpeg.min.js';
 
@@ -111,12 +124,12 @@
       try {
         await ffmpeg.load();
         ffmpegLoaded = true;
-        setStatus('Converter ready. Select a video and tap Convert.');
+        setStatus('Converter ready. Select a video and tap “Convert to MP3”.');
         convertBtn.disabled = false;
         convertBtn.textContent = 'Convert to MP3';
       } catch (err) {
         console.error(err);
-        setStatus('Failed to load converter. Please refresh the page.');
+        setStatus('Failed to load converter. Please refresh the page and try again.');
       }
     }
 
@@ -155,13 +168,13 @@
           'output.mp3'
         );
 
-        // Read the output
+        // Read the output data
         const data = ffmpeg.FS('readFile', 'output.mp3');
 
         // Convert to Blob and trigger download
         const blob = new Blob([data.buffer], { type: 'audio/mpeg' });
-
         const originalName = file.name.replace(/\.[^/.]+$/, '') || 'audio';
+
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -173,7 +186,7 @@
 
         setStatus('Done! Check your downloads for the new MP3 file.');
 
-        // Clean up
+        // Cleanup in the virtual FS
         ffmpeg.FS('unlink', 'input');
         ffmpeg.FS('unlink', 'output.mp3');
       } catch (err) {
