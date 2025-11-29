@@ -40,30 +40,30 @@
     <div class="container">
       <h1 class="h2">Video to MP3 Converter</h1>
       <p class="lead">
-        Download your video (for example, from YouTube), then convert it here to an MP3 you can play offline on your
-        iPhone or Android. Everything runs in your browser—nothing is uploaded to my server.
+        Convert any video file on your device into an MP3 you can play offline on iPhone or Android.
+        Everything runs in your browser—nothing is uploaded to my server.
       </p>
 
       <div class="card mt-3">
         <form id="convertForm">
           <label for="videoFile">Choose a video file</label>
           <input type="file" id="videoFile" accept="video/*" required />
-          <button class="btn mt-2" id="convertBtn" type="submit" disabled>
-            Loading converter…
+          <button class="btn mt-2" id="convertBtn" type="submit">
+            Convert to MP3
           </button>
         </form>
 
         <p id="status" class="small mt-2"></p>
 
         <p class="small mt-2">
-          Tip: The first time you use this, it may take a bit while the converter loads. Very large videos can be slow,
-          especially on older phones.
+          Note: The first time you use this, the converter has to download in the background (a one-time
+          download). On a slow connection, that can take a while. After that, conversions are much faster.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- CTA Band (optional reuse for consistency) -->
+  <!-- CTA Band -->
   <section class="section cta-band">
     <div class="container wrap">
       <p class="lead">Need a custom tool like this for your team or business?</p>
@@ -71,7 +71,7 @@
     </div>
   </section>
 
-  <!-- Footer (same as index.html) -->
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
       <div>© 2025 ThrasherApps.com — Built by Chris Thrasher</div>
@@ -83,7 +83,7 @@
     </div>
   </footer>
 
-  <!-- Tiny scroll-reveal helper + nav highlighter (same as index.html) -->
+  <!-- Tiny scroll-reveal helper + nav highlighter -->
   <script>
     (function () {
       const els = document.querySelectorAll('.reveal');
@@ -102,39 +102,50 @@
     })();
   </script>
 
-  <!-- FFmpeg WASM converter: all in-browser -->
-  <script type="module">
-    import { createFFmpeg, fetchFile } from 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/ffmpeg.min.js';
-
-    const ffmpeg = createFFmpeg({ log: true });
-    let ffmpegLoaded = false;
-
+  <!-- FFmpeg WASM via global script, loaded once -->
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/ffmpeg.min.js"></script>
+  <script>
     const form = document.getElementById('convertForm');
     const statusEl = document.getElementById('status');
     const convertBtn = document.getElementById('convertBtn');
     const fileInput = document.getElementById('videoFile');
 
+    let ffmpeg = null;
+    let ffmpegLoaded = false;
+    let ffmpegLoading = false;
+
     function setStatus(text) {
       statusEl.textContent = text;
     }
 
-    async function loadFFmpegOnce() {
+    async function ensureFFmpegLoaded() {
       if (ffmpegLoaded) return;
-      setStatus('Loading converter (first time only)…');
-      try {
+
+      if (!ffmpeg) {
+        // `FFmpeg` global is provided by the script above
+        const { createFFmpeg, fetchFile } = FFmpeg;
+        ffmpeg = createFFmpeg({ log: true });
+        window._ffmpegFetchFile = fetchFile; // stash for later
+      }
+
+      if (!ffmpegLoading) {
+        ffmpegLoading = true;
+        setStatus('Downloading converter (one-time). This can take a while on slower connections…');
+        try {
+          await ffmpeg.load();
+          ffmpegLoaded = true;
+          setStatus('Converter ready. Starting conversion…');
+        } catch (err) {
+          console.error(err);
+          setStatus('Failed to download the converter. Please refresh the page and try again.');
+          throw err;
+        }
+      } else {
+        setStatus('Still downloading converter…');
         await ffmpeg.load();
         ffmpegLoaded = true;
-        setStatus('Converter ready. Select a video and tap “Convert to MP3”.');
-        convertBtn.disabled = false;
-        convertBtn.textContent = 'Convert to MP3';
-      } catch (err) {
-        console.error(err);
-        setStatus('Failed to load converter. Please refresh the page and try again.');
       }
     }
-
-    // Start loading FFmpeg as soon as the page loads
-    loadFFmpegOnce();
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -145,21 +156,21 @@
         return;
       }
 
-      if (!ffmpegLoaded) {
-        setStatus('Still loading converter… please wait a moment.');
-        return;
-      }
-
       convertBtn.disabled = true;
       const originalBtnText = convertBtn.textContent;
       convertBtn.textContent = 'Converting…';
-      setStatus('Converting to MP3. This may take a bit…');
 
       try {
-        // Write the input file into ffmpeg’s virtual file system
+        // 1) Ensure FFmpeg is loaded (this is the “slow first time” part)
+        await ensureFFmpegLoaded();
+
+        const fetchFile = window._ffmpegFetchFile;
+
+        // 2) Write the input file into ffmpeg’s virtual FS
         ffmpeg.FS('writeFile', 'input', await fetchFile(file));
 
-        // Run FFmpeg to extract audio as MP3
+        // 3) Run FFmpeg to extract audio as MP3
+        setStatus('Converting to MP3…');
         await ffmpeg.run(
           '-i', 'input',
           '-vn',
@@ -168,10 +179,8 @@
           'output.mp3'
         );
 
-        // Read the output data
+        // 4) Read the result and trigger download
         const data = ffmpeg.FS('readFile', 'output.mp3');
-
-        // Convert to Blob and trigger download
         const blob = new Blob([data.buffer], { type: 'audio/mpeg' });
         const originalName = file.name.replace(/\.[^/.]+$/, '') || 'audio';
 
@@ -186,12 +195,15 @@
 
         setStatus('Done! Check your downloads for the new MP3 file.');
 
-        // Cleanup in the virtual FS
+        // 5) Clean up in FFmpeg’s virtual FS
         ffmpeg.FS('unlink', 'input');
         ffmpeg.FS('unlink', 'output.mp3');
       } catch (err) {
+        // Error is already logged & status set in ensureFFmpegLoaded if it failed there
         console.error(err);
-        setStatus('Conversion failed. Try a smaller or different video file.');
+        if (!statusEl.textContent) {
+          setStatus('Conversion failed. Try a smaller or different video file, or refresh the page.');
+        }
       } finally {
         convertBtn.disabled = false;
         convertBtn.textContent = originalBtnText;
