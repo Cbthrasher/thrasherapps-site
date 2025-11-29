@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Video to Audio Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    p {
+      font-size: 0.95rem;
+      color: #cbd5f5;
+    }
+    .card {
+      background: #020617;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      border: 1px solid #1f2937;
+      margin-top: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    input[type="file"] {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+      margin-top: 0.25rem;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    #status {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      min-height: 1.2em;
+      color: #a5b4fc;
+    }
+    .note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Video → Audio (MP3)</h1>
+  <p>
+    1️⃣ Download your video from YouTube.<br />
+    2️⃣ Select it below.<br />
+    3️⃣ Convert it to MP3 – all in your browser (no upload to a server).
+  </p>
+
+  <div class="card">
+    <form id="convertForm">
+      <label for="videoFile">Choose a video file</label>
+      <input type="file" id="videoFile" accept="video/*" required />
+      <button id="convertBtn" type="submit" disabled>Loading converter…</button>
+    </form>
+    <div id="status"></div>
+    <p class="note">
+      Note: First conversion can be slow (your phone/computer is doing the work).
+      Very large videos may take a while.
+    </p>
+  </div>
+
+  <!-- ffmpeg.wasm via CDN, used as ES module -->
+  <script type="module">
+    import { createFFmpeg, fetchFile } from 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/ffmpeg.min.js';
+
+    const ffmpeg = createFFmpeg({ log: true });
+    let ffmpegLoaded = false;
+
+    const form = document.getElementById('convertForm');
+    const statusEl = document.getElementById('status');
+    const convertBtn = document.getElementById('convertBtn');
+    const fileInput = document.getElementById('videoFile');
+
+    function setStatus(text) {
+      statusEl.textContent = text;
+    }
+
+    async function loadFFmpegOnce() {
+      if (ffmpegLoaded) return;
+      setStatus('Loading converter (first time only)…');
+      try {
+        await ffmpeg.load();
+        ffmpegLoaded = true;
+        setStatus('Converter ready. Select a video and tap Convert.');
+        convertBtn.disabled = false;
+        convertBtn.textContent = 'Convert to MP3';
+      } catch (err) {
+        console.error(err);
+        setStatus('Failed to load converter. Please refresh the page.');
+      }
+    }
+
+    // Start loading FFmpeg as soon as the page loads
+    loadFFmpegOnce();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const file = fileInput.files[0];
+      if (!file) {
+        setStatus('Please choose a video file first.');
+        return;
+      }
+
+      if (!ffmpegLoaded) {
+        setStatus('Still loading converter… please wait a moment.');
+        return;
+      }
+
+      convertBtn.disabled = true;
+      const originalBtnText = convertBtn.textContent;
+      convertBtn.textContent = 'Converting…';
+      setStatus('Converting to MP3. This may take a bit…');
+
+      try {
+        // Write the input file into ffmpeg’s virtual file system
+        ffmpeg.FS('writeFile', 'input', await fetchFile(file));
+
+        // Run FFmpeg to extract audio as MP3
+        await ffmpeg.run(
+          '-i', 'input',
+          '-vn',
+          '-acodec', 'libmp3lame',
+          '-b:a', '192k',
+          'output.mp3'
+        );
+
+        // Read the output
+        const data = ffmpeg.FS('readFile', 'output.mp3');
+
+        // Convert to Blob and trigger download
+        const blob = new Blob([data.buffer], { type: 'audio/mpeg' });
+
+        const originalName = file.name.replace(/\.[^/.]+$/, '') || 'audio';
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = originalName + '.mp3';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+
+        setStatus('Done! Check your downloads for the new MP3 file.');
+
+        // Clean up
+        ffmpeg.FS('unlink', 'input');
+        ffmpeg.FS('unlink', 'output.mp3');
+      } catch (err) {
+        console.error(err);
+        setStatus('Conversion failed. Try a smaller or different video file.');
+      } finally {
+        convertBtn.disabled = false;
+        convertBtn.textContent = originalBtnText;
+      }
+    });
+  </script>
+</body>
+</html>
