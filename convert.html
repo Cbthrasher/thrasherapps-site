@@ -3,24 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Video to MP3 Converter — ThrasherApps</title>
-  <meta name="description" content="Convert a local video file to MP3 directly in your browser. No uploads, no servers — all on-device." />
+  <title>YouTube to Audio Converter — ThrasherApps</title>
+  <meta name="description" content="Download YouTube videos as audio files directly in your browser. No servers, completely private." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/site.css">
   <style>
-    /* Page-specific small tweaks */
-    #videoFile {
+    #urlInput {
       width: 100%;
-      margin-top: 4px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 16px;
+      margin-top: 8px;
     }
     #status {
-      min-height: 1.2em;
+      min-height: 1.5em;
+      padding: 8px 0;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #E5E7EB;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 12px;
+      display: none;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--color-primary);
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    .format-options {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .format-option {
+      padding: 8px 16px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .format-option:hover {
+      border-color: var(--color-primary);
+    }
+    .format-option.selected {
+      border-color: var(--color-primary);
+      background: #EFF6FF;
+    }
+    .format-option input {
+      margin-right: 6px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Header / Nav (same as index.html) -->
+  <!-- Sticky Header / Nav -->
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/">ThrasherApps</a>
@@ -38,26 +80,60 @@
   <!-- Main Section -->
   <section class="section">
     <div class="container">
-      <h1 class="h2">Video to MP3 Converter</h1>
+      <h1 class="h2">YouTube to Audio Converter</h1>
       <p class="lead">
-        Convert any video file on your device into an MP3 you can play offline on iPhone or Android.
-        Everything runs in your browser—nothing is uploaded to my server.
+        Paste a YouTube link below and download it as an audio file (MP3 or M4A).
+        Works directly in your browser—completely private, nothing uploaded to servers.
       </p>
 
       <div class="card mt-3">
         <form id="convertForm">
-          <label for="videoFile">Choose a video file</label>
-          <input type="file" id="videoFile" accept="video/*" required />
-          <button class="btn mt-2" id="convertBtn" type="submit">
-            Convert to MP3
+          <label for="urlInput"><strong>YouTube URL</strong></label>
+          <input 
+            type="text" 
+            id="urlInput" 
+            placeholder="https://www.youtube.com/watch?v=..."
+            required 
+          />
+
+          <div class="format-options">
+            <label class="format-option selected">
+              <input type="radio" name="format" value="mp3" checked>
+              <span><strong>MP3</strong> (Universal, 192kbps)</span>
+            </label>
+            <label class="format-option">
+              <input type="radio" name="format" value="m4a">
+              <span><strong>M4A</strong> (iPhone optimized, better quality)</span>
+            </label>
+          </div>
+
+          <button class="btn mt-3" id="convertBtn" type="submit">
+            Download Audio
           </button>
         </form>
 
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
         <p id="status" class="small mt-2"></p>
 
-        <p class="small mt-2">
-          Note: The first time you use this, the converter has to download in the background (a one-time
-          download). On a slow connection, that can take a while. After that, conversions are much faster.
+        <p class="small mt-3">
+          <strong>Note:</strong> This tool downloads the video through a proxy service, then converts it in your browser.
+          The first conversion may take longer as it loads the converter. Large videos (1+ hour) may take several minutes.
+        </p>
+      </div>
+
+      <div class="card mt-3">
+        <h3>How It Works</h3>
+        <p class="mt-2">
+          1. Paste any YouTube URL<br>
+          2. Choose your preferred audio format<br>
+          3. The video is fetched and converted entirely in your browser<br>
+          4. Download starts automatically when complete
+        </p>
+        <p class="mt-2 small">
+          All processing happens on your device. No data is stored on our servers.
         </p>
       </div>
     </div>
@@ -66,7 +142,7 @@
   <!-- CTA Band -->
   <section class="section cta-band">
     <div class="container wrap">
-      <p class="lead">Need a custom tool like this for your team or business?</p>
+      <p class="lead">Need a custom web tool for your business?</p>
       <p><a class="btn" href="contact.html">Start a Project</a></p>
     </div>
   </section>
@@ -83,126 +159,222 @@
     </div>
   </footer>
 
-  <!-- Tiny scroll-reveal helper + nav highlighter -->
+  <!-- Navigation highlight script -->
   <script>
     (function () {
-      const els = document.querySelectorAll('.reveal');
-      const onObs = entries => entries.forEach(e=>{
-        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
-      });
-      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
-      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
-
-      // highlight current nav link
       const here = location.pathname.split('/').pop() || 'index.html';
       document.querySelectorAll('.nav-links a').forEach(a=>{
         const target = a.getAttribute('href');
         if ((here === 'index.html' && target === '/') || here === target) a.classList.add('active');
       });
+
+      // Format option styling
+      document.querySelectorAll('.format-option').forEach(opt => {
+        opt.addEventListener('click', function() {
+          document.querySelectorAll('.format-option').forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+          this.querySelector('input').checked = true;
+        });
+      });
     })();
   </script>
 
-  <!-- FFmpeg WASM via global script, loaded once -->
-  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/ffmpeg.min.js"></script>
+  <!-- FFmpeg WASM -->
+  <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
   <script>
     const form = document.getElementById('convertForm');
     const statusEl = document.getElementById('status');
     const convertBtn = document.getElementById('convertBtn');
-    const fileInput = document.getElementById('videoFile');
+    const urlInput = document.getElementById('urlInput');
+    const progressBar = document.getElementById('progressBar');
+    const progressFill = document.getElementById('progressFill');
 
     let ffmpeg = null;
     let ffmpegLoaded = false;
-    let ffmpegLoading = false;
 
     function setStatus(text) {
       statusEl.textContent = text;
+    }
+
+    function setProgress(percent) {
+      progressBar.style.display = 'block';
+      progressFill.style.width = percent + '%';
+    }
+
+    function hideProgress() {
+      progressBar.style.display = 'none';
+      progressFill.style.width = '0%';
     }
 
     async function ensureFFmpegLoaded() {
       if (ffmpegLoaded) return;
 
       if (!ffmpeg) {
-        // `FFmpeg` global is provided by the script above
-        const { createFFmpeg, fetchFile } = FFmpeg;
-        ffmpeg = createFFmpeg({ log: true });
-        window._ffmpegFetchFile = fetchFile; // stash for later
+        const { FFmpeg } = FFmpegWASM;
+        ffmpeg = new FFmpeg();
+        
+        ffmpeg.on('log', ({ message }) => {
+          console.log(message);
+        });
       }
 
-      if (!ffmpegLoading) {
-        ffmpegLoading = true;
-        setStatus('Downloading converter (one-time). This can take a while on slower connections…');
-        try {
-          await ffmpeg.load();
-          ffmpegLoaded = true;
-          setStatus('Converter ready. Starting conversion…');
-        } catch (err) {
-          console.error(err);
-          setStatus('Failed to download the converter. Please refresh the page and try again.');
-          throw err;
-        }
-      } else {
-        setStatus('Still downloading converter…');
-        await ffmpeg.load();
-        ffmpegLoaded = true;
+      setStatus('Loading audio converter (one-time download)...');
+      setProgress(10);
+      
+      await ffmpeg.load({
+        coreURL: 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd/ffmpeg-core.js'
+      });
+      
+      ffmpegLoaded = true;
+      setProgress(100);
+      setStatus('Converter ready!');
+    }
+
+    async function extractVideoId(url) {
+      const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/,
+        /youtube\.com\/embed\/([^&\s]+)/,
+        /youtube\.com\/v\/([^&\s]+)/
+      ];
+
+      for (const pattern of patterns) {
+        const match = url.match(pattern);
+        if (match) return match[1];
       }
+      throw new Error('Invalid YouTube URL');
+    }
+
+    async function downloadVideo(videoId) {
+      // Using a CORS proxy to fetch video info
+      const infoUrl = `https://corsproxy.io/?https://www.youtube.com/watch?v=${videoId}`;
+      
+      setStatus('Fetching video information...');
+      setProgress(20);
+      
+      const response = await fetch(infoUrl);
+      const html = await response.text();
+      
+      // Extract video info from page
+      const match = html.match(/var ytInitialPlayerResponse = ({.+?});/);
+      if (!match) throw new Error('Could not extract video information');
+      
+      const playerResponse = JSON.parse(match[1]);
+      const formats = playerResponse.streamingData?.formats || [];
+      const adaptiveFormats = playerResponse.streamingData?.adaptiveFormats || [];
+      
+      // Find best audio format
+      const audioFormats = adaptiveFormats.filter(f => f.mimeType?.includes('audio'));
+      if (audioFormats.length === 0) throw new Error('No audio streams found');
+      
+      // Get highest quality audio
+      const bestAudio = audioFormats.reduce((prev, curr) => 
+        (curr.bitrate > prev.bitrate) ? curr : prev
+      );
+      
+      setStatus('Downloading audio stream...');
+      setProgress(40);
+      
+      const audioResponse = await fetch(`https://corsproxy.io/?${bestAudio.url}`);
+      const audioBlob = await audioResponse.blob();
+      
+      return {
+        blob: audioBlob,
+        title: playerResponse.videoDetails?.title || 'audio'
+      };
     }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const file = fileInput.files[0];
-      if (!file) {
-        setStatus('Please choose a video file first.');
+      const url = urlInput.value.trim();
+      if (!url) {
+        setStatus('Please enter a YouTube URL');
         return;
       }
 
+      const format = document.querySelector('input[name="format"]:checked').value;
+
       convertBtn.disabled = true;
       const originalBtnText = convertBtn.textContent;
-      convertBtn.textContent = 'Converting…';
+      convertBtn.textContent = 'Processing...';
+      hideProgress();
 
       try {
-        // 1) Ensure FFmpeg is loaded (this is the “slow first time” part)
+        // Extract video ID
+        const videoId = await extractVideoId(url);
+        
+        // Ensure FFmpeg is loaded
         await ensureFFmpegLoaded();
 
-        const fetchFile = window._ffmpegFetchFile;
+        // Download video
+        const { blob, title } = await downloadVideo(videoId);
+        
+        setStatus('Converting to ' + format.toUpperCase() + '...');
+        setProgress(60);
 
-        // 2) Write the input file into ffmpeg’s virtual FS
-        ffmpeg.FS('writeFile', 'input', await fetchFile(file));
+        // Write to FFmpeg virtual filesystem
+        const arrayBuffer = await blob.arrayBuffer();
+        await ffmpeg.writeFile('input', new Uint8Array(arrayBuffer));
 
-        // 3) Run FFmpeg to extract audio as MP3
-        setStatus('Converting to MP3…');
-        await ffmpeg.run(
-          '-i', 'input',
-          '-vn',
-          '-acodec', 'libmp3lame',
-          '-b:a', '192k',
-          'output.mp3'
-        );
+        // Convert based on selected format
+        if (format === 'mp3') {
+          await ffmpeg.exec([
+            '-i', 'input',
+            '-vn',
+            '-acodec', 'libmp3lame',
+            '-b:a', '192k',
+            'output.mp3'
+          ]);
+        } else {
+          await ffmpeg.exec([
+            '-i', 'input',
+            '-vn',
+            '-acodec', 'aac',
+            '-b:a', '192k',
+            'output.m4a'
+          ]);
+        }
 
-        // 4) Read the result and trigger download
-        const data = ffmpeg.FS('readFile', 'output.mp3');
-        const blob = new Blob([data.buffer], { type: 'audio/mpeg' });
-        const originalName = file.name.replace(/\.[^/.]+$/, '') || 'audio';
+        setProgress(80);
+        setStatus('Preparing download...');
 
-        const url = URL.createObjectURL(blob);
+        // Read the output file
+        const outputFile = format === 'mp3' ? 'output.mp3' : 'output.m4a';
+        const data = await ffmpeg.readFile(outputFile);
+
+        // Create download
+        const outputBlob = new Blob([data.buffer], { 
+          type: format === 'mp3' ? 'audio/mpeg' : 'audio/mp4' 
+        });
+        
+        const downloadUrl = URL.createObjectURL(outputBlob);
         const a = document.createElement('a');
-        a.href = url;
-        a.download = originalName + '.mp3';
+        a.href = downloadUrl;
+        a.download = `${title}.${format}`;
         document.body.appendChild(a);
         a.click();
         a.remove();
-        URL.revokeObjectURL(url);
+        URL.revokeObjectURL(downloadUrl);
 
-        setStatus('Done! Check your downloads for the new MP3 file.');
+        setProgress(100);
+        setStatus('✓ Download complete! Check your downloads folder.');
 
-        // 5) Clean up in FFmpeg’s virtual FS
-        ffmpeg.FS('unlink', 'input');
-        ffmpeg.FS('unlink', 'output.mp3');
+        // Cleanup
+        await ffmpeg.deleteFile('input');
+        await ffmpeg.deleteFile(outputFile);
+
+        setTimeout(hideProgress, 2000);
+
       } catch (err) {
-        // Error is already logged & status set in ensureFFmpegLoaded if it failed there
         console.error(err);
-        if (!statusEl.textContent) {
-          setStatus('Conversion failed. Try a smaller or different video file, or refresh the page.');
+        hideProgress();
+        
+        if (err.message === 'Invalid YouTube URL') {
+          setStatus('❌ Invalid YouTube URL. Please check and try again.');
+        } else if (err.message.includes('video information')) {
+          setStatus('❌ Could not access video. It may be private or age-restricted.');
+        } else {
+          setStatus('❌ Conversion failed. The video may be unavailable or too large. Try a different video.');
         }
       } finally {
         convertBtn.disabled = false;
