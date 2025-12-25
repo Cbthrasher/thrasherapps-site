@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ATG — Petro Plus Training</title>
-  <meta name="description" content="ATG field cheat sheet for TLS-450PLUS and TLS-350: common alarms, PLLD checks, best practices, and site mapping." />
+  <meta name="description" content="ATG field cheat sheet for TLS-450PLUS and TLS-350: common alarms, PLLD/line tests, best practices, and site mapping." />
   <link rel="stylesheet" href="/assets/site.css">
 
   <style>
@@ -69,6 +69,11 @@
     @media(min-width:860px){
       .two-col{grid-template-columns:1fr 1fr;}
     }
+    .divider{
+      border-top:1px solid var(--border);
+      margin-top:14px;
+      padding-top:14px;
+    }
   </style>
 </head>
 
@@ -89,16 +94,17 @@
   <section class="mini-hero">
     <div class="container">
       <h1>ATG Field Cheat Sheet</h1>
-      <p class="lead">TLS-450PLUS + TLS-350 • quick workflows, common alarms, PLLD checks, and site mapping.</p>
+      <p class="lead">TLS-450PLUS + TLS-350 • alarms, sensor locating, PLLD/line tests, and site mapping.</p>
       <div class="stack mt-2">
+        <a class="btn btn-secondary" href="#triage">Triage</a>
         <a class="btn btn-secondary" href="#common-alarms">Common Alarms</a>
-        <a class="btn btn-secondary" href="#plld">PLLD / Line Tests</a>
+        <a class="btn btn-secondary" href="#sensors">Locate Sensors</a>
+        <a class="btn btn-secondary" href="#plld">PLLD / Tests</a>
         <a class="btn btn-secondary" href="#site-mapping">Site Mapping</a>
         <button class="btn btn-secondary" onclick="window.print()">Print</button>
       </div>
       <div class="callout-lite">
-        <strong>Best practice:</strong> Screenshot first → verify physically → document what changed → recheck status.
-        <span class="note">Menu labels vary by software/options; don’t change programming in the field unless authorized.</span>
+        <strong>Best practice:</strong> Screenshot first → verify physically → fix one thing at a time → recheck status → document clearly.
       </div>
     </div>
   </section>
@@ -106,66 +112,52 @@
   <main class="section section--tight">
     <div class="container">
 
-      <!-- 60-second triage -->
+      <!-- TRIAGE -->
       <div class="card" id="triage">
         <span class="badge">Workflow</span>
-        <h2 class="mt-2">60-Second Triage (use every call)</h2>
+        <h2 class="mt-2">60-Second Triage</h2>
 
         <div class="two-col mt-2">
           <div class="panel tight">
             <h3>Do this first</h3>
             <ol>
-              <li><strong>Active vs. history</strong> (Are you responding to something happening now?)</li>
-              <li><strong>What object?</strong> Tank # / Line # / Sensor ID / Input</li>
-              <li><strong>Screenshot evidence</strong> (alarm + details)</li>
+              <li><strong>Active vs. history</strong> (Is it happening now?)</li>
+              <li><strong>Identify object</strong>: Tank # / Line # / Sensor ID / Input</li>
+              <li><strong>Capture evidence</strong>: alarm screen + detail screen</li>
               <li><strong>Classify</strong>: Containment/Sensor • Line/PLLD • Tank • System/Setup</li>
+              <li><strong>Go physical</strong>: verify in the field (don’t diagnose from the screen only)</li>
             </ol>
           </div>
 
           <div class="panel tight">
-            <h3>Document standard</h3>
+            <h3>Minimum documentation</h3>
             <ul>
-              <li>Site name + date/time</li>
+              <li>Site + date/time</li>
               <li>Tank/Line/Sensor ID (exact)</li>
-              <li>What you saw (symptom)</li>
-              <li>What you checked physically</li>
-              <li>What you fixed/changed</li>
-              <li>Recheck result (normal? still alarm?)</li>
+              <li>What you found (facts)</li>
+              <li>What you did (actions)</li>
+              <li>Final status (normal? still alarm?)</li>
+              <li>Before/after photos (screen + physical location)</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Common alarms -->
+      <!-- COMMON ALARMS -->
       <div class="card" id="common-alarms">
         <span class="badge">Quick Reference</span>
-        <h2 class="mt-2">Common Alarms (meaning + first moves)</h2>
-        <p class="note">These are the ones you listed as most common in your world. Keep it simple: verify + fix + document.</p>
+        <h2 class="mt-2">Common Alarms (Meaning + First Moves)</h2>
+        <p class="note">Keep your response consistent: confirm the device, go physical, document evidence, and recheck status.</p>
 
         <details open>
-          <summary>Fuel Alarm (most common)</summary>
+          <summary>Fuel Alarm</summary>
           <div class="mt-2 tight">
-            <p><strong>Meaning:</strong> Fuel (liquid) is present in an area being monitored by a sensor — i.e., a space it’s not allowed (sump, dispenser pan, interstice, etc.).</p>
+            <p><strong>Meaning:</strong> Fuel/liquid detected in a space it’s not allowed (sump, dispenser pan, interstice, etc.).</p>
             <ul>
-              <li><strong>Go to the exact location</strong> (use Sensor ID + location label + your site map).</li>
-              <li><strong>Verify physically</strong>: fuel present? source? active leak vs spill vs water intrusion carrying product.</li>
-              <li><strong>Contain/clean safely</strong> per Petro Plus procedure.</li>
-              <li><strong>Document:</strong> cause hypothesis + before/after photos + what was corrected.</li>
-            </ul>
-            <div class="callout-lite">
-              <strong>Best practice:</strong> If it’s recurring at the same spot, treat it like a pattern (seal failure, conduit intrusion, fitting seep, repeat spill behavior).
-            </div>
-          </div>
-        </details>
-
-        <details>
-          <summary>Low Pressure Alarm (during dispensing)</summary>
-          <div class="mt-2 tight">
-            <p><strong>Meaning:</strong> Low pump dispense pressure detected during a dispense; dispensing may halt if programmed.</p>
-            <ul>
-              <li>Check if it’s <strong>one dispenser / one line</strong> or multiple.</li>
-              <li>Look for obvious: <strong>large line leak</strong>, <strong>empty tank</strong>, <strong>STP pressure issues</strong>, <strong>relay/contactor failure</strong>, <strong>power off</strong>.</li>
-              <li>Pair it with <strong>PLLD diagnostics</strong> (don’t chase symptoms without history).</li>
+              <li>Use sensor ID + location label + site map to go to the correct containment area.</li>
+              <li>Verify: active leak vs spill vs intrusion vs residual product.</li>
+              <li>Clean/contain per Petro Plus procedure and check likely entry points (fittings, boots, conduit, lids, seals).</li>
+              <li>Document: what was present, suspected cause, and what was corrected.</li>
             </ul>
             <div class="danger-lite">
               <strong>Safety:</strong> If you suspect an active leak, treat it as a hazard. Make safe, escalate, document.
@@ -174,41 +166,52 @@
         </details>
 
         <details>
-          <summary>Gross line fail (3.0) / Line leak shutdown / Gross test fault</summary>
+          <summary>Low Pressure Alarm</summary>
           <div class="mt-2 tight">
-            <p><strong>Meaning:</strong> Gross leak test failure or gross-test fault condition for a line (3.0 gph category).</p>
+            <p><strong>Meaning:</strong> Dispense pressure is below expected during dispensing (often line/hydraulics/power related).</p>
             <ul>
-              <li>Pull <strong>PLLD 3.0 diagnostics</strong> for that line (recent passes/fails + timestamps).</li>
-              <li>Confirm site conditions: dispenser activity can interrupt/affect test completion.</li>
-              <li>Verify hydraulics: STP performance, obvious leaks, dispenser symptoms.</li>
-              <li>Document results and escalate if shutdown/critical.</li>
+              <li>Determine scope: one dispenser/position, one line, or multiple.</li>
+              <li>Check obvious causes: STP performance/power, filters, line restrictions, leaks, air, dispenser symptoms.</li>
+              <li>Pull PLLD/line diagnostics history for that line before repeating tests.</li>
+              <li>Document observed symptoms at the dispenser (slow flow, no flow, cycling, etc.).</li>
             </ul>
           </div>
         </details>
 
         <details>
-          <summary>Periodic / Annual line fail (0.2 / 0.1)</summary>
+          <summary>Gross Line Fail (3.0) / Line Leak Shutdown</summary>
           <div class="mt-2 tight">
-            <p><strong>Meaning:</strong> Precision test failure category (0.2 periodic / 0.1 annual).</p>
+            <p><strong>Meaning:</strong> Gross leak test category failure (3.0) or related shutdown condition for a line.</p>
             <ul>
-              <li>Pull <strong>0.2 / 0.1 diagnostics</strong> (don’t assume “leak” without reviewing invalid/rejected reasons).</li>
-              <li>Confirm the site can actually get <strong>no-dispense idle time</strong> needed to complete testing.</li>
-              <li>Document: which line, what the console reported, and what was verified physically.</li>
+              <li>Pull PLLD diagnostics for the affected line (recent pass/fail timestamps).</li>
+              <li>Confirm the line and affected dispensers match the site map.</li>
+              <li>Verify physical conditions: obvious leaks, STP issues, dispenser symptoms.</li>
+              <li>Document clearly and follow company escalation if shutdown/critical.</li>
             </ul>
-            <div class="callout-lite">
-              <strong>Best practice:</strong> If a site can’t stay idle, you’ll see “bad tests” and confusion. Document the traffic reality.
-            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>0.2 / 0.1 Test Fail (Periodic / Annual)</summary>
+          <div class="mt-2 tight">
+            <p><strong>Meaning:</strong> Precision line test category fail (0.2 periodic / 0.1 annual).</p>
+            <ul>
+              <li>Pull 0.2/0.1 diagnostics history first; confirm which line is failing and when.</li>
+              <li>Consider traffic reality: precision tests need stable conditions; repeated interruptions create confusion.</li>
+              <li>Verify physically: leaks, seepage, check valves, fittings, dispenser symptoms.</li>
+              <li>Document: what the console reported + what you verified onsite.</li>
+            </ul>
           </div>
         </details>
 
         <details>
           <summary>Sensor Out Alarm</summary>
           <div class="mt-2 tight">
-            <p><strong>Meaning:</strong> Sensor setup incorrect, sensor disconnected, or not functioning properly.</p>
+            <p><strong>Meaning:</strong> Sensor not reporting correctly (disconnected, damaged, wiring issue, or setup mismatch).</p>
             <ul>
-              <li>Confirm the sensor exists and is the correct one for that location (site map).</li>
-              <li>Inspect wiring/conduit, water intrusion, damage, loose connections.</li>
-              <li>If likely setup/config: screenshot + escalate (don’t “random-program” in the field).</li>
+              <li>Confirm the sensor exists at that location (site map) and is the correct type for that spot.</li>
+              <li>Inspect: wiring/conduit, water intrusion, physical damage, loose connections.</li>
+              <li>Document before touching anything; fix physical issues if safe/authorized.</li>
             </ul>
           </div>
         </details>
@@ -216,135 +219,162 @@
         <details>
           <summary>Setup Data Warning</summary>
           <div class="mt-2 tight">
-            <p><strong>Meaning:</strong> Device setup data problem / setup parameters need recheck.</p>
+            <p><strong>Meaning:</strong> Configuration/setup issue or mismatch (device/tank/line/sensor setup integrity).</p>
             <ul>
-              <li>Capture screenshots of the warning and the referenced device/tank/line.</li>
-              <li>Verify you are looking at the right device mapping (site map vs console labels).</li>
-              <li>Escalate with evidence if programming changes are needed.</li>
+              <li>Capture screenshots showing exactly what it references.</li>
+              <li>Verify console labels match the physical site map (wrong mapping causes bad troubleshooting).</li>
+              <li>Do not change programming unless authorized; document and escalate with evidence.</li>
             </ul>
           </div>
         </details>
 
         <details>
-          <summary>High Water Alarm (water in tank)</summary>
+          <summary>High Water Alarm (Tank Water)</summary>
           <div class="mt-2 tight">
-            <p><strong>Meaning:</strong> Water in the tank exceeds the programmed High Water Alarm limit.</p>
+            <p><strong>Meaning:</strong> Water in the tank has exceeded the high-water limit setting.</p>
             <ul>
-              <li>Screenshot: water level/status screen and tank number.</li>
-              <li>Confirm it’s tied to the correct tank/probe and not a mismatch/mapping issue.</li>
-              <li>Follow Petro Plus water procedure (removal/containment/escalation) and document before/after.</li>
+              <li>Screenshot water/tank status screens and note tank number.</li>
+              <li>Verify the correct tank/probe association (mapping errors happen).</li>
+              <li>Follow Petro Plus tank water procedure (removal/containment/escalation) and document before/after.</li>
             </ul>
             <div class="danger-lite">
-              <strong>Important:</strong> Treat tank water alarms as serious. Document clearly for the office and customer.
+              <strong>Important:</strong> Treat tank water alarms as serious. Document clearly for the office and the customer.
             </div>
           </div>
         </details>
       </div>
 
-      <!-- PLLD / Line Testing -->
-      <div class="card" id="plld">
-        <span class="badge">Diagnostics</span>
-        <h2 class="mt-2">PLLD / Line Tests (status + where to look)</h2>
-        <p class="note">Goal: get the history/diagnostics first, then decide whether to re-run tests or chase hardware.</p>
+      <!-- LOCATE SENSORS -->
+      <div class="card" id="sensors">
+        <span class="badge">Field Skill</span>
+        <h2 class="mt-2">Locate the Correct Sensor (Fast Method)</h2>
 
         <div class="two-col mt-2">
           <div class="panel tight">
-            <h3>TLS-450PLUS (touchscreen) — quick paths</h3>
+            <h3>Console → Field (always)</h3>
+            <ol>
+              <li>From the alarm, identify <strong>Sensor ID</strong> and any <strong>location label</strong>.</li>
+              <li>Use the <strong>site map</strong> to walk directly to that sump/pan/spill bucket/interstice.</li>
+              <li>Verify physically: liquid present, water intrusion, damage, sensor placement, float condition.</li>
+              <li>Correct the issue per procedure; avoid “random changes.”</li>
+              <li>Recheck sensor status/alarm on the console and capture the “after” screen.</li>
+            </ol>
+          </div>
+
+          <div class="panel tight">
+            <h3>Best practices</h3>
+            <ul>
+              <li>If the location label is wrong, note it and keep the call focused on the actual problem.</li>
+              <li>Take a wide photo (to prove location) and a close-up (to prove condition).</li>
+              <li>When recurring alarms happen at the same spot, treat it as a pattern and document the likely root cause.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider note">
+          Tip: A clean site map + consistent naming reduces bad troubleshooting more than any “advanced” console work.
+        </div>
+      </div>
+
+      <!-- PLLD / TESTS -->
+      <div class="card" id="plld">
+        <span class="badge">Diagnostics</span>
+        <h2 class="mt-2">PLLD / Line Tests (3.0 / 0.2 / 0.1)</h2>
+        <p class="note">Field rule: pull diagnostics/history first, then decide if you should run tests or inspect hardware.</p>
+
+        <details open>
+          <summary>PLLD workflow (quick)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li>Identify the <strong>line number</strong> referenced by the alarm.</li>
+              <li>Check <strong>PLLD status/diagnostics</strong> for that line (recent pass/fail + timestamps).</li>
+              <li>Confirm conditions (dispensing/traffic can interfere with clean test completion).</li>
+              <li>Inspect physically based on the symptom (leak, restriction, power/STP, dispenser behavior).</li>
+              <li>Document and recheck status after any change.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>TLS-450PLUS (touchscreen) — where to look</summary>
+          <div class="mt-2 tight">
             <ul>
               <li><span class="kbd">Menu</span> → <span class="kbd">Diagnostics</span> → <span class="kbd">PLLD</span> → <span class="kbd">0.2 GPH TESTS</span></li>
               <li><span class="kbd">Menu</span> → <span class="kbd">Diagnostics</span> → <span class="kbd">PLLD</span> → <span class="kbd">3.0 GPH TESTS</span></li>
             </ul>
             <div class="callout-lite">
-              <strong>Best practice:</strong> Screenshot the diagnostics page for the affected line (shows recent pass/fail history).
+              <strong>Best practice:</strong> Screenshot the diagnostics page for the affected line (it’s the fastest way to explain what happened).
             </div>
           </div>
+        </details>
 
-          <div class="panel tight">
-            <h3>TLS-350 (keypad) — common diagnostic steps</h3>
+        <details>
+          <summary>TLS-350 (keypad) — common diagnostic steps</summary>
+          <div class="mt-2 tight">
             <ol>
               <li>Press <span class="kbd">MODE</span> for DIAG MODE</li>
               <li><span class="kbd">FUNCTION</span> to PRESSURE LINE LEAK DIAG</li>
-              <li><span class="kbd">STEP</span> to <strong>0.2 DIAG</strong> (or other test screens as needed)</li>
-              <li>Press <span class="kbd">PRINT</span> (if printer available)</li>
+              <li><span class="kbd">STEP</span> to the screen you need (0.2 / 0.1 / 3.0)</li>
+              <li>Press <span class="kbd">PRINT</span> (if available)</li>
             </ol>
-          </div>
-        </div>
-
-        <details>
-          <summary>When you re-run tests (best practices)</summary>
-          <div class="mt-2 tight">
-            <ul>
-              <li><strong>No-dispense time matters.</strong> Heavy traffic can cause repeated “bad/invalid” tests.</li>
-              <li><strong>One line at a time:</strong> identify the impacted line, pull history, then act.</li>
-              <li><strong>Document conditions:</strong> “site could not remain idle” is valuable troubleshooting context.</li>
-              <li><strong>Don’t promise outcomes:</strong> report what the console shows + what you verified physically.</li>
-            </ul>
           </div>
         </details>
 
         <details>
-          <summary>Start Line Pressure Test (TLS-350 style prompt you’ll see)</summary>
+          <summary>What each test means (one line each)</summary>
           <div class="mt-2 tight">
-            <p>You may see prompts like <strong>“Start Line Pressure Test”</strong> then select the line and select the test type (commonly 3.0). Follow site/company procedure before starting tests during business hours.</p>
+            <ul>
+              <li><strong>3.0</strong> = gross leak category (big problem / high risk)</li>
+              <li><strong>0.2</strong> = periodic precision category</li>
+              <li><strong>0.1</strong> = annual precision category</li>
+            </ul>
           </div>
         </details>
       </div>
 
-      <!-- Site mapping -->
+      <!-- SITE MAPPING -->
       <div class="card" id="site-mapping">
         <span class="badge">Best Practice</span>
-        <h2 class="mt-2">Site Mapping (find the right tank/sensor fast)</h2>
-        <p class="note">Most “ATG confusion” is really a mapping/labeling problem. Fix the map, fix the calls.</p>
+        <h2 class="mt-2">Site Mapping (Tanks, Lines, Sensors)</h2>
+        <p class="note">Goal: any tech can arrive and find the right tank/line/sensor without guessing.</p>
 
-        <div class="two-col mt-2">
-          <div class="panel tight">
-            <h3>Build a one-page Site Map (per store)</h3>
-            <ul>
-              <li><strong>Tanks:</strong> Tank #, product, probe type, notes</li>
-              <li><strong>Lines:</strong> Line # → which dispensers/grades (rough is fine initially)</li>
-              <li><strong>Sensors:</strong> Sensor ID + physical location (STP sump, dispenser pan, tank interstice, spill bucket)</li>
-              <li><strong>E-stops:</strong> location(s) + what they affect</li>
-              <li><strong>Photos:</strong> 1 wide shot + inside each sump/pan you service</li>
-            </ul>
-          </div>
-
-          <div class="panel tight">
-            <h3>Fast “Locate the Sensor” method</h3>
-            <ol>
-              <li>From the alarm: capture <strong>Sensor ID</strong> and the <strong>location label</strong> (if available).</li>
-              <li>Use the <strong>Site Map</strong> to walk straight to that containment point.</li>
-              <li>Verify physically (fuel/water/debris/damage/placement).</li>
-              <li>Document before/after and what you changed.</li>
-              <li>Recheck the console status.</li>
-            </ol>
-            <div class="callout-lite">
-              <strong>Best practice:</strong> If the location label is wrong, don’t waste the call fixing it—note it, then correct later with authorization.
-            </div>
-          </div>
-        </div>
-
-        <details>
-          <summary>Minimum “evidence set” for ATG calls</summary>
+        <details open>
+          <summary>What every site map must include</summary>
           <div class="mt-2 tight">
             <ul>
-              <li>Alarm screen photo</li>
-              <li>Detail/diagnostic screen photo (tank/line/sensor)</li>
-              <li>Photo of the physical location (sump/pan/tank area)</li>
-              <li>Close-up of what you found (water/product/damage)</li>
-              <li>After photo + “status recheck” photo</li>
+              <li><strong>Tanks:</strong> Tank #, product, probe type, notes (water history, known issues)</li>
+              <li><strong>Lines:</strong> Line # to dispenser group (rough mapping is fine at first)</li>
+              <li><strong>Sensors:</strong> Sensor ID + physical location name (STP sump, dispenser pan, spill bucket, interstice)</li>
+              <li><strong>Emergency stops:</strong> locations + what they affect</li>
+              <li><strong>Photos:</strong> 1–2 wide shots + inside each sump/pan you service</li>
             </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Mapping method (field)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li>Start with tank numbers and probe locations (confirm each physically where possible).</li>
+              <li>List every sensor by console ID; walk and confirm each physical location.</li>
+              <li>Name locations consistently (example: “Disp 3 Pan”, “STP Sump”, “Tank 2 Interstice”).</li>
+              <li>Update the map immediately when equipment is moved/replaced.</li>
+            </ol>
           </div>
         </details>
       </div>
 
-      <div class="card">
-        <span class="badge">Next</span>
-        <h2 class="mt-2">Next upgrades (when you’re ready)</h2>
+      <!-- CLOSEOUT -->
+      <div class="card" id="closeout">
+        <span class="badge">Standard</span>
+        <h2 class="mt-2">Closeout (Before You Leave)</h2>
         <ul class="mt-2">
-          <li>Add exact TLS-450PLUS button paths for <em>your</em> common software version (we can do it from photos).</li>
-          <li>Add a dedicated page: <strong>Site Map Template</strong> (printable + fillable).</li>
-          <li>Add quick “what to tell the customer” lines per alarm (short, professional, no over-promising).</li>
+          <li>Recheck the console status for the tank/line/sensor you worked.</li>
+          <li>Capture “after” evidence (screen + physical area photo).</li>
+          <li>Confirm the site is left clean and safe (no open sumps/pans, no tools, no trip hazards).</li>
+          <li>Write clear notes: what was found, what was done, and the final status.</li>
         </ul>
+        <p class="note">Goal: the next tech can understand the situation in 30 seconds from your photos and notes.</p>
       </div>
 
     </div>
