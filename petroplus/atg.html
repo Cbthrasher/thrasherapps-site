@@ -364,6 +364,86 @@
         </details>
       </div>
 
+      <!-- SLOW FLOW -->
+<div class="card" id="slow-flow">
+  <span class="badge">Dispensing Issue</span>
+  <h2 class="mt-2">Slow Flow (Manual Leak Detector) — Field Troubleshooting</h2>
+  <p class="note">
+    Slow flow is commonly triggered when a manual leak detector senses a pressure drop and restricts flow to alert the site that there is a problem.
+  </p>
+
+  <details open>
+    <summary>Quick workflow</summary>
+    <div class="mt-2 tight">
+      <ol>
+        <li>Determine scope: <strong>one fueling point</strong> vs <strong>all fueling points</strong>.</li>
+        <li>Install a <strong>pressure gauge</strong> on the line at a <strong>shear valve</strong>.</li>
+        <li>Verify <strong>running pressure</strong>, <strong>seating pressure</strong>, and <strong>hold time</strong>.</li>
+        <li>Based on scope + readings, troubleshoot dispenser-side vs pump/line-side causes.</li>
+        <li>Document readings and final outcome (before/after).</li>
+      </ol>
+    </div>
+  </details>
+
+  <details>
+    <summary>Pressure check (gauge at shear valve)</summary>
+    <div class="mt-2 tight">
+      <ul>
+        <li><strong>Running pressure:</strong> should be above <strong>25 psi</strong>.</li>
+        <li><strong>Seating pressure:</strong> should settle above <strong>20 psi</strong>.</li>
+        <li><strong>Hold test:</strong> should hold that seating pressure for <strong>more than 30 minutes</strong>.</li>
+      </ul>
+      <div class="callout-lite">
+        <strong>Best practice:</strong> Write the numbers down (running, seating, and time held). Photos of the gauge help reduce disputes later.
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>If slow flow affects ONE fueling point</summary>
+    <div class="mt-2 tight">
+      <p><strong>Most likely:</strong> dispenser-side restriction or component issue.</p>
+      <ul>
+        <li>Clogged filter</li>
+        <li>Bad meter</li>
+        <li>Bad proportional valve</li>
+      </ul>
+      <div class="callout-lite">
+        <strong>Best practice:</strong> Don’t jump to STP parts if only one position is affected.
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>If slow flow affects ALL fueling points</summary>
+    <div class="mt-2 tight">
+      <p><strong>Possible causes:</strong> line-side issue or pump-side pressure loss.</p>
+      <ul>
+        <li>Actual leak (customer may need a line leak test performed)</li>
+        <li>Internal pressure loss in pump head (commonly a bad <strong>functional element</strong> on a Red Jacket STP)</li>
+        <li>Bad check valve</li>
+        <li>Bad packer o-rings</li>
+        <li>Bad motor or capacitor</li>
+      </ul>
+      <div class="danger-lite">
+        <strong>Safety:</strong> If you suspect an actual leak, treat it as a hazard. Make safe and follow Petro Plus escalation/testing procedure.
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Closeout (required documentation)</summary>
+    <div class="mt-2 tight">
+      <ul>
+        <li>Which dispenser(s) / fueling points were affected</li>
+        <li>Where the gauge was installed (which shear valve)</li>
+        <li>Running PSI, seating PSI, and time held</li>
+        <li>What was repaired/replaced</li>
+        <li>Final result (normal flow restored? still slow flow?)</li>
+      </ul>
+    </div>
+  </details>
+</div>
       <!-- CLOSEOUT -->
       <div class="card" id="closeout">
         <span class="badge">Standard</span>
