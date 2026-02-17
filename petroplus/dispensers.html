@@ -122,6 +122,7 @@
         <a class="btn btn-secondary" href="#electrical">Electrical</a>
         <a class="btn btn-secondary" href="#gilbarco">Gilbarco</a>
         <a class="btn btn-secondary" href="#wayne">Wayne</a>
+        <a class="btn btn-secondary" href="#error-codes">Error Codes</a>
         <button class="btn btn-secondary" onclick="window.print()">Print</button>
       </div>
     </div>
@@ -636,6 +637,239 @@
           </div>
         </details>
       </div>
+
+      <!-- ============================================================
+           ERROR CODES
+           ============================================================ -->
+      <div class="card" id="error-codes">
+        <span class="badge">Diagnostics</span>
+        <h2 class="mt-2">Error Codes — Quick Lookup</h2>
+        <p class="note">Search by code number or keyword. Codes sourced from Gilbarco and Wayne service documentation.</p>
+
+        <!-- Search box -->
+        <div style="margin-top:12px">
+          <input type="text" id="code-search" placeholder="Type an error code or keyword (e.g. 29, pulser, flash)…"
+            style="width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--border);background:#F8FAFC;color:var(--text-strong);font-size:14px;outline:none;">
+          <p class="note" style="margin-top:6px" id="code-count"></p>
+        </div>
+
+        <!-- GILBARCO 500s -->
+        <details open>
+          <summary>Gilbarco Encore 500s</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table code-table" data-brand="gilbarco-500s">
+              <thead><tr><th style="width:70px">Code</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><strong>E1</strong></td><td>Database corrupted</td></tr>
+                <tr><td><strong>E2</strong></td><td>Flash corrupted</td></tr>
+                <tr><td><strong>E3</strong></td><td>LON configuration error</td></tr>
+                <tr><td><strong>E4</strong></td><td>One or more task not started</td></tr>
+                <tr><td><strong>E5</strong></td><td>Cold start was forced</td></tr>
+                <tr><td><strong>E6</strong></td><td>Redundant data storage error</td></tr>
+                <tr><td><strong>E7</strong></td><td>Calibration switch was not engaged when performing a firmware upgrade</td></tr>
+                <tr><td><strong>E8</strong></td><td>Database changed, set as default the new values</td></tr>
+                <tr><td><strong>11</strong></td><td>Two wire communication error</td></tr>
+                <tr><td><strong>20</strong></td><td>Pulser connected and product not mapped, or pulser disconnected and product is mapped</td></tr>
+                <tr><td><strong>24</strong></td><td>Volume unit type not set</td></tr>
+                <tr><td><strong>26</strong></td><td>Pump not calibrated</td></tr>
+                <tr><td><strong>27</strong></td><td>Two wire ID changed — side A</td></tr>
+                <tr><td><strong>28</strong></td><td>Two wire ID changed — side B</td></tr>
+                <tr><td><strong>29</strong></td><td>Valve not open</td></tr>
+                <tr><td><strong>30</strong></td><td>Catastrophic error has occurred on the VaporVac</td></tr>
+                <tr><td><strong>33</strong></td><td>E-stop button activated or VaporVac failure on one side</td></tr>
+                <tr><td><strong>35</strong></td><td>Configuration data error</td></tr>
+                <tr><td><strong>37</strong></td><td>Pin code one changed</td></tr>
+                <tr><td><strong>38</strong></td><td>Pin code two changed</td></tr>
+                <tr><td><strong>39</strong></td><td>Cash/credit option changed</td></tr>
+                <tr><td><strong>41</strong></td><td>Side exist option changed</td></tr>
+                <tr><td><strong>42</strong></td><td>PPU option changed</td></tr>
+                <tr><td><strong>44</strong></td><td>PPU board pump handle on at power up</td></tr>
+                <tr><td><strong>4307</strong></td><td>Blends not programmed</td></tr>
+                <tr><td><strong>4311</strong></td><td>Blender — low octane product low flow</td></tr>
+                <tr><td><strong>4312</strong></td><td>Blender — high octane product low flow</td></tr>
+                <tr><td><strong>4313</strong></td><td>Blender — low octane product no flow</td></tr>
+                <tr><td><strong>4314</strong></td><td>Blender — high octane product no flow</td></tr>
+                <tr><td><strong>4315</strong></td><td>Blender — high octane product contaminated by low octane product</td></tr>
+                <tr><td><strong>4316</strong></td><td>Blender — low octane product contaminated by high octane product</td></tr>
+                <tr><td><strong>4320</strong></td><td>Valve configured for, but not responding</td></tr>
+                <tr><td><strong>4321</strong></td><td>Valve stuck</td></tr>
+                <tr><td><strong>4322</strong></td><td>Valve board not responding</td></tr>
+                <tr><td><strong>5000–5007</strong></td><td>Meter 0–7 calibration changed</td></tr>
+                <tr><td><strong>5041</strong></td><td>Power fail — power circuit registered a power loss</td></tr>
+                <tr><td><strong>5047</strong></td><td>Reverse flow detected</td></tr>
+                <tr><td><strong>5048</strong></td><td>No flow detected</td></tr>
+                <tr><td><strong>5049</strong></td><td>Unauthorized flow detected</td></tr>
+                <tr><td><strong>5050</strong></td><td>Invalid pulser — pulser pattern does not fit profiled meter</td></tr>
+                <tr><td><strong>5094</strong></td><td>Main board communication lost</td></tr>
+                <tr><td><strong>5095</strong></td><td>Main board power failure</td></tr>
+                <tr><td><strong>5150</strong></td><td>PPUs not addressed correctly</td></tr>
+                <tr><td><strong>5151</strong></td><td>PPUs communication lost</td></tr>
+                <tr><td><strong>5152</strong></td><td>PPU configuration mismatch</td></tr>
+                <tr><td><strong>5153</strong></td><td>PPU reset failed</td></tr>
+                <tr><td><strong>5200</strong></td><td>Display initialization failure</td></tr>
+                <tr><td><strong>5201</strong></td><td>Display data corruption detected</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- GILBARCO 700s -->
+        <details>
+          <summary>Gilbarco Encore 700s</summary>
+          <div class="mt-2 tight">
+            <p class="note">Shares many codes with the 500s. Listed below are codes specific to or commonly referenced on the 700s.</p>
+            <table class="simple-table code-table" data-brand="gilbarco-700s">
+              <thead><tr><th style="width:70px">Code</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><strong>E1</strong></td><td>Database corrupted</td></tr>
+                <tr><td><strong>E2</strong></td><td>Flash corrupted</td></tr>
+                <tr><td><strong>E3</strong></td><td>LON configuration error</td></tr>
+                <tr><td><strong>E4</strong></td><td>One or more task not started</td></tr>
+                <tr><td><strong>E5</strong></td><td>Cold start was forced</td></tr>
+                <tr><td><strong>E6</strong></td><td>Redundant data storage error</td></tr>
+                <tr><td><strong>E7</strong></td><td>Calibration switch was not engaged when performing a firmware upgrade</td></tr>
+                <tr><td><strong>E8</strong></td><td>Database changed, set as default the new values</td></tr>
+                <tr><td><strong>11</strong></td><td>Two wire communication error</td></tr>
+                <tr><td><strong>20</strong></td><td>Pulser connected and product not mapped, or pulser disconnected and product is mapped</td></tr>
+                <tr><td><strong>24</strong></td><td>Volume unit type not set</td></tr>
+                <tr><td><strong>26</strong></td><td>Pump not calibrated</td></tr>
+                <tr><td><strong>27</strong></td><td>Two wire ID changed — side A</td></tr>
+                <tr><td><strong>28</strong></td><td>Two wire ID changed — side B</td></tr>
+                <tr><td><strong>29</strong></td><td>Valve not open</td></tr>
+                <tr><td><strong>30</strong></td><td>Catastrophic error has occurred on the VaporVac</td></tr>
+                <tr><td><strong>33</strong></td><td>E-stop button activated or VaporVac failure on one side</td></tr>
+                <tr><td><strong>35</strong></td><td>Configuration data error</td></tr>
+                <tr><td><strong>5096</strong></td><td>Board temperature too high</td></tr>
+                <tr><td><strong>5150</strong></td><td>PPUs not addressed correctly</td></tr>
+                <tr><td><strong>5151</strong></td><td>PPUs communication lost</td></tr>
+                <tr><td><strong>5152</strong></td><td>PPU configuration mismatch</td></tr>
+                <tr><td><strong>5153</strong></td><td>PPU reset failed</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- GILBARCO ENCORE 300 -->
+        <details>
+          <summary>Gilbarco Encore 300</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table code-table" data-brand="gilbarco-300">
+              <thead><tr><th style="width:70px">Code</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><strong>301</strong></td><td>Communication error with display module</td></tr>
+                <tr><td><strong>302</strong></td><td>Display module failed self-test</td></tr>
+                <tr><td><strong>303</strong></td><td>Dispenser communication timeout</td></tr>
+                <tr><td><strong>304</strong></td><td>Dispenser power fault</td></tr>
+                <tr><td><strong>305</strong></td><td>Dispenser firmware mismatch</td></tr>
+                <tr><td><strong>310</strong></td><td>Payment module unresponsive</td></tr>
+                <tr><td><strong>311</strong></td><td>Printer paper low or empty</td></tr>
+                <tr><td><strong>312</strong></td><td>Card reader malfunction</td></tr>
+                <tr><td><strong>313</strong></td><td>Pump handle left up at startup</td></tr>
+                <tr><td><strong>314</strong></td><td>Pump out-of-service due to hardware fault</td></tr>
+                <tr><td><strong>320</strong></td><td>Pulser signal missing</td></tr>
+                <tr><td><strong>321</strong></td><td>Blender calibration failure</td></tr>
+                <tr><td><strong>322</strong></td><td>PPU failure on nozzle</td></tr>
+                <tr><td><strong>323</strong></td><td>Communication lost with VaporVac module</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- WAYNE OVATION -->
+        <details>
+          <summary>Wayne Ovation</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table code-table" data-brand="wayne-ovation">
+              <thead><tr><th style="width:70px">Code</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1</strong></td><td>Flash program memory failure</td></tr>
+                <tr><td><strong>2</strong></td><td>Flash template memory failure</td></tr>
+                <tr><td><strong>3</strong></td><td>RAM memory failure</td></tr>
+                <tr><td><strong>4</strong></td><td>Power failure</td></tr>
+                <tr><td><strong>5</strong></td><td>Error log database failure</td></tr>
+                <tr><td><strong>6</strong></td><td>Configuration database failure</td></tr>
+                <tr><td><strong>7</strong></td><td>Unit price database failure</td></tr>
+                <tr><td><strong>8</strong></td><td>Statistics database failure</td></tr>
+                <tr><td><strong>9</strong></td><td>Event log database failure</td></tr>
+                <tr><td><strong>10</strong></td><td>Totals database failure</td></tr>
+                <tr><td><strong>16</strong></td><td>Overflow limit reached</td></tr>
+                <tr><td><strong>17</strong></td><td>Hose test volume out of tolerance</td></tr>
+                <tr><td><strong>18</strong></td><td>Hose test volume out of tolerance (three consecutive fillings)</td></tr>
+                <tr><td><strong>20</strong></td><td>Display read-back error</td></tr>
+                <tr><td><strong>25</strong></td><td>Filling start with zero unit price</td></tr>
+                <tr><td><strong>26</strong></td><td>Filling start with no unit price downloaded</td></tr>
+                <tr><td><strong>27</strong></td><td>Filling start after unit price change</td></tr>
+                <tr><td><strong>28</strong></td><td>Filling start without preset entry</td></tr>
+                <tr><td><strong>30</strong></td><td>POS communication lost</td></tr>
+                <tr><td><strong>35</strong></td><td>Blending out of tolerance</td></tr>
+                <tr><td><strong>36</strong></td><td>No flow on one meter at high speed / blender pump</td></tr>
+                <tr><td><strong>37</strong></td><td>VAP monitor — 10 fillings bad</td></tr>
+                <tr><td><strong>38</strong></td><td>VAP monitor — 72h elapsed</td></tr>
+                <tr><td><strong>39</strong></td><td>VAP monitor internal error</td></tr>
+                <tr><td><strong>40</strong></td><td>VAP monitor reset</td></tr>
+                <tr><td><strong>41</strong></td><td>Motor feedback error</td></tr>
+                <tr><td><strong>42</strong></td><td>VAP not calibrated</td></tr>
+                <tr><td><strong>43</strong></td><td>VAP valve current low</td></tr>
+                <tr><td><strong>44</strong></td><td>VAP valve current high</td></tr>
+                <tr><td><strong>45</strong></td><td>VAP contactor error</td></tr>
+                <tr><td><strong>46</strong></td><td>VAP external error detected</td></tr>
+                <tr><td><strong>47</strong></td><td>VAP electric error</td></tr>
+                <tr><td><strong>50</strong></td><td>Temperature sensor failure</td></tr>
+                <tr><td><strong>51</strong></td><td>Internal clock drifted beyond range</td></tr>
+                <tr><td><strong>52</strong></td><td>PPU initialization timeout</td></tr>
+                <tr><td><strong>53</strong></td><td>Preset not acknowledged</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <div class="callout-lite" style="margin-top:14px">
+          <strong>Field tip:</strong> Write down the exact code before clearing it. Screenshot the display if possible. The code tells the next person (or you, next visit) where to start.
+        </div>
+      </div>
+
+      <!-- Error code search script -->
+      <script>
+      (function(){
+        var input = document.getElementById('code-search');
+        var countEl = document.getElementById('code-count');
+        var tables = document.querySelectorAll('.code-table');
+
+        function filter(){
+          var term = input.value.toLowerCase().trim();
+          var visible = 0, total = 0;
+
+          tables.forEach(function(table){
+            var rows = table.querySelectorAll('tbody tr');
+            rows.forEach(function(row){
+              total++;
+              var code = row.cells[0].textContent.toLowerCase();
+              var meaning = row.cells[1].textContent.toLowerCase();
+              var match = !term || code.indexOf(term) !== -1 || meaning.indexOf(term) !== -1;
+              row.style.display = match ? '' : 'none';
+              if(match) visible++;
+            });
+
+            // Auto-open details if it has matches
+            var detail = table.closest('details');
+            if(term && detail){
+              var hasVisible = false;
+              rows.forEach(function(r){ if(r.style.display !== 'none') hasVisible = true; });
+              if(hasVisible) detail.open = true;
+            }
+          });
+
+          if(term){
+            countEl.textContent = visible + ' of ' + total + ' codes match "' + input.value.trim() + '"';
+          } else {
+            countEl.textContent = total + ' error codes across all models';
+          }
+        }
+
+        input.addEventListener('input', filter);
+        filter(); // initial count
+      })();
+      </script>
 
       <!-- ============================================================
            CLOSEOUT
