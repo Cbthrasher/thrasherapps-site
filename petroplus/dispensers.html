@@ -3,26 +3,105 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ATG — Petro Plus Training</title>
+  <title>Dispensers — Petro Plus Training</title>
+  <meta name="description" content="Dispenser field troubleshooting: observation-first approach, common symptoms, Gilbarco &amp; Wayne basics, filters, meters, valves, and electrical." />
   <link rel="stylesheet" href="/assets/site.css">
+
   <style>
-    .mini-hero{padding:28px 0 10px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f9ff)}
+    .mini-hero{
+      padding:28px 0 12px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg,#ffffff,#f6f9ff);
+    }
     .mini-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     .mini-nav a{color:var(--text-strong);text-decoration:none;padding:8px 10px;border-radius:6px}
     .mini-nav a:hover{background:#f1f5f9}
     .mini-nav a.active{color:var(--color-primary);font-weight:600}
+
+    details{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 12px;
+      background:#fff;
+      margin-top:12px;
+    }
+    details:first-of-type{margin-top:0}
+    summary{cursor:pointer;font-weight:650}
+    .note{font-size:13px;color:var(--text-muted)}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      padding: 2px 6px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text-strong);
+      display:inline-block;
+    }
+    .stack{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .tight ul{margin-top:8px}
+    .tight li{margin:6px 0}
+    .callout-lite{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #DBEAFE;
+      background:#EFF6FF;
+      color:var(--text-muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .danger-lite{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #FECACA;
+      background:#FEF2F2;
+      color:#7F1D1D;
+      line-height:1.45;
+      font-size:14px;
+    }
+    .warn-lite{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #FDE68A;
+      background:#FFFBEB;
+      color:#92400E;
+      line-height:1.45;
+      font-size:14px;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    @media(min-width:860px){
+      .two-col{grid-template-columns:1fr 1fr;}
+    }
+    .panel{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .divider{
+      border-top:1px solid var(--border);
+      margin-top:14px;
+      padding-top:14px;
+    }
   </style>
 </head>
-<body>
 
+<body>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/petroplus/">Petro Plus Training</a>
       <nav class="mini-nav">
         <a href="/petroplus/">Home</a>
         <a href="/petroplus/safety.html">Safety</a>
-        <a class="active" href="/petroplus/atg.html">ATG</a>
-        <a href="/petroplus/dispensers.html">Dispensers</a>
+        <a href="/petroplus/atg.html">ATG</a>
+        <a class="active" href="/petroplus/dispensers.html">Dispensers</a>
         <a href="/petroplus/tanks-tubes.html">Tanks & Tubes</a>
       </nav>
     </div>
@@ -30,19 +109,552 @@
 
   <section class="mini-hero">
     <div class="container">
-      <h1>ATG (TLS-450 Plus / TLS-350)</h1>
-      <p class="lead">Alarm triage, sensor checks, status awareness, and evidence capture.</p>
-    </div>
-  </section>
-
-  <section class="section section--tight">
-    <div class="container">
-      <div class="card">
-        <h3>Coming next</h3>
-        <p class="mt-1">We’ll fill this page with exact workflows and (later) </p>
+      <h1>Dispenser Field Guide</h1>
+      <p class="lead">Observation first. Simple to complex. Safety always.</p>
+      <div class="stack mt-2">
+        <a class="btn btn-secondary" href="#safety">Safety</a>
+        <a class="btn btn-secondary" href="#observation">Observe First</a>
+        <a class="btn btn-secondary" href="#no-display">No Display</a>
+        <a class="btn btn-secondary" href="#slow-no-flow">Slow / No Flow</a>
+        <a class="btn btn-secondary" href="#leaks">Leaks</a>
+        <a class="btn btn-secondary" href="#hang-ups">Hang-Ups</a>
+        <a class="btn btn-secondary" href="#filters">Filters</a>
+        <a class="btn btn-secondary" href="#electrical">Electrical</a>
+        <a class="btn btn-secondary" href="#gilbarco">Gilbarco</a>
+        <a class="btn btn-secondary" href="#wayne">Wayne</a>
+        <button class="btn btn-secondary" onclick="window.print()">Print</button>
       </div>
     </div>
   </section>
 
+  <main class="section section--tight">
+    <div class="container">
+
+      <!-- ============================================================
+           SAFETY FIRST
+           ============================================================ -->
+      <div class="card" id="safety">
+        <span class="badge badge-danger">Always First</span>
+        <h2 class="mt-2">Dispenser Safety</h2>
+
+        <div class="two-col mt-2">
+          <div class="panel tight">
+            <h3>Before you open the door</h3>
+            <ul>
+              <li>Check for <strong>active fueling</strong> — never open a dispenser while a customer is dispensing</li>
+              <li>Cone/barricade the fueling position you're working on</li>
+              <li>Look for spills, puddles, or fuel odor around the base before touching anything</li>
+              <li>If you smell fuel strongly — <strong>stop, make safe, and assess before proceeding</strong></li>
+            </ul>
+          </div>
+
+          <div class="panel tight">
+            <h3>While working inside</h3>
+            <ul>
+              <li>Know where the <strong>emergency stop</strong> (e-stop) is for that dispenser/island</li>
+              <li>Keep the work area clean — no loose hardware, rags, or tools in the sump</li>
+              <li>If you need to disconnect fuel lines, <strong>relieve pressure first</strong></li>
+              <li>Electrical: never work on powered circuits unless trained/authorized</li>
+            </ul>
+            <div class="danger-lite">
+              <strong>Rule:</strong> If conditions feel wrong (strong vapor, active leak, sparking) — stop work, shut down, and escalate. No exceptions.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           OBSERVATION FIRST
+           ============================================================ -->
+      <div class="card" id="observation">
+        <span class="badge">Workflow</span>
+        <h2 class="mt-2">Observe Before You Touch</h2>
+        <p class="note">Most dispenser problems can be narrowed down by what you see, hear, and smell before opening a single panel.</p>
+
+        <details open>
+          <summary>60-Second Walk-Up Observation</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Look at the display</strong> — is there power? Error code? Blank? Normal idle screen?</li>
+              <li><strong>Look at the ground</strong> — any fuel on the pad, water pooling, staining near the base?</li>
+              <li><strong>Listen</strong> — can you hear the STP running? Any humming, clicking, or cycling from the dispenser?</li>
+              <li><strong>Smell</strong> — fuel odor around the dispenser or sump area?</li>
+              <li><strong>Check the nozzle/hose</strong> — damaged, kinked, dripping?</li>
+              <li><strong>Ask the customer/cashier</strong> — what exactly happened? One nozzle or all? When did it start?</li>
+            </ol>
+            <div class="callout-lite">
+              <strong>Key question:</strong> Is this <strong>one fueling position</strong> or <strong>all positions on that product</strong>? That single answer changes your entire troubleshooting path.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Scope it: One Position vs. All Positions</summary>
+          <div class="mt-2 tight">
+            <div class="two-col">
+              <div class="panel">
+                <h3>One position affected</h3>
+                <p>Problem is almost certainly <strong>inside that dispenser</strong>:</p>
+                <ul>
+                  <li>Filter</li>
+                  <li>Meter</li>
+                  <li>Valve (proportional, blend, solenoid)</li>
+                  <li>Hose / nozzle / breakaway</li>
+                  <li>Board / wiring (that side only)</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>All positions on that product</h3>
+                <p>Problem is likely <strong>upstream</strong> — line or pump side:</p>
+                <ul>
+                  <li>STP not running / cycling</li>
+                  <li>Line leak detector tripped</li>
+                  <li>Check valve / packer issue</li>
+                  <li>Actual line leak</li>
+                  <li>Power issue to STP</li>
+                  <li>Tank empty / wrong product mapping</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           NO DISPLAY / NO POWER
+           ============================================================ -->
+      <div class="card" id="no-display">
+        <span class="badge">Common</span>
+        <h2 class="mt-2">No Display / No Power</h2>
+        <p class="note">Start simple. Most "dead dispenser" calls are power-related, not board failures.</p>
+
+        <details open>
+          <summary>Quick checks (easiest first)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Breaker</strong> — check the electrical panel. Is the breaker for that dispenser tripped? Reset once and observe.</li>
+              <li><strong>E-stop</strong> — is the emergency stop engaged? Some are on the dispenser, some on the island or inside the store.</li>
+              <li><strong>Disconnect / junction box</strong> — check for tripped GFCI, loose connections, or water intrusion in the junction box at the base of the dispenser.</li>
+              <li><strong>Power supply board</strong> — if the dispenser has an internal power supply, check for indicator lights. No lights = no power in.</li>
+            </ol>
+            <div class="callout-lite">
+              <strong>Observation:</strong> If the breaker trips again immediately after reset, there is a short or ground fault. Do not keep resetting — investigate the cause.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>If power is confirmed but display is still dead</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>Check the <strong>display ribbon cable / connector</strong> — loose or corroded connections are common</li>
+              <li>Check for signs of <strong>water damage</strong> on the display or main board (corrosion, white residue, discoloration)</li>
+              <li>On Gilbarco: check the <strong>CRIND</strong> board LED indicators</li>
+              <li>On Wayne: check the <strong>CPU board</strong> LED status</li>
+              <li>If the board has power but the display is blank, the display assembly or ribbon may be the issue</li>
+            </ul>
+            <div class="warn-lite">
+              <strong>Note:</strong> Board replacement is not a first move. Confirm power in, check connections, and document what you see before swapping parts.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           SLOW FLOW / NO FLOW
+           ============================================================ -->
+      <div class="card" id="slow-no-flow">
+        <span class="badge">Common</span>
+        <h2 class="mt-2">Slow Flow / No Flow</h2>
+        <p class="note">The ATG page covers slow flow from the line/STP side. This section focuses on dispenser-side causes.</p>
+
+        <details open>
+          <summary>Observation: what does "slow" look like?</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Trickling</strong> (barely flows) — likely a restriction: clogged filter, stuck valve, or line issue</li>
+              <li><strong>Starts then stops</strong> (surging/cycling) — often a leak detector tripping, vapor lock, or STP cycling</li>
+              <li><strong>Flows but takes forever</strong> — could be filter, could be low line pressure, could be meter drag</li>
+              <li><strong>No flow at all</strong> — shear valve closed? STP not running? Solenoid not opening? Check valve stuck?</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>One position slow — dispenser-side checks</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Filter</strong> — most common cause. Pull and inspect. If it's dark/clogged, replace it.</li>
+              <li><strong>Shear valve</strong> — make sure it's fully open. Sometimes they get bumped partially closed.</li>
+              <li><strong>Meter</strong> — listen for grinding or unusual noise. A seized or dragging meter restricts flow.</li>
+              <li><strong>Proportional valve / blend valve</strong> — stuck closed or partially open. Check for debris.</li>
+              <li><strong>Nozzle / breakaway / hose</strong> — internal obstruction, kinked hose, failed breakaway check valve.</li>
+            </ol>
+            <div class="callout-lite">
+              <strong>Best practice:</strong> Install a pressure gauge at the shear valve to get actual numbers. Running pressure should be above 25 PSI. See the ATG page <a href="/petroplus/atg.html#slow-flow">Slow Flow section</a> for the full pressure check workflow.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>All positions slow — look upstream</summary>
+          <div class="mt-2 tight">
+            <p>If every fueling position on the same product is affected, the dispenser is probably not the problem.</p>
+            <ul>
+              <li><strong>STP performance</strong> — is it running? What does line pressure look like?</li>
+              <li><strong>Line leak detector</strong> — has it tripped/restricted?</li>
+              <li><strong>Check valve at the STP</strong> — not holding, causing pressure bleed-back</li>
+              <li><strong>Actual line leak</strong> — pressure loss across all positions</li>
+              <li><strong>Tank level</strong> — is the tank actually low or empty?</li>
+            </ul>
+            <div class="danger-lite">
+              <strong>Safety:</strong> If you suspect an actual line leak, treat it as a hazard. Make safe and follow Petro Plus escalation procedure.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           LEAKS
+           ============================================================ -->
+      <div class="card" id="leaks">
+        <span class="badge badge-danger">Safety Critical</span>
+        <h2 class="mt-2">Leaks at the Dispenser</h2>
+        <p class="note">Any fuel outside of where it belongs is a safety event. Observe, contain, document.</p>
+
+        <details open>
+          <summary>Observation: where is the fuel?</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Under the dispenser / on the pad</strong> — check the dispenser pan (sump), fittings at the base, shear valve area</li>
+              <li><strong>Inside the dispenser cabinet</strong> — check all fittings, filter housing, meter connections, swivel joints</li>
+              <li><strong>At the nozzle / hose</strong> — nozzle drip, hose crack, breakaway leaking</li>
+              <li><strong>In the sump below</strong> — check sensor alarm on ATG, inspect sump physically</li>
+            </ul>
+            <div class="danger-lite">
+              <strong>First response:</strong> If fuel is actively leaking — stop the source if safe (close shear valve, shut down STP), contain the spill, notify per procedure. Document what you found and what you did.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Common leak points (most frequent first)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Nozzle drip</strong> — worn nozzle seal or poppet. Most common customer complaint. Replace nozzle.</li>
+              <li><strong>Hose / breakaway</strong> — cracked hose, failed breakaway reconnect, swivel leak at the hose-to-nozzle connection.</li>
+              <li><strong>Filter housing</strong> — loose filter cap, bad o-ring, cross-threaded housing. Check after every filter change.</li>
+              <li><strong>Fitting connections</strong> — any threaded connection inside the dispenser can weep over time. Tighten or re-seal.</li>
+              <li><strong>Shear valve area</strong> — check the shear valve itself and the flex connector below it.</li>
+              <li><strong>Meter / valve seals</strong> — internal seals on meters and valves can fail. Usually shows as a slow weep.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>Leak documentation (required)</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>Where exactly was the leak (dispenser #, which side, which component)?</li>
+              <li>Was it active (flowing) or residual (stain/drip)?</li>
+              <li>What did you do to stop/contain it?</li>
+              <li>What was repaired or replaced?</li>
+              <li>Final status — leak stopped? Dispenser back in service?</li>
+              <li>Before/after photos (wide shot + close-up of the source)</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           HANG-UPS / AUTHORIZATION ISSUES
+           ============================================================ -->
+      <div class="card" id="hang-ups">
+        <span class="badge">Common</span>
+        <h2 class="mt-2">Hang-Ups / Authorization Issues</h2>
+        <p class="note">Customer says "the pump won't turn on" or "it keeps shutting off." These are usually simple.</p>
+
+        <details open>
+          <summary>Observation: what is the display saying?</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>"Lift nozzle" or "Select grade"</strong> — the customer may not have completed the start sequence</li>
+              <li><strong>"See cashier"</strong> — POS authorization issue, not a dispenser problem</li>
+              <li><strong>"Pump stopped" / "Time out"</strong> — authorization expired or vapor recovery issue (where applicable)</li>
+              <li><strong>Blank / no response</strong> — see <a href="#no-display">No Display</a> section above</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Nozzle shuts off repeatedly (customer complaint)</summary>
+          <div class="mt-2 tight">
+            <p>Customer says "it keeps clicking off." Common causes:</p>
+            <ol>
+              <li><strong>Vehicle tank / fill pipe issue</strong> — not a dispenser problem. The customer's car is causing the nozzle to shut off (common with some vehicles). Have them try a slower flow rate or different nozzle angle.</li>
+              <li><strong>Vapor recovery issue</strong> — if the site has Stage II vapor recovery, a blocked or failed vapor path can cause repeated shut-offs.</li>
+              <li><strong>Nozzle venturi clogged</strong> — the sensing mechanism inside the nozzle is plugged. Replace the nozzle.</li>
+              <li><strong>Low flow rate</strong> — if flow is already slow (filter, pressure), the nozzle may trip at lower volumes. Fix the flow problem first.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>POS / authorization troubleshooting (quick)</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>Verify the POS can <strong>see</strong> the dispenser (check POS dispenser status screen)</li>
+              <li>Verify the dispenser is <strong>authorized</strong> on the POS (not locked out or in "stop" mode)</li>
+              <li>Try a <strong>prepay or manual authorize</strong> from the POS to test</li>
+              <li>Check the <strong>communication cable</strong> between dispenser and POS (RS-485 or Ethernet depending on setup)</li>
+              <li>If multiple dispensers are down on POS, the problem is likely the POS or the communication loop, not the dispensers</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Scope it:</strong> One dispenser not authorizing = dispenser or cable. All dispensers not authorizing = POS or communication infrastructure.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           FILTERS
+           ============================================================ -->
+      <div class="card" id="filters">
+        <span class="badge">Routine</span>
+        <h2 class="mt-2">Filters</h2>
+        <p class="note">Filter changes are the most common dispenser service. Do them right and document.</p>
+
+        <details open>
+          <summary>When to change</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Slow flow complaint</strong> — if the filter is the suspected cause</li>
+              <li><strong>Scheduled PM</strong> — per Petro Plus maintenance schedule</li>
+              <li><strong>After tank work</strong> — any time debris could have entered the line (tank cleaning, drop tube work, STP replacement)</li>
+              <li><strong>Visual inspection</strong> — dark, saturated, or showing water means replace</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Filter change procedure (general)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Cone off</strong> the fueling position — no customers during filter work</li>
+              <li><strong>Close the shear valve</strong> at the base of the dispenser to isolate the line</li>
+              <li><strong>Relieve pressure</strong> — briefly lift the nozzle to bleed pressure, then hang up</li>
+              <li><strong>Place rags/drip pan</strong> under the filter housing — fuel will drain when you open it</li>
+              <li><strong>Remove old filter</strong> — note the condition (clean, dirty, water, debris)</li>
+              <li><strong>Inspect the housing and o-ring</strong> — replace the o-ring if worn, cracked, or missing</li>
+              <li><strong>Install new filter</strong> — correct size/type for that dispenser. Seat it properly.</li>
+              <li><strong>Hand-tighten the housing</strong> — snug, not over-torqued. Check for leaks.</li>
+              <li><strong>Open the shear valve</strong> — let the system re-pressurize</li>
+              <li><strong>Check for leaks</strong> — visually inspect the filter housing and all connections</li>
+              <li><strong>Test dispense</strong> — run fuel to verify flow and check for leaks under pressure</li>
+              <li><strong>Clean up</strong> — remove rags, dispose of old filter properly, clean any fuel from the cabinet</li>
+            </ol>
+            <div class="warn-lite">
+              <strong>Common mistake:</strong> Over-tightening the filter housing cracks the cap or cuts the o-ring, causing a leak. Hand-tight + a small snug is all it needs.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>What the old filter tells you</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Dark / black</strong> — normal wear if it's been a long time since replacement. Heavy dirt = possible tank contamination.</li>
+              <li><strong>Water present</strong> — water in the line. Check the tank water level on the ATG. May need tank water removal.</li>
+              <li><strong>Rust / metal particles</strong> — corrosion in the tank or piping. Document and escalate.</li>
+              <li><strong>Clean (but slow flow reported)</strong> — filter is not the problem. Look at meter, valve, or line pressure.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           ELECTRICAL BASICS
+           ============================================================ -->
+      <div class="card" id="electrical">
+        <span class="badge">Knowledge</span>
+        <h2 class="mt-2">Electrical Basics</h2>
+        <p class="note">You don't need to be an electrician, but you need to recognize common electrical symptoms and know your boundaries.</p>
+
+        <details open>
+          <summary>What you should be able to identify</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Breaker tripped</strong> — check and reset once. If it trips again, investigate.</li>
+              <li><strong>Loose connections</strong> — corrosion, burned terminals, loose wire nuts in the junction box</li>
+              <li><strong>Water intrusion</strong> — moisture in the junction box, conduit, or on boards (look for corrosion/green residue)</li>
+              <li><strong>Burned components</strong> — scorch marks, melted plastic, burned smell on boards or wiring</li>
+              <li><strong>LED indicators on boards</strong> — learn what normal looks like so you recognize abnormal</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Know your boundaries</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>If you're not trained on electrical, <strong>don't guess</strong></li>
+              <li>Identify the symptom, document what you see, and escalate to someone qualified</li>
+              <li>Never bypass safety devices (fuses, breakers, interlocks)</li>
+              <li>If a breaker keeps tripping, there is a reason — find it, don't just keep resetting</li>
+              <li>Water + electricity = stop work. Dry it out or escalate.</li>
+            </ul>
+            <div class="danger-lite">
+              <strong>Rule:</strong> If you're not sure it's safe, it's not safe. Stop, make safe, and call for help.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           GILBARCO BASICS
+           ============================================================ -->
+      <div class="card" id="gilbarco">
+        <span class="badge">Platform</span>
+        <h2 class="mt-2">Gilbarco — Quick Reference</h2>
+        <p class="note">Gilbarco Encore and Advantage are the most common Gilbarco dispensers in the field.</p>
+
+        <details open>
+          <summary>Encore 500/700 — know the layout</summary>
+          <div class="mt-2 tight">
+            <div class="two-col">
+              <div class="panel">
+                <h3>Hydraulic side</h3>
+                <ul>
+                  <li>Shear valve at the base (one per product line)</li>
+                  <li>Filter (canister style, below the meter)</li>
+                  <li>Meter (measuring chamber)</li>
+                  <li>Proportional valve (controls blend ratio on multi-product)</li>
+                  <li>Hose/nozzle connection at the top</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Electronics side</h3>
+                <ul>
+                  <li><strong>CRIND</strong> board — main dispenser controller</li>
+                  <li>Power supply — converts incoming AC to board-level DC</li>
+                  <li>Display assembly — ribbon cable to CRIND</li>
+                  <li>Pulser — mounted on meter, sends volume data to CRIND</li>
+                  <li>Card reader (if equipped) — separate module</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>CRIND board LED meanings (general)</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Steady green</strong> — normal operation</li>
+              <li><strong>Blinking green</strong> — communicating / dispensing</li>
+              <li><strong>Red / amber</strong> — fault condition. Note the pattern (steady vs blinking, how many blinks).</li>
+              <li><strong>No LEDs</strong> — no power to the board. Check power supply, connections, and breaker.</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Best practice:</strong> Take a photo of the board LEDs before you touch anything. The pattern may change once you open the door or move wires.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Common Gilbarco issues</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Filter housing leak</strong> — o-ring condition, housing tightness</li>
+              <li><strong>Pulser failure</strong> — dispenser runs but doesn't register volume. Check pulser wiring and connection to meter.</li>
+              <li><strong>Blend valve stuck</strong> — wrong product dispensed or no flow on one grade. Inspect valve solenoid and mechanical movement.</li>
+              <li><strong>Display issues</strong> — ribbon cable connection to CRIND. Reseat before replacing.</li>
+              <li><strong>Communication loss</strong> — CRIND to POS. Check RS-485 wiring, address settings.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           WAYNE BASICS
+           ============================================================ -->
+      <div class="card" id="wayne">
+        <span class="badge">Platform</span>
+        <h2 class="mt-2">Wayne — Quick Reference</h2>
+        <p class="note">Wayne Ovation and Helix are common. The hydraulic fundamentals are similar to Gilbarco; the electronics are different.</p>
+
+        <details open>
+          <summary>Ovation / Helix — know the layout</summary>
+          <div class="mt-2 tight">
+            <div class="two-col">
+              <div class="panel">
+                <h3>Hydraulic side</h3>
+                <ul>
+                  <li>Shear valve at the base</li>
+                  <li>Filter (canister or spin-on, depending on model)</li>
+                  <li>Meter</li>
+                  <li>Solenoid valves (product selection / shut-off)</li>
+                  <li>Hose/nozzle connection</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Electronics side</h3>
+                <ul>
+                  <li><strong>CPU board</strong> (main controller) — equivalent of Gilbarco's CRIND</li>
+                  <li>Power supply</li>
+                  <li>Display module</li>
+                  <li>Pulser on meter</li>
+                  <li>Card reader (if equipped)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Wayne CPU board status</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>LED patterns vary by model — learn the normal state for the sites you service</li>
+              <li><strong>No LEDs</strong> = no power. Check supply, breaker, junction box.</li>
+              <li><strong>Error LEDs</strong> = note the color and pattern, document with a photo.</li>
+              <li>Wayne diagnostics can sometimes be accessed via the display menu (model-dependent).</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Common Wayne issues</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Solenoid valve failure</strong> — no flow or constant flow on one product. Check valve coil and wiring.</li>
+              <li><strong>Filter / spin-on leak</strong> — same as Gilbarco: o-ring, tightness, correct filter for the model.</li>
+              <li><strong>Meter issues</strong> — grinding, inaccuracy, or no-count. Inspect and replace if needed.</li>
+              <li><strong>Display / keypad</strong> — unresponsive buttons, partial display. Check connections before replacing.</li>
+              <li><strong>Communication</strong> — Wayne uses different protocols (DART, WDART, etc.). Check cabling and configuration.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           CLOSEOUT
+           ============================================================ -->
+      <div class="card" id="closeout">
+        <span class="badge">Standard</span>
+        <h2 class="mt-2">Closeout (Before You Leave)</h2>
+        <ul class="mt-2">
+          <li>Test-dispense on every position you worked on — verify flow, display, and no leaks under pressure</li>
+          <li>Check the dispenser pan/sump area — clean, dry, no loose hardware or rags</li>
+          <li>Verify the POS can authorize and see the dispenser</li>
+          <li>Remove cones/barricades and put the dispenser back in service</li>
+          <li>Write clear notes: what was reported, what you found, what you did, and the final status</li>
+          <li>Before/after photos</li>
+        </ul>
+        <p class="note">Goal: the next tech can understand the situation in 30 seconds from your notes and photos.</p>
+      </div>
+
+    </div>
+  </main>
 </body>
 </html>

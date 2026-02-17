@@ -3,46 +3,661 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ATG — Petro Plus Training</title>
+  <title>Tanks &amp; Tubes — Petro Plus Training</title>
+  <meta name="description" content="Underground tank systems: sump inspection, spill bucket testing, drop tubes, water removal, vapor recovery basics, and STP fundamentals." />
   <link rel="stylesheet" href="/assets/site.css">
+
   <style>
-    .mini-hero{padding:28px 0 10px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f9ff)}
+    .mini-hero{
+      padding:28px 0 12px;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(180deg,#ffffff,#f6f9ff);
+    }
     .mini-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
     .mini-nav a{color:var(--text-strong);text-decoration:none;padding:8px 10px;border-radius:6px}
     .mini-nav a:hover{background:#f1f5f9}
     .mini-nav a.active{color:var(--color-primary);font-weight:600}
+
+    details{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 12px;
+      background:#fff;
+      margin-top:12px;
+    }
+    details:first-of-type{margin-top:0}
+    summary{cursor:pointer;font-weight:650}
+    .note{font-size:13px;color:var(--text-muted)}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      padding: 2px 6px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--text-strong);
+      display:inline-block;
+    }
+    .stack{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .tight ul{margin-top:8px}
+    .tight li{margin:6px 0}
+    .callout-lite{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #DBEAFE;
+      background:#EFF6FF;
+      color:var(--text-muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .danger-lite{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #FECACA;
+      background:#FEF2F2;
+      color:#7F1D1D;
+      line-height:1.45;
+      font-size:14px;
+    }
+    .warn-lite{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid #FDE68A;
+      background:#FFFBEB;
+      color:#92400E;
+      line-height:1.45;
+      font-size:14px;
+    }
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+    @media(min-width:860px){
+      .two-col{grid-template-columns:1fr 1fr;}
+    }
+    .panel{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px;
+      background:#fff;
+    }
+    .divider{
+      border-top:1px solid var(--border);
+      margin-top:14px;
+      padding-top:14px;
+    }
   </style>
 </head>
-<body>
 
+<body>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/petroplus/">Petro Plus Training</a>
       <nav class="mini-nav">
         <a href="/petroplus/">Home</a>
         <a href="/petroplus/safety.html">Safety</a>
-        <a class="active" href="/petroplus/atg.html">ATG</a>
+        <a href="/petroplus/atg.html">ATG</a>
         <a href="/petroplus/dispensers.html">Dispensers</a>
-        <a href="/petroplus/tanks-tubes.html">Tanks & Tubes</a>
+        <a class="active" href="/petroplus/tanks-tubes.html">Tanks & Tubes</a>
       </nav>
     </div>
   </header>
 
   <section class="mini-hero">
     <div class="container">
-      <h1>ATG (TLS-450 Plus / TLS-350)</h1>
-      <p class="lead">Alarm triage, sensor checks, status awareness, and evidence capture.</p>
-    </div>
-  </section>
-
-  <section class="section section--tight">
-    <div class="container">
-      <div class="card">
-        <h3>Coming next</h3>
-        <p class="mt-1">We’ll fill this page with exact workflows and (later) .</p>
+      <h1>Tanks &amp; Tubes Field Guide</h1>
+      <p class="lead">Underground systems, containment, water removal, and drop tube basics. Observe everything. Safety first.</p>
+      <div class="stack mt-2">
+        <a class="btn btn-secondary" href="#safety">Safety</a>
+        <a class="btn btn-secondary" href="#observation">Observe First</a>
+        <a class="btn btn-secondary" href="#spill-buckets">Spill Buckets</a>
+        <a class="btn btn-secondary" href="#sumps">Sumps</a>
+        <a class="btn btn-secondary" href="#water-removal">Water Removal</a>
+        <a class="btn btn-secondary" href="#drop-tubes">Drop Tubes</a>
+        <a class="btn btn-secondary" href="#stp">STP Basics</a>
+        <a class="btn btn-secondary" href="#vapor">Vapor Recovery</a>
+        <a class="btn btn-secondary" href="#containment-testing">Testing</a>
+        <button class="btn btn-secondary" onclick="window.print()">Print</button>
       </div>
     </div>
   </section>
 
+  <main class="section section--tight">
+    <div class="container">
+
+      <!-- ============================================================
+           SAFETY
+           ============================================================ -->
+      <div class="card" id="safety">
+        <span class="badge badge-danger">Always First</span>
+        <h2 class="mt-2">Tank Area Safety</h2>
+
+        <div class="two-col mt-2">
+          <div class="panel tight">
+            <h3>Before you open anything underground</h3>
+            <ul>
+              <li><strong>No ignition sources</strong> — no smoking, no sparking tools, no running vehicles over open tank access points</li>
+              <li>Check for <strong>vapor / odor</strong> before removing lids — if you smell strong fuel vapor, stop and assess</li>
+              <li><strong>Cone / barricade</strong> the work area — protect yourself and the public from open holes</li>
+              <li>Know the <strong>site map</strong> — which tank is which, where the lines run, where sensors are</li>
+              <li>Never reach into a sump or spill bucket without looking first</li>
+            </ul>
+          </div>
+
+          <div class="panel tight">
+            <h3>Working around open containment</h3>
+            <ul>
+              <li><strong>PPE</strong> — gloves, eye protection. Fuel-rated if handling product.</li>
+              <li>Keep lids off for the <strong>minimum time needed</strong> — open, do the work, close</li>
+              <li>Don't leave open sumps/spill buckets unattended — someone will step in them</li>
+              <li>Have <strong>absorbent material</strong> on hand for any spill or drip</li>
+              <li>If you find product where it shouldn't be — <strong>stop, contain, document, escalate</strong></li>
+            </ul>
+            <div class="danger-lite">
+              <strong>Rule:</strong> Underground fuel systems deserve respect. Vapors accumulate in enclosed spaces. Product in containment means something failed. Never dismiss what you find — document it.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           OBSERVATION FIRST
+           ============================================================ -->
+      <div class="card" id="observation">
+        <span class="badge">Workflow</span>
+        <h2 class="mt-2">Observe Before You Touch</h2>
+        <p class="note">Tank-side work starts with your eyes, nose, and the ATG. Know what's normal so you can spot what's not.</p>
+
+        <details open>
+          <summary>Walk-the-site observation</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Check the ATG first</strong> — any active alarms? Tank levels? Water levels? Sensor status?</li>
+              <li><strong>Walk the fill area</strong> — look at spill bucket lids. Are they damaged, displaced, or sitting in water?</li>
+              <li><strong>Look at the pad surface</strong> — staining, cracking, settling near tank access points?</li>
+              <li><strong>Check sump lids</strong> — properly seated? Damaged? Signs of water entry?</li>
+              <li><strong>Smell</strong> — fuel odor near any containment point is a finding that needs investigation</li>
+              <li><strong>Note the weather</strong> — recent heavy rain affects water intrusion in sumps and spill buckets</li>
+            </ol>
+            <div class="callout-lite">
+              <strong>Key habit:</strong> Before you open a lid, already know what the ATG says about that tank/sensor. If there's an alarm, you know what to look for. If there's no alarm, you're verifying that everything matches.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>What you're looking for (quick list)</summary>
+          <div class="mt-2 tight">
+            <div class="two-col">
+              <div class="panel">
+                <h3>Normal / acceptable</h3>
+                <ul>
+                  <li>Dry sumps and spill buckets</li>
+                  <li>Intact lids, covers, and seals</li>
+                  <li>No fuel odor at containment points</li>
+                  <li>ATG showing normal status, no alarms</li>
+                  <li>Fittings and boots in good condition</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Needs attention</h3>
+                <ul>
+                  <li>Water in sumps or spill buckets</li>
+                  <li>Product (fuel) in any containment area</li>
+                  <li>Damaged/missing lids or covers</li>
+                  <li>Cracked or displaced boots/fittings</li>
+                  <li>ATG fuel alarm or sensor-out alarm</li>
+                  <li>Fuel odor near containment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           SPILL BUCKETS
+           ============================================================ -->
+      <div class="card" id="spill-buckets">
+        <span class="badge">Common</span>
+        <h2 class="mt-2">Spill Buckets (Fill Containment)</h2>
+        <p class="note">Spill buckets catch spills during fuel delivery. They're the most frequently inspected containment on site.</p>
+
+        <details open>
+          <summary>What is a spill bucket?</summary>
+          <div class="mt-2 tight">
+            <p>A containment basin around the fill pipe at the top of each underground tank. When the delivery driver disconnects the hose, any fuel that drips is caught by the spill bucket instead of going into the ground.</p>
+            <ul>
+              <li>Every tank fill pipe should have one</li>
+              <li>They must hold liquid without leaking (that's the whole point)</li>
+              <li>They need to be kept clean and dry between deliveries</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Inspection (what to look for)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Remove the lid</strong> — is the lid intact? Does it seat properly? Is it the right lid?</li>
+              <li><strong>Look inside</strong> — water? Fuel? Debris (leaves, dirt, trash)?</li>
+              <li><strong>Check the drain valve</strong> (if equipped) — is it closed? Is it leaking?</li>
+              <li><strong>Check the bucket walls</strong> — cracks, holes, damage?</li>
+              <li><strong>Check the fill pipe cap</strong> — present, sealed, correct type?</li>
+              <li><strong>Check the adaptor / fitting</strong> — where the fill pipe meets the bucket. Intact? Sealed?</li>
+            </ol>
+            <div class="callout-lite">
+              <strong>Common find:</strong> Water in the spill bucket after rain. This is normal if the lid doesn't seal perfectly. Remove the water, check for fuel sheen, and note the condition. If fuel is present, that's a different conversation — document and escalate.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Cleaning a spill bucket</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li>Remove standing water with a hand pump or absorbent</li>
+              <li>Remove debris (leaves, dirt, rocks)</li>
+              <li>If fuel is present — absorb it, contain it, dispose properly, and document</li>
+              <li>Inspect the bucket condition while it's empty (easiest time to see damage)</li>
+              <li>Replace the lid, confirm it seats properly</li>
+            </ol>
+            <div class="warn-lite">
+              <strong>Note:</strong> Do not drain spill bucket contents onto the ground or into a storm drain. Pump it out and dispose per procedure. Even "just water" may have a fuel sheen.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           SUMPS
+           ============================================================ -->
+      <div class="card" id="sumps">
+        <span class="badge">Common</span>
+        <h2 class="mt-2">Sumps (Containment at Equipment)</h2>
+        <p class="note">Sumps are containment areas at STPs, under dispensers, and at pipe transitions. They catch leaks so you can find them before they reach the ground.</p>
+
+        <details open>
+          <summary>Types of sumps you'll see</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>STP sump (turbine sump)</strong> — around the submersible pump at the top of the tank. Contains the STP, piping connections, and often a sensor.</li>
+              <li><strong>Dispenser sump (dispenser pan)</strong> — under the dispenser. Contains the shear valve, flex connector, and entry piping.</li>
+              <li><strong>Transition sump</strong> — where piping changes direction or material. Less common but still needs inspection.</li>
+              <li><strong>Under-dispenser containment (UDC)</strong> — some sites have a formed containment pan under the dispenser instead of a full sump.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Sump inspection (what to look for)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Remove the lid carefully</strong> — sumps can accumulate vapors. Don't stick your face over the opening.</li>
+              <li><strong>Look for liquid</strong> — water? Fuel? How much? How deep?</li>
+              <li><strong>Check the sensor</strong> — is there a sensor in the sump? Is it positioned correctly? Is the float free to move?</li>
+              <li><strong>Check fittings and boots</strong> — where pipes enter/exit the sump. Boots cracked? Fittings tight?</li>
+              <li><strong>Check the sump body</strong> — cracks, holes, damage to the containment itself?</li>
+              <li><strong>Check conduit entries</strong> — electrical conduit entering the sump should be sealed. Unsealed conduit = water entry path.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>Finding fuel in a sump</summary>
+          <div class="mt-2 tight">
+            <div class="danger-lite">
+              <strong>Fuel in a sump is a safety finding.</strong> It means something is leaking — a fitting, a pipe, a seal, or the equipment itself.
+            </div>
+            <ol class="mt-2">
+              <li><strong>Document immediately</strong> — photo of the sump condition, note which sump, how much product</li>
+              <li><strong>Identify the likely source</strong> — look at every fitting, connection, and seal in the sump. Where is the fuel coming from?</li>
+              <li><strong>Contain</strong> — absorb the fuel. Do not pump fuel-contaminated liquid onto the ground.</li>
+              <li><strong>Check the ATG</strong> — is there a fuel alarm for this sensor? If not, why not? (sensor out? no sensor installed? wrong threshold?)</li>
+              <li><strong>Escalate per procedure</strong> — fuel in containment is a reportable event at most companies</li>
+              <li><strong>Repair the source if you can</strong> — tighten a fitting, replace a seal, etc. If it's beyond your scope, document and escalate.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>Water in a sump</summary>
+          <div class="mt-2 tight">
+            <p>Water in sumps is extremely common, especially after rain. But don't dismiss it — investigate the entry point.</p>
+            <ul>
+              <li><strong>Check lid condition</strong> — damaged or poorly seated lids let rainwater in</li>
+              <li><strong>Check conduit seals</strong> — unsealed conduit entries are the #1 water path into sumps</li>
+              <li><strong>Check pipe boots</strong> — cracked or deteriorated boots let surface water in</li>
+              <li><strong>Check for fuel sheen</strong> — water with a rainbow sheen = fuel present. That changes the situation.</li>
+              <li><strong>Remove the water</strong> — hand pump or absorbent. Dispose properly.</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Recurring water:</strong> If the same sump always has water, fix the entry point (lid seal, conduit seal, boot replacement) rather than just pumping it out each visit.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           WATER REMOVAL
+           ============================================================ -->
+      <div class="card" id="water-removal">
+        <span class="badge badge-warn">Important</span>
+        <h2 class="mt-2">Tank Water Removal</h2>
+        <p class="note">Water in a fuel tank is a serious issue. It causes corrosion, equipment failure, customer complaints, and can trigger ATG alarms.</p>
+
+        <details open>
+          <summary>How water gets into tanks</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Delivery</strong> — water in the fuel supply (rare but happens)</li>
+              <li><strong>Spill bucket / fill pipe</strong> — water enters through a leaking spill bucket or damaged fill cap</li>
+              <li><strong>Condensation</strong> — temperature changes cause moisture to form inside the tank (more common in tanks that aren't kept full)</li>
+              <li><strong>Containment failure</strong> — water migrating in through compromised fittings or seals at the tank top</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Detecting water</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>ATG high water alarm</strong> — the probe detects water at the bottom of the tank exceeding the set threshold</li>
+              <li><strong>ATG water level reading</strong> — check the tank status screen for current water level (even without an alarm)</li>
+              <li><strong>Manual stick reading with water paste</strong> — apply water-finding paste to a tank stick, lower it to the bottom, and read the color change</li>
+              <li><strong>Customer complaints</strong> — vehicles stalling, poor performance, water in fuel symptoms</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Best practice:</strong> Check ATG water levels as part of every site visit, even if there's no water alarm. Catching it early prevents bigger problems.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Water removal procedure (general)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Verify the tank and water level</strong> — ATG reading + manual stick if needed. Know how much water you're dealing with.</li>
+              <li><strong>Access the tank</strong> — usually through the fill pipe or a dedicated access point</li>
+              <li><strong>Use a hand pump or approved extraction method</strong> — lower the suction tube to the bottom of the tank</li>
+              <li><strong>Pump slowly</strong> — you want to remove water, not stir it up into the fuel</li>
+              <li><strong>Collect into an approved container</strong> — never pump onto the ground or into a drain</li>
+              <li><strong>Monitor what you're pulling</strong> — water first, then you'll start seeing fuel. Stop when fuel appears.</li>
+              <li><strong>Recheck the ATG water level</strong> — confirm the water level dropped</li>
+              <li><strong>Manual stick check</strong> — verify with paste that water is below acceptable level</li>
+              <li><strong>Document</strong> — how much water removed, before/after levels, suspected source</li>
+              <li><strong>Dispose of water/fuel mixture properly</strong> — per Petro Plus and local regulations</li>
+            </ol>
+            <div class="danger-lite">
+              <strong>Safety:</strong> You are working with an open tank access point and potentially fuel vapor. No ignition sources. Have absorbent material ready. Work carefully.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>After water removal — find the source</summary>
+          <div class="mt-2 tight">
+            <p>Removing the water fixes the symptom. Finding where it came from prevents it from happening again.</p>
+            <ul>
+              <li><strong>Check the spill bucket</strong> — is it holding water? Leaking into the tank?</li>
+              <li><strong>Check the fill cap</strong> — damaged, missing gasket, not sealed?</li>
+              <li><strong>Check tank top fittings</strong> — any access point on top of the tank is a potential water entry path</li>
+              <li><strong>Check delivery records</strong> — did water levels jump after a recent delivery?</li>
+              <li><strong>Check site drainage</strong> — does water pool around the fill area?</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Pattern:</strong> If the same tank keeps getting water, the entry point hasn't been fixed. Document the pattern and escalate.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           DROP TUBES
+           ============================================================ -->
+      <div class="card" id="drop-tubes">
+        <span class="badge">Core Skill</span>
+        <h2 class="mt-2">Drop Tubes</h2>
+        <p class="note">The drop tube directs fuel from the fill pipe down to the bottom of the tank during delivery, reducing turbulence and static.</p>
+
+        <details open>
+          <summary>What is a drop tube?</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>A tube (usually PVC or aluminum) inside the fill pipe that extends to near the bottom of the tank</li>
+              <li>Fuel flows down through the drop tube during delivery instead of splashing from the top</li>
+              <li>Reduces <strong>static buildup</strong>, <strong>turbulence</strong>, and <strong>vapor generation</strong></li>
+              <li>The bottom of the tube sits above the tank bottom — not touching it</li>
+              <li>Overfill prevention valves are often integrated into or near the drop tube</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>When you might need to pull a drop tube</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Tank cleaning</strong> — drop tube must come out for the tank to be cleaned</li>
+              <li><strong>Drop tube replacement</strong> — cracked, broken, or wrong-length tube</li>
+              <li><strong>Overfill valve service</strong> — the overfill prevention device may need inspection or replacement</li>
+              <li><strong>Delivery problems</strong> — driver reports slow fill rate or can't deliver (possible drop tube obstruction or collapse)</li>
+              <li><strong>Inspection / compliance</strong> — periodic check of drop tube condition and length</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Drop tube removal (general)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Confirm the tank</strong> — verify tank number/product. Do not pull the wrong tube.</li>
+              <li><strong>Barricade the area</strong> — you're about to have an open tank access</li>
+              <li><strong>Remove the fill cap and spill bucket hardware</strong> as needed to access the drop tube</li>
+              <li><strong>Note the position/orientation</strong> before removing — you need to put it back the same way</li>
+              <li><strong>Pull the tube straight up</strong> — it will have fuel on it. Have rags and a container ready.</li>
+              <li><strong>Inspect the tube</strong> — cracks, breaks, corrosion, buildup inside, length (should reach near the tank bottom)</li>
+              <li><strong>Inspect the overfill valve</strong> (if present) — float condition, movement, sealing surface</li>
+              <li><strong>Reinstall or replace</strong> — seat properly, correct orientation, confirm it drops to the right depth</li>
+              <li><strong>Reassemble fill hardware</strong> — spill bucket fittings, fill cap, lid</li>
+              <li><strong>Document</strong> — what you found, what was replaced, tube condition</li>
+            </ol>
+            <div class="danger-lite">
+              <strong>Safety:</strong> An open fill pipe is a direct path to fuel vapor. No ignition sources. Work efficiently — don't leave the tank open longer than needed.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Overfill prevention basics</summary>
+          <div class="mt-2 tight">
+            <p>The overfill prevention valve (OPV) restricts or stops fuel flow when the tank reaches a set level (usually 90-95% capacity). It prevents the driver from overfilling the tank.</p>
+            <ul>
+              <li><strong>Float-operated</strong> — as fuel level rises, the float restricts the opening</li>
+              <li><strong>If it fails open</strong> — overfill is possible during delivery. The driver's only protection is the ATG high-level alarm.</li>
+              <li><strong>If it fails closed / restricted</strong> — driver can't deliver fuel. Slow fill or no fill.</li>
+              <li><strong>Test by observation</strong> — does the float move freely? Is it stuck, corroded, or damaged?</li>
+            </ul>
+            <div class="warn-lite">
+              <strong>Note:</strong> A stuck or failed OPV is a compliance issue and a potential overfill risk. Document and escalate promptly.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           STP BASICS
+           ============================================================ -->
+      <div class="card" id="stp">
+        <span class="badge">Knowledge</span>
+        <h2 class="mt-2">STP (Submersible Turbine Pump) Basics</h2>
+        <p class="note">The STP is the pump that pushes fuel from the tank to the dispensers. Understanding how it works helps you troubleshoot flow and pressure issues.</p>
+
+        <details open>
+          <summary>How an STP works (simple version)</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>The STP sits <strong>inside the tank</strong>, submerged in fuel, inside the STP sump at the tank top</li>
+              <li>An electric motor spins an impeller (the <strong>functional element</strong>) that pushes fuel up through the piping to the dispensers</li>
+              <li>Fuel is pressurized in the line — typically 25-30+ PSI at the dispenser</li>
+              <li>The STP runs on demand — when a dispenser is activated, the STP starts and pressurizes the line</li>
+              <li>A <strong>check valve</strong> at the STP outlet holds line pressure when the pump is off</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Common STP brands</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Red Jacket</strong> — very common. Uses a "functional element" (impeller assembly) that is a frequent service item.</li>
+              <li><strong>FE Petro</strong> — also widely used. Similar concept, different physical design.</li>
+              <li>Both brands: the <strong>motor</strong> sits on top in the sump, the <strong>pump/impeller</strong> is below in the tank, and the <strong>riser pipe</strong> connects them.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>STP symptoms you'll encounter</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>STP not running</strong> — check power (breaker, contactor, wiring), check if the dispenser is actually calling for fuel</li>
+              <li><strong>STP running but low pressure</strong> — worn functional element, air in the line, check valve not sealing</li>
+              <li><strong>STP cycling on/off</strong> — possible leak in the line, failing check valve, or leak detector issue</li>
+              <li><strong>STP running continuously</strong> — possible leak downstream, bad pressure switch, or control issue</li>
+              <li><strong>Noisy STP</strong> — cavitation (air), worn bearings, loose mounting. Document what you hear.</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Link to dispensers:</strong> If all fueling positions on one product have slow or no flow, the STP is the first thing to check. See the <a href="/petroplus/dispensers.html#slow-no-flow">Dispenser Slow Flow section</a> and the <a href="/petroplus/atg.html#slow-flow">ATG Slow Flow section</a> for the full pressure check workflow.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>STP electrical basics</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>Most STPs run on <strong>single-phase</strong> power with a <strong>start capacitor</strong> and <strong>run capacitor</strong></li>
+              <li>A <strong>contactor</strong> (relay) in the STP controller switches the motor on/off</li>
+              <li>Check the <strong>contactor</strong> — pitted contacts, stuck open or closed, coil not energizing</li>
+              <li>Check the <strong>capacitors</strong> — swollen, leaking, or failed capacitors prevent the motor from starting or running properly</li>
+              <li>Check <strong>wiring in the sump</strong> — water intrusion causes corrosion on motor leads and connections</li>
+            </ul>
+            <div class="danger-lite">
+              <strong>Electrical safety:</strong> STP controllers carry line voltage. If you're not trained on electrical troubleshooting, identify the symptom, document, and escalate. Don't guess.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           VAPOR RECOVERY
+           ============================================================ -->
+      <div class="card" id="vapor">
+        <span class="badge">Knowledge</span>
+        <h2 class="mt-2">Vapor Recovery Basics</h2>
+        <p class="note">Not all sites have vapor recovery, but where it exists, you need to know what it is and how it affects the system.</p>
+
+        <details open>
+          <summary>What is vapor recovery?</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Stage I</strong> — during fuel delivery. Vapors displaced from the tank during filling are captured back into the delivery truck instead of venting to the atmosphere.</li>
+              <li><strong>Stage II</strong> — during dispensing. Vapors from the customer's vehicle tank are captured at the nozzle and returned to the underground tank.</li>
+              <li>The goal is to prevent fuel vapors (volatile organic compounds) from escaping into the air</li>
+              <li>Required by regulation in many areas — varies by state and local rules</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>How it affects your work</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Extra piping</strong> — vapor return lines run alongside product lines. Know which is which.</li>
+              <li><strong>Vapor recovery nozzles/hoses</strong> — have a vapor return path built in. Heavier and more complex than standard nozzles.</li>
+              <li><strong>Dispenser impact</strong> — a blocked or failed vapor path can cause nozzle shut-off problems (customer complaint: "it keeps clicking off")</li>
+              <li><strong>Vent pipes</strong> — the tank vent system interacts with vapor recovery. Blocked or restricted vents cause tank breathing problems.</li>
+              <li><strong>Pressure/vacuum in the tank</strong> — vapor recovery affects tank pressure balance. ATG may show pressure/vacuum readings.</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Practical tip:</strong> If a site has Stage II vapor recovery and customers complain about nozzles shutting off, check the vapor path before you blame the nozzle. A plugged vapor return line is a common cause.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           CONTAINMENT TESTING
+           ============================================================ -->
+      <div class="card" id="containment-testing">
+        <span class="badge">Compliance</span>
+        <h2 class="mt-2">Containment Testing (Awareness)</h2>
+        <p class="note">Containment (sumps and spill buckets) must be tested periodically to prove it can hold liquid. This section covers awareness — not the full testing procedure.</p>
+
+        <details open>
+          <summary>Why containment gets tested</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li>Regulations require proof that sumps and spill buckets are <strong>liquid-tight</strong></li>
+              <li>Testing frequency varies by jurisdiction (often every 3 years, but check local rules)</li>
+              <li>A containment that can't hold liquid defeats its purpose — leaks go to the environment instead of being caught</li>
+              <li>Failed tests require repair or replacement before the containment can be considered compliant</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>What testing looks like (general)</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Hydrostatic test</strong> — fill the sump or spill bucket with water to a specified level and monitor for a set time period. If the level drops, it failed.</li>
+              <li><strong>Vacuum test</strong> — seal the containment and pull a vacuum. If the vacuum holds, the containment is tight.</li>
+              <li>Specific test methods and pass/fail criteria depend on the equipment manufacturer and local regulations</li>
+              <li>Testing requires documentation: test method, results, date, tester, pass/fail</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Your role as a field tech</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>Visual inspection matters</strong> — if you see obvious damage (cracks, holes, separated joints), note it. That containment will likely fail a test.</li>
+              <li><strong>Don't ignore findings</strong> — water or fuel in containment that shouldn't be there is a clue about integrity</li>
+              <li><strong>Document what you see</strong> — your inspection notes help the testing team focus on problem areas</li>
+              <li><strong>Know what's been tested</strong> — check site records. If a sump or spill bucket hasn't been tested in years, flag it.</li>
+            </ul>
+            <div class="callout-lite">
+              <strong>Bottom line:</strong> You don't have to be the testing expert, but you should be able to spot containment problems during routine work and report them.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           CLOSEOUT
+           ============================================================ -->
+      <div class="card" id="closeout">
+        <span class="badge">Standard</span>
+        <h2 class="mt-2">Closeout (Before You Leave)</h2>
+        <ul class="mt-2">
+          <li>All lids and covers are <strong>back in place and properly seated</strong></li>
+          <li>All barricades/cones are removed from areas you've cleared</li>
+          <li>No open sumps, spill buckets, or tank access points left unattended</li>
+          <li>ATG status rechecked — alarms resolved or documented with explanation</li>
+          <li>Any fuel or water removed is properly contained and disposed of</li>
+          <li>Work area is clean — no tools, rags, or debris left behind</li>
+          <li>Write clear notes: what was found, what was done, and final status</li>
+          <li>Before/after photos (wide shot of the area + close-ups of specific findings)</li>
+        </ul>
+        <p class="note">Goal: the next tech can understand the situation in 30 seconds from your notes and photos.</p>
+      </div>
+
+    </div>
+  </main>
 </body>
 </html>
