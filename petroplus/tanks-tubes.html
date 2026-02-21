@@ -119,6 +119,7 @@
         <a class="btn btn-secondary" href="#water-removal">Water Removal</a>
         <a class="btn btn-secondary" href="#drop-tubes">Drop Tubes</a>
         <a class="btn btn-secondary" href="#stp">STP Basics</a>
+        <a class="btn btn-secondary" href="#magvfc">MagVFC</a>
         <a class="btn btn-secondary" href="#vapor">Vapor Recovery</a>
         <a class="btn btn-secondary" href="#containment-testing">Testing</a>
         <button class="btn btn-secondary" onclick="window.print()">Print</button>
@@ -428,7 +429,7 @@
           <summary>What is a drop tube?</summary>
           <div class="mt-2 tight">
             <ul>
-              <li>A tube (usually PVC or aluminum) inside the fill pipe that extends to near the bottom of the tank</li>
+              <li>A tube made of <strong>aluminum or other non-magnetic metal</strong> inside the fill pipe that extends to near the bottom of the tank (never PVC — drop tubes must be non-magnetic and fuel-compatible metal)</li>
               <li>Fuel flows down through the drop tube during delivery instead of splashing from the top</li>
               <li>Reduces <strong>static buildup</strong>, <strong>turbulence</strong>, and <strong>vapor generation</strong></li>
               <li>The bottom of the tube sits above the tank bottom — not touching it</li>
@@ -456,13 +457,15 @@
             <ol>
               <li><strong>Confirm the tank</strong> — verify tank number/product. Do not pull the wrong tube.</li>
               <li><strong>Barricade the area</strong> — you're about to have an open tank access</li>
-              <li><strong>Remove the fill cap and spill bucket hardware</strong> as needed to access the drop tube</li>
-              <li><strong>Note the position/orientation</strong> before removing — you need to put it back the same way</li>
+              <li><strong>Remove the fill cap</strong> and any spill bucket hardware as needed</li>
+              <li><strong>Remove the fill adapter</strong> — the threaded adapter that the delivery driver connects to. This must come out before the drop tube can be pulled. Note the adapter type and orientation.</li>
+              <li><strong>Note the position/orientation</strong> of the drop tube before removing — you need to put it back the same way</li>
               <li><strong>Pull the tube straight up</strong> — it will have fuel on it. Have rags and a container ready.</li>
-              <li><strong>Inspect the tube</strong> — cracks, breaks, corrosion, buildup inside, length (should reach near the tank bottom)</li>
+              <li><strong>Inspect the tube</strong> — cracks, dents, corrosion, buildup inside, length (should reach near the tank bottom)</li>
               <li><strong>Inspect the overfill valve</strong> (if present) — float condition, movement, sealing surface</li>
               <li><strong>Reinstall or replace</strong> — seat properly, correct orientation, confirm it drops to the right depth</li>
-              <li><strong>Reassemble fill hardware</strong> — spill bucket fittings, fill cap, lid</li>
+              <li><strong>Reinstall the fill adapter</strong> — thread it back in properly, verify it seats and seals correctly</li>
+              <li><strong>Reassemble remaining fill hardware</strong> — spill bucket fittings, fill cap, lid</li>
               <li><strong>Document</strong> — what you found, what was replaced, tube condition</li>
             </ol>
             <div class="danger-lite">
@@ -513,8 +516,8 @@
           <summary>Common STP brands</summary>
           <div class="mt-2 tight">
             <ul>
-              <li><strong>Red Jacket</strong> — very common. Uses a "functional element" (impeller assembly) that is a frequent service item.</li>
-              <li><strong>FE Petro</strong> — also widely used. Similar concept, different physical design.</li>
+              <li><strong>Red Jacket</strong> — very common. Uses a "functional element" (impeller assembly) that is a frequent service item. Typically fixed-speed with a standard contactor/capacitor setup.</li>
+              <li><strong>FE Petro (Franklin Fueling)</strong> — also widely used. Many FE Petro STPs are <strong>variable speed</strong>, controlled by a <strong>MagVFC</strong> (Variable Frequency Controller). The MagVFC adjusts motor speed to maintain target line pressure. See the <a href="#magvfc">MagVFC section</a> below for troubleshooting.</li>
               <li>Both brands: the <strong>motor</strong> sits on top in the sump, the <strong>pump/impeller</strong> is below in the tank, and the <strong>riser pipe</strong> connects them.</li>
             </ul>
           </div>
@@ -540,15 +543,396 @@
           <summary>STP electrical basics</summary>
           <div class="mt-2 tight">
             <ul>
-              <li>Most STPs run on <strong>single-phase</strong> power with a <strong>start capacitor</strong> and <strong>run capacitor</strong></li>
-              <li>A <strong>contactor</strong> (relay) in the STP controller switches the motor on/off</li>
-              <li>Check the <strong>contactor</strong> — pitted contacts, stuck open or closed, coil not energizing</li>
-              <li>Check the <strong>capacitors</strong> — swollen, leaking, or failed capacitors prevent the motor from starting or running properly</li>
+              <li>Most STP motors run on <strong>208V</strong> (single-phase or three-phase depending on the site and motor type)</li>
+              <li><strong>Fixed-speed STPs</strong> (Red Jacket, older FE Petro): typically use a <strong>contactor</strong> and a <strong>single capacitor</strong> to start and run the motor</li>
+              <li><strong>Variable-speed STPs</strong> (FE Petro VS2/VS4): controlled by a <strong>MagVFC</strong> — no traditional contactor/capacitor. The MagVFC is the controller, motor starter, and speed regulator all in one.</li>
+              <li>Check the <strong>contactor</strong> (fixed-speed) — pitted contacts, stuck open or closed, coil not energizing</li>
+              <li>Check the <strong>capacitor</strong> (fixed-speed) — swollen, leaking, or failed capacitor prevents the motor from starting or running properly</li>
               <li>Check <strong>wiring in the sump</strong> — water intrusion causes corrosion on motor leads and connections</li>
             </ul>
             <div class="danger-lite">
-              <strong>Electrical safety:</strong> STP controllers carry line voltage. If you're not trained on electrical troubleshooting, identify the symptom, document, and escalate. Don't guess.
+              <strong>Electrical safety:</strong> STP controllers carry line voltage (208V+). The MagVFC stores voltage in its capacitor bank even after power is disconnected — <strong>wait one minute after the LED display goes blank</strong> before opening the cover. If you're not trained on electrical troubleshooting, identify the symptom, document, and escalate. Don't guess.
             </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           MAGVFC
+           ============================================================ -->
+      <div class="card" id="magvfc">
+        <span class="badge badge-warn">Controller</span>
+        <h2 class="mt-2">FE Petro MagVFC (Variable Frequency Controller)</h2>
+        <p class="note">The MagVFC controls variable-speed FE Petro STPs (PMA VS2 and VS4 models). It adjusts motor speed to maintain target line pressure. This section covers status codes, alarm codes, DIP switch settings, and troubleshooting — all from the Franklin Fueling Systems installation manual.</p>
+
+        <div class="danger-lite">
+          <strong>Safety — before opening the MagVFC:</strong> Always tag and lock breakers OFF before removing the cover. After disconnecting power, <strong>wait one full minute after the LED display goes blank</strong> before touching anything inside. The capacitor bank stores potentially lethal voltage even after power is off.
+        </div>
+
+        <!-- STATUS CODES -->
+        <details open>
+          <summary>Display status codes (normal operation)</summary>
+          <div class="mt-2 tight">
+            <p class="note">These are NOT alarms. They indicate normal MagVFC operating states.</p>
+            <table class="simple-table">
+              <thead><tr><th style="width:80px">Display</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Id</strong></td><td>Idle — no hook signal present, PMA not running, no faults</td></tr>
+                <tr><td><strong>xx : yy</strong></td><td>Software revision (shown at power-on / reset). If display stops on yy, check for low incoming voltage or loose input power connections.</td></tr>
+                <tr><td><strong>Pr : NN</strong></td><td>Pressure regulate — MagVFC is running and maintaining NN psi (Pr and the number flash alternately)</td></tr>
+                <tr><td><strong>PL</strong></td><td>Power limit — MagVFC is running at maximum power output (demand exceeds regulate setting)</td></tr>
+                <tr><td><strong>Sr</strong></td><td>Slave running — displayed on a slave unit in Master/Slave configuration</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- ALARM CODES -->
+        <details>
+          <summary>Alarm codes and troubleshooting</summary>
+          <div class="mt-2 tight">
+            <p class="note">When a fault occurs, the alarm code displays and an audible alarm sounds. Press the Silence button to mute. Press and hold Silence to cycle through the last 3 faults (F0 = most recent, F1 = second, F2 = third). Press Reset to clear.</p>
+
+            <table class="simple-table">
+              <thead><tr><th style="width:60px">Code</th><th style="width:140px">Condition</th><th>Causes &amp; Actions</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>UL</strong></td>
+                  <td>Under-load / Tank empty</td>
+                  <td>
+                    <strong>Causes:</strong> Low fuel level, obstruction on PMA intake, SW3 Pole 6 set wrong for the motor connected.<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) If fault clears, verify normal operation. 3) Check SW3 Pole 6 matches motor HP (OFF=VS2, ON=VS4). A VS2 motor with Pole 6 ON can cause false UL. 4) Check fuel level — if low, schedule delivery; reset after fuel is above PMA end bell. 5) If persistent, possible obstruction (rag/absorbent pad) on PMA inlet.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>LI</strong></td>
+                  <td>Low incoming voltage</td>
+                  <td>
+                    <strong>Causes:</strong> Voltage fluctuations or low input voltage.<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) If fault clears, verify normal operation. 3) Use AC voltmeter to verify incoming voltage is within 200–250 VAC. If not, contact electrician.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>LU</strong></td>
+                  <td>Locked rotor at PMA startup</td>
+                  <td>
+                    <strong>Causes:</strong> Foreign material in PMA, defective PMA, corrosive environment (water-ballasted tank).<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) If fault persists, lock/tag power OFF. 3) Pull the extractable — remove two 9/16" manifold bolts and the 3/4" electrical connector bolt. 4) Remove PMA end cap, try spinning rotor with 3/16" Allen wrench. If binding/damage, replace PMA (VS4 or VS2). 5) Check lead assembly wires for shorts before installing new PMA.<br>
+                    <strong>Note:</strong> Extremely long motor wire runs or small gauge wire can cause false LU.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Lr</strong></td>
+                  <td>Locked rotor with PMA running</td>
+                  <td>
+                    <strong>Causes:</strong> Same as LU — foreign material or defective PMA.<br>
+                    <strong>Actions:</strong> Same extraction/inspection procedure as LU above.<br>
+                    <strong>Note:</strong> A partial short from a nicked pump power wire + water in conduit can show as Lr instead of SC (the MagVFC sees it as abnormally high current draw).
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Er</strong></td>
+                  <td>Extended run</td>
+                  <td>
+                    <strong>Causes:</strong> Continuous hook signal for 60+ minutes without change in flow rate (possible stuck relay or wiring issue at dispenser).<br>
+                    <strong>Actions:</strong> 1) Lock/tag power OFF. 2) Measure voltage across hook terminals with all dispenser handles off — should be 0V. If voltage is present, there's a wiring problem. Contact electrician.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>SU</strong></td>
+                  <td>Upper rail short</td>
+                  <td>
+                    <strong>Causes:</strong> Short circuit in field wiring or internal MagVFC component failure.<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) If fault recurs, lock/tag power OFF. 3) Disconnect BLK, ORG, RED wires at MagVFC motor terminals, cap each with wire nuts. 4) Power on — if display shows OC (open circuit), the short is in the field wiring to the pump. If it still shows SU, contact Franklin Fueling technical support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>rI</strong></td>
+                  <td>Voltage unbalance / capacitor bank</td>
+                  <td>
+                    <strong>Causes:</strong> Unbalanced incoming voltage, sudden large load, or failed MagVFC capacitor bank.<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) Check incoming voltage and electrical loading. 3) Observe for ~10 minutes. If fault recurs, contact Franklin Fueling technical support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>OS</strong></td>
+                  <td>Over speed</td>
+                  <td>
+                    <strong>Causes:</strong> MagVFC operating outside frequency range.<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) If fault persists, power down completely, wait 30 seconds, power back on. 3) If fault recurs, contact Franklin Fueling technical support.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>OC</strong></td>
+                  <td>Open circuit (MagVFC to motor)</td>
+                  <td>
+                    <strong>Causes:</strong> Broken connection between MagVFC and PMA.<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) If fault persists, lock/tag power OFF. 3) Disconnect motor wires at MagVFC. 4) Ohmmeter across motor wire pairs — correct reading: 1.2 &#177;1&#8486; for VS4, 2.5 &#177;1&#8486; for VS2. Any pair to ground should be open circuit. 5) If readings are wrong, continue testing at the extractable junction box to isolate where the break is — wiring, connectors, or PMA itself.<br>
+                    <strong>Note:</strong> Extremely long wire runs or small gauge can cause false OC.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>SC</strong></td>
+                  <td>Short circuit</td>
+                  <td>
+                    <strong>Causes:</strong> Short in wiring from MagVFC to PMA, or SW3 Pole 6 set wrong.<br>
+                    <strong>Actions:</strong> 1) Press Reset. 2) Check SW3 Pole 6 — a VS4 motor with Pole 6 OFF (2hp setting) can cause false SC. 3) If fault persists, lock/tag power OFF. 4) Disconnect motor wires, ohmmeter test same as OC procedure. Any wire pair to ground should read &gt;80k&#8486;. 5) If shorted, test at extractable junction box to isolate location. Replace PMA or wiring as needed.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>HO</strong></td>
+                  <td>High temperature</td>
+                  <td>
+                    <strong>Causes:</strong> Excessive operating temperature inside MagVFC enclosure.<br>
+                    <strong>Actions:</strong> 1) Verify the fan is running — replace fan if not (Part #223919930). 2) Check for excessive ambient heat where controller is mounted. 3) Verify all ventilation louvers are clear. 4) If persistent, contact Franklin Fueling technical support.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="callout-lite" style="margin-top:12px">
+              <strong>Fault history:</strong> Press and hold the Silence button to cycle through the last 3 faults — F0 (most recent), F1, F2. Briefly press Silence after each code to advance. This helps identify recurring problems.
+            </div>
+          </div>
+        </details>
+
+        <!-- SW1 PRESSURE -->
+        <details>
+          <summary>SW1 — Pressure select (rotary switch)</summary>
+          <div class="mt-2 tight">
+            <p>The rotary switch sets the target operating pressure. Position 4 (32 psi) is the factory default and a good starting point for calibration.</p>
+            <table class="simple-table">
+              <thead><tr><th>Position</th><th>Pressure</th></tr></thead>
+              <tbody>
+                <tr><td>0</td><td>24 psi</td></tr>
+                <tr><td>1</td><td>26 psi</td></tr>
+                <tr><td>2</td><td>28 psi</td></tr>
+                <tr><td>3</td><td>30 psi</td></tr>
+                <tr><td><strong>4</strong></td><td><strong>32 psi (factory default)</strong></td></tr>
+                <tr><td>5</td><td>34 psi</td></tr>
+                <tr><td>6</td><td>36 psi</td></tr>
+                <tr><td>7</td><td>38 psi</td></tr>
+                <tr><td>8</td><td>40 psi</td></tr>
+                <tr><td>9</td><td>42 psi</td></tr>
+              </tbody>
+            </table>
+            <div class="callout-lite">
+              <strong>Calibration:</strong> Perform a flow rate test at the closest dispenser. Target 8–10 GPM for gasoline. If flow is too high/low, adjust SW1 up or down and retest. In Master/Slave setups, all units must be set to the same SW1 position.
+            </div>
+          </div>
+        </details>
+
+        <!-- SW3 DIP SWITCHES -->
+        <details>
+          <summary>SW3 — Configuration DIP switches</summary>
+          <div class="mt-2 tight">
+            <p class="note">Factory defaults shown in bold. Lock/tag power OFF before changing any switch.</p>
+            <table class="simple-table">
+              <thead><tr><th style="width:80px">Pole</th><th>ON</th><th>OFF</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td><strong>Mechanical leak detectors (factory default)</strong></td>
+                  <td>Some electronic line leak detection systems. Required OFF for Veeder Root PLLD.</td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td><strong>Gasoline (factory default)</strong></td>
+                  <td>Diesel product. Important — gasoline and diesel have different specific gravity, affects pressure regulation.</td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>Master controller (Master/Slave setups)</td>
+                  <td><strong>Stand-alone operation or Slave (factory default)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>4 &amp; 5</strong></td>
+                  <td colspan="2">
+                    Pipe compensation (both ON = factory default). Adjust based on piping restriction:<br>
+                    <strong>ON/ON</strong> = 0 (least restrictive) &bull;
+                    <strong>ON/OFF</strong> = 1 &bull;
+                    <strong>OFF/ON</strong> = 2 &bull;
+                    <strong>OFF/OFF</strong> = 3 (most restrictive)<br>
+                    <em>Example: 2" fiberglass &lt;150' = least restrictive. 1.5" convoluted flex &gt;75' = most restrictive.</em>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>6</strong></td>
+                  <td>PMA VS4 motor (4hp)</td>
+                  <td><strong>PMA VS2 motor (2hp) (factory default)</strong>. Incorrect setting causes false SC or UL codes.</td>
+                </tr>
+                <tr>
+                  <td><strong>7</strong></td>
+                  <td>Auto-reset of Under Load fault (resets automatically when tank is refilled)</td>
+                  <td><strong>Must press Reset button to clear UL fault (factory default)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>8</strong></td>
+                  <td>Alternating Circuit mode (see Master/Slave section)</td>
+                  <td><strong>OFF (factory default)</strong></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="warn-lite">
+              <strong>Common mistake:</strong> SW3 Pole 6 set wrong for the motor. VS2 motor with Pole 6 ON = false UL codes. VS4 motor with Pole 6 OFF = false SC codes. Always verify this matches the actual pump connected.
+            </div>
+          </div>
+        </details>
+
+        <!-- SW6 DIP SWITCHES -->
+        <details>
+          <summary>SW6 — Additional configuration switches</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table">
+              <thead><tr><th style="width:80px">Pole</th><th>ON</th><th>OFF</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>1</strong></td>
+                  <td>Disable Extended Run alarm</td>
+                  <td><strong>Extended Run alarm active (factory default)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>2</strong></td>
+                  <td>Master/Slave fault shutdown — alarm on ANY controller shuts down ALL controllers. Required for VR PLLD.</td>
+                  <td><strong>Alarm shuts down only the faulted controller (factory default)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>3</strong></td>
+                  <td>IST-VFC Compatibility Mode — for communicating with older IST-VFC units in Master/Slave (requires software v1.18+)</td>
+                  <td><strong>Native MagVFC Master/Slave communication (factory default)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>4</strong></td>
+                  <td>Alternate submersibles every 30 minutes during continuous hook signal (helps keep tanks balanced at busy sites). Requires software v1.22+.</td>
+                  <td><strong>OFF (factory default)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>5</strong></td>
+                  <td>Slave turn-off — when demand drops to single-pump level, slave shuts off to save energy. Requires software v1.23+.</td>
+                  <td><strong>Standard Master/Slave — slave only turns off when hook signal goes low (factory default)</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>6–8</strong></td>
+                  <td colspan="2"><strong>Not used. Leave in OFF position.</strong> MagVFC may operate unpredictably if any of these are ON.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- MASTER/SLAVE -->
+        <details>
+          <summary>Master/Slave and Alternating Circuit configurations</summary>
+          <div class="mt-2 tight">
+            <p>When two FE Petro STPs share the same product line, the MagVFC supports three operating modes:</p>
+            <ul>
+              <li><strong>Master/Slave</strong> — Master turns on first. When demand increases (more nozzles open), Master calls the Slave to assist. Slave only runs when requested.</li>
+              <li><strong>Alternating Circuit</strong> — Controllers rotate which one turns on each time the hook signal activates. Only one runs at a time.</li>
+              <li><strong>Master/Slave + Alternating</strong> — Combination of both. The first-on controller rotates, and additional controllers are called when demand increases.</li>
+            </ul>
+
+            <h3 class="mt-2">SW2 — Address switches (Master/Slave)</h3>
+            <p class="note">Master = all SW2 poles OFF. Slaves are addressed per the table below. Up to 31 slaves supported.</p>
+            <table class="simple-table">
+              <thead><tr><th>Address</th><th>Pole 1</th><th>Pole 2</th><th>Pole 3</th><th>Pole 4</th><th>Pole 5</th></tr></thead>
+              <tbody>
+                <tr><td>Master</td><td>Off</td><td>Off</td><td>Off</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 1</td><td>On</td><td>Off</td><td>Off</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 2</td><td>Off</td><td>On</td><td>Off</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 3</td><td>On</td><td>On</td><td>Off</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 4</td><td>Off</td><td>Off</td><td>On</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 5</td><td>On</td><td>Off</td><td>On</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 6</td><td>Off</td><td>On</td><td>On</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 7</td><td>On</td><td>On</td><td>On</td><td>Off</td><td>Off</td></tr>
+                <tr><td>Slave 8</td><td>Off</td><td>Off</td><td>Off</td><td>On</td><td>Off</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Pattern continues for Slaves 9–31 using binary addressing across all 5 poles.</p>
+
+            <div class="callout-lite" style="margin-top:10px">
+              <strong>Setup rules:</strong> SW1 pressure setting and SW3 Poles 4 &amp; 5 (pipe compensation) must be identical on Master and all Slaves. The hook signal wire connects to the Master only — the Master calls the Slaves via RS-485. The yellow Communication LED should flash quickly on Master and in sequence through Slaves when connected properly.
+            </div>
+
+            <div class="warn-lite">
+              <strong>Line leak detection:</strong> FE Petro does not recommend Alternating Circuit mode with electronic line leak detection. Some ELLD manufacturers require the Master to turn on first every time. Check the ELLD manufacturer requirements.
+            </div>
+          </div>
+        </details>
+
+        <!-- WIRING QUICK REFERENCE -->
+        <details>
+          <summary>Wiring quick reference</summary>
+          <div class="mt-2 tight">
+            <div class="two-col">
+              <div class="panel">
+                <h3>Motor terminals</h3>
+                <ul>
+                  <li>Labeled: <strong>GND, BLK, ORG, RED</strong></li>
+                  <li>Match colors to pump wires — wrong polarity = motor runs in reverse (low pressure ~17–29 psi VS4, ~10–18 psi VS2)</li>
+                  <li>If pressure is suspiciously low on new install, swap any two motor wires and retest</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Input power terminals</h3>
+                <ul>
+                  <li>Labeled: <strong>GND, L1, L2, L3</strong></li>
+                  <li>200–250 VAC, 50 or 60 Hz</li>
+                  <li>VS2: single-phase OK (L1 and L2)</li>
+                  <li>VS4: three-phase required for full performance (single-phase = VS2-level output)</li>
+                  <li>Max draw: 18A single-phase, 20A three-phase</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="two-col mt-2">
+              <div class="panel">
+                <h3>Hook terminals</h3>
+                <ul>
+                  <li>110 VAC or 240 VAC dispenser signal + neutral</li>
+                  <li>No polarity requirement</li>
+                  <li>No hook signal should be present when powering on the MagVFC</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Motor resistance (ohmmeter check)</h3>
+                <ul>
+                  <li><strong>VS4:</strong> 1.2 &#177;1 &#8486; between any two motor leads</li>
+                  <li><strong>VS2:</strong> 2.5 &#177;1 &#8486; between any two motor leads</li>
+                  <li>Any motor lead to ground: should be open circuit (&gt;80k &#8486;)</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 class="mt-2">Max wire run (motor wiring)</h3>
+            <table class="simple-table">
+              <thead><tr><th>Wire gauge</th><th>Max distance</th></tr></thead>
+              <tbody>
+                <tr><td>10 AWG</td><td>650 ft</td></tr>
+                <tr><td>12 AWG</td><td>400 ft</td></tr>
+                <tr><td>14 AWG</td><td>250 ft</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Exceeding max wire run can cause false OC or LU codes.</p>
+
+            <div class="danger-lite" style="margin-top:10px">
+              <strong>Critical:</strong> Never connect input power to the motor terminals — this will permanently destroy the MagVFC. Double-check terminal labels before energizing.
+            </div>
+          </div>
+        </details>
+
+        <!-- REPLACEMENT PARTS -->
+        <details>
+          <summary>MagVFC replacement parts</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table">
+              <thead><tr><th>Part</th><th>Part Number</th></tr></thead>
+              <tbody>
+                <tr><td>Fan assembly</td><td>223919930</td></tr>
+                <tr><td>User interface board</td><td>225040930</td></tr>
+                <tr><td>Normally open relay</td><td>228289930</td></tr>
+                <tr><td>Window lens</td><td>402623930</td></tr>
+              </tbody>
+            </table>
           </div>
         </details>
       </div>
