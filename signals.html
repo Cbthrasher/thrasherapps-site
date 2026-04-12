@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Forex Signals — ThrasherApps</title>
+  <meta name="description" content="Algorithmic forex and gold trading signals delivered to your phone. Backtested, validated, and running live." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    .stat-grid{display:grid;gap:var(--space-3);margin-top:var(--space-3)}
+    @media(min-width:720px){.stat-grid{grid-template-columns:repeat(4,1fr)}}
+    .stat-card{text-align:center;padding:var(--space-4)}
+    .stat-card .num{font-size:clamp(28px,4vw,36px);font-weight:700;color:var(--color-primary);line-height:1.2}
+    .stat-card .label{font-size:14px;color:var(--text-muted);margin-top:4px}
+    .step-grid{display:grid;gap:var(--space-4);margin-top:var(--space-4)}
+    @media(min-width:720px){.step-grid{grid-template-columns:repeat(3,1fr)}}
+    .step-card{position:relative;padding:var(--space-4);padding-top:calc(var(--space-4) + 8px)}
+    .step-num{position:absolute;top:-14px;left:var(--space-4);width:32px;height:32px;border-radius:50%;background:var(--color-primary);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+    .tier-grid{display:grid;gap:var(--space-4);margin-top:var(--space-4)}
+    @media(min-width:720px){.tier-grid{grid-template-columns:repeat(3,1fr)}}
+    .tier-card{padding:var(--space-5) var(--space-4)}
+    .tier-card .price{font-size:clamp(24px,3vw,32px);font-weight:700;color:var(--text-strong)}
+    .tier-card .per{font-size:14px;color:var(--text-muted)}
+    .tier-card ul{list-style:none;padding:0;margin:var(--space-3) 0 0}
+    .tier-card li{padding:6px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--text-muted)}
+    .tier-card li:last-child{border:none}
+    .tier-card li::before{content:"\2713 ";color:var(--color-primary);font-weight:700}
+    .tier-featured{border-color:var(--color-primary);box-shadow:0 0 0 2px var(--color-primary),var(--shadow-sm)}
+    .faq-item{border-bottom:1px solid var(--border);padding:var(--space-3) 0}
+    .faq-item:last-child{border:none}
+    .faq-q{font-weight:600;color:var(--text-strong);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .faq-q::after{content:"+";font-size:20px;color:var(--text-muted);transition:transform .2s}
+    .faq-item.open .faq-q::after{transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--text-muted);font-size:15px}
+    .faq-item.open .faq-a{max-height:300px;padding-top:var(--space-2)}
+    .pairs-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-2)}
+    .pair-tag{font-size:13px;padding:4px 10px;border-radius:6px;background:#F1F5F9;border:1px solid var(--border);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text-strong)}
+    .waitlist-form{display:flex;gap:8px;max-width:440px;margin-top:var(--space-3)}
+    .waitlist-form input{flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-btn);font-size:16px}
+    .waitlist-form input:focus{outline:none;border-color:var(--color-primary);box-shadow:0 0 0 3px rgba(0,122,255,.15)}
+    .disclaimer{font-size:12px;color:var(--text-muted);margin-top:var(--space-2);max-width:540px}
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header / Nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="signals.html">Signals</a>
+        <a href="grc-lab.html">GRC Lab</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="badge">Coming Soon</span>
+      <h1 class="mt-2">Algorithmic Forex Signals</h1>
+      <p class="lead">
+        Backtested strategies. Real-time alerts. Delivered to your phone so you can trade with confidence.
+      </p>
+      <div class="pairs-row">
+        <span class="pair-tag">EUR/USD</span>
+        <span class="pair-tag">GBP/USD</span>
+        <span class="pair-tag">AUD/USD</span>
+        <span class="pair-tag">USD/CAD</span>
+        <span class="pair-tag">USD/CHF</span>
+        <span class="pair-tag">NZD/USD</span>
+        <span class="pair-tag">XAU/USD</span>
+      </div>
+
+      <!-- Waitlist -->
+      <form class="waitlist-form" action="https://formspree.io/f/mgvzdljj" method="POST">
+        <input type="hidden" name="_subject" value="Signals Waitlist Signup" />
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit" class="btn">Join Waitlist</button>
+      </form>
+      <p class="disclaimer">No spam. We'll notify you when signals go live. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- Performance Stats -->
+  <section class="section section--tight">
+    <div class="container">
+      <h2 class="h2 center">Backtest Performance</h2>
+      <p class="lead center">Validated on 362 days of real OANDA market data. Not curve-fit.</p>
+      <div class="stat-grid reveal">
+        <div class="card stat-card">
+          <div class="num">1,030+</div>
+          <div class="label">Trades / Year</div>
+        </div>
+        <div class="card stat-card">
+          <div class="num">1.40</div>
+          <div class="label">Profit Factor</div>
+        </div>
+        <div class="card stat-card">
+          <div class="num">42%</div>
+          <div class="label">Win Rate</div>
+        </div>
+        <div class="card stat-card">
+          <div class="num">6.0%</div>
+          <div class="label">Max Drawdown</div>
+        </div>
+      </div>
+      <p class="small center mt-3">
+        Based on out-of-sample walk-forward testing across 8 instruments.
+        Past performance does not guarantee future results.
+      </p>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2 center">How It Works</h2>
+      <p class="lead center">Three steps from signup to live trades.</p>
+      <div class="step-grid reveal">
+        <div class="card step-card">
+          <span class="step-num">1</span>
+          <h3>Subscribe</h3>
+          <p>Pick a plan. Get instant access to our Telegram signal channel and web dashboard.</p>
+        </div>
+        <div class="card step-card">
+          <span class="step-num">2</span>
+          <h3>Get Alerts</h3>
+          <p>Receive real-time entry signals with exact pair, direction, stop-loss, and take-profit levels.</p>
+        </div>
+        <div class="card step-card">
+          <span class="step-num">3</span>
+          <h3>Trade</h3>
+          <p>Execute on your own broker account. You control your risk, position size, and capital.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Under the Hood -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2">What Powers the Signals</h2>
+      <p class="lead">Two complementary strategies running on M15 candles, 24/5.</p>
+      <div class="grid grid-2 mt-3 reveal">
+        <div class="card">
+          <span class="badge">Strategy 1</span>
+          <h3 class="mt-2">Trend Standard</h3>
+          <p class="mt-1">
+            Rides momentum with EMA alignment and RSI confirmation.
+            Wide stop-loss absorbs noise, breakeven shield locks in gains,
+            and a fixed 2.75R take-profit captures full moves.
+          </p>
+        </div>
+        <div class="card">
+          <span class="badge">Strategy 2</span>
+          <h3 class="mt-2">Mean Reversion Pullback</h3>
+          <p class="mt-1">
+            Catches pullbacks in trending markets using Bollinger Band extremes,
+            RSI confirmation, and H1 trend alignment. Targets the BB midline
+            for consistent, high-probability exits.
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-2 mt-3 reveal">
+        <div class="card">
+          <h3>Risk Management</h3>
+          <p class="mt-1">
+            Every signal includes exact stop-loss and take-profit levels.
+            1% risk per trade. Max 5 concurrent positions. Session-aware filters
+            block low-edge conditions automatically.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Instruments</h3>
+          <p class="mt-1">
+            7 major forex pairs plus gold (XAU/USD). Each pair is individually validated
+            with per-session performance tracking.
+            Losing pairs and sessions are blocked automatically.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="container">
+      <h2 class="h2 center">Simple Pricing</h2>
+      <p class="lead center">Start free. Upgrade when you're ready.</p>
+      <div class="tier-grid reveal">
+        <div class="card tier-card">
+          <span class="badge">Free</span>
+          <div class="price mt-2">$0</div>
+          <div class="per">forever</div>
+          <ul>
+            <li>Delayed signals (30 min)</li>
+            <li>Weekly performance report</li>
+            <li>Web dashboard access</li>
+            <li>2 pairs (EUR/USD, GBP/USD)</li>
+          </ul>
+          <p class="mt-3"><a class="btn btn-secondary" href="#waitlist">Join Waitlist</a></p>
+        </div>
+        <div class="card tier-card tier-featured">
+          <span class="badge">Most Popular</span>
+          <div class="price mt-2">$29</div>
+          <div class="per">/ month</div>
+          <ul>
+            <li>Real-time Telegram alerts</li>
+            <li>All 8 instruments</li>
+            <li>Entry, SL, TP for every signal</li>
+            <li>Daily performance stats</li>
+            <li>Web dashboard + history</li>
+          </ul>
+          <p class="mt-3"><a class="btn" href="#waitlist">Join Waitlist</a></p>
+        </div>
+        <div class="card tier-card">
+          <span class="badge">Pro</span>
+          <div class="price mt-2">$79</div>
+          <div class="per">/ month</div>
+          <ul>
+            <li>Everything in Standard</li>
+            <li>Strategy breakdown per signal</li>
+            <li>API access (JSON webhooks)</li>
+            <li>Priority support</li>
+            <li>Early access to new strategies</li>
+          </ul>
+          <p class="mt-3"><a class="btn btn-secondary" href="#waitlist">Join Waitlist</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container" style="max-width:720px">
+      <h2 class="h2 center">FAQ</h2>
+      <div class="mt-4">
+
+        <div class="faq-item">
+          <div class="faq-q">What broker do I need?</div>
+          <div class="faq-a">Any forex broker that supports the listed pairs. We use OANDA internally, but signals work with any broker. You trade on your own account.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How are signals delivered?</div>
+          <div class="faq-a">Real-time alerts via Telegram with exact entry price, stop-loss, and take-profit. You'll also have a web dashboard showing all active and historical signals.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What's the minimum account size?</div>
+          <div class="faq-a">No minimum required. Our signals include percentage-based risk (1% per trade), so they scale to any account size. A $500+ account is recommended for comfortable position sizing.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Are these guaranteed profits?</div>
+          <div class="faq-a">No. Trading involves risk and past performance does not guarantee future results. Our strategies have a validated edge over hundreds of trades, but individual trades can and will lose. Never risk money you can't afford to lose.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Can I cancel anytime?</div>
+          <div class="faq-a">Yes. No contracts, no lock-in. Cancel your subscription anytime and you won't be charged again.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">When does it launch?</div>
+          <div class="faq-a">We're running our algorithms live on demo and real accounts now. The signal service will launch once we have 4+ weeks of verified live performance. Join the waitlist to be first in line.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <section class="section cta-band" id="waitlist">
+    <div class="container" style="max-width:540px;text-align:center">
+      <h2 class="h2">Get Early Access</h2>
+      <p class="lead">Join the waitlist and be first to receive signals when we launch.</p>
+      <form class="waitlist-form" style="max-width:100%;justify-content:center" action="https://formspree.io/f/mgvzdljj" method="POST">
+        <input type="hidden" name="_subject" value="Signals Waitlist Signup" />
+        <input type="email" name="email" placeholder="Enter your email" required />
+        <button type="submit" class="btn">Join Waitlist</button>
+      </form>
+      <p class="disclaimer" style="margin:var(--space-2) auto 0">No spam. Unsubscribe anytime. We'll email you when signals go live.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div>&copy; 2025 ThrasherApps.com &mdash; Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> &middot;
+        <a href="privacy.html">Privacy</a> &middot;
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+      <p class="disclaimer mt-2">
+        Trading foreign exchange carries a high level of risk and may not be suitable for all investors.
+        Past performance is not indicative of future results.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    (function () {
+      // Scroll reveal
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+
+      // Active nav link
+      const here = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        const target = a.getAttribute('href');
+        if ((here === 'index.html' && target === '/') || here === target) a.classList.add('active');
+      });
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+          const item = q.parentElement;
+          const wasOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+          if (!wasOpen) item.classList.add('open');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
