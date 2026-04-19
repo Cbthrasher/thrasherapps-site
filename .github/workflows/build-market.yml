@@ -1,8 +1,9 @@
 name: Build market dashboard data
 
-# Pulls CFTC + FRED public feeds into data/market.json and auto-commits
-# the result to main. Free tier friendly — runs once a week (Sunday 01:00
-# UTC = Saturday evening ET) plus on-demand via the workflow_dispatch trigger.
+# Pulls CFTC + US Treasury public feeds into data/market.json and
+# auto-commits the result to main. Free tier friendly — runs once a week
+# (Sunday 01:00 UTC = Saturday evening ET) plus on-demand via the
+# workflow_dispatch trigger.
 
 on:
   schedule:
@@ -44,6 +45,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes in data/market.json — skipping commit."
           else
-            git commit -m "chore(data): refresh market dashboard (CFTC + FRED) [skip ci]"
+            git commit -m "chore(data): refresh market dashboard (CFTC + Treasury) [skip ci]"
             git push
           fi
