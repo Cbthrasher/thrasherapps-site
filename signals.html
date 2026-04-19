@@ -132,9 +132,9 @@
           <p class="muted-row" style="margin-top:4px">Rolling window of closed trades. Pips, not dollars &mdash; scales to any account size.</p>
         </div>
         <div class="window-tabs" role="tablist" aria-label="Performance window">
-          <button data-win="all_time" class="active" type="button">All time</button>
+          <button data-win="last_7d" class="active" type="button">7 days</button>
           <button data-win="last_30d" type="button">30 days</button>
-          <button data-win="last_7d" type="button">7 days</button>
+          <button data-win="all_time" type="button">Lifetime</button>
         </div>
       </div>
 
@@ -154,11 +154,11 @@
       <div class="card truth-card">
         <h3>Where we're at, honestly</h3>
         <p>
-          The all-time profit factor above is below 1.0. That's not a typo &mdash; the early
-          trades on this account ran through several losing strategies (old scalp, RSI divergence)
-          and a badly-tuned exit that strangled winners. We found the problem in a 45-trade audit,
-          shipped a fixed configuration on <strong>April 11, 2026</strong>, and the last 7 days
-          are already showing a better profit factor.
+          The lifetime profit factor on this account is still below 1.0. That's not a typo &mdash;
+          the early trades ran through several losing strategies (old scalp, RSI divergence) and a
+          badly-tuned exit that strangled winners. We found the problem in a 45-trade audit,
+          shipped a fixed configuration on <strong>April 11, 2026</strong>, and the 7-day window
+          above is the real story going forward. Click "Lifetime" to see everything, warts included.
         </p>
         <p>
           We're publishing every trade here instead of waiting until the numbers look good,
@@ -176,7 +176,7 @@
   <section class="section section--tight">
     <div class="container">
       <h2 class="h2">Breakdown</h2>
-      <p class="muted-row">All-time, grouped by instrument and strategy.</p>
+      <p class="muted-row">Lifetime, grouped by instrument and strategy.</p>
       <div class="breakdown-grid">
         <div class="card breakdown-card">
           <h3>By instrument</h3>
@@ -283,7 +283,7 @@
 
         <div class="faq-item">
           <div class="faq-q">Why is the profit factor below 1.0?</div>
-          <div class="faq-a">The account has 158 trades going back to early March. The first ~120 of those ran strategies and exits that we've since disabled. The winning config shipped April 11 and is earning its numbers in the 7-day window. If you want to watch just the post-fix performance, click the "7 days" tab.</div>
+          <div class="faq-a">The account has 158 trades going back to early March. The first ~120 of those ran strategies and exits that we've since disabled. The winning config shipped April 11 and is earning its numbers in the 7-day window (the default tab above). Click "Lifetime" to see every trade in the ledger, including the losing strategies we've since turned off.</div>
         </div>
 
         <div class="faq-item">
@@ -515,7 +515,7 @@
         ]);
         if (!m) throw new Error('metrics.json missing');
         METRICS_CACHE = m;
-        const winKey = document.querySelector('.window-tabs button.active')?.dataset.win || 'all_time';
+        const winKey = document.querySelector('.window-tabs button.active')?.dataset.win || 'last_7d';
         renderStats(m.windows?.[winKey]);
         renderBreakdown(m);
         renderFeed(t);
