@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd agent for the ThrasherApps bot-journal sync.
+
+  What it does
+    Runs scripts/sync_journal.sh every 30 minutes. The script parses the
+    V3 bot's JSONL logs, regenerates data/trades.json + data/metrics.json
+    for the site, and if anything changed, commits + pushes to origin/main.
+    GitHub Pages picks up the deploy automatically.
+
+  Install
+    mkdir -p ~/Library/LaunchAgents
+    cp scripts/com.thrasherapps.journal.plist ~/Library/LaunchAgents/
+    launchctl load -w ~/Library/LaunchAgents/com.thrasherapps.journal.plist
+
+  Check
+    launchctl list | grep thrasherapps
+    tail -f /Users/christhrasher/Desktop/thrasherapps-site/logs/sync_journal.log
+
+  Unload
+    launchctl unload -w ~/Library/LaunchAgents/com.thrasherapps.journal.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.thrasherapps.journal</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/christhrasher/Desktop/thrasherapps-site/scripts/sync_journal.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/christhrasher/Desktop/thrasherapps-site</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    <key>SITE_ROOT</key>
+    <string>/Users/christhrasher/Desktop/thrasherapps-site</string>
+    <key>V3_LOGS</key>
+    <string>/Users/christhrasher/Desktop/forex_trading_bot_V3/logs</string>
+  </dict>
+
+  <!-- Every 30 minutes -->
+  <key>StartInterval</key>
+  <integer>1800</integer>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/christhrasher/Desktop/thrasherapps-site/logs/sync_journal.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/christhrasher/Desktop/thrasherapps-site/logs/sync_journal.err</string>
+</dict>
+</plist>

@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-04-19T14:43:09+00:00",
+  "rates": {},
+  "cot": [
+    {
+      "pair": "EUR/USD",
+      "cftc_name": "EURO FX",
+      "report_date": "2026-04-14",
+      "non_comm_long": 3046,
+      "non_comm_short": 2173,
+      "net": 873,
+      "prev_net": -24653,
+      "change": 25526,
+      "source": "CFTC",
+      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    },
+    {
+      "pair": "GBP/USD",
+      "cftc_name": "BRITISH POUND",
+      "report_date": "2026-04-14",
+      "non_comm_long": 125770,
+      "non_comm_short": 56230,
+      "net": 69540,
+      "prev_net": null,
+      "change": null,
+      "source": "CFTC",
+      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    },
+    {
+      "pair": "USD/JPY",
+      "cftc_name": "JAPANESE YEN",
+      "report_date": "2026-04-14",
+      "non_comm_long": 66562,
+      "non_comm_short": 43133,
+      "net": 23429,
+      "prev_net": null,
+      "change": null,
+      "source": "CFTC",
+      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    },
+    {
+      "pair": "USD/CHF",
+      "cftc_name": "SWISS FRANC",
+      "report_date": "2026-04-14",
+      "non_comm_long": 61171,
+      "non_comm_short": 10574,
+      "net": 50597,
+      "prev_net": null,
+      "change": null,
+      "source": "CFTC",
+      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    },
+    {
+      "pair": "USD/CAD",
+      "cftc_name": "CANADIAN DOLLAR",
+      "report_date": "2026-04-14",
+      "non_comm_long": 108148,
+      "non_comm_short": 32711,
+      "net": 75437,
+      "prev_net": null,
+      "change": null,
+      "source": "CFTC",
+      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    },
+    {
+      "pair": "AUD/USD",
+      "cftc_name": "AUSTRALIAN DOLLAR",
+      "report_date": "2026-04-14",
+      "non_comm_long": 41049,
+      "non_comm_short": 151875,
+      "net": -110826,
+      "prev_net": null,
+      "change": null,
+      "source": "CFTC",
+      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+    }
+  ],
+  "events": [
+    {
+      "label": "US CPI",
+      "cadence": "Monthly",
+      "impact": "high",
+      "notes": "Drives USD and rate expectations. Avoid trading EUR/USD, GBP/USD, USD/JPY during the 8:30 ET release."
+    },
+    {
+      "label": "FOMC Rate Decision",
+      "cadence": "8\u00d7 / year",
+      "impact": "high",
+      "notes": "USD volatility spike. We pause the bot for 30 min around 2:00 ET."
+    },
+    {
+      "label": "US NFP (Jobs)",
+      "cadence": "1st Friday of month",
+      "impact": "high",
+      "notes": "Biggest USD move of the month. 8:30 ET."
+    },
+    {
+      "label": "ECB Rate Decision",
+      "cadence": "8\u00d7 / year",
+      "impact": "high",
+      "notes": "Euro volatility. Press conference 45 min after the release tends to move markets more than the decision."
+    },
+    {
+      "label": "UK CPI",
+      "cadence": "Monthly",
+      "impact": "medium",
+      "notes": "GBP driver. 2:00 ET."
+    }
+  ],
+  "sources": [
+    "CFTC Commitments of Traders (weekly)",
+    "FRED (Federal Reserve Economic Data) public CSV"
+  ]
+}

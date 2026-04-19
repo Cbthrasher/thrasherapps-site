@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Market Dashboard — ThrasherApps</title>
+  <meta name="description" content="Free weekly market context for FX traders: CFTC Commitments of Traders positioning, US rate history, and event calendar reminders." />
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    .dash-grid{display:grid;gap:var(--space-3);margin-top:var(--space-3)}
+    @media(min-width:720px){.dash-grid{grid-template-columns:repeat(2,1fr)}}
+    .dash-card h3{margin-top:0}
+    .rates-list,.cot-list,.event-list{list-style:none;padding:0;margin:var(--space-2) 0 0}
+    .rates-list li,.cot-list li,.event-list li{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);padding:10px 0;border-bottom:1px solid #F1F5F9;font-size:14px}
+    .rates-list li:last-child,.cot-list li:last-child,.event-list li:last-child{border:none}
+    .rates-list .label,.cot-list .pair,.event-list .evt{color:var(--text-strong);font-weight:600}
+    .rates-list .val{font-variant-numeric:tabular-nums;color:var(--text-strong);font-size:16px}
+    .rates-list .chg,.cot-list .chg{font-size:12px;font-variant-numeric:tabular-nums;padding:2px 8px;border-radius:6px;font-weight:600}
+    .chg.pos{background:rgba(15,157,88,.1);color:#0F9D58}
+    .chg.neg{background:rgba(217,48,37,.1);color:#D93025}
+    .chg.flat{background:#F1F5F9;color:var(--text-muted)}
+    .evt-impact{font-size:11px;padding:2px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+    .evt-impact.high{background:rgba(217,48,37,.1);color:#D93025}
+    .evt-impact.medium{background:rgba(229,160,0,.15);color:#B58100}
+    .evt-impact.low{background:#F1F5F9;color:var(--text-muted)}
+    .evt-row{display:flex;flex-direction:column;gap:4px;flex:1}
+    .evt-notes{font-size:13px;color:var(--text-muted);line-height:1.4}
+    .evt-cadence{font-size:12px;color:var(--text-muted)}
+    .cot-list .pair{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .cot-list .net{font-variant-numeric:tabular-nums;color:var(--text-strong);font-weight:600}
+    .gen-stamp{font-size:12px;color:var(--text-muted);margin-top:var(--space-3);text-align:center}
+    .empty-note{color:var(--text-muted);font-size:13px;font-style:italic}
+    .source-link{font-size:11px;color:var(--text-muted);text-decoration:none}
+    .source-link:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="signals.html">Bot Journal</a>
+        <a href="journey.html">Journey</a>
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="badge">Free · Public Data</span>
+      <h1 class="mt-2">Market Dashboard</h1>
+      <p class="lead">
+        A free, weekly-refreshing snapshot of the context that matters to a forex bot:
+        large-speculator positioning from the CFTC, the US rate tape, and a reminder of the
+        scheduled events we pause trading around.
+      </p>
+      <p class="small mt-2">
+        Not a trading signal &mdash; just the bits of context we use before pressing go.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+
+      <div class="dash-grid">
+
+        <!-- CFTC COT -->
+        <div class="card dash-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-2)">
+            <h3>Smart-Money Positioning</h3>
+            <a class="source-link" target="_blank" href="https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm">CFTC COT &#8599;</a>
+          </div>
+          <p class="small" style="color:var(--text-muted)">
+            Net non-commercial (large speculator) positions, reported weekly. Positive = net long,
+            negative = net short, change column shows week-over-week shift.
+          </p>
+          <ul class="cot-list" id="cot-list">
+            <li><span class="empty-note">Loading&hellip;</span></li>
+          </ul>
+        </div>
+
+        <!-- US rates -->
+        <div class="card dash-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-2)">
+            <h3>US Rate Tape</h3>
+            <a class="source-link" target="_blank" href="https://fred.stlouisfed.org/">FRED &#8599;</a>
+          </div>
+          <p class="small" style="color:var(--text-muted)">
+            Effective Fed Funds, 2-year, and 10-year Treasury yields. Direction of the curve
+            tells us a lot about USD pressure in the week ahead.
+          </p>
+          <ul class="rates-list" id="rates-list">
+            <li><span class="empty-note">Loading&hellip;</span></li>
+          </ul>
+        </div>
+
+        <!-- Event calendar -->
+        <div class="card dash-card" style="grid-column:1/-1">
+          <h3>Events We Pause For</h3>
+          <p class="small" style="color:var(--text-muted)">
+            High-impact releases that we hand-off the bot around. This list is curated &mdash;
+            we refresh it with the journal.
+          </p>
+          <ul class="event-list" id="event-list">
+            <li><span class="empty-note">Loading&hellip;</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="gen-stamp" id="gen-stamp">Dashboard data loading&hellip;</p>
+
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container" style="max-width:640px;text-align:center">
+      <h2 class="h2">Reading the tape</h2>
+      <p class="lead">
+        Context &mdash; rates, positioning, and events &mdash; is the cheapest edge in forex. We
+        use this page weekly.
+      </p>
+      <p class="mt-3">
+        <a class="btn" href="signals.html">See the bot's trades &rarr;</a>
+        &nbsp;&nbsp;
+        <a class="btn btn-secondary" href="journey.html">Read the journey</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>&copy; 2025 ThrasherApps.com &mdash; Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> &middot;
+        <a href="privacy.html">Privacy</a> &middot;
+        <a target="_blank" href="https://christhrasher.wordpress.com/">Blog</a> &middot;
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+      <p class="small mt-2" style="color:var(--text-muted)">
+        Data: US CFTC (public), Federal Reserve Economic Data (public). Nothing on this page is investment advice.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const here = location.pathname.split('/').pop() || 'index.html';
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        const target = a.getAttribute('href');
+        if ((here === 'index.html' && target === '/') || here === target) a.classList.add('active');
+      });
+    })();
+
+    const RATE_LABELS = {
+      fed_funds_effective: 'Fed Funds (effective)',
+      us_10y: 'US 10-year yield',
+      us_2y: 'US 2-year yield',
+    };
+
+    function fmtInt(n) {
+      if (n === null || n === undefined) return '—';
+      return Number(n).toLocaleString();
+    }
+    function fmtSignedInt(n) {
+      if (n === null || n === undefined) return '—';
+      const v = Math.round(Number(n));
+      return (v >= 0 ? '+' : '') + v.toLocaleString();
+    }
+    function fmtSignedNum(n, digits) {
+      if (n === null || n === undefined) return '—';
+      const v = Number(n);
+      return (v >= 0 ? '+' : '') + v.toFixed(digits ?? 2);
+    }
+    function fmtTs(iso) {
+      if (!iso) return '—';
+      const d = new Date(iso);
+      if (isNaN(d)) return iso;
+      const pad = n => String(n).padStart(2, '0');
+      return d.getUTCFullYear() + '-' + pad(d.getUTCMonth()+1) + '-' + pad(d.getUTCDate())
+        + ' ' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes());
+    }
+    function chgClass(n) {
+      if (n === null || n === undefined) return 'flat';
+      if (n > 0) return 'pos';
+      if (n < 0) return 'neg';
+      return 'flat';
+    }
+
+    function renderRates(rates) {
+      const ul = document.getElementById('rates-list');
+      ul.innerHTML = '';
+      const keys = Object.keys(rates || {});
+      if (keys.length === 0) {
+        ul.innerHTML = '<li><span class="empty-note">Rates feed is refreshing. Check back after the weekly rebuild.</span></li>';
+        return;
+      }
+      keys.forEach(k => {
+        const r = rates[k];
+        const label = RATE_LABELS[k] || k;
+        const val = r.latest_value;
+        const chg = r.change;
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span class="label">${label}<div class="small" style="color:var(--text-muted);font-weight:400;margin-top:2px">${r.series} · ${r.latest_date}</div></span>
+          <span style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+            <span class="val">${val}%</span>
+            <span class="chg ${chgClass(chg)}">${chg === null || chg === undefined ? '—' : fmtSignedNum(chg, 2) + ' pp'}</span>
+          </span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderCOT(cot) {
+      const ul = document.getElementById('cot-list');
+      ul.innerHTML = '';
+      if (!cot || !cot.length) {
+        ul.innerHTML = '<li><span class="empty-note">COT feed is refreshing. Check back after the weekly rebuild.</span></li>';
+        return;
+      }
+      cot.forEach(row => {
+        const chg = row.change;
+        const chgText = (chg === null || chg === undefined) ? '—' : fmtSignedInt(chg);
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <span class="pair">${row.pair}<div class="small" style="color:var(--text-muted);font-weight:400;margin-top:2px">as of ${row.report_date || '—'}</div></span>
+          <span style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+            <span class="net">${fmtSignedInt(row.net)}</span>
+            <span class="chg ${chgClass(chg)}">${chgText}</span>
+          </span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function renderEvents(events) {
+      const ul = document.getElementById('event-list');
+      ul.innerHTML = '';
+      if (!events || !events.length) {
+        ul.innerHTML = '<li><span class="empty-note">No events queued.</span></li>';
+        return;
+      }
+      events.forEach(ev => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div class="evt-row">
+            <div style="display:flex;align-items:center;gap:8px"><span class="evt">${ev.label}</span><span class="evt-impact ${ev.impact || 'low'}">${ev.impact || 'low'}</span></div>
+            <div class="evt-cadence">${ev.cadence}</div>
+            <div class="evt-notes">${ev.notes || ''}</div>
+          </div>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    async function loadDashboard() {
+      try {
+        const m = await fetch('data/market.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null);
+        if (!m) throw new Error('market.json missing');
+        renderRates(m.rates);
+        renderCOT(m.cot);
+        renderEvents(m.events);
+        const stamp = document.getElementById('gen-stamp');
+        if (stamp) {
+          stamp.textContent = 'Data refreshed ' + fmtTs(m.generated_at) + ' UTC · sources: ' +
+            (m.sources || []).join(', ');
+        }
+      } catch (err) {
+        const stamp = document.getElementById('gen-stamp');
+        if (stamp) stamp.textContent = 'Dashboard data will appear here once the first rebuild runs.';
+        ['cot-list','rates-list','event-list'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.innerHTML = '<li><span class="empty-note">Awaiting first publish.</span></li>';
+        });
+      }
+    }
+    loadDashboard();
+  </script>
+</body>
+</html>

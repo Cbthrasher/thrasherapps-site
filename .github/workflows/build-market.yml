@@ -1,0 +1,49 @@
+name: Build market dashboard data
+
+# Pulls CFTC + FRED public feeds into data/market.json and auto-commits
+# the result to main. Free tier friendly — runs once a week (Sunday 01:00
+# UTC = Saturday evening ET) plus on-demand via the workflow_dispatch trigger.
+
+on:
+  schedule:
+    # Weekly: Sunday 01:00 UTC.  CFTC COT is published Friday afternoon, so
+    # by Sunday the newest figures are always available.
+    - cron: '0 1 * * 0'
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'scripts/build_market.py'
+      - '.github/workflows/build-market.yml'
+
+permissions:
+  contents: write   # required to push the regenerated data file back to main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build market data JSON
+        run: |
+          python3 scripts/build_market.py
+          echo "----- preview -----"
+          python3 -c "import json; d = json.load(open('data/market.json')); print('rates:', len(d.get('rates', {}))); print('cot:', len(d.get('cot', []))); print('events:', len(d.get('events', [])))"
+
+      - name: Commit regenerated data if changed
+        run: |
+          git config user.name "thrasherapps-bot"
+          git config user.email "bot@thrasherapps.com"
+          git add data/market.json
+          if git diff --cached --quiet; then
+            echo "No changes in data/market.json — skipping commit."
+          else
+            git commit -m "chore(data): refresh market dashboard (CFTC + FRED) [skip ci]"
+            git push
+          fi

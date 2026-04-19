@@ -3,43 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Forex Signals — ThrasherApps</title>
-  <meta name="description" content="Algorithmic forex and gold trading signals delivered to your phone. Backtested, validated, and running live." />
+  <title>Forex Bot Journal — ThrasherApps</title>
+  <meta name="description" content="Public trade journal for the ThrasherApps forex bot. Every trade, every win, every loss — updated daily. No cherry-picked backtests." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/site.css">
   <style>
     .stat-grid{display:grid;gap:var(--space-3);margin-top:var(--space-3)}
     @media(min-width:720px){.stat-grid{grid-template-columns:repeat(4,1fr)}}
     .stat-card{text-align:center;padding:var(--space-4)}
-    .stat-card .num{font-size:clamp(28px,4vw,36px);font-weight:700;color:var(--color-primary);line-height:1.2}
-    .stat-card .label{font-size:14px;color:var(--text-muted);margin-top:4px}
-    .step-grid{display:grid;gap:var(--space-4);margin-top:var(--space-4)}
-    @media(min-width:720px){.step-grid{grid-template-columns:repeat(3,1fr)}}
-    .step-card{position:relative;padding:var(--space-4);padding-top:calc(var(--space-4) + 8px)}
-    .step-num{position:absolute;top:-14px;left:var(--space-4);width:32px;height:32px;border-radius:50%;background:var(--color-primary);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
-    .tier-grid{display:grid;gap:var(--space-4);margin-top:var(--space-4)}
-    @media(min-width:720px){.tier-grid{grid-template-columns:repeat(3,1fr)}}
-    .tier-card{padding:var(--space-5) var(--space-4)}
-    .tier-card .price{font-size:clamp(24px,3vw,32px);font-weight:700;color:var(--text-strong)}
-    .tier-card .per{font-size:14px;color:var(--text-muted)}
-    .tier-card ul{list-style:none;padding:0;margin:var(--space-3) 0 0}
-    .tier-card li{padding:6px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--text-muted)}
-    .tier-card li:last-child{border:none}
-    .tier-card li::before{content:"\2713 ";color:var(--color-primary);font-weight:700}
-    .tier-featured{border-color:var(--color-primary);box-shadow:0 0 0 2px var(--color-primary),var(--shadow-sm)}
+    .stat-card .num{font-size:clamp(28px,4vw,36px);font-weight:700;color:var(--text-strong);line-height:1.2;font-variant-numeric:tabular-nums}
+    .stat-card .num.pos{color:#0F9D58}
+    .stat-card .num.neg{color:#D93025}
+    .stat-card .label{font-size:13px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+    .stat-card .sub{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+    .window-tabs{display:inline-flex;gap:4px;background:#EEF2F7;border:1px solid var(--border);border-radius:var(--radius-btn);padding:3px;margin-top:var(--space-3)}
+    .window-tabs button{padding:6px 14px;border:0;background:transparent;border-radius:calc(var(--radius-btn) - 2px);cursor:pointer;font-size:14px;color:var(--text-muted);font-weight:500}
+    .window-tabs button.active{background:#fff;color:var(--text-strong);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+
+    .feed-table{width:100%;border-collapse:collapse;margin-top:var(--space-3);font-size:14px}
+    .feed-table thead th{text-align:left;padding:10px 10px;border-bottom:1px solid var(--border);color:var(--text-muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+    .feed-table tbody td{padding:10px;border-bottom:1px solid #F1F5F9;font-variant-numeric:tabular-nums;color:var(--text-strong)}
+    .feed-table tbody tr:hover td{background:#F8FAFC}
+    .feed-table .pnl-pos{color:#0F9D58;font-weight:600}
+    .feed-table .pnl-neg{color:#D93025;font-weight:600}
+    .feed-table .tag{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;padding:2px 8px;border-radius:4px;background:#F1F5F9;border:1px solid var(--border);display:inline-block}
+    .feed-table .side-long{color:#0F9D58}
+    .feed-table .side-short{color:#D93025}
+    @media(max-width:720px){
+      .feed-table thead th:nth-child(3),
+      .feed-table tbody td:nth-child(3),
+      .feed-table thead th:nth-child(6),
+      .feed-table tbody td:nth-child(6){display:none}
+    }
+
+    .breakdown-grid{display:grid;gap:var(--space-3);margin-top:var(--space-3)}
+    @media(min-width:720px){.breakdown-grid{grid-template-columns:repeat(2,1fr)}}
+    .breakdown-card h3{font-size:16px}
+    .breakdown-table{width:100%;margin-top:var(--space-2);font-size:14px;border-collapse:collapse}
+    .breakdown-table td{padding:6px 0;border-bottom:1px solid #F1F5F9;font-variant-numeric:tabular-nums}
+    .breakdown-table td:first-child{color:var(--text-strong);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+    .breakdown-table td:not(:first-child){text-align:right;color:var(--text-muted)}
+    .breakdown-table .pf-good{color:#0F9D58;font-weight:600}
+    .breakdown-table .pf-bad{color:#D93025;font-weight:600}
+    .breakdown-table .pf-neutral{color:var(--text-muted)}
+
     .faq-item{border-bottom:1px solid var(--border);padding:var(--space-3) 0}
     .faq-item:last-child{border:none}
     .faq-q{font-weight:600;color:var(--text-strong);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
     .faq-q::after{content:"+";font-size:20px;color:var(--text-muted);transition:transform .2s}
     .faq-item.open .faq-q::after{transform:rotate(45deg)}
-    .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--text-muted);font-size:15px}
-    .faq-item.open .faq-a{max-height:300px;padding-top:var(--space-2)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--text-muted);font-size:15px}
+    .faq-item.open .faq-a{max-height:400px;padding-top:var(--space-2)}
+
     .pairs-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--space-2)}
     .pair-tag{font-size:13px;padding:4px 10px;border-radius:6px;background:#F1F5F9;border:1px solid var(--border);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text-strong)}
-    .waitlist-form{display:flex;gap:8px;max-width:440px;margin-top:var(--space-3)}
-    .waitlist-form input{flex:1;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-btn);font-size:16px}
+
+    .waitlist-form{display:flex;gap:8px;max-width:440px;margin-top:var(--space-3);flex-wrap:wrap}
+    .waitlist-form input{flex:1;min-width:220px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-btn);font-size:16px}
     .waitlist-form input:focus{outline:none;border-color:var(--color-primary);box-shadow:0 0 0 3px rgba(0,122,255,.15)}
     .disclaimer{font-size:12px;color:var(--text-muted);margin-top:var(--space-2);max-width:540px}
+
+    .truth-card{border-left:3px solid var(--color-primary)}
+    .truth-card h3{margin-top:0}
+    .truth-card p{color:var(--text-muted);font-size:15px;line-height:1.6}
+
+    .muted-row{font-size:13px;color:var(--text-muted)}
+    .gen-stamp{font-size:12px;color:var(--text-muted);margin-top:var(--space-2);text-align:center}
+    .empty-state{padding:var(--space-5);text-align:center;color:var(--text-muted)}
+
+    .gain-pill{display:inline-block;padding:2px 10px;border-radius:6px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+    .gain-pill.pos{background:rgba(15,157,88,.1);color:#0F9D58}
+    .gain-pill.neg{background:rgba(217,48,37,.1);color:#D93025}
   </style>
 </head>
 <body>
@@ -52,7 +87,9 @@
         <a href="/">Home</a>
         <a href="apps.html">Apps</a>
         <a href="ai.html">AI Solutions</a>
-        <a href="signals.html">Signals</a>
+        <a href="signals.html">Bot Journal</a>
+        <a href="journey.html">Journey</a>
+        <a href="dashboard.html">Dashboard</a>
         <a href="grc-lab.html">GRC Lab</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
@@ -63,10 +100,11 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container hero-inner">
-      <span class="badge">Coming Soon</span>
-      <h1 class="mt-2">Algorithmic Forex Signals</h1>
+      <span class="badge">Live · Updated Daily</span>
+      <h1 class="mt-2">Forex Bot Journal</h1>
       <p class="lead">
-        Backtested strategies. Real-time alerts. Delivered to your phone so you can trade with confidence.
+        Every trade our algorithm takes, logged and published. Wins, losses, the ugly stretches —
+        all of it. No cherry-picked backtests. Just a real bot learning in public.
       </p>
       <div class="pairs-row">
         <span class="pair-tag">EUR/USD</span>
@@ -75,163 +113,158 @@
         <span class="pair-tag">USD/CAD</span>
         <span class="pair-tag">USD/CHF</span>
         <span class="pair-tag">NZD/USD</span>
+        <span class="pair-tag">EUR/GBP</span>
         <span class="pair-tag">XAU/USD</span>
       </div>
-
-      <!-- Waitlist -->
-      <form class="waitlist-form" action="https://formspree.io/f/mgvzdljj" method="POST">
-        <input type="hidden" name="_subject" value="Signals Waitlist Signup" />
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit" class="btn">Join Waitlist</button>
-      </form>
-      <p class="disclaimer">No spam. We'll notify you when signals go live. Unsubscribe anytime.</p>
-    </div>
-  </section>
-
-  <!-- Performance Stats -->
-  <section class="section section--tight">
-    <div class="container">
-      <h2 class="h2 center">Backtest Performance</h2>
-      <p class="lead center">Validated on 362 days of real OANDA market data. Not curve-fit.</p>
-      <div class="stat-grid reveal">
-        <div class="card stat-card">
-          <div class="num">1,030+</div>
-          <div class="label">Trades / Year</div>
-        </div>
-        <div class="card stat-card">
-          <div class="num">1.40</div>
-          <div class="label">Profit Factor</div>
-        </div>
-        <div class="card stat-card">
-          <div class="num">42%</div>
-          <div class="label">Win Rate</div>
-        </div>
-        <div class="card stat-card">
-          <div class="num">6.0%</div>
-          <div class="label">Max Drawdown</div>
-        </div>
-      </div>
-      <p class="small center mt-3">
-        Based on out-of-sample walk-forward testing across 8 instruments.
-        Past performance does not guarantee future results.
+      <p class="small mt-3" style="max-width:600px">
+        Running on an OANDA practice account with a demo balance. Real market data, real fills, real slippage &mdash; just not real money yet.
+        We'll graduate to a small live account after 30 days of clean performance.
       </p>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="section">
+  <!-- Live Metrics -->
+  <section class="section section--tight">
     <div class="container">
-      <h2 class="h2 center">How It Works</h2>
-      <p class="lead center">Three steps from signup to live trades.</p>
-      <div class="step-grid reveal">
-        <div class="card step-card">
-          <span class="step-num">1</span>
-          <h3>Subscribe</h3>
-          <p>Pick a plan. Get instant access to our Telegram signal channel and web dashboard.</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)">
+        <div>
+          <h2 class="h2" style="margin:0">Live Performance</h2>
+          <p class="muted-row" style="margin-top:4px">Rolling window of closed trades. Pips, not dollars &mdash; scales to any account size.</p>
         </div>
-        <div class="card step-card">
-          <span class="step-num">2</span>
-          <h3>Get Alerts</h3>
-          <p>Receive real-time entry signals with exact pair, direction, stop-loss, and take-profit levels.</p>
-        </div>
-        <div class="card step-card">
-          <span class="step-num">3</span>
-          <h3>Trade</h3>
-          <p>Execute on your own broker account. You control your risk, position size, and capital.</p>
+        <div class="window-tabs" role="tablist" aria-label="Performance window">
+          <button data-win="all_time" class="active" type="button">All time</button>
+          <button data-win="last_30d" type="button">30 days</button>
+          <button data-win="last_7d" type="button">7 days</button>
         </div>
       </div>
+
+      <div class="stat-grid" id="stat-grid">
+        <div class="card stat-card"><div class="num" data-stat="n_trades">—</div><div class="label">Trades</div><div class="sub" data-stat="wr_sub">—</div></div>
+        <div class="card stat-card"><div class="num" data-stat="total_pips">—</div><div class="label">Total Pips</div><div class="sub" data-stat="avgs_sub">—</div></div>
+        <div class="card stat-card"><div class="num" data-stat="win_rate_pct">—</div><div class="label">Win Rate</div><div class="sub" data-stat="wl_sub">—</div></div>
+        <div class="card stat-card"><div class="num" data-stat="profit_factor">—</div><div class="label">Profit Factor</div><div class="sub">Gross&nbsp;win&nbsp;/&nbsp;Gross&nbsp;loss</div></div>
+      </div>
+      <p class="gen-stamp" id="gen-stamp">Loading latest data&hellip;</p>
+    </div>
+  </section>
+
+  <!-- Honest status -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="card truth-card">
+        <h3>Where we're at, honestly</h3>
+        <p>
+          The all-time profit factor above is below 1.0. That's not a typo &mdash; the early
+          trades on this account ran through several losing strategies (old scalp, RSI divergence)
+          and a badly-tuned exit that strangled winners. We found the problem in a 45-trade audit,
+          shipped a fixed configuration on <strong>April 11, 2026</strong>, and the last 7 days
+          are already showing a better profit factor.
+        </p>
+        <p>
+          We're publishing every trade here instead of waiting until the numbers look good,
+          because the whole point of this journal is transparency. If the fix holds for 30 days,
+          the headline number will earn itself. If it doesn't, you'll see that too.
+        </p>
+        <p>
+          <a href="journey.html">Read the full story &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Per-pair & per-strategy -->
+  <section class="section section--tight">
+    <div class="container">
+      <h2 class="h2">Breakdown</h2>
+      <p class="muted-row">All-time, grouped by instrument and strategy.</p>
+      <div class="breakdown-grid">
+        <div class="card breakdown-card">
+          <h3>By instrument</h3>
+          <table class="breakdown-table" id="by-pair">
+            <thead><tr><td>Pair</td><td>n</td><td>WR</td><td>PF</td><td>Pips</td></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="card breakdown-card">
+          <h3>By strategy</h3>
+          <table class="breakdown-table" id="by-strategy">
+            <thead><tr><td>Strategy</td><td>n</td><td>WR</td><td>PF</td><td>Pips</td></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trade Feed -->
+  <section class="section section--tight">
+    <div class="container">
+      <h2 class="h2">Recent Trades</h2>
+      <p class="muted-row">Newest first. Every closed position &mdash; wins and losses both shown. Hover for details.</p>
+      <div style="overflow-x:auto">
+        <table class="feed-table" id="feed">
+          <thead>
+            <tr>
+              <th>Closed (UTC)</th>
+              <th>Pair</th>
+              <th>Strategy</th>
+              <th>Side</th>
+              <th>Pips</th>
+              <th>Duration</th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="7" class="empty-state">Loading trades&hellip;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small mt-3" id="feed-meta">&nbsp;</p>
     </div>
   </section>
 
   <!-- What's Under the Hood -->
   <section class="section">
     <div class="container">
-      <h2 class="h2">What Powers the Signals</h2>
-      <p class="lead">Two complementary strategies running on M15 candles, 24/5.</p>
+      <h2 class="h2">What the bot does</h2>
+      <p class="lead">Two complementary strategies on M15 candles, 24&thinsp;&times;&thinsp;5.</p>
       <div class="grid grid-2 mt-3 reveal">
         <div class="card">
           <span class="badge">Strategy 1</span>
           <h3 class="mt-2">Trend Standard</h3>
           <p class="mt-1">
-            Rides momentum with EMA alignment and RSI confirmation.
-            Wide stop-loss absorbs noise, breakeven shield locks in gains,
-            and a fixed 2.75R take-profit captures full moves.
+            Rides momentum when EMA(12) and EMA(26) agree with higher-timeframe trend.
+            Wide stop at 2&thinsp;&times;&thinsp;ATR absorbs the noise, a break-even shield locks in
+            gains once the trade moves +10 pips, and a fixed 2.75R take-profit
+            captures the full move instead of trailing into reversals.
           </p>
         </div>
         <div class="card">
           <span class="badge">Strategy 2</span>
           <h3 class="mt-2">Mean Reversion Pullback</h3>
           <p class="mt-1">
-            Catches pullbacks in trending markets using Bollinger Band extremes,
-            RSI confirmation, and H1 trend alignment. Targets the BB midline
-            for consistent, high-probability exits.
+            Fades Bollinger Band extremes when price is stretched but the H1 trend
+            still favors a bounce. RSI confirms exhaustion. Targets the BB midline
+            &mdash; a tighter, higher-probability exit than the trend strategy.
           </p>
         </div>
       </div>
       <div class="grid grid-2 mt-3 reveal">
         <div class="card">
-          <h3>Risk Management</h3>
+          <h3>Risk management</h3>
           <p class="mt-1">
-            Every signal includes exact stop-loss and take-profit levels.
-            1% risk per trade. Max 5 concurrent positions. Session-aware filters
-            block low-edge conditions automatically.
+            Flat 1% risk per trade on the wide stop distance. Max 5 concurrent
+            positions. Daily loss cap. Session-aware pair blocks &mdash; if
+            EUR/GBP loses 6 straight, it's benched automatically.
           </p>
         </div>
         <div class="card">
-          <h3>Instruments</h3>
+          <h3>What we removed</h3>
           <p class="mt-1">
-            7 major forex pairs plus gold (XAU/USD). Each pair is individually validated
-            with per-session performance tracking.
-            Losing pairs and sessions are blocked automatically.
+            RSI divergence (8 trades, all losing). Old mean reversion. Dynamic
+            risk scaling that was silently halving size on losing streaks.
+            The journal shows exactly which strategies we pulled and when.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section class="section">
-    <div class="container">
-      <h2 class="h2 center">Simple Pricing</h2>
-      <p class="lead center">Start free. Upgrade when you're ready.</p>
-      <div class="tier-grid reveal">
-        <div class="card tier-card">
-          <span class="badge">Free</span>
-          <div class="price mt-2">$0</div>
-          <div class="per">forever</div>
-          <ul>
-            <li>Delayed signals (30 min)</li>
-            <li>Weekly performance report</li>
-            <li>Web dashboard access</li>
-            <li>2 pairs (EUR/USD, GBP/USD)</li>
-          </ul>
-          <p class="mt-3"><a class="btn btn-secondary" href="#waitlist">Join Waitlist</a></p>
-        </div>
-        <div class="card tier-card tier-featured">
-          <span class="badge">Most Popular</span>
-          <div class="price mt-2">$29</div>
-          <div class="per">/ month</div>
-          <ul>
-            <li>Real-time Telegram alerts</li>
-            <li>All 8 instruments</li>
-            <li>Entry, SL, TP for every signal</li>
-            <li>Daily performance stats</li>
-            <li>Web dashboard + history</li>
-          </ul>
-          <p class="mt-3"><a class="btn" href="#waitlist">Join Waitlist</a></p>
-        </div>
-        <div class="card tier-card">
-          <span class="badge">Pro</span>
-          <div class="price mt-2">$79</div>
-          <div class="per">/ month</div>
-          <ul>
-            <li>Everything in Standard</li>
-            <li>Strategy breakdown per signal</li>
-            <li>API access (JSON webhooks)</li>
-            <li>Priority support</li>
-            <li>Early access to new strategies</li>
-          </ul>
-          <p class="mt-3"><a class="btn btn-secondary" href="#waitlist">Join Waitlist</a></p>
         </div>
       </div>
     </div>
@@ -244,33 +277,33 @@
       <div class="mt-4">
 
         <div class="faq-item">
-          <div class="faq-q">What broker do I need?</div>
-          <div class="faq-a">Any forex broker that supports the listed pairs. We use OANDA internally, but signals work with any broker. You trade on your own account.</div>
+          <div class="faq-q">Is this data real?</div>
+          <div class="faq-a">Yes. Every trade on this page is parsed directly from the bot's live signal log &mdash; the same JSONL file the bot writes as it runs. The numbers aren't hand-picked, adjusted, or backtested; they're exactly what the live bot did.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">How are signals delivered?</div>
-          <div class="faq-a">Real-time alerts via Telegram with exact entry price, stop-loss, and take-profit. You'll also have a web dashboard showing all active and historical signals.</div>
+          <div class="faq-q">Why is the profit factor below 1.0?</div>
+          <div class="faq-a">The account has 158 trades going back to early March. The first ~120 of those ran strategies and exits that we've since disabled. The winning config shipped April 11 and is earning its numbers in the 7-day window. If you want to watch just the post-fix performance, click the "7 days" tab.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">What's the minimum account size?</div>
-          <div class="faq-a">No minimum required. Our signals include percentage-based risk (1% per trade), so they scale to any account size. A $500+ account is recommended for comfortable position sizing.</div>
+          <div class="faq-q">Are you selling signals yet?</div>
+          <div class="faq-a">No. We pulled the signal-subscription product in April when our live results didn't match our backtests &mdash; selling "$29/mo signals" on a losing bot would be the wrong thing to do. We'll re-evaluate if and when the live bot earns a sustainable edge over 4+ weeks.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Are these guaranteed profits?</div>
-          <div class="faq-a">No. Trading involves risk and past performance does not guarantee future results. Our strategies have a validated edge over hundreds of trades, but individual trades can and will lose. Never risk money you can't afford to lose.</div>
+          <div class="faq-q">Can I get the code?</div>
+          <div class="faq-a">The V3 Python bot is private, but we write openly about the architecture, the bugs we fixed, and the strategies we've tried &mdash; both here and on the <a target="_blank" href="https://christhrasher.wordpress.com/">journey blog</a>. The Rust rewrite (V4) may open-source later.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Can I cancel anytime?</div>
-          <div class="faq-a">Yes. No contracts, no lock-in. Cancel your subscription anytime and you won't be charged again.</div>
+          <div class="faq-q">What does "shadow mode" mean?</div>
+          <div class="faq-a">For the in-progress V4 Rust bot, we log what it <em>would</em> have traded without actually submitting orders. That lets us validate the signal generation and risk math against live prices before putting real money behind it.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">When does it launch?</div>
-          <div class="faq-a">We're running our algorithms live on demo and real accounts now. The signal service will launch once we have 4+ weeks of verified live performance. Join the waitlist to be first in line.</div>
+          <div class="faq-q">Email list?</div>
+          <div class="faq-a">Sure &mdash; leave your email below if you want a short weekly recap. No sales pitch, just a link to the latest numbers and whatever we learned that week.</div>
         </div>
 
       </div>
@@ -280,14 +313,14 @@
   <!-- CTA Band -->
   <section class="section cta-band" id="waitlist">
     <div class="container" style="max-width:540px;text-align:center">
-      <h2 class="h2">Get Early Access</h2>
-      <p class="lead">Join the waitlist and be first to receive signals when we launch.</p>
+      <h2 class="h2">Follow along</h2>
+      <p class="lead">Drop your email for the weekly journal recap.</p>
       <form class="waitlist-form" style="max-width:100%;justify-content:center" action="https://formspree.io/f/mgvzdljj" method="POST">
-        <input type="hidden" name="_subject" value="Signals Waitlist Signup" />
+        <input type="hidden" name="_subject" value="Bot Journal Subscriber" />
         <input type="email" name="email" placeholder="Enter your email" required />
-        <button type="submit" class="btn">Join Waitlist</button>
+        <button type="submit" class="btn">Subscribe</button>
       </form>
-      <p class="disclaimer" style="margin:var(--space-2) auto 0">No spam. Unsubscribe anytime. We'll email you when signals go live.</p>
+      <p class="disclaimer" style="margin:var(--space-2) auto 0">No spam. Unsubscribe anytime. Weekly recap only &mdash; no trade-by-trade pings.</p>
     </div>
   </section>
 
@@ -298,11 +331,12 @@
       <div class="mt-2">
         <a href="mailto:cbthrasher2020@gmail.com">Email</a> &middot;
         <a href="privacy.html">Privacy</a> &middot;
+        <a target="_blank" href="https://christhrasher.wordpress.com/">Blog</a> &middot;
         <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
       </div>
       <p class="disclaimer mt-2">
         Trading foreign exchange carries a high level of risk and may not be suitable for all investors.
-        Past performance is not indicative of future results.
+        Past performance is not indicative of future results. Nothing on this page is investment advice.
       </p>
     </div>
   </footer>
@@ -335,6 +369,189 @@
         });
       });
     })();
+
+    // --- Journal data loaders ---
+
+    function fmtInt(n) {
+      if (n === null || n === undefined) return '—';
+      return Number(n).toLocaleString();
+    }
+    function fmtPips(n) {
+      if (n === null || n === undefined) return '—';
+      const v = Number(n);
+      const s = (v >= 0 ? '+' : '') + v.toFixed(1);
+      return s;
+    }
+    function fmtPct(n) {
+      if (n === null || n === undefined) return '—';
+      return Number(n).toFixed(1) + '%';
+    }
+    function fmtPF(n) {
+      if (n === null || n === undefined) return '—';
+      return Number(n).toFixed(2);
+    }
+    function fmtDur(seconds) {
+      if (!seconds) return '—';
+      const m = Math.floor(seconds / 60);
+      if (m < 60) return m + 'm';
+      const h = Math.floor(m / 60);
+      const rm = m % 60;
+      if (h < 24) return h + 'h ' + rm + 'm';
+      return Math.floor(h/24) + 'd ' + (h%24) + 'h';
+    }
+    function fmtTs(iso) {
+      if (!iso) return '—';
+      const d = new Date(iso);
+      if (isNaN(d)) return iso;
+      // UTC-rendered, short
+      const pad = n => String(n).padStart(2, '0');
+      return d.getUTCFullYear() + '-' + pad(d.getUTCMonth()+1) + '-' + pad(d.getUTCDate())
+        + ' ' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes());
+    }
+    function pfClass(pf) {
+      if (pf === null || pf === undefined) return 'pf-neutral';
+      if (pf >= 1.3) return 'pf-good';
+      if (pf < 1.0) return 'pf-bad';
+      return 'pf-neutral';
+    }
+
+    function renderStats(win) {
+      const el = id => document.querySelector(`[data-stat="${id}"]`);
+      const set = (id, text, cls) => {
+        const n = el(id);
+        if (!n) return;
+        n.textContent = text;
+        n.classList.remove('pos','neg');
+        if (cls) n.classList.add(cls);
+      };
+      if (!win) {
+        set('n_trades','—'); set('total_pips','—');
+        set('win_rate_pct','—'); set('profit_factor','—');
+        set('wr_sub',''); set('avgs_sub',''); set('wl_sub','');
+        return;
+      }
+      set('n_trades', fmtInt(win.n_trades));
+      set('wr_sub', win.n_trades > 0 ? 'Closed positions' : '');
+
+      const pips = Number(win.total_pips);
+      set('total_pips', fmtPips(pips), pips >= 0 ? 'pos' : 'neg');
+      set('avgs_sub', 'avg win ' + fmtPips(win.avg_win_pips) + ' · avg loss ' + fmtPips(win.avg_loss_pips));
+
+      set('win_rate_pct', fmtPct(win.win_rate_pct));
+      set('wl_sub', fmtInt(win.wins) + 'W / ' + fmtInt(win.losses) + 'L');
+
+      const pf = win.profit_factor;
+      const pfText = pf === null || pf === undefined ? '—' : fmtPF(pf);
+      let pfCls = null;
+      if (pf !== null && pf !== undefined) pfCls = pf >= 1.0 ? 'pos' : 'neg';
+      set('profit_factor', pfText, pfCls);
+    }
+
+    function renderBreakdown(metrics) {
+      const pairTbody = document.querySelector('#by-pair tbody');
+      const stratTbody = document.querySelector('#by-strategy tbody');
+      pairTbody.innerHTML = '';
+      stratTbody.innerHTML = '';
+      (metrics.by_pair || []).forEach(row => {
+        const tr = document.createElement('tr');
+        const pf = row.profit_factor;
+        tr.innerHTML = `
+          <td>${row.pair}</td>
+          <td>${fmtInt(row.n_trades)}</td>
+          <td>${fmtPct(row.win_rate_pct)}</td>
+          <td class="${pfClass(pf)}">${fmtPF(pf)}</td>
+          <td class="${row.total_pips >= 0 ? 'pf-good' : 'pf-bad'}">${fmtPips(row.total_pips)}</td>
+        `;
+        pairTbody.appendChild(tr);
+      });
+      (metrics.by_strategy || []).forEach(row => {
+        const tr = document.createElement('tr');
+        const pf = row.profit_factor;
+        tr.innerHTML = `
+          <td>${row.strategy}</td>
+          <td>${fmtInt(row.n_trades)}</td>
+          <td>${fmtPct(row.win_rate_pct)}</td>
+          <td class="${pfClass(pf)}">${fmtPF(pf)}</td>
+          <td class="${row.total_pips >= 0 ? 'pf-good' : 'pf-bad'}">${fmtPips(row.total_pips)}</td>
+        `;
+        stratTbody.appendChild(tr);
+      });
+    }
+
+    function renderFeed(trades) {
+      const tbody = document.querySelector('#feed tbody');
+      tbody.innerHTML = '';
+      if (!trades || !trades.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No trades logged yet.</td></tr>';
+        return;
+      }
+      trades.forEach(t => {
+        const pnl = Number(t.pnl_pips) || 0;
+        const pnlCls = pnl >= 0 ? 'pnl-pos' : 'pnl-neg';
+        const sideCls = t.side === 'long' ? 'side-long' : 'side-short';
+        const pillCls = pnl >= 0 ? 'gain-pill pos' : 'gain-pill neg';
+        const resultLabel = pnl >= 0 ? 'WIN' : 'LOSS';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${fmtTs(t.closed_at)}</td>
+          <td><span class="tag">${t.pair.replace('_','/')}</span></td>
+          <td>${t.strategy || '—'}</td>
+          <td class="${sideCls}">${(t.side || '').toUpperCase()}</td>
+          <td class="${pnlCls}">${fmtPips(t.pnl_pips)}</td>
+          <td>${fmtDur(t.duration_seconds)}</td>
+          <td><span class="${pillCls}">${resultLabel}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    let METRICS_CACHE = null;
+
+    async function loadJournal() {
+      try {
+        const [m, t] = await Promise.all([
+          fetch('data/metrics.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null),
+          fetch('data/trades.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : []),
+        ]);
+        if (!m) throw new Error('metrics.json missing');
+        METRICS_CACHE = m;
+        const winKey = document.querySelector('.window-tabs button.active')?.dataset.win || 'all_time';
+        renderStats(m.windows?.[winKey]);
+        renderBreakdown(m);
+        renderFeed(t);
+
+        const stamp = document.querySelector('#gen-stamp');
+        if (stamp && m.generated_at) {
+          stamp.textContent = 'Last updated ' + fmtTs(m.generated_at) + ' UTC · ' +
+            fmtInt(m.total_trade_count) + ' trades in ledger · data: data/trades.json';
+        }
+
+        const meta = document.querySelector('#feed-meta');
+        if (meta) {
+          meta.innerHTML = 'Showing ' + fmtInt((t || []).length) +
+            ' of ' + fmtInt(m.total_trade_count) + ' recorded trades. ' +
+            'Trades before <strong>Apr 11</strong> ran configurations that have since been pulled.';
+        }
+      } catch (err) {
+        const stamp = document.querySelector('#gen-stamp');
+        if (stamp) stamp.textContent = 'Journal data will appear here once the first sync runs.';
+        const meta = document.querySelector('#feed-meta');
+        if (meta) meta.textContent = '';
+        const tbody = document.querySelector('#feed tbody');
+        if (tbody) tbody.innerHTML = '<tr><td colspan="7" class="empty-state">Awaiting first data publish.</td></tr>';
+      }
+    }
+
+    document.querySelectorAll('.window-tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.window-tabs button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const win = btn.dataset.win;
+        if (METRICS_CACHE) renderStats(METRICS_CACHE.windows?.[win]);
+      });
+    });
+
+    loadJournal();
   </script>
 </body>
 </html>

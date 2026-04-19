@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Journey — ThrasherApps Forex Bots</title>
+  <meta name="description" content="From a $297 Python script to a Rust rewrite: the story of three forex trading bots, the bugs that cost real money, and what we learned." />
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    .timeline{position:relative;margin-top:var(--space-5);padding-left:var(--space-4)}
+    .timeline::before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--color-primary),var(--border))}
+    .t-item{position:relative;padding:0 0 var(--space-5) var(--space-4)}
+    .t-item::before{content:"";position:absolute;left:-24px;top:6px;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--color-primary)}
+    .t-item.warn::before{border-color:#E5A000;background:#FFF8E6}
+    .t-item.fail::before{border-color:#D93025;background:#FFE8E6}
+    .t-item.good::before{border-color:#0F9D58;background:#E6F4EA}
+    .t-item h3{margin:0;font-size:18px}
+    .t-meta{font-size:13px;color:var(--text-muted);font-weight:500;margin-bottom:6px}
+    .t-item p{color:var(--text-muted);font-size:15px;line-height:1.6}
+    .t-item p strong{color:var(--text-strong)}
+    .pull{font-size:20px;line-height:1.5;color:var(--text-strong);font-style:italic;border-left:3px solid var(--color-primary);padding:var(--space-2) var(--space-3);margin:var(--space-4) 0;background:#F8FAFC}
+    .bug-grid{display:grid;gap:var(--space-3);margin-top:var(--space-3)}
+    @media(min-width:720px){.bug-grid{grid-template-columns:repeat(3,1fr)}}
+    .bug-card{padding:var(--space-3)}
+    .bug-card h4{margin:0;font-size:14px;color:var(--text-strong)}
+    .bug-card p{font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:6px}
+    .bug-card .bug-num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:var(--color-primary);font-weight:600}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="ai.html">AI Solutions</a>
+        <a href="signals.html">Bot Journal</a>
+        <a class="active" href="journey.html">Journey</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="grc-lab.html">GRC Lab</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <span class="badge">Build Log</span>
+      <h1 class="mt-2">From $297 to a Rust rewrite</h1>
+      <p class="lead">
+        Three forex bots, fifteen production bugs, and one hard lesson about the gap between
+        a good backtest and a profitable live account. Here's what happened &mdash; in order.
+      </p>
+      <p class="small mt-2">
+        <a href="signals.html">See current live performance &rarr;</a>
+        &nbsp;&middot;&nbsp;
+        <a target="_blank" href="https://christhrasher.wordpress.com/">Long-form blog posts</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section section--tight">
+    <div class="container" style="max-width:820px">
+      <p class="pull">
+        The bot's backtest said PF&nbsp;1.40. The live account's first 120 trades said PF&nbsp;0.46.
+        Closing that gap is what this journey has been about.
+      </p>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="section section--tight">
+    <div class="container" style="max-width:820px">
+      <h2 class="h2">Timeline</h2>
+
+      <div class="timeline mt-3">
+
+        <div class="t-item">
+          <div class="t-meta">Aug 2025 &middot; V1 idea</div>
+          <h3>A friend made $300,000 on OANDA</h3>
+          <p>
+            A friend of mine turned a small deposit into roughly <strong>$300k</strong> over a few
+            years of careful, mostly-manual forex trading. I wanted to understand what he was
+            doing well enough to automate a version of it on my own laptop &mdash; no VPS, no
+            prop firm, no subscription signal service. Just a script that reads the market and
+            takes the trades a disciplined person would.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <div class="t-meta">Sep 2025 &middot; V1 → V2</div>
+          <h3>V2: A $297 live Python bot</h3>
+          <p>
+            The first real deployment was a ~4,200-line Python script running against an OANDA
+            <strong>live micro-account with $297</strong>. Simple rules: EMA crossover with RSI
+            confirmation, fixed percent risk, nothing fancy. It taught me more about spreads,
+            slippage, and session liquidity in two months than any YouTube video.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <div class="t-meta">Jan 2026 &middot; V3</div>
+          <h3>V3: Rebuilt on an $85K OANDA demo</h3>
+          <p>
+            V3 moved to an OANDA practice account with a sizeable demo balance so I could stress
+            test features that need more room: six strategies, session filters, regime detection,
+            per-pair blocks, ML entry filters, confluence scoring. The codebase grew to ~7,200
+            lines with a PyQt desktop GUI and rolling logs.
+          </p>
+          <p>
+            The backtest looked good. The live account didn't.
+          </p>
+        </div>
+
+        <div class="t-item fail">
+          <div class="t-meta">Apr 2026 &middot; The audit</div>
+          <h3>The 45-trade audit that exposed the gap</h3>
+          <p>
+            After 17 days of live trading, V3 had closed 45 trades with a <strong>profit factor
+            of 0.54</strong> &mdash; a losing system. I paused the bot and replayed every one of
+            those trades in a simulator with the same candles, the same signals, but with a
+            different <em>exit</em>: a wide stop, a break-even shield, and a fixed 2.75R
+            take-profit instead of a tight trailing stop.
+          </p>
+          <p>
+            Same 45 entries. Different exits. <strong>PF&nbsp;1.60</strong>. The edge was always
+            there &mdash; the exit was giving it all back.
+          </p>
+        </div>
+
+        <div class="t-item good">
+          <div class="t-meta">Apr 11, 2026 &middot; The winning config</div>
+          <h3>Three-phase exit, locked in</h3>
+          <p>
+            The fix is three phases:
+          </p>
+          <ul style="color:var(--text-muted);font-size:15px;line-height:1.7">
+            <li><strong>Phase A</strong> &middot; Wide stop at 2&thinsp;&times;&thinsp;ATR (8&ndash;14 pips). Absorb the noise.</li>
+            <li><strong>Phase B</strong> &middot; Once the trade gains +10 pips, move the stop to entry&nbsp;+&nbsp;3. Lock in a small win, keep upside open.</li>
+            <li><strong>Phase C</strong> &middot; Fixed take-profit at 2.75&nbsp;R. No trailing &mdash; trailing was eating reversals.</li>
+          </ul>
+          <p>
+            Position sizing uses 1% flat risk calculated on the wide stop distance &mdash; so
+            the dollar risk is constant even as the pip stop gets wider. Backtested the same
+            way, simulated the same way, shipped live.
+          </p>
+        </div>
+
+        <div class="t-item warn">
+          <div class="t-meta">Apr 11 &middot; Bug hunt</div>
+          <h3>Fifteen bugs between "config saved" and "bot runs it"</h3>
+          <p>
+            Rolling the config out wasn't one commit &mdash; it was fifteen. Each one was a
+            subtle mismatch between what the simulator did and what the live execution actually
+            did. Any single one of them was enough to turn a winning config into a losing one.
+            A sample:
+          </p>
+
+          <div class="bug-grid">
+            <div class="card bug-card">
+              <span class="bug-num">BUG #1</span>
+              <h4>Breakeven racing the shield</h4>
+              <p>Legacy BE code fired at +3 pips and moved the stop, killing the shield at +10.</p>
+            </div>
+            <div class="card bug-card">
+              <span class="bug-num">BUG #3</span>
+              <h4>Partial TP half-closing</h4>
+              <p>An old "take half off at 60% of TP" block was trimming every winner in half.</p>
+            </div>
+            <div class="card bug-card">
+              <span class="bug-num">BUG #5</span>
+              <h4>MFE override flipping exits</h4>
+              <p>A favorable-excursion rule was swapping the fixed TP back to the old trailing one on winning trades.</p>
+            </div>
+            <div class="card bug-card">
+              <span class="bug-num">BUG #6</span>
+              <h4>max_sl_pips clamp</h4>
+              <p>A 10-pip cap on stops was silently narrowing the wide stop back to the old one on volatile pairs.</p>
+            </div>
+            <div class="card bug-card">
+              <span class="bug-num">BUG #11</span>
+              <h4>Dynamic risk scaling</h4>
+              <p>Kelly-VAPS, ML confidence, and streak multipliers compounded &mdash; on losing days, 1% risk became 0.47%.</p>
+            </div>
+            <div class="card bug-card">
+              <span class="bug-num">BUG #14</span>
+              <h4>Empty-dict deep merge</h4>
+              <p>Config override of <code>{}</code> didn't clear the default &mdash; so a stale pair-risk override kept leaking through.</p>
+            </div>
+            <div class="card bug-card">
+              <span class="bug-num">BUG #15</span>
+              <h4>500K unit cap</h4>
+              <p>On an $85k balance the 500,000-unit cap halved every trade's real risk to 0.5%. Would have halved expected return.</p>
+            </div>
+            <div class="card bug-card">
+              <span class="bug-num">… + 8 more</span>
+              <h4>Read the full list</h4>
+              <p>
+                Pyramiding logic, tick-level proportional BE, two separate MFE-tracking paths,
+                an unscoped local variable, a missing account fallback. The blog post walks
+                through every one.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="t-item good">
+          <div class="t-meta">Apr 12 &middot; Winning config live</div>
+          <h3>Relaunched on the demo account</h3>
+          <p>
+            With all 15 bugs fixed and a dry-run passing on $85,733 balance (all 7 pairs sizing
+            at exactly 1.00% risk), V3 went live Sunday evening. The 7-day tab on the
+            <a href="signals.html">Journal page</a> is watching this run in real time.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <div class="t-meta">Apr 18, 2026 &middot; V4</div>
+          <h3>V4: A Rust rewrite for the hot path</h3>
+          <p>
+            V3's weakness isn't the strategy anymore &mdash; it's the Python GIL and the
+            ~30ms latency between a price tick and a decision. V4 rebuilds the data plane in
+            Rust: async OANDA streaming, lock-free indicator updates, sub-millisecond decide()
+            latency, the same PyQt GUI reading shared state through JSON files and SQLite.
+          </p>
+          <p>
+            V4 runs in <strong>shadow mode</strong> first &mdash; every signal is logged as if
+            the bot had traded it, but no orders are actually submitted. This lets us validate
+            against live prices for a week before flipping <code>execute_trades&nbsp;=&nbsp;true</code>.
+          </p>
+        </div>
+
+        <div class="t-item">
+          <div class="t-meta">Apr 19 &middot; Now</div>
+          <h3>Publishing the journal</h3>
+          <p>
+            The page you came from (<a href="signals.html">signals.html</a>) used to advertise
+            paid signal subscriptions on the strength of a backtest. The live numbers didn't
+            back that up, so instead of selling signals, we're publishing the full trade log.
+          </p>
+          <p>
+            If the fix holds for 30 days, the headline number on that page will earn itself.
+            If it doesn't, we'll tell you what we changed. Either way, every trade is visible.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- What we learned -->
+  <section class="section">
+    <div class="container" style="max-width:820px">
+      <h2 class="h2">What we learned</h2>
+
+      <div class="grid grid-2 mt-3 reveal">
+        <div class="card">
+          <h3>A backtest is a hypothesis, not a result</h3>
+          <p>
+            Our backtest and our live bot ran different code. Same repo, same config file &mdash;
+            different code paths. The only way to catch that is to replay real trades against the
+            live engine, not just against a tidy simulator loop.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Exits matter more than entries</h3>
+          <p>
+            The same 45 entries produced a losing system with one exit and a winning one with
+            another. We spent months tuning signal filters when the leverage was in the exit logic.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Hidden multipliers eat edge</h3>
+          <p>
+            Dynamic risk scaling sounds responsible and reasonable. In practice it meant our
+            losing-streak trades were half-sized by the time the winning trade showed up. A flat
+            1% is boring, and boring is profitable.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Session-aware blocks beat universal tuning</h3>
+          <p>
+            EUR/GBP lost 6 straight on our account. Rather than re-tune it, we blocked it &mdash;
+            and the next winning trade somewhere else paid for the analysis. Blocking a pair is
+            cheap; re-tuning is expensive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog CTA -->
+  <section class="section cta-band">
+    <div class="container" style="max-width:680px;text-align:center">
+      <h2 class="h2">The long version is on the blog</h2>
+      <p class="lead">I'm writing this up in more detail &mdash; one post per phase, with the real code diffs and the real numbers.</p>
+      <p class="mt-3">
+        <a class="btn" target="_blank" href="https://christhrasher.wordpress.com/">Read on WordPress &rarr;</a>
+        &nbsp;&nbsp;
+        <a class="btn btn-secondary" href="signals.html">See current performance</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>&copy; 2025 ThrasherApps.com &mdash; Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> &middot;
+        <a href="privacy.html">Privacy</a> &middot;
+        <a target="_blank" href="https://christhrasher.wordpress.com/">Blog</a> &middot;
+        <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
+      </div>
+      <p class="small mt-2" style="color:var(--text-muted)">
+        Trading foreign exchange carries a high level of risk. Nothing on this page is investment advice.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      const onObs = entries => entries.forEach(e=>{
+        if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+      const obs = ('IntersectionObserver' in window) ? new IntersectionObserver(onObs, {threshold: 0.08}) : null;
+      els.forEach(el => { if (obs) obs.observe(el); else el.classList.add('in'); });
+    })();
+  </script>
+</body>
+</html>
