@@ -91,10 +91,10 @@
         <div class="card dash-card">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-2)">
             <h3>US Rate Tape</h3>
-            <a class="source-link" target="_blank" href="https://fred.stlouisfed.org/">FRED &#8599;</a>
+            <a class="source-link" target="_blank" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve">US Treasury &#8599;</a>
           </div>
           <p class="small" style="color:var(--text-muted)">
-            Effective Fed Funds, 2-year, and 10-year Treasury yields. Direction of the curve
+            2-year, 10-year, and 30-year Treasury yields. The shape of the curve
             tells us a lot about USD pressure in the week ahead.
           </p>
           <ul class="rates-list" id="rates-list">
@@ -161,9 +161,9 @@
     })();
 
     const RATE_LABELS = {
-      fed_funds_effective: 'Fed Funds (effective)',
+      us_2y:  'US 2-year yield',
       us_10y: 'US 10-year yield',
-      us_2y: 'US 2-year yield',
+      us_30y: 'US 30-year yield',
     };
 
     function fmtInt(n) {

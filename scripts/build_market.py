@@ -13,10 +13,13 @@ Sources
   We derive **net non-commercial** (i.e. large speculator) positioning for
   the majors. That's the classic "smart-money positioning" tape.
 
-- FRED (Federal Reserve Economic Data) public CSV:
-  https://fred.stlouisfed.org/graph/fredgraph.csv?id=<series>
-  No auth required for CSV endpoints. We pull the effective Fed Funds rate
-  (DFF) and US DGS10 yield so we can show rate context on the dashboard.
+- US Treasury daily yield curve (home.treasury.gov public CSV):
+  https://home.treasury.gov/resource-center/data-chart-center/interest-rates/...
+  No auth. Returns year-to-date daily rates for 1mo .. 30yr maturities.
+  We pick 2-year and 10-year for the rate-tape widget. We historically
+  tried FRED as well, but its fredgraph.csv endpoint intermittently
+  returns HTTP/2 INTERNAL_ERROR to Python/curl requests — so Treasury
+  is the primary source.
 
 Usage
 -----
@@ -43,15 +46,15 @@ from typing import Optional
 DEFAULT_SITE_ROOT = Path(__file__).resolve().parent.parent
 HTTP_TIMEOUT = 15
 
-FRED_SERIES = {
-    "fed_funds_effective": "DFF",         # Daily, %, effective federal funds
-    "us_10y": "DGS10",                    # Daily, %, 10-year Treasury
-    "us_2y": "DGS2",                      # Daily, %, 2-year Treasury
+# Which maturities we pull from the Treasury daily-yield-curve CSV. The
+# label -> source_column mapping lets us rename for display without touching
+# the fetcher.
+TREASURY_SERIES = {
+    "us_2y":  "2 Yr",
+    "us_10y": "10 Yr",
+    "us_30y": "30 Yr",
 }
 
-# FRED returns everything back to 1954 by default. We only need recent
-# history to compute latest + prev values, so ask for the last few months
-# via the `cosd` (cut-off start date) query param. Smaller payload = faster.
 def _recent_start() -> str:
     from datetime import timedelta
     return (datetime.now(timezone.utc) - timedelta(days=180)).strftime("%Y-%m-%d")
@@ -132,57 +135,68 @@ def _latest_non_empty(rows: list[list[str]], col_idx: int) -> Optional[tuple[str
     return None
 
 
-def fetch_fred_series(series_id: str) -> Optional[dict]:
-    """Pull the public CSV for a FRED series.
+def fetch_treasury_rates() -> dict:
+    """Pull the current-year daily Treasury yield curve.
 
-    Returns {series, latest_date, latest_value, prev_value, change, source}.
-    `prev_value` is the most recent *different* value, so we can show a 'move'
-    even on a weekend when Treasury yields repeat the last print.
+    Treasury.gov publishes a single CSV with one row per business day and
+    one column per maturity (1 Mo, 2 Mo, ..., 30 Yr). We return a dict
+    keyed by our internal label (us_2y, us_10y, us_30y) with the same
+    shape as the old FRED fetcher.
     """
+    year = datetime.now(timezone.utc).year
     url = (
-        f"https://fred.stlouisfed.org/graph/fredgraph.csv"
-        f"?id={series_id}&cosd={_recent_start()}"
+        "https://home.treasury.gov/resource-center/data-chart-center/"
+        f"interest-rates/daily-treasury-rates.csv/{year}/all"
+        f"?type=daily_treasury_yield_curve&field_tdr_date_value={year}"
     )
     raw = _http_get(url)
     if not raw:
-        return None
+        print("[build_market] Treasury rate feed unavailable", file=sys.stderr)
+        return {}
     text = raw.decode("utf-8", errors="replace")
     reader = csv.reader(io.StringIO(text))
     rows = list(reader)
     if len(rows) < 2:
-        return None
+        return {}
     header = rows[0]
-    data = rows[1:]
-    # FRED default CSV: [DATE, series_id]
-    try:
-        col = header.index(series_id)
-    except ValueError:
-        col = 1
-    latest = _latest_non_empty(data, col)
-    if not latest:
-        return None
-    latest_date, latest_val = latest
-    prev_val = None
-    for r in reversed(data):
-        if len(r) <= col:
+    # CSV arrives *newest-first*, so reverse so we can treat it like a
+    # normal time series (old -> new).
+    data = list(reversed(rows[1:]))
+
+    # Map display-label -> header column index
+    col_idx: dict[str, int] = {}
+    for label, heading in TREASURY_SERIES.items():
+        if heading in header:
+            col_idx[label] = header.index(heading)
+
+    out: dict[str, dict] = {}
+    for label, idx in col_idx.items():
+        latest = _latest_non_empty(data, idx)
+        if not latest:
             continue
-        v = r[col].strip()
-        if v and v != "." and v != latest_val:
-            prev_val = v
-            break
-    try:
-        change = round(float(latest_val) - float(prev_val), 3) if prev_val else None
-    except ValueError:
-        change = None
-    return {
-        "series": series_id,
-        "latest_date": latest_date,
-        "latest_value": latest_val,
-        "prev_value": prev_val,
-        "change": change,
-        "source": "FRED",
-        "source_url": f"https://fred.stlouisfed.org/series/{series_id}",
-    }
+        latest_date, latest_val = latest
+        prev_val = None
+        for r in reversed(data):
+            if len(r) <= idx:
+                continue
+            v = r[idx].strip()
+            if v and v != latest_val:
+                prev_val = v
+                break
+        try:
+            change = round(float(latest_val) - float(prev_val), 3) if prev_val else None
+        except ValueError:
+            change = None
+        out[label] = {
+            "series": TREASURY_SERIES[label],
+            "latest_date": latest_date,
+            "latest_value": latest_val,
+            "prev_value": prev_val,
+            "change": change,
+            "source": "US Treasury",
+            "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
+        }
+    return out
 
 
 def _parse_cot_number(s: str) -> Optional[int]:
@@ -331,16 +345,15 @@ def main() -> int:
         "events": fetch_upcoming_events(),
         "sources": [
             "CFTC Commitments of Traders (weekly)",
-            "FRED (Federal Reserve Economic Data) public CSV",
+            "US Treasury daily yield curve (home.treasury.gov)",
         ],
     }
 
-    for label, series_id in FRED_SERIES.items():
-        res = fetch_fred_series(series_id)
-        if res:
-            out["rates"][label] = res
-        else:
-            print(f"[build_market] rate '{label}' ({series_id}) unavailable", file=sys.stderr)
+    rates = fetch_treasury_rates()
+    if rates:
+        out["rates"] = rates
+    else:
+        print("[build_market] rates feed unavailable", file=sys.stderr)
 
     cot = fetch_cot()
     if cot:
