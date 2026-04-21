@@ -1,5 +1,22 @@
 [
   {
+    "pair": "GBP_USD",
+    "side": "short",
+    "strategy": "trend_standard",
+    "regime": "RANGING",
+    "session": "newyork",
+    "opened_at": "2026-04-21T15:16:17.696764+00:00",
+    "closed_at": "2026-04-21T16:03:10.199699+00:00",
+    "entry_price": 1.35165,
+    "exit_price": 1.35162,
+    "sl_price": 1.35363,
+    "tp_price": 1.34963,
+    "pnl_pips": 0.3,
+    "mfe_pips": 16.3,
+    "duration_seconds": 2812,
+    "win": 1
+  },
+  {
     "pair": "USD_CHF",
     "side": "short",
     "strategy": "trend_standard",
