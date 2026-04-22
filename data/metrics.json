@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-04-22T14:02:38+00:00",
+  "generated_at": "2026-04-22T14:32:41+00:00",
   "windows": {
     "all_time": {
-      "n_trades": 165,
-      "wins": 70,
+      "n_trades": 166,
+      "wins": 71,
       "losses": 95,
-      "win_rate_pct": 42.4,
+      "win_rate_pct": 42.8,
       "profit_factor": 0.43,
-      "total_pips": -334.8,
-      "avg_win_pips": 3.6,
+      "total_pips": -334.4,
+      "avg_win_pips": 3.5,
       "avg_loss_pips": -6.2
     },
     "last_30d": {
-      "n_trades": 165,
-      "wins": 70,
+      "n_trades": 166,
+      "wins": 71,
       "losses": 95,
-      "win_rate_pct": 42.4,
+      "win_rate_pct": 42.8,
       "profit_factor": 0.43,
-      "total_pips": -334.8,
-      "avg_win_pips": 3.6,
+      "total_pips": -334.4,
+      "avg_win_pips": 3.5,
       "avg_loss_pips": -6.2
     },
     "last_7d": {
@@ -26,9 +26,9 @@
       "wins": 11,
       "losses": 11,
       "win_rate_pct": 50.0,
-      "profit_factor": 0.51,
-      "total_pips": -48.1,
-      "avg_win_pips": 4.6,
+      "profit_factor": 0.32,
+      "total_pips": -66.8,
+      "avg_win_pips": 2.9,
       "avg_loss_pips": -8.9
     }
   },
@@ -46,13 +46,13 @@
     },
     {
       "pair": "GBP_USD",
-      "n_trades": 51,
-      "wins": 22,
+      "n_trades": 52,
+      "wins": 23,
       "losses": 29,
-      "win_rate_pct": 43.1,
+      "win_rate_pct": 44.2,
       "profit_factor": 0.53,
-      "total_pips": -89.1,
-      "avg_win_pips": 4.5,
+      "total_pips": -88.7,
+      "avg_win_pips": 4.4,
       "avg_loss_pips": -6.5
     },
     {
@@ -125,13 +125,13 @@
   "by_strategy": [
     {
       "strategy": "trend_standard",
-      "n_trades": 80,
-      "wins": 45,
+      "n_trades": 81,
+      "wins": 46,
       "losses": 35,
-      "win_rate_pct": 56.2,
+      "win_rate_pct": 56.8,
       "profit_factor": 0.6,
-      "total_pips": -126.3,
-      "avg_win_pips": 4.2,
+      "total_pips": -125.9,
+      "avg_win_pips": 4.1,
       "avg_loss_pips": -9.0
     },
     {
@@ -202,6 +202,6 @@
     }
   ],
   "n_unmatched_closes": 45,
-  "feed_trade_count": 165,
-  "total_trade_count": 165
+  "feed_trade_count": 166,
+  "total_trade_count": 166
 }
