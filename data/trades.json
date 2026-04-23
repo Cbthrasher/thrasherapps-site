@@ -1,5 +1,22 @@
 [
   {
+    "pair": "EUR_USD",
+    "side": "short",
+    "strategy": "trend_standard",
+    "regime": "STANDARD_TREND",
+    "session": "london",
+    "opened_at": "2026-04-23T12:00:04.350287+00:00",
+    "closed_at": "2026-04-23T12:23:17.874026+00:00",
+    "entry_price": 1.16892,
+    "exit_price": 1.16882,
+    "sl_price": 1.170149,
+    "tp_price": 1.167711,
+    "pnl_pips": 1.0,
+    "mfe_pips": 2.2,
+    "duration_seconds": 1393,
+    "win": 1
+  },
+  {
     "pair": "GBP_USD",
     "side": "long",
     "strategy": "trend_standard",
