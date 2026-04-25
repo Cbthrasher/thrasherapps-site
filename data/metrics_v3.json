@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T17:08:03+00:00",
+  "generated_at": "2026-04-25T17:17:35+00:00",
   "windows": {
     "all_time": {
       "n_trades": 172,
@@ -124,7 +124,7 @@
   ],
   "by_strategy": [
     {
-      "strategy": "trend_standard",
+      "strategy": "Strategy A",
       "n_trades": 87,
       "wins": 52,
       "losses": 35,
@@ -135,7 +135,7 @@
       "avg_loss_pips": -9.0
     },
     {
-      "strategy": "scalp",
+      "strategy": "Strategy B",
       "n_trades": 65,
       "wins": 18,
       "losses": 47,
@@ -146,7 +146,7 @@
       "avg_loss_pips": -4.0
     },
     {
-      "strategy": "divergence",
+      "strategy": "Strategy C",
       "n_trades": 8,
       "wins": 3,
       "losses": 5,
@@ -157,7 +157,7 @@
       "avg_loss_pips": -6.1
     },
     {
-      "strategy": "mean_reversion_pullback",
+      "strategy": "Strategy D",
       "n_trades": 6,
       "wins": 2,
       "losses": 4,
@@ -168,7 +168,7 @@
       "avg_loss_pips": -3.8
     },
     {
-      "strategy": "unknown",
+      "strategy": "Other",
       "n_trades": 3,
       "wins": 2,
       "losses": 1,
@@ -179,7 +179,7 @@
       "avg_loss_pips": -10.2
     },
     {
-      "strategy": "mean_reversion",
+      "strategy": "Strategy E",
       "n_trades": 2,
       "wins": 0,
       "losses": 2,
@@ -190,7 +190,7 @@
       "avg_loss_pips": -9.4
     },
     {
-      "strategy": "m5_trend",
+      "strategy": "Strategy F",
       "n_trades": 1,
       "wins": 0,
       "losses": 1,

@@ -42,6 +42,26 @@ DEFAULT_V4_DB = Path.home() / "Desktop" / "forex_trading_bot_V4" / "state" / "tr
 DEFAULT_SITE_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MAX_TRADES = 200
 
+# Alpha-decay protection. The V4 bot trades two named strategies; we don't want
+# anyone reverse-engineering our edge by reading the public journal, so the
+# raw strategy names never leave this file. The website renders the labels.
+# Map order is meaningful — A is the dominant-volume strategy.
+STRATEGY_LABELS: dict[str, str] = {
+    "mr_scalp": "Strategy A",
+    "liq_sweep": "Strategy B",
+}
+
+
+def label_strategy(name: str | None) -> str:
+    """Return the public label for an internal V4 strategy name.
+
+    Anything not in STRATEGY_LABELS gets "Other" — guarantees no internal
+    name ever lands in the JSON the site reads.
+    """
+    if not name:
+        return "Other"
+    return STRATEGY_LABELS.get(name, "Other")
+
 
 def parse_ts(s: str | None):
     """Parse ISO-8601 from rusqlite (rfc3339). Returns UTC datetime or None."""
@@ -104,7 +124,9 @@ def load_closed(db_path: Path) -> list[dict]:
         out.append({
             "pair": r["pair"],
             "side": r["side"],
-            "strategy": r["strategy"],
+            # Public-facing label, NOT the internal strategy name. See
+            # STRATEGY_LABELS at top of file for the alpha-decay rationale.
+            "strategy": label_strategy(r["strategy"]),
             # V4 has no regime/session in the DB. Empty placeholders keep the
             # JSON shape identical to V3 so the front-end can render uniformly.
             "regime": "unknown",

@@ -33,6 +33,27 @@ DEFAULT_V3_LOGS = Path.home() / "Desktop" / "forex_trading_bot_V3" / "logs"
 DEFAULT_SITE_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_MAX_TRADES = 200
 
+# Alpha-decay protection. We don't want anyone reverse-engineering our edge
+# by reading the public journal, so the raw strategy names from V3's logs
+# never leave this file. Order is by all-time trade count (most-used first).
+# Anything outside this map gets "Other" so a new internal strategy can ship
+# without leaking until we explicitly add a label.
+STRATEGY_LABELS: dict[str, str] = {
+    "trend_standard": "Strategy A",
+    "scalp": "Strategy B",
+    "divergence": "Strategy C",
+    "mean_reversion_pullback": "Strategy D",
+    "mean_reversion": "Strategy E",
+    "m5_trend": "Strategy F",
+}
+
+
+def label_strategy(name: str | None) -> str:
+    """Return the public label for an internal V3 strategy name."""
+    if not name:
+        return "Other"
+    return STRATEGY_LABELS.get(name, "Other")
+
 
 def parse_ts(s: str | None):
     """Parse an ISO-8601 timestamp from the bot's logs. Returns UTC datetime or None."""
@@ -166,7 +187,9 @@ def match_trades(entries: list[dict], closes: list[dict]):
         rec = {
             "pair": pair,
             "side": side,
-            "strategy": strategy,
+            # Public-facing label, NOT the internal strategy name. See
+            # STRATEGY_LABELS at top of file for the alpha-decay rationale.
+            "strategy": label_strategy(strategy),
             "regime": c.get("regime") or best.get("regime") or "UNKNOWN",
             "session": c.get("session") or best.get("session") or "unknown",
             "opened_at": best.get("timestamp"),

@@ -2,7 +2,7 @@
   {
     "pair": "USD_CHF",
     "side": "long",
-    "strategy": "liq_sweep",
+    "strategy": "Strategy B",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:45:00.172769456+00:00",
@@ -23,7 +23,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T17:22:49.929609663+00:00",
@@ -44,7 +44,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T16:58:44.216610108+00:00",
@@ -65,7 +65,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T16:44:07.170663145+00:00",
@@ -86,7 +86,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T16:37:40.705065905+00:00",
@@ -107,7 +107,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T16:30:48.224576401+00:00",
@@ -128,7 +128,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T16:16:03.415675407+00:00",
@@ -149,7 +149,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T16:08:58.799794695+00:00",
@@ -170,7 +170,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:47:01.198255539+00:00",
@@ -191,7 +191,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:37:52.145040497+00:00",
@@ -212,7 +212,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:35:09.209915887+00:00",
@@ -233,7 +233,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:44:26.885048630+00:00",
@@ -254,7 +254,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:27:51.395344995+00:00",
@@ -275,7 +275,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:24:13.576112182+00:00",
@@ -296,7 +296,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:20:41.774273329+00:00",
@@ -317,7 +317,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:16:22.108478179+00:00",
@@ -338,7 +338,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-24T15:16:03.651989536+00:00",
@@ -359,7 +359,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T19:53:58.154931798+00:00",
@@ -380,7 +380,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T19:51:50.517765038+00:00",
@@ -401,7 +401,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T19:39:54.189918903+00:00",
@@ -422,7 +422,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T19:44:05.781791688+00:00",
@@ -443,7 +443,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T18:46:29.607202632+00:00",
@@ -464,7 +464,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T18:48:37.146858708+00:00",
@@ -485,7 +485,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T18:41:56.849634798+00:00",
@@ -506,7 +506,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T18:43:07.607598054+00:00",
@@ -527,7 +527,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T18:42:44.171778425+00:00",
@@ -548,7 +548,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T17:40:13.546703652+00:00",
@@ -569,7 +569,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T17:40:01.205009384+00:00",
@@ -590,7 +590,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T17:40:08.183058245+00:00",
@@ -611,7 +611,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T16:26:14.221858958+00:00",
@@ -632,7 +632,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T16:04:46.087741056+00:00",
@@ -653,7 +653,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T16:05:18.422603416+00:00",
@@ -674,7 +674,7 @@
   {
     "pair": "USD_CHF",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T15:59:45.581579093+00:00",
@@ -695,7 +695,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T14:45:10.098901396+00:00",
@@ -716,7 +716,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T14:45:28.024745207+00:00",
@@ -737,7 +737,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T14:43:26.555636699+00:00",
@@ -758,7 +758,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T14:12:59.087738676+00:00",
@@ -779,7 +779,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T14:15:27.578581133+00:00",
@@ -800,7 +800,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T14:08:43.499665640+00:00",
@@ -821,7 +821,7 @@
   {
     "pair": "USD_CHF",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T13:35:20.395971659+00:00",
@@ -842,7 +842,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T13:31:24.004981879+00:00",
@@ -863,7 +863,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T13:31:42.435166749+00:00",
@@ -884,7 +884,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T13:11:23.179409692+00:00",
@@ -905,7 +905,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T13:13:10.535971175+00:00",
@@ -926,7 +926,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:47:23.842539726+00:00",
@@ -947,7 +947,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:47:45.031642513+00:00",
@@ -968,7 +968,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:45:56.465840997+00:00",
@@ -989,7 +989,7 @@
   {
     "pair": "USD_CHF",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:46:00.624983888+00:00",
@@ -1010,7 +1010,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:20:50.223131781+00:00",
@@ -1031,7 +1031,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:29:41.245295798+00:00",
@@ -1052,7 +1052,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:23:27.350953502+00:00",
@@ -1073,7 +1073,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:21:33.057616945+00:00",
@@ -1094,7 +1094,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:12:09.875262343+00:00",
@@ -1115,7 +1115,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:07:26.453988499+00:00",
@@ -1136,7 +1136,7 @@
   {
     "pair": "USD_CHF",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:10:02.383179423+00:00",
@@ -1157,7 +1157,7 @@
   {
     "pair": "USD_CAD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T12:04:50.992461284+00:00",
@@ -1178,7 +1178,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T11:45:00.801074614+00:00",
@@ -1199,7 +1199,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T11:42:27.187752586+00:00",
@@ -1220,7 +1220,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T10:19:33.658490675+00:00",
@@ -1241,7 +1241,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T10:05:23.351286256+00:00",
@@ -1262,7 +1262,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T09:36:55.013335163+00:00",
@@ -1283,7 +1283,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T09:19:03.132324713+00:00",
@@ -1304,7 +1304,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T09:21:40.015506599+00:00",
@@ -1325,7 +1325,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T09:04:04.592265719+00:00",
@@ -1346,7 +1346,7 @@
   {
     "pair": "EUR_GBP",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T08:49:58.421684936+00:00",
@@ -1367,7 +1367,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T08:37:44.935793361+00:00",
@@ -1388,7 +1388,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T08:29:56.104146877+00:00",
@@ -1409,7 +1409,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T08:36:24.370611477+00:00",
@@ -1430,7 +1430,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T08:17:13.923997923+00:00",
@@ -1451,7 +1451,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T08:00:17.998388046+00:00",
@@ -1472,7 +1472,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:53:14.126122706+00:00",
@@ -1493,7 +1493,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:50:17.823543284+00:00",
@@ -1514,7 +1514,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:50:00.478932121+00:00",
@@ -1535,7 +1535,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:30:00.102866570+00:00",
@@ -1556,7 +1556,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:31:40.389916872+00:00",
@@ -1577,7 +1577,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:23:15.211326619+00:00",
@@ -1598,7 +1598,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:17:32.697350077+00:00",
@@ -1619,7 +1619,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:17:25.226739014+00:00",
@@ -1640,7 +1640,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:13:34.872446262+00:00",
@@ -1661,7 +1661,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:07:24.755086843+00:00",
@@ -1682,7 +1682,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:02:43.211504176+00:00",
@@ -1703,7 +1703,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T07:01:01.211921080+00:00",
@@ -1724,7 +1724,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T06:39:18.157798444+00:00",
@@ -1745,7 +1745,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T06:14:01.915445887+00:00",
@@ -1766,7 +1766,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T03:56:01.561546313+00:00",
@@ -1787,7 +1787,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T03:09:16.696503061+00:00",
@@ -1808,7 +1808,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T03:03:21.950521074+00:00",
@@ -1829,7 +1829,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T02:58:00.625164179+00:00",
@@ -1850,7 +1850,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T02:39:09.107076275+00:00",
@@ -1871,7 +1871,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-23T02:31:11.152196723+00:00",
@@ -1892,7 +1892,7 @@
   {
     "pair": "USD_CAD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:52:41.507536188+00:00",
@@ -1913,7 +1913,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:55:20.419282237+00:00",
@@ -1934,7 +1934,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:52:26.880468865+00:00",
@@ -1955,7 +1955,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:52:40.919311746+00:00",
@@ -1976,7 +1976,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:32:24.722390837+00:00",
@@ -1997,7 +1997,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:30:42.709128246+00:00",
@@ -2018,7 +2018,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:26:44.354392248+00:00",
@@ -2039,7 +2039,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:06:08.344343913+00:00",
@@ -2060,7 +2060,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:05:16.344863084+00:00",
@@ -2081,7 +2081,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:58:52.582665032+00:00",
@@ -2102,7 +2102,7 @@
   {
     "pair": "USD_CAD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:57:56.852785283+00:00",
@@ -2123,7 +2123,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T14:00:38.511943569+00:00",
@@ -2144,7 +2144,7 @@
   {
     "pair": "USD_CHF",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:56:42.935813933+00:00",
@@ -2165,7 +2165,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:36:37.522587259+00:00",
@@ -2186,7 +2186,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:35:57.006448471+00:00",
@@ -2207,7 +2207,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:36:17.096610637+00:00",
@@ -2228,7 +2228,7 @@
   {
     "pair": "USD_CHF",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:19:30.069913576+00:00",
@@ -2249,7 +2249,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:15:12.332823269+00:00",
@@ -2270,7 +2270,7 @@
   {
     "pair": "USD_CHF",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T13:15:22.837958312+00:00",
@@ -2291,7 +2291,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:54:00.306219286+00:00",
@@ -2312,7 +2312,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:57:51.832037612+00:00",
@@ -2333,7 +2333,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:33:50.645084580+00:00",
@@ -2354,7 +2354,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:30:31.250349077+00:00",
@@ -2375,7 +2375,7 @@
   {
     "pair": "USD_CHF",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:30:00.299104495+00:00",
@@ -2396,7 +2396,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:30:49.707750427+00:00",
@@ -2417,7 +2417,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:29:03.148652267+00:00",
@@ -2438,7 +2438,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:25:31.823118229+00:00",
@@ -2459,7 +2459,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:17:19.293679369+00:00",
@@ -2480,7 +2480,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T12:11:05.572694934+00:00",
@@ -2501,7 +2501,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T11:55:38.134612345+00:00",
@@ -2522,7 +2522,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T11:53:40.903002194+00:00",
@@ -2543,7 +2543,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T11:49:04.663542298+00:00",
@@ -2564,7 +2564,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T11:40:57.949210510+00:00",
@@ -2585,7 +2585,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T10:50:38.404008887+00:00",
@@ -2606,7 +2606,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T10:10:29.792760519+00:00",
@@ -2627,7 +2627,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T09:24:03.264689937+00:00",
@@ -2648,7 +2648,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T09:17:33.363711940+00:00",
@@ -2669,7 +2669,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T09:11:45.606225001+00:00",
@@ -2690,7 +2690,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T08:35:25.051299908+00:00",
@@ -2711,7 +2711,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T08:34:31.861503968+00:00",
@@ -2732,7 +2732,7 @@
   {
     "pair": "AUD_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T08:34:22.116977544+00:00",
@@ -2753,7 +2753,7 @@
   {
     "pair": "GBP_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T08:23:39.637975886+00:00",
@@ -2774,7 +2774,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T08:19:00.870776492+00:00",
@@ -2795,7 +2795,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T07:57:30.109333631+00:00",
@@ -2816,7 +2816,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T07:57:13.978233333+00:00",
@@ -2837,7 +2837,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T07:39:59.591212376+00:00",
@@ -2858,7 +2858,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T07:32:49.893432631+00:00",
@@ -2879,7 +2879,7 @@
   {
     "pair": "GBP_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T07:33:19.345809826+00:00",
@@ -2900,7 +2900,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T07:10:02.549538324+00:00",
@@ -2921,7 +2921,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T06:53:00.983601584+00:00",
@@ -2942,7 +2942,7 @@
   {
     "pair": "EUR_USD",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T06:48:44.374810132+00:00",
@@ -2963,7 +2963,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T06:42:57.686867520+00:00",
@@ -2984,7 +2984,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T06:30:00.052763225+00:00",
@@ -3005,7 +3005,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T06:16:21.606936006+00:00",
@@ -3026,7 +3026,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T06:16:47.837189906+00:00",
@@ -3047,7 +3047,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T06:09:19.245651422+00:00",
@@ -3068,7 +3068,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:49:09.143199732+00:00",
@@ -3089,7 +3089,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:44:11.461002237+00:00",
@@ -3110,7 +3110,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:41:07.355846575+00:00",
@@ -3131,7 +3131,7 @@
   {
     "pair": "USD_CHF",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:31:04.198472447+00:00",
@@ -3152,7 +3152,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:30:56.774686483+00:00",
@@ -3173,7 +3173,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:30:44.590070855+00:00",
@@ -3194,7 +3194,7 @@
   {
     "pair": "EUR_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:17:51.223728035+00:00",
@@ -3215,7 +3215,7 @@
   {
     "pair": "USD_JPY",
     "side": "long",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:17:00.085147835+00:00",
@@ -3236,7 +3236,7 @@
   {
     "pair": "AUD_USD",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T05:17:00.637898791+00:00",
@@ -3257,7 +3257,7 @@
   {
     "pair": "USD_JPY",
     "side": "short",
-    "strategy": "mr_scalp",
+    "strategy": "Strategy A",
     "regime": "unknown",
     "session": "unknown",
     "opened_at": "2026-04-22T02:08:09.031419377+00:00",

@@ -143,7 +143,7 @@
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)">
         <div>
           <h2 class="h2" style="margin:0">V4 &mdash; Rust bot<span class="bot-badge live">live</span></h2>
-          <p class="muted-row" style="margin-top:4px">Mean-reversion scalp + liquidity-sweep, parallel. Live since Apr&nbsp;27, 2026 on a small OANDA account.</p>
+          <p class="muted-row" style="margin-top:4px">Two strategies running in parallel. Live since Apr&nbsp;27, 2026 on a small OANDA account.</p>
         </div>
         <div class="window-tabs" role="tablist" aria-label="V4 performance window" data-bot="v4">
           <button data-win="last_7d" class="active" type="button">7 days</button>
@@ -318,26 +318,25 @@
   <section class="section">
     <div class="container">
       <h2 class="h2">What V4 does</h2>
-      <p class="lead">Two complementary strategies, parallel mode &mdash; on M1 ticks for scalps and M5 candles for sweeps.</p>
+      <p class="lead">Two complementary strategies running in parallel. We're keeping the mechanics private until we have a longer live track record &mdash; the journal still shows every fill.</p>
       <div class="grid grid-2 mt-3 reveal">
         <div class="card">
-          <span class="badge">Strategy 1</span>
-          <h3 class="mt-2">Mean-reversion scalp</h3>
+          <span class="badge">Strategy A</span>
+          <h3 class="mt-2">Higher-frequency entries</h3>
           <p class="mt-1">
-            Fades stretched M1 prices when the deviation from the 20-bar mean is &gt;&nbsp;1.5&thinsp;&times;&thinsp;ATR.
-            Tight 2&thinsp;&times;&thinsp;ATR initial stop, brain-driven exit when MFE retraces 50% from peak,
-            stall-out close at 30s of flat tape, hard 10-minute max hold. AUD/USD blocked
-            (139-trade shadow audit showed it bleeding on this strategy).
+            The volume strategy. Most of V4's trades come from this one &mdash; short holds,
+            tight risk, exits driven by the bot's own MFE/MAE telemetry rather than fixed
+            targets. One pair currently blocked after a shadow-mode audit showed it
+            underperforming.
           </p>
         </div>
         <div class="card">
-          <span class="badge">Strategy 2</span>
-          <h3 class="mt-2">Liquidity sweep</h3>
+          <span class="badge">Strategy B</span>
+          <h3 class="mt-2">Lower-frequency entries</h3>
           <p class="mt-1">
-            Catches false breakouts past M5 swing highs/lows during the London&ndash;NY overlap when
-            ADX is below 25 (range, not trend). 1.5&thinsp;&times;&thinsp;ATR target, 4&thinsp;&times;&thinsp;ATR
-            safety stop, 2-hour max hold. Lower frequency, higher quality &mdash; runs in parallel
-            with the scalp.
+            Selective entries with a wider safety stop and a longer max hold. Designed to
+            run alongside Strategy A without overlapping risk &mdash; far fewer fires,
+            higher target per trade.
           </p>
         </div>
       </div>
@@ -345,10 +344,11 @@
         <div class="card">
           <h3>Risk management</h3>
           <p class="mt-1">
-            0.5% risk per trade. Max 3 concurrent positions. <strong>1.5% daily loss cap</strong> &mdash;
-            the bot self-pauses for the rest of the UTC day if hit, no overrides. 10-minute cooldown
-            after each loser. Pre-trade collision check against the V3 demo account (we don't
-            double up on positions V3 already has on).
+            0.5% risk per trade. Max 3 concurrent positions across the 8-pair universe.
+            <strong>1.5% daily loss cap</strong> &mdash; the bot self-pauses for the rest
+            of the UTC day if hit, no overrides. 10-minute cooldown after each loser.
+            Pre-trade collision check against the V3 demo account (we don't double up on
+            positions V3 already has on).
           </p>
         </div>
         <div class="card">

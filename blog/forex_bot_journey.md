@@ -38,7 +38,7 @@ V2 was a larger codebase (~4,200 lines of the bot plus supporting analysis scrip
 
 - A backtester that replayed historical candles with the same entry logic.
 - Regime detection (ADX-based trending vs ranging).
-- A second strategy (mean reversion) that ran alongside trend-following.
+- A second strategy that ran alongside the trend-following one.
 - A walk-forward optimizer to pick strategy parameters.
 - Telegram alerts so I knew what the bot was doing while I slept.
 
@@ -52,7 +52,7 @@ The gap between backtest and live was the thing I didn't understand yet.
 
 I opened an OANDA practice account with enough headroom ($85,000 demo balance) to test everything V1 and V2 couldn't. V3 is a ~7,200-line Python project with:
 
-- Six strategies (trend, mean reversion, scalping, RSI divergence, and two MTF variants).
+- Six strategies across trend, range, and multi-timeframe variants (mechanics private &mdash; we don't publish current edge).
 - Session-aware filters and per-pair blocks.
 - A full PyQt desktop GUI with live performance dashboards.
 - An ML entry filter (XGBoost + CatBoost + LightGBM ensemble) trained on its own historical signals.
