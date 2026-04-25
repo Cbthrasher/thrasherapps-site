@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Forex Bot Journal — ThrasherApps</title>
-  <meta name="description" content="Public trade journal for the ThrasherApps forex bot. Every trade, every win, every loss — updated daily. No cherry-picked backtests." />
+  <meta name="description" content="Public trade journal for the ThrasherApps forex bots. V4 (Rust) live since Apr 27 2026. V3 (Python) demo archive included. Every trade, every win, every loss." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/site.css">
   <style>
@@ -75,6 +75,20 @@
     .gain-pill{display:inline-block;padding:2px 10px;border-radius:6px;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
     .gain-pill.pos{background:rgba(15,157,88,.1);color:#0F9D58}
     .gain-pill.neg{background:rgba(217,48,37,.1);color:#D93025}
+
+    .bot-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:4px;vertical-align:middle;margin-left:8px}
+    .bot-badge.live{background:rgba(217,48,37,.1);color:#D93025;border:1px solid rgba(217,48,37,.2)}
+    .bot-badge.demo{background:rgba(15,157,88,.1);color:#0F9D58;border:1px solid rgba(15,157,88,.2)}
+
+    /* Collapsible V3 archive */
+    details.bot-archive{background:transparent;border:1px solid var(--border);border-radius:var(--radius-card);padding:var(--space-3) var(--space-4)}
+    details.bot-archive[open]{padding-bottom:var(--space-5)}
+    details.bot-archive>summary{cursor:pointer;list-style:none;padding:var(--space-2) 0;display:flex;align-items:center;justify-content:space-between;gap:var(--space-2)}
+    details.bot-archive>summary::-webkit-details-marker{display:none}
+    details.bot-archive>summary::after{content:"+";font-size:24px;color:var(--text-muted);transition:transform .2s}
+    details.bot-archive[open]>summary::after{content:"\2212"}
+    details.bot-archive>summary h2{margin:0;display:inline}
+    .archive-summary-text{color:var(--text-muted);font-size:14px}
   </style>
 </head>
 <body>
@@ -103,8 +117,9 @@
       <span class="badge">Live · Updated Daily</span>
       <h1 class="mt-2">Forex Bot Journal</h1>
       <p class="lead">
-        Every trade our algorithm takes, logged and published. Wins, losses, the ugly stretches —
-        all of it. No cherry-picked backtests. Just a real bot learning in public.
+        Two bots, both published. <strong>V4 (Rust)</strong> went live on a small real-money OANDA account
+        on April 27, 2026 &mdash; that's the headline below. <strong>V3 (Python)</strong> is still running
+        on a demo account; its full ledger is archived underneath.
       </p>
       <div class="pairs-row">
         <span class="pair-tag">EUR/USD</span>
@@ -114,37 +129,36 @@
         <span class="pair-tag">USD/CHF</span>
         <span class="pair-tag">NZD/USD</span>
         <span class="pair-tag">EUR/GBP</span>
-        <span class="pair-tag">XAU/USD</span>
+        <span class="pair-tag">USD/JPY</span>
       </div>
       <p class="small mt-3" style="max-width:600px">
-        Running on an OANDA practice account with a demo balance. Real market data, real fills, real slippage &mdash; just not real money yet.
-        We'll graduate to a small live account after 30 days of clean performance.
+        Real fills, real slippage. Pips, not dollars &mdash; V4's live account starts at $273.20, so dollar figures would just be misleading. Pips translate to any account size.
       </p>
     </div>
   </section>
 
-  <!-- Live Metrics -->
-  <section class="section section--tight">
+  <!-- V4 Live Performance (headline) -->
+  <section class="section section--tight" id="bot-v4">
     <div class="container">
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2)">
         <div>
-          <h2 class="h2" style="margin:0">Live Performance</h2>
-          <p class="muted-row" style="margin-top:4px">Rolling window of closed trades. Pips, not dollars &mdash; scales to any account size.</p>
+          <h2 class="h2" style="margin:0">V4 &mdash; Rust bot<span class="bot-badge live">live</span></h2>
+          <p class="muted-row" style="margin-top:4px">Mean-reversion scalp + liquidity-sweep, parallel. Live since Apr&nbsp;27, 2026 on a small OANDA account.</p>
         </div>
-        <div class="window-tabs" role="tablist" aria-label="Performance window">
+        <div class="window-tabs" role="tablist" aria-label="V4 performance window" data-bot="v4">
           <button data-win="last_7d" class="active" type="button">7 days</button>
           <button data-win="last_30d" type="button">30 days</button>
           <button data-win="all_time" type="button">Lifetime</button>
         </div>
       </div>
 
-      <div class="stat-grid" id="stat-grid">
+      <div class="stat-grid" id="stat-grid-v4">
         <div class="card stat-card"><div class="num" data-stat="n_trades">—</div><div class="label">Trades</div><div class="sub" data-stat="wr_sub">—</div></div>
         <div class="card stat-card"><div class="num" data-stat="total_pips">—</div><div class="label">Total Pips</div><div class="sub" data-stat="avgs_sub">—</div></div>
         <div class="card stat-card"><div class="num" data-stat="win_rate_pct">—</div><div class="label">Win Rate</div><div class="sub" data-stat="wl_sub">—</div></div>
         <div class="card stat-card"><div class="num" data-stat="profit_factor">—</div><div class="label">Profit Factor</div><div class="sub">Gross&nbsp;win&nbsp;/&nbsp;Gross&nbsp;loss</div></div>
       </div>
-      <p class="gen-stamp" id="gen-stamp">Loading latest data&hellip;</p>
+      <p class="gen-stamp" id="gen-stamp-v4">Loading latest V4 data&hellip;</p>
     </div>
   </section>
 
@@ -152,18 +166,19 @@
   <section class="section section--tight">
     <div class="container">
       <div class="card truth-card">
-        <h3>Where we're at, honestly</h3>
+        <h3>What we're publishing, honestly</h3>
         <p>
-          The lifetime profit factor on this account is still below 1.0. That's not a typo &mdash;
-          the early trades ran through several losing strategies (old scalp, RSI divergence) and a
-          badly-tuned exit that strangled winners. We found the problem in a 45-trade audit,
-          shipped a fixed configuration on <strong>April 11, 2026</strong>, and the 7-day window
-          above is the real story going forward. Click "Lifetime" to see everything, warts included.
+          V4's lifetime numbers above include about a week of <strong>shadow-mode</strong> trades
+          (Apr&nbsp;18&ndash;26) where the bot generated signals against live OANDA prices but did not
+          submit orders &mdash; that lets us validate fills and risk math at zero cost. From
+          <strong>April&nbsp;27, 2026</strong> onwards every entry is a real order on a $273
+          account. Click "7 days" or "30 days" to scope.
         </p>
         <p>
-          We're publishing every trade here instead of waiting until the numbers look good,
-          because the whole point of this journal is transparency. If the fix holds for 30 days,
-          the headline number will earn itself. If it doesn't, you'll see that too.
+          We're publishing the trades as they happen instead of waiting for the numbers to look good.
+          A small live account with a 0.5% risk-per-trade cap survives a long string of losers; if it
+          doesn't, you'll see that on this page in the same week it happened. The whole point of this
+          journal is showing the work, not curating a highlight reel.
         </p>
         <p>
           <a href="journey.html">Read the full story &rarr;</a>
@@ -172,22 +187,22 @@
     </div>
   </section>
 
-  <!-- Per-pair & per-strategy -->
+  <!-- V4 breakdown -->
   <section class="section section--tight">
     <div class="container">
-      <h2 class="h2">Breakdown</h2>
-      <p class="muted-row">Lifetime, grouped by instrument and strategy.</p>
+      <h2 class="h2">V4 breakdown</h2>
+      <p class="muted-row">All-time, grouped by instrument and strategy.</p>
       <div class="breakdown-grid">
         <div class="card breakdown-card">
           <h3>By instrument</h3>
-          <table class="breakdown-table" id="by-pair">
+          <table class="breakdown-table" id="by-pair-v4">
             <thead><tr><td>Pair</td><td>n</td><td>WR</td><td>PF</td><td>Pips</td></tr></thead>
             <tbody></tbody>
           </table>
         </div>
         <div class="card breakdown-card">
           <h3>By strategy</h3>
-          <table class="breakdown-table" id="by-strategy">
+          <table class="breakdown-table" id="by-strategy-v4">
             <thead><tr><td>Strategy</td><td>n</td><td>WR</td><td>PF</td><td>Pips</td></tr></thead>
             <tbody></tbody>
           </table>
@@ -196,13 +211,13 @@
     </div>
   </section>
 
-  <!-- Trade Feed -->
+  <!-- V4 trade feed -->
   <section class="section section--tight">
     <div class="container">
-      <h2 class="h2">Recent Trades</h2>
-      <p class="muted-row">Newest first. Every closed position &mdash; wins and losses both shown. Hover for details.</p>
+      <h2 class="h2">V4 recent trades</h2>
+      <p class="muted-row">Newest first. Every closed position &mdash; wins and losses both shown.</p>
       <div style="overflow-x:auto">
-        <table class="feed-table" id="feed">
+        <table class="feed-table" id="feed-v4">
           <thead>
             <tr>
               <th>Closed (UTC)</th>
@@ -215,37 +230,114 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td colspan="7" class="empty-state">Loading trades&hellip;</td></tr>
+            <tr><td colspan="7" class="empty-state">Loading V4 trades&hellip;</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="small mt-3" id="feed-meta">&nbsp;</p>
+      <p class="small mt-3" id="feed-meta-v4">&nbsp;</p>
+    </div>
+  </section>
+
+  <!-- V3 archive (collapsible) -->
+  <section class="section section--tight" id="bot-v3">
+    <div class="container">
+      <details class="bot-archive">
+        <summary>
+          <span>
+            <h2 class="h2">V3 &mdash; Python bot<span class="bot-badge demo">demo</span></h2>
+          </span>
+          <span class="archive-summary-text">Click to expand the V3 ledger (still running on demo)</span>
+        </summary>
+
+        <p class="muted-row" style="margin-top:var(--space-3)">
+          V3 has been running on an OANDA practice account since early March 2026. We
+          shipped a winning-config patch on April&nbsp;11 (15 bugs fixed in one batch); the 7-day
+          window is the real story going forward. Lifetime includes the older losing strategies
+          we have since pulled.
+        </p>
+
+        <div style="display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-3)">
+          <div class="window-tabs" role="tablist" aria-label="V3 performance window" data-bot="v3">
+            <button data-win="last_7d" class="active" type="button">7 days</button>
+            <button data-win="last_30d" type="button">30 days</button>
+            <button data-win="all_time" type="button">Lifetime</button>
+          </div>
+        </div>
+
+        <div class="stat-grid" id="stat-grid-v3">
+          <div class="card stat-card"><div class="num" data-stat="n_trades">—</div><div class="label">Trades</div><div class="sub" data-stat="wr_sub">—</div></div>
+          <div class="card stat-card"><div class="num" data-stat="total_pips">—</div><div class="label">Total Pips</div><div class="sub" data-stat="avgs_sub">—</div></div>
+          <div class="card stat-card"><div class="num" data-stat="win_rate_pct">—</div><div class="label">Win Rate</div><div class="sub" data-stat="wl_sub">—</div></div>
+          <div class="card stat-card"><div class="num" data-stat="profit_factor">—</div><div class="label">Profit Factor</div><div class="sub">Gross&nbsp;win&nbsp;/&nbsp;Gross&nbsp;loss</div></div>
+        </div>
+        <p class="gen-stamp" id="gen-stamp-v3">Loading V3 data&hellip;</p>
+
+        <h3 class="mt-4">V3 breakdown</h3>
+        <div class="breakdown-grid">
+          <div class="card breakdown-card">
+            <h3>By instrument</h3>
+            <table class="breakdown-table" id="by-pair-v3">
+              <thead><tr><td>Pair</td><td>n</td><td>WR</td><td>PF</td><td>Pips</td></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="card breakdown-card">
+            <h3>By strategy</h3>
+            <table class="breakdown-table" id="by-strategy-v3">
+              <thead><tr><td>Strategy</td><td>n</td><td>WR</td><td>PF</td><td>Pips</td></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <h3 class="mt-4">V3 recent trades</h3>
+        <div style="overflow-x:auto">
+          <table class="feed-table" id="feed-v3">
+            <thead>
+              <tr>
+                <th>Closed (UTC)</th>
+                <th>Pair</th>
+                <th>Strategy</th>
+                <th>Side</th>
+                <th>Pips</th>
+                <th>Duration</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="7" class="empty-state">Loading V3 trades&hellip;</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small mt-3" id="feed-meta-v3">&nbsp;</p>
+      </details>
     </div>
   </section>
 
   <!-- What's Under the Hood -->
   <section class="section">
     <div class="container">
-      <h2 class="h2">What the bot does</h2>
-      <p class="lead">Two complementary strategies on M15 candles, 24&thinsp;&times;&thinsp;5.</p>
+      <h2 class="h2">What V4 does</h2>
+      <p class="lead">Two complementary strategies, parallel mode &mdash; on M1 ticks for scalps and M5 candles for sweeps.</p>
       <div class="grid grid-2 mt-3 reveal">
         <div class="card">
           <span class="badge">Strategy 1</span>
-          <h3 class="mt-2">Trend Standard</h3>
+          <h3 class="mt-2">Mean-reversion scalp</h3>
           <p class="mt-1">
-            Rides momentum when EMA(12) and EMA(26) agree with higher-timeframe trend.
-            Wide stop at 2&thinsp;&times;&thinsp;ATR absorbs the noise, a break-even shield locks in
-            gains once the trade moves +10 pips, and a fixed 2.75R take-profit
-            captures the full move instead of trailing into reversals.
+            Fades stretched M1 prices when the deviation from the 20-bar mean is &gt;&nbsp;1.5&thinsp;&times;&thinsp;ATR.
+            Tight 2&thinsp;&times;&thinsp;ATR initial stop, brain-driven exit when MFE retraces 50% from peak,
+            stall-out close at 30s of flat tape, hard 10-minute max hold. AUD/USD blocked
+            (139-trade shadow audit showed it bleeding on this strategy).
           </p>
         </div>
         <div class="card">
           <span class="badge">Strategy 2</span>
-          <h3 class="mt-2">Mean Reversion Pullback</h3>
+          <h3 class="mt-2">Liquidity sweep</h3>
           <p class="mt-1">
-            Fades Bollinger Band extremes when price is stretched but the H1 trend
-            still favors a bounce. RSI confirms exhaustion. Targets the BB midline
-            &mdash; a tighter, higher-probability exit than the trend strategy.
+            Catches false breakouts past M5 swing highs/lows during the London&ndash;NY overlap when
+            ADX is below 25 (range, not trend). 1.5&thinsp;&times;&thinsp;ATR target, 4&thinsp;&times;&thinsp;ATR
+            safety stop, 2-hour max hold. Lower frequency, higher quality &mdash; runs in parallel
+            with the scalp.
           </p>
         </div>
       </div>
@@ -253,17 +345,19 @@
         <div class="card">
           <h3>Risk management</h3>
           <p class="mt-1">
-            Flat 1% risk per trade on the wide stop distance. Max 5 concurrent
-            positions. Daily loss cap. Session-aware pair blocks &mdash; if
-            EUR/GBP loses 6 straight, it's benched automatically.
+            0.5% risk per trade. Max 3 concurrent positions. <strong>1.5% daily loss cap</strong> &mdash;
+            the bot self-pauses for the rest of the UTC day if hit, no overrides. 10-minute cooldown
+            after each loser. Pre-trade collision check against the V3 demo account (we don't
+            double up on positions V3 already has on).
           </p>
         </div>
         <div class="card">
-          <h3>What we removed</h3>
+          <h3>Why Rust?</h3>
           <p class="mt-1">
-            RSI divergence (8 trades, all losing). Old mean reversion. Dynamic
-            risk scaling that was silently halving size on losing streaks.
-            The journal shows exactly which strategies we pulled and when.
+            Tick-level decisions need predictable latency &mdash; Python's GC pauses were occasionally
+            costing us a pip on fast moves. The V4 data plane (price stream, indicators, decisions,
+            order submission) is in Rust with a Python PyQt monitor. We log every shadow trade to
+            SQLite so the journal you're reading is queryable, not stitched from JSONL streams.
           </p>
         </div>
       </div>
@@ -278,32 +372,37 @@
 
         <div class="faq-item">
           <div class="faq-q">Is this data real?</div>
-          <div class="faq-a">Yes. Every trade on this page is parsed directly from the bot's live signal log &mdash; the same JSONL file the bot writes as it runs. The numbers aren't hand-picked, adjusted, or backtested; they're exactly what the live bot did.</div>
+          <div class="faq-a">Yes. V4's trades are read from the bot's SQLite ledger; V3's are parsed directly from its live JSONL signal log. The numbers aren't hand-picked, adjusted, or backtested &mdash; they're exactly what the live bots did, refreshed every 30&nbsp;minutes.</div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Why is the profit factor below 1.0?</div>
-          <div class="faq-a">The account has 158 trades going back to early March. The first ~120 of those ran strategies and exits that we've since disabled. The winning config shipped April 11 and is earning its numbers in the 7-day window (the default tab above). Click "Lifetime" to see every trade in the ledger, including the losing strategies we've since turned off.</div>
+          <div class="faq-q">What's the difference between V3 and V4?</div>
+          <div class="faq-a">V3 is the older Python bot, still running on an OANDA demo account &mdash; the full ledger is in the archive panel above. V4 is the Rust rewrite. It started shadow-mode (signal generation only, no orders) on Apr&nbsp;18 to validate against live prices, then went live on a real $273 OANDA account on Apr&nbsp;27. V3 stays up as a comparison case while V4 proves itself.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Why is V3's lifetime profit factor below 1.0?</div>
+          <div class="faq-a">V3 has 170+ trades going back to early March. The first ~120 of those ran strategies and exits we have since disabled. The winning-config fix shipped April&nbsp;11 and is earning its numbers in the 7-day window of the V3 archive. We're showing every trade in the lifetime view rather than scrubbing the embarrassing ones.</div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Are you selling signals yet?</div>
-          <div class="faq-a">No. We pulled the signal-subscription product in April when our live results didn't match our backtests &mdash; selling "$29/mo signals" on a losing bot would be the wrong thing to do. We'll re-evaluate if and when the live bot earns a sustainable edge over 4+ weeks.</div>
+          <div class="faq-a">No. We pulled the signal-subscription product in April when our live results didn't match our backtests &mdash; selling "$29/mo signals" on a losing bot would be the wrong thing to do. We'll re-evaluate after V4 has 4+ weeks of clean live performance.</div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Can I get the code?</div>
-          <div class="faq-a">The V3 Python bot is private, but we write openly about the architecture, the bugs we fixed, and the strategies we've tried &mdash; both here and on the <a target="_blank" href="https://christhrasher.wordpress.com/">journey blog</a>. The Rust rewrite (V4) may open-source later.</div>
+          <div class="faq-a">Both bots are private right now &mdash; V3 (Python) and V4 (Rust). We write openly about architecture, bugs we fixed, and strategies we tried, both here and on the <a target="_blank" href="https://christhrasher.wordpress.com/">journey blog</a>. There's an open-source spinoff in the works on sim-vs-live reconciliation, drawing on the 15&nbsp;bugs we caught porting V3's winning config from sim to production.</div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">What does "shadow mode" mean?</div>
-          <div class="faq-a">For the in-progress V4 Rust bot, we log what it <em>would</em> have traded without actually submitting orders. That lets us validate the signal generation and risk math against live prices before putting real money behind it.</div>
+          <div class="faq-a">Shadow mode = the bot computes signals against live OANDA prices but does NOT submit orders. The "would-have" trades are recorded in the same SQLite table as live trades, so the journal includes both. V4 ran in shadow from Apr&nbsp;18&ndash;26 to validate fills and risk math; from Apr&nbsp;27 onward it's live.</div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">Email list?</div>
-          <div class="faq-a">Sure &mdash; leave your email below if you want a short weekly recap. No sales pitch, just a link to the latest numbers and whatever we learned that week.</div>
+          <div class="faq-a">Sure &mdash; leave your email below for a short weekly recap. No sales pitch, just a link to the latest numbers and whatever we learned that week.</div>
         </div>
 
       </div>
@@ -370,7 +469,7 @@
       });
     })();
 
-    // --- Journal data loaders ---
+    // --- Journal data loaders (per-bot, prefix = "v3" | "v4") ---
 
     function fmtInt(n) {
       if (n === null || n === undefined) return '—';
@@ -403,7 +502,6 @@
       if (!iso) return '—';
       const d = new Date(iso);
       if (isNaN(d)) return iso;
-      // UTC-rendered, short
       const pad = n => String(n).padStart(2, '0');
       return d.getUTCFullYear() + '-' + pad(d.getUTCMonth()+1) + '-' + pad(d.getUTCDate())
         + ' ' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes());
@@ -415,8 +513,10 @@
       return 'pf-neutral';
     }
 
-    function renderStats(win) {
-      const el = id => document.querySelector(`[data-stat="${id}"]`);
+    function renderStats(win, prefix) {
+      const root = document.getElementById('stat-grid-' + prefix);
+      if (!root) return;
+      const el = id => root.querySelector(`[data-stat="${id}"]`);
       const set = (id, text, cls) => {
         const n = el(id);
         if (!n) return;
@@ -447,9 +547,10 @@
       set('profit_factor', pfText, pfCls);
     }
 
-    function renderBreakdown(metrics) {
-      const pairTbody = document.querySelector('#by-pair tbody');
-      const stratTbody = document.querySelector('#by-strategy tbody');
+    function renderBreakdown(metrics, prefix) {
+      const pairTbody = document.querySelector(`#by-pair-${prefix} tbody`);
+      const stratTbody = document.querySelector(`#by-strategy-${prefix} tbody`);
+      if (!pairTbody || !stratTbody) return;
       pairTbody.innerHTML = '';
       stratTbody.innerHTML = '';
       (metrics.by_pair || []).forEach(row => {
@@ -478,8 +579,9 @@
       });
     }
 
-    function renderFeed(trades) {
-      const tbody = document.querySelector('#feed tbody');
+    function renderFeed(trades, prefix) {
+      const tbody = document.querySelector(`#feed-${prefix} tbody`);
+      if (!tbody) return;
       tbody.innerHTML = '';
       if (!trades || !trades.length) {
         tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No trades logged yet.</td></tr>';
@@ -505,53 +607,63 @@
       });
     }
 
-    let METRICS_CACHE = null;
+    const BOT_CACHES = { v3: null, v4: null };
 
-    async function loadJournal() {
+    async function loadBot(prefix) {
+      const stamp = document.getElementById('gen-stamp-' + prefix);
+      const meta = document.getElementById('feed-meta-' + prefix);
+      const tbody = document.querySelector(`#feed-${prefix} tbody`);
       try {
         const [m, t] = await Promise.all([
-          fetch('data/metrics.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : null),
-          fetch('data/trades.json', {cache: 'no-store'}).then(r => r.ok ? r.json() : []),
+          fetch(`data/metrics_${prefix}.json`, {cache: 'no-store'}).then(r => r.ok ? r.json() : null),
+          fetch(`data/trades_${prefix}.json`, {cache: 'no-store'}).then(r => r.ok ? r.json() : []),
         ]);
-        if (!m) throw new Error('metrics.json missing');
-        METRICS_CACHE = m;
-        const winKey = document.querySelector('.window-tabs button.active')?.dataset.win || 'last_7d';
-        renderStats(m.windows?.[winKey]);
-        renderBreakdown(m);
-        renderFeed(t);
+        if (!m) throw new Error(`metrics_${prefix}.json missing`);
+        BOT_CACHES[prefix] = m;
+        const tabsRoot = document.querySelector(`.window-tabs[data-bot="${prefix}"]`);
+        const winKey = tabsRoot?.querySelector('button.active')?.dataset.win || 'last_7d';
+        renderStats(m.windows?.[winKey], prefix);
+        renderBreakdown(m, prefix);
+        renderFeed(t, prefix);
 
-        const stamp = document.querySelector('#gen-stamp');
         if (stamp && m.generated_at) {
           stamp.textContent = 'Last updated ' + fmtTs(m.generated_at) + ' UTC · ' +
-            fmtInt(m.total_trade_count) + ' trades in ledger · data: data/trades.json';
+            fmtInt(m.total_trade_count) + ' trades in ledger · data: data/trades_' + prefix + '.json';
         }
 
-        const meta = document.querySelector('#feed-meta');
         if (meta) {
+          let extra = '';
+          if (prefix === 'v4') {
+            extra = ' Trades before <strong>Apr 27</strong> were shadow-mode (signal-only, no real orders).';
+          } else if (prefix === 'v3') {
+            extra = ' Trades before <strong>Apr 11</strong> ran configurations that have since been pulled.';
+          }
           meta.innerHTML = 'Showing ' + fmtInt((t || []).length) +
-            ' of ' + fmtInt(m.total_trade_count) + ' recorded trades. ' +
-            'Trades before <strong>Apr 11</strong> ran configurations that have since been pulled.';
+            ' of ' + fmtInt(m.total_trade_count) + ' recorded trades.' + extra;
         }
       } catch (err) {
-        const stamp = document.querySelector('#gen-stamp');
-        if (stamp) stamp.textContent = 'Journal data will appear here once the first sync runs.';
-        const meta = document.querySelector('#feed-meta');
+        if (stamp) stamp.textContent = prefix === 'v4'
+          ? 'V4 journal data will appear here once the first sync runs.'
+          : 'V3 journal data will appear here once the first sync runs.';
         if (meta) meta.textContent = '';
-        const tbody = document.querySelector('#feed tbody');
         if (tbody) tbody.innerHTML = '<tr><td colspan="7" class="empty-state">Awaiting first data publish.</td></tr>';
       }
     }
 
-    document.querySelectorAll('.window-tabs button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.window-tabs button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const win = btn.dataset.win;
-        if (METRICS_CACHE) renderStats(METRICS_CACHE.windows?.[win]);
+    document.querySelectorAll('.window-tabs').forEach(tabsRoot => {
+      const prefix = tabsRoot.dataset.bot;
+      tabsRoot.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabsRoot.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const win = btn.dataset.win;
+          if (BOT_CACHES[prefix]) renderStats(BOT_CACHES[prefix].windows?.[win], prefix);
+        });
       });
     });
 
-    loadJournal();
+    loadBot('v4');
+    loadBot('v3');
   </script>
 </body>
 </html>

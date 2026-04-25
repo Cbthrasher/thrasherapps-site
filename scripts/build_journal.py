@@ -8,9 +8,12 @@ regenerated `data/` files to the site repo. Intended to be wrapped in a
 launchd plist on the user's laptop for automatic updates.
 
 Outputs (relative to repo root):
-  data/trades.json   — newest-first array of closed trades, up to N most recent
-  data/metrics.json  — rolling metrics (all-time + last 30d + last 7d), per-pair,
-                       per-strategy breakdown
+  data/trades_v3.json   — newest-first array of closed trades, up to N most recent
+  data/metrics_v3.json  — rolling metrics (all-time + last 30d + last 7d), per-pair,
+                          per-strategy breakdown
+
+(V4's parallel feed is in data/trades_v4.json + data/metrics_v4.json, written
+by build_v4_journal.py.)
 
 Usage:
   python3 scripts/build_journal.py
@@ -268,7 +271,7 @@ def main() -> int:
         "--max",
         type=int,
         default=DEFAULT_MAX_TRADES,
-        help="Cap the trades.json feed to N most recent closes",
+        help="Cap the trades_v3.json feed to N most recent closes",
     )
     args = ap.parse_args()
 
@@ -283,8 +286,8 @@ def main() -> int:
     data_dir = args.site_root / "data"
     data_dir.mkdir(parents=True, exist_ok=True)
 
-    trades_out = data_dir / "trades.json"
-    metrics_out = data_dir / "metrics.json"
+    trades_out = data_dir / "trades_v3.json"
+    metrics_out = data_dir / "metrics_v3.json"
 
     feed = matched[: args.max]
     trades_out.write_text(json.dumps(feed, indent=2) + "\n")

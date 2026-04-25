@@ -4,9 +4,10 @@
 
   What it does
     Runs scripts/sync_journal.sh every 30 minutes. The script parses the
-    V3 bot's JSONL logs, regenerates data/trades.json + data/metrics.json
-    for the site, and if anything changed, commits + pushes to origin/main.
-    GitHub Pages picks up the deploy automatically.
+    V3 bot's JSONL logs and reads V4's SQLite trades.db, regenerates
+    data/trades_v{3,4}.json + data/metrics_v{3,4}.json for the site, and if
+    anything changed, commits + pushes to origin/main. GitHub Pages picks
+    up the deploy automatically.
 
   Install
     mkdir -p ~/Library/LaunchAgents
@@ -43,6 +44,8 @@
     <string>/Users/christhrasher/Desktop/thrasherapps-site</string>
     <key>V3_LOGS</key>
     <string>/Users/christhrasher/Desktop/forex_trading_bot_V3/logs</string>
+    <key>V4_DB</key>
+    <string>/Users/christhrasher/Desktop/forex_trading_bot_V4/state/trades.db</string>
   </dict>
 
   <!-- Every 30 minutes -->
