@@ -1,5 +1,22 @@
 [
   {
+    "pair": "EUR_USD",
+    "side": "long",
+    "strategy": "Strategy A",
+    "regime": "STANDARD_TREND",
+    "session": "overlap",
+    "opened_at": "2026-04-27T13:00:09.317247+00:00",
+    "closed_at": "2026-04-27T13:05:34.690021+00:00",
+    "entry_price": 1.1745,
+    "exit_price": 1.17478,
+    "sl_price": 1.173444,
+    "tp_price": 1.175536,
+    "pnl_pips": 2.8,
+    "mfe_pips": 3.9,
+    "duration_seconds": 325,
+    "win": 1
+  },
+  {
     "pair": "USD_CHF",
     "side": "long",
     "strategy": "Strategy A",
