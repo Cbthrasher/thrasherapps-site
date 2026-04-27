@@ -1,6 +1,27 @@
 [
   {
     "pair": "USD_JPY",
+    "side": "long",
+    "strategy": "Strategy A",
+    "regime": "unknown",
+    "session": "unknown",
+    "opened_at": "2026-04-27T07:31:45.819961343+00:00",
+    "closed_at": "2026-04-27T07:33:02.364575614+00:00",
+    "entry_price": 159.242,
+    "exit_price": 159.20198099072962,
+    "sl_price": 159.20198099072962,
+    "tp_price": null,
+    "pnl_pips": -4.0,
+    "mfe_pips": 0.0,
+    "mae_pips": 4.4,
+    "duration_seconds": 76,
+    "win": 0,
+    "spread_pips_at_entry": 1.3999999999981583,
+    "units_would": 5445,
+    "exit_reason": "sl_hit"
+  },
+  {
+    "pair": "USD_JPY",
     "side": "short",
     "strategy": "Strategy A",
     "regime": "unknown",
