@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-04-27T01:11:21+00:00",
+  "generated_at": "2026-04-27T01:41:23+00:00",
   "windows": {
     "all_time": {
-      "n_trades": 157,
-      "wins": 95,
+      "n_trades": 159,
+      "wins": 97,
       "losses": 62,
-      "win_rate_pct": 60.5,
-      "profit_factor": 0.9,
-      "total_pips": -22.6,
+      "win_rate_pct": 61.0,
+      "profit_factor": 0.92,
+      "total_pips": -18.7,
       "avg_win_pips": 2.2,
       "avg_loss_pips": -3.8
     },
@@ -35,23 +35,23 @@
   "by_pair": [
     {
       "pair": "USD_JPY",
-      "n_trades": 60,
-      "wins": 39,
+      "n_trades": 61,
+      "wins": 40,
       "losses": 21,
-      "win_rate_pct": 65.0,
-      "profit_factor": 1.16,
-      "total_pips": 10.8,
+      "win_rate_pct": 65.6,
+      "profit_factor": 1.19,
+      "total_pips": 12.8,
       "avg_win_pips": 2.0,
       "avg_loss_pips": -3.3
     },
     {
       "pair": "EUR_USD",
-      "n_trades": 33,
-      "wins": 20,
+      "n_trades": 34,
+      "wins": 21,
       "losses": 13,
-      "win_rate_pct": 60.6,
-      "profit_factor": 1.06,
-      "total_pips": 2.9,
+      "win_rate_pct": 61.8,
+      "profit_factor": 1.11,
+      "total_pips": 4.8,
       "avg_win_pips": 2.4,
       "avg_loss_pips": -3.5
     },
@@ -114,12 +114,12 @@
   "by_strategy": [
     {
       "strategy": "Strategy A",
-      "n_trades": 156,
-      "wins": 95,
+      "n_trades": 158,
+      "wins": 97,
       "losses": 61,
-      "win_rate_pct": 60.9,
-      "profit_factor": 0.91,
-      "total_pips": -20.3,
+      "win_rate_pct": 61.4,
+      "profit_factor": 0.93,
+      "total_pips": -16.4,
       "avg_win_pips": 2.2,
       "avg_loss_pips": -3.8
     },
@@ -136,7 +136,7 @@
     }
   ],
   "n_unmatched_closes": 0,
-  "feed_trade_count": 157,
-  "total_trade_count": 157,
+  "feed_trade_count": 159,
+  "total_trade_count": 159,
   "bot": "v4"
 }
