@@ -1,5 +1,26 @@
 [
   {
+    "pair": "USD_JPY",
+    "side": "long",
+    "strategy": "Strategy A",
+    "regime": "unknown",
+    "session": "unknown",
+    "opened_at": "2026-04-27T01:08:02.001181729+00:00",
+    "closed_at": "2026-04-27T01:09:48.872843528+00:00",
+    "entry_price": 159.415,
+    "exit_price": 159.417,
+    "sl_price": 159.36097867882495,
+    "tp_price": null,
+    "pnl_pips": 0.2,
+    "mfe_pips": 2.3,
+    "mae_pips": 1.8,
+    "duration_seconds": 106,
+    "win": 1,
+    "spread_pips_at_entry": 1.3999999999981583,
+    "units_would": 4031,
+    "exit_reason": "retrace_50pct_mfe2.3p_now0.2p"
+  },
+  {
     "pair": "USD_CHF",
     "side": "long",
     "strategy": "Strategy B",
