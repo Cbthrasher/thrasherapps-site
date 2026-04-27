@@ -1,5 +1,26 @@
 [
   {
+    "pair": "GBP_USD",
+    "side": "long",
+    "strategy": "Strategy A",
+    "regime": "unknown",
+    "session": "unknown",
+    "opened_at": "2026-04-27T12:25:21.361968689+00:00",
+    "closed_at": "2026-04-27T12:28:03.582247487+00:00",
+    "entry_price": 1.35682,
+    "exit_price": 1.3564259275741064,
+    "sl_price": 1.3564259275741064,
+    "tp_price": null,
+    "pnl_pips": -3.9,
+    "mfe_pips": 0.0,
+    "mae_pips": 4.0,
+    "duration_seconds": 162,
+    "win": 0,
+    "spread_pips_at_entry": 1.4999999999987246,
+    "units_would": 3417,
+    "exit_reason": "sl_hit"
+  },
+  {
     "pair": "USD_JPY",
     "side": "long",
     "strategy": "Strategy A",
