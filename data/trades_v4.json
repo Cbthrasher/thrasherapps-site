@@ -1,5 +1,26 @@
 [
   {
+    "pair": "USD_CAD",
+    "side": "short",
+    "strategy": "Strategy B",
+    "regime": "unknown",
+    "session": "unknown",
+    "opened_at": "2026-04-28T09:30:00.566084737+00:00",
+    "closed_at": "2026-04-28T10:31:55.648765423+00:00",
+    "entry_price": 1.3649,
+    "exit_price": 1.3661969823318305,
+    "sl_price": 1.3661969823318305,
+    "tp_price": null,
+    "pnl_pips": -13.0,
+    "mfe_pips": 0.0,
+    "mae_pips": 13.0,
+    "duration_seconds": 3715,
+    "win": 0,
+    "spread_pips_at_entry": 1.80000000000069,
+    "units_would": 1384,
+    "exit_reason": "safety_sl"
+  },
+  {
     "pair": "GBP_USD",
     "side": "long",
     "strategy": "Strategy B",
