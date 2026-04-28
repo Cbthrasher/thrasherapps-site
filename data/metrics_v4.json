@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-04-28T13:43:25+00:00",
+  "generated_at": "2026-04-28T14:13:26+00:00",
   "windows": {
     "all_time": {
-      "n_trades": 176,
-      "wins": 101,
+      "n_trades": 177,
+      "wins": 102,
       "losses": 75,
-      "win_rate_pct": 57.4,
+      "win_rate_pct": 57.6,
       "profit_factor": 0.68,
-      "total_pips": -112.0,
-      "avg_win_pips": 2.4,
+      "total_pips": -111.5,
+      "avg_win_pips": 2.3,
       "avg_loss_pips": -4.7
     },
     "last_30d": {
@@ -68,13 +68,13 @@
     },
     {
       "pair": "AUD_USD",
-      "n_trades": 27,
-      "wins": 13,
+      "n_trades": 28,
+      "wins": 14,
       "losses": 14,
-      "win_rate_pct": 48.1,
-      "profit_factor": 0.32,
-      "total_pips": -41.3,
-      "avg_win_pips": 1.5,
+      "win_rate_pct": 50.0,
+      "profit_factor": 0.33,
+      "total_pips": -40.8,
+      "avg_win_pips": 1.4,
       "avg_loss_pips": -4.3
     },
     {
@@ -125,18 +125,18 @@
     },
     {
       "strategy": "Strategy B",
-      "n_trades": 8,
-      "wins": 2,
+      "n_trades": 9,
+      "wins": 3,
       "losses": 6,
-      "win_rate_pct": 25.0,
+      "win_rate_pct": 33.3,
       "profit_factor": 0.24,
-      "total_pips": -69.7,
-      "avg_win_pips": 10.8,
+      "total_pips": -69.2,
+      "avg_win_pips": 7.4,
       "avg_loss_pips": -15.2
     }
   ],
   "n_unmatched_closes": 0,
-  "feed_trade_count": 176,
-  "total_trade_count": 176,
+  "feed_trade_count": 177,
+  "total_trade_count": 177,
   "bot": "v4"
 }
