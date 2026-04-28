@@ -1,5 +1,26 @@
 [
   {
+    "pair": "USD_CAD",
+    "side": "long",
+    "strategy": "Strategy A",
+    "regime": "unknown",
+    "session": "unknown",
+    "opened_at": "2026-04-28T15:39:22.111042950+00:00",
+    "closed_at": "2026-04-28T15:49:22.803318540+00:00",
+    "entry_price": 1.36753,
+    "exit_price": 1.36734,
+    "sl_price": 1.3671748592678676,
+    "tp_price": null,
+    "pnl_pips": -1.9,
+    "mfe_pips": 0.2,
+    "mae_pips": 3.4,
+    "duration_seconds": 600,
+    "win": 0,
+    "spread_pips_at_entry": 1.4999999999987246,
+    "units_would": 4974,
+    "exit_reason": "max_hold_10m"
+  },
+  {
     "pair": "USD_JPY",
     "side": "long",
     "strategy": "Strategy A",

@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-04-28T15:43:32+00:00",
+  "generated_at": "2026-04-28T16:13:33+00:00",
   "windows": {
     "all_time": {
-      "n_trades": 181,
+      "n_trades": 182,
       "wins": 104,
-      "losses": 77,
-      "win_rate_pct": 57.5,
-      "profit_factor": 0.67,
-      "total_pips": -122.4,
+      "losses": 78,
+      "win_rate_pct": 57.1,
+      "profit_factor": 0.66,
+      "total_pips": -124.3,
       "avg_win_pips": 2.4,
-      "avg_loss_pips": -4.8
+      "avg_loss_pips": -4.7
     },
     "last_30d": {
       "n_trades": 0,
@@ -90,14 +90,14 @@
     },
     {
       "pair": "USD_CAD",
-      "n_trades": 7,
+      "n_trades": 8,
       "wins": 4,
-      "losses": 3,
-      "win_rate_pct": 57.1,
-      "profit_factor": 0.34,
-      "total_pips": -19.9,
+      "losses": 4,
+      "win_rate_pct": 50.0,
+      "profit_factor": 0.32,
+      "total_pips": -21.8,
       "avg_win_pips": 2.6,
-      "avg_loss_pips": -10.1
+      "avg_loss_pips": -8.0
     },
     {
       "pair": "EUR_GBP",
@@ -114,12 +114,12 @@
   "by_strategy": [
     {
       "strategy": "Strategy A",
-      "n_trades": 170,
+      "n_trades": 171,
       "wins": 100,
-      "losses": 70,
-      "win_rate_pct": 58.8,
+      "losses": 71,
+      "win_rate_pct": 58.5,
       "profit_factor": 0.84,
-      "total_pips": -41.9,
+      "total_pips": -43.8,
       "avg_win_pips": 2.2,
       "avg_loss_pips": -3.8
     },
@@ -136,7 +136,7 @@
     }
   ],
   "n_unmatched_closes": 0,
-  "feed_trade_count": 181,
-  "total_trade_count": 181,
+  "feed_trade_count": 182,
+  "total_trade_count": 182,
   "bot": "v4"
 }
