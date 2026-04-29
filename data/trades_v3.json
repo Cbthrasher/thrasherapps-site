@@ -1,5 +1,22 @@
 [
   {
+    "pair": "USD_CAD",
+    "side": "long",
+    "strategy": "Other",
+    "regime": "STANDARD_TREND",
+    "session": "london",
+    "opened_at": "2026-04-29T10:17:44.428097+00:00",
+    "closed_at": "2026-04-29T11:17:25.759271+00:00",
+    "entry_price": 1.36888,
+    "exit_price": 1.36783,
+    "sl_price": 1.367848,
+    "tp_price": 1.37052,
+    "pnl_pips": -10.5,
+    "mfe_pips": 0.8,
+    "duration_seconds": 3581,
+    "win": 0
+  },
+  {
     "pair": "EUR_USD",
     "side": "short",
     "strategy": "Strategy A",
