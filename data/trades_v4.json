@@ -1,5 +1,26 @@
 [
   {
+    "pair": "EUR_USD",
+    "side": "long",
+    "strategy": "Strategy A",
+    "regime": "unknown",
+    "session": "unknown",
+    "opened_at": "2026-04-29T12:24:24.038208891+00:00",
+    "closed_at": "2026-04-29T12:34:24.270094082+00:00",
+    "entry_price": 1.17038,
+    "exit_price": 1.17019,
+    "sl_price": 1.1700687034496542,
+    "tp_price": null,
+    "pnl_pips": -1.9,
+    "mfe_pips": 1.0,
+    "mae_pips": 3.1,
+    "duration_seconds": 600,
+    "win": 0,
+    "spread_pips_at_entry": 1.4999999999987246,
+    "units_would": 4156,
+    "exit_reason": "max_hold_10m"
+  },
+  {
     "pair": "GBP_USD",
     "side": "short",
     "strategy": "Strategy A",
