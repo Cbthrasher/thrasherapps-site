@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T09:44:30+00:00",
+  "generated_at": "2026-04-29T10:14:32+00:00",
   "windows": {
     "all_time": {
       "n_trades": 179,
@@ -201,7 +201,7 @@
       "avg_loss_pips": -5.9
     }
   ],
-  "n_unmatched_closes": 46,
+  "n_unmatched_closes": 47,
   "feed_trade_count": 179,
   "total_trade_count": 179
 }
