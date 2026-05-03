@@ -64,11 +64,30 @@ def label_strategy(name: str | None) -> str:
 
 
 def parse_ts(s: str | None):
-    """Parse ISO-8601 from rusqlite (rfc3339). Returns UTC datetime or None."""
+    """Parse ISO-8601 from rusqlite (rfc3339). Returns UTC datetime or None.
+
+    2026-05-03: V4's Rust writer emits NANOSECOND precision (e.g.
+    "2026-04-22T02:08:09.031419377+00:00"). Python <3.11's
+    datetime.fromisoformat only accepts microsecond precision.
+    Under launchd we run with /usr/bin/python3 == 3.9.6, which silently
+    failed to parse every timestamp → parse_ts returned None for every
+    trade → last_7d/last_30d windows showed 0 trades on the public site
+    even though all_time correctly showed 194. Fix: truncate the
+    fractional-seconds component to 6 digits before parsing.
+    """
     if not s:
         return None
     if s.endswith("Z"):
         s = s[:-1] + "+00:00"
+    # Truncate fractional seconds to microseconds (6 digits) for 3.9 compat.
+    # Match: ...T<HH>:<MM>:<SS>.<frac><tz>  where tz is +HH:MM or -HH:MM.
+    import re
+    m = re.match(r"^(.*\d{2}:\d{2}:\d{2})\.(\d+)([+-]\d{2}:\d{2})$", s)
+    if m:
+        head, frac, tz = m.group(1), m.group(2), m.group(3)
+        if len(frac) > 6:
+            frac = frac[:6]
+        s = f"{head}.{frac}{tz}"
     try:
         dt = datetime.fromisoformat(s)
         if dt.tzinfo is None:
