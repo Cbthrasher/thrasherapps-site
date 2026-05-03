@@ -88,10 +88,27 @@ def load_closed(db_path: Path) -> list[dict]:
         print(f"[build_v4_journal] no V4 trades.db at {db_path}", file=sys.stderr)
         return []
 
-    # Open in read-only URI mode so we never lock the DB while the bot is
-    # writing. WAL journaling on the bot's side means concurrent readers work
-    # cleanly anyway, but ?mode=ro is the belt + suspenders.
-    uri = f"file:{db_path}?mode=ro"
+    # 2026-05-03: Copy the DB to /tmp before opening. The bot writes to
+    # trades.db using SQLite's WAL mode, which leaves `-wal` and `-shm`
+    # sidecar files in the DB's directory. Even read-only `?mode=ro`
+    # connections need to read those sidecar files — and under launchd
+    # the script was failing with "unable to open database file" because
+    # the auxiliary WAL/SHM files weren't reachable in that context.
+    # Copying to /tmp gives us a snapshot with no WAL dependencies.
+    # Trade-off: we may miss the last few trades written between copy
+    # and the next launchd run (every 30 min), which is fine for a
+    # public journal.
+    import shutil
+    import tempfile
+    tmp_dir = Path(tempfile.gettempdir())
+    snapshot = tmp_dir / f"trades_snapshot_{db_path.stem}.db"
+    try:
+        shutil.copy2(db_path, snapshot)
+    except OSError as e:
+        print(f"[build_v4_journal] failed to snapshot {db_path}: {e}", file=sys.stderr)
+        return []
+
+    uri = f"file:{snapshot}?mode=ro"
     conn = sqlite3.connect(uri, uri=True)
     conn.row_factory = sqlite3.Row
     try:
