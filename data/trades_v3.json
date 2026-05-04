@@ -1,6 +1,23 @@
 [
   {
     "pair": "AUD_USD",
+    "side": "short",
+    "strategy": "Other",
+    "regime": "RANGING",
+    "session": "newyork",
+    "opened_at": "2026-05-04T13:00:25.390303+00:00",
+    "closed_at": "2026-05-04T16:07:53.560209+00:00",
+    "entry_price": 0.71825,
+    "exit_price": 0.71612,
+    "sl_price": 0.71959,
+    "tp_price": 0.716096,
+    "pnl_pips": 21.3,
+    "mfe_pips": 21.6,
+    "duration_seconds": 11248,
+    "win": 1
+  },
+  {
+    "pair": "AUD_USD",
     "side": "long",
     "strategy": "Other",
     "regime": "STANDARD_TREND",

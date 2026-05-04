@@ -1,34 +1,34 @@
 {
-  "generated_at": "2026-05-04T15:55:53+00:00",
+  "generated_at": "2026-05-04T16:25:55+00:00",
   "windows": {
     "all_time": {
-      "n_trades": 189,
-      "wins": 82,
+      "n_trades": 190,
+      "wins": 83,
       "losses": 107,
-      "win_rate_pct": 43.4,
-      "profit_factor": 0.44,
-      "total_pips": -369.5,
-      "avg_win_pips": 3.5,
+      "win_rate_pct": 43.7,
+      "profit_factor": 0.47,
+      "total_pips": -348.2,
+      "avg_win_pips": 3.7,
       "avg_loss_pips": -6.2
     },
     "last_30d": {
-      "n_trades": 123,
-      "wins": 60,
+      "n_trades": 124,
+      "wins": 61,
       "losses": 63,
-      "win_rate_pct": 48.8,
-      "profit_factor": 0.5,
-      "total_pips": -217.7,
-      "avg_win_pips": 3.7,
+      "win_rate_pct": 49.2,
+      "profit_factor": 0.55,
+      "total_pips": -196.4,
+      "avg_win_pips": 4.0,
       "avg_loss_pips": -7.0
     },
     "last_7d": {
-      "n_trades": 11,
-      "wins": 1,
+      "n_trades": 12,
+      "wins": 2,
       "losses": 10,
-      "win_rate_pct": 9.1,
-      "profit_factor": 0.23,
-      "total_pips": -46.5,
-      "avg_win_pips": 14.2,
+      "win_rate_pct": 16.7,
+      "profit_factor": 0.58,
+      "total_pips": -25.2,
+      "avg_win_pips": 17.8,
       "avg_loss_pips": -6.1
     }
   },
@@ -57,13 +57,13 @@
     },
     {
       "pair": "AUD_USD",
-      "n_trades": 26,
-      "wins": 14,
+      "n_trades": 27,
+      "wins": 15,
       "losses": 12,
-      "win_rate_pct": 53.8,
-      "profit_factor": 0.59,
-      "total_pips": -45.0,
-      "avg_win_pips": 4.6,
+      "win_rate_pct": 55.6,
+      "profit_factor": 0.78,
+      "total_pips": -23.7,
+      "avg_win_pips": 5.7,
       "avg_loss_pips": -9.1
     },
     {
@@ -146,6 +146,17 @@
       "avg_loss_pips": -4.0
     },
     {
+      "strategy": "Other",
+      "n_trades": 8,
+      "wins": 4,
+      "losses": 4,
+      "win_rate_pct": 50.0,
+      "profit_factor": 0.85,
+      "total_pips": -7.2,
+      "avg_win_pips": 10.6,
+      "avg_loss_pips": -12.4
+    },
+    {
       "strategy": "Strategy C",
       "n_trades": 8,
       "wins": 3,
@@ -155,17 +166,6 @@
       "total_pips": -25.3,
       "avg_win_pips": 1.8,
       "avg_loss_pips": -6.1
-    },
-    {
-      "strategy": "Other",
-      "n_trades": 7,
-      "wins": 3,
-      "losses": 4,
-      "win_rate_pct": 42.9,
-      "profit_factor": 0.43,
-      "total_pips": -28.5,
-      "avg_win_pips": 7.0,
-      "avg_loss_pips": -12.4
     },
     {
       "strategy": "Strategy D",
@@ -202,6 +202,6 @@
     }
   ],
   "n_unmatched_closes": 50,
-  "feed_trade_count": 189,
-  "total_trade_count": 189
+  "feed_trade_count": 190,
+  "total_trade_count": 190
 }
