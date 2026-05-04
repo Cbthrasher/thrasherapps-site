@@ -1,5 +1,22 @@
 [
   {
+    "pair": "GBP_USD",
+    "side": "short",
+    "strategy": "Strategy A",
+    "regime": "STANDARD_TREND",
+    "session": "newyork",
+    "opened_at": "2026-05-04T17:45:17.947844+00:00",
+    "closed_at": "2026-05-04T17:48:23.249219+00:00",
+    "entry_price": 1.35318,
+    "exit_price": 1.35339,
+    "sl_price": 1.35518,
+    "tp_price": 1.35118,
+    "pnl_pips": -2.1,
+    "mfe_pips": 0,
+    "duration_seconds": 185,
+    "win": 0
+  },
+  {
     "pair": "AUD_USD",
     "side": "short",
     "strategy": "Other",
