@@ -1,5 +1,22 @@
 [
   {
+    "pair": "GBP_USD",
+    "side": "short",
+    "strategy": "Strategy A",
+    "regime": "RANGING",
+    "session": "newyork",
+    "opened_at": "2026-05-05T17:10:55.204405+00:00",
+    "closed_at": "2026-05-05T17:14:07.928645+00:00",
+    "entry_price": 1.35501,
+    "exit_price": 1.35517,
+    "sl_price": 1.356836,
+    "tp_price": 1.353184,
+    "pnl_pips": -1.6,
+    "mfe_pips": 0,
+    "duration_seconds": 192,
+    "win": 0
+  },
+  {
     "pair": "USD_CHF",
     "side": "long",
     "strategy": "Strategy A",
