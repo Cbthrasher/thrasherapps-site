@@ -1,5 +1,22 @@
 [
   {
+    "pair": "AUD_USD",
+    "side": "short",
+    "strategy": "Other",
+    "regime": "VOLATILE",
+    "session": "asian",
+    "opened_at": "2026-05-04T18:08:38.681984+00:00",
+    "closed_at": "2026-05-05T04:30:34.897312+00:00",
+    "entry_price": 0.71704,
+    "exit_price": 0.71678,
+    "sl_price": 0.718645,
+    "tp_price": 0.714311,
+    "pnl_pips": 2.6,
+    "mfe_pips": 17.2,
+    "duration_seconds": 37316,
+    "win": 1
+  },
+  {
     "pair": "GBP_USD",
     "side": "short",
     "strategy": "Strategy A",
