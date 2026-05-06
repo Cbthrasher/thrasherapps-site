@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T13:30:58+00:00",
+  "generated_at": "2026-05-06T14:01:03+00:00",
   "windows": {
     "all_time": {
       "n_trades": 202,
@@ -12,23 +12,23 @@
       "avg_loss_pips": -6.0
     },
     "last_30d": {
-      "n_trades": 134,
-      "wins": 64,
+      "n_trades": 133,
+      "wins": 63,
       "losses": 70,
-      "win_rate_pct": 47.8,
-      "profit_factor": 0.57,
-      "total_pips": -203.1,
+      "win_rate_pct": 47.4,
+      "profit_factor": 0.56,
+      "total_pips": -205.5,
       "avg_win_pips": 4.2,
       "avg_loss_pips": -6.7
     },
     "last_7d": {
-      "n_trades": 22,
-      "wins": 7,
+      "n_trades": 21,
+      "wins": 6,
       "losses": 15,
-      "win_rate_pct": 31.8,
-      "profit_factor": 0.88,
-      "total_pips": -8.7,
-      "avg_win_pips": 8.8,
+      "win_rate_pct": 28.6,
+      "profit_factor": 0.67,
+      "total_pips": -22.9,
+      "avg_win_pips": 7.9,
       "avg_loss_pips": -4.7
     }
   },
