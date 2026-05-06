@@ -1,5 +1,22 @@
 [
   {
+    "pair": "USD_CAD",
+    "side": "short",
+    "strategy": "Other",
+    "regime": "VOLATILE",
+    "session": "asian",
+    "opened_at": "2026-05-06T06:25:52.429977+00:00",
+    "closed_at": "2026-05-06T07:09:41.096771+00:00",
+    "entry_price": 1.35941,
+    "exit_price": 1.35927,
+    "sl_price": 1.360553,
+    "tp_price": 1.357504,
+    "pnl_pips": 1.4,
+    "mfe_pips": 9.7,
+    "duration_seconds": 2628,
+    "win": 1
+  },
+  {
     "pair": "GBP_USD",
     "side": "short",
     "strategy": "Strategy A",
