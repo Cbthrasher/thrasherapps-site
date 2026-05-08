@@ -1,5 +1,22 @@
 [
   {
+    "pair": "USD_CAD",
+    "side": "long",
+    "strategy": "Other",
+    "regime": "SKIP_TRADING",
+    "session": "london",
+    "opened_at": "2026-05-08T07:59:35.717083+00:00",
+    "closed_at": "2026-05-08T09:02:56.128962+00:00",
+    "entry_price": 1.36578,
+    "exit_price": 1.36472,
+    "sl_price": 1.36472,
+    "tp_price": 1.36752,
+    "pnl_pips": -10.6,
+    "mfe_pips": 0.8,
+    "duration_seconds": 3800,
+    "win": 0
+  },
+  {
     "pair": "AUD_USD",
     "side": "short",
     "strategy": "Other",
@@ -3381,22 +3398,5 @@
     "mfe_pips": 0,
     "duration_seconds": 53971,
     "win": 0
-  },
-  {
-    "pair": "EUR_GBP",
-    "side": "short",
-    "strategy": "Other",
-    "regime": "unknown",
-    "session": "asian",
-    "opened_at": "2026-03-29T22:35:07.283184+00:00",
-    "closed_at": "2026-03-30T11:29:05.998116+00:00",
-    "entry_price": 0.86787,
-    "exit_price": 0.86777,
-    "sl_price": 0.86887,
-    "tp_price": 0.86707,
-    "pnl_pips": 0.9,
-    "mfe_pips": 0,
-    "duration_seconds": 46438,
-    "win": 1
   }
 ]
