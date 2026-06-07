@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Journey — ThrasherApps Forex Bots</title>
-  <meta name="description" content="From a $297 Python script to a Rust rewrite: the story of three forex trading bots, the bugs that cost real money, and what we learned." />
+  <meta name="description" content="From a $297 Python script to a Rust rewrite to an open-source validation framework: the story of three forex bots, the bugs that cost real money, why most trading 'edges' are luck, and the one tool that finally told the truth." />
   <link rel="stylesheet" href="assets/site.css">
   <style>
     .timeline{position:relative;margin-top:var(--space-5);padding-left:var(--space-4)}
@@ -48,15 +48,18 @@
   <section class="hero">
     <div class="container hero-inner">
       <span class="badge">Build Log</span>
-      <h1 class="mt-2">From $297 to a Rust rewrite</h1>
+      <h1 class="mt-2">From $297 to an open-source truth detector</h1>
       <p class="lead">
-        Three forex bots, fifteen production bugs, and one hard lesson about the gap between
-        a good backtest and a profitable live account. Here's what happened &mdash; in order.
+        Three forex bots, fifteen production bugs, and a year of backtests that taught me one
+        hard lesson: most trading "edges" are lucky streaks wearing a disguise. Here's the
+        whole story &mdash; in order &mdash; ending with the tool I built to stop fooling myself.
       </p>
       <p class="small mt-2">
-        <a href="dashboard.html">See current live performance &rarr;</a>
+        <a target="_blank" href="https://github.com/Cbthrasher/Gauntlet">The Gauntlet on GitHub &rarr;</a>
         &nbsp;&middot;&nbsp;
-        <a target="_blank" href="https://christhrasher.wordpress.com/">Long-form blog posts</a>
+        <a href="dashboard.html">Live performance</a>
+        &nbsp;&middot;&nbsp;
+        <a target="_blank" href="https://christhrasher.wordpress.com/">Long-form blog</a>
       </p>
     </div>
   </section>
@@ -234,16 +237,103 @@
         </div>
 
         <div class="t-item">
-          <div class="t-meta">Apr 19 &middot; Now</div>
-          <h3>Publishing the journal</h3>
+          <div class="t-meta">Apr 19 &middot; V4 live, journal public</div>
+          <h3>Publishing the journal instead of selling signals</h3>
           <p>
-            The page you came from (<a href="dashboard.html">signals.html</a>) used to advertise
-            paid signal subscriptions on the strength of a backtest. The live numbers didn't
-            back that up, so instead of selling signals, we're publishing the full trade log.
+            This site used to advertise paid signal subscriptions on the strength of a
+            backtest. The live numbers didn't back that up &mdash; so instead of selling
+            signals, I published the full trade log. Every trade visible, wins and losses.
+          </p>
+        </div>
+
+        <div class="t-item warn">
+          <div class="t-meta">May 2026 &middot; The deeper problem</div>
+          <h3>It was never just one bug</h3>
+          <p>
+            Fixing the exit helped, but the gap between backtest and reality kept coming back
+            in new forms. The real problem was bigger than any single bug: I kept finding
+            "edges" that were really just <strong>lucky stretches</strong>. Mine enough
+            variations of a strategy, keep the best-looking one, and a coin flip starts to
+            look like skill. I was fooling myself &mdash; methodically.
+          </p>
+        </div>
+
+        <div class="t-item good">
+          <div class="t-meta">May 2026 &middot; The Gauntlet</div>
+          <h3>I built a tool whose only job is to say no</h3>
+          <p>
+            So I stopped tuning strategies and built a validation framework with one purpose:
+            to <strong>reject</strong> a strategy, not bless it. It runs a strategy's trades
+            through a row of statistical kill-tests &mdash; a <strong>Deflated Sharpe</strong>
+            that penalizes how many variants you tried, a bootstrap that exposes the real
+            drawdown tail, a cost-stress test, a regime split, a parameter-plateau check.
           </p>
           <p>
-            If the fix holds for 30 days, the headline number on that page will earn itself.
-            If it doesn't, we'll tell you what we changed. Either way, every trade is visible.
+            Then I ran everything I'd ever built through it. Most of it died. That was the
+            point &mdash; a backtest that <em>can't</em> fail you can't protect you either.
+          </p>
+        </div>
+
+        <div class="t-item fail">
+          <div class="t-meta">May&ndash;Jun 2026 &middot; The honest negatives</div>
+          <h3>What didn't survive (almost all of it)</h3>
+          <p>
+            Tested cleanly &mdash; real spreads, no look-ahead, multi-year samples:
+          </p>
+          <ul style="color:var(--text-muted);font-size:15px;line-height:1.7">
+            <li><strong>Intraday scalping</strong> &middot; died on the spread; the edge per trade was smaller than the cost.</li>
+            <li><strong>Mean reversion</strong> &middot; slightly negative; gating it to "ranging only" made it <em>worse</em>.</li>
+            <li><strong>Trend-following on FX</strong> &middot; basically zero, at every lookback.</li>
+            <li><strong>Momentum, pairs/cointegration, intermarket, month-end flow</strong> &middot; all lost, or didn't survive costs.</li>
+            <li><strong>"Confluence"</strong> (only trade when everything agrees) &middot; made it <em>worse</em> &mdash; averaging a real signal with noise just adds noise.</li>
+          </ul>
+          <p>
+            The pattern was undeniable: <strong>simple price-pattern edges on FX majors don't
+            survive realistic costs.</strong> The good stretches were hot streaks that gave
+            themselves back.
+          </p>
+        </div>
+
+        <div class="t-item good">
+          <div class="t-meta">Jun 2026 &middot; What actually survived</div>
+          <h3>Two real edges &mdash; and a portfolio that beat them both</h3>
+          <p>
+            <strong>Carry</strong> (earning the interest-rate differential) was small but real.
+            <strong>Trend-following on a diversified basket</strong> of indices, metals and
+            bonds was the strongest, most robust thing I found. And stacking a few genuinely
+            <em>uncorrelated</em> thin edges into one portfolio beat any of them alone &mdash;
+            the best result of the entire project.
+          </p>
+        </div>
+
+        <div class="t-item fail">
+          <div class="t-meta">Jun 2026 &middot; The catch that explained the whole year</div>
+          <h3>The one edge that worked is one I can't trade</h3>
+          <p>
+            I queried my own live account to be certain. <strong>US OANDA lets US retail
+            traders trade spot FX only</strong> &mdash; no indices, no oil, no bonds, not even
+            gold. The diversified trend edge, the strongest thing I found, runs on instruments
+            my account literally cannot touch.
+          </p>
+          <p>
+            That reframed everything. The year of struggle wasn't a strategy problem &mdash;
+            it was an <strong>access problem</strong>. I'd been forced to fish in the one
+            market (hyper-efficient FX majors) where a small mechanical edge is hardest to find.
+          </p>
+        </div>
+
+        <div class="t-item good">
+          <div class="t-meta">Jun 2026 &middot; Now</div>
+          <h3>Open-sourcing the thing that told the truth</h3>
+          <p>
+            The most valuable thing I built this year wasn't a money-making strategy. It was
+            the tool that reliably told me when I <em>didn't</em> have one &mdash; and kept me
+            from betting real money on luck. So I'm giving it away.
+          </p>
+          <p>
+            <a target="_blank" href="https://github.com/Cbthrasher/Gauntlet"><strong>The Gauntlet is on GitHub &rarr;</strong></a>
+            One file, zero dependencies. Run the demo and watch it pass a real edge and kill a
+            data-snooped fake in about a minute.
           </p>
         </div>
 
@@ -288,6 +378,30 @@
             cheap; re-tuning is expensive.
           </p>
         </div>
+        <div class="card">
+          <h3>Most "edges" are just luck in disguise</h3>
+          <p>
+            Try enough variations and keep the best, and randomness alone hands you a
+            great-looking backtest. The antidote is a Deflated Sharpe that charges you for
+            every variant you tried &mdash; it's the gate that killed most of my "winners."
+          </p>
+        </div>
+        <div class="card">
+          <h3>Access beats strategy</h3>
+          <p>
+            The strongest edge I found needed instruments my US spot-FX account can't trade.
+            A whole year of pain turned out to be the wrong market, not the wrong code.
+            <em>Where</em> you're allowed to trade matters more than how clever the rules are.
+          </p>
+        </div>
+        <div class="card">
+          <h3>The negative results were the product</h3>
+          <p>
+            I didn't find a money printer. I found a reliable way to know when I <em>don't</em>
+            have an edge &mdash; worth more than another hopeful strategy. An honest "no" is the
+            rarest and most valuable answer in trading.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -295,12 +409,12 @@
   <!-- Blog CTA -->
   <section class="section cta-band">
     <div class="container" style="max-width:680px;text-align:center">
-      <h2 class="h2">The long version is on the blog</h2>
-      <p class="lead">I'm writing this up in more detail &mdash; one post per phase, with the real code diffs and the real numbers.</p>
+      <h2 class="h2">See the tool, or read the long version</h2>
+      <p class="lead">The Gauntlet is open source &mdash; one file, no dependencies, with a runnable demo that passes a real edge and kills a data-snooped fake in a minute. And I'm writing up each phase on the blog with the real code and the real numbers.</p>
       <p class="mt-3">
-        <a class="btn" target="_blank" href="https://christhrasher.wordpress.com/">Read on WordPress &rarr;</a>
+        <a class="btn" target="_blank" href="https://github.com/Cbthrasher/Gauntlet">The Gauntlet on GitHub &rarr;</a>
         &nbsp;&nbsp;
-        <a class="btn btn-secondary" href="dashboard.html">See current performance</a>
+        <a class="btn btn-secondary" target="_blank" href="https://christhrasher.wordpress.com/">Read on WordPress</a>
       </p>
     </div>
   </section>
