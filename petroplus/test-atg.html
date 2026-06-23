@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ATG — Knowledge Check — Petro Plus Training</title>
+  <meta name="description" content="Printable ATG knowledge check: triage, common alarms, locating sensors, PLLD/line tests, slow flow, and site mapping." />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .mini-hero{padding:24px 0 12px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#ffffff,#f6f9ff)}
+    .mini-nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .mini-nav a{color:var(--text-strong);text-decoration:none;padding:8px 10px;border-radius:6px}
+    .mini-nav a:hover{background:#f1f5f9}
+    .mini-nav a.active{color:var(--color-primary);font-weight:600}
+    .stack{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .note{font-size:13px;color:var(--text-muted)}
+    .callout-lite{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid #DBEAFE;background:#EFF6FF;color:var(--text-muted);line-height:1.45;font-size:14px}
+
+    .meta-grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:680px){.meta-grid{grid-template-columns:2fr 1fr 1fr}}
+    .field label{display:block;font-size:11px;font-weight:700;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+    .field .line{border-bottom:1.5px solid #94a3b8;height:20px}
+
+    main.exam{counter-reset:q}
+    .qlist{margin-top:4px}
+    .q{padding:14px 0;border-bottom:1px solid var(--border)}
+    .q:last-child{border-bottom:0;padding-bottom:2px}
+    .q .stem{font-weight:600;display:flex;gap:8px;align-items:baseline}
+    .q .stem::before{counter-increment:q;content:counter(q) ".";font-weight:700;color:var(--color-primary);min-width:22px}
+    .opts{list-style:none;margin:10px 0 0;padding:0}
+    .opts li{display:flex;gap:10px;align-items:flex-start;margin:7px 0 7px 22px}
+    .box{flex:0 0 15px;width:15px;height:15px;border:1.6px solid #94a3b8;border-radius:4px;margin-top:2px}
+    .tf{display:flex;gap:26px;margin:10px 0 0 22px}
+    .tf .opt{display:flex;gap:8px;align-items:center}
+    .write{margin:8px 0 0 22px}
+    .write .line{border-bottom:1px solid #cbd5e1;height:26px;margin-top:10px}
+
+    .key-card{margin-top:18px}
+    .key-card summary{cursor:pointer;font-weight:650}
+    .key-card ol{margin:10px 0 0 20px}
+    .key-card li{margin:7px 0;color:var(--text-strong)}
+
+    @media print{
+      .site-header,.no-print{display:none !important}
+      .mini-hero{border:0;background:#fff;padding:0 0 6px}
+      body{background:#fff}
+      .card{box-shadow:none;border:1px solid #cbd5e1;break-inside:avoid;margin:10px 0}
+      .q{break-inside:avoid}
+      a{color:inherit;text-decoration:none}
+      .key-card{break-before:page}
+      .key-card:has(details:not([open])){display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/petroplus/">Petro Plus Training</a>
+      <nav class="mini-nav">
+        <a href="/petroplus/">Home</a>
+        <a href="/petroplus/safety.html">Safety</a>
+        <a href="/petroplus/atg.html">ATG</a>
+        <a href="/petroplus/dispensers.html">Dispensers</a>
+        <a href="/petroplus/tanks-tubes.html">Tanks & Tubes</a>
+        <a class="active" href="/petroplus/tests.html">Tests</a>
+        <a href="/petroplus/forms.html">Forms & Docs</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="mini-hero">
+    <div class="container">
+      <h1>ATG — Knowledge Check</h1>
+      <p class="lead">Covers the ATG page: 60-second triage, common alarms, locating sensors, PLLD/line tests, slow flow, and site mapping.</p>
+      <div class="stack mt-2 no-print">
+        <button class="btn" onclick="window.print()">Print this test</button>
+        <a class="btn btn-secondary" href="/petroplus/tests.html">← All tests</a>
+        <a class="btn btn-secondary" href="/petroplus/atg.html">Open ATG page</a>
+      </div>
+      <p class="note no-print mt-2">Printing: leave the answer key collapsed for a blank test. Expand it first to print the trainer copy with answers.</p>
+    </div>
+  </section>
+
+  <main class="section section--tight exam">
+    <div class="container">
+
+      <div class="card">
+        <div class="meta-grid">
+          <div class="field"><label>Technician</label><div class="line"></div></div>
+          <div class="field"><label>Date</label><div class="line"></div></div>
+          <div class="field"><label>Score</label><div class="line"></div></div>
+        </div>
+        <p class="note mt-3">14 questions. Check the box for multiple-choice and true/false. Write on the lines for short answer.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Part A · Multiple choice</span>
+        <div class="qlist">
+          <div class="q">
+            <div class="stem">The first thing to determine when an ATG alarm comes in is:</div>
+            <ul class="opts">
+              <li><span class="box"></span> A) Which part to order</li>
+              <li><span class="box"></span> B) Whether the alarm is active now or just history</li>
+              <li><span class="box"></span> C) Who caused it</li>
+              <li><span class="box"></span> D) The weather</li>
+            </ul>
+          </div>
+          <div class="q">
+            <div class="stem">A "3.0" line test failure means:</div>
+            <ul class="opts">
+              <li><span class="box"></span> A) Annual precision test</li>
+              <li><span class="box"></span> B) Periodic precision test</li>
+              <li><span class="box"></span> C) Gross leak category — big problem / high risk</li>
+              <li><span class="box"></span> D) A normal pass</li>
+            </ul>
+          </div>
+          <div class="q">
+            <div class="stem">The "0.1" line test is the:</div>
+            <ul class="opts">
+              <li><span class="box"></span> A) Gross leak test</li>
+              <li><span class="box"></span> B) Annual precision category</li>
+              <li><span class="box"></span> C) Daily test</li>
+              <li><span class="box"></span> D) Pressure setting</li>
+            </ul>
+          </div>
+          <div class="q">
+            <div class="stem">To find the correct sensor in the field, you work:</div>
+            <ul class="opts">
+              <li><span class="box"></span> A) Field → console, by guessing</li>
+              <li><span class="box"></span> B) Console → field, using the Sensor ID, location label, and site map</li>
+              <li><span class="box"></span> C) By opening every sump until you find it</li>
+              <li><span class="box"></span> D) From memory</li>
+            </ul>
+          </div>
+          <div class="q">
+            <div class="stem">On a TLS-450PLUS, PLLD line tests are found under:</div>
+            <ul class="opts">
+              <li><span class="box"></span> A) Menu → Reports</li>
+              <li><span class="box"></span> B) Menu → Diagnostics → PLLD</li>
+              <li><span class="box"></span> C) The Print button only</li>
+              <li><span class="box"></span> D) Setup → Tanks</li>
+            </ul>
+          </div>
+          <div class="q">
+            <div class="stem">A High Water alarm means:</div>
+            <ul class="opts">
+              <li><span class="box"></span> A) Water in a sump</li>
+              <li><span class="box"></span> B) Water in the tank has exceeded the high-water limit</li>
+              <li><span class="box"></span> C) Rain in the spill bucket</li>
+              <li><span class="box"></span> D) The probe is disconnected</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge">Part B · True / False</span>
+        <div class="qlist">
+          <div class="q">
+            <div class="stem">It's fine to diagnose ATG alarms from the screen only, without going to the field.</div>
+            <div class="tf"><span class="opt"><span class="box"></span> True</span><span class="opt"><span class="box"></span> False</span></div>
+          </div>
+          <div class="q">
+            <div class="stem">A Fuel Alarm means fuel/liquid was detected where it's not allowed (sump, dispenser pan, interstice).</div>
+            <div class="tf"><span class="opt"><span class="box"></span> True</span><span class="opt"><span class="box"></span> False</span></div>
+          </div>
+          <div class="q">
+            <div class="stem">Before running line tests, you should pull the PLLD/line diagnostics history first.</div>
+            <div class="tf"><span class="opt"><span class="box"></span> True</span><span class="opt"><span class="box"></span> False</span></div>
+          </div>
+          <div class="q">
+            <div class="stem">A Setup Data Warning means you should immediately change the console programming yourself.</div>
+            <div class="tf"><span class="opt"><span class="box"></span> True</span><span class="opt"><span class="box"></span> False</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="badge">Part C · Short answer</span>
+        <div class="qlist">
+          <div class="q">
+            <div class="stem">Write the best-practice ATG workflow (the five steps from the cheat sheet).</div>
+            <div class="write"><div class="line"></div><div class="line"></div></div>
+          </div>
+          <div class="q">
+            <div class="stem">Checking slow flow with a gauge at the shear valve — what are the target running pressure, seating pressure, and hold time?</div>
+            <div class="write"><div class="line"></div><div class="line"></div></div>
+          </div>
+          <div class="q">
+            <div class="stem">If slow flow affects ALL fueling points on a product, name two likely line- or pump-side causes.</div>
+            <div class="write"><div class="line"></div><div class="line"></div></div>
+          </div>
+          <div class="q">
+            <div class="stem">List four things a good site map must include.</div>
+            <div class="write"><div class="line"></div><div class="line"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card key-card">
+        <span class="badge">Answer key · trainer copy</span>
+        <details>
+          <summary>Show answer key</summary>
+          <ol>
+            <li><strong>B</strong> — Active vs. history: is it happening now?</li>
+            <li><strong>C</strong> — 3.0 = gross leak category (high risk).</li>
+            <li><strong>B</strong> — 0.1 = annual precision category (0.2 = periodic).</li>
+            <li><strong>B</strong> — Console → field: Sensor ID + location label + site map.</li>
+            <li><strong>B</strong> — Menu → Diagnostics → PLLD (then 0.2 or 3.0 tests).</li>
+            <li><strong>B</strong> — Tank water has exceeded the high-water limit setting.</li>
+            <li><strong>False</strong> — Go physical; don't diagnose from the screen only.</li>
+            <li><strong>True</strong>.</li>
+            <li><strong>True</strong> — Pull history first, then decide whether to test or inspect.</li>
+            <li><strong>False</strong> — Don't change programming unless authorized; document and escalate with evidence.</li>
+            <li>Screenshot first → verify physically → fix one thing at a time → recheck status → document clearly.</li>
+            <li>Running pressure <strong>above 25 psi</strong>; seating pressure settles <strong>above 20 psi</strong>; holds seating pressure <strong>more than 30 minutes</strong>.</li>
+            <li>Any two: actual line leak; worn functional element (common on a Red Jacket STP); bad check valve; bad packer o-rings; bad motor or capacitor.</li>
+            <li>Any four: tanks (#/product/probe type/notes); lines (line # to dispenser group); sensors (ID + physical location name); emergency stops + what they affect; photos.</li>
+          </ol>
+        </details>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>
