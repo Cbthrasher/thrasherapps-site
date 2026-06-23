@@ -14,6 +14,10 @@
     details{border:1px solid var(--border);border-radius:12px;padding:10px 12px;background:#fff}
     details + details{margin-top:12px}
     summary{cursor:pointer;font-weight:600}
+    .note{font-size:13px;color:var(--text-muted)}
+    .callout-lite{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid #DBEAFE;background:#EFF6FF;color:var(--text-muted);line-height:1.45;font-size:14px}
+    .danger-lite{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid #FECACA;background:#FEF2F2;color:#7F1D1D;line-height:1.45;font-size:14px}
+    .warn-lite{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid #FDE68A;background:#FFFBEB;color:#92400E;line-height:1.45;font-size:14px}
   </style>
 </head>
 <body>
@@ -34,7 +38,7 @@
   <section class="mini-hero">
     <div class="container">
       <h1>Safety</h1>
-      <p class="lead">Non-negotiables for pad work, electrical boundaries, and driving.</p>
+      <p class="lead">Non-negotiables for pad work, electrical boundaries, driving, and staying aware on site.</p>
     </div>
   </section>
 
@@ -51,6 +55,25 @@
               <li>Control traffic (cones/truck position/spotter when needed)</li>
               <li>Ignition awareness near open sumps/spill buckets</li>
               <li>Keep tools/parts controlled (no trip hazards, no loose hardware)</li>
+            </ul>
+          </details>
+
+          <details open>
+            <summary>Traffic control &amp; visibility</summary>
+            <ul class="mt-2">
+              <li><strong>Use your truck to block / shield the work area</strong> from traffic</li>
+              <li>Set out <strong>cones</strong> around the work zone</li>
+              <li>Wear a <strong>hi-vis vest or bright colors</strong> so you're easy to see</li>
+              <li>Use a spotter whenever sightlines are poor</li>
+            </ul>
+          </details>
+
+          <details open>
+            <summary>PPE &amp; fire</summary>
+            <ul class="mt-2">
+              <li>Wear <strong>safety glasses</strong> for the work</li>
+              <li>Keep an <strong>up-to-date fire extinguisher</strong> within reach of the work area</li>
+              <li>Check the extinguisher gauge / tag before you rely on it</li>
             </ul>
           </details>
 
@@ -71,6 +94,33 @@
               <li>Communicate impact before shutdown (unless emergency)</li>
             </ul>
           </details>
+
+          <details open>
+            <summary>Verify it's dead — every time</summary>
+            <ul class="mt-2">
+              <li><strong>Always verify the voltage is off with a meter</strong> before you touch a conductor — don't trust a label or a flipped switch alone</li>
+              <li><strong>Lock out / tag out</strong> the breaker any time you turn it off or walk away from it, so no one re-energizes it while you're on the wires</li>
+              <li>Prove your meter works: test it on a known live source, then the dead circuit, then the live source again (live–dead–live)</li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>Megohmmeter (megger) testing</summary>
+            <ul class="mt-2">
+              <li><strong>Double-check you're on the right wires</strong> before you apply test voltage</li>
+              <li><strong>Cap off the end that isn't clamped by the meter</strong> so the energized lead can't contact anything</li>
+              <li>Make sure the wire is <strong>not still connected to motors or sensors</strong> — megging into them can damage the equipment</li>
+              <li>Confirm the conductor is <strong>fully isolated</strong> before testing</li>
+              <li><strong>Free of gas fumes</strong> — never megger where fumes may be present</li>
+            </ul>
+          </details>
+
+          <details open>
+            <summary>Fumes + electricity</summary>
+            <div class="danger-lite">
+              <strong>Never check live voltage when fumes are present.</strong> If you smell fuel or vapor, stop, make the area safe / ventilate, and take no live electrical reading until it's clear.
+            </div>
+          </details>
         </div>
 
         <div class="card">
@@ -78,10 +128,15 @@
           <details open>
             <summary>Basics</summary>
             <ul class="mt-2">
+              <li><strong>No texting and driving</strong> — phone down, eyes on the road</li>
+              <li><strong>Set up your GPS before you put the vehicle in drive</strong>, never while moving</li>
               <li>No rushing, no distractions</li>
               <li>Back up with a spotter when visibility is limited</li>
               <li>Secure equipment before driving (no loose hoses/tools)</li>
             </ul>
+            <div class="danger-lite">
+              <strong>Rule:</strong> Anything that needs your hands or eyes — GPS, phone, paperwork — happens while parked, not while moving.
+            </div>
           </details>
         </div>
 
@@ -95,6 +150,25 @@
               <li>Notify per company procedure</li>
               <li>Document what happened + what you did</li>
             </ul>
+          </details>
+        </div>
+
+        <div class="card">
+          <h3>Situational awareness &amp; personal safety</h3>
+          <details open>
+            <summary>Stay aware on site</summary>
+            <ul class="mt-2">
+              <li>Always be aware of your surroundings — use your senses: <strong>sight, sound, smell, and touch</strong></li>
+              <li><strong>No earphones or loud music</strong> — you need to hear pumps, traffic, and people</li>
+              <li>Know where your exits are and keep a clear path out</li>
+            </ul>
+          </details>
+
+          <details open>
+            <summary>Crime or violence</summary>
+            <div class="danger-lite">
+              If you feel unsafe because of crime or violence: <strong>make your work area safe when applicable, leave, and call your manager.</strong> Your safety comes before the job — no equipment is worth it.
+            </div>
           </details>
         </div>
 

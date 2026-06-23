@@ -90,6 +90,14 @@
       margin-top:14px;
       padding-top:14px;
     }
+    .swatch{
+      display:inline-block;
+      width:13px;height:13px;
+      border-radius:50%;
+      border:1px solid #cbd5e1;
+      vertical-align:middle;
+      margin-right:6px;
+    }
   </style>
 </head>
 
@@ -123,6 +131,7 @@
         <a class="btn btn-secondary" href="#gilbarco">Gilbarco</a>
         <a class="btn btn-secondary" href="#wayne">Wayne</a>
         <a class="btn btn-secondary" href="#error-codes">Error Codes</a>
+        <a class="btn btn-secondary" href="#fuel-return">Tested Fuel</a>
         <button class="btn btn-secondary" onclick="window.print()">Print</button>
       </div>
     </div>
@@ -142,6 +151,7 @@
           <div class="panel tight">
             <h3>Before you open the door</h3>
             <ul>
+              <li>Confirm the <strong>store manager has turned dispenser security / anti-tamper off</strong> before you start (required at some chains, e.g. QT)</li>
               <li>Check for <strong>active fueling</strong> — never open a dispenser while a customer is dispensing</li>
               <li>Cone/barricade the fueling position you're working on</li>
               <li>Look for spills, puddles, or fuel odor around the base before touching anything</li>
@@ -160,6 +170,18 @@
             <div class="danger-lite">
               <strong>Rule:</strong> If conditions feel wrong (strong vapor, active leak, sparking) — stop work, shut down, and escalate. No exceptions.
             </div>
+          </div>
+        </div>
+
+        <div class="panel tight mt-2">
+          <h3>Before you open a fuel line</h3>
+          <ul>
+            <li>Verify the <strong>submersible pump (STP) / motor on that line is deactivated</strong> — it must not be able to run while the line is open</li>
+            <li>Make sure the <strong>shear (impact) valves are closed / off</strong> before you open any line connection</li>
+            <li>Physically confirm the position is isolated — don't rely on memory or a single switch</li>
+          </ul>
+          <div class="danger-lite">
+            <strong>If you can't fully isolate the line, shut the whole site down.</strong> A few minutes offline beats a fuel release. And if you're ever uncertain, stop and call your manager.
           </div>
         </div>
       </div>
@@ -872,6 +894,33 @@
       </script>
 
       <!-- ============================================================
+           TESTED / DRAINED FUEL — RETURN TO CORRECT TANK
+           ============================================================ -->
+      <div class="card" id="fuel-return">
+        <span class="badge">Standard</span>
+        <h2 class="mt-2">Tested / Drained Fuel — Return to the Correct Tank</h2>
+        <p class="note">Any fuel you pull while pump-testing or draining goes back into the tank for that same product. Match the grade — never guess.</p>
+
+        <div class="table-wrapper">
+          <table class="simple-table">
+            <thead><tr><th style="width:50%">Product</th><th>Fill-cap color</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Regular unleaded</strong></td><td><span class="swatch" style="background:#ffffff"></span> White</td></tr>
+              <tr><td><strong>Premium</strong></td><td><span class="swatch" style="background:#e11d48"></span> Red</td></tr>
+              <tr><td><strong>Diesel</strong></td><td><span class="swatch" style="background:#eab308"></span><span class="swatch" style="background:#16a34a"></span> Yellow or green</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warn-lite">
+          <strong>Confirm before you pour.</strong> The cap color marks the fill point — match the fuel in your container to the right tank. Putting fuel in the wrong tank contaminates that product for the whole site.
+        </div>
+        <div class="danger-lite">
+          If you are ever uncertain which tank a container of fuel belongs to, <strong>stop and call your manager</strong> — do not pour it.
+        </div>
+      </div>
+
+      <!-- ============================================================
            CLOSEOUT
            ============================================================ -->
       <div class="card" id="closeout">
@@ -886,6 +935,9 @@
           <li>Before/after photos</li>
         </ul>
         <p class="note">Goal: the next tech can understand the situation in 30 seconds from your notes and photos.</p>
+        <div class="callout-lite">
+          <strong>When in doubt, call your manager.</strong> If you're ever uncertain about safety, isolation, or which tank fuel goes back into — stop and make the call. No call is the wrong call.
+        </div>
       </div>
 
     </div>
