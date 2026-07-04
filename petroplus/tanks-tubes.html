@@ -120,8 +120,10 @@
         <a class="btn btn-secondary" href="#sumps">Sumps</a>
         <a class="btn btn-secondary" href="#water-removal">Water Removal</a>
         <a class="btn btn-secondary" href="#drop-tubes">Drop Tubes</a>
+        <a class="btn btn-secondary" href="#drop-tube-math">Cut Math</a>
         <a class="btn btn-secondary" href="#stp">STP Basics</a>
         <a class="btn btn-secondary" href="#magvfc">MagVFC</a>
+        <a class="btn btn-secondary" href="#guardian">Guardian</a>
         <a class="btn btn-secondary" href="#vapor">Vapor Recovery</a>
         <a class="btn btn-secondary" href="#containment-testing">Testing</a>
         <button class="btn btn-secondary" onclick="window.print()">Print</button>
@@ -488,6 +490,81 @@
             </ul>
             <div class="warn-lite">
               <strong>Note:</strong> A stuck or failed OPV is a compliance issue and a potential overfill risk. Document and escalate promptly.
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           DROP TUBE CUT MATH & EPD INSPECTION
+           ============================================================ -->
+      <div class="card" id="drop-tube-math">
+        <span class="badge badge-warn">Compliance</span>
+        <h2 class="mt-2">Drop Tube Cut Math &amp; the 3-Year EPD Inspection</h2>
+        <p class="note">Verified against the GA EPD Flapper/Valve Inspection form (Rev 08/09/21), the OPW 71SO manual (H15524PA), and the EMCO and Franklin manufacturer calculators. Do the math right and the valve shuts off at 95% — do it wrong and the tank overfills.</p>
+
+        <details open>
+          <summary>The rule everyone gets wrong: 95% means VOLUME, not height</summary>
+          <div class="mt-2 tight">
+            <p>USTs are horizontal cylinders — volume is not linear with height. The 95% shutoff level is <strong>95% of tank capacity</strong>, and its height comes from the <strong>tank calibration chart</strong>.</p>
+            <ul>
+              <li>95% of <strong>volume</strong> sits at only about <strong>90.3%</strong> of the tank diameter</li>
+              <li>Filling to 95% of <strong>height</strong> puts the tank at about <strong>98% of volume</strong> — past the limit</li>
+            </ul>
+            <div class="danger-lite">
+              <strong>Field rule:</strong> Get the 95% height from the chart (or compute it by volume). Never take 0.95 × tank diameter.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Cut formulas by brand (manufacturer-verified)</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table">
+              <thead><tr><th>Brand</th><th>Upper tube</th><th>Lower tube / total</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>OPW 71SO</strong></td>
+                  <td>Riser + max(6.5", C), where C = (diameter − 95% dipstick) − 2"</td>
+                  <td>Total = seat-to-bottom − 6"; lower = total − upper</td>
+                  <td>Straight from the 71SO worksheet (H15524PA). Minimum upper is riser + 6.5".</td>
+                </tr>
+                <tr>
+                  <td><strong>Franklin Defender</strong></td>
+                  <td>X = A − B − 2.5"</td>
+                  <td>Y = B − 15.75" − 6"</td>
+                  <td>A = sealing surface to tank bottom; B = 95% dipstick from chart. The 15.75" valve body sits between the cuts. Tube ends 6" above bottom.</td>
+                </tr>
+                <tr>
+                  <td><strong>EMCO Wheaton</strong></td>
+                  <td>Top = A − B + 1"</td>
+                  <td>Total = A − 5"; lower = total − top</td>
+                  <td>EMCO adds 1" on purpose: "to ensure the shutoff level remains below the maximum 95%." Tube ends 5" above bottom.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="warn-lite">
+              <strong>Don't mix these up with inspection adjustments:</strong> the EPD form's "+7.5&quot; for EMCO" and "−1.5&quot; for OPW 71SO" are corrections applied to a <em>measured</em> tube during inspection when there's no 95% mark — they are not cut formulas.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>GA EPD 3-year inspection — the form's math (A through H)</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>A</strong> — actual tank capacity (gallons, from chart)</li>
+              <li><strong>B</strong> — fill riser threads / face-seal adapter down to tank top (include manway/nipple height)</li>
+              <li><strong>C</strong> — tank diameter</li>
+              <li><strong>D = A × 0.95</strong> — the 95% volume in gallons</li>
+              <li><strong>E</strong> — height of D, read off the tank chart</li>
+              <li><strong>F = C − E</strong> — active upper tube inside the tank</li>
+              <li><strong>G = F + B</strong> — minimum upper drop tube length</li>
+              <li><strong>H</strong> — your measured upper tube. <strong>PASS when H ≥ G</strong> (measure to the 95% mark; if no mark, measure to the valve top and apply +7.5" EMCO / −1.5" OPW 71SO)</li>
+            </ol>
+            <p class="mt-1">OPW-only criteria: <strong>2a</strong> all OPW H ≥ B + 6.5" &bull; <strong>2b</strong> 71SO (non-testable) H ≥ 16" &bull; <strong>2c</strong> 71SO-T H ≥ 14.5". Also confirm the bypass valve is clear and the device moves freely.</p>
+            <div class="callout-lite">
+              <strong>Do it on your phone:</strong> the <a target="_blank" href="https://apps.apple.com/us/app/droptubebuilder/id6740597739">DropTubeBuilder app</a> runs this exact form (A–H with instant PASS/FAIL and a PDF report), plus the verified cut calculators for all three brands.
             </div>
           </div>
         </details>
@@ -935,6 +1012,82 @@
                 <tr><td>Window lens</td><td>402623930</td></tr>
               </tbody>
             </table>
+          </div>
+        </details>
+      </div>
+
+      <!-- ============================================================
+           GUARDIAN SPGC-220
+           ============================================================ -->
+      <div class="card" id="guardian">
+        <span class="badge badge-warn">Controller</span>
+        <h2 class="mt-2">Guardian Series™ SPGC-220 (Single-Phase Smart Controller)</h2>
+        <p class="note">Franklin's newer fixed-speed smart controller for single-phase 200–250 VAC STPs (FE Petro and similar; DEF-PMA150A/B in DEF Mode). Unlike a plain control box, it must be <strong>calibrated</strong> before use, and it self-diagnoses with display codes. Source: FFS install guide, doc 223987103.</p>
+
+        <details open>
+          <summary>Display conditions (what the readout means)</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table">
+              <thead><tr><th style="width:80px">Display</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td><strong>IdLE</strong></td><td>Power on, pump off. If IdLE shows while a dispenser is on, check the hook terminals (120–240 VAC expected) and switch settings.</td></tr>
+                <tr><td><strong>run</strong></td><td>Pump running — alternates with percent-of-calibration (~100 ± 5 at deadhead). "run" with all dispensers off = possible stray hook voltage.</td></tr>
+                <tr><td><strong>unc</strong></td><td>Uncalibrated — must be calibrated before use.</td></tr>
+                <tr><td><strong>CAL</strong></td><td>Calibrating — alternates with the motor kW reading.</td></tr>
+                <tr><td><strong>UL</strong></td><td>Underload (dry run)</td></tr>
+                <tr><td><strong>Lr / OL</strong></td><td>Locked rotor (startup) / Overload (running)</td></tr>
+                <tr><td><strong>LI / HI</strong></td><td>Low / high incoming voltage</td></tr>
+                <tr><td><strong>OC</strong></td><td>Open circuit (hook present, no motor load)</td></tr>
+                <tr><td><strong>Er</strong></td><td>Extended run (60 min, no load change)</td></tr>
+                <tr><td><strong>rEL</strong></td><td>Relay fault (pump running without a proper hook signal)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <details>
+          <summary>Fault codes — causes and first actions</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table">
+              <thead><tr><th style="width:60px">Code</th><th>Cause</th><th>First actions</th></tr></thead>
+              <tbody>
+                <tr><td><strong>UL</strong></td><td>Dry run — empty tank or clogged intake; or bad calibration.</td><td>Fuel under 8"? Schedule a delivery. Reset (hold ~3 s until display blanks). Recalibrate if it persists. SW1 P8 enables auto-restart after UL (never with TPI).</td></tr>
+                <tr><td><strong>Lr / OL</strong></td><td>Motor watts above range — debris or damaged PMA, or bad calibration.</td><td>Reset; if it recurs, lock out power, pull the extractable, spin the rotor by hand. Binding → replace PMA, then recalibrate (always recalibrate after a PMA change).</td></tr>
+                <tr><td><strong>LI / HI</strong></td><td>Supply below 185 V / above 260 V.</td><td>Self-resets at 200 V / 245 V. Verify 200–250 VAC across L1/L2; if an ATG is connected, compare calibrated vs. measured voltage — off by &gt;10 VAC, recalibrate.</td></tr>
+                <tr><td><strong>OC</strong></td><td>Hook present, no motor load — broken output wiring/relay, or PMA thermal overload opened after a locked rotor.</td><td>Reset; if it recurs, lock out and check output connections and motor circuit continuity. Let a tripped thermal overload cool.</td></tr>
+                <tr><td><strong>Er</strong></td><td>60 minutes running with no load change — stuck hook or legit long run.</td><td>With all handles off there should be no hook voltage. SW2 P5 disables Extended Run — never where the pump must stop for line leak detection.</td></tr>
+                <tr><td><strong>rEL</strong></td><td>Running without a proper hook signal — failed relay contact.</td><td>Reset; if it recurs, replace the relay board; still faulting → FE Tech Support.</td></tr>
+              </tbody>
+            </table>
+            <div class="callout-lite">
+              <strong>Fault history:</strong> SW1 Pole 6 ON = Fault Readout Mode — the display steps through the last five faults. Turn it back OFF for normal operation.
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Switches &amp; calibration (the parts techs actually touch)</summary>
+          <div class="mt-2 tight">
+            <ul>
+              <li><strong>SW1 P1–5</strong> — address bits for Primary-Secondary / Alternating sets &bull; <strong>P6</strong> Fault Readout &bull; <strong>P7</strong> Bypass (diagnostics off 10 min, testing only) &bull; <strong>P8</strong> Auto Restart after UL</li>
+              <li><strong>SW2 P1</strong> Fault Shutdown (whole set stops on any fault — required with Veeder-Root PLLD in Primary-Secondary) &bull; <strong>P3</strong> Primary designation &bull; <strong>P4</strong> Alternating-Circuit primary &bull; <strong>P5</strong> Extended Run disable &bull; <strong>P6</strong> DEF Mode (DEF-PMA150A/B, firmware 0.3.8+, set BEFORE calibrating)</li>
+              <li><strong>SW5 rotary</strong> — leave at 0 unless FE Tech Support says otherwise</li>
+              <li><strong>TPI/EVO sites:</strong> leave Auto Restart, Fault Shutdown, and P-S/AC switches OFF — the ATG's FMS programming handles those functions</li>
+            </ul>
+            <h3 class="mt-2">Calibration (required before use)</h3>
+            <ol>
+              <li>Close the STP clamp/ball valve, power up — display flashes <strong>UnC</strong></li>
+              <li>Hold <strong>Silence/Calibrate</strong> ~10 s until <strong>CAL</strong>/kW alternates, then release</li>
+              <li>Lift a dispenser handle — after ~16 s the controller snapshots voltage/current/power</li>
+              <li>Display shows <strong>run</strong> / ~100 ± 5% = calibrated. Handle off, reopen the valve</li>
+            </ol>
+            <div class="warn-lite">
+              <strong>ELLD note:</strong> put the controller in Calibration Mode <em>before</em> lifting the handle, or the line leak detector will fault and block the hook signal. No flow during calibration — deadhead only.
+            </div>
+            <div class="callout-lite">
+              <strong>In your pocket:</strong> both the Guardian SPGC-220 and the MagVFC fault codes, switch tables, and calibration steps are searchable in the
+              <a target="_blank" href="https://apps.apple.com/us/app/droptubebuilder/id6740597739">DropTubeBuilder app</a> under Pump Controllers.
+            </div>
           </div>
         </details>
       </div>

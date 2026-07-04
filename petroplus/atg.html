@@ -103,6 +103,7 @@
         <a class="btn btn-secondary" href="#sensors">Locate Sensors</a>
         <a class="btn btn-secondary" href="#plld">PLLD / Tests</a>
         <a class="btn btn-secondary" href="#site-mapping">Site Mapping</a>
+        <a class="btn btn-secondary" href="#evo">EVO Alarms</a>
         <button class="btn btn-secondary" onclick="window.print()">Print</button>
       </div>
       <div class="callout-lite">
@@ -446,6 +447,49 @@
     </div>
   </details>
 </div>
+      <!-- EVO (TS-550/5000 evo) ALARMS -->
+      <div class="card" id="evo">
+        <span class="badge">Franklin / INCON</span>
+        <h2 class="mt-2">EVO™ 550 / 5000 (TS-550/5000 evo) Alarms</h2>
+        <p class="note">Franklin Fueling's EVO consoles group alarms by device: system/modules, tank, sensor, line leak (LS500), and TPI (the Turbine Pump Interface that reports STP-controller faults). Source: TS-550/5000 evo Operator's Guide, FFS doc 000-2171.</p>
+
+        <details open>
+          <summary>Working an EVO alarm</summary>
+          <div class="mt-2 tight">
+            <ol>
+              <li><strong>Read the alarm banner</strong> — EVO alarms are plain-English names tied to a device (Tank, Sensor, Line, TPI, module slot).</li>
+              <li><strong>Print or view Alarm History</strong> — patterns matter more than single events.</li>
+              <li><strong>If the site has TPI</strong> — the console mirrors STP-controller faults (under/over voltage, pump faults). Check the Smart Controller display too; the same fault shows both places.</li>
+              <li><strong>Verify before you clear</strong> — an alarm that matches reality (real high water, real low product) is information, not a nuisance.</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>Common in-tank &amp; line alarms (from the operator's guide)</summary>
+          <div class="mt-2 tight">
+            <table class="simple-table">
+              <thead><tr><th>Alarm</th><th>Meaning</th><th>First actions</th></tr></thead>
+              <tbody>
+                <tr><td><strong>High product level</strong></td><td>Product exceeded the High limit — possible near-overfill.</td><td>Get an accurate stick/level; if it doesn't match the console, verify probe programming.</td></tr>
+                <tr><td><strong>High water level</strong></td><td>Water exceeded the High limit.</td><td>Verify the programmed level; if water is truly high, follow site procedure and remove water.</td></tr>
+                <tr><td><strong>Low low product volume</strong></td><td>Tank (or manifold) near empty.</td><td>Verify volume vs. programming; schedule delivery.</td></tr>
+                <tr><td><strong>Tank Delivery Detected</strong></td><td>A delivery was detected.</td><td>Only a concern if there was no delivery at that date/time.</td></tr>
+                <tr><td><strong>Tank Theft Detected</strong></td><td>Product left the tank in Sentinel Mode beyond the theft limit.</td><td>Verify the theft limit and get an accurate level vs. inventory.</td></tr>
+                <tr><td><strong>Gross Leak Detected (Line)</strong></td><td>Line leak greater than 3 GPH detected.</td><td>Inspect all sumps for product immediately; see the LS500 guide (FFS 000-2145).</td></tr>
+                <tr><td><strong>Marginal Pass of Gross Leak Test</strong></td><td>Last gross test passed just under the 3 GPH threshold.</td><td>Check sumps for any sign of leaks and run additional tests.</td></tr>
+                <tr><td><strong>Pump Communication Fail (TPI)</strong></td><td>TPI lost comms with the STP controller.</td><td>Check wiring and confirm the Smart Controller has power.</td></tr>
+                <tr><td><strong>Under Voltage (TPI)</strong></td><td>STP controller reporting supply under 200 VAC.</td><td>Meter the controller supply; correct the feed.</td></tr>
+              </tbody>
+            </table>
+            <div class="callout-lite">
+              <strong>Full library:</strong> the complete EVO alarm list (97 alarms with recommended actions — modules, relays, sensors, LLD, and TPI) is searchable in the
+              <a target="_blank" href="https://apps.apple.com/us/app/droptubebuilder/id6740597739">DropTubeBuilder app</a> under Dispenser Error Codes → Franklin / INCON.
+            </div>
+          </div>
+        </details>
+      </div>
+
       <!-- CLOSEOUT -->
       <div class="card" id="closeout">
         <span class="badge">Standard</span>
