@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crew Site Log Setup Guide — FieldWatt</title>
+  <meta name="description" content="Complete setup guide for the FieldWatt Crew Site Log: coordinates, geofence radius, permissions, consent, daily log emails, and instant alerts, with diagrams and troubleshooting." />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/sitelogguide.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .guideToc a{display:inline-block;margin:4px 10px 4px 0}
+    .diagramCard{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;padding:16px;margin:20px 0}
+    .diagramCard svg{max-width:100%;height:auto;display:block;margin:0 auto}
+    .diagramCaption{font-size:0.85em;color:#475569;text-align:center;margin-top:8px}
+    .stepNumber{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#007AFF;color:#fff;font-weight:700;margin-right:8px;flex-shrink:0}
+    .codeBlock{background:#0F172A;color:#E2E8F0;border-radius:10px;padding:14px;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85em;line-height:1.5;white-space:pre}
+    .guideTable{width:100%;border-collapse:collapse;font-size:0.92em}
+    .guideTable th,.guideTable td{border:1px solid #E5E7EB;padding:10px;text-align:left;vertical-align:top}
+    .guideTable th{background:#F8FAFC}
+    .doBox{border-left:4px solid #16A34A;background:#F0FDF4;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+    .dontBox{border-left:4px solid #DC2626;background:#FEF2F2;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+    .noteBox{border-left:4px solid #007AFF;background:#EFF6FF;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="h2">Crew Site Log: The Complete Setup Guide</h1>
+      <p class="lead">Everything you need to set up automatic arrival and departure logging for your crew, get the records to the office, and fix it when something looks wrong. Bookmark this page; it is written to come back to.</p>
+
+      <div class="guideToc mt-3">
+        <a href="#how">How it works</a> ·
+        <a href="#privacy">What it records</a> ·
+        <a href="#checklist">Before you start</a> ·
+        <a href="#coordinates">1. Coordinates</a> ·
+        <a href="#radius">2. Radius</a> ·
+        <a href="#entersite">3. Enter in app</a> ·
+        <a href="#turnon">4. Turn it on</a> ·
+        <a href="#consent">5. Consent</a> ·
+        <a href="#daily">Daily email</a> ·
+        <a href="#instant">Instant alerts</a> ·
+        <a href="#testing">First test</a> ·
+        <a href="#troubleshooting">Troubleshooting</a> ·
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <h2 class="h2 mt-6" id="how">How it works</h2>
+      <p class="mt-1">Every saved job site in FieldWatt gets an invisible circle drawn around it, called a geofence. The iPhone itself watches those circles using the same low power system Apple uses for reminders like "notify me when I get home." When the phone crosses into a circle, FieldWatt records an arrival; when it crosses out, a departure. This works with the app closed, the phone locked, and the phone in a pocket, day or night.</p>
+
+      <div class="diagramCard">
+        <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a geofence circle around a job site with a truck path entering and leaving">
+          <rect x="0" y="0" width="720" height="300" fill="#F8FAFC" rx="8"/>
+          <circle cx="380" cy="150" r="105" fill="#007AFF" opacity="0.10"/>
+          <circle cx="380" cy="150" r="105" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-dasharray="8 6"/>
+          <rect x="355" y="128" width="50" height="34" fill="#0F172A" rx="4"/>
+          <polygon points="352,128 408,128 380,104" fill="#0F172A"/>
+          <text x="380" y="185" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A" font-family="system-ui">Job site</text>
+          <line x1="380" y1="150" x2="380" y2="45" stroke="#007AFF" stroke-width="1.5"/>
+          <text x="390" y="90" font-size="12" fill="#007AFF" font-weight="700" font-family="system-ui">radius</text>
+          <path d="M 40 250 C 160 240, 230 210, 290 185 C 340 165, 430 130, 500 110 C 560 95, 630 80, 690 60" fill="none" stroke="#475569" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+          <circle cx="290" cy="185" r="11" fill="#16A34A"/>
+          <text x="290" y="222" text-anchor="middle" font-size="12.5" font-weight="800" fill="#16A34A" font-family="system-ui">ARRIVED logged</text>
+          <circle cx="483" cy="115" r="11" fill="#EA580C"/>
+          <text x="500" y="155" text-anchor="middle" font-size="12.5" font-weight="800" fill="#EA580C" font-family="system-ui">DEPARTED logged</text>
+          <text x="60" y="272" font-size="12" fill="#475569" font-family="system-ui">Truck route</text>
+        </svg>
+        <div class="diagramCaption">The phone logs one event crossing in and one crossing out. Nothing is recorded along the rest of the route.</div>
+      </div>
+
+      <h2 class="h2 mt-5" id="privacy">What it records, and what it never records</h2>
+      <div class="grid grid-2 mt-2">
+        <div class="doBox">
+          <strong>It records</strong>
+          <ul>
+            <li>The time the phone entered a saved site's circle</li>
+            <li>The time the phone left that circle</li>
+            <li>The site name and the technician name from the profile</li>
+          </ul>
+        </div>
+        <div class="dontBox">
+          <strong>It never records</strong>
+          <ul>
+            <li>Routes, driving speed, or continuous position</li>
+            <li>Anywhere that is not a saved job site</li>
+            <li>Anything while the feature is switched off</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-2">Events live on the technician's own phone, visible to them in the app at any time. They leave the phone exactly two ways: log emails the technician sends, and, if the company sets one up, automatic posts to the company's own automation address (covered below). FieldWatt has no server and the developer never receives any location data.</p>
+
+      <h2 class="h2 mt-5" id="checklist">Before you start</h2>
+      <table class="guideTable mt-2">
+        <tr><th>You need</th><th>Why</th></tr>
+        <tr><td>iPhones for the crew</td><td>The site log is an iPhone feature. Android phones cannot run FieldWatt.</td></tr>
+        <tr><td>FieldWatt Pro on each phone</td><td>The Crew Site Log is part of Pro.</td></tr>
+        <tr><td>GPS coordinates for each site</td><td>The circle needs a center. Step 1 shows how to get them.</td></tr>
+        <tr><td>Signed consent from each employee</td><td>Location tracking of employees needs written consent. The app includes the form.</td></tr>
+        <tr><td>20 sites or fewer active per phone</td><td>iOS watches at most 20 circles per app. FieldWatt tells you if you are over.</td></tr>
+      </table>
+
+      <h2 class="h2 mt-5" id="coordinates"><span class="stepNumber">1</span>Get the coordinates for each site</h2>
+      <p class="mt-1">Each site needs latitude and longitude in decimal form, for example <strong>30.2672, &#8722;97.7431</strong>. Two easy ways to get them:</p>
+      <p class="mt-2"><strong>Apple Maps (iPhone):</strong></p>
+      <ol>
+        <li>Search the site address, or find the spot on the satellite view.</li>
+        <li>Touch and hold the exact spot where the crew actually works (the laydown yard or array, not the mailbox at the road). A pin drops.</li>
+        <li>Swipe up on the place card. The coordinates appear near the bottom. Tap them to copy.</li>
+      </ol>
+      <p class="mt-2"><strong>Google Maps (phone or computer):</strong></p>
+      <ol>
+        <li>Press and hold the spot (right click on a computer). The coordinates show in the pin's info card or at the top of the menu.</li>
+        <li>Tap or click them to copy.</li>
+      </ol>
+      <div class="dontBox"><strong>Common mistakes:</strong> pasting the address instead of numbers; swapping the two numbers (latitude comes first and is between &#8722;90 and 90; in the US it is the positive one); using degrees minutes seconds like 30&#176;16'02"N instead of decimals. If your maps app shows the degree format, look for a decimal option or use Google Maps, which copies decimals.</div>
+      <div class="noteBox"><strong>Drop the pin where the trucks park.</strong> On a big site, put the center on the work area or gate the crew actually passes through, not the geometric center of a 500 acre parcel.</div>
+
+      <h2 class="h2 mt-5" id="radius"><span class="stepNumber">2</span>Choose the radius</h2>
+      <p class="mt-1">The radius is how far from the pin the circle reaches, in meters. Bigger circles are more reliable; smaller circles are more precise. Phones locate themselves within roughly 20 to 50 meters in the open, worse in vehicles and bad weather, so a circle that hugs a building too tightly causes missed or repeated events.</p>
+
+      <div class="diagramCard">
+        <svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three radius examples: too small, right size, and overlapping sites">
+          <rect x="0" y="0" width="720" height="260" fill="#F8FAFC" rx="8"/>
+          <circle cx="120" cy="110" r="30" fill="#DC2626" opacity="0.12"/>
+          <circle cx="120" cy="110" r="30" fill="none" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 5"/>
+          <rect x="108" y="100" width="24" height="18" fill="#0F172A" rx="2"/>
+          <text x="120" y="175" text-anchor="middle" font-size="13" font-weight="800" fill="#DC2626" font-family="system-ui">Too small</text>
+          <text x="120" y="195" text-anchor="middle" font-size="11.5" fill="#475569" font-family="system-ui">GPS wobble causes missed</text>
+          <text x="120" y="211" text-anchor="middle" font-size="11.5" fill="#475569" font-family="system-ui">or repeated events</text>
+
+          <circle cx="360" cy="110" r="72" fill="#16A34A" opacity="0.10"/>
+          <circle cx="360" cy="110" r="72" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-dasharray="6 5"/>
+          <rect x="348" y="100" width="24" height="18" fill="#0F172A" rx="2"/>
+          <text x="360" y="175" text-anchor="middle" font-size="13" font-weight="800" fill="#16A34A" font-family="system-ui">Right size</text>
+          <text x="360" y="195" text-anchor="middle" font-size="11.5" fill="#475569" font-family="system-ui">Covers the work area,</text>
+          <text x="360" y="211" text-anchor="middle" font-size="11.5" fill="#475569" font-family="system-ui">parking, and a margin</text>
+
+          <circle cx="565" cy="105" r="52" fill="#EA580C" opacity="0.12"/>
+          <circle cx="565" cy="105" r="52" fill="none" stroke="#EA580C" stroke-width="2" stroke-dasharray="6 5"/>
+          <circle cx="635" cy="115" r="52" fill="#EA580C" opacity="0.12"/>
+          <circle cx="635" cy="115" r="52" fill="none" stroke="#EA580C" stroke-width="2" stroke-dasharray="6 5"/>
+          <rect x="553" y="96" width="24" height="18" fill="#0F172A" rx="2"/>
+          <rect x="623" y="106" width="24" height="18" fill="#0F172A" rx="2"/>
+          <text x="600" y="185" text-anchor="middle" font-size="13" font-weight="800" fill="#EA580C" font-family="system-ui">Overlapping sites</text>
+          <text x="600" y="205" text-anchor="middle" font-size="11.5" fill="#475569" font-family="system-ui">Shrink radii so neighbors</text>
+          <text x="600" y="221" text-anchor="middle" font-size="11.5" fill="#475569" font-family="system-ui">do not blur together</text>
+        </svg>
+        <div class="diagramCaption">Radius guidance at a glance.</div>
+      </div>
+
+      <table class="guideTable mt-2">
+        <tr><th>Site type</th><th>Suggested radius</th></tr>
+        <tr><td>Residential rooftop job</td><td>100 to 150 m (do not go below 100)</td></tr>
+        <tr><td>Commercial building or plaza</td><td>200 to 300 m</td></tr>
+        <tr><td>Storage yard or shop</td><td>150 to 250 m</td></tr>
+        <tr><td>Utility scale solar site</td><td>300 to 500 m, centered on the gate or laydown</td></tr>
+      </table>
+      <p class="mt-2">FieldWatt defaults to 200 m, a good starting point for most work. Departures use a built in buffer, so a tech standing near the edge does not flap in and out.</p>
+
+      <h2 class="h2 mt-5" id="entersite"><span class="stepNumber">3</span>Enter it in FieldWatt</h2>
+      <ol>
+        <li>Open <strong>Site Forms &#8594; Company, crew, sites, recipients</strong> (also reachable from Settings).</li>
+        <li>Tap the site (or Add site).</li>
+        <li>Paste the coordinates into <strong>GPS coordinates</strong>, in the form <strong>latitude, longitude</strong>, decimals with a comma between.</li>
+        <li>Set the <strong>Geofence radius</strong> just below it.</li>
+        <li>While you are there, fill your name and email and the company email under Company. The log emails use them.</li>
+      </ol>
+      <div class="noteBox">The Crew Site Log screen shows "Sites monitored: X of Y." If a site is missing from X, its GPS field did not parse; recheck the format.</div>
+
+      <h2 class="h2 mt-5" id="turnon"><span class="stepNumber">4</span>Turn it on (each phone)</h2>
+      <ol>
+        <li>Open <strong>Settings &#8594; Crew Site Log</strong> (or Site Forms &#8594; Crew Site Log).</li>
+        <li>Read the consent screen and tap <strong>I understand and agree</strong>.</li>
+        <li>Flip on <strong>Log my site entries and exits</strong>.</li>
+        <li>iOS asks for location. Choose <strong>Allow While Using the App</strong> if that is the only option shown, then finish with the step below, because background logging needs <strong>Always</strong>.</li>
+        <li>Go to <strong>iPhone Settings &#8594; Apps &#8594; FieldWatt &#8594; Location</strong> and select <strong>Always</strong>, and make sure <strong>Precise Location</strong> is on. iOS often grants Always in two stages and may pop a confirmation a few days later asking to keep allowing it; tap Always Allow.</li>
+        <li>Back in FieldWatt, the screen should read <strong>Location permission: Always (correct)</strong>.</li>
+      </ol>
+      <div class="dontBox">If permission shows "While using only," events will only log while the app is open on screen, which defeats the point. The Always grant is the single most common setup miss.</div>
+
+      <h2 class="h2 mt-5" id="consent"><span class="stepNumber">5</span>Get consent signed</h2>
+      <p class="mt-1">Open <strong>Site Forms &#8594; Location Tracking Consent</strong>. It states in plain language what is and is not recorded, includes the monitoring hours (pick All hours if your crew works nights), and captures the employee and company signatures. Generate the PDF and keep it with your HR records: one per employee, before their phone starts logging. Several states require this in writing; all of them make it a better conversation to have up front.</p>
+
+      <h2 class="h2 mt-5" id="daily">Getting the record, option A: the daily log email</h2>
+      <p class="mt-1">Zero setup. At the end of the day the technician opens Crew Site Log and taps <strong>Email today's log</strong>. A prefilled email with every arrival and departure goes to the company email and the technician's own email from the profile. With no signal, it waits in the Outbox and sends when coverage returns. Good enough for timesheet backup and daily accountability.</p>
+
+      <h2 class="h2 mt-5" id="instant">Getting the record, option B: instant alerts</h2>
+      <p class="mt-1">For an email the moment someone arrives or leaves, the phone posts each event to an <strong>automation URL</strong> your company owns, and that automation sends the email. FieldWatt has no server, so this uses yours, and the free tier of any of these services is plenty.</p>
+
+      <div class="diagramCard">
+        <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Data flow from phone to log to daily email or automation hook to instant email">
+          <rect x="0" y="0" width="720" height="240" fill="#F8FAFC" rx="8"/>
+          <rect x="28" y="80" width="120" height="80" rx="10" fill="#0F172A"/>
+          <text x="88" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#FFFFFF" font-family="system-ui">Tech's phone</text>
+          <text x="88" y="135" text-anchor="middle" font-size="11" fill="#94A3B8" font-family="system-ui">detects crossing</text>
+          <line x1="148" y1="120" x2="230" y2="120" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+          <rect x="232" y="80" width="120" height="80" rx="10" fill="#FFFFFF" stroke="#E5E7EB"/>
+          <text x="292" y="115" text-anchor="middle" font-size="13" font-weight="700" fill="#0F172A" font-family="system-ui">Local log</text>
+          <text x="292" y="135" text-anchor="middle" font-size="11" fill="#475569" font-family="system-ui">on the phone</text>
+          <line x1="352" y1="100" x2="440" y2="58" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arrowGreen)"/>
+          <line x1="352" y1="140" x2="440" y2="182" stroke="#007AFF" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+          <rect x="444" y="28" width="130" height="60" rx="10" fill="#F0FDF4" stroke="#16A34A"/>
+          <text x="509" y="53" text-anchor="middle" font-size="12" font-weight="700" fill="#16A34A" font-family="system-ui">Daily log email</text>
+          <text x="509" y="71" text-anchor="middle" font-size="10.5" fill="#475569" font-family="system-ui">tech taps send</text>
+          <rect x="444" y="152" width="130" height="60" rx="10" fill="#EFF6FF" stroke="#007AFF"/>
+          <text x="509" y="177" text-anchor="middle" font-size="12" font-weight="700" fill="#007AFF" font-family="system-ui">Automation URL</text>
+          <text x="509" y="195" text-anchor="middle" font-size="10.5" fill="#475569" font-family="system-ui">posts instantly</text>
+          <line x1="574" y1="58" x2="650" y2="105" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+          <line x1="574" y1="182" x2="650" y2="135" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow)"/>
+          <rect x="640" y="95" width="66" height="50" rx="10" fill="#0F172A"/>
+          <text x="673" y="117" text-anchor="middle" font-size="11.5" font-weight="700" fill="#FFFFFF" font-family="system-ui">Office</text>
+          <text x="673" y="133" text-anchor="middle" font-size="10.5" fill="#94A3B8" font-family="system-ui">inbox</text>
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#475569"/></marker>
+            <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#16A34A"/></marker>
+            <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#007AFF"/></marker>
+          </defs>
+        </svg>
+        <div class="diagramCaption">Both delivery paths. Use either or both. If the phone has no signal at the site, posts queue and fire when coverage returns.</div>
+      </div>
+
+      <p class="mt-2">Each post is JSON like this (events batch up if several are pending):</p>
+      <div class="codeBlock">{
+  "events": [
+    {
+      "event": "enter",
+      "site": "Lakeside Plaza Roof",
+      "technician": "Marcus Reed",
+      "time": "2026-07-07T14:32:05Z"
+    }
+  ]
+}</div>
+
+      <p class="mt-3"><strong>Easiest: Google Apps Script (free, ten minutes).</strong></p>
+      <ol>
+        <li>Go to <strong>script.google.com</strong> while signed into the company Google account and create a new project.</li>
+        <li>Replace the contents with the script below, and put the boss's email in.</li>
+        <li>Click <strong>Deploy &#8594; New deployment &#8594; Web app</strong>. Set Execute as <strong>Me</strong> and Who has access to <strong>Anyone</strong>. Deploy and approve the permissions.</li>
+        <li>Copy the web app URL it gives you and paste it into FieldWatt's <strong>Company automation URL</strong> field on the Crew Site Log screen, on each phone.</li>
+      </ol>
+      <div class="codeBlock">function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  var events = data.events || [];
+  for (var i = 0; i &lt; events.length; i++) {
+    var ev = events[i];
+    var verb = ev.event === "enter" ? "arrived at" : "left";
+    var when = new Date(ev.time).toLocaleString("en-US", { timeZone: "America/Chicago" });
+    MailApp.sendEmail({
+      to: "boss@yourcompany.com",
+      subject: ev.technician + " " + verb + " " + ev.site,
+      body: ev.technician + " " + verb + " " + ev.site + " at " + when
+    });
+  }
+  return ContentService.createTextOutput("ok");
+}</div>
+      <p class="mt-1">Change the time zone string if you are not Central. To add recipients, make the "to" field a comma separated list.</p>
+
+      <p class="mt-3"><strong>Alternative: Zapier or Make.</strong> Create a new Zap with the trigger <strong>Webhooks by Zapier &#8594; Catch Hook</strong>, copy the hook URL into FieldWatt, send one test event (see First test below), then map the fields into a <strong>Send Email</strong> action. Note the payload wraps events in a list, so in Zapier map from <strong>events 1 event</strong>, <strong>events 1 site</strong>, and so on. Make works the same way with its Webhooks module.</p>
+      <div class="noteBox">The URL must start with <strong>https</strong>. Every technician's phone needs the same URL pasted once; after that it is automatic.</div>
+
+      <h2 class="h2 mt-5" id="testing">Testing it the first time</h2>
+      <ol>
+        <li>Set up one site you can drive to, with a 200 m radius.</li>
+        <li>Enable logging on one phone, confirm <strong>Always (correct)</strong> and <strong>Sites monitored: 1 of 1</strong>.</li>
+        <li>Start from at least a half mile away, drive to the site, park inside the circle for a few minutes, then leave.</li>
+        <li>Expect the arrival notification within a few moments of crossing, sometimes up to two or three minutes; iOS trades a little speed for battery. The departure fires a bit beyond the circle's edge by design.</li>
+        <li>Check the event list in the app, tap Email today's log, and if you set an automation URL, look for the bolt icon on each event showing it posted.</li>
+      </ol>
+      <div class="noteBox">If the phone was already inside the circle when you enabled logging, no arrival fires until it leaves and comes back. Always test with a real crossing.</div>
+
+      <h2 class="h2 mt-5" id="troubleshooting">Troubleshooting</h2>
+      <table class="guideTable mt-2">
+        <tr><th>Symptom</th><th>Check, in order</th></tr>
+        <tr><td>No events ever log</td><td>Permission must say Always with Precise Location on. The site must appear in "Sites monitored." Coordinates must be decimals with the comma. The toggle must be on, and the phone must actually cross the boundary, not start inside it.</td></tr>
+        <tr><td>Events log late</td><td>Normal within 2 to 3 minutes. Low Power Mode slows detection further. Rural areas with no cell towers rely on GPS alone and can be slower.</td></tr>
+        <tr><td>Repeated arrive and depart at one visit</td><td>Radius too small for the site or for local GPS quality. Double it and retest. Parking exactly on the boundary line will always be noisy.</td></tr>
+        <tr><td>Wrong site logged</td><td>Two circles overlap. Shrink radii or move pins apart until they do not touch.</td></tr>
+        <tr><td>Automation emails not arriving</td><td>URL must be https and pasted exactly. Look for the bolt icon on events: no bolt means the post has not succeeded yet (it retries). Test the hook by visiting your Zap history or the Apps Script executions page. Check spam.</td></tr>
+        <tr><td>Events stopped after a few days</td><td>iOS asked "keep allowing location?" and someone tapped the wrong choice. Recheck iPhone Settings &#8594; Apps &#8594; FieldWatt &#8594; Location &#8594; Always. Also confirm the employee did not toggle the feature off.</td></tr>
+        <tr><td>"Sites monitored: 0"</td><td>No site has valid coordinates, or the toggle is off, or permission was denied. The screen tells you which with a warning line.</td></tr>
+        <tr><td>More than 20 sites</td><td>iOS watches at most 20 per phone. FieldWatt monitors the first 20 with coordinates and warns about the rest. Clear coordinates from finished jobs to make room.</td></tr>
+      </table>
+
+      <h2 class="h2 mt-5" id="faq">FAQ</h2>
+      <p class="mt-2"><strong>Does it kill the battery?</strong> No. Geofencing uses the same low power monitoring as Apple's own location reminders. It is not GPS navigation running all day; typical cost is a few percent.</p>
+      <p class="mt-2"><strong>Does it work if the phone is off or dead?</strong> No. No phone, no log. Airplane mode usually still detects crossings (GPS still works) but deliveries queue until signal returns.</p>
+      <p class="mt-2"><strong>Can an employee turn it off?</strong> Yes, always: the toggle in the app, or revoking location permission in iOS Settings. That is by design; the answer to a tech quietly disabling it is a management conversation backed by the signed consent form, not software.</p>
+      <p class="mt-2"><strong>Does the boss see where techs are between sites?</strong> No. Only crossings of saved site circles exist anywhere. There is no map, no route, no live view.</p>
+      <p class="mt-2"><strong>Night work?</strong> Fine. Monitoring runs around the clock; note it in the consent form's monitoring hours field.</p>
+      <p class="mt-2"><strong>Several crews and many phones?</strong> Each phone logs itself independently and posts to the same automation URL, so the office email stream covers everyone. Each phone's technician name comes from its own profile, so set that on every phone.</p>
+      <p class="mt-2"><strong>Do sites sync between phones?</strong> No; FieldWatt has no server by design. Enter the sites on each phone once (a few minutes with the coordinates in a text message), or set them up on one phone at the office before handing it out.</p>
+      <p class="mt-2"><strong>What about iPads or Android?</strong> iPhones only for the site log. iPads mostly lack the always on location hardware setup in the field, and FieldWatt does not run on Android.</p>
+
+      <div class="noteBox mt-4"><strong>Quick reference:</strong> coordinates as decimals with a comma &#183; radius 200 m default, bigger for big sites &#183; permission must say Always with Precise on &#183; consent form signed first &#183; daily email needs nothing &#183; instant alerts need the automation URL &#183; test with a real drive in and out.</div>
+
+      <p class="mt-3">Still stuck? Email <a href="mailto:cbthrasher2020@gmail.com">cbthrasher2020@gmail.com</a> with what the Crew Site Log screen shows for permission and sites monitored, and what the event list looks like after a test drive.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="privacy.html">Privacy</a> ·
+        <a href="terms.html">Terms</a> ·
+        <a href="support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
