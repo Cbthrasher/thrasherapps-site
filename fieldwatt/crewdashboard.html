@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crew Dashboard — FieldWatt</title>
+  <meta name="description" content="Live desktop dashboard for the FieldWatt Crew Site Log: see who is on site right now and today's arrivals and departures." />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/crewdashboard.html" />
+  <style>
+    :root{
+      --bg:#0F172A; --panel:#1E293B; --panelSoft:#273449; --border:#334155;
+      --text:#F1F5F9; --dim:#94A3B8; --blue:#38BDF8; --green:#4ADE80;
+      --orange:#FB923C; --red:#F87171;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    .wrap{max-width:1200px;margin:0 auto;padding:20px}
+    header.bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+    .brand{font-size:1.35em;font-weight:800}
+    .brand span{color:var(--blue)}
+    .statusLine{font-size:0.85em;color:var(--dim);display:flex;align-items:center;gap:8px}
+    .dot{width:9px;height:9px;border-radius:50%;background:var(--dim);display:inline-block}
+    .dot.ok{background:var(--green)} .dot.bad{background:var(--red)}
+    button, input{font:inherit}
+    .btn{background:var(--panelSoft);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:8px 14px;cursor:pointer;font-weight:600}
+    .btn:hover{border-color:var(--blue)}
+    .btnBlue{background:var(--blue);border-color:var(--blue);color:#082F49}
+    .grid{display:grid;gap:16px;grid-template-columns:1fr}
+    @media(min-width:900px){.grid{grid-template-columns:1.2fr 1fr}}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px}
+    .panel h2{margin:0 0 12px 0;font-size:1.0em;text-transform:uppercase;letter-spacing:0.06em;color:var(--dim)}
+    .techRow{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;background:var(--panelSoft);margin-bottom:8px}
+    .techBadge{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:0.95em}
+    .onSite .techBadge{background:#14532D;color:var(--green)}
+    .offSite .techBadge{background:#3F3F46;color:var(--dim)}
+    .techName{font-weight:700}
+    .techMeta{font-size:0.85em;color:var(--dim)}
+    .onSite .techMeta b{color:var(--green);font-weight:700}
+    .pill{margin-left:auto;font-size:0.75em;font-weight:800;padding:4px 10px;border-radius:999px;white-space:nowrap}
+    .onSite .pill{background:#14532D;color:var(--green)}
+    .offSite .pill{background:#3F3F46;color:var(--dim)}
+    .siteBlock{margin-bottom:12px}
+    .siteName{font-weight:700;color:var(--blue);margin-bottom:6px}
+    .siteEmpty{color:var(--dim);font-size:0.9em}
+    .feedRow{display:flex;gap:10px;align-items:flex-start;padding:8px 4px;border-bottom:1px solid var(--border);font-size:0.92em}
+    .feedRow:last-child{border-bottom:none}
+    .feedTime{color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums;width:74px;flex-shrink:0}
+    .arrow{font-weight:900}
+    .in .arrow{color:var(--green)} .out .arrow{color:var(--orange)}
+    .setup{max-width:640px;margin:40px auto}
+    .setup label{display:block;font-weight:700;margin:14px 0 6px}
+    .setup input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:var(--panelSoft);color:var(--text)}
+    .setup .hint{font-size:0.85em;color:var(--dim);margin-top:6px}
+    .setup .row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .error{background:#450A0A;border:1px solid var(--red);color:#FECACA;border-radius:10px;padding:10px 14px;margin:12px 0;font-size:0.9em;display:none}
+    .muted{color:var(--dim)}
+    a{color:var(--blue)}
+    .footNote{margin-top:20px;font-size:0.8em;color:var(--dim);text-align:center}
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="bar">
+    <div class="brand">FieldWatt <span>Crew Dashboard</span></div>
+    <div class="statusLine">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">not connected</span>
+      <button class="btn" id="refreshBtn" style="display:none">Refresh now</button>
+      <button class="btn" id="notifyBtn" style="display:none">Enable alerts</button>
+      <button class="btn" id="settingsBtn" style="display:none">Settings</button>
+    </div>
+  </header>
+
+  <div class="error" id="errorBox"></div>
+
+  <div class="setup panel" id="setupPanel">
+    <h2>One time setup</h2>
+    <p class="muted">This dashboard reads your crew's site log straight from your own Google automation. Nothing is stored anywhere except in this browser and your Google account. Full instructions live in the <a href="sitelogguide.html#part6">Crew Site Log guide, Part 6</a>; the dashboard needs the Recipe 4 version of the script.</p>
+    <label for="urlInput">Your automation URL (the Apps Script web app address)</label>
+    <input id="urlInput" type="url" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off">
+    <div class="hint">The same address your crew phones post to. It must be the Recipe 4 script, which can also answer read requests.</div>
+    <label for="keyInput">Dashboard key (only if you set one in the script)</label>
+    <input id="keyInput" type="text" placeholder="leave empty unless you set DASHBOARD_KEY" autocomplete="off">
+    <div class="row">
+      <button class="btn btnBlue" id="connectBtn">Connect</button>
+      <button class="btn" id="demoBtn">Try demo data</button>
+    </div>
+  </div>
+
+  <div class="grid" id="boards" style="display:none">
+    <div>
+      <div class="panel">
+        <h2>Crew right now</h2>
+        <div id="crewBoard"></div>
+      </div>
+      <div class="panel" style="margin-top:16px">
+        <h2>By site</h2>
+        <div id="siteBoard"></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Today's activity <span class="muted" id="todayCount"></span></h2>
+      <div id="feed"></div>
+    </div>
+  </div>
+
+  <div class="footNote">Refreshes every 45 seconds while open. Times shown in this computer's time zone. Part of the <a href="sitelogguide.html">FieldWatt Crew Site Log</a>.</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var REFRESH_MS = 45000;
+  var store = {
+    get url(){ return localStorage.getItem("fwDashUrl") || ""; },
+    set url(v){ localStorage.setItem("fwDashUrl", v); },
+    get key(){ return localStorage.getItem("fwDashKey") || ""; },
+    set key(v){ localStorage.setItem("fwDashKey", v); }
+  };
+  var state = { events: [], demo: false, timer: null, seenIds: {}, notify: false };
+
+  var el = function(id){ return document.getElementById(id); };
+
+  function showError(msg){
+    var box = el("errorBox");
+    box.textContent = msg;
+    box.style.display = msg ? "block" : "none";
+  }
+
+  function setStatus(ok, text){
+    el("statusDot").className = "dot " + (ok ? "ok" : "bad");
+    el("statusText").textContent = text;
+  }
+
+  function parseWhen(ev){
+    if (ev.iso) {
+      var d = new Date(ev.iso);
+      if (!isNaN(d)) return d;
+    }
+    var d2 = new Date(String(ev.date) + " " + String(ev.time));
+    return isNaN(d2) ? null : d2;
+  }
+
+  function isEnter(ev){
+    var v = String(ev.event || "").toLowerCase();
+    return v === "enter" || v === "arrived";
+  }
+
+  function normalize(raw){
+    var out = [];
+    for (var i = 0; i < raw.length; i++) {
+      var ev = raw[i];
+      var when = parseWhen(ev);
+      if (!when || !ev.technician || !ev.site) continue;
+      out.push({
+        when: when,
+        technician: String(ev.technician),
+        site: String(ev.site),
+        enter: isEnter(ev),
+        id: String(ev.technician) + "|" + String(ev.site) + "|" + when.getTime() + "|" + isEnter(ev)
+      });
+    }
+    out.sort(function(a, b){ return a.when - b.when; });
+    return out;
+  }
+
+  function timeShort(d){
+    return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  }
+
+  function ago(d){
+    var mins = Math.max(0, Math.round((Date.now() - d.getTime()) / 60000));
+    if (mins < 60) return mins + " min";
+    var h = Math.floor(mins / 60);
+    return h + " hr " + (mins % 60) + " min";
+  }
+
+  function render(){
+    var events = state.events;
+    var latestByTech = {};
+    events.forEach(function(ev){ latestByTech[ev.technician] = ev; });
+
+    var techs = Object.keys(latestByTech).sort();
+    var crewHTML = "";
+    var onSiteBySite = {};
+    techs.forEach(function(name){
+      var last = latestByTech[name];
+      var on = last.enter;
+      if (on) {
+        (onSiteBySite[last.site] = onSiteBySite[last.site] || []).push({ name: name, since: last.when });
+      }
+      var initials = name.split(/\s+/).map(function(p){ return p.charAt(0); }).join("").toUpperCase().slice(0, 2) || "?";
+      crewHTML += '<div class="techRow ' + (on ? "onSite" : "offSite") + '">' +
+        '<div class="techBadge">' + initials + '</div>' +
+        '<div><div class="techName">' + esc(name) + '</div>' +
+        '<div class="techMeta">' + (on
+          ? 'On site at <b>' + esc(last.site) + '</b> since ' + timeShort(last.when) + ' (' + ago(last.when) + ')'
+          : 'Last seen leaving ' + esc(last.site) + ' at ' + timeShort(last.when)) +
+        '</div></div>' +
+        '<div class="pill">' + (on ? "ON SITE" : "OFF SITE") + '</div></div>';
+    });
+    el("crewBoard").innerHTML = crewHTML || '<div class="siteEmpty">No events yet. Once a crew phone logs a crossing, it appears here.</div>';
+
+    var siteNames = Object.keys(onSiteBySite).sort();
+    var siteHTML = "";
+    siteNames.forEach(function(site){
+      var people = onSiteBySite[site].map(function(p){
+        return esc(p.name) + " (since " + timeShort(p.since) + ")";
+      }).join(", ");
+      siteHTML += '<div class="siteBlock"><div class="siteName">' + esc(site) + '</div><div>' + people + '</div></div>';
+    });
+    el("siteBoard").innerHTML = siteHTML || '<div class="siteEmpty">Nobody is inside a site fence right now.</div>';
+
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var todays = events.filter(function(ev){ return ev.when >= today; }).slice().reverse();
+    var feedHTML = "";
+    todays.forEach(function(ev){
+      feedHTML += '<div class="feedRow ' + (ev.enter ? "in" : "out") + '">' +
+        '<span class="feedTime">' + timeShort(ev.when) + '</span>' +
+        '<span class="arrow">' + (ev.enter ? "&#8600;" : "&#8598;") + '</span>' +
+        '<span><b>' + esc(ev.technician) + '</b> ' + (ev.enter ? "arrived at" : "left") + ' ' + esc(ev.site) + '</span></div>';
+    });
+    el("feed").innerHTML = feedHTML || '<div class="siteEmpty">No activity yet today.</div>';
+    el("todayCount").textContent = todays.length ? "(" + todays.length + ")" : "";
+  }
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function maybeNotify(newEvents){
+    if (!state.notify || !("Notification" in window) || Notification.permission !== "granted") return;
+    newEvents.forEach(function(ev){
+      new Notification("FieldWatt: " + ev.technician + (ev.enter ? " arrived at " : " left ") + ev.site,
+        { body: timeShort(ev.when), tag: ev.id });
+    });
+  }
+
+  function fetchEvents(){
+    if (state.demo) return;
+    var url = store.url;
+    if (!url) return;
+    var full = url + (url.indexOf("?") >= 0 ? "&" : "?") + "dashboard=1" +
+      (store.key ? "&key=" + encodeURIComponent(store.key) : "");
+    setStatus(true, "refreshing…");
+    fetch(full, { method: "GET" })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (data.error) throw new Error(data.error === "bad key" ? "The dashboard key does not match the script." : data.error);
+        if (!data.events) throw new Error("The script answered without event data. Make sure it is the Recipe 4 version from the guide, redeployed as a new version.");
+        var normalized = normalize(data.events);
+        var fresh = normalized.filter(function(ev){ return !state.seenIds[ev.id]; });
+        var firstLoad = state.events.length === 0;
+        normalized.forEach(function(ev){ state.seenIds[ev.id] = true; });
+        state.events = normalized;
+        render();
+        showError("");
+        setStatus(true, "live · updated " + timeShort(new Date()));
+        if (!firstLoad) maybeNotify(fresh);
+      })
+      .catch(function(err){
+        setStatus(false, "connection problem");
+        showError("Could not read from the automation: " + err.message + " Check the URL, and confirm the script is deployed with access set to Anyone.");
+      });
+  }
+
+  function demoData(){
+    var now = Date.now();
+    var mk = function(minsAgo, tech, site, enter){
+      var d = new Date(now - minsAgo * 60000);
+      return { iso: d.toISOString(), technician: tech, site: site, event: enter ? "enter" : "exit" };
+    };
+    return [
+      mk(500, "Marcus Reed", "Lakeside Plaza Roof", true),
+      mk(230, "Marcus Reed", "Lakeside Plaza Roof", false),
+      mk(200, "Marcus Reed", "Cedar Ridge Battery Yard", true),
+      mk(470, "Dana Whitfield", "Harrison Residence", true),
+      mk(90, "Dana Whitfield", "Harrison Residence", false),
+      mk(60, "Dana Whitfield", "Lakeside Plaza Roof", true),
+      mk(420, "Ray Chu", "Cedar Ridge Battery Yard", true),
+      mk(45, "Ray Chu", "Cedar Ridge Battery Yard", false)
+    ];
+  }
+
+  function startDashboard(){
+    el("setupPanel").style.display = "none";
+    el("boards").style.display = "grid";
+    el("refreshBtn").style.display = "";
+    el("settingsBtn").style.display = "";
+    if ("Notification" in window && Notification.permission !== "granted") {
+      el("notifyBtn").style.display = "";
+    } else if ("Notification" in window) {
+      state.notify = true;
+    }
+    if (state.timer) clearInterval(state.timer);
+    state.timer = setInterval(fetchEvents, REFRESH_MS);
+    fetchEvents();
+  }
+
+  el("connectBtn").addEventListener("click", function(){
+    var url = el("urlInput").value.trim();
+    if (url.indexOf("https://") !== 0) { showError("The automation URL must start with https."); return; }
+    store.url = url;
+    store.key = el("keyInput").value.trim();
+    state.demo = false;
+    startDashboard();
+  });
+
+  el("demoBtn").addEventListener("click", function(){
+    state.demo = true;
+    state.events = normalize(demoData());
+    el("setupPanel").style.display = "none";
+    el("boards").style.display = "grid";
+    el("settingsBtn").style.display = "";
+    setStatus(true, "demo data");
+    render();
+  });
+
+  el("refreshBtn").addEventListener("click", fetchEvents);
+
+  el("settingsBtn").addEventListener("click", function(){
+    state.demo = false;
+    if (state.timer) clearInterval(state.timer);
+    el("boards").style.display = "none";
+    el("setupPanel").style.display = "block";
+    el("urlInput").value = store.url;
+    el("keyInput").value = store.key;
+    setStatus(false, "not connected");
+  });
+
+  el("notifyBtn").addEventListener("click", function(){
+    Notification.requestPermission().then(function(perm){
+      state.notify = perm === "granted";
+      if (state.notify) el("notifyBtn").style.display = "none";
+    });
+  });
+
+  document.addEventListener("visibilitychange", function(){
+    if (!document.hidden && !state.demo && store.url) fetchEvents();
+  });
+
+  if (store.url) {
+    el("urlInput").value = store.url;
+    el("keyInput").value = store.key;
+    startDashboard();
+  }
+})();
+</script>
+</body>
+</html>

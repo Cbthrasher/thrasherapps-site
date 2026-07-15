@@ -552,6 +552,67 @@ function doPost(e) {
       </ol>
       <div class="noteBox"><strong>Zapier's free plan runs about 100 tasks a month</strong>, and every event is a task: a five person crew hitting two sites a day burns roughly 400 a month. Fine for a trial; for production either pay for Zapier or use the Apps Script recipes, which are free without limits that matter here. <strong>Make.com</strong> works identically via its Webhooks module with a friendlier free tier (about 1000 operations).</div>
 
+      <h3 class="mt-4">Recipe 4: the live desktop dashboard</h3>
+      <p class="mt-1">A live board for the office computer: who is on which site right now, how long they have been there, and today's arrivals and departures as they happen, refreshing itself every 45 seconds. It lives at <a href="crewdashboard.html"><strong>thrasherapps.com/fieldwatt/crewdashboard.html</strong></a>; bookmark it, or in Chrome use the menu, then Cast, Save, and Share, then Install page as app, to give it its own window and dock icon like a real program.</p>
+      <p class="mt-2">The dashboard reads from the same Google script your crew posts to, so it needs the script version below, which does everything the earlier recipes do (sheet rows always, email alerts optional) and additionally answers the dashboard's read requests. If you already set up Recipe 1 or 2, replace your script's code with this, fill in the same values you used before, and redeploy as a New version (Deploy, then Manage deployments, then the pencil, then New version).</p>
+      <div class="codeBlock">var SHEET_ID = "PASTE_YOUR_SHEET_ID_HERE";
+var ALERT_EMAIL = "";                    // optional: emails every event
+var DASHBOARD_KEY = "";                  // optional: passcode the dashboard must supply
+var TIME_ZONE = "America/Chicago";
+
+function doPost(e) {
+  var data = JSON.parse(e.postData.contents);
+  var events = data.events || [];
+  var sheet = SpreadsheetApp.openById(SHEET_ID).getSheets()[0];
+  for (var i = 0; i &lt; events.length; i++) {
+    var ev = events[i];
+    var t = new Date(ev.time);
+    var dateStr = Utilities.formatDate(t, TIME_ZONE, "MM/dd/yyyy");
+    var timeStr = Utilities.formatDate(t, TIME_ZONE, "h:mm a");
+    var verb = ev.event === "enter" ? "Arrived" : "Departed";
+    sheet.appendRow([dateStr, timeStr, ev.technician, verb, ev.site, ev.time]);
+    if (ALERT_EMAIL) {
+      MailApp.sendEmail({
+        to: ALERT_EMAIL,
+        subject: ev.technician + " " + verb.toLowerCase() + ": " + ev.site,
+        body: ev.technician + " " + verb.toLowerCase() + " " + ev.site + " at " + timeStr + " on " + dateStr
+      });
+    }
+  }
+  return ContentService.createTextOutput("ok");
+}
+
+function doGet(e) {
+  if (DASHBOARD_KEY &amp;&amp; (!e.parameter || e.parameter.key !== DASHBOARD_KEY)) {
+    return ContentService.createTextOutput(JSON.stringify({ error: "bad key" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+  var sheet = SpreadsheetApp.openById(SHEET_ID).getSheets()[0];
+  var last = sheet.getLastRow();
+  var events = [];
+  if (last &gt;= 2) {
+    var start = Math.max(2, last - 299);
+    var rows = sheet.getRange(start, 1, last - start + 1, 6).getValues();
+    for (var i = 0; i &lt; rows.length; i++) {
+      var r = rows[i];
+      events.push({ date: String(r[0]), time: String(r[1]), technician: String(r[2]),
+                    event: String(r[3]), site: String(r[4]), iso: String(r[5] || "") });
+    }
+  }
+  return ContentService.createTextOutput(JSON.stringify({ events: events }))
+    .setMimeType(ContentService.MimeType.JSON);
+}</div>
+      <p class="mt-2">Then, on the office computer:</p>
+      <ol>
+        <li>Open <a href="crewdashboard.html">the dashboard page</a>.</li>
+        <li>Paste your automation URL (the same one on the crew phones) and, if you set DASHBOARD_KEY in the script, that key. It saves in the browser; this is a one time step per computer.</li>
+        <li>Click Connect. The crew board, site board, and today's feed fill in from your sheet and refresh every 45 seconds while the page is open.</li>
+        <li>Optional: click Enable alerts to get a desktop notification each time someone arrives or leaves while the dashboard is open.</li>
+        <li>Want to see the layout before wiring anything? The Try demo data button shows it with sample events.</li>
+      </ol>
+      <div class="noteBox"><strong>How "on site now" is decided:</strong> the dashboard looks at each technician's most recent event. An arrival with no later departure means on site. If a phone misses a departure (dead battery at quitting time), the tech shows on site until their next real event; the sheet remains the factual record.</div>
+      <div class="noteBox"><strong>Privacy of the dashboard page:</strong> the page is a viewer that runs entirely in the office browser. Your automation URL and key are stored only in that browser and the data flows directly between it and your own Google script; nothing passes through us.</div>
+
       <h3 class="mt-4">Security notes for the automation URL</h3>
       <ul>
         <li>The URL must start with <strong>https</strong>; the app refuses anything else.</li>
