@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Communications and Protocols | FieldWatt field reference</title>
+  <meta name="description" content="Communications and Protocols for utility scale solar technicians. RS 485 is a differential pair: A and B (some vendors label them D+ and D− or reversed, and polarity conventions genuinely differ between vendors, so a" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/commsProtocols.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">Communications and Protocols</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 13 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#comms-rs485">RS 485 wiring and troubleshooting</a>
+        <a href="#comms-modbusrtu">Modbus RTU</a>
+        <a href="#comms-modbustcp">Modbus TCP</a>
+        <a href="#comms-registermaps">Modbus register map errors</a>
+        <a href="#comms-timeouts">Device timeouts and polling</a>
+        <a href="#comms-ipaddressing">IP addressing, subnets, and duplicates</a>
+        <a href="#comms-fiber">Fiber runs and media converters</a>
+        <a href="#comms-dnp3">DNP3</a>
+        <a href="#comms-ethernetip">EtherNet IP</a>
+        <a href="#comms-sunspec">SunSpec primer</a>
+        <a href="#comms-iec61850">IEC 61850</a>
+        <a href="#comms-legacy">Legacy DF1 and DH 485</a>
+        <a href="#comms-gateways">Protocol bridging gateways</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="comms-rs485">
+        <h2>RS 485 wiring and troubleshooting</h2>
+        <p>RS 485 is a differential pair: A and B (some vendors label them D+ and D− or reversed, and polarity conventions genuinely differ between vendors, so a swapped pair is the first thing to try on a dead link). Rules that prevent most trouble: daisy chain the devices, never star or stub; terminate both physical ends with 120 ohm resistors and nowhere else; bias the line at one point (usually the master) so it idles in a defined state; ground the cable shield at one end only; and keep the pair on twisted cable separated from power conductors. Symptoms map to causes: no response from all devices points to polarity, termination, or the master port; garbage characters point to baud or parity mismatch or missing termination; intermittent errors that worsen with distance or heat point to biasing, grounding, or cable damage.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Check the vendor manual for each device terminal labeling; A and B are not standardized.</p>
+      </div>
+      <div class="refEntry" id="comms-modbusrtu">
+        <h2>Modbus RTU</h2>
+        <p>Modbus RTU runs a single master polling addressed slaves (1 to 247) over serial, usually RS 485. Every device on the segment must match baud rate, parity, and stop bits exactly; one mismatched device can disturb the whole segment. Slave addresses must be unique, and the address configured in the SCADA device table must match the device DIP switches or menu. Frames are separated by silent intervals, which is why devices behind slow gateways need a generous inter frame delay and response timeout at the master.</p>
+        <div class="refLabel">Verify against</div>
+        <p>A USB to RS 485 adapter and a Modbus scanning tool from a laptop is the definitive segment test.</p>
+      </div>
+      <div class="refEntry" id="comms-modbustcp">
+        <h2>Modbus TCP</h2>
+        <p>Modbus TCP wraps the same register model in Ethernet on port 502. The slave address becomes the unit identifier, which still matters when talking through a gateway that fronts multiple serial devices: the unit id selects which serial slave the gateway forwards to. Troubleshooting is normal IP work first (ping, link lights, correct address and subnet, no duplicates) and Modbus work second (unit id, register map, function code support).</p>
+        <div class="refLabel">Verify against</div>
+        <p>Confirm whether the device expects unit id 0, 1, or 255 when it is the only device behind the address; gateways differ.</p>
+      </div>
+      <div class="refEntry" id="comms-registermaps">
+        <h2>Modbus register map errors</h2>
+        <p>The classic silent failure: everything communicates but the values are wrong. Causes, in order of frequency: holding register versus input register confusion (function code 03 versus 04 read different tables on many devices); zero based versus one based addressing (register 40001 in documentation is address 0 on the wire, and vendors document either convention); word order in 32 bit values (two 16 bit registers combined big endian or little endian, high word first or low word first); byte order within words; and scaling factors or implied decimal points. A power reading that is exactly half, double, negative, or astronomically large is a map or order problem, not a sensor problem.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Get the vendor register map PDF for the exact model and firmware; maps change between versions.</p>
+      </div>
+      <div class="refEntry" id="comms-timeouts">
+        <h2>Device timeouts and polling</h2>
+        <p>Every master has a response timeout, retry count, and inter frame or inter poll delay. Set the timeout too tight and healthy but slow devices (anything behind a protocol gateway, busy inverter controllers) flap between online and offline, flooding the historian with bad quality transitions. The TMEIC PVS gateway is the canonical example: roughly 200 milliseconds of latency, so masters need at least a 250 millisecond timeout and inter frame delay. Set timeouts generously and let retry counts, not timeouts, define failure.</p>
+        <div class="refLabel">Verify against</div>
+        <p>After any timeout change, watch the device connection statistics for a full day before calling it fixed.</p>
+      </div>
+      <div class="refEntry" id="comms-ipaddressing">
+        <h2>IP addressing, subnets, and duplicates</h2>
+        <p>Plant networks fail in mundane ways: a device with the wrong subnet mask answers locally but not across routers; a duplicate IP (often a replacement device shipped with the same default address as an existing one) causes both devices to flap as ARP tables fight; a wrong gateway address breaks only the traffic that leaves the subnet, so local polls work while the historian upstream sees nothing. After replacing any device, confirm its address, mask, and gateway against the site IP plan before connecting it to the network.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Keep the site IP address plan current; an accurate spreadsheet prevents most of this category.</p>
+      </div>
+      <div class="refEntry" id="comms-fiber">
+        <h2>Fiber runs and media converters</h2>
+        <p>Long field runs are fiber, converted to copper at each cabinet by media converters or switch SFP ports. Failure modes: media converter power supplies (the most common single failure on site networks), dirty or damaged connectors, bend radius violations after cabinet work, water in splice enclosures, and rodent damage. Link lights tell the story: no link at either end is the fiber or the far converter; link up with errors is usually dirty connectors or a marginal budget. Every fiber problem takes out everything downstream of it, which is exactly the pattern to look for in SCADA: a whole cabinet or daisy chain going bad quality at once.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Keep spare media converters and their power supplies in site stock.</p>
+      </div>
+      <div class="refEntry" id="comms-dnp3">
+        <h2>DNP3</h2>
+        <p>DNP3 is the utility SCADA protocol, common between the plant and the grid operator or between substation devices and the plant historian. Unlike Modbus polling, DNP3 supports unsolicited event reporting with timestamps and quality flags, class based scans, and time synchronization. Key configuration: master and outstation addresses, class assignments (which points report as events versus only on integrity polls), and unsolicited enable. A point that never updates until a full integrity poll is usually assigned to the wrong class.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Coordinate DNP3 changes with the utility; the point list is usually contractual.</p>
+      </div>
+      <div class="refEntry" id="comms-ethernetip">
+        <h2>EtherNet IP</h2>
+        <p>EtherNet IP (the IP stands for Industrial Protocol) is the Rockwell ecosystem protocol carrying implicit I/O connections and explicit messaging between Logix controllers, drives, and I/O. Implicit connections have a requested packet interval; when network latency or a duplicate address breaks the connection, the controller logs a connection timeout and the I/O goes to its configured fault state. Managed switches with IGMP snooping matter on larger EtherNet IP networks because the I/O traffic is multicast.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify requested packet intervals and connection limits against the installed controller documentation.</p>
+      </div>
+      <div class="refEntry" id="comms-sunspec">
+        <h2>SunSpec primer</h2>
+        <p>SunSpec is a standardized Modbus register map for solar equipment, so different vendors expose the same data at predictable offsets. Discovery: read the well known base register (commonly 40000) for the SunS marker, then walk the chained model blocks; each block starts with a model id and length. Common models include inverter AC and DC measurements, nameplate, controls (curtailment and power factor setpoints), and meter models. When a vendor claims SunSpec support, the register map still deserves verification: implementations differ in which models and which optional points exist.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Pull the device SunSpec model list with a discovery tool rather than trusting the datasheet.</p>
+      </div>
+      <div class="refEntry" id="comms-iec61850">
+        <h2>IEC 61850</h2>
+        <p>IEC 61850 is the substation automation standard: relays and merging units publish structured data (logical nodes) over MMS for SCADA and exchange fast peer to peer trip and interlock messages over GOOSE. GOOSE is time critical multicast on the substation LAN; a misconfigured switch or an unplugged fiber can silently break an interlock scheme while everything else looks healthy. Solar plant technicians mostly meet 61850 at the substation boundary; changes there are protection engineering territory.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Never modify substation network configuration without protection engineering signoff; GOOSE messaging can be part of the protection scheme.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The substation integrator documentation lists the configured logical nodes and GOOSE flows.</p>
+      </div>
+      <div class="refEntry" id="comms-legacy">
+        <h2>Legacy DF1 and DH 485</h2>
+        <p>Older Allen Bradley gear at repowered or aging sites still speaks DF1 (point to point serial) and DH 485 (multi drop token passing). They survive behind protocol gateways that translate to Modbus TCP or EtherNet IP. When a legacy device drops offline, suspect the gateway first: its serial parameters, its mapping table, and its power supply. Document any legacy loop you touch; the institutional knowledge is usually gone.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Photograph gateway configuration screens whenever you have access; recovery documentation is scarce.</p>
+      </div>
+      <div class="refEntry" id="comms-gateways">
+        <h2>Protocol bridging gateways</h2>
+        <p>Gateways translate between protocols: Modbus RTU to TCP, DNP3 to Modbus, DF1 to EtherNet IP, vendor serial to SunSpec. They add latency (see the TMEIC case), hold mapping tables that silently go stale when a device is swapped for a different model, and their wall wart power supplies fail more than anything they connect. When one field device misbehaves through a gateway, test on the device side of the gateway before condemning the device.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Back up gateway configurations after every change; most models export a file.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

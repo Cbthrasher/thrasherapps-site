@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brand Library | StoreWatt field reference</title>
+  <meta name="description" content="Brand Library for grid scale battery storage technicians. Liquid cooled containerized BESS line. The PowerTitan 3.0 class packs roughly 7.14 MWh into a 20 foot container with an integrated 1.78 MW silicon car" />
+  <link rel="canonical" href="https://thrasherapps.com/storewatt/reference/brandLibrary.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/storewatt/">StoreWatt</a>
+        <a href="/storewatt/reference/">Reference</a>
+        <a href="/storewatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/storewatt/reference/">StoreWatt reference</a></div>
+      <h1 class="h2">Brand Library</h1>
+      <p class="lead">Field reference for grid scale battery storage technicians. 7 entries, taken from the StoreWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#brand-sungrowpowertitan">Sungrow PowerTitan</a>
+        <a href="#brand-teslamegapack">Tesla Megapack 3</a>
+        <a href="#brand-teslamegablock">Tesla Megablock</a>
+        <a href="#brand-fluencegridstack">Fluence Gridstack Pro</a>
+        <a href="#brand-smastorage">SMA storage PCS</a>
+        <a href="#brand-powerelectronics">Power Electronics storage PCS</a>
+        <a href="#brand-epcpower">EPC Power PCS</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="brand-sungrowpowertitan">
+        <div class="refTag">Sungrow</div>
+        <h2>Sungrow PowerTitan</h2>
+        <p>Liquid cooled containerized BESS line. The PowerTitan 3.0 class packs roughly 7.14 MWh into a 20 foot container with an integrated 1.78 MW silicon carbide PCS, tightening the DC block into a single vendor unit. Cell level liquid cooling and integrated fire suppression per container.
+
+Common fault families in the field: thermal loop alarms (pump, flow, level), cell voltage and temperature alarms from the string BMS, PCS grid side trips, and communication loss between container controllers and the plant EMS. The integrated design means most work happens through the vendor service interface rather than component by component.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Follow the vendor lockout and access procedure; the container remains energized internally regardless of PCS state. Fire suppression and off gas detection are active systems inside.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Specifications and fault behavior vary by model year and firmware. Verify against the current Sungrow manual for the installed units.</p>
+      </div>
+      <div class="refEntry" id="brand-teslamegapack">
+        <div class="refTag">Tesla</div>
+        <h2>Tesla Megapack 3</h2>
+        <p>Integrated AC block: batteries, PCS, thermal management, and controls ship in one enclosure of roughly 5 MWh class. Plant integration is through Tesla&#x27;s site controller stack, with telemetry and control heavily software defined.
+
+Field posture: hands on component service is limited by design; diagnostics flow through the Tesla service tooling and support channels. Common field issues cluster around thermal system alarms, communication and software version mismatches with the site controller, and AC side protection interactions.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Treat the enclosure as always energized. Access beyond operator level panels is Tesla service territory; forcing it voids more than the warranty.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Capabilities and ratings move quickly between Megapack revisions. Verify against current Tesla documentation for the installed hardware.</p>
+      </div>
+      <div class="refEntry" id="brand-teslamegablock">
+        <div class="refTag">Tesla</div>
+        <h2>Tesla Megablock</h2>
+        <p>Tesla&#x27;s larger plant building unit: Megapacks pre integrated with medium voltage equipment into a block that cuts field wiring and commissioning scope. The tradeoff is the same as all deep integration: faster install, less field serviceability, and diagnostics that live in the vendor stack.
+
+For troubleshooting, think in layers: block level MV protection, then the site controller&#x27;s view of each pack, then Tesla service for anything inside the enclosures.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Medium voltage sections follow MV rules: qualified person, switching orders, and LOTO. The battery sections remain energized regardless.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify configuration against the current Tesla documentation for the project.</p>
+      </div>
+      <div class="refEntry" id="brand-fluencegridstack">
+        <div class="refTag">Fluence</div>
+        <h2>Fluence Gridstack Pro</h2>
+        <p>Utility scale platform aimed at heavy duty cycles like frequency regulation, delivered with Fluence&#x27;s OS and analytics stack, and commonly paired with the Mosaic market bidding platform where merchant revenue is in scope. Hardware is modular cubes with vendor managed integration.
+
+Field issues cluster around thermal management, node communication, and software stack coordination between the Fluence OS layers and site SCADA. Because dispatch may be driven by Mosaic bidding, always check the market layer before calling an idle plant faulted.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Vendor access procedures govern enclosure entry. Enclosures remain energized; off gas and suppression systems are active.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against current Fluence documentation for the installed generation and OS version.</p>
+      </div>
+      <div class="refEntry" id="brand-smastorage">
+        <div class="refTag">SMA</div>
+        <h2>SMA storage PCS</h2>
+        <p>SMA supplies utility scale storage inverters and MV stations frequently paired with third party batteries. That split architecture means integration seams are the troubleshooting hot spots: PCS to BMS interlocks, Modbus register maps between vendors, and who trips first on a shared fault.
+
+SMA units carry deep event logs with numbered codes; pull the sequence with timestamps and match against the battery side log before judging which side started an event.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Standard PCS safety applies: DC side remains energized from the battery regardless of inverter state.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Fault code tables are model and firmware specific. Use the current SMA service manual.</p>
+      </div>
+      <div class="refEntry" id="brand-powerelectronics">
+        <div class="refTag">Power Electronics</div>
+        <h2>Power Electronics storage PCS</h2>
+        <p>A dominant PCS supplier in North American solar plus storage. Freemaq class units pair with third party DC blocks, so the same integration seam logic applies: interlocks, register maps, and trip coordination between the PCS and the battery vendor&#x27;s controls.
+
+Field reputation centers on serviceable modular power stages. Watch cooling system alarms and DC side configuration mismatches after battery augmentation changes the DC characteristics.</p>
+        <div class="refLabel">Safe response</div>
+        <p>DC bus stays live from the battery at all times; PCS off is not DC off.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Use the current Power Electronics manual for the installed model and firmware.</p>
+      </div>
+      <div class="refEntry" id="brand-epcpower">
+        <div class="refTag">EPC Power</div>
+        <h2>EPC Power PCS</h2>
+        <p>North American PCS manufacturer common in storage retrofits and new builds, known for bidirectional units built for battery duty. Same integration seams as any split architecture: BMS permissives, register maps, and protection coordination.
+
+When commissioning against a new battery vendor, walk the interlock chain end to end and prove the PCS honors the BMS current limits dynamically, not just at startup.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Standard PCS and DC bus safety discipline applies.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Use current EPC Power documentation for the installed model.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/storewatt/reference/bmsFaults.html">Bms Faults</a>
+        <a href="/storewatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/storewatt/reference/controlsScada.html">Controls Scada</a>
+        <a href="/storewatt/reference/emsNotes.html">Ems Notes</a>
+        <a href="/storewatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/storewatt/reference/pcsFaults.html">Pcs Faults</a>
+        <a href="/storewatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/storewatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/storewatt/reference/standardsSummaries.html">Standards Summaries</a>
+        <a href="/storewatt/reference/thermalManagement.html">Thermal Management</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/storewatt/">StoreWatt</a> ·
+        <a href="/storewatt/privacy.html">Privacy</a> ·
+        <a href="/storewatt/terms.html">Terms</a> ·
+        <a href="/storewatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

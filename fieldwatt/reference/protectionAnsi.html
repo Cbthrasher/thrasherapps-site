@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Protection and ANSI Device Numbers | FieldWatt field reference</title>
+  <meta name="description" content="Protection and ANSI Device Numbers for utility scale solar technicians. Between the inverters and the grid sit medium voltage collection circuits, the substation transformer, breakers and reclosers, capacitor banks where f" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/protectionAnsi.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">Protection and ANSI Device Numbers</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 15 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#ansi-overview">Substation and protection layer overview</a>
+        <a href="#ansi-relaytargets">Reading relay targets after a trip</a>
+        <a href="#ansi-25">Sync check</a>
+        <a href="#ansi-27">Undervoltage</a>
+        <a href="#ansi-32">Reverse power (directional power)</a>
+        <a href="#ansi-46">Negative sequence (current unbalance)</a>
+        <a href="#ansi-50">Instantaneous overcurrent</a>
+        <a href="#ansi-51">Time overcurrent</a>
+        <a href="#ansi-59">Overvoltage</a>
+        <a href="#ansi-81">Frequency (over and under)</a>
+        <a href="#ansi-86">Lockout relay</a>
+        <a href="#ansi-87">Differential</a>
+        <a href="#ansi-reclosers">Reclosers and breakers</a>
+        <a href="#ansi-meter">Revenue meter</a>
+        <a href="#ansi-brands">Relay brands in the field</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="ansi-overview">
+        <h2>Substation and protection layer overview</h2>
+        <p>Between the inverters and the grid sit medium voltage collection circuits, the substation transformer, breakers and reclosers, capacitor banks where fitted, protective relays, and the revenue meter. SEL relays dominate US solar substations, with GE Multilin, Siemens, and Basler also common. Relays watch currents and voltages and trip breakers on abnormal conditions; the relay front panel targets (LEDs and event records) tell you why a trip happened, which is the single most useful thing a field tech can photograph for the protection engineer.</p>
+        <div class="refLabel">Safe response</div>
+        <p>All medium voltage work is qualified person territory with arc flash PPE and LOTO. Field technicians do not operate substation equipment without explicit authorization and a switching order.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The site single line diagram and relay settings files are the authority.</p>
+      </div>
+      <div class="refEntry" id="ansi-relaytargets">
+        <h2>Reading relay targets after a trip</h2>
+        <p>After any substation trip, photograph the relay front panel before anything is reset: lit targets show which protective elements operated (for example 51 time overcurrent phase A, or 87 differential). Modern SEL relays also store event reports with waveforms; the protection engineer will want the event number and time. Resetting targets without recording them destroys the primary evidence of what happened.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Do not re close a tripped breaker until the cause is understood and a qualified person authorizes it. A trip on a differential or lockout relay means equipment damage is possible; closing back into a fault can be catastrophic.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Follow the site switching and reclose authorization procedures.</p>
+      </div>
+      <div class="refEntry" id="ansi-25">
+        <div class="refTag">25</div>
+        <h2>Sync check</h2>
+        <p>Device 25 supervises breaker closing: it permits a close only when the voltage magnitude, frequency, and phase angle on both sides of the breaker match within limits. A breaker that refuses to close after an outage while everything looks normal often has an unsatisfied sync check because the plant side is dead or drifting.</p>
+      </div>
+      <div class="refEntry" id="ansi-27">
+        <div class="refTag">27</div>
+        <h2>Undervoltage</h2>
+        <p>Device 27 trips or alarms when voltage falls below a setpoint for its time delay. At solar plants it appears in inverter grid protection, feeder relays, and auxiliary power monitoring. Plant wide 27 operations mean a real grid sag; a single relay seeing undervoltage alone suggests a blown voltage transformer fuse or measurement problem.</p>
+      </div>
+      <div class="refEntry" id="ansi-32">
+        <div class="refTag">32</div>
+        <h2>Reverse power (directional power)</h2>
+        <p>Device 32 responds to power flowing the wrong direction. At solar plants directional elements coordinate protection on collection feeders where fault current can flow from either direction, and a 32 element may guard the station service transformer against backfeed conditions it was not designed for.</p>
+      </div>
+      <div class="refEntry" id="ansi-46">
+        <div class="refTag">46</div>
+        <h2>Negative sequence (current unbalance)</h2>
+        <p>Device 46 measures negative sequence current, which appears when the three phases are unbalanced: an open phase, a downed conductor, unbalanced load, or a single phase fault. A 46 alarm on a collection feeder with no obvious fault deserves a physical patrol; an open jumper or failing cable elbow can sit at the edge of detection for weeks.</p>
+      </div>
+      <div class="refEntry" id="ansi-50">
+        <div class="refTag">50</div>
+        <h2>Instantaneous overcurrent</h2>
+        <p>Device 50 trips with no intentional delay when current exceeds its pickup: the response to a close in, high current fault. A 50 target means a serious fault happened electrically close to the relay location.</p>
+      </div>
+      <div class="refEntry" id="ansi-51">
+        <div class="refTag">51</div>
+        <h2>Time overcurrent</h2>
+        <p>Device 51 trips on overcurrent with an inverse time curve: the higher the current, the faster the trip. It provides coordinated backup protection along the feeder so the device nearest the fault operates first. A 51 target with a long operate time suggests a lower magnitude fault or overload further down the circuit.</p>
+      </div>
+      <div class="refEntry" id="ansi-59">
+        <div class="refTag">59</div>
+        <h2>Overvoltage</h2>
+        <p>Device 59 operates when voltage exceeds a setpoint for its delay. At solar plants, sustained high POI voltage often traces to the plant exporting full power into a weak grid with the AVR at its limit, or to incorrect reactive power settings, before it is a relay problem.</p>
+      </div>
+      <div class="refEntry" id="ansi-81">
+        <div class="refTag">81</div>
+        <h2>Frequency (over and under)</h2>
+        <p>Device 81 covers overfrequency (81O) and underfrequency (81U) elements. Frequency is a system wide quantity: real events show up everywhere at once, including at every inverter. Frequency elements implement the disconnect boundaries that IEEE 1547 and the interconnection agreement define after ride through obligations are exhausted.</p>
+      </div>
+      <div class="refEntry" id="ansi-86">
+        <div class="refTag">86</div>
+        <h2>Lockout relay</h2>
+        <p>Device 86 is the lockout: when a serious protective element (commonly the 87 differential) operates, the 86 trips the breakers and mechanically latches, preventing any close, local or remote, until it is deliberately reset by hand. A tripped 86 means protection concluded that equipment damage is possible.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Never reset an 86 lockout to restore service without a protection engineer determining the cause. Resetting and closing into a damaged transformer or cable can cause catastrophic failure and arc flash injury.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Follow the site switching authorization procedure for any lockout reset.</p>
+      </div>
+      <div class="refEntry" id="ansi-87">
+        <div class="refTag">87</div>
+        <h2>Differential</h2>
+        <p>Device 87 compares current entering and leaving a protected zone (transformer, bus, cable). Any meaningful difference means current is escaping inside the zone: an internal fault. Differential protection is fast and definitive; an 87 operation almost always drives an 86 lockout because internal faults imply damaged equipment.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Treat an 87 target as evidence of internal equipment damage. No re energization without testing and protection engineering signoff.</p>
+      </div>
+      <div class="refEntry" id="ansi-reclosers">
+        <h2>Reclosers and breakers</h2>
+        <p>Distribution style reclosers on collection circuits trip on faults and automatically reclose after a delay, betting the fault was temporary. On underground solar collection systems, faults are rarely temporary, so many sites disable reclosing: every trip is treated as a real cable or equipment fault requiring patrol before restoration. Know the site philosophy before assuming a recloser will restore itself.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Treat every downstream conductor as energized until the recloser or breaker position and absence of voltage are verified. Reclosing equipment can close at any moment.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The site protection philosophy document states whether reclosing is enabled.</p>
+      </div>
+      <div class="refEntry" id="ansi-meter">
+        <h2>Revenue meter</h2>
+        <p>The revenue meter at the POI is the financial ground truth for plant output and usually the most trustworthy measurement on site. When SCADA sums of inverter output disagree with the meter, believe the meter and go find the telemetry problem. Meter maintenance, testing, and sealing are governed by the interconnection agreement and usually involve the utility.</p>
+      </div>
+      <div class="refEntry" id="ansi-brands">
+        <h2>Relay brands in the field</h2>
+        <p>SEL (Schweitzer Engineering Laboratories) relays dominate US solar substations: the 351 family on feeders, 387 or 487 for differential, 421 for line protection. GE Multilin (SR and UR families), Siemens SIPROTEC, and Basler appear regionally and at utility owned stations. Interfaces differ but the concepts transfer: targets show what operated, event records hold the waveforms, and settings files are engineering controlled documents.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Site relay models and settings are in the protection one line and settings files.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

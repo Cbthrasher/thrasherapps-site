@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ems Notes | StoreWatt field reference</title>
+  <meta name="description" content="Ems Notes for grid scale battery storage technicians. The energy management system decides when to charge, discharge, hold reserve, firm solar, shave peaks, and respond to grid or market commands. It sits" />
+  <link rel="canonical" href="https://thrasherapps.com/storewatt/reference/emsNotes.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/storewatt/">StoreWatt</a>
+        <a href="/storewatt/reference/">Reference</a>
+        <a href="/storewatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/storewatt/reference/">StoreWatt reference</a></div>
+      <h1 class="h2">Ems Notes</h1>
+      <p class="lead">Field reference for grid scale battery storage technicians. 7 entries, taken from the StoreWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#ems-overview">What the EMS decides and why it matters</a>
+        <a href="#ems-notdispatching">Not charging or discharging: start here</a>
+        <a href="#ems-applications">Applications that change expected behavior</a>
+        <a href="#ems-soclimits">SOC limits and reserves</a>
+        <a href="#ems-gridcommands">Grid commands and curtailment</a>
+        <a href="#ems-setpointmismatch">At setpoint versus at the meter</a>
+        <a href="#ems-dataquality">Stale data and quality flags</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="ems-overview">
+        <h2>What the EMS decides and why it matters</h2>
+        <p>The energy management system decides when to charge, discharge, hold reserve, firm solar, shave peaks, and respond to grid or market commands. It sits above the plant controller and below the market or offtaker.
+
+The single most useful troubleshooting posture on a BESS: a plant that is not dispatching or not at setpoint is often following EMS strategy or a grid command, not suffering a battery fault. Prove the command chain before condemning hardware.</p>
+      </div>
+      <div class="refEntry" id="ems-notdispatching">
+        <h2>Not charging or discharging: start here</h2>
+        <p>Before opening a single cabinet, answer four questions in order. One: what setpoint is the EMS actually sending right now, and does the schedule or market award say it should be nonzero? Two: is a grid or utility command curtailing the plant? Three: are SOC limits or reserve requirements blocking the move the EMS wants? Four: is the PCS receiving the setpoint and acknowledging it?
+
+Only after those four check out is this an equipment problem, and by then the chain has told you which device to look at.</p>
+      </div>
+      <div class="refEntry" id="ems-applications">
+        <h2>Applications that change expected behavior</h2>
+        <p>Frequency regulation looks like constant small wiggles around zero and rarely moves much energy. Energy arbitrage charges cheap and discharges dear in one or two big daily blocks. Peak shaving and demand charge management waits idle for a trigger and then hits hard. Solar smoothing and firming follows a plant output signal. Capacity and ancillary awards can require holding SOC at a floor for hours doing nothing.
+
+Know which application is active before judging behavior; an idle plant holding 60 percent SOC all afternoon may be exactly what the market award requires.</p>
+      </div>
+      <div class="refEntry" id="ems-soclimits">
+        <h2>SOC limits and reserves</h2>
+        <p>The EMS enforces operating SOC limits that are tighter than the BMS protection limits: a floor for capacity obligations or black start reserve, a ceiling for headroom obligations or cell longevity. A plant sitting at its EMS floor will refuse discharge commands and look broken while being perfectly healthy.
+
+Check the effective limits in the EMS, not the design document; operators and market systems change them.</p>
+      </div>
+      <div class="refEntry" id="ems-gridcommands">
+        <h2>Grid commands and curtailment</h2>
+        <p>The utility, ISO, or offtaker can command the plant down through AGC signals, curtailment orders, or interconnection limits enforced by the power plant controller. These arrive above the EMS or at the plant controller and override the schedule.
+
+When output is capped at a suspicious round number, look for an active curtailment or a POI limit before anything else.</p>
+      </div>
+      <div class="refEntry" id="ems-setpointmismatch">
+        <h2>At setpoint versus at the meter</h2>
+        <p>The EMS commands power at the point of interconnection, but the batteries deliver power at their terminals. Auxiliary loads, transformer losses, and collection system losses sit in between, so PCS output normally exceeds POI output by the loss stack. A persistent mismatch beyond the expected losses points at a meter, a scaling factor, or a unit stuck offline while the rest compensate.
+
+Know the plant&#x27;s loss budget; chasing a two percent gap that is just transformer losses wastes an afternoon.</p>
+      </div>
+      <div class="refEntry" id="ems-dataquality">
+        <h2>Stale data and quality flags</h2>
+        <p>EMS decisions are only as good as the telemetry underneath. A stuck SOC value, a frozen meter, or a bad quality flag can make the EMS hold or refuse dispatch with no equipment fault anywhere. Most platforms mark stale or bad quality points; alarms on data quality deserve the same respect as alarms on hardware.
+
+Timestamps are the tell: a value that has not changed in hours on a live plant is a communication problem wearing a process disguise.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/storewatt/reference/bmsFaults.html">Bms Faults</a>
+        <a href="/storewatt/reference/brandLibrary.html">Brand Library</a>
+        <a href="/storewatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/storewatt/reference/controlsScada.html">Controls Scada</a>
+        <a href="/storewatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/storewatt/reference/pcsFaults.html">Pcs Faults</a>
+        <a href="/storewatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/storewatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/storewatt/reference/standardsSummaries.html">Standards Summaries</a>
+        <a href="/storewatt/reference/thermalManagement.html">Thermal Management</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/storewatt/">StoreWatt</a> ·
+        <a href="/storewatt/privacy.html">Privacy</a> ·
+        <a href="/storewatt/terms.html">Terms</a> ·
+        <a href="/storewatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NEC and IEC Tables | FieldWatt field reference</title>
+  <meta name="description" content="NEC and IEC Tables for utility scale solar technicians. Article 690 carries the prescriptive PV rules: string voltage calculation, conductor sizing, overcurrent protection, disconnects. Article 691 covers l" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/codeTables.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">NEC and IEC Tables</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 8 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#table-690vs691">NEC 690 versus 691</a>
+        <a href="#table-6907a">NEC Table 690.7(A) voltage correction factors</a>
+        <a href="#table-ambientcorrection">Ambient temperature correction (90 C conductors, 30 C base)</a>
+        <a href="#table-conduitfill">Conduit fill adjustment factors</a>
+        <a href="#table-ampacity">Conductor ampacity, 90 C column</a>
+        <a href="#table-resistance">Conductor DC resistance (ohms per 1000 feet, 75 C)</a>
+        <a href="#table-iec62446">IEC 62446 1 insulation resistance minimums</a>
+        <a href="#table-torque">Torque reference</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="table-690vs691">
+        <h2>NEC 690 versus 691</h2>
+        <p>Article 690 carries the prescriptive PV rules: string voltage calculation, conductor sizing, overcurrent protection, disconnects. Article 691 covers large scale PV electric supply stations, generally 5 megawatts and larger, not open to the public, under qualified supervision: there the plant is designed under engineering supervision and documented practices can replace some prescriptive 690 requirements. Utility scale technicians live under 691 plants designed by a PE, which is why the stamped drawings and site engineering documents always govern over generic calculations. FieldWatt calculators follow 690 math and flag when 691 likely applies.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The authority having jurisdiction and the stamped drawings govern. Code cycles 2017, 2020, 2023, and 2026 differ in detail.</p>
+      </div>
+      <div class="refEntry" id="table-6907a">
+        <h2>NEC Table 690.7(A) voltage correction factors</h2>
+        <p>Multiply rated module Voc by the factor for the lowest expected ambient temperature. Applies to crystalline and multicrystalline silicon when the manufacturer temperature coefficient is not used.
+
+Ambient 24 to 20 C: 1.02
+Ambient 19 to 15 C: 1.04
+Ambient 14 to 10 C: 1.06
+Ambient 9 to 5 C: 1.08
+Ambient 4 to 0 C: 1.10
+Ambient −1 to −5 C: 1.12
+Ambient −6 to −10 C: 1.14
+Ambient −11 to −15 C: 1.16
+Ambient −16 to −20 C: 1.18
+Ambient −21 to −25 C: 1.20
+Ambient −26 to −30 C: 1.21
+Ambient −31 to −35 C: 1.23
+Ambient −36 to −40 C: 1.25
+
+Using the module Voc temperature coefficient with the record low ambient gives a more exact answer and is what the Max String Size calculator supports as its second method.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Confirm the factor against the code year adopted at the site.</p>
+      </div>
+      <div class="refEntry" id="table-ambientcorrection">
+        <h2>Ambient temperature correction (90 C conductors, 30 C base)</h2>
+        <p>Multiply conductor ampacity by the factor for the design ambient.
+
+10 C or less: 1.15
+11 to 15 C: 1.12
+16 to 20 C: 1.08
+21 to 25 C: 1.04
+26 to 30 C: 1.00
+31 to 35 C: 0.96
+36 to 40 C: 0.91
+41 to 45 C: 0.87
+46 to 50 C: 0.82
+51 to 55 C: 0.76
+56 to 60 C: 0.71
+61 to 65 C: 0.65
+66 to 70 C: 0.58
+71 to 75 C: 0.50
+76 to 80 C: 0.41
+81 to 85 C: 0.29</p>
+        <div class="refLabel">Verify against</div>
+        <p>From the NEC ambient correction table for 90 C insulation on a 30 C base; verify against the adopted code year.</p>
+      </div>
+      <div class="refEntry" id="table-conduitfill">
+        <h2>Conduit fill adjustment factors</h2>
+        <p>When more than three current carrying conductors share a raceway or cable, multiply ampacity by:
+
+4 to 6 conductors: 0.80
+7 to 9 conductors: 0.70
+10 to 20 conductors: 0.50
+21 to 30 conductors: 0.45
+31 to 40 conductors: 0.40
+41 and more: 0.35
+
+On DC source circuits both polarities count as current carrying. Stacking many strings in one conduit murders ampacity; this factor is why.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the adopted code year and any engineering supervision provisions under Article 691.</p>
+      </div>
+      <div class="refEntry" id="table-ampacity">
+        <h2>Conductor ampacity, 90 C column</h2>
+        <p>Base ampacities before correction and adjustment (90 C insulation such as PV wire, in raceway):
+
+Copper: 14 AWG 25 A, 12 AWG 30 A, 10 AWG 40 A, 8 AWG 55 A, 6 AWG 75 A, 4 AWG 95 A, 3 AWG 115 A, 2 AWG 130 A, 1 AWG 145 A, 1/0 170 A, 2/0 195 A, 3/0 225 A, 4/0 260 A, 250 kcmil 290 A, 300 kcmil 320 A, 350 kcmil 350 A, 400 kcmil 380 A, 500 kcmil 430 A, 600 kcmil 475 A, 750 kcmil 535 A, 1000 kcmil 615 A
+
+Aluminum: 6 AWG 60 A, 4 AWG 75 A, 3 AWG 85 A, 2 AWG 100 A, 1 AWG 115 A, 1/0 135 A, 2/0 150 A, 3/0 175 A, 4/0 205 A, 250 kcmil 230 A, 300 kcmil 260 A, 350 kcmil 280 A, 400 kcmil 305 A, 500 kcmil 350 A, 600 kcmil 385 A, 750 kcmil 435 A, 1000 kcmil 500 A</p>
+        <div class="refLabel">Verify against</div>
+        <p>Small conductor overcurrent limits and terminal temperature ratings still apply; verify against the adopted code year.</p>
+      </div>
+      <div class="refEntry" id="table-resistance">
+        <h2>Conductor DC resistance (ohms per 1000 feet, 75 C)</h2>
+        <p>Stranded conductors, for voltage drop estimates.
+
+Copper: 14 AWG 3.14, 12 AWG 1.98, 10 AWG 1.24, 8 AWG 0.778, 6 AWG 0.491, 4 AWG 0.308, 3 AWG 0.245, 2 AWG 0.194, 1 AWG 0.154, 1/0 0.122, 2/0 0.0967, 3/0 0.0766, 4/0 0.0608, 250 kcmil 0.0515, 300 kcmil 0.0429, 350 kcmil 0.0367, 400 kcmil 0.0321, 500 kcmil 0.0258, 600 kcmil 0.0214, 750 kcmil 0.0171, 1000 kcmil 0.0129
+
+Aluminum: 12 AWG 3.25, 10 AWG 2.04, 8 AWG 1.28, 6 AWG 0.808, 4 AWG 0.508, 2 AWG 0.319, 1 AWG 0.253, 1/0 0.201, 2/0 0.159, 3/0 0.126, 4/0 0.100, 250 kcmil 0.0847, 300 kcmil 0.0707, 350 kcmil 0.0605, 400 kcmil 0.0529, 500 kcmil 0.0424, 600 kcmil 0.0353, 750 kcmil 0.0282, 1000 kcmil 0.0212</p>
+        <div class="refLabel">Verify against</div>
+        <p>From NEC Chapter 9 Table 8 values; the Voltage Drop calculator uses these.</p>
+      </div>
+      <div class="refEntry" id="table-iec62446">
+        <h2>IEC 62446 1 insulation resistance minimums</h2>
+        <p>Minimum insulation resistance by system voltage, with the matching test voltage:
+
+System voltage under 120 V: test at 250 V, minimum 0.5 megohm
+System voltage 120 to 500 V: test at 500 V, minimum 1 megohm
+System voltage over 500 V (includes 1000 and 1500 V plants): test at 1000 V, minimum 1 megohm
+
+These are pass or fail floors, not health targets: dry healthy utility scale circuits usually read far higher. Disconnect surge protective devices before testing and follow manufacturer guidance on maximum test voltage.</p>
+        <div class="refLabel">Verify against</div>
+        <p>From the IEC 62446 1 test method table; site O&amp;M agreements may impose stricter targets.</p>
+      </div>
+      <div class="refEntry" id="table-torque">
+        <h2>Torque reference</h2>
+        <p>The manufacturer label on the enclosure or lug is always the authority. When a label is unreadable and no documentation exists, the recognized defaults (from UL 486A style tables) for wire binding and lug screws:
+
+Slotted screw lugs, 10 AWG and smaller: 20 to 25 inch pounds
+Slotted screw lugs, 8 AWG: 25 to 30 inch pounds
+Hex or Allen drive lugs, 6 to 4 AWG: 45 inch pounds
+Hex or Allen drive lugs, 3 to 1 AWG: 50 inch pounds
+Hex or Allen drive lugs, 1/0 to 2/0: 120 inch pounds
+Hex or Allen drive lugs, 3/0 to 350 kcmil: 275 inch pounds
+Hex or Allen drive lugs, 400 to 500 kcmil: 375 inch pounds
+
+Use a calibrated torque tool, mark completed terminations, and recheck aluminum terminations within the first year.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Generic defaults only. The equipment label and manufacturer sheet govern.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

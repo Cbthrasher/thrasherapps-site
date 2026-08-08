@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Controls Scada | StoreWatt field reference</title>
+  <meta name="description" content="Controls Scada for grid scale battery storage technicians. A storage plant runs the familiar SCADA stack with two extra layers. From the bottom: cell and module BMS, rack and system BMS, PCS controls, the powe" />
+  <link rel="canonical" href="https://thrasherapps.com/storewatt/reference/controlsScada.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/storewatt/">StoreWatt</a>
+        <a href="/storewatt/reference/">Reference</a>
+        <a href="/storewatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/storewatt/reference/">StoreWatt reference</a></div>
+      <h1 class="h2">Controls Scada</h1>
+      <p class="lead">Field reference for grid scale battery storage technicians. 8 entries, taken from the StoreWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#scada-stack">The BESS control stack</a>
+        <a href="#scada-ppc">Power plant controller and the POI</a>
+        <a href="#scada-ignition">Ignition (Inductive Automation)</a>
+        <a href="#scada-ovation">Emerson Ovation</a>
+        <a href="#scada-rockwell">Rockwell ControlLogix and CompactLogix</a>
+        <a href="#scada-gerx3i">GE RX3i</a>
+        <a href="#scada-siemens">Siemens PLCs</a>
+        <a href="#scada-historianalarms">Historians and alarm discipline</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="scada-stack">
+        <h2>The BESS control stack</h2>
+        <p>A storage plant runs the familiar SCADA stack with two extra layers. From the bottom: cell and module BMS, rack and system BMS, PCS controls, the power plant controller at the point of interconnection, plant SCADA and historian, then the EMS deciding dispatch, and above it the market or offtaker.
+
+When behavior confuses you, place the symptom in the stack. Wrong power at the POI is plant controller territory; wrong charge decision is EMS territory; a rack offline is BMS territory. Half of troubleshooting is choosing the right layer to interrogate.</p>
+      </div>
+      <div class="refEntry" id="scada-ppc">
+        <h2>Power plant controller and the POI</h2>
+        <p>The power plant controller closes the loop at the point of interconnection: it takes plant level setpoints (real power, reactive power, voltage, power factor) and divides them among PCS units while enforcing interconnection limits, ramp rates, curtailment, and ride through behavior per IEEE 1547 and the interconnection agreement.
+
+Symptoms that live here: plant capped at a round number (a limit is active), units sharing load unevenly (allocation logic or an offline unit), slow response to commands (ramp limits), and reactive power arguments with the utility (voltage control mode settings).</p>
+      </div>
+      <div class="refEntry" id="scada-ignition">
+        <h2>Ignition (Inductive Automation)</h2>
+        <p>A widely used SCADA and HMI platform on renewable sites: server based, with drivers for Modbus, DNP3, and OPC UA, plus a strong historian and scripting layer. Plant HMIs, dashboards, and alarm pipelines are commonly Ignition projects.
+
+Field notes: tag quality indicators tell you when the problem is the device link rather than the process; the gateway status page shows driver and connection health; and script errors in the gateway log explain mysteriously frozen screens.</p>
+      </div>
+      <div class="refEntry" id="scada-ovation">
+        <h2>Emerson Ovation</h2>
+        <p>A distributed control system from the power generation world, appearing on storage sites attached to traditional utilities or hybrid plants. Expect rigorous point databases, controller pairs with redundancy, and formal management of change.
+
+Field posture: Ovation changes go through the site DCS engineer and MOC process; technicians observe and gather data rather than editing logic.</p>
+      </div>
+      <div class="refEntry" id="scada-rockwell">
+        <h2>Rockwell ControlLogix and CompactLogix</h2>
+        <p>Allen Bradley PLCs run balance of plant duties on many sites: auxiliary power monitoring, HVAC coordination, fire panel interfaces, and skid control. ControlLogix is the chassis line, CompactLogix the smaller packaged line, both programmed in Studio 5000 and talking EtherNet/IP natively.
+
+Field notes: module and network status LEDs are diagnostic gold; a solid red module LED is hardware, flashing green on a network port is an unconfigured connection. Faulted controllers preserve fault codes readable without the programming laptop.</p>
+      </div>
+      <div class="refEntry" id="scada-gerx3i">
+        <h2>GE RX3i</h2>
+        <p>The PACSystems RX3i PLC line appears in balance of plant and legacy renewable installations. Programming lives in PAC Machine Edition; communication is commonly Ethernet Global Data or Modbus TCP.
+
+Field notes: the OK and status LEDs on the CPU and power supply narrow most hardware faults, and battery backed memory on older units means a dead backup battery can erase programs on power loss; check the battery status before de energizing an old rack.</p>
+      </div>
+      <div class="refEntry" id="scada-siemens">
+        <h2>Siemens PLCs</h2>
+        <p>S7 class PLCs and TIA Portal engineering appear on sites with European integrators and inside some OEM equipment skids. Profinet is the native network; Modbus TCP is the usual bridge to the rest of the plant.
+
+Field notes: the S7 diagnostic buffer is thorough and timestamped, readable with an HMI or engineering tool, and usually explains a stop condition precisely.</p>
+      </div>
+      <div class="refEntry" id="scada-historianalarms">
+        <h2>Historians and alarm discipline</h2>
+        <p>The historian is the plant&#x27;s memory and the best troubleshooting tool on site: trend the minutes before a trip and the sequence usually tells the story. Alarm floods hide causes, so learn the plant&#x27;s alarm priorities and shelving rules.
+
+A useful habit after every significant event: export the trend and alarm list for the window and attach them to the work order while the context is fresh.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/storewatt/reference/bmsFaults.html">Bms Faults</a>
+        <a href="/storewatt/reference/brandLibrary.html">Brand Library</a>
+        <a href="/storewatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/storewatt/reference/emsNotes.html">Ems Notes</a>
+        <a href="/storewatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/storewatt/reference/pcsFaults.html">Pcs Faults</a>
+        <a href="/storewatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/storewatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/storewatt/reference/standardsSummaries.html">Standards Summaries</a>
+        <a href="/storewatt/reference/thermalManagement.html">Thermal Management</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/storewatt/">StoreWatt</a> ·
+        <a href="/storewatt/privacy.html">Privacy</a> ·
+        <a href="/storewatt/terms.html">Terms</a> ·
+        <a href="/storewatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

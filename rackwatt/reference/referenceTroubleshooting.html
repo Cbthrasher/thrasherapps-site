@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Troubleshooting Reference | RackWatt field reference</title>
+  <meta name="description" content="Troubleshooting Reference for data center critical facilities technicians. How to read early failure signals on a static double conversion UPS before it drops the critical load." />
+  <link rel="canonical" href="https://thrasherapps.com/rackwatt/reference/referenceTroubleshooting.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/rackwatt/">RackWatt</a>
+        <a href="/rackwatt/reference/">Reference</a>
+        <a href="/rackwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/rackwatt/reference/">RackWatt reference</a></div>
+      <h1 class="h2">Troubleshooting Reference</h1>
+      <p class="lead">Field reference for data center critical facilities technicians. 6 entries, taken from the RackWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#ups-overview">Uninterruptible power supply warning signs</a>
+        <a href="#generators-failtostart">Generator fails to start on utility loss</a>
+        <a href="#distribution-overview">Electrical distribution warning signs</a>
+        <a href="#aircooling-overview">Air cooling degradation and failure</a>
+        <a href="#liquidcooling-overview">Liquid cooling field reference</a>
+        <a href="#monitoring-overview">Monitoring systems and false alarms</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from RackWatt</strong>
+        <p>Reference notes from RackWatt, the offline field toolkit for data center critical facilities technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6790170168">Get RackWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="ups-overview">
+        <div class="refTag">ups</div>
+        <h2>Uninterruptible power supply warning signs</h2>
+        <p>How to read early failure signals on a static double conversion UPS before it drops the critical load.</p>
+        <div class="refLabel">Method</div>
+        <p>Read the display and record the exact alarm code before clearing anything</p>
+        <p>Verify the load is within the unit capacity and check percent loaded</p>
+        <p>Test or trend battery health and compare runtime to the design value</p>
+        <p>Check for a transfer to bypass and understand why it occurred</p>
+        <p>Confirm input and output voltage and frequency are in range</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Frequent or repeating alarms</p>
+        <p>Reduced backup runtime versus the last battery test</p>
+        <p>Battery swelling, bulging, or electrolyte leakage</p>
+        <p>Abnormal heat at the cabinet or battery string</p>
+        <p>Louder or cycling cooling fans</p>
+        <p>Rising room temperature around the unit</p>
+        <div class="refLabel">Notes</div>
+        <p>Continuous beeping usually means a battery fault, an overload, or an internal component failure.</p>
+        <p>Runtime scales with load. A reduced runtime alarm can be a genuine battery issue or simply a heavier load than the battery was sized for.</p>
+        <p>Always verify both the volt ampere rating and the watt rating of the unit against the connected load.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv Liebert</p>
+        <p>Schneider APC</p>
+        <p>Eaton</p>
+        <p>Mitsubishi</p>
+        <p>ABB</p>
+      </div>
+      <div class="refEntry" id="generators-failtostart">
+        <div class="refTag">generators</div>
+        <h2>Generator fails to start on utility loss</h2>
+        <p>The most common critical failure: utility power drops and the standby generator does not start.</p>
+        <div class="refLabel">Method</div>
+        <p>Confirm the automatic transfer switch is calling for the generator</p>
+        <p>Check starting battery voltage and connections first, the leading cause of no start</p>
+        <p>Verify fuel level in the day tank and the main tank and look for contamination</p>
+        <p>Confirm the block heater and jacket water temperature for reliable cold starts</p>
+        <p>Review the controller fault log and any lockout condition</p>
+        <p>Check the transfer and retransfer timing and any failure to transfer</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Utility outage with no engine crank</p>
+        <p>Crank with no start</p>
+        <p>Low starting battery voltage</p>
+        <p>Block heater not maintaining jacket water temperature</p>
+        <p>Fuel level or fuel quality alarms</p>
+        <p>Automatic transfer switch not signaling a start</p>
+        <div class="refLabel">Notes</div>
+        <p>By far the most common failure mode is a battery failure or a fuel system fault.</p>
+        <p>Fuel polishing and periodic load bank testing prevent wet stacking and fuel degradation.</p>
+        <p>A typical day tank gives about eight hours and can be refueled while running.</p>
+        <div class="refLabel">Brands</div>
+        <p>Caterpillar</p>
+        <p>Cummins</p>
+        <p>Kohler</p>
+        <p>Generac</p>
+        <p>ASCO transfer</p>
+        <p>Russelectric transfer</p>
+      </div>
+      <div class="refEntry" id="distribution-overview">
+        <div class="refTag">distribution</div>
+        <h2>Electrical distribution warning signs</h2>
+        <p>Switchgear, breakers, power distribution units, remote power panels, and busway degrade with detectable signals.</p>
+        <div class="refLabel">Method</div>
+        <p>Thermal imaging of connections and terminations under load</p>
+        <p>Ultrasound inspection for partial discharge and arcing</p>
+        <p>Vibration analysis on rotating and mechanically stressed parts</p>
+        <p>Current monitoring and trending for developing imbalance</p>
+        <p>Variable frequency drive alarm review</p>
+        <p>Torque check terminations against the specification during approved outages</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Unusual heat at a connection or termination</p>
+        <p>Burning smell or discoloration</p>
+        <p>Nuisance trips</p>
+        <p>Abnormal vibration</p>
+        <p>Buzzing or crackling</p>
+        <p>Voltage fluctuation</p>
+        <p>Corrosion, loose terminations, or insulation damage</p>
+        <div class="refLabel">Notes</div>
+        <p>Trending over time turns a single reading into an early warning.</p>
+        <p>Never open energized gear or torque live terminations without an approved procedure and the site arc flash study.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv</p>
+        <p>Schneider</p>
+        <p>Eaton</p>
+        <p>ABB</p>
+        <p>Siemens</p>
+      </div>
+      <div class="refEntry" id="aircooling-overview">
+        <div class="refTag">airCooling</div>
+        <h2>Air cooling degradation and failure</h2>
+        <p>Cooling failures cause roughly nineteen percent of major outages and rarely start dramatically.</p>
+        <div class="refLabel">Method</div>
+        <p>Trend supply and return air temperature and the delta T across the unit</p>
+        <p>Check filter differential pressure and replace loaded filters</p>
+        <p>Measure compressor current and compare to nameplate and history</p>
+        <p>Inspect and clean condenser and evaporator coils</p>
+        <p>Verify refrigerant charge and look for leaks per EPA Section 608</p>
+        <p>Confirm control valve and sensor calibration</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Rising rack inlet temperature</p>
+        <p>Increasing filter differential pressure</p>
+        <p>Abnormal compressor current draw</p>
+        <p>Fan motor vibration</p>
+        <p>Refrigerant pressure drift on direct expansion units</p>
+        <p>Humidifier faults</p>
+        <div class="refLabel">Notes</div>
+        <p>Rotating assets such as pumps, compressors, and fans degrade quietly long before an alarm.</p>
+        <p>Cadence matters: weekly filter and refrigerant checks, monthly current and vibration checks, quarterly leak testing and deep coil cleaning.</p>
+        <div class="refLabel">Brands</div>
+        <p>Liebert</p>
+        <p>Stulz</p>
+        <p>Schneider Uniflair</p>
+        <p>Munters</p>
+        <p>Trane</p>
+        <p>Carrier</p>
+        <p>York</p>
+        <p>Daikin</p>
+      </div>
+      <div class="refEntry" id="liquidcooling-overview">
+        <div class="refTag">liquidCooling</div>
+        <h2>Liquid cooling field reference</h2>
+        <p>The underserved edge. Artificial intelligence racks drive liquid cooling and there is almost no consolidated field reference.</p>
+        <div class="refLabel">Method</div>
+        <p>Log coolant flow, pressure, temperature, reservoir level, and leak detection</p>
+        <p>Sample and log coolant chemistry and fluid quality on schedule</p>
+        <p>Interpret an unexpected delta T change as a flow restriction, heat exchanger fouling, pump degradation, or cooling imbalance</p>
+        <p>Swap filters on the secondary loop and verify pump redundancy</p>
+        <p>Compare secondary loop discharge pressure to the mechanical seal rating</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Unexpected change in delta T across a loop</p>
+        <p>Falling coolant flow or pressure</p>
+        <p>Reservoir level dropping</p>
+        <p>Leak detection alarm</p>
+        <p>Coolant chemistry or fluid quality drift</p>
+        <p>Pump degradation or loss of redundancy</p>
+        <div class="refLabel">Notes</div>
+        <p>Direct to chip cooling uses cold plates, micro channel heat exchangers, mounted on processors. Manifolds distribute coolant and a secondary loop, typically propylene glycol and water, carries heat to a Coolant Distribution Unit.</p>
+        <p>Rear door heat exchangers handle 10 to 30 kilowatts per rack passively, 50 to 75 kilowatts with active fans, and advanced models claim up to 200 kilowatts.</p>
+        <p>Critical detail: mechanical seal life scales with discharge pressure. A seal that lasted five years on a 2 bar chilled water loop can fail within 12 to 18 months on a 6 bar secondary cold plate loop.</p>
+        <p>Routine work includes logging coolant chemistry, swapping filters, and verifying pump redundancy.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv CDU</p>
+        <p>Motivair</p>
+        <p>Boyd</p>
+        <p>CoolIT</p>
+        <p>Schneider</p>
+      </div>
+      <div class="refEntry" id="monitoring-overview">
+        <div class="refTag">monitoring</div>
+        <h2>Monitoring systems and false alarms</h2>
+        <p>Building management system, data center infrastructure management, and electrical power monitoring system basics.</p>
+        <div class="refLabel">Method</div>
+        <p>Corroborate an alarm with an independent reading or a local gauge before acting</p>
+        <p>Check whether the point is a real process value or a communications artifact</p>
+        <p>Verify the sensor against a known reference where possible</p>
+        <p>Confirm gateway and network health before assuming an equipment fault</p>
+        <div class="refLabel">Warning signs</div>
+        <p>A single point alarm with no corroborating readings</p>
+        <p>A value pinned at zero or full scale</p>
+        <p>Loss of communications to a controller or gateway</p>
+        <p>An alarm that clears and returns on a fixed interval</p>
+        <div class="refLabel">Notes</div>
+        <p>Help the technician tell a real fault from a sensor or communications artifact.</p>
+        <p>A monitoring artifact wrongly treated as a real fault can trigger an unnecessary and risky intervention.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv</p>
+        <p>Schneider EcoStruxure</p>
+        <p>Trellis</p>
+        <p>Modius</p>
+        <p>Niagara</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/rackwatt/reference/calcReference.html">Calculation Reference</a>
+        <a href="/rackwatt/reference/proceduresLibrary.html">Procedures Library</a>
+        <a href="/rackwatt/reference/safetyTopics.html">Safety Topics</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from RackWatt</strong>
+        <p>Reference notes from RackWatt, the offline field toolkit for data center critical facilities technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6790170168">Get RackWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/rackwatt/">RackWatt</a> ·
+        <a href="/rackwatt/privacy.html">Privacy</a> ·
+        <a href="/rackwatt/terms.html">Terms</a> ·
+        <a href="/rackwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

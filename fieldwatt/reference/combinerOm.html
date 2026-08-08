@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DC Combiner Operations and Maintenance | FieldWatt field reference</title>
+  <meta name="description" content="DC Combiner Operations and Maintenance for utility scale solar technicians. A DC combiner on a 1500 volt plant carries lethal voltage whenever the sun is up, on both the line and load side, regardless of inverter state. Openin" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/combinerOm.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">DC Combiner Operations and Maintenance</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 7 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#combiner-hazard">Combiner boxes are energized equipment</a>
+        <a href="#combiner-blownfuse">Blown fuse localization</a>
+        <a href="#combiner-stringcompare">Parallel string Voc and Isc comparison</a>
+        <a href="#combiner-insulationtest">Insulation resistance testing from the combiner</a>
+        <a href="#combiner-thermal">Thermal scan</a>
+        <a href="#combiner-torque">Torque verification</a>
+        <a href="#combiner-spd">Surge protective device status</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="combiner-hazard">
+        <h2>Combiner boxes are energized equipment</h2>
+        <p>A DC combiner on a 1500 volt plant carries lethal voltage whenever the sun is up, on both the line and load side, regardless of inverter state. Opening the combiner disconnect does not de energize the string side terminals. Fuses can be energized from both directions. Arc flash risk applies above roughly 400 volts DC.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Qualified person only. Open the combiner disconnect, verify absence of voltage with a DC rated meter on every circuit you will touch, and wear DC rated PPE per the site arc flash study. Strings cannot be turned off; work them as energized or cover the modules.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Follow the site specific switching and LOTO procedures.</p>
+      </div>
+      <div class="refEntry" id="combiner-blownfuse">
+        <h2>Blown fuse localization</h2>
+        <p>Symptoms of a blown string fuse: the string reads near zero current while neighbors under the same irradiance carry normal current, and the combiner output current runs low by one string. With the disconnect open, a blown fuse shows string Voc across the fuse holder (source on one side, bus at a different potential on the other) while a good fuse shows near zero volts across it. Find why the fuse blew before replacing it: ground fault, damaged cable, reversed polarity from construction, or a fuse undersized against NEC 690.9.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Never pull or insert fuses under load. Open the disconnect, verify absence of current, then handle fuses. Replace with the exact class and rating from the design documents.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify replacement fuse rating against the module maximum series fuse rating and the design documents.</p>
+      </div>
+      <div class="refEntry" id="combiner-stringcompare">
+        <h2>Parallel string Voc and Isc comparison</h2>
+        <p>Identical strings on the same combiner should measure nearly identical open circuit voltage and, under stable sun, nearly identical current. A string more than 5 percent off its neighbors in current, with at least 600 watts per square meter of irradiance, indicates a fault: shading, soiling, a failed module, a bad connector, or a blown bypass diode. A string low in Voc by roughly one module voltage usually has a shorted bypass diode or a failed module. Meaningful current and voltage curve tracing needs at least 500 watts per square meter.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Measure with a DC rated clamp meter and voltmeter. Compare like to like under the same conditions and record irradiance with every reading.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Record module temperature and irradiance so comparisons hold up later.</p>
+      </div>
+      <div class="refEntry" id="combiner-insulationtest">
+        <h2>Insulation resistance testing from the combiner</h2>
+        <p>The combiner is the natural sectioning point for insulation resistance testing: lift or isolate strings and test each circuit to ground, comparing against the IEC 62446 minimum for the system voltage. Test dry when possible; a circuit that fails wet and passes dry has a moisture path that will return. Halve the search space each test to localize a fault fast.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Isolate the circuit under test from the inverter and from parallel strings before applying test voltage. Surge protective devices must be disconnected or they will read as faults and may be damaged.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Use the test voltage class appropriate to the circuit per IEC 62446 1.</p>
+      </div>
+      <div class="refEntry" id="combiner-thermal">
+        <h2>Thermal scan</h2>
+        <p>Scan combiners under load with an infrared camera at least annually and after any fuse event. A fuse holder, lug, or breaker running visibly hotter than its neighbors at similar current indicates a loose or corroded connection on its way to failure. Compare like to like: same current, same sun, same enclosure.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Scan through the open door only with PPE appropriate to the site arc flash study, or use an infrared window if fitted.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Trend images over time; absolute temperatures depend on load and ambient.</p>
+      </div>
+      <div class="refEntry" id="combiner-torque">
+        <h2>Torque verification</h2>
+        <p>Loose terminations are the leading cause of combiner fires. Verify torque on line and load lugs, fuse holders, and ground bars with a calibrated torque tool to the values on the enclosure label or in the manufacturer sheet, and mark verified terminations with a paint pen. Aluminum conductors relax and deserve rechecking in the first year.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Torque work is dead work: isolate and verify absence of voltage first.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Use manufacturer torque values, not generic tables, whenever the label is legible.</p>
+      </div>
+      <div class="refEntry" id="combiner-spd">
+        <h2>Surge protective device status</h2>
+        <p>Most combiner surge protective devices carry a status window or remote contact. A failed SPD can leak to ground and trip inverter insulation monitoring, so check SPD status early when chasing insulation faults. Replace failed cartridges with the identical part; SPD ratings are matched to the 1500 volt system.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Isolate before replacing cartridges. Confirm the ground lead is intact and torqued; an SPD without a solid ground bond protects nothing.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify replacement part numbers against the design documents.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

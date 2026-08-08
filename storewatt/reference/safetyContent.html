@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Safety | StoreWatt field reference</title>
+  <meta name="description" content="Field Safety for grid scale battery storage technicians. A battery cannot be switched off. Unlike a solar array at night or a feeder with an open breaker, every cell holds its charge and every terminal prese" />
+  <link rel="canonical" href="https://thrasherapps.com/storewatt/reference/safetyContent.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/storewatt/">StoreWatt</a>
+        <a href="/storewatt/reference/">Reference</a>
+        <a href="/storewatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/storewatt/reference/">StoreWatt reference</a></div>
+      <h1 class="h2">Field Safety</h1>
+      <p class="lead">Field reference for grid scale battery storage technicians. 8 entries, taken from the StoreWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#safety-storedenergy">Stored and stranded energy: the battery is always on</a>
+        <a href="#safety-loto">Lockout tagout on a BESS</a>
+        <a href="#safety-dcarcflash">DC arc flash</a>
+        <a href="#safety-thermalrunaway">Thermal runaway</a>
+        <a href="#safety-offgas">Off gassing and gas detection</a>
+        <a href="#safety-suppression">Fire suppression and detection systems</a>
+        <a href="#safety-erp">The Emergency Response Plan</a>
+        <a href="#safety-standardsmap">The standards map in one minute</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="safety-storedenergy">
+        <h2>Stored and stranded energy: the battery is always on</h2>
+        <p>A battery cannot be switched off. Unlike a solar array at night or a feeder with an open breaker, every cell holds its charge and every terminal presents voltage at all times. Opening contactors and disconnects isolates sections of bus, but energy remains stranded behind every contactor, fuse, and connector in the system.
+
+Standard lockout tagout therefore does not fully de energize a BESS. LOTO isolates the AC feeds and the controllable DC paths; the racks stay live. The only defensible practice: plan work as energized work unless a specific conductor has been proven dead, and prove it at the point of work with a CAT III or CAT IV DC rated tester, testing the tester before and after.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Treat every terminal and conductor as live. Verify absence of voltage at the point of work with a CAT III or CAT IV DC rated meter. ESS work requires an ESS qualified person.</p>
+      </div>
+      <div class="refEntry" id="safety-loto">
+        <h2>Lockout tagout on a BESS</h2>
+        <p>The ESS lockout sequence isolates what can be isolated and proves the rest: isolate AC feeds, open the DC disconnects and contactors the design provides, apply locks and tags at every point, then verify zero energy at the specific conductors to be touched with a DC rated CAT III or CAT IV tester. Note residual hazards on the permit: stranded energy behind contactors, charged capacitor banks in the PCS, and control power from separate sources.
+
+Capacitors in the PCS DC link hold lethal charge after isolation; respect the manufacturer bleed down time and verify, never assume, discharge.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Locks and tags at every isolation point, one lock per worker, verification at the point of work, and a permit that names the residual hazards. The LOTO ESS Permit form in this app walks the full sequence.</p>
+      </div>
+      <div class="refEntry" id="safety-dcarcflash">
+        <h2>DC arc flash</h2>
+        <p>DC arcs are worse than their AC cousins for one physical reason: no zero crossing. An AC arc gets 120 chances a second to extinguish; a DC arc, fed by a massive battery with almost no impedance, burns continuously until something opens the circuit or the gap grows too long. The result is sustained, high energy arcs.
+
+High energy DC systems can require Category 4 arc rated PPE, above 40 calories per square centimeter, plus insulated DC rated tools and face and body protection. Arc flash boundaries and PPE levels apply at DC isolators and battery terminals, not just at AC switchgear. The numbers for a specific location come from the site arc flash study, never from an app.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Work to the site arc flash study labels. Missing or illegible labels are a stop work condition. Energized DC work requires an Energized Electrical Work Permit and a qualified person per NFPA 70E.</p>
+      </div>
+      <div class="refEntry" id="safety-thermalrunaway">
+        <h2>Thermal runaway</h2>
+        <p>Thermal runaway is the defining fire hazard of lithium storage: a cell fails, heats, vents flammable and toxic gas, and can drag its neighbors into a self sustaining cascade. It does not need external oxygen to keep going, and it can reignite hours or days after appearing controlled.
+
+The rule with no exceptions: never open or approach an enclosure suspected of thermal runaway. Confinement is protection; an opened door feeds oxygen to accumulated gases and exposes people to an explosive atmosphere. The response is the site Emergency Response Plan: evacuate to the planned distance, ventilate where the design provides it, apply defensive cooling to protect exposures, and let the event run its course under the fire department&#x27;s pre incident plan, which should be informed by the site&#x27;s UL 9540A data: what gases, how much, how long.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Do not approach. Evacuate, notify, follow the Emergency Response Plan, and defer to the fire department. No exceptions, including for equipment worth saving. Equipment is replaceable.</p>
+      </div>
+      <div class="refEntry" id="safety-offgas">
+        <h2>Off gassing and gas detection</h2>
+        <p>Before and during thermal runaway, cells vent a hazardous gas mixture: hydrogen, carbon monoxide, hydrocarbons, and hydrogen fluoride among others. The mixture is flammable, and in a closed container it can reach explosive concentrations; hydrogen fluoride is severely toxic at small concentrations.
+
+Off gas detection is the early warning layer: dedicated sensors can catch the first vent event before runaway spreads, which is why gas detection alarms deserve immediate, serious response. A gas alarm plus any temperature anomaly is a thermal event until proven otherwise.</p>
+        <div class="refLabel">Safe response</div>
+        <p>On a gas detection alarm: do not enter or open the enclosure, treat the atmosphere as explosive and toxic, evacuate per the Emergency Response Plan, and let ventilation systems run. Re entry follows gas measurement by qualified responders, not a timer.</p>
+      </div>
+      <div class="refEntry" id="safety-suppression">
+        <h2>Fire suppression and detection systems</h2>
+        <p>BESS fire protection is layered. Detection: smoke and heat detection plus off gas sensing inside enclosures. Suppression: sprinklers per NFPA 13 where buildings apply (baseline density around 0.3 gallons per minute per square foot over 2500 square feet), or internal agents in containerized designs. Water is the preferred agent overall because cooling is the real objective: protecting neighboring cells, racks, and containers.
+
+Explosion control matters as much as fire control: deflagration venting or prevention per the design keeps a gas event from becoming a structural event. Signage and clear responder access complete the package, and every element here is inspection and verification territory for commissioning and O&amp;M.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Impaired detection or suppression is an operational risk decision for the owner and AHJ, not something to work around quietly. Document impairments and follow the site impairment procedure.</p>
+      </div>
+      <div class="refEntry" id="safety-erp">
+        <h2>The Emergency Response Plan</h2>
+        <p>NFPA 855 requires an Emergency Response Plan built for the specific site, informed by the UL 9540A data for the installed product: which gases, what volumes, what durations, whether propagation was observed. A good ERP names the evacuation distances, the ventilation strategy, the defensive cooling approach, utility disconnection steps, and the notification chain, and it exists as a physical document the fire department has seen before the first alarm.
+
+The fire department pre incident plan is the companion piece: hydrant locations, access routes, disconnect locations, and the agreed tactical approach. Technicians should know where the ERP lives, what their role is in it, and what the muster point is, before any alarm, on every site.</p>
+        <div class="refLabel">Safe response</div>
+        <p>If you cannot locate the site ERP or your role in it, raise that as a finding today. The ERP Field Reference and Drill Log form in this app captures drills and keeps the key numbers at hand.</p>
+      </div>
+      <div class="refEntry" id="safety-standardsmap">
+        <h2>The standards map in one minute</h2>
+        <p>NFPA 855 says how ESS gets installed and operated safely, and its 2026 edition ties the qualified person concept to ESS and strengthens ERP and testing expectations. UL 9540 certifies the system; UL 9540A characterizes thermal runaway so designs and response plans rest on data. NEC Articles 706 and 480 govern the electrical installation. NFPA 70E governs how people work on it. IEEE 1547 governs the grid interface. The IFC section 1207 is the fire code enforcement hook. OSHA sits over the whole workplace.
+
+When a question starts with can we or must we, the answer usually lives in one of these documents plus the site&#x27;s stamped design, and the AHJ arbitrates.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/storewatt/reference/bmsFaults.html">Bms Faults</a>
+        <a href="/storewatt/reference/brandLibrary.html">Brand Library</a>
+        <a href="/storewatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/storewatt/reference/controlsScada.html">Controls Scada</a>
+        <a href="/storewatt/reference/emsNotes.html">Ems Notes</a>
+        <a href="/storewatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/storewatt/reference/pcsFaults.html">Pcs Faults</a>
+        <a href="/storewatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/storewatt/reference/standardsSummaries.html">Standards Summaries</a>
+        <a href="/storewatt/reference/thermalManagement.html">Thermal Management</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/storewatt/">StoreWatt</a> ·
+        <a href="/storewatt/privacy.html">Privacy</a> ·
+        <a href="/storewatt/terms.html">Terms</a> ·
+        <a href="/storewatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

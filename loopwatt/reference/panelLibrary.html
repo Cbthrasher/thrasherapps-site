@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fire Alarm Panel Library | LoopWatt field reference</title>
+  <meta name="description" content="Fire Alarm Panel Library for fire alarm and life safety technicians. Device troubles report by loop and address with a point label Invalid reply usually means a device answered incorrectly: check for duplicate addresses" />
+  <link rel="canonical" href="https://thrasherapps.com/loopwatt/reference/panelLibrary.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/loopwatt/">LoopWatt</a>
+        <a href="/loopwatt/reference/">Reference</a>
+        <a href="/loopwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/loopwatt/reference/">LoopWatt reference</a></div>
+      <h1 class="h2">Fire Alarm Panel Library</h1>
+      <p class="lead">Field reference for fire alarm and life safety technicians. 11 entries, taken from the LoopWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#notifier">Notifier</a>
+        <a href="#simplex">Simplex</a>
+        <a href="#est">EST and Edwards</a>
+        <a href="#silentknight">Silent Knight</a>
+        <a href="#firelite">Fire Lite</a>
+        <a href="#honeywell">Honeywell</a>
+        <a href="#siemens">Siemens</a>
+        <a href="#potter">Potter</a>
+        <a href="#gamewellfci">Gamewell FCI</a>
+        <a href="#mircom">Mircom</a>
+        <a href="#bosch">Bosch</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from LoopWatt</strong>
+        <p>Reference notes from LoopWatt, the offline field toolkit for fire alarm and life safety technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6790129179">Get LoopWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="notifier">
+        <h2>Notifier</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>Device troubles report by loop and address with a point label</p>
+        <p>Invalid reply usually means a device answered incorrectly: check for duplicate addresses or a swapped device type</p>
+        <p>Charger and ground fault troubles are panel level events on the system trouble list</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Read status to view points without changing anything</p>
+        <p>History buffer holds events; walk test enabled per loop or zone</p>
+        <p>Program changes need the panel password and often VeriFire Tools on a laptop</p>
+        <div class="refLabel">Families</div>
+        <p>NFS and NFW series addressable panels; ONYX line. FlashScan and CLIP polling protocols.</p>
+      </div>
+      <div class="refEntry" id="simplex">
+        <h2>Simplex</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>TrueAlarm sensors report almost dirty and dirty service conditions before nuisance level</p>
+        <p>Card level troubles (loop card, NAC card) list separately from point troubles</p>
+        <p>Ground faults isolate per power supply or loop card on larger systems, which helps localization</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Front panel access levels gate functions; level 3 and up changes state</p>
+        <p>System reports menu prints sensitivity reports that satisfy the sensitivity test requirement</p>
+        <p>Walk test by group with or without notification</p>
+        <div class="refLabel">Families</div>
+        <p>4007ES, 4010ES, 4100ES addressable platforms; IDNet and MAPNET device protocols; TrueAlarm analog sensing.</p>
+      </div>
+      <div class="refEntry" id="est">
+        <h2>EST and Edwards</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>Signature devices self diagnose; dirty and internal fault states report per device</p>
+        <p>Map faults occur when the wired layout no longer matches the learned circuit map: look for added, removed, or rewired devices</p>
+        <p>Riser and audio troubles separate from point troubles on voice systems</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Program and status via the SDU or panel front; mapping is a distinctive EST concept</p>
+        <p>Test fire groups support walk test</p>
+        <p>History and status accessible without password; changes gated</p>
+        <div class="refLabel">Families</div>
+        <p>EST3, EST4, iO series; Signature series intelligent devices.</p>
+      </div>
+      <div class="refEntry" id="silentknight">
+        <h2>Silent Knight</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>Loop troubles report by SLC and point; JumpStart auto programming can mask address mistakes, verify point labels</p>
+        <p>Ground fault indicated at the main board; isolate by unplugging field circuits</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Front panel programming possible on many models without a laptop</p>
+        <p>Walk test and fire drill from the test menu</p>
+        <p>History under the event menu</p>
+        <div class="refLabel">Families</div>
+        <p>6000 and IFP series addressable; SK and SD device protocols; part of Honeywell.</p>
+      </div>
+      <div class="refEntry" id="firelite">
+        <h2>Fire Lite</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>Addressable troubles list address and type mismatch separately: type mismatch means the wrong device model answered at that address</p>
+        <p>NAC troubles per circuit; check the EOL value first (4.7k typical)</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Front panel programming on most models</p>
+        <p>Read status shows detector chamber values on addressable heads</p>
+        <p>Walk test silent or audible from the test menu</p>
+        <div class="refLabel">Families</div>
+        <p>MS series conventional, ES and MS addressable (LiteSpeed protocol); Honeywell family, shares concepts with Notifier.</p>
+      </div>
+      <div class="refEntry" id="honeywell">
+        <h2>Honeywell</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>Identify the actual sub brand and model first; concepts follow the sub brand&#x27;s line</p>
+        <p>Shared device protocols exist across sub brands but devices are usually brand locked</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>See the specific sub brand entry</p>
+        <div class="refLabel">Families</div>
+        <p>Parent of Notifier, Silent Knight, Fire Lite, Gamewell FCI; also Vista and commercial combo panels.</p>
+      </div>
+      <div class="refEntry" id="siemens">
+        <h2>Siemens</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>Device events carry a detailed fault reason (no answer, wrong type, contamination level)</p>
+        <p>ASA detectors report application specific sensitivity states; contamination reporting is built in</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Person machine interface with access levels; commissioning via Zeus or Cerberus tools</p>
+        <p>Walk test per zone; event memory extensive</p>
+        <div class="refLabel">Families</div>
+        <p>Cerberus PRO and Desigo Fire (FC and FV series), legacy MXL and XLS; FDnet and HNET device buses.</p>
+      </div>
+      <div class="refEntry" id="potter">
+        <h2>Potter</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>EOL 5.1k on many circuits, different from the 4.7k many techs assume</p>
+        <p>SLC troubles report per point; check polarity on retrofits, some devices are polarity sensitive</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Front panel menus with USB programming on newer models</p>
+        <p>Walk test and one person test modes</p>
+        <div class="refLabel">Families</div>
+        <p>PFC and IPA addressable series; AFC conventional; also known for sprinkler supervision products.</p>
+      </div>
+      <div class="refEntry" id="gamewellfci">
+        <h2>Gamewell FCI</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>E3 networks distribute intelligence; a network trouble can mimic many point troubles, check network nodes first</p>
+        <p>Velociti devices share behavior with Notifier FlashScan generation</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Network configuration via CAMWorks; local read status at each node</p>
+        <p>History per node and network wide</p>
+        <div class="refLabel">Families</div>
+        <p>E3 Series, 7100 legacy; S3 Series; Honeywell family, Velociti and CLIP protocols.</p>
+      </div>
+      <div class="refEntry" id="mircom">
+        <h2>Mircom</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>Dual language displays common; troubles list per loop and address</p>
+        <p>EOL 3.9k typical; verify per model</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Front panel walk test; configurator software for programming</p>
+        <p>Verify Canadian vs US listing differences on retrofit jobs</p>
+        <div class="refLabel">Families</div>
+        <p>FX series addressable, FA conventional; common in Canada, uses AP and CLIP compatible protocols on some lines.</p>
+      </div>
+      <div class="refEntry" id="bosch">
+        <h2>Bosch</h2>
+        <div class="refLabel">Trouble notes</div>
+        <p>LSN bus faults report per segment; loop topology matters (T taps limited)</p>
+        <p>EOL values differ across product generations; check the manual before condemning a circuit</p>
+        <div class="refLabel">Menu concepts</div>
+        <p>Programming via RPS or FSP software; limited front panel changes</p>
+        <p>History and diagnostics from the keypad menus</p>
+        <div class="refLabel">Families</div>
+        <p>FPD and Avenar panels; D7024 and FPD 7024 legacy; LSN device bus on newer lines.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/loopwatt/reference/necArticle760.html">NEC Article 760</a>
+        <a href="/loopwatt/reference/troubleFamilies.html">Trouble Families</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from LoopWatt</strong>
+        <p>Reference notes from LoopWatt, the offline field toolkit for fire alarm and life safety technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6790129179">Get LoopWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/loopwatt/">LoopWatt</a> ·
+        <a href="/loopwatt/privacy.html">Privacy</a> ·
+        <a href="/loopwatt/terms.html">Terms</a> ·
+        <a href="/loopwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

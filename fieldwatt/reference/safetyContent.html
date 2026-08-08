@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Safety | FieldWatt field reference</title>
+  <meta name="description" content="Field Safety for utility scale solar technicians. Arc flash risk applies above roughly 400 volts, which covers every 1500 volt DC circuit and all medium voltage equipment on a solar plant. NFPA 70E de" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/safetyContent.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">Field Safety</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 9 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#safety-arcflash">Arc flash and NFPA 70E</a>
+        <a href="#safety-loto">LOTO for PV: the array never turns off</a>
+        <a href="#safety-eewp">Energized Electrical Work Permit</a>
+        <a href="#safety-dcppe">DC rated PPE, meters, and tools</a>
+        <a href="#safety-heat">Heat illness</a>
+        <a href="#safety-wildlife">Wildlife and site hazards</a>
+        <a href="#safety-weather">Weather, lightning, and stow awareness</a>
+        <a href="#safety-loneworker">Lone worker and remote site check in</a>
+        <a href="#safety-criticalfaults">Safety critical faults: stop work posture</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="safety-arcflash">
+        <h2>Arc flash and NFPA 70E</h2>
+        <p>Arc flash risk applies above roughly 400 volts, which covers every 1500 volt DC circuit and all medium voltage equipment on a solar plant. NFPA 70E defines the framework: an arc flash risk assessment for each task, incident energy or PPE category determination, and boundaries (the arc flash boundary, plus the limited and restricted shock approach boundaries). PPE categories run from 1 (minimum arc rated clothing) to 4 (40 calorie suit); the site arc flash study labels on the equipment state the required category and boundary distances for that specific equipment.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Consult the site arc flash study and equipment labels for exact incident energy before any energized work. No label and no study means no energized work: stop and escalate. Energized work above 50 volts requires justification and an Energized Electrical Work Permit under NFPA 70E.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Arc flash rules differ by NFPA 70E edition; the site program document states the edition in force.</p>
+      </div>
+      <div class="refEntry" id="safety-loto">
+        <h2>LOTO for PV: the array never turns off</h2>
+        <p>Lockout tagout on a solar plant has a property unlike any other industry: PV modules produce full voltage whenever light hits them, so shutting down the inverter does not de energize the DC field. Strings, combiner line side terminals, and DC feeders stay live all day, every day. Batteries and capacitors hold stored energy after isolation, and medium voltage equipment can be back fed. LOTO therefore isolates and locks every source feeding the work zone, and the zero energy verification is the step that actually protects you.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Always verify absence of voltage with a DC rated meter, testing the meter on a known source before and after. Assume every DC conductor is energized during daylight regardless of switch positions. Locks and tags go on every isolation point, one lock per worker.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The Site Forms module includes a LOTO permit that walks these steps.</p>
+      </div>
+      <div class="refEntry" id="safety-eewp">
+        <h2>Energized Electrical Work Permit</h2>
+        <p>NFPA 70E permits energized work above 50 volts only when de energizing creates greater hazard or is infeasible, and it requires a written Energized Electrical Work Permit: the task, the justification, the shock and arc flash risk assessment, required PPE, boundaries, and management authorization signatures. Diagnostic measurement by qualified persons with proper PPE is generally allowed without a full permit, but repair and modification work energized is not.</p>
+        <div class="refLabel">Safe response</div>
+        <p>If the task can be done de energized, de energize. Convenience and schedule are not valid justifications for energized work.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The Site Forms module includes an EEWP template.</p>
+      </div>
+      <div class="refEntry" id="safety-dcppe">
+        <h2>DC rated PPE, meters, and tools</h2>
+        <p>Working the 1500 volt DC field requires equipment actually rated for it: meters and leads rated CAT III 1500 V DC or better, insulated tools rated for the voltage, voltage rated gloves with leather protectors inspected before each use, and arc rated clothing per the site study. Common 1000 volt rated meters and leads are not adequate on 1500 volt strings. DC arcs sustain themselves and do not zero cross like AC; the burn and blast hazard from opening a loaded DC circuit is severe.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Check the printed rating on every meter and lead before use. Inspect gloves and leads for damage. Never break a loaded DC circuit with anything other than a load rated switching device.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Glove testing intervals and equipment inspection rules come from the site electrical safety program.</p>
+      </div>
+      <div class="refEntry" id="safety-heat">
+        <h2>Heat illness</h2>
+        <p>Solar sites are open fields with zero shade, reflective modules, and summer work at height on steel. Heat illness progresses from cramps through exhaustion (heavy sweating, weakness, nausea, headache) to heat stroke (confusion, loss of coordination, hot dry skin), which kills. Acclimatization matters: new workers and workers returning from time off carry the highest risk in their first week.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Water before thirst, shade breaks on a schedule during heat advisories, watch your crew for early signs, and treat confusion or collapse as a medical emergency: cool aggressively and call for help immediately.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Follow the site heat illness prevention plan and local regulatory triggers.</p>
+      </div>
+      <div class="refEntry" id="safety-wildlife">
+        <h2>Wildlife and site hazards</h2>
+        <p>Solar farms are wildlife habitat: snakes shelter under modules and in combiner shade, wasps nest in enclosures and torque tubes, fire ants colonize cable trenches, and rodents chew insulation (then attract the snakes). Look before reaching under modules or into enclosures, open cabinet doors deliberately, and wear gloves and boots appropriate to the region. Report and document animal damage to cabling; it recurs in the same areas.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Never reach blind into an enclosure or under racking. Carry a snake bite plan appropriate to the region and know the nearest medical facility.</p>
+      </div>
+      <div class="refEntry" id="safety-weather">
+        <h2>Weather, lightning, and stow awareness</h2>
+        <p>An open field of grounded steel is the last place to be in a thunderstorm: apply the 30 second rule (thunder within 30 seconds of lightning means seek proper shelter) and wait 30 minutes after the last thunder. High wind drives tracker stow; know the site stow wind speed and expect rows to move without warning when the anemometer commands it. Wet grass hides holes and hardware; mud bogs vehicles far from help.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Stop elevated and electrical work when storms approach. Vehicles are acceptable lightning shelter; module rows are not. Stay clear of tracker rows during commanded stow events.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Site stow thresholds are in the tracker control settings.</p>
+      </div>
+      <div class="refEntry" id="safety-loneworker">
+        <h2>Lone worker and remote site check in</h2>
+        <p>Solar plants sit far from cell coverage and farther from ambulances. A lone worker with heat stroke, a fall, or a snake bite cannot call for help. Effective controls: a check in schedule with a named contact and defined escalation when a check in is missed, satellite communicators where cell coverage fails, and a posted plan with the site address, gate codes, and GPS coordinates for emergency responders.</p>
+        <div class="refLabel">Safe response</div>
+        <p>No energized electrical work alone, ever. Set the check in schedule before starting work, not after something happens.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The field safety checklist form includes a lone worker section.</p>
+      </div>
+      <div class="refEntry" id="safety-criticalfaults">
+        <h2>Safety critical faults: stop work posture</h2>
+        <p>Arc fault, ground fault, and insulation fault alarms mean the equipment detected a condition that can injure whoever touches it next. The faulted circuit may energize racking, enclosures, and conductors that are normally safe. Resetting the fault to see if it clears does not remove the hazard; it re energizes it, and repeated resets into a fault can start fires.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Stop work. Isolate per site procedure. A qualified person with DC rated PPE investigates and localizes the fault before any reset or restart. This app never advises resetting an arc or ground fault.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

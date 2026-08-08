@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SCADA Notes | FieldWatt field reference</title>
+  <meta name="description" content="SCADA Notes for utility scale solar technicians. Ignition by Inductive Automation is the dominant SCADA platform at US solar plants. The architecture in one breath: a central gateway server runs devi" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/scadaNotes.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">SCADA Notes</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 8 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#scada-ignition">Ignition platform overview</a>
+        <a href="#scada-tags">Tags and tag quality</a>
+        <a href="#scada-opcua">OPC UA connections</a>
+        <a href="#scada-historian">Historian</a>
+        <a href="#scada-stalequality">Why a tag shows stale or bad quality</a>
+        <a href="#scada-ovation">Ovation as SCADA and plant controller</a>
+        <a href="#scada-independentconfirmation">Independent confirmation: proving a device is really down</a>
+        <a href="#scada-realvscomms">Real fault or comms artifact?</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="scada-ignition">
+        <div class="refTag">Ignition</div>
+        <h2>Ignition platform overview</h2>
+        <p>Ignition by Inductive Automation is the dominant SCADA platform at US solar plants. The architecture in one breath: a central gateway server runs device connections (drivers for Modbus, DNP3, Allen Bradley, OPC UA and more), which feed tags, which feed the historian and the operator screens (Vision or Perspective). Everything a technician sees on a screen traces back through tag, then device connection, then network, then field device; troubleshoot in that order from the gateway web page (Status section shows device connection health and tag counts).</p>
+        <div class="refLabel">Verify against</div>
+        <p>Site Ignition versions and module sets vary; verify against the site system documentation.</p>
+      </div>
+      <div class="refEntry" id="scada-tags">
+        <div class="refTag">Ignition</div>
+        <h2>Tags and tag quality</h2>
+        <p>Every Ignition tag carries a value, a timestamp, and a quality. Good quality means the driver read the point recently. Bad or Bad_NotConnected means the device connection is down. Stale means the subscription stopped updating. Uncertain often means the device answered with a flagged or substituted value. Quality propagates: one dead device connection turns every tag under it bad at the same moment, which is the signature to look for. A single bad tag among good siblings on the same device points at that one register or address, not at the network.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Quality names vary slightly across Ignition versions.</p>
+      </div>
+      <div class="refEntry" id="scada-opcua">
+        <div class="refTag">Ignition</div>
+        <h2>OPC UA connections</h2>
+        <p>Ignition talks to many PLCs through OPC UA, either its own internal server fronting the native drivers or an external OPC UA server. A faulted OPC UA connection shows every downstream tag bad while the underlying PLC is fine; the gateway Status page distinguishes the OPC connection state from the device state. Certificate expiry is the classic silent killer: OPC UA connections authenticate with certificates that expire years after commissioning, taking the connection down on a seemingly random day.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Check OPC UA certificate validity dates during annual maintenance.</p>
+      </div>
+      <div class="refEntry" id="scada-historian">
+        <div class="refTag">Ignition</div>
+        <h2>Historian</h2>
+        <p>The tag historian stores tag values in a database for trends and reports. Gaps in trends mean either the tag went bad quality (comms problem) or the historian pipeline stalled (database disk full, database connection down, store and forward buffering). Store and forward matters in the field: when the database link drops, the gateway buffers history and backfills later, so a trend that fills itself in hours later indicates a database side problem, not a field problem.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Database disk space is the first check for plant wide historian gaps.</p>
+      </div>
+      <div class="refEntry" id="scada-stalequality">
+        <h2>Why a tag shows stale or bad quality</h2>
+        <p>A stale or bad tag is almost never the SCADA server itself; it is the messenger. The chain, from most to least likely: the field device stopped answering (power, fault, address change); the network path broke (fiber, media converter, switch); the polling configuration flags a slow but healthy device as timed out; the device connection in SCADA is misconfigured after a device swap; or the tag itself points at a register that no longer exists in new firmware. Correlation is the diagnostic tool: all tags on one device bad means the device or its path; all devices on one segment bad means network; scattered single tags bad means register map drift.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Check the timestamp of last good value; it usually marks exactly when the field event happened.</p>
+      </div>
+      <div class="refEntry" id="scada-ovation">
+        <div class="refTag">Emerson</div>
+        <h2>Ovation as SCADA and plant controller</h2>
+        <p>At utility owned plants, Emerson Ovation often runs the whole control room: operator graphics, historian, alarm system, and the power plant controller logic in the same redundant DCS. Point quality and alarm behavior follow DCS conventions rather than Ignition conventions, and configuration lives with the site engineering group. For a field technician the working interface is usually the Ovation operator station: point detail displays show quality, scan status, and the controller that owns each point.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Ovation configurations are site specific; work through the site engineering owner.</p>
+      </div>
+      <div class="refEntry" id="scada-independentconfirmation">
+        <h2>Independent confirmation: proving a device is really down</h2>
+        <p>The flaw in judging a device by its own telemetry is circular: when the channel is down, the thing reporting that the device is fine is the same thing that is broken. Reliable calls come from evidence that travels a different path than the data.
+
+Hardwired alarm and fail contacts. Utility substation practice, and worth copying wherever the equipment supports it: the protective relay&#x27;s alarm or fail contact is wired to a separate I/O device rather than reported over the same protocol as its measurements. Then the dispatch logic becomes explicit. Loss of comms alarm alone means suspect the channel. Loss of comms alarm PLUS an asserted relay fail contact means the device itself is in trouble, and that combination is what sends a technician.
+
+Heartbeat counters with dwell. Comm channels commonly carry a heartbeat counter, and the loss of comms alarm asserts only after the counter stalls for a set dwell, on the order of a couple of minutes. That deliberate delay is why a master configured with a tight response timeout flags healthy devices as offline all day while the properly dwelled alarm stays quiet.
+
+Protocol level counters. Most protocols expose retry, timeout, and frame error counters that turn a subjective impression into a number. As one example, a DNP3 I/O server may flag points as bad value after roughly three retries. There is no standard: the threshold varies between utilities, vendors, and I/O servers. The transferable practice is to know your own system&#x27;s retry count and dwell, because that number is what separates a device that is genuinely gone from one that is merely slow.
+
+The revenue meter counter test. The cleanest artifact test available, and it needs no site visit. Watch the kWh totalizer on the revenue meter across the outage. If the counter stalls during the gap and then JUMPS when comms restore, the meter kept accumulating the whole time: the equipment was running and only the telemetry was down. If the counter stalls and then resumes counting flat from where it stopped, production genuinely stopped.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Thresholds and dwell times vary by utility, vendor, and I/O server; confirm the values configured on your own system. Contributed by substation practitioners.</p>
+      </div>
+      <div class="refEntry" id="scada-realvscomms">
+        <h2>Real fault or comms artifact?</h2>
+        <p>The most valuable SCADA skill in solar O&amp;M is telling a real equipment fault from a communications artifact before rolling a truck. Real faults: production actually drops, neighboring measurements corroborate (the meter sees less power, the transformer sees less current), and the device logs a fault locally. Comms artifacts: values freeze or go bad quality while plant output at the meter stays flat, many devices change state at the same timestamp, and the device checks out healthy at its local display. When SCADA and the revenue meter disagree, believe the meter. Better still, do not rely on the telemetry path alone: hardwired fail contacts, protocol retry counters, and the revenue meter counter test give evidence over a different path. See Independent confirmation.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Never reset or cycle field equipment purely because SCADA shows it offline. Confirm at the device first.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Cross check against the revenue meter and neighboring device telemetry.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

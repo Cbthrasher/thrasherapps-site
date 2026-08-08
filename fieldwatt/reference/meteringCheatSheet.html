@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Field Metering Cheat Sheet | FieldWatt field reference</title>
+  <meta name="description" content="Field Metering Cheat Sheet for utility scale solar technicians. Expected string Voc is the datasheet module Voc summed over the modules in series, corrected to the actual cell temperature with the module Voc temper" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/meteringCheatSheet.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">Field Metering Cheat Sheet</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 5 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#cheat-voccheck">String Voc: measured versus expected</a>
+        <a href="#cheat-isccompare">String Isc and parallel comparison</a>
+        <a href="#cheat-insulation">Insulation resistance quick thresholds</a>
+        <a href="#cheat-irradianceminimums">Irradiance minimums for valid field tests</a>
+        <a href="#cheat-dchazards">DC measurement hazard reminders</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="cheat-voccheck">
+        <h2>String Voc: measured versus expected</h2>
+        <p>Expected string Voc is the datasheet module Voc summed over the modules in series, corrected to the actual cell temperature with the module Voc temperature coefficient. A measurement more than plus or minus 5 percent from the corrected expectation deserves investigation: wrong module count, a shorted bypass diode (low by roughly one module), a failed module, or a measurement error. Voc checks need at least 200 watts per square meter of irradiance to be meaningful; below that, readings drift and comparisons mislead.</p>
+        <div class="refLabel">Safe response</div>
+        <p>DC rated meter and leads, rated for the full system voltage (1500 volts on modern plants). Never measure across a string under load with a voltmeter set wrong.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Record irradiance and module temperature with every reading; the Max String Size calculator computes corrected expectations.</p>
+      </div>
+      <div class="refEntry" id="cheat-isccompare">
+        <h2>String Isc and parallel comparison</h2>
+        <p>Identical strings under the same stable sun should carry currents within a few percent of each other. A string deviating more than 5 percent from its identical neighbors indicates a fault: soiling, shading, module damage, connector resistance, or a failing bypass diode. Current comparisons need at least 600 watts per square meter of stable irradiance; a meaningful current and voltage curve trace needs at least 500. Compare like to like and measure neighbors within minutes of each other, because passing clouds destroy the comparison.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Use a DC rated clamp meter. Opening string circuits under load draws an arc; never disconnect a loaded string connector.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Log irradiance at the moment of each reading.</p>
+      </div>
+      <div class="refEntry" id="cheat-insulation">
+        <h2>Insulation resistance quick thresholds</h2>
+        <p>IEC 62446 1 sets minimum insulation resistance by system voltage class; the Insulation Resistance calculator holds the full table. Working rule of thumb for large plants: a healthy dry circuit reads well into the tens or hundreds of megohms; readings near 1 megohm are marginal and readings below the IEC minimum fail. Wet weather readings run lower; a circuit that fails wet and passes dry has a moisture ingress path that will worsen. Always disconnect surge protective devices before testing.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Insulation testers apply high voltage: isolate the circuit, keep people clear of both ends, and discharge the circuit after testing.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Use the test voltage class from IEC 62446 1 for the circuit under test.</p>
+      </div>
+      <div class="refEntry" id="cheat-irradianceminimums">
+        <h2>Irradiance minimums for valid field tests</h2>
+        <p>Minimum plane of array irradiance for each test to mean anything: 200 watts per square meter for Voc checks; 500 for a useful current and voltage curve trace; 600 for string current comparisons. Stability matters as much as magnitude: readings taken while cloud edges cross the array are not comparable. Use the met station POA value, or a handheld irradiance meter held in the module plane.</p>
+      </div>
+      <div class="refEntry" id="cheat-dchazards">
+        <h2>DC measurement hazard reminders</h2>
+        <p>The DC field is energized whenever there is light. 1500 volt string circuits exceed the rating of common 1000 volt meters and leads; check the category and voltage rating printed on the meter and the leads before every use. DC arcs do not self extinguish the way AC arcs do: never open a connector, fuse holder, or terminal under load. Ground faults can put hazardous voltage on racking and enclosures that should be at ground potential.</p>
+        <div class="refLabel">Safe response</div>
+        <p>DC rated meter and leads rated at or above system voltage, arc flash PPE per the site study, and absence of voltage verification before touching conductors. If an insulation or ground fault alarm is active, stop and follow the ground fault decision tree.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Meter and lead ratings are printed on the equipment; when in doubt, do not measure.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bms Faults | StoreWatt field reference</title>
+  <meta name="description" content="Bms Faults for grid scale battery storage technicians. The battery management system monitors cell and module voltage, current, temperature, SOC, SOH, cell balance, insulation resistance, and contactor sta" />
+  <link rel="canonical" href="https://thrasherapps.com/storewatt/reference/bmsFaults.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/storewatt/">StoreWatt</a>
+        <a href="/storewatt/reference/">Reference</a>
+        <a href="/storewatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/storewatt/reference/">StoreWatt reference</a></div>
+      <h1 class="h2">Bms Faults</h1>
+      <p class="lead">Field reference for grid scale battery storage technicians. 11 entries, taken from the StoreWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#bms-overview">BMS architecture and what it watches</a>
+        <a href="#bms-candiagnostics">CAN bus is the primary diagnostic path</a>
+        <a href="#bms-cellovervoltage">Cell over voltage</a>
+        <a href="#bms-cellundervoltage">Cell under voltage</a>
+        <a href="#bms-overtemperature">Cell or module over temperature</a>
+        <a href="#bms-imbalance">Cell voltage imbalance</a>
+        <a href="#bms-insulationfault">Insulation or isolation fault</a>
+        <a href="#bms-contactorweld">Contactor welded or failed to open</a>
+        <a href="#bms-contactorfailtoclose">Contactor fails to close</a>
+        <a href="#bms-commfault">BMS communication fault</a>
+        <a href="#bms-socdrift">SOC estimate drift</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="bms-overview">
+        <h2>BMS architecture and what it watches</h2>
+        <p>The battery management system monitors cell and module voltage, current, temperature, SOC, SOH, cell balance, insulation resistance, and contactor state. The usual architecture is layered: a slave BMS on each module reads cells, a master BMS per rack aggregates modules and drives the rack contactors, and a system BMS coordinates racks and talks to the PCS and EMS.
+
+When chasing any BMS fault, find which layer raised it first. A cell level alarm points at one module; a rack level alarm can be a rack controller or its feed from the slaves; a system level alarm is often communication or coordination, not chemistry.</p>
+      </div>
+      <div class="refEntry" id="bms-candiagnostics">
+        <h2>CAN bus is the primary diagnostic path</h2>
+        <p>Module and rack BMS layers almost always talk over CAN. Reading the CAN traffic localizes a fault fast: a missing message identifier tells you which module went quiet, and a garbled bus points at wiring, termination, or a failing transceiver.
+
+Basics that solve most CAN problems: 120 ohm termination at both physical ends only, matched bit rate on every node, twisted pair with the shield grounded at one end, and no star stubs. A healthy bus measures about 60 ohms across CAN high to CAN low with power off.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Message identifier maps are proprietary. Pull the CAN database file or the manual for the installed BMS version before decoding.</p>
+      </div>
+      <div class="refEntry" id="bms-cellovervoltage">
+        <h2>Cell over voltage</h2>
+        <p>One or more cells exceeded the charge voltage limit. The BMS narrows the charge window, derates, or opens contactors depending on how far past the limit the cell went. Common causes: charging into a high SOC with a drifting cell, a weak cell that races ahead of its neighbors near full, balancing that cannot keep up, or a sensing harness fault reading high.
+
+Check whether it is one cell or many. A single repeating cell points to that cell or its sense lead; a whole module near the top of charge points to SOC calibration or an aggressive charge profile.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Let the BMS protect. Do not raise limits or reset repeatedly to force a charge. If the same cell trips repeatedly, log the cell position and escalate to the manufacturer.</p>
+      </div>
+      <div class="refEntry" id="bms-cellundervoltage">
+        <h2>Cell under voltage</h2>
+        <p>A cell fell below the discharge floor. The BMS blocks further discharge and may open contactors. Causes mirror over voltage: a weak cell that sags first under load, deep discharge after a long idle period with parasitic loads, or a bad sense connection reading low.
+
+A rack that sat de powered for weeks can drift under the floor on self discharge alone. Recovery charging below the normal window is a manufacturer controlled procedure, not a field improvisation.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Stop discharging. Follow the manufacturer recovery procedure for deeply discharged cells; charging a cell that spent time below its absolute floor can be hazardous.</p>
+      </div>
+      <div class="refEntry" id="bms-overtemperature">
+        <h2>Cell or module over temperature</h2>
+        <p>Cell temperature crossed an alarm or trip threshold. The system derates first, then trips. The usual cause is thermal management, not chemistry: failed pumps or fans, low coolant, blocked filters, a wrong setpoint, or high ambient plus high C rate.
+
+Look at the spread. Every cell warm together points at cooling or duty; one cell hot alone is a red flag for a cell problem and deserves escalation, not a reset.</p>
+        <div class="refLabel">Safe response</div>
+        <p>If temperature keeps climbing after the system derates or trips, or one cell runs away from its neighbors, treat it as a possible thermal event: do not open the enclosure, follow the Emergency Response Plan, and notify the qualified person.</p>
+      </div>
+      <div class="refEntry" id="bms-imbalance">
+        <h2>Cell voltage imbalance</h2>
+        <p>The spread between the highest and lowest cell exceeds the alarm limit. Imbalance caps usable capacity: charge stops on the highest cell and discharge stops on the lowest. Causes: balancing hardware not keeping up, a genuinely weak cell, uneven temperatures across a rack, or long idle periods.
+
+Trend it. Imbalance that grows steadily on the same cells is degradation; imbalance that appears after commissioning or a long outage often just needs a supervised balancing cycle at high SOC.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Run the manufacturer balancing procedure and re trend. Escalate a spread that keeps widening on the same cells.</p>
+      </div>
+      <div class="refEntry" id="bms-insulationfault">
+        <h2>Insulation or isolation fault</h2>
+        <p>The insulation monitor detected low resistance between the DC bus and ground. Somewhere, high voltage DC has a path toward chassis: damaged cable insulation, coolant intrusion into a module, moisture in a connector, or a failed component. Until located, any grounded surface can be at pack potential.
+
+This is the classic wet weekend fault: moisture drops insulation readings plantwide, then readings recover as things dry. A single rack that stays low while others recover is a real fault in that rack.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Stop work. Treat every conductive surface as live. Do not bypass or reset the insulation monitor to restore operation. Isolate the affected rack under the qualified person&#x27;s direction and locate the fault with the manufacturer procedure before returning to service.</p>
+      </div>
+      <div class="refEntry" id="bms-contactorweld">
+        <h2>Contactor welded or failed to open</h2>
+        <p>The BMS commanded a contactor open but feedback or bus voltage says it is still closed. Welded contacts happen after closing into a fault, repeated closing under load, or end of mechanical life. The rack DC bus remains energized even though the system believes it isolated.
+
+Never trust the HMI state for isolation. The only proof is a zero energy verification at the conductors with a CAT III or CAT IV DC rated tester.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Treat the bus as energized regardless of indicated state. Verify absence of voltage at the point of work with a DC rated tester before touching anything. Replace, never file or reuse, a welded contactor.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Contactor feedback logic differs by vendor. Confirm which signal the fault uses in the installed BMS manual.</p>
+      </div>
+      <div class="refEntry" id="bms-contactorfailtoclose">
+        <h2>Contactor fails to close</h2>
+        <p>A rack will not connect to the bus. Before the contactor itself, check the interlocks the BMS requires: precharge must complete, pack and bus voltage must match within a window, insulation must be healthy, and no cell alarm can be active. A precharge resistor that opened from repeated cycling is a frequent culprit and often reports as a precharge timeout.
+
+Coil supply, drive circuit, and auxiliary feedback wiring come next. A rack that closes when bus voltage is matched manually points at precharge; one that never picks the coil points at supply or drive.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Work the interlock list before condemning hardware. Precharge circuits store and dissipate real energy; follow the isolation procedure before touching them.</p>
+      </div>
+      <div class="refEntry" id="bms-commfault">
+        <h2>BMS communication fault</h2>
+        <p>A BMS layer lost contact with another: slaves dropping off a module bus, a rack master silent to the system BMS, or the system BMS unreachable from the PCS or EMS. Most systems fail safe by derating or opening contactors when supervision is lost, so a comm fault often presents as a capacity or availability problem.
+
+Localize by layer: one module missing is that module&#x27;s node or its stub; a whole rack silent is the rack master, its power, or the backbone segment; everything missing at once is the head end, a power supply, or a broken backbone near the head end.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Restore communication before chasing phantom electrical faults; stale data makes healthy racks look sick.</p>
+      </div>
+      <div class="refEntry" id="bms-socdrift">
+        <h2>SOC estimate drift</h2>
+        <p>Reported SOC wanders from reality because SOC is an estimate built on current integration plus voltage models. Flat voltage chemistries like LFP drift more between full charge references. Symptoms: the system hits the voltage limit before reported SOC says it should, or dispatch shortfalls near the window edges.
+
+The fix is usually a calibration cycle to a full charge reference per the manufacturer, and checking current sensor zero offsets. Persistent drift on one rack against its peers is a sensor problem.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/storewatt/reference/brandLibrary.html">Brand Library</a>
+        <a href="/storewatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/storewatt/reference/controlsScada.html">Controls Scada</a>
+        <a href="/storewatt/reference/emsNotes.html">Ems Notes</a>
+        <a href="/storewatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/storewatt/reference/pcsFaults.html">Pcs Faults</a>
+        <a href="/storewatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/storewatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/storewatt/reference/standardsSummaries.html">Standards Summaries</a>
+        <a href="/storewatt/reference/thermalManagement.html">Thermal Management</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/storewatt/">StoreWatt</a> ·
+        <a href="/storewatt/privacy.html">Privacy</a> ·
+        <a href="/storewatt/terms.html">Terms</a> ·
+        <a href="/storewatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

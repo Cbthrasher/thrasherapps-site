@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thermal Management | StoreWatt field reference</title>
+  <meta name="description" content="Thermal Management for grid scale battery storage technicians. Across fleets, thermal systems generate more O&amp;M work than the batteries themselves: coolant loops, pumps, valves, fans, filters, chillers, and their " />
+  <link rel="canonical" href="https://thrasherapps.com/storewatt/reference/thermalManagement.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/storewatt/">StoreWatt</a>
+        <a href="/storewatt/reference/">Reference</a>
+        <a href="/storewatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/storewatt/reference/">StoreWatt reference</a></div>
+      <h1 class="h2">Thermal Management</h1>
+      <p class="lead">Field reference for grid scale battery storage technicians. 7 entries, taken from the StoreWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#thermal-overview">Thermal management: the top O&amp;M failure area</a>
+        <a href="#thermal-liquidcooling">Liquid cooling loops</a>
+        <a href="#thermal-coolantleak">Coolant leak inside an enclosure</a>
+        <a href="#thermal-hvacair">HVAC and air cooled enclosures</a>
+        <a href="#thermal-overtempderate">Derate and trip behavior on temperature</a>
+        <a href="#thermal-setpoints">Setpoints and healthy operating bands</a>
+        <a href="#thermal-coldweather">Cold weather: heating and charge limits</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="thermal-overview">
+        <h2>Thermal management: the top O&amp;M failure area</h2>
+        <p>Across fleets, thermal systems generate more O&amp;M work than the batteries themselves: coolant loops, pumps, valves, fans, filters, chillers, and their controls. When cooling falls behind, the system derates; when it fails, the system trips; and sustained heat quietly accelerates capacity fade even when nothing alarms.
+
+A disciplined route through coolant level and pressure, pump status, filter condition, setpoints, and valve positions clears most thermal alarms without a single battery measurement.</p>
+      </div>
+      <div class="refEntry" id="thermal-liquidcooling">
+        <h2>Liquid cooling loops</h2>
+        <p>Modern high density containers cool cells with a glycol water loop through cold plates. Watch loop pressure and level, pump current draw, supply and return temperature difference, and flow alarms. A slowly falling level means a leak somewhere; a rising temperature difference at constant duty means flow is dropping or plates are fouling.
+
+Air in the loop after service causes noisy pumps and erratic flow readings; follow the manufacturer purge procedure completely.</p>
+      </div>
+      <div class="refEntry" id="thermal-coolantleak">
+        <h2>Coolant leak inside an enclosure</h2>
+        <p>Coolant inside a battery enclosure is two hazards in one: a slip and cleanup problem, and a potential insulation problem, because glycol mixtures conduct enough to pull down insulation resistance where they pool near the DC bus or inside a module.
+
+A falling coolant level combined with a falling insulation reading on the same container is a strong signal of coolant intrusion; treat the electrical side with full stored energy discipline.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Isolate the affected container per procedure before cleanup. If insulation readings dropped with the leak, treat all metal as live until the fault is located.</p>
+      </div>
+      <div class="refEntry" id="thermal-hvacair">
+        <h2>HVAC and air cooled enclosures</h2>
+        <p>Air cooled enclosures live and die by filters, condensers, and door seals. Clogged filters starve airflow and show up as rising supply air temperature at constant ambient. Failed condenser fans show up on hot afternoons only. Damaged door seals let humid air in, which the HVAC then fights all day and which feeds condensation and corrosion.
+
+Filter intervals on dusty sites are far shorter than the manual&#x27;s default; set them from inspection, not the calendar.</p>
+      </div>
+      <div class="refEntry" id="thermal-overtempderate">
+        <h2>Derate and trip behavior on temperature</h2>
+        <p>Systems shed power in stages as temperatures climb: first a soft derate, then a hard derate, then a trip. A plant that mysteriously underperforms on hot afternoons is usually sitting in a derate band nobody alarmed on. Trend cell max temperature against delivered power to see it.
+
+Repeated excursions into derate are a design or maintenance problem: cooling capacity, setpoints, or duty cycle need attention before summer peaks.</p>
+        <div class="refLabel">Safe response</div>
+        <p>If temperature keeps rising after a trip with cooling running, stop treating it as an HVAC problem and start treating it as a possible thermal event. Follow the Emergency Response Plan.</p>
+      </div>
+      <div class="refEntry" id="thermal-setpoints">
+        <h2>Setpoints and healthy operating bands</h2>
+        <p>Most lithium systems want cells roughly between 15 and 35 C in operation, with tight uniformity across a rack mattering as much as the absolute number. A wide temperature spread across one rack means uneven flow or a blocked path, and it will become a voltage imbalance problem given time.
+
+Changing thermal setpoints is a manufacturer and warranty conversation, not a field tweak; document any approved change in the commissioning record.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Operating bands differ by chemistry and vendor. Use the installed system&#x27;s operating specification.</p>
+      </div>
+      <div class="refEntry" id="thermal-coldweather">
+        <h2>Cold weather: heating and charge limits</h2>
+        <p>Cold is as dangerous to cells as heat, differently: charging below about 0 C risks lithium plating, which permanently damages cells and raises safety risk. Systems block or heavily derate charging until heaters bring cells into the allowed band, so a cold morning plant that refuses charge is protecting itself, not malfunctioning.
+
+Heater failures hide until the first cold snap. Prove heaters before winter, and expect longer availability delays after cold outages while packs warm.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Never bypass a low temperature charge inhibit. Plated lithium does not announce itself until much later.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/storewatt/reference/bmsFaults.html">Bms Faults</a>
+        <a href="/storewatt/reference/brandLibrary.html">Brand Library</a>
+        <a href="/storewatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/storewatt/reference/controlsScada.html">Controls Scada</a>
+        <a href="/storewatt/reference/emsNotes.html">Ems Notes</a>
+        <a href="/storewatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/storewatt/reference/pcsFaults.html">Pcs Faults</a>
+        <a href="/storewatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/storewatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/storewatt/reference/standardsSummaries.html">Standards Summaries</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from StoreWatt</strong>
+        <p>Reference notes from StoreWatt, the offline field toolkit for grid scale battery energy storage technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/storewatt/">StoreWatt</a> ·
+        <a href="/storewatt/privacy.html">Privacy</a> ·
+        <a href="/storewatt/terms.html">Terms</a> ·
+        <a href="/storewatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

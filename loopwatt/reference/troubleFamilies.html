@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trouble Families | LoopWatt field reference</title>
+  <meta name="description" content="Trouble Families for fire alarm and life safety technicians. Fire alarm wiring uses two conductors with no dedicated ground. When one conductor finds an unintended path to a grounded surface (conduit, back box, " />
+  <link rel="canonical" href="https://thrasherapps.com/loopwatt/reference/troubleFamilies.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/loopwatt/">LoopWatt</a>
+        <a href="/loopwatt/reference/">Reference</a>
+        <a href="/loopwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/loopwatt/reference/">LoopWatt reference</a></div>
+      <h1 class="h2">Trouble Families</h1>
+      <p class="lead">Field reference for fire alarm and life safety technicians. 11 entries, taken from the LoopWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#groundfault">Ground fault</a>
+        <a href="#opencircuit">Open circuit or open loop</a>
+        <a href="#shortcircuit">Short circuit</a>
+        <a href="#slctrouble">Signaling line circuit trouble (addressable)</a>
+        <a href="#acloss">AC power loss</a>
+        <a href="#batterytrouble">Low or failed battery</a>
+        <a href="#nactrouble">Notification circuit trouble</a>
+        <a href="#missingdevice">Missing or extra device</a>
+        <a href="#dirtydetector">Dirty detector, sensitivity out of range</a>
+        <a href="#commfail">Communicator or network failure</a>
+        <a href="#signaltypes">Alarm vs supervisory vs trouble</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from LoopWatt</strong>
+        <p>Reference notes from LoopWatt, the offline field toolkit for fire alarm and life safety technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6790129179">Get LoopWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="groundfault">
+        <h2>Ground fault</h2>
+        <p>Fire alarm wiring uses two conductors with no dedicated ground. When one conductor finds an unintended path to a grounded surface (conduit, back box, structural steel), the panel reports it immediately.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Water ingress at a field device, very often a ceiling mounted smoke or heat detector</p>
+        <p>Pinched or skinned conductor at a back box or fitting</p>
+        <p>Screw driven through a cable</p>
+        <p>Failed device with internal leakage to its mounting</p>
+        <p>Moisture in exterior or underground junction boxes</p>
+        <div class="refLabel">Method</div>
+        <p>Disconnect circuits from the fire alarm control panel one at a time; if the trouble clears, the fault is in that circuit and not the panel</p>
+        <p>Split the faulted circuit at a midpoint device and see which half holds the fault; repeat to localize</p>
+        <p>Use an ohmmeter from each conductor to ground with the circuit dead; a low reading marks the faulted conductor</p>
+        <p>Use an insulation resistance tester at low voltage on a fully disconnected circuit to find high resistance leakage; disconnect all devices first</p>
+        <p>Check recent roof or plumbing leaks and recently worked areas first</p>
+        <div class="refLabel">Citation</div>
+        <p>Panel manual; NFPA 72 Chapter 12 circuit classes</p>
+      </div>
+      <div class="refEntry" id="opencircuit">
+        <h2>Open circuit or open loop</h2>
+        <p>A break in the circuit: the panel supervision current cannot complete its path, so the panel shows an open or a missing device trouble.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Loose connection at a device terminal</p>
+        <p>Faulty or removed device</p>
+        <p>Damaged or cut cable</p>
+        <p>Missing or failed end of line resistor</p>
+        <p>Broken conductor inside insulation at a stress point</p>
+        <div class="refLabel">Method</div>
+        <p>Check the panel display for the zone or address range affected</p>
+        <p>Verify the end of line resistor is present and the right value</p>
+        <p>Measure loop resistance from the panel end with the EOL shorted at the far end; an open reads infinite</p>
+        <p>Split the circuit at a midpoint and test each half</p>
+        <p>Wiggle test suspect terminations; opens are often intermittent at loose screws</p>
+        <div class="refLabel">Citation</div>
+        <p>Panel manual; Class A vs Class B behavior differs</p>
+      </div>
+      <div class="refEntry" id="shortcircuit">
+        <h2>Short circuit</h2>
+        <p>Conductor to conductor contact. On a conventional initiating zone a short reads as an alarm; on a notification circuit or signaling line circuit it reads as a trouble and may shut the circuit down.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Crushed or stapled cable</p>
+        <p>Wire strands touching at a device terminal</p>
+        <p>Failed device</p>
+        <p>Water in a junction box bridging terminals</p>
+        <div class="refLabel">Method</div>
+        <p>Disconnect the circuit at the panel and measure conductor to conductor resistance with devices in place; compare to the expected EOL value</p>
+        <p>A reading far below the EOL value indicates a short; split the circuit to localize</p>
+        <p>On SLC loops, isolator modules limit how much of the loop a short takes down; the devices that dropped out point at the shorted segment</p>
+        <div class="refLabel">Citation</div>
+        <p>Panel manual</p>
+      </div>
+      <div class="refEntry" id="slctrouble">
+        <h2>Signaling line circuit trouble (addressable)</h2>
+        <p>The SLC is the communication highway to the panel. Trouble means an open, a short, a device failing to respond to poll, or electrical noise corrupting communication.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Open or short on the loop</p>
+        <p>Device failing to answer its poll (failed electronics, wrong address, duplicate address)</p>
+        <p>Electrical noise from VFDs, ballasts, or parallel power runs</p>
+        <p>Too much loop resistance or capacitance for the loop driver</p>
+        <p>Water damaged device pulling the loop down intermittently</p>
+        <div class="refLabel">Method</div>
+        <p>Read the panel event history: which addresses fail and in what order; a contiguous group points at a wiring segment</p>
+        <p>Check for duplicate addresses after any device replacement</p>
+        <p>Measure loop resistance and verify against the panel maximum</p>
+        <p>Separate SLC conductors from power conductors; check for shared raceway with noisy loads</p>
+        <p>Use the panel diagnostics (device response quality readings) where the brand provides them</p>
+        <div class="refLabel">Citation</div>
+        <p>Panel manual; NFPA 72 Chapter 12</p>
+      </div>
+      <div class="refEntry" id="acloss">
+        <h2>AC power loss</h2>
+        <p>Primary power failed or was turned off. The system runs on batteries and reports the loss; delayed transmission to the supervising station is normal by design.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Breaker turned off or tripped, often mislabeled</p>
+        <p>Utility outage</p>
+        <p>Failed panel power supply</p>
+        <p>Dedicated circuit worked on by other trades</p>
+        <div class="refLabel">Method</div>
+        <p>Find the dedicated branch circuit; it must be marked and mechanically protected against casual switching</p>
+        <p>Verify voltage at the panel primary terminals</p>
+        <p>If the breaker trips again, look for a shorted power supply or field wiring on auxiliary power</p>
+        <div class="refLabel">Citation</div>
+        <p>NFPA 72 10.6.5; NEC 760.41 and 760.121 branch circuit rules</p>
+      </div>
+      <div class="refEntry" id="batterytrouble">
+        <h2>Low or failed battery</h2>
+        <p>Battery voltage below threshold, failed charger, or batteries past service life.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Batteries past their service life (typically 3 to 5 years)</p>
+        <p>Charger failure or blown charger fuse</p>
+        <p>Undersized batteries for added load</p>
+        <p>Loose or corroded battery connections</p>
+        <p>One shorted cell dragging the pair down</p>
+        <div class="refLabel">Method</div>
+        <p>Measure float voltage across the set (about 27.3 V for a 24 V system) and each battery separately</p>
+        <p>Check the install date marking; replace in pairs, never mix old and new</p>
+        <p>Run the battery calculation after any device additions</p>
+        <p>Load test per the panel manual; a battery can float fine and still fail under load</p>
+        <div class="refLabel">Citation</div>
+        <p>Table 14.4.3.2 battery tests; 10.6.7 capacity</p>
+      </div>
+      <div class="refEntry" id="nactrouble">
+        <h2>Notification circuit trouble</h2>
+        <p>Open, short, or overload on a NAC. The panel supervises the circuit through the end of line resistor with reversed polarity in standby.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Missing or wrong EOL resistor</p>
+        <p>Open at an appliance terminal (in and out wiring not landed on separate terminals)</p>
+        <p>Shorted appliance or crushed cable</p>
+        <p>Overload: too many appliances for the circuit rating</p>
+        <p>Non listed device on the circuit</p>
+        <div class="refLabel">Method</div>
+        <p>Verify the EOL value against the panel manual</p>
+        <p>Measure circuit resistance at the panel with the circuit disconnected</p>
+        <p>Confirm every appliance is wired in and out on the correct terminals, no pigtails bridging supervision</p>
+        <p>Add up appliance currents and compare to the circuit rating; run the voltage drop calculation</p>
+        <div class="refLabel">Citation</div>
+        <p>Panel manual; NFPA 72 Chapter 18</p>
+      </div>
+      <div class="refEntry" id="missingdevice">
+        <h2>Missing or extra device</h2>
+        <p>An addressable point the panel expects does not answer, or a device answers at an address the program does not expect.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Device removed and not replaced (painting, remodeling)</p>
+        <p>Wrong address set after a replacement</p>
+        <p>Program not updated after system changes</p>
+        <p>Two devices on one address</p>
+        <div class="refLabel">Method</div>
+        <p>Compare the panel point list against the as built device inventory</p>
+        <p>Re address the replacement device to match the program, or update the program with the designer of record</p>
+        <p>Walk the area served by the missing address; look for fresh paint, new walls, or missing detector heads</p>
+        <div class="refLabel">Citation</div>
+        <p>Panel manual; program changes may require re acceptance testing per 14.4.1</p>
+      </div>
+      <div class="refEntry" id="dirtydetector">
+        <h2>Dirty detector, sensitivity out of range</h2>
+        <p>Dust and contamination shift a smoke detector&#x27;s operating point. Modern panels report a dirty or almost dirty condition before it becomes a nuisance alarm source.</p>
+        <div class="refLabel">Common causes</div>
+        <p>Dust accumulation, construction activity without protective covers</p>
+        <p>Kitchen, shop, or garage environments</p>
+        <p>Insects inside the chamber</p>
+        <p>Age; chamber contamination is cumulative</p>
+        <div class="refLabel">Method</div>
+        <p>Read the sensitivity or percent obscuration report from the panel where supported; that satisfies the sensitivity test requirement when in range</p>
+        <p>Clean or replace the detector head per manufacturer instructions</p>
+        <p>Devices outside their listed range must be cleaned and retested or replaced</p>
+        <p>Cover detectors during dusty work and remove covers after; a covered detector cannot see smoke</p>
+        <div class="refLabel">Citation</div>
+        <p>14.4.4.3 sensitivity testing; manufacturer cleaning instructions</p>
+      </div>
+      <div class="refEntry" id="commfail">
+        <h2>Communicator or network failure</h2>
+        <p>The path to the supervising station failed: phone line, cellular, IP, or radio.</p>
+        <div class="refLabel">Common causes</div>
+        <p>POTS line removed or migrated to VoIP without notice</p>
+        <p>Cellular sunset or antenna problem</p>
+        <p>Building network change: new firewall, new IP scheme</p>
+        <p>Failed communicator or blown fuse</p>
+        <p>Account changes at the monitoring company</p>
+        <div class="refLabel">Method</div>
+        <p>Send a manual test signal and confirm receipt with the monitoring company</p>
+        <p>Check signal strength indicators on cellular units</p>
+        <p>For IP paths, verify the drop is live and the communicator&#x27;s destination is reachable</p>
+        <p>Confirm the account number and phone numbers with the central station</p>
+        <div class="refLabel">Citation</div>
+        <p>NFPA 72 Chapter 26 transmission technologies</p>
+      </div>
+      <div class="refEntry" id="signaltypes">
+        <h2>Alarm vs supervisory vs trouble</h2>
+        <p>Three distinct signal classes that demand different responses.</p>
+        <div class="refLabel">Common causes</div>
+        <p>ALARM: fire is indicated; devices such as smoke detectors, pull stations, waterflow. Requires immediate evacuation response and dispatch</p>
+        <p>SUPERVISORY: a fire protection system is off normal but there is no fire: valve tamper, low air pressure on a dry system, duct detector on some designs, fire pump conditions. Requires investigation and restoration</p>
+        <p>TROUBLE: the fire alarm system itself has a fault: opens, grounds, power or communicator failure. Requires service</p>
+        <p>A valve tamper must annunciate as supervisory, not alarm and not trouble; mixing these classes is a common programming deficiency</p>
+        <div class="refLabel">Method</div>
+        <p>Verify each initiating device type annunciates in its correct class during acceptance and annual testing</p>
+        <p>Check that supervisory signals are distinct in tone and display from alarms at the panel and the annunciator</p>
+        <div class="refLabel">Citation</div>
+        <p>NFPA 72 10.7 and 10.8 signal priority and distinction</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/loopwatt/reference/necArticle760.html">NEC Article 760</a>
+        <a href="/loopwatt/reference/panelLibrary.html">Fire Alarm Panel Library</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from LoopWatt</strong>
+        <p>Reference notes from LoopWatt, the offline field toolkit for fire alarm and life safety technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6790129179">Get LoopWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/loopwatt/">LoopWatt</a> ·
+        <a href="/loopwatt/privacy.html">Privacy</a> ·
+        <a href="/loopwatt/terms.html">Terms</a> ·
+        <a href="/loopwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

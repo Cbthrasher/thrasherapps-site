@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power Plant Controller | FieldWatt field reference</title>
+  <meta name="description" content="Power Plant Controller for utility scale solar technicians. The PPC is the brain that makes a field of inverters behave as one power plant at the point of interconnection. It receives grid operator commands (ac" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/powerPlantController.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">Power Plant Controller</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 8 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#ppc-overview">What the power plant controller does</a>
+        <a href="#ppc-curtailment">Active power control and curtailment</a>
+        <a href="#ppc-avr">Reactive power and voltage regulation at the POI</a>
+        <a href="#ppc-frequencyresponse">Frequency response</a>
+        <a href="#ppc-ramprate">Ramp rate limits</a>
+        <a href="#ppc-ridethrough">Voltage and frequency ride through</a>
+        <a href="#ppc-curtailedorfault">Is the plant curtailed or faulted?</a>
+        <a href="#ansi-ieee1547">IEEE 1547 in one paragraph</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="ppc-overview">
+        <h2>What the power plant controller does</h2>
+        <p>The PPC is the brain that makes a field of inverters behave as one power plant at the point of interconnection. It receives grid operator commands (active power limits, reactive power or voltage setpoints, frequency response requirements), measures conditions at the POI, and continuously dispatches setpoints to every inverter to hold the plant at its targets. It also enforces ramp rate limits so plant output changes gradually even when clouds move fast. When plant output does not match irradiance, the PPC command chain is the first place to look.</p>
+        <div class="refLabel">Verify against</div>
+        <p>PPC vendor and logic vary by site: dedicated controllers, Ovation, or PLC based designs. Verify against site documentation.</p>
+      </div>
+      <div class="refEntry" id="ppc-curtailment">
+        <h2>Active power control and curtailment</h2>
+        <p>Grid operators routinely cap plant output below available power: congestion management, negative pricing, or system events. The PPC receives the limit (often via DNP3 from the operator or an automatic generation control signal) and lowers inverter setpoints to comply. A curtailed plant looks exactly like an underperforming plant unless you check the active power setpoint: inverters idling below capacity in clear sun with a plant setpoint below available power is curtailment, not a fault.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Log curtailment periods; they matter for performance ratio math and for revenue accounting.</p>
+      </div>
+      <div class="refEntry" id="ppc-avr">
+        <h2>Reactive power and voltage regulation at the POI</h2>
+        <p>The interconnection agreement obligates the plant to hold a voltage schedule or power factor at the POI. The PPC runs automatic voltage regulation: it measures POI voltage and dispatches reactive power setpoints to the inverters (and capacitor banks where fitted), absorbing or injecting VARs as needed. Inverters near their reactive limits on hot low sun days, or a plant bumping against grid overvoltage trips, often trace back to AVR settings or an incorrect voltage reference measurement.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Voltage schedules and power factor ranges come from the interconnection agreement.</p>
+      </div>
+      <div class="refEntry" id="ppc-frequencyresponse">
+        <h2>Frequency response</h2>
+        <p>Modern interconnection rules require plants to respond to grid frequency deviations: reduce output on overfrequency and, if headroom is held, increase on underfrequency. The response must be fast, often beginning within about 200 milliseconds, so the logic typically runs in the PPC with droop settings from the interconnection agreement. During a frequency event the plant deliberately deviates from its normal setpoint; production dips that align with grid frequency excursions are the plant doing its job.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Droop, deadband, and response times are contractual; verify against the interconnection agreement.</p>
+      </div>
+      <div class="refEntry" id="ppc-ramprate">
+        <h2>Ramp rate limits</h2>
+        <p>The PPC limits how fast plant output may rise or fall, commonly a few megawatts per minute per the interconnection agreement. On a morning with fast moving clouds, output that climbs in smooth slow ramps while irradiance jumps around is ramp limiting, not equipment lag. Ramp limits also shape plant startup after an outage: a plant that takes many minutes to return to full output after a trip may be exactly on schedule.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Ramp limits are in the interconnection agreement and PPC settings file.</p>
+      </div>
+      <div class="refEntry" id="ppc-ridethrough">
+        <h2>Voltage and frequency ride through</h2>
+        <p>During grid faults, inverters follow their own grid code ride through curves directly and bypass the PPC; the control loop through the PPC is far too slow for fault time scales. The PPC resumes command after the disturbance clears. So for a plant that tripped during a grid event, the questions are: did the disturbance exceed the ride through envelope (a legitimate trip), and did every unit behave the same way? A handful of units tripping while the rest rode through points at settings drift on those units. IEEE 1547 and the interconnection agreement define the envelopes.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Ride through curves live in the inverter grid code settings; audit them against the interconnection agreement after any firmware work.</p>
+      </div>
+      <div class="refEntry" id="ppc-curtailedorfault">
+        <h2>Is the plant curtailed or faulted?</h2>
+        <p>The five minute check before declaring a plant problem: read the active power setpoint at the PPC versus available power; if setpoint is below available, the plant is curtailed by the operator or a PPC limit and nothing is broken. If the setpoint is at full and output is low, count inverters online; a shortfall localized to specific units is an equipment problem, while uniform shortfall across all units in clear sun points at the irradiance measurement, soiling, or a plant wide derate. The underperformance decision tree in this app walks the full sequence.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Confirm curtailment with the control room or grid operator dispatch records.</p>
+      </div>
+      <div class="refEntry" id="ansi-ieee1547">
+        <h2>IEEE 1547 in one paragraph</h2>
+        <p>IEEE 1547 is the interconnection standard for distributed energy resources. It defines when a plant must disconnect (loss of a phase, faults in the area electric power system, voltage or frequency outside limits) and, in its modern revision, when it must ride through and support the grid instead of tripping. Inverter grid code settings, PPC response functions, and the substation protection scheme all implement pieces of it. The interconnection agreement tailors the exact numbers per site.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The site interconnection agreement overrides general standard values everywhere they differ.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
