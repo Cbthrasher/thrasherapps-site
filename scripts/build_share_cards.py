@@ -34,8 +34,10 @@ APPS = {
     "headpainjournal": ("6785294370", "Track migraines in one tap, find your triggers"),
     "sideworktax":     ("6782625305", "Set aside the right tax on every side job"),
     "droptubebuilder": ("6740597739", "Drop tube cut math for fuel system installers"),
-    "trialmate":       ("6748589882", "Clinical trial companion, private by design"),
+    "trialmate":       ("6748589882", "Trial preparation companion for attorneys"),
     "streakquest":     ("6743329674", "Build habits with streaks that stick"),
+    "blockthrasher":   ("6746172717", "Tap, clear, thrash: a neon block puzzle"),
+    "lavadash":        ("6742521742", "Survive when the floor turns to lava"),
 }
 
 BG = (15, 23, 42)
