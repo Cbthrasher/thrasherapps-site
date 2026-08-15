@@ -58,6 +58,15 @@ APPS = [
         "library": f"{DESKTOP}/RackWatt/RackWatt/Resources/ReferenceData",
         "schema": "loose",
     },
+    {
+        "key": "droptubebuilder",
+        "name": "DropTubeBuilder",
+        "appid": "6740597739",
+        "trade": "fuel system and underground storage tank technicians",
+        "blurb": "Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults.",
+        "library": f"{DESKTOP}/../Documents/DropTubeBuilder",
+        "schema": "droptube",
+    },
 ]
 
 # Human titles for known file and category names.
@@ -195,6 +204,114 @@ def load_groups(app):
         entries = [e for e in (normalize(r) for r in raws if isinstance(r, dict)) if e]
         if entries:
             groups.append((stem, nice_title(stem), entries))
+    return groups
+
+
+# --- DropTubeBuilder -------------------------------------------------------
+# Its data is shaped differently from the Watt apps: nested dictionaries of
+# manufacturer, then model, then code to description. Product names keep their
+# real spelling, hyphens included, because those are the exact strings
+# technicians type into a search box.
+
+DTB_GROUP_TITLES = {
+    ("Gilbarco", "500s"): ("gilbarco-500-series", "Gilbarco 500 Series Dispenser Error Codes"),
+    ("Gilbarco", "700s"): ("gilbarco-700-series", "Gilbarco 700 Series Dispenser Error Codes"),
+    ("Gilbarco", "Encore 300"): ("gilbarco-encore-300", "Gilbarco Encore 300 Error Codes"),
+    ("Wayne", "Ovation"): ("wayne-ovation", "Wayne Ovation Dispenser Error Codes"),
+    ("Veeder-Root", "TLS-300"): ("veeder-root-tls-300", "Veeder-Root TLS-300 Alarm Codes"),
+    ("Veeder-Root", "TLS-350"): ("veeder-root-tls-350", "Veeder-Root TLS-350 Alarm Codes"),
+    ("Veeder-Root", "TLS-450"): ("veeder-root-tls-450", "Veeder-Root TLS-450 Alarm Codes"),
+    ("Veeder-Root", "TLS-450 PLUS"): ("veeder-root-tls-450-plus", "Veeder-Root TLS-450 PLUS Alarm Codes"),
+    ("Veeder-Root", "TLS4 / TLS-4i"): ("veeder-root-tls4", "Veeder-Root TLS4 and TLS-4i Alarm Codes"),
+    ("Franklin / INCON", "EVO 550 / 5000"): ("franklin-incon-evo", "Franklin INCON EVO 550 and EVO 5000 Alarms"),
+}
+
+
+def _slug(text):
+    return re.sub(r"[^a-z0-9]+", "-", str(text).lower()).strip("-") or "entry"
+
+
+def load_groups_droptube(app):
+    root = os.path.normpath(app["library"])
+    groups = []
+
+    codes_path = os.path.join(root, "ErrorCodes.json")
+    if os.path.isfile(codes_path):
+        data = json.load(open(codes_path))
+        for maker, models in data.items():
+            if not isinstance(models, dict):
+                continue
+            for model, codes in models.items():
+                if not isinstance(codes, dict):
+                    continue
+                stem, gtitle = DTB_GROUP_TITLES.get(
+                    (maker, model),
+                    (_slug(f"{maker}-{model}"), f"{maker} {model} Error Codes"))
+                entries = []
+                for code, text in codes.items():
+                    if not str(text).strip():
+                        continue
+                    entries.append({
+                        "id": _slug(f"{code}"),
+                        "title": str(code),
+                        "tag": f"{maker} \u00b7 {model}",
+                        "blocks": [(None, [str(text)])],
+                    })
+                if entries:
+                    groups.append((stem, gtitle, entries))
+
+    pumps_path = os.path.join(root, "PumpControllers.json")
+    if os.path.isfile(pumps_path):
+        data = json.load(open(pumps_path))
+        for controller, info in data.items():
+            if not isinstance(info, dict):
+                continue
+            entries = []
+            overview = info.get("overview")
+            if overview:
+                blocks = [(None, [str(overview)])]
+                if info.get("source"):
+                    blocks.append(("Source", [str(info["source"])]))
+                entries.append({"id": "overview", "title": "Overview",
+                                "tag": controller, "blocks": blocks})
+            for row in info.get("faultCodes") or []:
+                blocks = []
+                for key, label in (("condition", None), ("cause", "Likely cause"),
+                                   ("action", "Action")):
+                    if row.get(key):
+                        blocks.append((label, [str(row[key])]))
+                if blocks:
+                    entries.append({
+                        "id": _slug("fault-" + str(row.get("code", ""))),
+                        "title": f"Fault code {row.get('code', '')}".strip(),
+                        "tag": f"{controller} \u00b7 fault", "blocks": blocks})
+            for row in info.get("statusCodes") or []:
+                if row.get("text"):
+                    entries.append({
+                        "id": _slug("status-" + str(row.get("code", ""))),
+                        "title": f"Status {row.get('code', '')} {row.get('name', '')}".strip(),
+                        "tag": f"{controller} \u00b7 status",
+                        "blocks": [(None, [str(row["text"])])]})
+            dips = info.get("dipSwitches") or []
+            if dips:
+                paras = []
+                for row in dips:
+                    bits = [f"{row.get('bank','')} pole {row.get('pole','')}".strip()]
+                    if row.get("on"):
+                        bits.append(f"ON: {row['on']}")
+                    if row.get("off"):
+                        bits.append(f"OFF: {row['off']}")
+                    if row.get("factory"):
+                        bits.append(f"Factory: {row['factory']}")
+                    if row.get("note"):
+                        bits.append(str(row["note"]))
+                    paras.append(". ".join(bits))
+                entries.append({"id": "dip-switches", "title": "DIP switch settings",
+                                "tag": f"{controller} \u00b7 configuration",
+                                "blocks": [(None, paras)]})
+            if entries:
+                groups.append((_slug(controller), f"{controller} Fault and Status Codes", entries))
+
     return groups
 
 
@@ -338,7 +455,8 @@ def render_hub(app, groups):
 def main():
     written = []
     for app in APPS:
-        groups = load_groups(app)
+        groups = (load_groups_droptube(app) if app.get("schema") == "droptube"
+                  else load_groups(app))
         if not groups:
             print(f"{app['name']}: no usable library, skipped")
             continue

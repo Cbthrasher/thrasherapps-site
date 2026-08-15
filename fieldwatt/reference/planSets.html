@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Plan Sets | FieldWatt field reference</title>
+  <meta name="description" content="Plan Sets for utility scale solar technicians. A utility scale drawing set is large and most of it will not concern the job in front of you. Work it in this order. First the title block and revisio" />
+  <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/planSets.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/fieldwatt/">FieldWatt</a>
+        <a href="/fieldwatt/reference/">Reference</a>
+        <a href="/fieldwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
+      <h1 class="h2">Plan Sets</h1>
+      <p class="lead">Field reference for utility scale solar technicians. 8 entries, taken from the FieldWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#plansets-readingorder">Reading a plan set: the order that saves time</a>
+        <a href="#plansets-titleblock">Title block, revisions, and which drawing governs</a>
+        <a href="#plansets-oneline">The one line diagram: what feeds what</a>
+        <a href="#plansets-threeline">The three line diagram: protection, metering and control detail</a>
+        <a href="#plansets-stringlayout">Array layout and string diagrams: finding it in the field</a>
+        <a href="#plansets-conductorschedule">Conductor and raceway schedules</a>
+        <a href="#plansets-symbols">Common symbols and equipment designations</a>
+        <a href="#plansets-groundingplan">Grounding and bonding plans</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="plansets-readingorder">
+        <h2>Reading a plan set: the order that saves time</h2>
+        <p>A utility scale drawing set is large and most of it will not concern the job in front of you. Work it in this order. First the title block and revision, to confirm you are holding the current sheet. Second the one line, to place the equipment in the power path and find what isolates it. Third the three line, if the work touches protection, metering or control wiring. Fourth the site and array layout sheets, to find the thing physically in a field of identical looking hardware. Fifth the schedules, for conductor sizes, ratings and settings. Reading in this order answers what it is, how it is fed, how to isolate it, where it is, and what it should be, in that sequence. Jumping straight to a layout sheet is the usual reason a crew isolates the wrong feeder.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Sheet organization varies by engineering firm. The drawing index on the cover sheet is the authority for what lives where in your set.</p>
+      </div>
+      <div class="refEntry" id="plansets-titleblock">
+        <h2>Title block, revisions, and which drawing governs</h2>
+        <p>The title block carries the drawing number, sheet number, revision level, date, and the engineer of record stamp. The issue status is the part technicians skip and should not. Issued For Construction is what the installer built from. As Built is what was actually installed after field changes. For Approval or For Review has no business being used in the field at all. Revision clouds mark what changed at that revision, with a triangle carrying the revision number. If a conductor size on the drawing does not match what is physically installed, the likely explanation is that you are holding a construction issue and a field change was made, not that the installer got it wrong. Get the as built revision before drawing a conclusion.</p>
+        <div class="refLabel">Verify against</div>
+        <p>The PE stamped drawing of record governs over any app, any summary, and any recollection. When drawings and field conditions disagree, stop and escalate rather than deciding on the spot.</p>
+      </div>
+      <div class="refEntry" id="plansets-oneline">
+        <h2>The one line diagram: what feeds what</h2>
+        <p>The one line, also called the single line, draws all three phases as one line so the power path stays readable. It is the map of the plant. Read it from the array toward the point of interconnection: source circuits into DC combiners, combiner outputs into the inverter DC inputs, inverter AC output into its medium voltage step up transformer, transformer into the collector circuit, collector circuits into the substation main transformer, then the point of interconnection. Each device carries its rating: transformer kVA and voltage ratio, breaker frame and trip rating, fuse rating, conductor size. The one line is the drawing that answers the two questions that matter before any work starts, which is what feeds this equipment and what device isolates it. Trace upstream to the nearest visible break point, and confirm that break point exists physically before planning an isolation.</p>
+        <div class="refLabel">Verify against</div>
+        <p>A one line shows intent, not condition. Verify absence of voltage with a DC rated or AC rated meter as appropriate. The array is energized by sunlight regardless of any switch position.</p>
+      </div>
+      <div class="refEntry" id="plansets-threeline">
+        <h2>The three line diagram: protection, metering and control detail</h2>
+        <p>The three line draws each phase separately, which is what makes it the drawing for protection and metering work. It shows the instrument transformers with their ratios and polarity marks, which relay input each secondary lands on, the metering connections, and the control power source. ANSI device numbers appear here against the actual wiring, so a 50 or 51 element on the one line becomes a specific relay with specific current transformer inputs on the three line. Use it to answer questions the one line cannot: which current transformer feeds this relay, what ratio to scale a measured secondary current by, what the expected phase rotation is, and where control power for a trip circuit originates. Polarity marks matter. A current transformer installed backwards produces directional and differential misoperation that looks like a real fault.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Current transformer secondaries must never be opened under load. Follow the site protection procedures and involve a qualified protection technician for any relay or instrument transformer work.</p>
+      </div>
+      <div class="refEntry" id="plansets-stringlayout">
+        <h2>Array layout and string diagrams: finding it in the field</h2>
+        <p>Layout sheets translate an alarm into a physical location. They show the tracker rows or fixed tilt tables in plan view, the block and row numbering, the combiner locations, and which strings land on which combiner at which input position. A string level alarm gives you a combiner and an input number; the layout sheet and the combiner schedule turn that into a row and a position you can walk to. Note the numbering convention before you set out, because conventions differ between plants and between blocks within a plant. Rows are commonly numbered from a fixed datum such as the north west corner, and string numbering may run with or against the row direction. Confirm the convention on the sheet legend rather than assuming continuity from the last site you worked.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Field labeling and the drawing sometimes disagree after a repower or a combiner replacement. Where they disagree, trust what you can trace physically and report the discrepancy.</p>
+      </div>
+      <div class="refEntry" id="plansets-conductorschedule">
+        <h2>Conductor and raceway schedules</h2>
+        <p>The conductor schedule is a table, one row per circuit, and it is the drawing to consult before replacing any cable. Typical columns are the circuit tag, from and to, the number of conductors per phase, conductor size and material, insulation type, raceway or tray size and type, and often the ampacity basis and calculated voltage drop. Read it together with the ampacity assumptions stated on the sheet notes, because a size that looks generous is frequently the result of a voltage drop limit or a temperature correction rather than ampacity alone. Aluminum and copper are not interchangeable at the same size. A replacement conductor must match size, material, insulation temperature rating and voltage rating, and the terminations must be rated for the material used.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Ampacity depends on the code cycle, ambient temperature, conduit fill and installation method. Verify against the NEC year selected in Settings and the stamped design, and use the FieldWatt conductor calculator to check rather than to decide.</p>
+      </div>
+      <div class="refEntry" id="plansets-symbols">
+        <h2>Common symbols and equipment designations</h2>
+        <p>Symbols are conventional rather than standardized, so the legend sheet governs. The ones that recur on utility scale sets: a break in the line with an angled blade for a disconnect switch, the same with a rectangle for a fused disconnect, a square with a diagonal for a drawout circuit breaker, two coupled windings for a transformer with the winding configuration shown as a delta or a wye alongside, a circle on a conductor for an instrument transformer, an arrowhead stack for a surge arrester, and the horizontal bar stack for a ground connection. Equipment designations follow a plant convention that usually encodes block, equipment type and sequence, such as an inverter tagged by block and unit number. Learn the plant convention once from the legend and the equipment list, because every alarm, drawing and switching order will use it.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Always read the legend sheet for the set in hand. Symbol conventions differ between engineering firms and a wrong assumption about a switch symbol can produce a dangerous isolation plan.</p>
+      </div>
+      <div class="refEntry" id="plansets-groundingplan">
+        <h2>Grounding and bonding plans</h2>
+        <p>The grounding plan shows the buried ground grid, its conductor size and material, the ground rod locations and depths, the connection points at inverter and transformer pads, and the bonding of structures. On a tracker plant it also shows how each row is bonded, since a torque tube that rotates still has to maintain a bonding path, and how the perimeter fence is bonded or deliberately isolated. Connections are usually specified as exothermic below grade and mechanical or compression above grade, and the drawing normally calls out which. When investigating a ground fault or a shock complaint, the grounding plan tells you what the bonding path is supposed to be, which is the necessary starting point for finding where it has been lost, commonly at a corroded or never installed row bonding jumper.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Ground grid measurements and any work on grounding conductors require a qualified person. Never open a grounding or bonding conductor on energized equipment.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+        <a href="/fieldwatt/reference/trackerProcedures.html">Solar Tracker Procedures</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from FieldWatt</strong>
+        <p>Reference notes from FieldWatt, the offline field toolkit for utility scale solar commissioning and O&amp;M technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/fieldwatt/">FieldWatt</a> ·
+        <a href="/fieldwatt/privacy.html">Privacy</a> ·
+        <a href="/fieldwatt/terms.html">Terms</a> ·
+        <a href="/fieldwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

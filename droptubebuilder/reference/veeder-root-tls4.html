@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veeder-Root TLS4 and TLS-4i Alarm Codes | DropTubeBuilder field reference</title>
+  <meta name="description" content="Veeder-Root TLS4 and TLS-4i Alarm Codes for fuel system and underground storage tank technicians. Configuration data was lost or changed (often after a battery/power issue). Action: review and re-enter System/In-Tank/Sensor setup; print a setup rep" />
+  <link rel="canonical" href="https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls4.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/droptubebuilder/">DropTubeBuilder</a>
+        <a href="/droptubebuilder/reference/">Reference</a>
+        <a href="/droptubebuilder/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/droptubebuilder/reference/">DropTubeBuilder reference</a></div>
+      <h1 class="h2">Veeder-Root TLS4 and TLS-4i Alarm Codes</h1>
+      <p class="lead">Field reference for fuel system and underground storage tank technicians. 39 entries, taken from the DropTubeBuilder app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#setup-data-warning">Setup Data Warning</a>
+        <a href="#printer-out">Printer Out</a>
+        <a href="#printer-error">Printer Error</a>
+        <a href="#battery-warning">Battery Warning</a>
+        <a href="#ac-power-off">AC Power Off</a>
+        <a href="#eeprom-failure">EEPROM Failure</a>
+        <a href="#ram-failure">RAM Failure</a>
+        <a href="#software-module-warning">Software Module Warning</a>
+        <a href="#comm-alarm">Comm Alarm</a>
+        <a href="#auto-dial-failed">Auto Dial Failed</a>
+        <a href="#maintenance-tracker">Maintenance Tracker</a>
+        <a href="#delivery-needed">Delivery Needed</a>
+        <a href="#low-product">Low Product</a>
+        <a href="#high-product">High Product</a>
+        <a href="#overfill-alarm">Overfill Alarm</a>
+        <a href="#max-product-alarm">Max Product Alarm</a>
+        <a href="#high-water-alarm">High Water Alarm</a>
+        <a href="#water-warning">Water Warning</a>
+        <a href="#low-temperature-warning">Low Temperature Warning</a>
+        <a href="#invalid-fuel-level-alarm">Invalid Fuel Level Alarm</a>
+        <a href="#probe-out-alarm">Probe Out Alarm</a>
+        <a href="#gross-test-fail">Gross Test Fail</a>
+        <a href="#periodic-test-fail">Periodic Test Fail</a>
+        <a href="#annual-test-fail">Annual Test Fail</a>
+        <a href="#periodic-test-needed">Periodic Test Needed</a>
+        <a href="#annual-test-needed">Annual Test Needed</a>
+        <a href="#leak-alarm">Leak Alarm</a>
+        <a href="#sudden-loss-alarm">Sudden Loss Alarm</a>
+        <a href="#theft-alarm">Theft Alarm</a>
+        <a href="#probe-high-water-no-float">Probe High Water (No Float)</a>
+        <a href="#fuel-alarm">Fuel Alarm</a>
+        <a href="#water-alarm">Water Alarm</a>
+        <a href="#high-liquid-alarm">High Liquid Alarm</a>
+        <a href="#low-liquid-alarm">Low Liquid Alarm</a>
+        <a href="#liquid-warning">Liquid Warning</a>
+        <a href="#water-out-alarm">Water Out Alarm</a>
+        <a href="#sensor-out-alarm">Sensor Out Alarm</a>
+        <a href="#short-alarm">Short Alarm</a>
+        <a href="#sensor-setup-data-warning">Sensor Setup Data Warning</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from DropTubeBuilder</strong>
+        <p>Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+      <div class="refEntry" id="setup-data-warning">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Setup Data Warning</h2>
+        <p>Configuration data was lost or changed (often after a battery/power issue). Action: review and re-enter System/In-Tank/Sensor setup; print a setup report and confirm against records.</p>
+      </div>
+      <div class="refEntry" id="printer-out">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Printer Out</h2>
+        <p>Integrated printer is out of paper or the door is open. Action: reload paper roll, close door, clear the warning.</p>
+      </div>
+      <div class="refEntry" id="printer-error">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Printer Error</h2>
+        <p>Printer mechanism fault or paper jam. Action: clear jam, reseat paper, cycle power to the console if it persists.</p>
+      </div>
+      <div class="refEntry" id="battery-warning">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Battery Warning</h2>
+        <p>Console backup battery is low; setup/data may not survive a power loss. Action: schedule battery replacement (board-mounted lithium).</p>
+      </div>
+      <div class="refEntry" id="ac-power-off">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>AC Power Off</h2>
+        <p>Console lost AC power and is running on backup or has shut down. Action: check breaker/UPS feeding the console; confirm dedicated circuit is on.</p>
+      </div>
+      <div class="refEntry" id="eeprom-failure">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>EEPROM Failure</h2>
+        <p>Non-volatile memory (setup storage) failed its self-test. Action: cycle power; if it returns, the CPU/memory board needs service.</p>
+      </div>
+      <div class="refEntry" id="ram-failure">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>RAM Failure</h2>
+        <p>Working memory failed its self-test. Action: cycle power; persistent fault means CPU board replacement.</p>
+      </div>
+      <div class="refEntry" id="software-module-warning">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Software Module Warning</h2>
+        <p>A software/feature module mismatch or expired feature was detected. Action: verify installed features/licensing and firmware version.</p>
+      </div>
+      <div class="refEntry" id="comm-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Comm Alarm</h2>
+        <p>Console lost communication with a device (probe, sensor, module, or remote display). Action: check the device wiring, module seating, and address/setup.</p>
+      </div>
+      <div class="refEntry" id="auto-dial-failed">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Auto Dial Failed</h2>
+        <p>Scheduled modem/network report-out to the host failed. Action: verify phone line/Ethernet, host number/IP, and comm settings.</p>
+      </div>
+      <div class="refEntry" id="maintenance-tracker">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Maintenance Tracker</h2>
+        <p>A scheduled maintenance interval has elapsed. Action: perform the due maintenance and reset the tracker.</p>
+      </div>
+      <div class="refEntry" id="delivery-needed">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Delivery Needed</h2>
+        <p>Product level dropped below the delivery-needed limit. Action: schedule a fuel delivery; informational.</p>
+      </div>
+      <div class="refEntry" id="low-product">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Low Product</h2>
+        <p>Product volume is below the configured low limit. Action: order fuel; verify limit is set correctly for the site.</p>
+      </div>
+      <div class="refEntry" id="high-product">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>High Product</h2>
+        <p>Product volume is above the high limit (approaching capacity). Action: stop/observe deliveries; verify the high limit and tank chart.</p>
+      </div>
+      <div class="refEntry" id="overfill-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Overfill Alarm</h2>
+        <p>Tank exceeded the overfill limit (typically 90%) during/after a delivery. Action: stop delivery immediately; investigate delivery practices and overfill setpoint.</p>
+      </div>
+      <div class="refEntry" id="max-product-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Max Product Alarm</h2>
+        <p>Level reached the maximum (≈95%) limit. Action: cease filling; confirm overfill-prevention valve and setpoints.</p>
+      </div>
+      <div class="refEntry" id="high-water-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>High Water Alarm</h2>
+        <p>Water in the tank exceeds the high-water limit. Action: pump out water; inspect fill cap, spill bucket, and gaskets for intrusion; check for phase separation.</p>
+      </div>
+      <div class="refEntry" id="water-warning">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Water Warning</h2>
+        <p>Water has reached the warning limit. Action: monitor; schedule water removal and find the source.</p>
+      </div>
+      <div class="refEntry" id="low-temperature-warning">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Low Temperature Warning</h2>
+        <p>Product temperature is below the low limit (waxing/gel risk for diesel). Action: informational; monitor in cold weather.</p>
+      </div>
+      <div class="refEntry" id="invalid-fuel-level-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Invalid Fuel Level Alarm</h2>
+        <p>Probe is reporting an implausible level (floats stuck or product/water floats crossed). Action: pull and inspect the probe and floats for fouling or sticking.</p>
+      </div>
+      <div class="refEntry" id="probe-out-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Probe Out Alarm</h2>
+        <p>Console is not seeing the probe. Action: check probe wiring/connections at the probe and module; verify probe address and canister.</p>
+      </div>
+      <div class="refEntry" id="gross-test-fail">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Gross Test Fail</h2>
+        <p>Static (gross 3.0 gph) leak test failed. Action: re-run when quiet/idle; if it fails again, investigate the tank for leaks.</p>
+      </div>
+      <div class="refEntry" id="periodic-test-fail">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Periodic Test Fail</h2>
+        <p>Periodic (0.2 gph) leak test failed. Action: ensure adequate idle time and product level; investigate if it repeats.</p>
+      </div>
+      <div class="refEntry" id="annual-test-fail">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Annual Test Fail</h2>
+        <p>Annual (0.1 gph) precision test failed. Action: review test conditions; arrange tightness testing/leak investigation.</p>
+      </div>
+      <div class="refEntry" id="periodic-test-needed">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Periodic Test Needed</h2>
+        <p>No passing periodic leak test within the required window. Action: ensure the tank gets quiet idle time to complete a test.</p>
+      </div>
+      <div class="refEntry" id="annual-test-needed">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Annual Test Needed</h2>
+        <p>No passing annual (0.1 gph) test within the window. Action: schedule conditions for a valid test.</p>
+      </div>
+      <div class="refEntry" id="leak-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Leak Alarm</h2>
+        <p>Statistical leak detection declared a leak. Action: treat as a release indication; investigate per regulations.</p>
+      </div>
+      <div class="refEntry" id="sudden-loss-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Sudden Loss Alarm</h2>
+        <p>An unexpected sudden drop in volume (not a sale/delivery) was detected. Action: check for theft, siphoning, or a leak.</p>
+      </div>
+      <div class="refEntry" id="theft-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Theft Alarm</h2>
+        <p>Volume decreased without an authorized dispense. Action: investigate unauthorized removal.</p>
+      </div>
+      <div class="refEntry" id="probe-high-water-no-float">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Probe High Water (No Float)</h2>
+        <p>Water exceeds limit but the water float is missing/stuck. Action: inspect probe water float assembly.</p>
+      </div>
+      <div class="refEntry" id="fuel-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Fuel Alarm</h2>
+        <p>A liquid sensor (sump/interstitial/dispenser pan) detected hydrocarbons. Action: locate and stop the leak; remove product from the containment.</p>
+      </div>
+      <div class="refEntry" id="water-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Water Alarm</h2>
+        <p>A liquid sensor detected water in containment. Action: remove water; find intrusion source (covers, seals, groundwater).</p>
+      </div>
+      <div class="refEntry" id="high-liquid-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>High Liquid Alarm</h2>
+        <p>Liquid in containment reached the upper sensor threshold. Action: pump out and identify whether fuel or water; inspect for leaks.</p>
+      </div>
+      <div class="refEntry" id="low-liquid-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Low Liquid Alarm</h2>
+        <p>Liquid in an interstitial/brine sensor fell below limit (possible breach of double wall). Action: inspect interstitial integrity and brine level.</p>
+      </div>
+      <div class="refEntry" id="liquid-warning">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Liquid Warning</h2>
+        <p>Liquid detected at the warning level. Action: investigate containment; monitor for escalation to alarm.</p>
+      </div>
+      <div class="refEntry" id="water-out-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Water Out Alarm</h2>
+        <p>A discriminating sensor lost its expected water reference. Action: inspect the sensor and its position.</p>
+      </div>
+      <div class="refEntry" id="sensor-out-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Sensor Out Alarm</h2>
+        <p>Console is not seeing the sensor (open/short or disconnected). Action: check sensor wiring and module; verify the sensor type/setup.</p>
+      </div>
+      <div class="refEntry" id="short-alarm">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Short Alarm</h2>
+        <p>Sensor wiring is shorted. Action: inspect for pinched/wet wiring and connector corrosion; megger if needed.</p>
+      </div>
+      <div class="refEntry" id="sensor-setup-data-warning">
+        <div class="refTag">Veeder-Root · TLS4 / TLS-4i</div>
+        <h2>Sensor Setup Data Warning</h2>
+        <p>Sensor configuration was lost/changed. Action: re-enter sensor type and thresholds.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/droptubebuilder/reference/gilbarco-500-series.html">Gilbarco 500 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-700-series.html">Gilbarco 700 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-encore-300.html">Gilbarco Encore 300 Error Codes</a>
+        <a href="/droptubebuilder/reference/wayne-ovation.html">Wayne Ovation Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-300.html">Veeder-Root TLS-300 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-350.html">Veeder-Root TLS-350 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450.html">Veeder-Root TLS-450 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450-plus.html">Veeder-Root TLS-450 PLUS Alarm Codes</a>
+        <a href="/droptubebuilder/reference/franklin-incon-evo.html">Franklin INCON EVO 550 and EVO 5000 Alarms</a>
+        <a href="/droptubebuilder/reference/fe-petro-magvfc.html">FE Petro MagVFC Fault and Status Codes</a>
+        <a href="/droptubebuilder/reference/guardian-spgc-220-single-phase.html">Guardian SPGC-220 (single-phase) Fault and Status Codes</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from DropTubeBuilder</strong>
+        <p>Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/droptubebuilder/">DropTubeBuilder</a> ·
+        <a href="/droptubebuilder/privacy.html">Privacy</a> ·
+        <a href="/droptubebuilder/terms.html">Terms</a> ·
+        <a href="/droptubebuilder/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

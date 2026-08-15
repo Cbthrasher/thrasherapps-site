@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Franklin INCON EVO 550 and EVO 5000 Alarms | DropTubeBuilder field reference</title>
+  <meta name="description" content="Franklin INCON EVO 550 and EVO 5000 Alarms for fuel system and underground storage tank technicians. Programming errors made during setup of the 2-Wire Sensor Module. — Action: Verify 2-Wire Sensor Module programming parameters. If the condition still" />
+  <link rel="canonical" href="https://thrasherapps.com/droptubebuilder/reference/franklin-incon-evo.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/droptubebuilder/">DropTubeBuilder</a>
+        <a href="/droptubebuilder/reference/">Reference</a>
+        <a href="/droptubebuilder/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/droptubebuilder/reference/">DropTubeBuilder reference</a></div>
+      <h1 class="h2">Franklin INCON EVO 550 and EVO 5000 Alarms</h1>
+      <p class="lead">Field reference for fuel system and underground storage tank technicians. 93 entries, taken from the DropTubeBuilder app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#2-wire-sensor-module-setup-error">2-Wire Sensor Module Setup Error</a>
+        <a href="#3-wire-sensor-module-is-offline">3-Wire Sensor Module is Offline</a>
+        <a href="#3-wire-sensor-module-mismatch">3-Wire Sensor Module Mismatch</a>
+        <a href="#4-20ma-module-number-mismatch">4-20mA Module Number Mismatch</a>
+        <a href="#4-20ma-input-error">4-20mA Input Error</a>
+        <a href="#ac-input-module-number-mismatch">AC Input module number mismatch</a>
+        <a href="#ac-input-alarm">AC Input Alarm</a>
+        <a href="#dim-module-number-mismatch">DIM module number mismatch</a>
+        <a href="#invalid-configuration">Invalid Configuration</a>
+        <a href="#io-input-alarm">IO Input Alarm</a>
+        <a href="#io-module-number-mismatch">IO module number mismatch</a>
+        <a href="#lon-module-number-mismatch">LON module number mismatch</a>
+        <a href="#power-supply-module-number-mismatch">Power Supply Module number mismatch</a>
+        <a href="#power-supply-module-setup-error">Power Supply Module Setup Error</a>
+        <a href="#probe-module-is-offline">Probe Module is Offline</a>
+        <a href="#probe-module-setup-error">Probe Module Setup Error</a>
+        <a href="#relay-module-number-mismatch">Relay module number mismatch</a>
+        <a href="#secondary-containment-monitor-setup-error">Secondary Containment Monitor Setup Error</a>
+        <a href="#system-bus-error">System bus error</a>
+        <a href="#alpha-volume-correction-error">Alpha volume correction error</a>
+        <a href="#annual-compliance-warning">Annual Compliance Warning</a>
+        <a href="#correction-table-error">Correction table error</a>
+        <a href="#density-error">Density error</a>
+        <a href="#float-missing">Float Missing</a>
+        <a href="#high-product-level">High product level</a>
+        <a href="#high-product-volume">High product volume</a>
+        <a href="#high-water-level">High water level</a>
+        <a href="#level-error">Level error</a>
+        <a href="#low-battery">Low battery</a>
+        <a href="#low-low-product-volume">Low low product volume</a>
+        <a href="#mag-product-alarm">Mag product alarm</a>
+        <a href="#mag-sensor-data-error">Mag sensor data error</a>
+        <a href="#mag-sensor-float-missing">Mag sensor float missing</a>
+        <a href="#mag-sensor-not-learned-error">Mag sensor not learned error</a>
+        <a href="#mag-water-alarm">Mag water alarm</a>
+        <a href="#manifold-delivery-detected">Manifold Delivery Detected</a>
+        <a href="#manifold-leak-detected">Manifold Leak Detected</a>
+        <a href="#manifold-low-low-product-volume">Manifold low low product volume</a>
+        <a href="#manifold-theft-detected">Manifold Theft Detected</a>
+        <a href="#monthly-compliance-alarm">Monthly Compliance Alarm</a>
+        <a href="#net-error">Net error</a>
+        <a href="#no-probe-detected">No probe detected</a>
+        <a href="#product-volume-error">Product volume error</a>
+        <a href="#system-memory-error">System memory error</a>
+        <a href="#tank-leak-detected">Tank Leak Detected</a>
+        <a href="#tank-product-density-low-limit-exceeded">Tank Product Density Low Limit Exceeded</a>
+        <a href="#tank-delivery-detected">Tank Delivery Detected</a>
+        <a href="#tank-theft-detected">Tank Theft Detected</a>
+        <a href="#ullage-error">Ullage error</a>
+        <a href="#water-volume-error">Water volume error</a>
+        <a href="#containment-not-learned">Containment Not Learned</a>
+        <a href="#containment-program-error-detected">Containment Program Error Detected</a>
+        <a href="#containment-program-error-warning">Containment Program Error Warning</a>
+        <a href="#containment-pump-request-ignored">Containment Pump Request Ignored</a>
+        <a href="#failed-to-hold-vacuum">Failed to Hold Vacuum</a>
+        <a href="#failed-to-reach-target-vacuum">Failed to Reach Target Vacuum</a>
+        <a href="#low-vacuum">Low Vacuum</a>
+        <a href="#low-vacuum-and-pump-request-ignored">Low Vacuum And Pump Request Ignored</a>
+        <a href="#not-configured">Not Configured</a>
+        <a href="#unstable-vacuum">Unstable Vacuum</a>
+        <a href="#vacuum-sensor-failed">Vacuum Sensor Failed</a>
+        <a href="#vacuum-too-high">Vacuum Too High</a>
+        <a href="#sn2-fuse-blown">SN2 Fuse Blown</a>
+        <a href="#sn3-dry-well">SN3 Dry Well</a>
+        <a href="#sn3-high-brine">SN3 High Brine</a>
+        <a href="#sn3-id-error">SN3 ID Error</a>
+        <a href="#sn3-product">SN3 Product</a>
+        <a href="#sn3-sensor-on">SN3 Sensor On</a>
+        <a href="#sn3-sync-error">SN3 Sync Error</a>
+        <a href="#sn3-water">SN3 Water</a>
+        <a href="#0-1-gph-compliance-expired">0.1 GPH Compliance Expired</a>
+        <a href="#3-gph-compliance-expired">3 GPH Compliance Expired</a>
+        <a href="#dispensing-pressure-test-failed">Dispensing Pressure Test Failed</a>
+        <a href="#failed-to-catch-pressure">Failed to Catch Pressure</a>
+        <a href="#gross-leak-detected">Gross Leak Detected</a>
+        <a href="#line-is-not-configured">Line is not configured</a>
+        <a href="#line-program-error-detected">Line Program Error Detected</a>
+        <a href="#marginal-pass-of-gross-leak-test">Marginal Pass of Gross Leak Test</a>
+        <a href="#not-enabled">Not Enabled</a>
+        <a href="#pressure-transducer-fail">Pressure Transducer Fail</a>
+        <a href="#clogged-intake">Clogged Intake</a>
+        <a href="#controller-type-error">Controller Type Error</a>
+        <a href="#extended-run">Extended Run</a>
+        <a href="#high-temperature">High Temperature</a>
+        <a href="#not-calibrated">Not Calibrated</a>
+        <a href="#over-speed">Over Speed</a>
+        <a href="#pump-communication-fail">Pump Communication Fail</a>
+        <a href="#relay-fault">Relay Fault</a>
+        <a href="#unbalanced-load">Unbalanced Load</a>
+        <a href="#under-voltage">Under Voltage</a>
+        <a href="#unknown-fault">Unknown Fault</a>
+        <a href="#check-printer">Check Printer</a>
+        <a href="#printer-motor-temperature">Printer Motor Temperature</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from DropTubeBuilder</strong>
+        <p>Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+      <div class="refEntry" id="2-wire-sensor-module-setup-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>2-Wire Sensor Module Setup Error</h2>
+        <p>Programming errors made during setup of the 2-Wire Sensor Module. — Action: Verify 2-Wire Sensor Module programming parameters. If the condition still exists, contact Franklin Fueling Systems’ Technical Services Dept. for support on this issue.</p>
+      </div>
+      <div class="refEntry" id="3-wire-sensor-module-is-offline">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>3-Wire Sensor Module is Offline</h2>
+        <p>3-Wire Sensor Module is offline due to unknown causes. — Action: Follow safety procedures before working inside of the console. Visually verify a steady, green “Run” light. If a red “Err” light is flashing or steady, try to reboot the system. If the condition still exists, contact Franklin Fueling Systems’ Technical Services Dept. for support on this issue.</p>
+      </div>
+      <div class="refEntry" id="3-wire-sensor-module-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>3-Wire Sensor Module Mismatch</h2>
+        <p>3-Wire Sensor Modules detected does not match the number programmed. — Action: At startup check that the number of 3-Wire Sensor Modules installed matches the number programmed under System Configuration &gt; Modules Expected. On machines that are in service: Check for a flashing green light or no light at all on the 3-Wire Sensor Module and contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="4-20ma-module-number-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>4-20mA Module Number Mismatch</h2>
+        <p>4-20 mA Modules detected does not match the number programmed. — Action: Check that the number of 4-20mA Modules installed matches the number programmed under System Configuration &gt; Modules Expected. Check for a flashing green light or no light at all on the 4-20mA Module and contact FFS Technical Services for support</p>
+      </div>
+      <div class="refEntry" id="4-20ma-input-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>4-20mA Input Error</h2>
+        <p>Errors have been detected in the an analog input channel — Action: If the input is not being used, set the programming to reflect proper input type. If the input is being used as an analog signal, inspect the wiring and redo connections.</p>
+      </div>
+      <div class="refEntry" id="ac-input-module-number-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>AC Input module number mismatch</h2>
+        <p>AC Input Modules detected does not match the number programmed. — Action: Check that the number of AC Input Modules installed matches the number programmed under System Configuration &gt; Modules Expected. Check for a flashing green light or no light at all on the AC Input Module and contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="ac-input-alarm">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>AC Input Alarm</h2>
+        <p>An input on the AC input module has been configured as an alarm and is active. — Action: Check the programming and voltage inputs for the specified Input channel on the AC Input module.</p>
+      </div>
+      <div class="refEntry" id="dim-module-number-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>DIM module number mismatch</h2>
+        <p>DIM modules detected does not match the number programmed. — Action: Check that the number of DIM Modules installed matches the number programmed under System Configuration &gt; Modules Expected. If problem persists, contact FFS Technical Services for support</p>
+      </div>
+      <div class="refEntry" id="invalid-configuration">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Invalid Configuration</h2>
+        <p>The configuration that has been loaded is not valid. — Action: Verify the file type of the configuration which is being uploaded</p>
+      </div>
+      <div class="refEntry" id="io-input-alarm">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>IO Input Alarm</h2>
+        <p>An input on the Input/Output module has been configured as an alarm and is active. — Action: Check the programming and voltage inputs for the specified Input channel on the IO module.</p>
+      </div>
+      <div class="refEntry" id="io-module-number-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>IO module number mismatch</h2>
+        <p>IO Modules detected does not match the number programmed. — Action: Check that the number of IO Modules installed matches the num- ber programmed under System Configuration &gt; Modules Expected. Check for a flashing green light or no light at all on the IO Module and contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="lon-module-number-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>LON module number mismatch</h2>
+        <p>Lon Modules detected does not match the number of Lon Modules programmed. — Action: Check that the number of LON Modules installed matches the number programmed under System Configuration &gt; Modules Expected. If problem persists, contact FFS Technical Services for support. Also check that the Node ID does not conflict with another Node ID in the network</p>
+      </div>
+      <div class="refEntry" id="power-supply-module-number-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Power Supply Module number mismatch</h2>
+        <p>Power Supply Modules detected does not match the number programmed. — Action: Check that the number of Power Supply Modules installed matches the number programmed under System Configuration &gt; Modules Ex- pected. Check for a flashing green light or no light at all on the Power Supply Module and contact FFS Technical Services for support</p>
+      </div>
+      <div class="refEntry" id="power-supply-module-setup-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Power Supply Module Setup Error</h2>
+        <p>Errors in the setup of the listed module. — Action: The console may need to be reprogrammed.</p>
+      </div>
+      <div class="refEntry" id="probe-module-is-offline">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Probe Module is Offline</h2>
+        <p>Probe Module is not communicating with the console. — Action: Follow safety procedures before working inside the console. Visually verify a steady green “Run” light. If red “Err” light is flashing or steady, re-seat module and reboot system. If the condition still exists, contact Franklin Fueling Systems’ Technical Support for help on this issue.</p>
+      </div>
+      <div class="refEntry" id="probe-module-setup-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Probe Module Setup Error</h2>
+        <p>Programming errors made during setup of the Probe Module. — Action: Verify Probe Module programming parameters. If the condition still exists, contact Franklin Fueling Systems’ Technical Support for help on this issue.</p>
+      </div>
+      <div class="refEntry" id="relay-module-number-mismatch">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Relay module number mismatch</h2>
+        <p>[slot] Relay Modules detected does not match the number programmed. — Action: Check that the number of Relay Modules installed matches the num- ber programmed under System Configuration &gt; Modules Expected. Check for a flashing green light or no light at all on the AC Input Module and contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="secondary-containment-monitor-setup-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Secondary Containment Monitor Setup Error</h2>
+        <p>An error exists in the configuration of the Secondary Containment Monitoring Setup. — Action: Inspect the Secondary Containment Monitor setup configuration for possible errors.</p>
+      </div>
+      <div class="refEntry" id="system-bus-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>System bus error</h2>
+        <p>Data transfer errors occurred in the System Bus. — Action: Upgrade to the latest version of firmware available at: www.franklinfueling.com</p>
+      </div>
+      <div class="refEntry" id="alpha-volume-correction-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Alpha volume correction error</h2>
+        <p>[Tank] This error is caused by a programming mistake in the Special Products section. — Action: Verify Special Product Alpha volume correction program parameters. Contact FFS Technical Services Department for assistance.</p>
+      </div>
+      <div class="refEntry" id="annual-compliance-warning">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Annual Compliance Warning</h2>
+        <p>[Any] The device listed has 7 days before it will go into a compliance alarm — Action: Pass a test or clear the alarm on the device.</p>
+      </div>
+      <div class="refEntry" id="correction-table-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Correction table error</h2>
+        <p>[Tank] Level and Volume mismatch detected in Correction table programming. — Action: Verify that all levels and volumes are entered accurately into the Correction Table programming.</p>
+      </div>
+      <div class="refEntry" id="density-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Density error</h2>
+        <p>[Tank] The density of the product is not within specifications. — Action: Enter setup and verify the information under density in the probe programming.</p>
+      </div>
+      <div class="refEntry" id="float-missing">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Float Missing</h2>
+        <p>[Tank] Probe detects a lesser number of floats than programmed. — Action: Review probe programming for correct number of floats. If correct then inspect probe shaft, floats, and float magnets. With the probes out of the tank, this would be an idea time to clean the probe and floats. If pressures meets requirements specified, contact Franklin Fueling Systems’ Technical Services Dept. for support on this issue.</p>
+      </div>
+      <div class="refEntry" id="high-product-level">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>High product level</h2>
+        <p>[Tank] Product level exceeded High limit set. Possible close to tank overfill condition — Action: Acquire an accurate product level. If actual product level in tank does not match the consoles displayed current level, verify programming is correct.</p>
+      </div>
+      <div class="refEntry" id="high-product-volume">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>High product volume</h2>
+        <p>[Tank] The specified tank has reached the programmed High Product Volume. — Action: Check product volume and compare to the programmed High Volume alarm Limit in the setup menu. Acquire an accurate product level and compare to the ATG. If levels differ, verify programming is correct. If alarm persists, contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="high-water-level">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>High water level</h2>
+        <p>[Tank] Water level exceeded High limit set. — Action: Verify programmed level. If water is too high consult you local site policy procedures for corrective actions.</p>
+      </div>
+      <div class="refEntry" id="level-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Level error</h2>
+        <p>[Tank] Product level exceeds tank diameter due to an error in console of programming. — Action: Verify tank, offset, and probe programming.</p>
+      </div>
+      <div class="refEntry" id="low-battery">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Low battery</h2>
+        <p>[Tank] Backup battery is low. — Action: See Installation Guide for replacement instructions.</p>
+      </div>
+      <div class="refEntry" id="low-low-product-volume">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Low low product volume</h2>
+        <p>[Tank/ Manifold] Product volume below Low Low limit. The tank or manifold specified may be near empty. — Action: Acquire an accurate product volume, and if does not match the consoles displayed current volume, verify programming.</p>
+      </div>
+      <div class="refEntry" id="mag-product-alarm">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Mag product alarm</h2>
+        <p>[Sensor] The specified TSP-DMS has detected product. — Action: Inspect the sump for the presence of product.</p>
+      </div>
+      <div class="refEntry" id="mag-sensor-data-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Mag sensor data error</h2>
+        <p>[Sensor] There is an error with the reported data from the specified TSP-DMS — Action: Inspect wire connections at the Mag sensor. If the problem persists, contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="mag-sensor-float-missing">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Mag sensor float missing</h2>
+        <p>[Sensor] The specified TSP-DMS is not reporting the level information for one or more float. — Action: Inspect the Mag sensor for damage and redo the connections. If the Problem persists, contact FFS Technical Services.</p>
+      </div>
+      <div class="refEntry" id="mag-sensor-not-learned-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Mag sensor not learned error</h2>
+        <p>[Sensor] The specified TSP-DMS was not properly learned. — Action: Enter into the Control &gt; Mag Sensor screen and have the console learn the sensor.</p>
+      </div>
+      <div class="refEntry" id="mag-water-alarm">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Mag water alarm</h2>
+        <p>[Sensor] The specified TSP-DMS has detected water. — Action: Inspect the sump for water.</p>
+      </div>
+      <div class="refEntry" id="manifold-delivery-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Manifold Delivery Detected</h2>
+        <p>[Tank] A delivery has been detected on the specified manifold. — Action: This is not an alarm and should only be a concern if there was not a delivery to the site at the specified date and time.</p>
+      </div>
+      <div class="refEntry" id="manifold-leak-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Manifold Leak Detected</h2>
+        <p>[Tank] A leak in the specified manifolded tanks has been detected via a SCALD test. Suspect possible leak — Action: Review Tank Leak Test History and programming. Refer to page 22 for instructions on manually starting line leak tests.</p>
+      </div>
+      <div class="refEntry" id="manifold-low-low-product-volume">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Manifold low low product volume</h2>
+        <p>[Tank] The specified manifold has reached the programmed Low Low Product Volume — Action: Check product volume and compare to the programmed Low Low Volume alarm Limit in the setup menu. Acquire an accurate product volume and compare to the ATG. If levels differ, verify programming is correct. If alarm persists, contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="manifold-theft-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Manifold Theft Detected</h2>
+        <p>[Tank] The specified manifold has entered Sentinel Mode and detects product leaving the tank that exceeds the programmed theft limits. — Action: Verify programming and accurate level / volume readings.</p>
+      </div>
+      <div class="refEntry" id="monthly-compliance-alarm">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Monthly Compliance Alarm</h2>
+        <p>[Any] The device listed has gone out of compliance — Action: Pass a test or clear the alarm on the device.</p>
+      </div>
+      <div class="refEntry" id="net-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Net error</h2>
+        <p>[Tank] Product net levels exceed tank diameter — Action: Verify tank, product offset and probe programming</p>
+      </div>
+      <div class="refEntry" id="no-probe-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>No probe detected</h2>
+        <p>[Tank] The Console is not receiving any communication from the probe. — Action: Check for proper probe programming at the console and inspect wire connections at the probe. If the problem persists, contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="product-volume-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Product volume error</h2>
+        <p>[Tank] The Product Volume as reported by the probe has exceeded the limits of the tank. — Action: Check for proper probe and tank programming at the console. If programming is correct, inspect the probe to ensure that the float is not stuck in the riser or is otherwise obstructed.</p>
+      </div>
+      <div class="refEntry" id="system-memory-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>System memory error</h2>
+        <p>[System] The system has detected a low memory situation. — Action: Contact FFS Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="tank-leak-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Tank Leak Detected</h2>
+        <p>[Tank] Tank leak detected. Suspect possible leak. — Action: Review tank leak test history and programming. Refer to page 22 for instructions on manually starting line leak tests.</p>
+      </div>
+      <div class="refEntry" id="tank-product-density-low-limit-exceeded">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Tank Product Density Low Limit Exceeded</h2>
+        <p>[Tank] The Product Density has exceeded the programmed low limit. — Action: Verify programming if correct this alarm may be an indication of improper density of the fuel.</p>
+      </div>
+      <div class="refEntry" id="tank-delivery-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Tank Delivery Detected</h2>
+        <p>[Tank] A delivery has been detected on the specified tank. — Action: This is not an alarm and should only be a concern if there was not a delivery to the site at the specified date and time.</p>
+      </div>
+      <div class="refEntry" id="tank-theft-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Tank Theft Detected</h2>
+        <p>[Tank] Product used in Sentinel Mode exceeds theft limit set. Suspect theft, and then verify theft limit in programming. — Action: Verify theft limit in programming. Also obtain an accurate product level and compare to inventory.</p>
+      </div>
+      <div class="refEntry" id="ullage-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Ullage error</h2>
+        <p>[Tank] Ullage reported has exceeded tank capacity. — Action: Check for proper probe and tank programming at the console. If programming is correct, inspect the probe to ensure that the float is not stuck in the riser or obstructed. Bring the probe inside and wire directly to the gauge to eliminate possible problems with the field wiring.</p>
+      </div>
+      <div class="refEntry" id="water-volume-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Water volume error</h2>
+        <p>[Tank] Water volume has exceeded tank capacity. — Action: Check for proper probe and tank programming at the console. If programming is correct, inspect the probe to ensure that the colored water float is on the bottom.</p>
+      </div>
+      <div class="refEntry" id="containment-not-learned">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Containment Not Learned</h2>
+        <p>[SCM] The learning process has not been completed. — Action: Refer to Secondary Containment Monitoring Installation and User’s Guide 000-0528 for more information.</p>
+      </div>
+      <div class="refEntry" id="containment-program-error-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Containment Program Error Detected</h2>
+        <p>[SCM] An error has been detected in the containment programming.</p>
+      </div>
+      <div class="refEntry" id="containment-program-error-warning">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Containment Program Error Warning</h2>
+        <p>[SCM] An error has been detected in the containment programming</p>
+      </div>
+      <div class="refEntry" id="containment-pump-request-ignored">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Containment Pump Request Ignored</h2>
+        <p>[Engineering] The containment called for the STP to turn on but has not seen an increase in vacuum level.</p>
+      </div>
+      <div class="refEntry" id="failed-to-hold-vacuum">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Failed to Hold Vacuum</h2>
+        <p>[SCM] The rate of vacuum decay faster than the learned rate.</p>
+      </div>
+      <div class="refEntry" id="failed-to-reach-target-vacuum">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Failed to Reach Target Vacuum</h2>
+        <p>[SCM] 6”hg could not be reached in the learned time.</p>
+      </div>
+      <div class="refEntry" id="low-vacuum">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Low Vacuum</h2>
+        <p>[SCM] The vacuum level has dropped below 1”hg.</p>
+      </div>
+      <div class="refEntry" id="low-vacuum-and-pump-request-ignored">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Low Vacuum And Pump Request Ignored</h2>
+        <p>[Engineering] Low vacuum level due to Pump Request Ignored.</p>
+      </div>
+      <div class="refEntry" id="not-configured">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Not Configured</h2>
+        <p>[SCM] Containment programming has not been completed</p>
+      </div>
+      <div class="refEntry" id="unstable-vacuum">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Unstable Vacuum</h2>
+        <p>[SCM] Vacuum level is fluctuating at a rate that is inconsistent with the learned parameters.</p>
+      </div>
+      <div class="refEntry" id="vacuum-sensor-failed">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Vacuum Sensor Failed</h2>
+        <p>[SCM] The 4-20mA vacuum transducer has failed and is no longer detected</p>
+      </div>
+      <div class="refEntry" id="vacuum-too-high">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Vacuum Too High</h2>
+        <p>[SCM] The vacuum level has reached above 10”hg</p>
+      </div>
+      <div class="refEntry" id="sn2-fuse-blown">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN2 Fuse Blown</h2>
+        <p>[ChannelSN2] 2-Wire Sensor Module fuse blown due to unknown causes. — Action: The fuses on the Sensor boards are non-serviceable per UL listing standards. The module must be replaced if the fuse is blown.</p>
+      </div>
+      <div class="refEntry" id="sn3-dry-well">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN3 Dry Well</h2>
+        <p>[ChannelSN3] Monitoring well is dry. — Action: Visually verify that the alarm is correct.</p>
+      </div>
+      <div class="refEntry" id="sn3-high-brine">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN3 High Brine</h2>
+        <p>[ChannelSN3] Brine solution has tripped high level brine sensor. — Action: Verify actual level of solution and sensor installed location.</p>
+      </div>
+      <div class="refEntry" id="sn3-id-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN3 ID Error</h2>
+        <p>[ChannelSN3] Discriminating sensor is given an improper ID. — Action: Verify sensor programming and Auto configuration.</p>
+      </div>
+      <div class="refEntry" id="sn3-product">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN3 Product</h2>
+        <p>[ChannelSN3] Discriminating sensor has detected product present at location. — Action: Visually inspect location carefully for presence of liquid. In the case of a leak, follow site policy procedures. If no liquid is present, and alarm still exists, sensor may be tripped on error. Check wiring continuity from sensor to console.</p>
+      </div>
+      <div class="refEntry" id="sn3-sensor-on">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN3 Sensor On</h2>
+        <p>[ChannelSN3] Discriminating sensor shows alarm status. — Action: Inspect location for presence of liquid. In the case of a leak, follow site policy procedures. If no liquid is present, and alarm still exists, sensor may be tripped on error. Check wiring continuity from sensor to console. Test sensor at console, trip sensor on purpose. Verify console terminal wiring. If issue still exists, inspect wiring to probe. If the condition still exists, contact Franklin Fueling Systems’ Technical Services for support.</p>
+      </div>
+      <div class="refEntry" id="sn3-sync-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN3 Sync Error</h2>
+        <p>[ChannelSN3] 3-wire sensor data signals not in sync with module. — Action: Verify correct wiring and re-make the connections. Verify sensor type.</p>
+      </div>
+      <div class="refEntry" id="sn3-water">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>SN3 Water</h2>
+        <p>[ChannelSN3] 3-wire discriminate sensor detecting water at location. — Action: Visually inspect area for water presence.</p>
+      </div>
+      <div class="refEntry" id="0-1-gph-compliance-expired">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>0.1 GPH Compliance Expired</h2>
+        <p>[Line] A 0.1 gph test has not been completed within the last 365 days. — Action: Verify that no pertinent alarm conditions have been reoccurring. Ensure that there is enough time to pass the test.</p>
+      </div>
+      <div class="refEntry" id="3-gph-compliance-expired">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>3 GPH Compliance Expired</h2>
+        <p>[Line] The required daily 3 GPH test has not been completed. — Action: Check for continuous pump on conditions that could be caused by a sticky handle switch or relay.</p>
+      </div>
+      <div class="refEntry" id="dispensing-pressure-test-failed">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Dispensing Pressure Test Failed</h2>
+        <p>[Line] Pressure during dispensing dropped below 7.5 psi. This is seen as a catastrophic leak during dispensing. — Action: Inspect all sumps for product. Use a pressure gauge to test line pressure during dispensing. See “LS500 Auto Learn Line Leak Detection Installation &amp; User’s Guide” FFS 000-2145. Contact Franklin Fueling Systems’ Technical Services Dept. for support.</p>
+      </div>
+      <div class="refEntry" id="failed-to-catch-pressure">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Failed to Catch Pressure</h2>
+        <p>[Line] The pump OFF pressure has dropped below 7 psi within 1 second after the pump was turned off — Action: Inspect all sumps for product. Refer to “LS500 Auto Learn Line Leak Detection Installation &amp; User’s Guide” FFS 000-2145 for more information.</p>
+      </div>
+      <div class="refEntry" id="gross-leak-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Gross Leak Detected</h2>
+        <p>[Line] The console has detected a line leak greater than 3 gph. — Action: Inspect all sumps for product. Refer to “LS500 Auto Learn Line Leak Detection Installation &amp; User’s Guide” FFS 000-2145 for more information.</p>
+      </div>
+      <div class="refEntry" id="line-is-not-configured">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Line is not configured</h2>
+        <p>[Line] Specified line is not configured, therefore line leak test will not be performed. — Action: Verify line programming. If necessary configure line.</p>
+      </div>
+      <div class="refEntry" id="line-program-error-detected">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Line Program Error Detected</h2>
+        <p>[Line] An error has been detected in the programming of the specified line. — Action: Verify programming of line under the setup menu.</p>
+      </div>
+      <div class="refEntry" id="marginal-pass-of-gross-leak-test">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Marginal Pass of Gross Leak Test</h2>
+        <p>[Line] The last passed gross test detected a leak just under the 3 gph threshold. — Action: Verify there is no sign of leaks within any of the sumps. Run additional tests. Refer to “LS500 Auto Learn Line Leak Detection Installation &amp; User’s Guide” FFS 000-2145 for more information.</p>
+      </div>
+      <div class="refEntry" id="not-enabled">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Not Enabled</h2>
+        <p>[Line] Line testing has not been enabled. — Action: Verify no other alarm is present then enter the line control menu and enable the line testing feature.</p>
+      </div>
+      <div class="refEntry" id="pressure-transducer-fail">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Pressure Transducer Fail</h2>
+        <p>[Line] The transducer is not being detected by the console. — Action: Inspect the wiring to the specified transducer and the channel it terminates at. Refer to “LS500 Auto Learn Line Leak Detection Installation &amp; User’s Guide” FFS 000-2145 for more information.</p>
+      </div>
+      <div class="refEntry" id="clogged-intake">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Clogged Intake</h2>
+        <p>[TPI] The STP controller has reported a dry run condition but the associated tank shows a product level above the intake. — Action: Ensure proper programming of the TPI and calibration of the Smart Controller. If correct, check for an obstruction on the PMA.</p>
+      </div>
+      <div class="refEntry" id="controller-type-error">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Controller Type Error</h2>
+        <p>[TPI] The programmed controller type does not match what the console is detecting. — Action: Verify proper programming of the TPI as well as the Smart controller type and address.</p>
+      </div>
+      <div class="refEntry" id="extended-run">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Extended Run</h2>
+        <p>[TPI] The STP controller is reporting an extended run condition. — Action: Refer to the applicable Smart Controller Installation guide for details.</p>
+      </div>
+      <div class="refEntry" id="high-temperature">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>High Temperature</h2>
+        <p>[TPI] The STP controller is reporting a high temperature condition.</p>
+      </div>
+      <div class="refEntry" id="not-calibrated">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Not Calibrated</h2>
+        <p>[TPI] The STP controller is reporting that it has not been calibrated.</p>
+      </div>
+      <div class="refEntry" id="over-speed">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Over Speed</h2>
+        <p>[TPI] The STP controller is reporting an over speed condition. — Action: Refer to the applicable Smart Controller Installation guide for details</p>
+      </div>
+      <div class="refEntry" id="pump-communication-fail">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Pump Communication Fail</h2>
+        <p>[TPI] Communication from the TPI to the STP controller has failed. — Action: Check all wiring connections and ensure that there is power supplied to the Smart Controller.</p>
+      </div>
+      <div class="refEntry" id="relay-fault">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Relay Fault</h2>
+        <p>[TPI] The STP controller is reporting a relay fault error. — Action: Refer to the applicable Smart Controller Installation guide for details.</p>
+      </div>
+      <div class="refEntry" id="unbalanced-load">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Unbalanced Load</h2>
+        <p>[TPI] The STP controller is reporting an unbalanced load condition.</p>
+      </div>
+      <div class="refEntry" id="under-voltage">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Under Voltage</h2>
+        <p>[TPI] The STP controller is reporting a voltage level under 200VAC.</p>
+      </div>
+      <div class="refEntry" id="unknown-fault">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Unknown Fault</h2>
+        <p>[TPI] The STP controller is reporting an unknown fault code. — Action: Check fault condition on Smart controller and contact FFS Technical Services for more information</p>
+      </div>
+      <div class="refEntry" id="check-printer">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Check Printer</h2>
+        <p>[Printer] Printer is out of paper, or the printer door is open. — Action: Make sure the printer has paper, and the printer door is closed completely.</p>
+      </div>
+      <div class="refEntry" id="printer-motor-temperature">
+        <div class="refTag">Franklin / INCON · EVO 550 / 5000</div>
+        <h2>Printer Motor Temperature</h2>
+        <p>[Printer] Printer motor has exceeded temperature limit — Action: Allow printer to cool. Keep the console area cool and ventilated. If the alarm does not clear, contact FFS Technical Support.</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/droptubebuilder/reference/gilbarco-500-series.html">Gilbarco 500 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-700-series.html">Gilbarco 700 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-encore-300.html">Gilbarco Encore 300 Error Codes</a>
+        <a href="/droptubebuilder/reference/wayne-ovation.html">Wayne Ovation Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-300.html">Veeder-Root TLS-300 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-350.html">Veeder-Root TLS-350 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450.html">Veeder-Root TLS-450 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450-plus.html">Veeder-Root TLS-450 PLUS Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls4.html">Veeder-Root TLS4 and TLS-4i Alarm Codes</a>
+        <a href="/droptubebuilder/reference/fe-petro-magvfc.html">FE Petro MagVFC Fault and Status Codes</a>
+        <a href="/droptubebuilder/reference/guardian-spgc-220-single-phase.html">Guardian SPGC-220 (single-phase) Fault and Status Codes</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from DropTubeBuilder</strong>
+        <p>Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/droptubebuilder/">DropTubeBuilder</a> ·
+        <a href="/droptubebuilder/privacy.html">Privacy</a> ·
+        <a href="/droptubebuilder/terms.html">Terms</a> ·
+        <a href="/droptubebuilder/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

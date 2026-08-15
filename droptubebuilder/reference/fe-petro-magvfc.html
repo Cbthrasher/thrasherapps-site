@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FE Petro MagVFC Fault and Status Codes | DropTubeBuilder field reference</title>
+  <meta name="description" content="FE Petro MagVFC Fault and Status Codes for fuel system and underground storage tank technicians. Variable frequency controller for FE Petro IST, IST VS4, STP VS4/VS2, and PMA VS4/VS2 submersibles (2–4 HP). Indoor, non-hazardous mounting. Reset but" />
+  <link rel="canonical" href="https://thrasherapps.com/droptubebuilder/reference/fe-petro-magvfc.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/droptubebuilder/">DropTubeBuilder</a>
+        <a href="/droptubebuilder/reference/">Reference</a>
+        <a href="/droptubebuilder/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/droptubebuilder/reference/">DropTubeBuilder reference</a></div>
+      <h1 class="h2">FE Petro MagVFC Fault and Status Codes</h1>
+      <p class="lead">Field reference for fuel system and underground storage tank technicians. 18 entries, taken from the DropTubeBuilder app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#overview">Overview</a>
+        <a href="#fault-ul">Fault code UL</a>
+        <a href="#fault-li">Fault code LI</a>
+        <a href="#fault-er">Fault code Er</a>
+        <a href="#fault-ri">Fault code rI</a>
+        <a href="#fault-os">Fault code OS</a>
+        <a href="#fault-ho">Fault code HO</a>
+        <a href="#fault-lu">Fault code LU</a>
+        <a href="#fault-lr">Fault code Lr</a>
+        <a href="#fault-su">Fault code SU</a>
+        <a href="#fault-oc">Fault code OC</a>
+        <a href="#fault-sc">Fault code SC</a>
+        <a href="#status-id">Status Id Idle</a>
+        <a href="#status-xx-yy">Status xx : yy Software Revision</a>
+        <a href="#status-pr-nn">Status Pr : NN Pressure Regulate</a>
+        <a href="#status-pl">Status PL Power Limit</a>
+        <a href="#status-sr">Status Sr Secondary Running</a>
+        <a href="#dip-switches">DIP switch settings</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from DropTubeBuilder</strong>
+        <p>Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+      <div class="refEntry" id="overview">
+        <div class="refTag">FE Petro MagVFC</div>
+        <h2>Overview</h2>
+        <p>Variable frequency controller for FE Petro IST, IST VS4, STP VS4/VS2, and PMA VS4/VS2 submersibles (2–4 HP). Indoor, non-hazardous mounting. Reset button clears faults; press-and-hold Silence Alarm shows the last 3 faults (F0, F1, F2). SW1 rotary sets pump pressure — position 4 ≈ 32 PSI is the recommended calibration starting point. SW2 sets the controller address in Primary-Secondary setups.</p>
+        <div class="refLabel">Source</div>
+        <p>Franklin Fueling Systems MagVFC Installation &amp; Owner&#x27;s Manual, doc 228001101 rev 8</p>
+      </div>
+      <div class="refEntry" id="fault-ul">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code UL</h2>
+        <p>Under Load — tank empty or wrong HP setting</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Low fuel level in the storage tank; obstruction on PMA intake; SW3 Pole 6 set wrong for the pump connected.</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. Verify SW3 P6 matches pump horsepower (VS2 motor with P6 ON can false-trip in SW1 positions 0–6). Check fuel level — after delivery covers the PMA end bell, push Reset. If still present, suspect an obstruction on the PMA inlet.</p>
+      </div>
+      <div class="refEntry" id="fault-li">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code LI</h2>
+        <p>Low incoming voltage</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Voltage fluctuations or low input voltage.</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. If it recurs, meter the incoming supply — must be 200–250 VAC. Outside that range, have an electrician correct the supply.</p>
+      </div>
+      <div class="refEntry" id="fault-er">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code Er</h2>
+        <p>Extended Run</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Continuous hook signal for over 60 minutes without a change in flow.</p>
+        <div class="refLabel">Action</div>
+        <p>Disconnect and lock out power. With all dispenser handles off there should be NO voltage across the hook terminals — if voltage is present, have an electrician correct it, then verify operation. (SW6 Pole 1 ON disables this alarm.)</p>
+      </div>
+      <div class="refEntry" id="fault-ri">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code rI</h2>
+        <p>Voltage unbalance / capacitor bank</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Unbalanced incoming voltage, sudden large load, or failed capacitor bank.</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. Check incoming voltage and loading. If cleared, watch the unit ~10 minutes; if it recurs, contact FE Technical Support.</p>
+      </div>
+      <div class="refEntry" id="fault-os">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code OS</h2>
+        <p>Over Speed</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Controller operating outside its frequency range.</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset and check operation. If still present, power down 30 seconds, power up, recheck. Recurs → FE Technical Support.</p>
+      </div>
+      <div class="refEntry" id="fault-ho">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code HO</h2>
+        <p>High temperature</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Excessive operating temperature inside the controller.</p>
+        <div class="refLabel">Action</div>
+        <p>Verify the fan runs (replace if not). Check for heat sources at the mounting location and clear all ventilation louvers, then cycle power. Persists → FE Technical Support.</p>
+      </div>
+      <div class="refEntry" id="fault-lu">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code LU</h2>
+        <p>Locked rotor at startup</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Foreign material in the PMA or defective PMA (corrosion after water-ballasted tanks is a known cause).</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. If it persists: lock out power, pull the extractable, remove the PMA end cap and spin the rotor with a 3/16&quot; Allen key to feel for binding. Binding/damage → replace with a new PMAVS4/PMAVS2 (check the lead assembly for shorted wires first). Very long/undersized motor wiring can show a FALSE LU.</p>
+      </div>
+      <div class="refEntry" id="fault-lr">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code Lr</h2>
+        <p>Locked rotor while running</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Foreign material in PMA or defective PMA. A partial short (nicked pump wire + water in conduit) reads as high power draw and flashes Lr instead of SC.</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. If it persists, inspect the PMA as for LU (pull extractable, check rotor for binding, replace VS motor if damaged) and check pump power wiring for nicks/water intrusion.</p>
+      </div>
+      <div class="refEntry" id="fault-su">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code SU</h2>
+        <p>Upper rail short</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Short circuit in field wiring or an internal controller failure.</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. If it recurs: lock out power, disconnect the STP wires at the BLACK/ORANGE/RED terminals and cap them. Power up — if the display now shows OC, troubleshoot as a wiring short circuit; if it still shows SU, the controller is at fault → FE Technical Support.</p>
+      </div>
+      <div class="refEntry" id="fault-oc">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code OC</h2>
+        <p>Open circuit controller → motor</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Broken connection between controller and PMA.</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. If it persists: lock out power, remove the three motor leads and ohm them pairwise — expect 1.2 ±1 Ω (VS4) or 2.5 ±1 Ω (VS2); any lead to ground must be open. Repeat at the extractable manifold wire nuts to isolate whether the fault is the PMA, the connectors, or the run between controller and pump. Long/undersized wiring can show a FALSE OC.</p>
+      </div>
+      <div class="refEntry" id="fault-sc">
+        <div class="refTag">FE Petro MagVFC · fault</div>
+        <h2>Fault code SC</h2>
+        <p>Short circuit / wrong HP setting</p>
+        <div class="refLabel">Likely cause</div>
+        <p>Short in the controller-to-PMA connections, or SW3 Pole 6 set wrong (VS4 motor with P6 OFF can false-trip).</p>
+        <div class="refLabel">Action</div>
+        <p>Push Reset. Verify SW3 P6 matches the pump HP. If it persists: lock out power and ohm the three motor leads — 1.2 ±1 Ω (VS4) / 2.5 ±1 Ω (VS2) pairwise, &gt;80k Ω to ground. Shorted at the extractable → replace the STP connectors or the PMA; otherwise suspect the run between controller and pump.</p>
+      </div>
+      <div class="refEntry" id="status-id">
+        <div class="refTag">FE Petro MagVFC · status</div>
+        <h2>Status Id Idle</h2>
+        <p>No hook signal present, PMA not running, no fault codes present. Normal at rest.</p>
+      </div>
+      <div class="refEntry" id="status-xx-yy">
+        <div class="refTag">FE Petro MagVFC · status</div>
+        <h2>Status xx : yy Software Revision</h2>
+        <p>Displays software revision xx.yy right after reset or power-on. If the display stops on yy, check for low incoming voltage or loose input power connections.</p>
+      </div>
+      <div class="refEntry" id="status-pr-nn">
+        <div class="refTag">FE Petro MagVFC · status</div>
+        <h2>Status Pr : NN Pressure Regulate</h2>
+        <p>Running and holding the set pressure; Pr and the pressure value NN flash alternately.</p>
+      </div>
+      <div class="refEntry" id="status-pl">
+        <div class="refTag">FE Petro MagVFC · status</div>
+        <h2>Status PL Power Limit</h2>
+        <p>Running at its power limit (beyond the pressure-regulate setting).</p>
+      </div>
+      <div class="refEntry" id="status-sr">
+        <div class="refTag">FE Petro MagVFC · status</div>
+        <h2>Status Sr Secondary Running</h2>
+        <p>A Secondary unit in a Primary-Secondary configuration is running.</p>
+      </div>
+      <div class="refEntry" id="dip-switches">
+        <div class="refTag">FE Petro MagVFC · configuration</div>
+        <h2>DIP switch settings</h2>
+        <p>SW3 pole 1. ON: Mechanical leak detectors or LS500 electronic LLD. OFF: Veeder-Root PLLD (required setting). Factory: ON</p>
+        <p>SW3 pole 2. ON: Gasoline. OFF: Diesel product. Factory: ON. Specific gravity differs — wrong setting mis-regulates pressure.</p>
+        <p>SW3 pole 3. ON: Primary controller (Primary-Secondary). OFF: Stand-alone or Secondary. Factory: OFF</p>
+        <p>SW3 pole 4. ON: Pipe compensation — see manual calibration section. OFF: —. Factory: ON. Poles 4 &amp; 5 must match on Primary and Secondary units.</p>
+        <p>SW3 pole 5. ON: Pipe compensation — see manual calibration section. OFF: —. Factory: ON</p>
+        <p>SW3 pole 6. ON: PMAVS4 motor (4 HP). OFF: PMAVS2 motor (2 HP). Factory: OFF. Wrong setting causes false SC or UL faults — set to the pump&#x27;s horsepower.</p>
+        <p>SW3 pole 7. ON: Auto-reset of Under Load fault (empty tank) when corrected. OFF: Must push Reset to clear UL. Factory: OFF. Leave OFF in IST-VFC Compatibility mode.</p>
+        <p>SW3 pole 8. ON: Multiple controllers working together — see manual. OFF: Default. Factory: OFF. Not functional in IST-VFC Compatibility mode.</p>
+        <p>SW6 pole 1. ON: Disables the Extended Run Alarm. OFF: Extended Run Alarm active. Factory: OFF. Not functional in IST-VFC Compatibility mode — leave OFF.</p>
+        <p>SW6 pole 2. ON: Primary-Secondary fault shutdown control — see manual. OFF: Default. Factory: OFF. Primary-Secondary / Alternating Circuit configurations only.</p>
+        <p>SW6 pole 3. ON: IST-VFC Compatibility Mode (talks only to rev 1.5 IST-VFCs). OFF: Native MagVFC Primary-Secondary communication. Factory: OFF. Software 1.18+.</p>
+        <p>SW6 pole 4. ON: Alternating Circuit: swap submersibles every 30 min on continuous hook. OFF: No alternating. Factory: OFF. Software 1.22+. Helps keep tank levels balanced.</p>
+        <p>SW6 pole 5. ON: Proportional Alternating Circuit (settable run time per controller). OFF: Not used. Factory: OFF. Software 1.24+ (older manuals: Secondary turn-off, 1.23).</p>
+        <p>SW6 pole 6. ON: —. OFF: Not used — leave OFF. Factory: OFF. Unit may operate unpredictably if poles 6–8 are ON.</p>
+        <p>SW6 pole 7. ON: —. OFF: Not used — leave OFF. Factory: OFF</p>
+        <p>SW6 pole 8. ON: —. OFF: Not used — leave OFF. Factory: OFF</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/droptubebuilder/reference/gilbarco-500-series.html">Gilbarco 500 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-700-series.html">Gilbarco 700 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-encore-300.html">Gilbarco Encore 300 Error Codes</a>
+        <a href="/droptubebuilder/reference/wayne-ovation.html">Wayne Ovation Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-300.html">Veeder-Root TLS-300 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-350.html">Veeder-Root TLS-350 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450.html">Veeder-Root TLS-450 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450-plus.html">Veeder-Root TLS-450 PLUS Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls4.html">Veeder-Root TLS4 and TLS-4i Alarm Codes</a>
+        <a href="/droptubebuilder/reference/franklin-incon-evo.html">Franklin INCON EVO 550 and EVO 5000 Alarms</a>
+        <a href="/droptubebuilder/reference/guardian-spgc-220-single-phase.html">Guardian SPGC-220 (single-phase) Fault and Status Codes</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from DropTubeBuilder</strong>
+        <p>Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/droptubebuilder/">DropTubeBuilder</a> ·
+        <a href="/droptubebuilder/privacy.html">Privacy</a> ·
+        <a href="/droptubebuilder/terms.html">Terms</a> ·
+        <a href="/droptubebuilder/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
