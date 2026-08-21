@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV Charger Fault Codes and Fault Families | PlugWatt field reference</title>
+  <meta name="description" content="EV Charger Fault Codes and Fault Families for EV charging technicians. The insulation monitoring device watches resistance from DC positive and DC negative to protective earth and trips when it falls below roughly 100 ohm" />
+  <link rel="canonical" href="https://thrasherapps.com/plugwatt/reference/faultfamilies.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/plugwatt/">PlugWatt</a>
+        <a href="/plugwatt/reference/">Reference</a>
+        <a href="/plugwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
+      <h1 class="h2">EV Charger Fault Codes and Fault Families</h1>
+      <p class="lead">Field reference for EV charging technicians. 11 entries, taken from the PlugWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#insulationfault">Insulation fault (IMD trip)</a>
+        <a href="#groundfaultpersonnel">Personnel ground fault protection trip (CCID)</a>
+        <a href="#contactorfault">DC contactor fault</a>
+        <a href="#prechargefault">Precharge circuit fault</a>
+        <a href="#powermodulefault">Power module fault or derate</a>
+        <a href="#acinputfault">AC input problem</a>
+        <a href="#vehiclehandshakefailure">Vehicle handshake failure (CCS or NACS)</a>
+        <a href="#controlpilotfault">Control pilot fault</a>
+        <a href="#thermalderate">Thermal derate or termination</a>
+        <a href="#connectorcablewear">Connector and cable wear</a>
+        <a href="#backendtimeout">Backend or network failure</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="insulationfault">
+        <h2>Insulation fault (IMD trip)</h2>
+        <p>The insulation monitoring device watches resistance from DC positive and DC negative to protective earth and trips when it falls below roughly 100 ohms per volt, about 100 kilohms on a 1000 volt system.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Isolation or insulation fault code at session start or once current flows</p>
+        <p>Session terminates within seconds of the cable check or precharge stage</p>
+        <p>Fault clears in dry weather and returns after rain</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Moisture in a conduit body, fitting, or the dispenser cable vault</p>
+        <p>A stray copper strand touching a grounded enclosure or terminal plate</p>
+        <p>Damaged or pinched output cable insulation</p>
+        <p>Capacitive leakage from a long run of shielded DC cable</p>
+        <p>Failed surge protection device leaking to ground</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Treat the fault as a live ground fault until proven otherwise</p>
+        <p>Isolate, lock out, verify absence of voltage, and allow DC link capacitors to discharge</p>
+        <p>Megger DC positive to PE and DC negative to PE at the dispenser and at the cabinet; compare against the manufacturer threshold</p>
+        <p>Open and inspect the lowest conduit bodies and fittings for water</p>
+        <p>Inspect terminations for stray strands and creepage paths</p>
+        <p>If readings float with cable length and weather, suspect capacitive leakage and consult the manufacturer</p>
+        <div class="refLabel">Safe response</div>
+        <p>STOP WORK posture. This is a possible energized ground fault on high voltage DC. Isolate and verify before touching conductors. Only a qualified person proceeds.</p>
+        <div class="refLabel">Citations</div>
+        <p>UL 2231</p>
+        <p>NFPA 70E 130.4</p>
+        <p>IEC 61851 protection requirements</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="groundfaultpersonnel">
+        <h2>Personnel ground fault protection trip (CCID)</h2>
+        <p>AC side charging circuit interrupting devices per UL 2231 trip on milliamp scale leakage to protect people. Frequent trips mean real leakage somewhere downstream, not a nuisance to bypass.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Charging stops with a ground fault or CCID code on an AC station</p>
+        <p>Trips repeat with a specific vehicle or in wet weather</p>
+        <p>Trips immediately on plug in before any current flows</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Moisture in the connector holster or cable</p>
+        <p>Damaged cable jacket leaking to ground</p>
+        <p>Vehicle onboard charger leakage</p>
+        <p>Miswired neutral or ground bond downstream of the device</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Never bypass or jumper a personnel protection device</p>
+        <p>Retest per the manufacturer test procedure and record the trip</p>
+        <p>Dry and inspect the connector and cable, then retest</p>
+        <p>Try a known good vehicle to split vehicle versus station</p>
+        <p>Verify grounding and bonding continuity back to the source</p>
+        <div class="refLabel">Safe response</div>
+        <p>The device is doing its job. Find the leakage path. Bypassing personnel protection is prohibited.</p>
+        <div class="refLabel">Citations</div>
+        <p>UL 2231</p>
+        <p>NEC 625.54 GFCI requirements</p>
+        <p>SAE J1772</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="contactorfault">
+        <h2>DC contactor fault</h2>
+        <p>Output contactors switch the DC bus to the cable. Loose secondary wiring, feedback line issues, or terminal problems cause erratic behavior; frequent cycling under load welds or burns contacts.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Contactor feedback or mirror contact fault codes</p>
+        <p>Loud chatter or repeated clicking at session start</p>
+        <p>Session blocked at cable check even though the vehicle is healthy</p>
+        <p>Charger reports an output voltage with the session off, a welded contact signature</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Loose coil secondary wiring or connector vibration</p>
+        <p>Feedback or auxiliary contact circuit fault</p>
+        <p>Welded main contacts from cycling under load or high inrush</p>
+        <p>Burned or pitted contacts near end of life</p>
+        <p>Coil driver board failure</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Isolate, lock out, verify absence of voltage, and wait out DC link discharge before opening the contactor box</p>
+        <p>Check coil connections, secondary wiring, and feedback wiring torque</p>
+        <p>Measure contact resistance and compare poles</p>
+        <p>Verify the mirror contact state matches the main contacts in both positions</p>
+        <p>A welded contactor means the cable can be live when it should be dead. Treat the whole output as energized until proven otherwise</p>
+        <div class="refLabel">Safe response</div>
+        <p>A welded contactor can leave the connector energized. Verify absence of voltage at the connector pins before handling.</p>
+        <div class="refLabel">Citations</div>
+        <p>Manufacturer service manual</p>
+        <p>NFPA 70E 120.5 verification</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="prechargefault">
+        <h2>Precharge circuit fault</h2>
+        <p>Before the main contactors close, a precharge resistor path brings the cable and vehicle side up to match the DC link so the contacts do not close across a large voltage difference. A failed precharge blocks every session at the same early stage.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Every session fails at the same point right after cable check</p>
+        <p>Precharge timeout or voltage mismatch fault codes</p>
+        <p>Audible click sequence stops before the main contactor thunk</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Open or drifted precharge resistor</p>
+        <p>Failed precharge relay or its driver</p>
+        <p>Voltage sense divider fault reporting a false mismatch</p>
+        <p>Vehicle refusing because measured voltage differs from announced voltage</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Isolate, lock out, verify absence of voltage, and allow capacitor discharge</p>
+        <p>Measure the precharge resistor against its rating</p>
+        <p>Verify the precharge relay coil and contacts</p>
+        <p>Cross check both voltage sense chains against a trusted meter reading</p>
+        <p>Watch the handshake log for the voltage the vehicle reports versus what the charger measures</p>
+        <div class="refLabel">Safe response</div>
+        <p>DC link capacitors hold charge after isolation. Verify discharge before touching the precharge circuit.</p>
+        <div class="refLabel">Citations</div>
+        <p>Manufacturer service manual</p>
+        <p>NFPA 70E stored energy provisions</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="powermodulefault">
+        <h2>Power module fault or derate</h2>
+        <p>DC fast chargers stack rectifier and converter modules. A failed module usually removes a slice of output power rather than killing the unit, so the classic signature is a charger that works but caps well below nameplate.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Output caps at a fraction of nameplate, for example 100 kW from a 150 kW unit</p>
+        <p>Module communication loss or module over temperature codes</p>
+        <p>One module fan bank silent while the others run</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Failed rectifier or DC converter module</p>
+        <p>Module internal fan or blocked module airflow</p>
+        <p>Module comm bus wiring or termination fault</p>
+        <p>AC input phase loss reducing module capacity</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Read the per module status page before opening anything</p>
+        <p>Verify all three input phases and phase to phase voltages</p>
+        <p>Isolate and lock out before module extraction, then follow the manufacturer swap procedure</p>
+        <p>Check module bus connectors and seating</p>
+        <p>After replacement confirm firmware compatibility across modules</p>
+        <div class="refLabel">Safe response</div>
+        <p>Modules hold stored energy and are heavy. Isolate first, use the documented extraction procedure, and mind lifting.</p>
+        <div class="refLabel">Citations</div>
+        <p>Manufacturer service manual</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="acinputfault">
+        <h2>AC input problem</h2>
+        <p>Phase loss, undervoltage, or upstream protection issues starve the whole unit. The charger may boot on control power yet refuse sessions or derate heavily.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Input undervoltage, phase loss, or phase rotation codes</p>
+        <p>Charger boots but refuses every session regardless of vehicle</p>
+        <p>Breaker or fused disconnect found tripped or single phasing</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Utility side sag or lost phase</p>
+        <p>Tripped upstream breaker or blown fuse on one phase</p>
+        <p>Loose lugs heating and dropping a phase under load</p>
+        <p>Incorrect rotation after upstream electrical work</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Measure all three phases at the input terminals, phase to phase and phase to ground</p>
+        <p>Thermal scan lugs and terminations under load if possible</p>
+        <p>Verify rotation with a phase rotation meter after any upstream work</p>
+        <p>Inspect and torque terminations to specification with the circuit isolated</p>
+        <div class="refLabel">Safe response</div>
+        <p>Input work is energized electrical work until isolated and verified. Follow the energized work permit process if isolation is impossible.</p>
+        <div class="refLabel">Citations</div>
+        <p>NFPA 70E 130</p>
+        <p>NEC 110.14 terminations</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>False</p>
+      </div>
+      <div class="refEntry" id="vehiclehandshakefailure">
+        <h2>Vehicle handshake failure (CCS or NACS)</h2>
+        <p>The pilot goes to state C but the high level handshake dies before energy flows. This localizes the problem to the charger to vehicle link: pilot wiring, PLC comms, the connector, contactors, precharge, or ISO 15118 certificates.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Session ends during SLAC, cable check, or precharge</p>
+        <p>Works with some vehicle makes and fails with others</p>
+        <p>Vehicle shows a charging error while the backend shows the charger online and idle</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Stuck or damaged DC contactor blocking cable check</p>
+        <p>Precharge fault causing a voltage mismatch abort</p>
+        <p>Faulty charge port or connector temperature sensor ending the session</p>
+        <p>Comms or PLC modem board fault</p>
+        <p>ISO 15118 Plug and Charge certificate problem, expired or wrong chain</p>
+        <p>Worn connector pins or a damaged pilot line in the cable</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Confirm the backend link is up; a live backend with a dying session points at the vehicle side</p>
+        <p>Read the stage where the handshake stops from the session log; each stage names its subsystem</p>
+        <p>Try a known good vehicle or a CCS test rig to split vehicle versus charger</p>
+        <p>Check pilot voltage and PWM at the connector against the J1772 table</p>
+        <p>Inspect connector pins and the cable for damage and heat marks</p>
+        <p>If only Plug and Charge sessions fail, fall back to RFID and flag certificates</p>
+        <div class="refLabel">Safe response</div>
+        <p>Follow isolation practice before touching the connector internals; a welded contactor can leave pins live.</p>
+        <div class="refLabel">Citations</div>
+        <p>SAE J1772</p>
+        <p>ISO 15118</p>
+        <p>IEC 61851</p>
+        <p>DIN SPEC 70121</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="controlpilotfault">
+        <h2>Control pilot fault</h2>
+        <p>The 1 kHz plus and minus 12 volt pilot line is the heartbeat of every AC session and the front door of every DC session. Wrong voltage levels, a failed diode check, or a broken pilot conductor stop everything before it starts.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>No response at plug in, as if nothing is connected</p>
+        <p>Pilot or diode check fault codes</p>
+        <p>Intermittent session drops when the cable is moved</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Broken pilot conductor inside a flexed or crushed cable</p>
+        <p>Worn pilot pin not making contact</p>
+        <p>Vehicle inlet damage or a failed vehicle diode</p>
+        <p>Pilot board failure on the charger side</p>
+        <p>Wrong proximity resistor reading from a damaged latch</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Measure pilot voltage at the connector: near 12 V standby, 9 V connected, 6 V charging per the J1772 ladder</p>
+        <p>Verify PWM duty cycle matches the advertised current</p>
+        <p>Wiggle test the cable while watching the pilot to catch intermittents</p>
+        <p>Inspect the pilot and proximity pins under magnification</p>
+        <p>Swap test with a known good cable or vehicle when available</p>
+        <div class="refLabel">Safe response</div>
+        <p>Pilot circuits are low voltage but live in an energized cabinet. Keep clear of the power terminals while probing.</p>
+        <div class="refLabel">Citations</div>
+        <p>SAE J1772</p>
+        <p>IEC 61851 Annex A</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>False</p>
+      </div>
+      <div class="refEntry" id="thermalderate">
+        <h2>Thermal derate or termination</h2>
+        <p>A session that starts clean and dies after a few percent, or output that tapers far below nameplate on a hot day, points to a thermal limit: cable cooling, connector temperature, module airflow, or a real insulation issue that only crosses threshold once current flows.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Session terminates a few percent in, repeatably</p>
+        <p>Output tapers hard in hot weather or after back to back sessions</p>
+        <p>Connector or cable warm to the touch beyond normal</p>
+        <p>Coolant level or pump fault codes on liquid cooled units</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Low coolant, failed pump, or air in a liquid cooled cable loop</p>
+        <p>Blocked intake filters or failed cabinet fans</p>
+        <p>Worn connector contacts heating under current</p>
+        <p>Charge port or cable temperature sensor drift</p>
+        <p>An insulation fault that only appears at current, mimicking thermal</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Pull the temperature telemetry for the failed sessions before touching hardware</p>
+        <p>Inspect coolant level, pump operation, and loop pressure on liquid cooled cables</p>
+        <p>Check filters, fans, and airflow paths</p>
+        <p>Thermal scan the connector and cable during a supervised session</p>
+        <p>If temperatures look normal but sessions still die under load, pivot to the insulation fault family</p>
+        <div class="refLabel">Safe response</div>
+        <p>Hot connectors and cables can burn. Let hardware cool before handling and never defeat a temperature interlock.</p>
+        <div class="refLabel">Citations</div>
+        <p>Manufacturer service manual</p>
+        <p>UL 2202 temperature provisions</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="connectorcablewear">
+        <h2>Connector and cable wear</h2>
+        <p>Public connectors take thousands of drops, drive overs, and yanks. Worn contacts raise resistance and heat; damaged latches break proximity detection; crushed cables break pilot and comm lines.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>Sessions only start when the connector is held or wiggled</p>
+        <p>Heat discoloration on the connector face or pins</p>
+        <p>Latch does not click or the release button sticks</p>
+        <p>Repeated user complaints on one dispenser while its twin runs fine</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Worn or spread power contacts</p>
+        <p>Broken latch spring changing the proximity resistance</p>
+        <p>Cable crushed by vehicles driving over it</p>
+        <p>Holster damage letting water into the connector</p>
+        <p>Liquid cooled cable jacket damage and coolant weep</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Inspect pins for wear, spread, heat color, and debris</p>
+        <p>Verify proximity resistance through the latch positions</p>
+        <p>Flex the cable along its length feeling for crush points while watching pilot continuity</p>
+        <p>Compare contact resistance against a healthy twin dispenser</p>
+        <p>Replace as an assembly per manufacturer procedure; connector rebuilds in the field rarely hold</p>
+        <div class="refLabel">Safe response</div>
+        <p>Verify the output is dead before pin level inspection. A welded contactor upstream can keep pins live.</p>
+        <div class="refLabel">Citations</div>
+        <p>SAE J1772</p>
+        <p>Manufacturer cable and connector service bulletin</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="backendtimeout">
+        <h2>Backend or network failure</h2>
+        <p>The charger is healthy but cannot reach or hold its OCPP backend: authorization times out, sessions never start for app users, or the station shows offline to the network while lights are on locally.</p>
+        <div class="refLabel">Symptoms</div>
+        <p>App or RFID authorization spins and times out</p>
+        <p>Station shows offline in the network portal while powered locally</p>
+        <p>Sessions start with a local card whitelist but not from the app</p>
+        <p>OCPP boot notification loops or websocket reconnect cycling</p>
+        <div class="refLabel">Likely causes</div>
+        <p>Cellular signal degradation or a failed antenna connection</p>
+        <p>SIM deactivated, data plan lapsed, or APN change</p>
+        <p>Backend URL or certificate change after a network migration</p>
+        <p>Firewall or carrier NAT closing the websocket</p>
+        <p>Backend outage at the charge point operator</p>
+        <div class="refLabel">Diagnosis</div>
+        <p>Check signal strength and the modem status page first</p>
+        <p>Verify the backend URL, charge point id, and OCPP version against the network record</p>
+        <p>Watch for a boot notification acknowledgment in the local log</p>
+        <p>Power cycle the router or modem once, not repeatedly</p>
+        <p>Confirm whether the operator allows offline authorization; the charger may accept a cached whitelist while disconnected</p>
+        <p>Call the network operations center with the charge point id before replacing hardware</p>
+        <div class="refLabel">Safe response</div>
+        <p>Network faults are not electrical hazards by themselves, but never leave a charger energized with protection features disabled while troubleshooting comms.</p>
+        <div class="refLabel">Citations</div>
+        <p>OCPP 1.6</p>
+        <p>OCPP 2.0.1</p>
+        <p>Operator network requirements</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/plugwatt/reference/anatomy.html">EV Charging Station Anatomy</a>
+        <a href="/plugwatt/reference/brands.html">EV Charger Brand and Equipment Library</a>
+        <a href="/plugwatt/reference/comms.html">OCPP and EV Charger Communications</a>
+        <a href="/plugwatt/reference/safety.html">EV Charging Field Safety</a>
+        <a href="/plugwatt/reference/standards.html">EV Charging Standards and NEC 625</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/plugwatt/">PlugWatt</a> ·
+        <a href="/plugwatt/privacy.html">Privacy</a> ·
+        <a href="/plugwatt/terms.html">Terms</a> ·
+        <a href="/plugwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

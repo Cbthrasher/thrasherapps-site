@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV Charger Brand and Equipment Library | PlugWatt field reference</title>
+  <meta name="description" content="EV Charger Brand and Equipment Library for EV charging technicians. Large public and fleet network; Express series DC fast chargers plus widespread Level 2." />
+  <link rel="canonical" href="https://thrasherapps.com/plugwatt/reference/brands.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/plugwatt/">PlugWatt</a>
+        <a href="/plugwatt/reference/">Reference</a>
+        <a href="/plugwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
+      <h1 class="h2">EV Charger Brand and Equipment Library</h1>
+      <p class="lead">Field reference for EV charging technicians. 8 entries, taken from the PlugWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#chargepoint">ChargePoint</a>
+        <a href="#abb">ABB</a>
+        <a href="#tritium">Tritium</a>
+        <a href="#alpitronic">Alpitronic</a>
+        <a href="#tesla">Tesla Supercharger and NACS</a>
+        <a href="#btcpower">BTC Power</a>
+        <a href="#kempower">Kempower</a>
+        <a href="#signet">Signet (SK Signet)</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="chargepoint">
+        <h2>ChargePoint</h2>
+        <p>Large public and fleet network; Express series DC fast chargers plus widespread Level 2.</p>
+        <div class="refLabel">Models</div>
+        <p>name: Express 250. powerRange: 62.5 kW per cabinet, paired to 125 kW. notes: Modular Power Blocks feed dispensers; power sharing across paired units.</p>
+        <p>name: Express Plus. powerRange: Up to 500 kW architecture. notes: Power Blocks and Power Link cabinets feeding Express Plus dispensers.</p>
+        <p>name: CPF and CT4000 family. powerRange: Level 2 AC. notes: Common workplace and public AC units.</p>
+        <div class="refLabel">Notes</div>
+        <p>Dispenser Charge Controller (DCC) faults often present as handshake failures; check DCC status LEDs and logs first</p>
+        <p>Cable and contactor box assemblies are field replaceable units on Express hardware</p>
+        <p>Network side management runs through ChargePoint cloud; offline behavior follows operator policy</p>
+      </div>
+      <div class="refEntry" id="abb">
+        <h2>ABB</h2>
+        <p>Terra family DC fast chargers from 24 kW wallboxes to 350 kW high power cabinets.</p>
+        <div class="refLabel">Models</div>
+        <p>name: Terra 54. powerRange: 50 kW. notes: Workhorse corridor unit; CCS plus CHAdeMO variants common.</p>
+        <p>name: Terra 124 and 184. powerRange: 120 to 180 kW. notes: Modular power stacks; dual simultaneous outputs on many builds.</p>
+        <p>name: Terra HP. powerRange: 175 to 350 kW. notes: Liquid cooled cables; separate power cabinet and dispenser.</p>
+        <div class="refLabel">Notes</div>
+        <p>Isolation monitoring trips are a common Terra service call; moisture in glands and conduit is the usual find</p>
+        <p>Power modules are hot swap by procedure on larger Terra models</p>
+        <p>Terra HP liquid cooled cable loops need coolant checks on PM visits</p>
+      </div>
+      <div class="refEntry" id="tritium">
+        <h2>Tritium</h2>
+        <p>Veefil heritage; RTM and PKM families. Distinctive liquid cooled power electronics in a slim IP65 package.</p>
+        <div class="refLabel">Models</div>
+        <p>name: RTM75. powerRange: 75 kW. notes: Compact unit; liquid cooled electronics, air cooled cables.</p>
+        <p>name: PKM150. powerRange: 150 kW. notes: Modular 25 kW power units; scalable site architecture.</p>
+        <p>name: Veefil RT50. powerRange: 50 kW. notes: Earlier fleet still widely deployed.</p>
+        <div class="refLabel">Notes</div>
+        <p>Coolant loop service requires the documented bleed procedure; air pockets cause phantom thermal derates</p>
+        <p>IP65 sealing means enclosure openings must be resealed to specification after service</p>
+        <p>Older Veefil units may need firmware updates before newer vehicles negotiate cleanly</p>
+      </div>
+      <div class="refEntry" id="alpitronic">
+        <h2>Alpitronic</h2>
+        <p>Hypercharger family, 50 kW to 1 MW class, known for power density and high uptime in European and US networks.</p>
+        <div class="refLabel">Models</div>
+        <p>name: HYC50. powerRange: 50 kW. notes: Compact wall or pedestal unit.</p>
+        <p>name: HYC150. powerRange: 150 kW. notes: Two connector dynamic power sharing.</p>
+        <p>name: HYC300. powerRange: 300 kW. notes: Liquid cooled cables; high utilization corridor unit.</p>
+        <p>name: HYC1000. powerRange: Up to 1 MW class. notes: Megawatt architecture for trucks and depots.</p>
+        <div class="refLabel">Notes</div>
+        <p>Dynamic power sharing means one bad module can shave capacity across both connectors</p>
+        <p>Cable cooling loops on HYC300 class units are PM checklist items</p>
+        <p>Remote diagnostics through the operator backend resolve many calls without a truck roll</p>
+      </div>
+      <div class="refEntry" id="tesla">
+        <h2>Tesla Supercharger and NACS</h2>
+        <p>The largest reliable DC network; V2, V3, and V4 posts. NACS (standardized as SAE J3400) opens the connector to other networks and vehicles.</p>
+        <div class="refLabel">Models</div>
+        <p>name: Supercharger V2. powerRange: Up to 150 kW paired. notes: Power sharing between paired stalls.</p>
+        <p>name: Supercharger V3. powerRange: Up to 250 kW. notes: Liquid cooled cables, no stall pairing.</p>
+        <p>name: Supercharger V4. powerRange: Up to 325 kW and higher. notes: Taller post, longer cable, Magic Dock CCS adapter on some sites, payment terminal on open sites.</p>
+        <div class="refLabel">Notes</div>
+        <p>NACS uses five pins; the same pair carries AC or DC, so the handshake decides the mode</p>
+        <p>NACS supports about 19.2 kW AC and 250 kW and more DC on current hardware</p>
+        <p>Third party vehicles on Superchargers authenticate through Plug and Charge style flows; app account issues look like handshake failures</p>
+        <p>Magic Dock issues usually present as adapter latch or comm faults</p>
+      </div>
+      <div class="refEntry" id="btcpower">
+        <h2>BTC Power</h2>
+        <p>US manufacturer of Level 2 and DC fast equipment common in retail and municipal deployments.</p>
+        <div class="refLabel">Models</div>
+        <p>name: Gen 4 DCFC. powerRange: 50 to 200 kW. notes: Modular rectifier shelves; CCS and CHAdeMO options.</p>
+        <p>name: Level 2 pedestal family. powerRange: AC Level 2. notes: Retail and workplace deployments.</p>
+        <div class="refLabel">Notes</div>
+        <p>Rectifier shelves are field replaceable; match firmware after swaps</p>
+        <p>Retail sites often share service transformers; input sag under store load can masquerade as charger faults</p>
+      </div>
+      <div class="refEntry" id="kempower">
+        <h2>Kempower</h2>
+        <p>Distributed satellite architecture: a power cabinet feeds multiple lightweight dispensers with dynamic power routing.</p>
+        <div class="refLabel">Models</div>
+        <p>name: S Series satellite. powerRange: Dispenser fed up to 400 kW. notes: Slim dispensers; cable management arms common.</p>
+        <p>name: Power Unit C Series. powerRange: 50 to 600 kW cabinet. notes: 25 or 50 kW modules dynamically routed to satellites.</p>
+        <p>name: Movable model. powerRange: Up to 40 kW. notes: Portable DC unit for depots and events.</p>
+        <div class="refLabel">Notes</div>
+        <p>Dynamic routing means intermittent faults move between satellites; correlate by timestamp in the cabinet log</p>
+        <p>Satellite comm cables between cabinet and dispensers are a distinct failure point worth checking early</p>
+      </div>
+      <div class="refEntry" id="signet">
+        <h2>Signet (SK Signet)</h2>
+        <p>High power DC fast chargers common in major US charging networks, including 350 kW corridor units.</p>
+        <div class="refLabel">Models</div>
+        <p>name: FC100K to FC200K. powerRange: 100 to 200 kW. notes: Dual connector units in retail networks.</p>
+        <p>name: 350 kW family. powerRange: Up to 350 kW. notes: High power corridor deployments; liquid cooled cables.</p>
+        <p>name: V2 NACS capable units. powerRange: Up to 400 kW. notes: Newer builds with NACS and CCS options.</p>
+        <div class="refLabel">Notes</div>
+        <p>Network operator remote diagnostics usually precede a truck roll; arrive with the fault history</p>
+        <p>High utilization sites benefit from proactive connector and filter PM</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/plugwatt/reference/anatomy.html">EV Charging Station Anatomy</a>
+        <a href="/plugwatt/reference/comms.html">OCPP and EV Charger Communications</a>
+        <a href="/plugwatt/reference/faultfamilies.html">EV Charger Fault Codes and Fault Families</a>
+        <a href="/plugwatt/reference/safety.html">EV Charging Field Safety</a>
+        <a href="/plugwatt/reference/standards.html">EV Charging Standards and NEC 625</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/plugwatt/">PlugWatt</a> ·
+        <a href="/plugwatt/privacy.html">Privacy</a> ·
+        <a href="/plugwatt/terms.html">Terms</a> ·
+        <a href="/plugwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

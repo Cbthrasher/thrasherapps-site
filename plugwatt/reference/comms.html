@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OCPP and EV Charger Communications | PlugWatt field reference</title>
+  <meta name="description" content="OCPP and EV Charger Communications for EV charging technicians. The J1772 pilot is a 1 kHz square wave between plus 12 V and minus 12 V. Its DC level names the state; its duty cycle advertises available current. Ev" />
+  <link rel="canonical" href="https://thrasherapps.com/plugwatt/reference/comms.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/plugwatt/">PlugWatt</a>
+        <a href="/plugwatt/reference/">Reference</a>
+        <a href="/plugwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
+      <h1 class="h2">OCPP and EV Charger Communications</h1>
+      <p class="lead">Field reference for EV charging technicians. 9 entries, taken from the PlugWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#controlpilot">Control pilot signaling</a>
+        <a href="#iec61851modes">IEC 61851 charging modes</a>
+        <a href="#ccshandshake">The CCS and NACS DC handshake</a>
+        <a href="#iso15118primer">ISO 15118 and Plug and Charge</a>
+        <a href="#ocppoverview">OCPP versions and what they change</a>
+        <a href="#ocppmessages">OCPP message quick reference</a>
+        <a href="#networkconfig">Network configuration essentials</a>
+        <a href="#offlinebehavior">Offline and degraded network behavior</a>
+        <a href="#localizefailure">Backend timeout or vehicle handshake? Localize it</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="controlpilot">
+        <h2>Control pilot signaling</h2>
+        <p>The J1772 pilot is a 1 kHz square wave between plus 12 V and minus 12 V. Its DC level names the state; its duty cycle advertises available current. Every AC session and the front door of every DC session runs on it.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: Pilot states</p>
+        <p>heading: Duty cycle to current</p>
+        <p>heading: Field checks</p>
+      </div>
+      <div class="refEntry" id="iec61851modes">
+        <h2>IEC 61851 charging modes</h2>
+        <p>International mode language for how a vehicle takes power. North American equipment maps cleanly onto it, and European built chargers report faults in these terms.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: The four modes</p>
+      </div>
+      <div class="refEntry" id="ccshandshake">
+        <h2>The CCS and NACS DC handshake</h2>
+        <p>A DC session is a staged negotiation. Knowing which stage died localizes the fault faster than any other single fact.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: Stages in order</p>
+        <p>heading: Reading the stage from behavior</p>
+      </div>
+      <div class="refEntry" id="iso15118primer">
+        <h2>ISO 15118 and Plug and Charge</h2>
+        <p>The high level language on top of the pilot. Plug and Charge signs the session with certificates so authorization is automatic; vehicle to grid rides the same protocol.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: Certificate chain in one breath</p>
+        <p>heading: Field diagnosis</p>
+        <p>heading: Vehicle to grid</p>
+      </div>
+      <div class="refEntry" id="ocppoverview">
+        <h2>OCPP versions and what they change</h2>
+        <p>OCPP is the charger to backend protocol. Version and profile agreement between charger and backend is a commissioning item, not an afterthought.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: Version comparison</p>
+        <p>heading: Field notes</p>
+      </div>
+      <div class="refEntry" id="ocppmessages">
+        <h2>OCPP message quick reference</h2>
+        <p>The dozen messages that explain almost every log line a field tech reads, with the 1.6 names networks still speak.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: Charger to backend</p>
+        <p>heading: Backend to charger</p>
+        <p>heading: Common error codes in StatusNotification</p>
+      </div>
+      <div class="refEntry" id="networkconfig">
+        <h2>Network configuration essentials</h2>
+        <p>The handful of settings that connect a charger to its operator. Record them at commissioning; they answer most NOC questions.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: The record that matters</p>
+        <p>heading: Connectivity hygiene</p>
+      </div>
+      <div class="refEntry" id="offlinebehavior">
+        <h2>Offline and degraded network behavior</h2>
+        <p>Well configured chargers keep serving drivers through network trouble. What that looks like is operator policy, and knowing the policy prevents wrong diagnoses.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: What good offline behavior looks like</p>
+        <p>heading: Diagnosis implications</p>
+      </div>
+      <div class="refEntry" id="localizefailure">
+        <h2>Backend timeout or vehicle handshake? Localize it</h2>
+        <p>The defining skill: an EV charger is a two sided communication node. Down to the car, up to the backend. Decide which side is sick before touching anything.</p>
+        <div class="refLabel">Sections</div>
+        <p>heading: The two sided model</p>
+        <p>heading: Ten second discrimination</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/plugwatt/reference/anatomy.html">EV Charging Station Anatomy</a>
+        <a href="/plugwatt/reference/brands.html">EV Charger Brand and Equipment Library</a>
+        <a href="/plugwatt/reference/faultfamilies.html">EV Charger Fault Codes and Fault Families</a>
+        <a href="/plugwatt/reference/safety.html">EV Charging Field Safety</a>
+        <a href="/plugwatt/reference/standards.html">EV Charging Standards and NEC 625</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/plugwatt/">PlugWatt</a> ·
+        <a href="/plugwatt/privacy.html">Privacy</a> ·
+        <a href="/plugwatt/terms.html">Terms</a> ·
+        <a href="/plugwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

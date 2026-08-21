@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV Charging Field Safety | PlugWatt field reference</title>
+  <meta name="description" content="EV Charging Field Safety for EV charging technicians. DC fast chargers carry up to 1000 V DC with high available fault current. DC arcs have no current zero crossing, so they sustain instead of self extin" />
+  <link rel="canonical" href="https://thrasherapps.com/plugwatt/reference/safety.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/plugwatt/">PlugWatt</a>
+        <a href="/plugwatt/reference/">Reference</a>
+        <a href="/plugwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
+      <h1 class="h2">EV Charging Field Safety</h1>
+      <p class="lead">Field reference for EV charging technicians. 7 entries, taken from the PlugWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#highvoltagedc">High voltage DC and why it is different</a>
+        <a href="#arcflashdc">DC arc flash assessment</a>
+        <a href="#ppe">PPE for EV charging work</a>
+        <a href="#gloveprogram">Glove certification and in service rules</a>
+        <a href="#loto">Lockout tagout for EV charging equipment</a>
+        <a href="#storedenergy">Stored energy: DC link capacitors</a>
+        <a href="#sitehazards">Site hazards beyond electricity</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="highvoltagedc">
+        <h2>High voltage DC and why it is different</h2>
+        <p>DC fast chargers carry up to 1000 V DC with high available fault current. DC arcs have no current zero crossing, so they sustain instead of self extinguishing.</p>
+        <div class="refLabel">Points</div>
+        <p>An AC arc gets 120 chances a second to extinguish at a current zero. A DC arc gets none: once struck it burns until the circuit opens or the gap grows</p>
+        <p>Lower peak energy than a comparable AC event but longer duration; the exposure adds up</p>
+        <p>NFPA 70E requires an arc flash risk assessment and PPE for DC systems over 100 V</p>
+        <p>Available fault current at the DC bus is high; module outputs parallel onto the bus</p>
+        <p>The battery on the vehicle side is also a source: the cable can be fed from both ends during a session</p>
+        <div class="refLabel">Citations</div>
+        <p>NFPA 70E 130</p>
+        <p>NFPA 70E Annex D DC methods</p>
+      </div>
+      <div class="refEntry" id="arcflashdc">
+        <h2>DC arc flash assessment</h2>
+        <p>Arc flash PPE for DC work comes from the site arc flash study, not from a field estimate. This app deliberately does not compute incident energy.</p>
+        <div class="refLabel">Points</div>
+        <p>Use the site arc flash study and equipment labels for incident energy and PPE category</p>
+        <p>If a DC label is missing, stop and escalate; do not guess a category</p>
+        <p>DC incident energy methods exist in NFPA 70E Annex D, but they are engineering calculations with system data you do not have at the connector</p>
+        <p>Face shield and arc rated clothing per the study; Class 0 gloves handle the shock hazard, not the thermal hazard</p>
+        <div class="refLabel">Citations</div>
+        <p>NFPA 70E 130.5</p>
+        <p>NFPA 70E Annex D</p>
+        <p>Site arc flash study</p>
+      </div>
+      <div class="refEntry" id="ppe">
+        <h2>PPE for EV charging work</h2>
+        <p>Class 0 insulating gloves, arc rated face protection where the study requires it, and insulated DC rated tools are the working baseline for energized diagnostics.</p>
+        <div class="refLabel">Points</div>
+        <p>Class 0 insulating gloves are rated for 1000 V maximum use, matching the DC fast charging voltage class</p>
+        <p>Leather protectors go over the rubber; the rubber is the insulation, the leather is its armor</p>
+        <p>Face shield rated for the arc exposure the study names</p>
+        <p>Insulated tools rated 1000 V for work near energized DC</p>
+        <p>Voltage rated meter leads and a meter rated CAT III or better for the environment</p>
+        <p>Standards: OSHA 1910.137 for the gloves program, ASTM D120 for the gloves, NFPA 70E for selection</p>
+        <div class="refLabel">Citations</div>
+        <p>OSHA 1910.137</p>
+        <p>ASTM D120</p>
+        <p>NFPA 70E 130.7</p>
+      </div>
+      <div class="refEntry" id="gloveprogram">
+        <h2>Glove certification and in service rules</h2>
+        <p>Insulating gloves live on a test clock. An expired or damaged glove is not PPE, it is a costume.</p>
+        <div class="refLabel">Points</div>
+        <p>Electrical test every 6 months by an accredited lab; the stamp on the cuff carries the test date</p>
+        <p>Gloves issued for service must have been tested within the previous 12 months</p>
+        <p>Air test before each use: roll the cuff, listen and feel for leaks</p>
+        <p>Inspect for cuts, ozone cracking, swelling, and embedded debris before each use</p>
+        <p>Store gloves in their bag, out of sunlight, not folded, nothing on top</p>
+        <p>The glove log form in this app records certification dates, air tests, and issue history</p>
+        <div class="refLabel">Citations</div>
+        <p>OSHA 1910.137(c)</p>
+        <p>ASTM D120</p>
+        <p>ASTM F496</p>
+      </div>
+      <div class="refEntry" id="loto">
+        <h2>Lockout tagout for EV charging equipment</h2>
+        <p>Personalized locks and tags on the disconnecting means, verification of absence of voltage, and respect for stored energy in DC link capacitors.</p>
+        <div class="refLabel">Points</div>
+        <p>One lock, one tag, one person: everyone working applies their own lock</p>
+        <p>Identify all sources: the AC supply, and remember the vehicle battery feeds the cable during a session</p>
+        <p>Open the disconnecting means, apply lock and tag, then attempt normal restart to prove isolation</p>
+        <p>Verify absence of voltage with a meter proven on a known source before and after the check</p>
+        <p>DC link capacitors store real energy after isolation; respect the manufacturer discharge time before opening power compartments</p>
+        <p>Some cabinets have capacitor discharge indicators; absence of an indicator is not absence of charge</p>
+        <div class="refLabel">Citations</div>
+        <p>OSHA 1910.147</p>
+        <p>NFPA 70E 120</p>
+        <p>Manufacturer service manual</p>
+      </div>
+      <div class="refEntry" id="storedenergy">
+        <h2>Stored energy: DC link capacitors</h2>
+        <p>The DC bus capacitor bank holds lethal charge after every isolation. Discharge time is a manufacturer number, not a guess.</p>
+        <div class="refLabel">Points</div>
+        <p>Bleed resistors take minutes, not seconds; the manual states the wait time</p>
+        <p>A failed bleed resistor means the bank may never self discharge: always verify with a meter</p>
+        <p>Measure DC bus voltage at the designated test points before touching bus work</p>
+        <p>Vehicle side: the battery holds its charge permanently; cable and connector work needs the vehicle disconnected</p>
+        <div class="refLabel">Citations</div>
+        <p>NFPA 70E 120.5(7)</p>
+        <p>Manufacturer service manual</p>
+      </div>
+      <div class="refEntry" id="sitehazards">
+        <h2>Site hazards beyond electricity</h2>
+        <p>Charging sites are live parking lots. Traffic, heat, weather, and awkward lifts injure more techs than arcs do.</p>
+        <div class="refLabel">Points</div>
+        <p>Work near live traffic: cones, high visibility wear, and vehicle positioning as a barrier</p>
+        <p>Cabinets and cables run hot; liquid cooled cable skin temperatures surprise people</p>
+        <p>Power modules are heavy and awkward; use the extraction tooling and a second person</p>
+        <p>Outdoor cabinets host wasps, rodents, and their damage: look before reaching</p>
+        <p>Heat stress on black asphalt in summer is a real exposure; hydrate and shade</p>
+        <div class="refLabel">Citations</div>
+        <p>OSHA general duty</p>
+        <p>Site specific JHA</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/plugwatt/reference/anatomy.html">EV Charging Station Anatomy</a>
+        <a href="/plugwatt/reference/brands.html">EV Charger Brand and Equipment Library</a>
+        <a href="/plugwatt/reference/comms.html">OCPP and EV Charger Communications</a>
+        <a href="/plugwatt/reference/faultfamilies.html">EV Charger Fault Codes and Fault Families</a>
+        <a href="/plugwatt/reference/standards.html">EV Charging Standards and NEC 625</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/plugwatt/">PlugWatt</a> ·
+        <a href="/plugwatt/privacy.html">Privacy</a> ·
+        <a href="/plugwatt/terms.html">Terms</a> ·
+        <a href="/plugwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

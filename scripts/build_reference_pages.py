@@ -59,6 +59,15 @@ APPS = [
         "schema": "loose",
     },
     {
+        "key": "plugwatt",
+        "name": "PlugWatt",
+        "appid": "6788584092",
+        "trade": "EV charging technicians",
+        "blurb": "Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians.",
+        "library": f"{DESKTOP}/PlugWatt/PlugWatt/Resources/library",
+        "schema": "entries",
+    },
+    {
         "key": "droptubebuilder",
         "name": "DropTubeBuilder",
         "appid": "6740597739",
@@ -71,6 +80,16 @@ APPS = [
 
 # Human titles for known file and category names.
 TITLES = {
+    # PlugWatt. Its files are lowercase single words, which auto title into
+    # things like "Faultfamilies". These are written for what a technician
+    # actually types into a search box.
+    "faultfamilies": "EV Charger Fault Codes and Fault Families",
+    "brands": "EV Charger Brand and Equipment Library",
+    "anatomy": "EV Charging Station Anatomy",
+    "comms": "OCPP and EV Charger Communications",
+    "safety": "EV Charging Field Safety",
+    "standards": "EV Charging Standards and NEC 625",
+
     "inverterFaultCodes": "Inverter Fault Codes",
     "combinerOm": "DC Combiner Operations and Maintenance",
     "trackerProcedures": "Solar Tracker Procedures",
@@ -102,23 +121,39 @@ TITLES = {
     "maintenanceCadence": "Maintenance Cadence",
 }
 
-SKIP_FILES = {"formTemplates", "decisionTrees", "manifest", "procedureTemplatesSeed"}
+SKIP_FILES = {
+    "formTemplates", "decisionTrees", "manifest", "procedureTemplatesSeed",
+    # PlugWatt uses lowercase names and keeps a manifest alongside the library.
+    "formtemplates", "decisiontrees", "librarymanifest",
+}
 
 FIELD_LABELS = [
     ("body", None),
     ("summary", None),
+    ("function", "Function"),
+    ("scope", "Scope"),
+    ("symptoms", "Symptoms"),
     ("causes", "Common causes"),
+    ("likelyCauses", "Likely causes"),
+    ("failureModes", "Failure modes"),
+    ("diagnosis", "Diagnosis"),
     ("method", "Method"),
     ("warningSigns", "Warning signs"),
     ("troubleNotes", "Trouble notes"),
     ("menuConcepts", "Menu concepts"),
     ("families", "Families"),
     ("bands", "Bands"),
+    ("keyPoints", "Key points"),
+    ("points", "Points"),
+    ("sections", "Sections"),
+    ("models", "Models"),
     ("safeResponse", "Safe response"),
     ("notes", "Notes"),
     ("brands", "Brands"),
     ("citation", "Citation"),
+    ("citations", "Citations"),
     ("verifyNote", "Verify against"),
+    ("verifyAgainstManual", "Verify against the manual"),
 ]
 
 
@@ -198,7 +233,14 @@ def load_groups(app):
             data = json.load(open(os.path.join(lib, fname)))
         except Exception:
             continue
-        raws = data.get("entries") if isinstance(data, dict) else None
+        # Most apps wrap their entries in {"entries": [...]}. PlugWatt stores a
+        # bare list per file. Accept either rather than reshaping the app data.
+        if isinstance(data, dict):
+            raws = data.get("entries")
+        elif isinstance(data, list):
+            raws = data
+        else:
+            raws = None
         if not isinstance(raws, list):
             continue
         entries = [e for e in (normalize(r) for r in raws if isinstance(r, dict)) if e]

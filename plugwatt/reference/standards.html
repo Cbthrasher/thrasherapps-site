@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV Charging Standards and NEC 625 | PlugWatt field reference</title>
+  <meta name="description" content="EV Charging Standards and NEC 625 for EV charging technicians. Installation rules for EVSE: branch circuits, feeders, disconnects, ventilation, and energy management." />
+  <link rel="canonical" href="https://thrasherapps.com/plugwatt/reference/standards.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/plugwatt/">PlugWatt</a>
+        <a href="/plugwatt/reference/">Reference</a>
+        <a href="/plugwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
+      <h1 class="h2">EV Charging Standards and NEC 625</h1>
+      <p class="lead">Field reference for EV charging technicians. 8 entries, taken from the PlugWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#nec625">Electric Vehicle Power Transfer System Equipment</a>
+        <a href="#ul2202">Electric Vehicle Charging System Equipment</a>
+        <a href="#ul2231">Personnel Protection Systems for EV Supply Circuits</a>
+        <a href="#j1772">SAE Electric Vehicle Conductive Charge Coupler</a>
+        <a href="#iec61851">Electric Vehicle Conductive Charging System</a>
+        <a href="#iso15118">Road Vehicles to Grid Communication Interface</a>
+        <a href="#ocpp">Open Charge Point Protocol</a>
+        <a href="#nfpa70e">Standard for Electrical Safety in the Workplace</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="nec625">
+        <div class="refTag">NEC Article 625</div>
+        <h2>Electric Vehicle Power Transfer System Equipment</h2>
+        <div class="refLabel">Scope</div>
+        <p>Installation rules for EVSE: branch circuits, feeders, disconnects, ventilation, and energy management.</p>
+        <div class="refLabel">Key points</div>
+        <p>625.41 and 625.42: EV charging is a continuous load; size conductors and overcurrent devices at 125 percent of the equipment rated current</p>
+        <p>625.42 permits sizing to a lower setting when an energy management system limits the load; the 2026 cycle expands this with 625.48 managed maximum demand</p>
+        <p>625.43: fixed EVSE rated over 60 A or over 150 V to ground requires a readily accessible, lockable disconnecting means</p>
+        <p>625.54: receptacle installations for EV charging require GFCI protection</p>
+        <p>Coordinate with 110.14 termination temperature limits and Article 310 ampacity tables</p>
+      </div>
+      <div class="refEntry" id="ul2202">
+        <div class="refTag">UL 2202</div>
+        <h2>Electric Vehicle Charging System Equipment</h2>
+        <div class="refLabel">Scope</div>
+        <p>Product safety standard for DC charging equipment: construction, temperature limits, abnormal operation, and output safety.</p>
+        <div class="refLabel">Key points</div>
+        <p>Covers the DC charger as a listed product; field modifications void the listing</p>
+        <p>Temperature and abnormal condition testing back the interlocks techs must never defeat</p>
+        <p>Pairs with UL 2231 for the personnel protection system requirements</p>
+      </div>
+      <div class="refEntry" id="ul2231">
+        <div class="refTag">UL 2231</div>
+        <h2>Personnel Protection Systems for EV Supply Circuits</h2>
+        <div class="refLabel">Scope</div>
+        <p>Requirements for the charging circuit interrupting devices and isolation monitoring that protect people from shock.</p>
+        <div class="refLabel">Key points</div>
+        <p>Defines CCID leakage trip behavior for AC supply equipment</p>
+        <p>Defines isolation monitoring expectations for isolated DC systems</p>
+        <p>Commissioning should verify the trip test per the manufacturer procedure and record it</p>
+      </div>
+      <div class="refEntry" id="j1772">
+        <div class="refTag">SAE J1772</div>
+        <h2>SAE Electric Vehicle Conductive Charge Coupler</h2>
+        <div class="refLabel">Scope</div>
+        <p>The North American AC coupler and the control pilot signaling every session begins with.</p>
+        <div class="refLabel">Key points</div>
+        <p>Defines pilot states A through F and the duty cycle to available current mapping</p>
+        <p>Defines the proximity circuit and latch behavior</p>
+        <p>The CCS combo coupler builds on this physical and signaling base</p>
+      </div>
+      <div class="refEntry" id="iec61851">
+        <div class="refTag">IEC 61851</div>
+        <h2>Electric Vehicle Conductive Charging System</h2>
+        <div class="refLabel">Scope</div>
+        <p>International system standard defining charging modes 1 through 4 and control functions.</p>
+        <div class="refLabel">Key points</div>
+        <p>Mode 2: portable EVSE with in cable protection; Mode 3: dedicated AC EVSE; Mode 4: DC charging with off board rectification</p>
+        <p>Defines control pilot functions internationally, aligned with J1772 signaling</p>
+        <p>Referenced by most global charger type approvals</p>
+      </div>
+      <div class="refEntry" id="iso15118">
+        <div class="refTag">ISO 15118</div>
+        <h2>Road Vehicles to Grid Communication Interface</h2>
+        <div class="refLabel">Scope</div>
+        <p>High level communication between vehicle and charger: session negotiation, Plug and Charge with certificates, and vehicle to grid services.</p>
+        <div class="refLabel">Key points</div>
+        <p>Plug and Charge authenticates the vehicle with an installed certificate so no card or app is needed</p>
+        <p>Certificate chains involve the vehicle OEM, the mobility operator, and the charge point operator; expiry or a broken chain blocks automatic authorization</p>
+        <p>Edition 20 adds bidirectional power transfer support</p>
+      </div>
+      <div class="refEntry" id="ocpp">
+        <div class="refTag">OCPP</div>
+        <h2>Open Charge Point Protocol</h2>
+        <div class="refLabel">Scope</div>
+        <p>The charger to backend protocol: registration, authorization, transactions, telemetry, firmware, and smart charging.</p>
+        <div class="refLabel">Key points</div>
+        <p>1.6J is the deployed workhorse; 2.0.1 adds device management, security profiles, native ISO 15118 support, and richer smart charging; 2.1 is emerging</p>
+        <p>A charger and backend must agree on version and profile; mismatches present as boot loops or silent feature gaps</p>
+        <p>Offline behavior, cached authorization lists, and local whitelists are operator policy choices within the protocol</p>
+      </div>
+      <div class="refEntry" id="nfpa70e">
+        <div class="refTag">NFPA 70E</div>
+        <h2>Standard for Electrical Safety in the Workplace</h2>
+        <div class="refLabel">Scope</div>
+        <p>Shock and arc flash risk assessment, energized work permits, lockout tagout, and PPE selection.</p>
+        <div class="refLabel">Key points</div>
+        <p>Requires an arc flash risk assessment; DC systems over 100 V need shock and arc flash analysis</p>
+        <p>DC arcs have no current zero crossing, so they sustain rather than self extinguish; lower peak but longer duration than comparable AC events</p>
+        <p>Energized work requires justification and an Energized Electrical Work Permit</p>
+        <p>Verification of absence of voltage is a step of lockout, not an afterthought</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/plugwatt/reference/anatomy.html">EV Charging Station Anatomy</a>
+        <a href="/plugwatt/reference/brands.html">EV Charger Brand and Equipment Library</a>
+        <a href="/plugwatt/reference/comms.html">OCPP and EV Charger Communications</a>
+        <a href="/plugwatt/reference/faultfamilies.html">EV Charger Fault Codes and Fault Families</a>
+        <a href="/plugwatt/reference/safety.html">EV Charging Field Safety</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/plugwatt/">PlugWatt</a> ·
+        <a href="/plugwatt/privacy.html">Privacy</a> ·
+        <a href="/plugwatt/terms.html">Terms</a> ·
+        <a href="/plugwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

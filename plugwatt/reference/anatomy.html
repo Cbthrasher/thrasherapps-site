@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EV Charging Station Anatomy | PlugWatt field reference</title>
+  <meta name="description" content="EV Charging Station Anatomy for EV charging technicians. Takes the 480 V three phase feed through input protection, contactors, and filtering into the power stack." />
+  <link rel="canonical" href="https://thrasherapps.com/plugwatt/reference/anatomy.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/plugwatt/">PlugWatt</a>
+        <a href="/plugwatt/reference/">Reference</a>
+        <a href="/plugwatt/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
+      <h1 class="h2">EV Charging Station Anatomy</h1>
+      <p class="lead">Field reference for EV charging technicians. 10 entries, taken from the PlugWatt app.</p>
+      <div class="refToc mt-3"><strong>On this page</strong><br>
+        <a href="#acinput">AC input section</a>
+        <a href="#powermodules">Power modules</a>
+        <a href="#dccontactors">DC output contactors</a>
+        <a href="#prechargecircuit">Precharge circuit</a>
+        <a href="#imd">Insulation monitoring device</a>
+        <a href="#cooling">Cooling system</a>
+        <a href="#dispenser">Charge controller and dispenser</a>
+        <a href="#pilotcomms">Control pilot and comms board</a>
+        <a href="#connectorcable">Connector and cable</a>
+        <a href="#meterpayment">Metering and payment</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <div class="refEntry" id="acinput">
+        <h2>AC input section</h2>
+        <div class="refLabel">Function</div>
+        <p>Takes the 480 V three phase feed through input protection, contactors, and filtering into the power stack.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Phase loss or rotation faults</p>
+        <p>Loose lugs heating under load</p>
+        <p>Input contactor wear</p>
+        <p>Surge device end of life</p>
+      </div>
+      <div class="refEntry" id="powermodules">
+        <h2>Power modules</h2>
+        <div class="refLabel">Function</div>
+        <p>Rectify AC to DC and convert to the commanded output voltage. Stacked in parallel slices, typically 25 to 75 kW each, so capacity degrades gracefully.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Single module failure capping output</p>
+        <p>Module fan failure and thermal derate</p>
+        <p>Module comm bus dropouts</p>
+        <p>Firmware mismatch after partial replacement</p>
+      </div>
+      <div class="refEntry" id="dccontactors">
+        <h2>DC output contactors</h2>
+        <div class="refLabel">Function</div>
+        <p>Connect the DC bus to the cable only after the handshake and cable check pass. The last switch between the bus and the driver&#x27;s hands.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Welded contacts leaving the output live</p>
+        <p>Feedback or mirror contact faults</p>
+        <p>Coil supply chatter</p>
+        <p>Contact wear from cycling under load</p>
+      </div>
+      <div class="refEntry" id="prechargecircuit">
+        <h2>Precharge circuit</h2>
+        <div class="refLabel">Function</div>
+        <p>Brings the cable and vehicle side up to bus voltage through a resistor before the main contactors close, preventing a destructive inrush across the contacts.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Open or drifted resistor</p>
+        <p>Failed precharge relay</p>
+        <p>Timeouts from added downstream capacitance</p>
+      </div>
+      <div class="refEntry" id="imd">
+        <h2>Insulation monitoring device</h2>
+        <div class="refLabel">Function</div>
+        <p>Continuously measures resistance from DC positive and DC negative to protective earth on the isolated output. Trips below roughly 100 ohms per volt, about 100 kilohms at 1000 V.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Genuine trips from moisture or damage</p>
+        <p>Capacitive leakage on long shielded runs hugging the threshold</p>
+        <p>Device failure reading permanently low</p>
+      </div>
+      <div class="refEntry" id="cooling">
+        <h2>Cooling system</h2>
+        <div class="refLabel">Function</div>
+        <p>Air paths with filters and fans for the cabinet and modules; liquid loops with pump, exchanger, and coolant for high power cables and some electronics.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Blocked filters</p>
+        <p>Failed fans</p>
+        <p>Low coolant or air in the loop</p>
+        <p>Pump wear</p>
+        <p>Exchanger blockage</p>
+      </div>
+      <div class="refEntry" id="dispenser">
+        <h2>Charge controller and dispenser</h2>
+        <div class="refLabel">Function</div>
+        <p>The user facing unit: display, payment, RFID, connector management, and the controller orchestrating the session state machine.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Controller board faults presenting as handshake failures</p>
+        <p>Display and reader failures</p>
+        <p>Dispenser to power cabinet comm faults on split architectures</p>
+      </div>
+      <div class="refEntry" id="pilotcomms">
+        <h2>Control pilot and comms board</h2>
+        <div class="refLabel">Function</div>
+        <p>Generates the J1772 pilot, runs the PLC modem for CCS and NACS digital communication, and holds the ISO 15118 certificate machinery.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Dead pilot</p>
+        <p>SLAC failures from PLC modem faults</p>
+        <p>Certificate store corruption or expiry</p>
+      </div>
+      <div class="refEntry" id="connectorcable">
+        <h2>Connector and cable</h2>
+        <div class="refLabel">Function</div>
+        <p>The wear item: power contacts, pilot and proximity pins, latch, and on high power units a liquid cooling jacket, delivered into the public&#x27;s hands hundreds of times a week.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Contact wear and heating</p>
+        <p>Latch and proximity damage</p>
+        <p>Crushed or abraded cable</p>
+        <p>Coolant weep on liquid cooled assemblies</p>
+      </div>
+      <div class="refEntry" id="meterpayment">
+        <h2>Metering and payment</h2>
+        <div class="refLabel">Function</div>
+        <p>Revenue grade energy metering plus card readers and payment terminals feeding the billing chain through OCPP.</p>
+        <div class="refLabel">Failure modes</div>
+        <p>Meter faults breaking billing while power flows fine</p>
+        <p>Reader failures</p>
+        <p>Payment terminal connectivity separate from OCPP</p>
+      </div>
+      <div class="refToc mt-4"><strong>More reference</strong><br>
+        <a href="/plugwatt/reference/brands.html">EV Charger Brand and Equipment Library</a>
+        <a href="/plugwatt/reference/comms.html">OCPP and EV Charger Communications</a>
+        <a href="/plugwatt/reference/faultfamilies.html">EV Charger Fault Codes and Fault Families</a>
+        <a href="/plugwatt/reference/safety.html">EV Charging Field Safety</a>
+        <a href="/plugwatt/reference/standards.html">EV Charging Standards and NEC 625</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from PlugWatt</strong>
+        <p>Reference notes from PlugWatt, the offline field toolkit for electric vehicle charging installation and service technicians. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="/plugwatt/">PlugWatt</a> ·
+        <a href="/plugwatt/privacy.html">Privacy</a> ·
+        <a href="/plugwatt/terms.html">Terms</a> ·
+        <a href="/plugwatt/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
