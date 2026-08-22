@@ -55,7 +55,7 @@
       </div>
       <div class="refEntry" id="combiner-hazard">
         <h2>Combiner boxes are energized equipment</h2>
-        <p>A DC combiner on a 1500 volt plant carries lethal voltage whenever the sun is up, on both the line and load side, regardless of inverter state. Opening the combiner disconnect does not de energize the string side terminals. Fuses can be energized from both directions. Arc flash risk applies above roughly 400 volts DC.</p>
+        <p>A DC combiner on a 1500 volt plant carries lethal voltage whenever the sun is up, on both the line and load side, regardless of inverter state. Opening the combiner disconnect does not de energize the string side terminals. Fuses can be energized from both directions. Arc flash is a live hazard here, not a formality: NFPA 70E engages at 50 volts, and a 1500 volt array sits above the range its PPE category tables cover, so the protection required comes from the site incident energy analysis and the label on the equipment.</p>
         <div class="refLabel">Safe response</div>
         <p>Qualified person only. Open the combiner disconnect, verify absence of voltage with a DC rated meter on every circuit you will touch, and wear DC rated PPE per the site arc flash study. Strings cannot be turned off; work them as energized or cover the modules.</p>
         <div class="refLabel">Verify against</div>
@@ -71,7 +71,7 @@
       </div>
       <div class="refEntry" id="combiner-stringcompare">
         <h2>Parallel string Voc and Isc comparison</h2>
-        <p>Identical strings on the same combiner should measure nearly identical open circuit voltage and, under stable sun, nearly identical current. A string more than 5 percent off its neighbors in current, with at least 600 watts per square meter of irradiance, indicates a fault: shading, soiling, a failed module, a bad connector, or a blown bypass diode. A string low in Voc by roughly one module voltage usually has a shorted bypass diode or a failed module. Meaningful current and voltage curve tracing needs at least 500 watts per square meter.</p>
+        <p>Identical strings on the same combiner should measure nearly identical open circuit voltage and, under stable sun, nearly identical current. A string more than 5 percent off its neighbors in current, with at least 600 watts per square meter of irradiance, indicates a fault: shading, soiling, a failed module, a bad connector, or a blown bypass diode. Size any Voc shortfall to tell those apart: a typical crystalline module carries three bypass diodes, one per substring, so one shorted diode costs roughly a third of a module Voc, while a full module Voc missing points at a whole module shorted out or bypassed. Meaningful current and voltage curve tracing needs at least 500 watts per square meter.</p>
         <div class="refLabel">Safe response</div>
         <p>Measure with a DC rated clamp meter and voltmeter. Compare like to like under the same conditions and record irradiance with every reading.</p>
         <div class="refLabel">Verify against</div>

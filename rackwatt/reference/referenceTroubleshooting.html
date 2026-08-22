@@ -79,6 +79,8 @@
         <p>Eaton</p>
         <p>Mitsubishi</p>
         <p>ABB</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
       </div>
       <div class="refEntry" id="generators-failtostart">
         <div class="refTag">generators</div>
@@ -109,6 +111,8 @@
         <p>Generac</p>
         <p>ASCO transfer</p>
         <p>Russelectric transfer</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
       </div>
       <div class="refEntry" id="distribution-overview">
         <div class="refTag">distribution</div>
@@ -138,6 +142,8 @@
         <p>Eaton</p>
         <p>ABB</p>
         <p>Siemens</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
       </div>
       <div class="refEntry" id="aircooling-overview">
         <div class="refTag">airCooling</div>
@@ -169,17 +175,19 @@
         <p>Carrier</p>
         <p>York</p>
         <p>Daikin</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
       </div>
       <div class="refEntry" id="liquidcooling-overview">
         <div class="refTag">liquidCooling</div>
         <h2>Liquid cooling field reference</h2>
-        <p>The underserved edge. Artificial intelligence racks drive liquid cooling and there is almost no consolidated field reference.</p>
+        <p>The underserved edge. Artificial intelligence racks drive liquid cooling and the field practice is genuinely not written down yet. Treat this section as orientation only. It depends on the vendor manuals and the site specific documentation, and the real source for any given plant is the designers and installers of that project.</p>
         <div class="refLabel">Method</div>
         <p>Log coolant flow, pressure, temperature, reservoir level, and leak detection</p>
         <p>Sample and log coolant chemistry and fluid quality on schedule</p>
         <p>Interpret an unexpected delta T change as a flow restriction, heat exchanger fouling, pump degradation, or cooling imbalance</p>
         <p>Swap filters on the secondary loop and verify pump redundancy</p>
-        <p>Compare secondary loop discharge pressure to the mechanical seal rating</p>
+        <p>For coolant loop pre execution checks, take the maximum and minimum pressures from the facility Risk Management Plan and Process Safety Management documentation and the CDU manual, not from a remembered number</p>
         <div class="refLabel">Warning signs</div>
         <p>Unexpected change in delta T across a loop</p>
         <p>Falling coolant flow or pressure</p>
@@ -188,9 +196,11 @@
         <p>Coolant chemistry or fluid quality drift</p>
         <p>Pump degradation or loss of redundancy</p>
         <div class="refLabel">Notes</div>
+        <p>Scope and maturity. This practice is still being written. It is O&amp;M manual technical author work, and even basic questions such as who signs off and what the back out plan is are not yet consolidated across the industry. Defer to the specific manufacturer manual and the project designers and installers.</p>
+        <p>Pressure limits. Do not work to a remembered figure. Take the maximum and minimum coolant loop pressures from the facility Risk Management Plan and Process Safety Management documentation and the CDU manual. A site running liquid at scale already documents these limits under its safety programme.</p>
         <p>Direct to chip cooling uses cold plates, micro channel heat exchangers, mounted on processors. Manifolds distribute coolant and a secondary loop, typically propylene glycol and water, carries heat to a Coolant Distribution Unit.</p>
-        <p>Rear door heat exchangers handle 10 to 30 kilowatts per rack passively, 50 to 75 kilowatts with active fans, and advanced models claim up to 200 kilowatts.</p>
-        <p>Critical detail: mechanical seal life scales with discharge pressure. A seal that lasted five years on a 2 bar chilled water loop can fail within 12 to 18 months on a 6 bar secondary cold plate loop.</p>
+        <p>Rear door heat exchanger capacity figures, roughly 10 to 30 kilowatts passive, 50 to 75 kilowatts with active fans, and up to 200 kilowatts on advanced models, are vendor claims. Confirm the rating for the specific model.</p>
+        <p>Mechanical seal life scales with discharge pressure. As an illustration only, a seal that lasted years on a low pressure chilled water loop can fail far sooner on a high pressure secondary cold plate loop. Set intervals from the vendor manual and trend seal condition, not from a fixed figure.</p>
         <p>Routine work includes logging coolant chemistry, swapping filters, and verifying pump redundancy.</p>
         <div class="refLabel">Brands</div>
         <p>Vertiv CDU</p>
@@ -198,6 +208,8 @@
         <p>Boyd</p>
         <p>CoolIT</p>
         <p>Schneider</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
       </div>
       <div class="refEntry" id="monitoring-overview">
         <div class="refTag">monitoring</div>
@@ -222,6 +234,8 @@
         <p>Trellis</p>
         <p>Modius</p>
         <p>Niagara</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
       </div>
       <div class="refToc mt-4"><strong>More reference</strong><br>
         <a href="/rackwatt/reference/calcReference.html">Calculation Reference</a>

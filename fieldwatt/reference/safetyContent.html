@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Field Safety | FieldWatt field reference</title>
-  <meta name="description" content="Field Safety for utility scale solar technicians. Arc flash risk applies above roughly 400 volts, which covers every 1500 volt DC circuit and all medium voltage equipment on a solar plant. NFPA 70E de" />
+  <meta name="description" content="Field Safety for utility scale solar technicians. NFPA 70E engages at 50 volts. Work on or near exposed energized parts at 50 volts or more requires justification for working energized, an energized e" />
   <link rel="canonical" href="https://thrasherapps.com/fieldwatt/reference/safetyContent.html" />
   <link rel="stylesheet" href="/assets/site.css">
   <style>
@@ -57,11 +57,15 @@
       </div>
       <div class="refEntry" id="safety-arcflash">
         <h2>Arc flash and NFPA 70E</h2>
-        <p>Arc flash risk applies above roughly 400 volts, which covers every 1500 volt DC circuit and all medium voltage equipment on a solar plant. NFPA 70E defines the framework: an arc flash risk assessment for each task, incident energy or PPE category determination, and boundaries (the arc flash boundary, plus the limited and restricted shock approach boundaries). PPE categories run from 1 (minimum arc rated clothing) to 4 (40 calorie suit); the site arc flash study labels on the equipment state the required category and boundary distances for that specific equipment.</p>
+        <p>NFPA 70E engages at 50 volts. Work on or near exposed energized parts at 50 volts or more requires justification for working energized, an energized electrical work permit, and a shock risk assessment. There is no voltage above which the arc flash risk assessment starts and below which the hazard simply disappears, so treat no figure as a floor.
+
+The part that matters most on a 1500 volt plant: the PPE category tables do not cover you. The NFPA 70E arc flash PPE category table for DC systems spans 100 volts to 600 volts. A 1500 volt DC array sits above that range, so the PPE category method does not apply and the required protection has to come from an incident energy analysis, which is what the site arc flash study is. The same holds for the medium voltage equipment on the plant. If someone hands you a PPE category for a 1500 volt DC or a medium voltage task that was read off a table, that is the wrong method and the number is not trustworthy.
+
+The framework otherwise: an arc flash risk assessment for each task, incident energy or PPE category determination, and the boundaries, meaning the arc flash boundary plus the limited and restricted shock approach boundaries. Where the category method does legitimately apply, the categories run 1 through 4 with minimum arc ratings of 4, 8, 25 and 40 calories per square centimeter. The arc flash study label on the specific piece of equipment states the required protection and the boundary distances for that equipment, and that label governs over any general rule, including this one.</p>
         <div class="refLabel">Safe response</div>
         <p>Consult the site arc flash study and equipment labels for exact incident energy before any energized work. No label and no study means no energized work: stop and escalate. Energized work above 50 volts requires justification and an Energized Electrical Work Permit under NFPA 70E.</p>
         <div class="refLabel">Verify against</div>
-        <p>Arc flash rules differ by NFPA 70E edition; the site program document states the edition in force.</p>
+        <p>Arc flash rules differ by NFPA 70E edition and the site program document states the edition in force. The equipment arc flash label and the site study govern over any general guidance. Above the range the PPE category tables cover, an incident energy analysis is required.</p>
       </div>
       <div class="refEntry" id="safety-loto">
         <h2>LOTO for PV: the array never turns off</h2>

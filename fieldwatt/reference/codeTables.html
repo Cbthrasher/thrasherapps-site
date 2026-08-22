@@ -154,19 +154,26 @@ These are pass or fail floors, not health targets: dry healthy utility scale cir
       </div>
       <div class="refEntry" id="table-torque">
         <h2>Torque reference</h2>
-        <p>The manufacturer label on the enclosure or lug is always the authority. When a label is unreadable and no documentation exists, the recognized defaults (from UL 486A style tables) for wire binding and lug screws:
+        <p>The manufacturer label on the enclosure or the lug is always the authority. Use it whenever it is legible.
 
-Slotted screw lugs, 10 AWG and smaller: 20 to 25 inch pounds
-Slotted screw lugs, 8 AWG: 25 to 30 inch pounds
-Hex or Allen drive lugs, 6 to 4 AWG: 45 inch pounds
-Hex or Allen drive lugs, 3 to 1 AWG: 50 inch pounds
-Hex or Allen drive lugs, 1/0 to 2/0: 120 inch pounds
-Hex or Allen drive lugs, 3/0 to 350 kcmil: 275 inch pounds
-Hex or Allen drive lugs, 400 to 500 kcmil: 375 inch pounds
+Correct the common mistake first: tightening torque is set by the DRIVE SIZE, not by the conductor size. UL 486A and 486B key their tables to the screw, measured as the socket size across the flats for a hex or Allen drive, or the slot dimensions for a slotted screw. Two lugs sized for the same conductor can call for very different torque if they take different screws, so measure the drive rather than inferring a value from the wire.
 
-Use a calibrated torque tool, mark completed terminations, and recheck aluminum terminations within the first year.</p>
+Recognized defaults for hex socket set screws, by socket size across the flats:
+
+1/8 inch: 45 inch pounds
+5/32 inch: 100 inch pounds
+3/16 inch: 120 inch pounds
+7/32 inch: 150 inch pounds
+1/4 inch: 200 inch pounds
+5/16 inch: 275 inch pounds
+3/8 inch: 375 inch pounds
+1/2 inch: 500 inch pounds
+
+For slotted screws and any other drive type, the published value depends on the screw slot dimensions and there is no safe way to reduce it to a short list. Get the number from the label or the manufacturer sheet rather than estimating it.
+
+Both directions fail. Too little torque leaves a high resistance joint that heats, oxidizes and eventually opens or starts a fire. Too much torque damages the conductor strands or cracks the lug, which fails the same way later. Use a calibrated torque tool rather than feel, mark completed terminations, and recheck aluminum terminations within the first year.</p>
         <div class="refLabel">Verify against</div>
-        <p>Generic defaults only. The equipment label and manufacturer sheet govern.</p>
+        <p>Generic defaults from UL 486A and 486B style tables, keyed to drive size. The equipment label and the manufacturer sheet govern. Where the label is legible, use the label.</p>
       </div>
       <div class="refToc mt-4"><strong>More reference</strong><br>
         <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>

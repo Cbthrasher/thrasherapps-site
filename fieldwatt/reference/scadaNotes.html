@@ -38,7 +38,7 @@
     <div class="container">
       <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
       <h1 class="h2">SCADA Notes</h1>
-      <p class="lead">Field reference for utility scale solar technicians. 8 entries, taken from the FieldWatt app.</p>
+      <p class="lead">Field reference for utility scale solar technicians. 9 entries, taken from the FieldWatt app.</p>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#scada-ignition">Ignition platform overview</a>
         <a href="#scada-tags">Tags and tag quality</a>
@@ -47,7 +47,8 @@
         <a href="#scada-stalequality">Why a tag shows stale or bad quality</a>
         <a href="#scada-ovation">Ovation as SCADA and plant controller</a>
         <a href="#scada-independentconfirmation">Independent confirmation: proving a device is really down</a>
-        <a href="#scada-realvscomms">Real fault or comms artifact?</a>
+        <a href="#scada-switchsidechecks">Switch side checks: is the path down, or the device?</a>
+        <a href="#scada-realvscomms">Real fault or comms artifact? Scope it first</a>
       </div>
       <div class="refCta">
         <strong>These notes come from FieldWatt</strong>
@@ -97,21 +98,57 @@
       </div>
       <div class="refEntry" id="scada-independentconfirmation">
         <h2>Independent confirmation: proving a device is really down</h2>
-        <p>The flaw in judging a device by its own telemetry is circular: when the channel is down, the thing reporting that the device is fine is the same thing that is broken. Reliable calls come from evidence that travels a different path than the data.
+        <p>Read the scope note in Real fault or comms artifact first: this matters for autonomous devices, far less for a device that cannot act without its controller.
+
+The flaw in judging a device by its own telemetry is circular. When the channel is down, the thing reporting that the device is fine is the same thing that is broken.
+
+THE PRINCIPLE. Verify a device by testing the effect of its function through an independent controller, an independent path and an independent power source. If the equipment is really doing its job, something else in the plant has noticed, and that witness is worth more than anything the silent device could say about itself. Everything below is one instance of this single idea, which is why it is worth learning as a principle rather than as a list: it lets you improvise a check at a site whose equipment you have never seen.
+
+The names, if you want the literature. High availability computing solved this decades ago and the vocabulary transfers cleanly. SHARE NOTHING is the rule that confirming evidence must have no component in common with the thing being confirmed, because any shared component is a common mode failure waiting to fool you. FENCING is forcing a suspect node into a known state instead of inferring its state, which is exactly what cutting power is. A WATCHDOG is the timer that declares a node dead when it stops checking in, which is what a heartbeat with a dwell is. Borrowing the names is useful because it points at a body of work where these failure modes are already catalogued.
+
+The revenue meter counter test, as the example. The clearest instance, and it needs no site visit: the meter is separately powered, separately wired, and read over a different path, so it shares nothing with the silent device. Watch the kWh totalizer across the outage. If the counter stalls during the gap and then JUMPS when comms restore, the meter kept accumulating the whole time, so the equipment was running and only the telemetry was down. If the counter stalls and then resumes counting flat from where it stopped, production genuinely stopped. The same logic transfers to any independent witness: a transformer that still sees current, a tracker row visibly following the sun, a station service load still drawing.
 
 Hardwired alarm and fail contacts. Utility substation practice, and worth copying wherever the equipment supports it: the protective relay&#x27;s alarm or fail contact is wired to a separate I/O device rather than reported over the same protocol as its measurements. Then the dispatch logic becomes explicit. Loss of comms alarm alone means suspect the channel. Loss of comms alarm PLUS an asserted relay fail contact means the device itself is in trouble, and that combination is what sends a technician.
 
-Heartbeat counters with dwell. Comm channels commonly carry a heartbeat counter, and the loss of comms alarm asserts only after the counter stalls for a set dwell, on the order of a couple of minutes. That deliberate delay is why a master configured with a tight response timeout flags healthy devices as offline all day while the properly dwelled alarm stays quiet.
+HOW LONG BEFORE YOU CALL IT DEAD. Asking for the right number of seconds is the wrong shape of question, and a fixed plant wide timeout is the usual bad answer: it produces nuisance alarms on slow links and dangerous silence on critical ones. Derive it per device the way a failure mode and effects analysis does. Ask what the actual effects are if THIS device is unreachable for longer than X, and whether those effects cause a problem anyone cares about. A revenue meter quiet for ten minutes costs ten minutes of resolution in a report. A protection relay quiet for ten minutes is a different conversation entirely. The dwell falls out of the consequence, not out of a site convention.
 
-Protocol level counters. Most protocols expose retry, timeout, and frame error counters that turn a subjective impression into a number. As one example, a DNP3 I/O server may flag points as bad value after roughly three retries. There is no standard: the threshold varies between utilities, vendors, and I/O servers. The transferable practice is to know your own system&#x27;s retry count and dwell, because that number is what separates a device that is genuinely gone from one that is merely slow.
+A cheap technique where the protocol supports it: put a ROLLING COUNTER inside the heartbeat rather than a static value. A static heartbeat only proves that something answered. A counter that increments proves the far end is still executing its program, rather than a stale cached value or an intermediate device answering on its behalf. The size of the gap in the sequence after recovery also tells you how much you actually missed.
 
-The revenue meter counter test. The cleanest artifact test available, and it needs no site visit. Watch the kWh totalizer on the revenue meter across the outage. If the counter stalls during the gap and then JUMPS when comms restore, the meter kept accumulating the whole time: the equipment was running and only the telemetry was down. If the counter stalls and then resumes counting flat from where it stopped, production genuinely stopped.</p>
+WHAT TO ALARM ON FOR A CONTROL ISLAND. When a section runs its own control with its own safety devices, silence by itself is not worth waking anyone for. The conditions that are worth an alarm are that the section is out of control, meaning it is no longer holding its process within limits; that it is not processing its inputs, so work is piling up in front of it; or that it is not producing its outputs, so whatever depends on it downstream is being starved. Each of those is a real consequence, and each can usually be observed from outside the island by the same independent witnesses the principle points at. Alarming on those rather than on loss of comms is the difference between an alarm list people act on and one they learn to ignore.
+
+Protocol level counters. Most protocols expose retry, timeout, and frame error counters that turn a subjective impression into a number. As one example, a DNP3 I/O server may flag points as bad value after roughly three retries. There is no standard: the threshold varies between utilities, vendors, and I/O servers. Know your own system&#x27;s retry count and dwell, because that number is what separates a device that is genuinely gone from one that is merely slow.</p>
         <div class="refLabel">Verify against</div>
         <p>Thresholds and dwell times vary by utility, vendor, and I/O server; confirm the values configured on your own system. Contributed by substation practitioners.</p>
       </div>
+      <div class="refEntry" id="scada-switchsidechecks">
+        <h2>Switch side checks: is the path down, or the device?</h2>
+        <p>Most of the evidence in a device offline call sits on the network equipment, not on the device, and most of it can be read without leaving the control room.
+
+Pathing, before anything else. Look at the box the device hangs off and ask whether everything downstream of it went quiet at the same moment. If every device on that switch, media converter or radio dropped together, the device is almost certainly fine and the shared path is not. One device quiet while its neighbours on the same switch keep reporting points the other way. This check costs nothing, takes seconds, and reorders the entire job.
+
+Switch port status. Managed switches report port state remotely, which is the cheapest hard evidence available. Link down means the physical path is broken: cable, connector, media converter, transceiver, or the device&#x27;s own network interface. Link up with the device still unreachable means the physical layer is intact and the problem sits above it, in addressing, the protocol, the master&#x27;s configuration, or the device application. That single reading splits the problem in half.
+
+Ping from the right place. Pinging from wherever the SCADA poll originates only tests the whole chain at once, so a failure tells you nothing about where. Ping from the switch itself, or from an engineering station on the same segment. If the device answers locally but not from the SCADA host, the device is up and the fault is in between: routing, a firewall rule, or the master side. That is not a truck roll.
+
+Link transitions and error counters. The switch log timestamps every link up and link down event. A port that has flapped repeatedly points at a marginal cable, connector or transceiver rather than a dead device. Rising CRC or frame error counters on the port mean the physical layer is degraded and passing corrupted frames, which is again a cable, connector or noise problem rather than an application fault. A stable link with clean counters moves suspicion off the physical layer entirely.
+
+Once someone is on site: the LEDs. Lit means the device has power and link, so it is up but unreachable and the fault is above the physical layer. Dark means it is down. That is the fastest determination available in the field, and it is worth asking the technician to report it before touching anything else.
+
+CUTTING POWER TO FORCE CERTAINTY, and the limit that decides whether it works. Removing power and watching what changes is fencing: it forces a known state instead of inferring one. But the guarantee only holds if whatever cuts the power is itself on an independent network and an independent power path from the device. Command a breaker or a relay over the same network that is already suspect, or through the same power supply, and you have not proved the power went off; you have only sent a request into the same fog. Where you cannot guarantee an independent path, confirm through a side effect instead: current draw stopping, a contactor dropping out, a downstream measurement collapsing. And it stays last regardless, because it destroys the evidence of the original state.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Never remove power from field equipment to test a theory outside the site switching and lockout procedures. Exhaust the read only checks first, and remember that a power cycle erases the very state you were diagnosing.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Switch management access, log detail and counter names vary by vendor and by site policy. On many plants the network equipment is not yours to log into; follow the site cyber security procedures and ask the person who owns it.</p>
+      </div>
       <div class="refEntry" id="scada-realvscomms">
-        <h2>Real fault or comms artifact?</h2>
-        <p>The most valuable SCADA skill in solar O&amp;M is telling a real equipment fault from a communications artifact before rolling a truck. Real faults: production actually drops, neighboring measurements corroborate (the meter sees less power, the transformer sees less current), and the device logs a fault locally. Comms artifacts: values freeze or go bad quality while plant output at the meter stays flat, many devices change state at the same timestamp, and the device checks out healthy at its local display. When SCADA and the revenue meter disagree, believe the meter. Better still, do not rely on the telemetry path alone: hardwired fail contacts, protocol retry counters, and the revenue meter counter test give evidence over a different path. See Independent confirmation.</p>
+        <h2>Real fault or comms artifact? Scope it first</h2>
+        <p>SCOPE THIS FIRST. The distinction only earns its keep for AUTONOMOUS devices: equipment that keeps doing its job whether or not anything is talking to it. A central inverter, a tracker controller, a protective relay and a revenue meter all carry on regardless of who is listening, so down versus merely unreachable is a real difference and it changes what you do about it.
+
+For a device that cannot act without its controller, the question largely dissolves. A VFD taking speed commands from a PLC is the common example: with the command path gone it is not doing useful work either way, and a correctly configured drive should already have initiated its own reaction to loss of command, whether that is a controlled stop, a hold, or a fail safe state. If it did not, that is the finding. Practitioners have challenged this entire framing on exactly that ground and they are right to, so establish which kind of device you are looking at before spending any effort on the rest.
+
+For autonomous devices, the most valuable SCADA skill in solar O&amp;M is telling a real equipment fault from a communications artifact before rolling a truck. Real faults: production actually drops, neighboring measurements corroborate (the meter sees less power, the transformer sees less current), and the device logs a fault locally. Comms artifacts: values freeze or go bad quality while plant output at the meter stays flat, many devices change state at the same timestamp, and the device checks out healthy at its local display. When SCADA and the revenue meter disagree, believe the meter. Better still, do not rely on the telemetry path alone: hardwired fail contacts, switch port status, and independent witnesses to the device&#x27;s actual function give evidence over a different path. See Independent confirmation and Switch side checks.
+
+A caveat from people who do this daily. Experienced technicians push back on the premise itself, and they have a point: roughly nine times in ten it turns out to be a cable, and in plenty of shops somebody is driving out regardless of what the diagnosis says. So be honest about what the distinction actually buys. It does not decide whether you fix it. It decides what you dispatch and how urgently: a network technician with a cable tester and a spare transceiver is a different truck from an equipment technician with a laptop and a spare board, and a comms artifact on a plant that is still producing is not the emergency that a dead inverter at noon is.</p>
         <div class="refLabel">Safe response</div>
         <p>Never reset or cycle field equipment purely because SCADA shows it offline. Confirm at the device first.</p>
         <div class="refLabel">Verify against</div>
