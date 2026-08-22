@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Veeder-Root TLS-450 PLUS Alarm Codes | DropTubeBuilder field reference</title>
-  <meta name="description" content="Veeder-Root TLS-450 PLUS Alarm Codes for fuel system and underground storage tank technicians. Configuration data was lost or changed (often after a battery/power issue). Action: review and re-enter System/In-Tank/Sensor setup; print a setup rep" />
+  <meta name="description" content="Veeder-Root TLS-450 PLUS Alarm Codes for fuel system and underground storage tank technicians. A device setup data problem. On a line this very often means the line length was never programmed, since the default is 501 feet and leaving it posts " />
   <link rel="canonical" href="https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-450-plus.html" />
   <link rel="stylesheet" href="/assets/site.css">
   <style>
@@ -97,242 +97,242 @@
       <div class="refEntry" id="setup-data-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Setup Data Warning</h2>
-        <p>Configuration data was lost or changed (often after a battery/power issue). Action: review and re-enter System/In-Tank/Sensor setup; print a setup report and confirm against records.</p>
+        <p>A device setup data problem. On a line this very often means the line length was never programmed, since the default is 501 feet and leaving it posts this warning. Check what the console actually holds before assuming data was lost. Action: print a setup report and compare it line by line against your records; on lines, confirm the line length is entered and correct, and confirm the line type, because the default is FLEX A which is white Enviroflex PP1501 and a wrong type causes line test failures; on tanks, check capacity, diameter, tank chart, thermal coefficient and thresholds; on sensors, check each position is programmed as the type physically installed; re enter what is wrong and save it; check the console battery, since setup loss after a power event usually means the battery is failing; confirm leak testing resumes and a test completes after the correction.</p>
       </div>
       <div class="refEntry" id="printer-out">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Printer Out</h2>
-        <p>Integrated printer is out of paper or the door is open. Action: reload paper roll, close door, clear the warning.</p>
+        <p>The printer paper roll is empty. Action: fit a new roll the correct way round; use the manufacturer&#x27;s paper, part 514100-456 on a TLS-4 or TLS-450PLUS and part 514100-210 on a TLS-3XX, since other paper can damage the mechanism; keep spare rolls on site, because compliance records get asked for during inspections and that is the worst time to find the roll empty.</p>
       </div>
       <div class="refEntry" id="printer-error">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Printer Error</h2>
-        <p>Printer mechanism fault or paper jam. Action: clear jam, reseat paper, cycle power to the console if it persists.</p>
+        <p>The printer feed roller release is open. Action: push the release lever to the up position; check the paper is loaded correctly and the path is clear; power cycle if it does not clear; if reports are needed now, get them another way, because the record matters more than the printer does.</p>
       </div>
       <div class="refEntry" id="battery-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Battery Warning</h2>
-        <p>Console backup battery is low; setup/data may not survive a power loss. Action: schedule battery replacement (board-mounted lithium).</p>
+        <p>The console&#x27;s internal battery is low. That battery holds the setup data and the clock when power is lost. Action: print a full setup report now, before doing anything else, so the configuration can be restored if it goes; replace the battery with the correct part for the console; check and correct the date and time afterwards, since alarm and test records are only useful with the right timestamps; verify the setup survived by printing a second report and comparing it.</p>
       </div>
       <div class="refEntry" id="ac-power-off">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>AC Power Off</h2>
-        <p>Console lost AC power and is running on backup or has shut down. Action: check breaker/UPS feeding the console; confirm dedicated circuit is on.</p>
+        <p>The console lost mains power and ran on battery, or has logged a power interruption. Leak testing does not run while the console is down, so the gap matters as much as the cause. Action: confirm mains power at the console and check the breaker, any UPS and the disconnect; check whether the outage was site wide or just the console circuit, since a tripped breaker on the console circuit alone points at a fault rather than the utility; check the alarm history for what else posted during the outage and whether setup data survived; check the console battery, because repeated power events shorten its life and setup loss usually follows; confirm the date and time are still correct, since wrong timestamps devalue every test record after it; confirm a leak test completes after power is restored, and record the monitoring gap for the outage period.</p>
       </div>
       <div class="refEntry" id="eeprom-failure">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>EEPROM Failure</h2>
-        <p>Non-volatile memory (setup storage) failed its self-test. Action: cycle power; if it returns, the CPU/memory board needs service.</p>
+        <p>The console has detected a failure in the memory that holds its configuration. Programming may be corrupt rather than obviously missing, which is the more dangerous case. Action: print or photograph every setup screen that still reads before you touch anything; power cycle and see whether it clears; compare the setup against your records in full rather than spot checking, since a partially corrupt configuration will run and give wrong results; check the console battery; contact manufacturer technical support before swapping modules; once it is back, confirm leak testing actually runs and completes, and record the monitoring gap.</p>
       </div>
       <div class="refEntry" id="ram-failure">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>RAM Failure</h2>
-        <p>Working memory failed its self-test. Action: cycle power; persistent fault means CPU board replacement.</p>
+        <p>The console has detected a working memory failure. Nothing it reports can be trusted while this is active. Action: record whatever setup can still be read; power cycle the console; if it returns, contact manufacturer technical support rather than replacing parts speculatively; treat monitoring as suspended until the console is confirmed healthy and record the gap, since the site still needs a release detection record for that period.</p>
       </div>
       <div class="refEntry" id="software-module-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Software Module Warning</h2>
-        <p>A software/feature module mismatch or expired feature was detected. Action: verify installed features/licensing and firmware version.</p>
+        <p>A software module has reported a fault or a version mismatch. Action: record the exact module and message before clearing anything; power cycle the console; check whether a software update, a module swap or a feature change preceded it; check the module is seated properly if one was recently fitted; contact manufacturer technical support with the module details rather than swapping hardware blind.</p>
       </div>
       <div class="refEntry" id="comm-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Comm Alarm</h2>
-        <p>Console lost communication with a device (probe, sensor, module, or remote display). Action: check the device wiring, module seating, and address/setup.</p>
+        <p>The console has lost a communications link. That may be to a device, a network, or the service that receives alarms from this site. Action: identify which link has failed and what depends on it; check cabling, terminations and any converter, modem or network device in the path; check whether the far end changed, since a replaced router, a new firewall rule or a changed phone line is a common cause; confirm with whoever monitors the site whether they are still receiving anything; treat this as urgent if the site relies on this link for after hours alarm notification, because a silent failure means nobody is watching.</p>
       </div>
       <div class="refEntry" id="auto-dial-failed">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Auto Dial Failed</h2>
-        <p>Scheduled modem/network report-out to the host failed. Action: verify phone line/Ethernet, host number/IP, and comm settings.</p>
+        <p>The console tried to connect to a remote receiver and could not after the programmed number of tries. Alarms may not be reaching whoever monitors this site. Action: check the address book settings for that contact, including the modem device number and the phone number being dialled; confirm the receiving device, fax or modem, is operational at the far end; check the phone line or network path the console uses, and check for dial tone; check whether the site&#x27;s phone service changed, since analogue lines are commonly removed during upgrades; confirm with the receiving party what has actually arrived recently; contact technical support if the settings and the line both check out.</p>
       </div>
       <div class="refEntry" id="maintenance-tracker">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Maintenance Tracker</h2>
-        <p>A scheduled maintenance interval has elapsed. Action: perform the due maintenance and reset the tracker.</p>
+        <p>A scheduled maintenance item has come due. Action: check which item and when it was last completed; do the work, then record it, since the record is what an inspector asks to see; reset the tracker only once the work is genuinely done; check the programmed intervals actually match what the site&#x27;s jurisdiction requires, since defaults are not necessarily compliant.</p>
       </div>
       <div class="refEntry" id="delivery-needed">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Delivery Needed</h2>
-        <p>Product level dropped below the delivery-needed limit. Action: schedule a fuel delivery; informational.</p>
+        <p>The product level has dropped below the programmed delivery limit. Action: call for a delivery; review whether the warning level gives useful lead time for this site; check against a stick if the reading does not match expected throughput.</p>
       </div>
       <div class="refEntry" id="low-product">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Low Product</h2>
-        <p>Product volume is below the configured low limit. Action: order fuel; verify limit is set correctly for the site.</p>
+        <p>The tank level has dropped below the programmed low product limit. Action: call for a delivery; check the threshold gives enough lead time for this site&#x27;s delivery schedule; confirm against a manual stick if the level looks wrong for recent sales, since a sticking float reads low.</p>
       </div>
       <div class="refEntry" id="high-product">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>High Product</h2>
-        <p>Product volume is above the high limit (approaching capacity). Action: stop/observe deliveries; verify the high limit and tank chart.</p>
+        <p>The product level has risen above the programmed high product limit, which sits below the overfill level. Action: allow no additional delivery until the level is dispensed back below the limit; confirm the level with a manual stick; check no further delivery is scheduled that would push it higher; check the threshold is set sensibly for this tank, since one set too low produces repeated nuisance alarms and gets ignored; check probe programming if the console disagrees with the stick.</p>
       </div>
       <div class="refEntry" id="overfill-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Overfill Alarm</h2>
-        <p>Tank exceeded the overfill limit (typically 90%) during/after a delivery. Action: stop delivery immediately; investigate delivery practices and overfill setpoint.</p>
+        <p>The fuel level has exceeded the programmed overfill limit and the tank may overflow. This is the condition the overfill prevention equipment exists to stop. Action: stop the delivery immediately; check for spillage at the fill, in the spill bucket and around the tank pad, and follow the site spill procedure if any product escaped; confirm the level with a manual gauge stick; if the level is genuinely at the limit, check the overfill prevention device, the drop tube flapper or ball float, is present, correctly set and operating at the right height; if the level is not actually high, check probe programming, tank capacity and chart, and the product float; if product left containment it is a reportable release, so report it within 24 hours.</p>
       </div>
       <div class="refEntry" id="max-product-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Max Product Alarm</h2>
-        <p>Level reached the maximum (≈95%) limit. Action: cease filling; confirm overfill-prevention valve and setpoints.</p>
+        <p>The product level has risen above the maximum programmed limit, which is the safe working capacity of the tank. Action: stop the delivery and allow no further delivery until the level drops below the limit; confirm the level with a manual gauge stick; check for spillage and follow the spill procedure if any product escaped; check the programmed tank capacity, diameter and chart match the actual tank, since a wrong chart posts this on a normal delivery; check the probe length and float positions if the console and the stick disagree.</p>
       </div>
       <div class="refEntry" id="high-water-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>High Water Alarm</h2>
-        <p>Water in the tank exceeds the high-water limit. Action: pump out water; inspect fill cap, spill bucket, and gaskets for intrusion; check for phase separation.</p>
+        <p>Water has reached the high water alarm limit. At this level water can reach the pump intake and be delivered into vehicles. Action: confirm with a manual stick and water paste; if confirmed, take the tank out of service until the water is out, since delivering water into customer vehicles costs far more than the lost sales; arrange water removal; find the entry path, checking the fill riser and cap, spill bucket and drain plunger, vapour riser and probe cap; on ethanol blends check for phase separation at the tank bottom before returning to service; if the stick does not agree, check the water float and the probe.</p>
       </div>
       <div class="refEntry" id="water-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Water Warning</h2>
-        <p>Water has reached the warning limit. Action: monitor; schedule water removal and find the source.</p>
+        <p>Water has reached the programmed warning limit, which sits below the alarm level. This is the point to find the cause, not the point to panic. Action: confirm with a manual stick and paste; trend the reading against previous sticks, since a rising level matters far more than the number itself; check the spill bucket, drain plunger and riser caps for water ingress, especially after rain; schedule removal before it reaches the alarm limit and starts affecting product.</p>
       </div>
       <div class="refEntry" id="low-temperature-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Low Temperature Warning</h2>
-        <p>Product temperature is below the low limit (waxing/gel risk for diesel). Action: informational; monitor in cold weather.</p>
+        <p>The probe temperature has dropped below minus 4 degrees Fahrenheit, which is minus 20 Celsius. This is the probe&#x27;s operating limit, not a product quality alarm. The probe returns to normal by itself once it rises above 0 Fahrenheit, minus 17.8 Celsius. Action: no repair is needed if the ambient conditions explain it, the probe recovers on its own; expect leak test results to be unreliable while it is active, since thermal instability lengthens and fails 0.2 and 0.1 gph tests; if this posts in mild weather the probe or its wiring is suspect, so check the probe temperature reading against the other tanks; for diesel in genuinely cold conditions, treat gelling and filter waxing as a separate operational concern, not something this alarm is reporting.</p>
       </div>
       <div class="refEntry" id="invalid-fuel-level-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Invalid Fuel Level Alarm</h2>
-        <p>Probe is reporting an implausible level (floats stuck or product/water floats crossed). Action: pull and inspect the probe and floats for fouling or sticking.</p>
+        <p>The product level is too low, which brings the fuel and water floats close enough together that the probe cannot report a valid level. This is a low product condition, not a probe fault. Action: call for a delivery, which is the manufacturer&#x27;s stated fix; confirm the actual level and water level with a manual gauge stick and paste; check whether high water rather than low product has closed the gap between the floats; if the tank is not actually low, then check the floats for fouling or sticking and confirm the probe and float type suit the product; check the tank chart and probe length programming.</p>
       </div>
       <div class="refEntry" id="probe-out-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Probe Out Alarm</h2>
-        <p>Console is not seeing the probe. Action: check probe wiring/connections at the probe and module; verify probe address and canister.</p>
+        <p>The console has lost a probe, which the manufacturer attributes to a hardware failure in the probe or in the wiring between the probe and the console. The tank has no automatic release detection until it is back. Action: check the wiring at the console and at the junction box in the sump for water intrusion, corrosion and loose terminations, which is the most common cause; check the probe cable for damage, including anything crushed by a sump lid or cut during other work; check the console module for that position and whether other positions on the same module are also out, which points at the module rather than the probe; confirm the probe setup has not been lost; move the probe to a known good position, or a known good probe to this one, to separate a field fault from a probe fault; stick the tank manually while it is out and record the gap in monitoring.</p>
       </div>
       <div class="refEntry" id="gross-test-fail">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Gross Test Fail</h2>
-        <p>Static (gross 3.0 gph) leak test failed. Action: re-run when quiet/idle; if it fails again, investigate the tank for leaks.</p>
+        <p>The tank failed the 3.0 gph in tank gross test. This is the least sensitive in tank test, so a gross failure usually means a real and substantial discrepancy rather than a marginal one. Action: check the tank and all containment first, sumps, the interstitial space, dispenser pans and any monitoring wells, for visible product; confirm no delivery or dispensing occurred during the test; check for a stuck or sunken product float giving a false drop; check tank capacity, diameter and chart programming, since a wrong chart misreads a normal level change; rerun the test with the tank quiet; if it fails a second time, stop using the tank, treat it as a suspected release and confirm the owner reports within 24 hours.</p>
       </div>
       <div class="refEntry" id="periodic-test-fail">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Periodic Test Fail</h2>
-        <p>Periodic (0.2 gph) leak test failed. Action: ensure adequate idle time and product level; investigate if it repeats.</p>
+        <p>The tank failed its periodic 0.2 gph in tank leak test. Most periodic failures are programming, hardware or vapour loss rather than a hole in the tank, so work the list before condemning anything. Action: print the CSLD rate test diagnostic first, Diagnostics then Tank Test then CSLD Rate Test, and read the trend rather than the single result; check the thermal coefficient is right for the product, gasoline is 0.00070 or 0.00069 and diesel is 0.00045, a wrong coefficient fails good tanks; check tank to line assignments and any siphoned or manifolded tank configuration, a manifolded pair programmed as separate tanks will not test correctly; check for a stuck pump relay leaving the STP energised during the test; check for a stuck product float and compare probe temperature against the other tanks for a failing probe; check for vapour loss, which shows up as a steady false loss, by inspecting the probe cap, fill cap, stage one dry break, spill bucket plunger and the pressure vent cap, since vacuum draws air through a bad vent cap and evaporates product; check the tank had enough quiet time, a busy site with frequent deliveries may never get an idle window; run a two hour static test once the tank is settled; if all of that is clean the tank may genuinely be leaking, which makes this a suspected release the owner must report to the implementing agency within 24 hours.</p>
       </div>
       <div class="refEntry" id="annual-test-fail">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Annual Test Fail</h2>
-        <p>Annual (0.1 gph) precision test failed. Action: review test conditions; arrange tightness testing/leak investigation.</p>
+        <p>The tank failed its annual 0.1 gph in tank leak test. This is the tightest test the console runs, so it is the most sensitive to thermal activity, vapour loss and programming errors. Action: print the CSLD rate test diagnostic and look at the trend and the test durations, long durations mean there was a lot of thermal activity; check the thermal coefficient matches the product, gasoline 0.00070 or 0.00069, diesel 0.00045; check tank capacity, diameter, tank chart and any siphoned or manifolded configuration; check for a stuck pump relay and a stuck product float; inspect the probe cap, fill cap, stage one dry break, spill bucket plunger and pressure vent cap for vapour loss, which is a common cause of a marginal 0.1 gph failure; confirm no delivery or dispensing happened in the test window and that the product had settled; rerun the test with the tank quiet, and run a two hour static test if it fails again; if nothing above explains it, treat it as a suspected release and confirm the owner reports within 24 hours.</p>
       </div>
       <div class="refEntry" id="periodic-test-needed">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Periodic Test Needed</h2>
-        <p>No passing periodic leak test within the required window. Action: ensure the tank gets quiet idle time to complete a test.</p>
+        <p>A periodic 0.2 gph test has not completed within the programmed number of days. Without it the site has no valid monthly release detection record, so this is a compliance problem even though nothing is leaking. Action: check the test history to see whether tests are failing rather than simply not running, and if they are failing work the periodic test fail list instead; check whether the site is too busy to give the tank idle time, which is common at high throughput sites and worse where blenders are present; check for an active continuous pump or continuous handle alarm holding the line busy; check whether the dispenser is programmed to turn on all pumps when only one product is called for, which denies every line its idle window; confirm the test was actually scheduled; check pump on pressure is not below 22 psi; arrange an idle period long enough for the test to complete, and confirm a passing result is recorded.</p>
       </div>
       <div class="refEntry" id="annual-test-needed">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Annual Test Needed</h2>
-        <p>No passing annual (0.1 gph) test within the window. Action: schedule conditions for a valid test.</p>
+        <p>An annual 0.1 gph test has not been performed within the programmed number of days. The site is heading out of compliance for its annual test record. Action: check the test history for failures rather than assuming it simply has not run; confirm the test is scheduled in the console; check the site gets enough idle time for a 0.1 gph test, which needs a longer quiet window than a 0.2 gph test; check for continuous pump or continuous handle alarms holding the line busy; schedule the 0.1 gph test and keep the passing result, since that record is the compliance evidence.</p>
       </div>
       <div class="refEntry" id="leak-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Leak Alarm</h2>
-        <p>Statistical leak detection declared a leak. Action: treat as a release indication; investigate per regulations.</p>
+        <p>A static in tank leak test failed. The console is reporting the tank did not hold. Action: rerun the in tank leak test first, since a single failure with activity in the window is common; check for dispensing, a delivery or a siphon break event during the test; check the probe for a stuck float and check for water movement that could shift the level; check thermal coefficient and tank chart programming; inspect sumps, the interstitial space, dispenser pans and monitoring wells for product; do not simply clear the alarm, the record matters; if the second test also fails, treat it as a suspected release, ensure the owner notifies the implementing agency within 24 hours, and arrange a tightness test.</p>
       </div>
       <div class="refEntry" id="sudden-loss-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Sudden Loss Alarm</h2>
-        <p>An unexpected sudden drop in volume (not a sale/delivery) was detected. Action: check for theft, siphoning, or a leak.</p>
+        <p>The console detected a loss of fuel during an idle period. The manufacturer&#x27;s direction is to check for a gross leak. Action: check for a gross leak first, inspecting sumps, the interstitial space, dispenser pans and monitoring wells for product; compare the console record against dispenser and point of sale totals for the same window; check whether a delivery, a transfer or a siphon break event was missed or entered wrongly; check for a product float that dropped or stuck; run an in tank leak test once the tank is quiet; if a loss is real and unexplained, treat it as a suspected release reportable within 24 hours.</p>
       </div>
       <div class="refEntry" id="theft-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Theft Alarm</h2>
-        <p>Volume decreased without an authorized dispense. Action: investigate unauthorized removal.</p>
+        <p>The console has seen product leave the tank with no corresponding dispensing. Theft and a slow release look similar from the console, so rule out the leak before accusing anyone. Action: check containment for product first, sumps, dispenser pans and the interstitial space; compare console records against dispenser and point of sale totals for the same period; check fills, sumps and risers for disturbed caps, cut locks or signs of access; check delivery records for a short delivery, which is more common than tank theft; review camera coverage of the tank pad if the site has it; run a leak test before concluding it was taken.</p>
       </div>
       <div class="refEntry" id="probe-high-water-no-float">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Probe High Water (No Float)</h2>
-        <p>Water exceeds limit but the water float is missing/stuck. Action: inspect probe water float assembly.</p>
+        <p>The probe is reporting water high enough that the water float can no longer be read, or the water float is missing, stuck or has fallen off. Action: stick the tank with a manual gauge and water finding paste to find out what the water level actually is; if water is genuinely high, take the tank out of service and remove the water before it reaches the pump intake; pull the probe and check the water float is present, free and undamaged, since a lost float is common; confirm the float is the correct type for the product, because ethanol blends need a compatible float and the wrong one sinks or sticks; check the float stops are in place; find the water entry path once the immediate problem is dealt with.</p>
       </div>
       <div class="refEntry" id="fuel-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Fuel Alarm</h2>
-        <p>A liquid sensor (sump/interstitial/dispenser pan) detected hydrocarbons. Action: locate and stop the leak; remove product from the containment.</p>
+        <p>A sensor has detected fuel in the area it monitors. Depending on the sensor that is a containment sump, an interstitial space, a dispenser pan or a monitoring well. Action: identify which sensor and therefore exactly which containment; go and look, do not diagnose this from the console; if product is present, follow the site spill and emergency response procedure and stop the source before anything else; find where it came from, commonly a pump packer or discharge seal, a line connection, a failed fitting, or a dispenser leaking into its pan; remove the product and repair the source before clearing the alarm; if the containment is dry, check the sensor is the correct type for the position, is programmed as that type, and is mounted at the right height, since a misprogrammed or displaced sensor gives false fuel alarms; a confirmed release is reportable to the implementing agency within 24 hours.</p>
       </div>
       <div class="refEntry" id="water-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Water Alarm</h2>
-        <p>A liquid sensor detected water in containment. Action: remove water; find intrusion source (covers, seals, groundwater).</p>
+        <p>Water in the tank has reached the programmed alarm limit. Water corrodes the tank bottom, feeds microbial growth and, in ethanol blends, leads to phase separation. Action: confirm with a manual gauge stick and water finding paste before acting, since the console and the stick disagree more often than people expect; if the stick agrees, arrange water removal; find the entry point rather than just pumping it out, checking the fill riser and cap, the spill bucket and its drain plunger, the vapour riser, the probe cap and any compromised fitting; note whether it appeared after rain, which points straight at the spill bucket or a riser seal; if the stick disagrees with the console, check the water float for fouling or sticking and confirm it is the right float for the product.</p>
       </div>
       <div class="refEntry" id="high-liquid-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>High Liquid Alarm</h2>
-        <p>Liquid in containment reached the upper sensor threshold. Action: pump out and identify whether fuel or water; inspect for leaks.</p>
+        <p>Liquid has reached the high threshold on a sensor. On a dispenser pan sensor that is 8 inches, on a containment sump sensor 10 inches. On a dual float hydrostatic sensor in a brine filled interstice, it means the brine level has risen, so liquid is entering the riser pipe or, in a high groundwater area, the outer wall has ruptured. Action: identify the sensor type and the containment, since the meaning differs completely between a sump sensor and a hydrostatic interstitial sensor; inspect the containment and identify the liquid as product, water or brine; treat any product as a release, stop the source and follow the site spill procedure; on a hydrostatic sensor, a rising brine level is a breach indication, so investigate the interstice rather than just pumping it down; if it is water, check the sump lid and seal, conduit entries and any riser penetration; remove the liquid and fix the cause before clearing; report within 24 hours if product or a tank breach is confirmed.</p>
       </div>
       <div class="refEntry" id="low-liquid-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Low Liquid Alarm</h2>
-        <p>Liquid in an interstitial/brine sensor fell below limit (possible breach of double wall). Action: inspect interstitial integrity and brine level.</p>
+        <p>On a brine filled interstitial sensor the brine level has dropped. That means a hole in the tank&#x27;s inner wall, or in a low groundwater area a hole in the outer wall. This is a tank integrity alarm, not a housekeeping one. Action: do not simply top up the brine, the loss is the diagnostic; confirm the reservoir level and check for any external leak from the reservoir, piping or fittings first, since that is the one benign explanation; check the sensor is correctly positioned and still in the fluid; if the brine is genuinely going somewhere, treat it as a tank breach, take the tank out of service and arrange an integrity test; a confirmed breach is a suspected release reportable within 24 hours.</p>
       </div>
       <div class="refEntry" id="liquid-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Liquid Warning</h2>
-        <p>Liquid detected at the warning level. Action: investigate containment; monitor for escalation to alarm.</p>
+        <p>Liquid has reached 1 inch on a dispenser pan or containment sump sensor. This is the early stage of the same condition High Liquid reports. Action: inspect the containment and identify the liquid before it rises further; treat any product as a release regardless of how little there is; if it is water, find the ingress path now, usually a failed sump lid seal, a conduit entry or a cracked riser penetration, since it is far easier to fix dry; check the sensor height and type against what the position calls for; remove the liquid and record what it was.</p>
       </div>
       <div class="refEntry" id="water-out-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Water Out Alarm</h2>
-        <p>A discriminating sensor lost its expected water reference. Action: inspect the sensor and its position.</p>
+        <p>On a groundwater sensor the water level has dropped below the float switch, so the sensor cannot do its job. This is a monitoring well problem, not an in tank one. Action: check the actual water level in the monitoring well; confirm the sensor is hanging at the correct depth and has not been left short after service; check the float for fouling or damage; if the water table has genuinely dropped below the sensor, reposition the sensor to suit, and record why; the well is not providing release detection while this is active, so note the gap.</p>
       </div>
       <div class="refEntry" id="sensor-out-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Sensor Out Alarm</h2>
-        <p>Console is not seeing the sensor (open/short or disconnected). Action: check sensor wiring and module; verify the sensor type/setup.</p>
+        <p>The console has lost a sensor. The manufacturer lists incorrect sensor setup first, ahead of a disconnected or failed sensor, so check programming before you pull anything apart. That containment is unmonitored until this clears. Action: check the sensor setup for that position, confirm the programmed sensor type matches what is physically installed; check the wiring at the console and at the junction box for water intrusion, corrosion and loose terminations, which is the most common physical cause; check the sensor itself for damage, fouling or a cut cable; swap the sensor to a known good position, or a known good sensor into this position, to separate a field fault from a device fault; inspect the containment physically while it is unmonitored; record the outage, since the site still needs a monitoring record for the period.</p>
       </div>
       <div class="refEntry" id="short-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Short Alarm</h2>
-        <p>Sensor wiring is shorted. Action: inspect for pinched/wet wiring and connector corrosion; megger if needed.</p>
+        <p>A short has occurred in the sensor wiring or in the sensor itself. That device is monitoring nothing while this is present. Action: identify the affected position; check the sump and junction box for water in the wiring, which causes most shorts, along with pinched cable and corroded terminations; disconnect the sensor at the junction box and check the field wiring on its own to separate a cable fault from a sensor fault; check for a cable crushed by a sump lid or damaged during other work; repair rather than bypass, dry and reseal the junction box, and inspect the containment while it is unmonitored.</p>
       </div>
       <div class="refEntry" id="sensor-setup-data-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Sensor Setup Data Warning</h2>
-        <p>Sensor configuration was lost/changed. Action: re-enter sensor type and thresholds.</p>
+        <p>Sensor configuration data has a problem. Sensors may be programmed as the wrong type, which changes what they report and what the console does about it. Action: print the sensor setup and walk each position against what is physically installed; confirm the type is right for each one, since a discriminating sensor programmed as a plain liquid sensor will not report what you expect and a dual float hydrostatic sensor programmed wrongly loses its breach indication; check the positions have not been shifted by earlier work; re enter and save the correct configuration; test each sensor after correcting, and check the console battery if the data was lost rather than never entered.</p>
       </div>
       <div class="refEntry" id="line-gross-test-fail">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Line Gross Test Fail</h2>
-        <p>Pressurized line leak detector failed the gross (3.0 gph) test. Action: line is disabled; inspect piping/fittings before returning to service.</p>
+        <p>The line failed the 3.0 gph gross test. On a gross failure the pressure readings tell you most of the story, so print the 3.0 diagnostic and read Pon, P1 and P2 before touching anything. Action: verify the tank is not out of fuel, since a dry tank cannot pressurise the line, and note that below a 10 inch level the console posts Fuel Out instead; inspect the system for external leakage; confirm the pump has power and is making normal pump on pressure, low or no STP pressure shows as Pon below normal with P2 under 12 psi, and points to a bad STP or starting capacitor; if Pon, P1 and P2 are all under 12 psi on a PLLD, check whether power to the STP is switched off; if Pon is normal but P2 is under 12 psi, suspect a faulty check valve, an FE Petro or SwiftCheck, or an internal dispenser leak; check the line length and line type programming; check the transducer by fitting a gauge in the line, it should read within 5 psi of actual; on a PLLD confirm the transducers are wired to the correct lines, since crossed wiring evaluates the wrong pressures; with no external leak found, close all dispenser shear valves and retest, a pass means the leak is in a dispenser and a fail means fuel is going back into the tank through the check valve or the pump head seals; at the dispenser check the solenoid valve, blend valve and the stage two vapour recovery path; do not return the line to service until the cause is known, and report as a suspected release within 24 hours if none is found.</p>
       </div>
       <div class="refEntry" id="line-periodic-test-fail">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Line Periodic Test Fail</h2>
-        <p>Line failed the monthly (0.2 gph) test. Action: investigate piping integrity; verify functional element/leak detector.</p>
+        <p>The pressurised line failed its 0.2 gph periodic line test. Programming is the first thing to check, not the last, because the console ships with defaults that will fail a good line. Action: check the programmed line length, the default is 501 feet and a wrong length is one of the most common causes of a false failure; check the programmed line type, the default is FLEX A which is white Enviroflex PP1501, and the wrong type will fail a good line; print the mid range diagnostic, on a TLS-450PLUS use Diagnostics then PLLD then Mid-Range Tests, on a TLS-350 use Diag Mode then Pressure Line Leak Diag then Mid Diag; read the Pon ratio, which is ramp rate over fail threshold, so above 1.0 is a fail, and large swings in ratio point to an intermittent fault such as a valve not always seating; check the line check valve, a leaking check valve is one of the two most common intermittent causes, and seating pressure should be 17 to 25 psi; with the STP on and the dispenser off, squeeze each nozzle to check for a solenoid valve leaking into the nozzle hose; on blenders, watch for meter movement with no dispensing and the STP on, which shows a leaking blend valve; confirm the line vents on shutdown, there should be at least 2 psi between Pon and Poff, and check the vent test abort count on the diagnostic printout; walk the line, dispenser piping and STP with the line pressurised and look for external leakage at connections and filters; if it still fails, close all dispenser shear valves and retest, a pass points to a dispenser and a fail points to the line, the check valve or the packer discharge seal; if it fails twice with the shear valves closed, arrange a third party line test and treat it as a suspected release reportable within 24 hours.</p>
       </div>
       <div class="refEntry" id="line-annual-test-fail">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Line Annual Test Fail</h2>
-        <p>Line failed the annual (0.1 gph) test. Action: schedule line tightness testing/repair.</p>
+        <p>The pressurised line failed its 0.1 gph annual line test. Same causes as a periodic failure but the tighter threshold makes programming errors and small internal leaks show up more readily. Action: check the programmed line length, default 501 feet, and the line type, default FLEX A white Enviroflex PP1501, before anything else; print the 0.1 test diagnostic and read the Pon ratio and durations, long durations indicate heavy thermal activity during the test; check the line check valve for leakage, seating pressure should be 17 to 25 psi; squeeze each nozzle with the STP on and the dispenser off to find a solenoid leaking into the hose; on blenders check for meter movement with no dispensing; inspect the pressurised line, dispenser piping and STP for external leakage at connections and filters; on a Red Jacket STP check the packer discharge seal and fit the correct seal for the application; confirm the line vents, at least 2 psi between Pon and Poff; retest after any repair, then close all shear valves and retest to separate a dispenser fault from a line fault; if the cause is not found, treat as a suspected release reportable within 24 hours.</p>
       </div>
       <div class="refEntry" id="line-equipment-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Line Equipment Alarm</h2>
-        <p>PLLD/WPLLD detected a hardware/handling fault (e.g., relay, pressure sensor). Action: inspect line leak module, transducer, and STP relay wiring.</p>
+        <p>The pressure measurement equipment itself has faulted, not the line. Either the dispensing pressure has drifted more than 5 psi above its reference for a full month, or the vent pressure exceeded 40 psi with dispense pressure above 50 psi. Line monitoring is not valid until this clears. Action: run the pressure measurement offset test from the PLLD or WPLLD diagnostic menu; to do that safely, turn off, lock out and tag power to the STP, vent the line to zero, reseal the line, restore STP power, then run the test; if the offset is greater than 5 psi, check the transducer wiring first, and replace the transducer only if the wiring is correct; check whether the pressure relief path is restricted, which drives vent pressure up toward pump pressure; after replacing a transducer or a pump, reset Pd_ref manually using P Offset Reset, but only once you have confirmed there is no transducer offset; repeat the offset test after any repair, then run a gross line test to clear.</p>
       </div>
       <div class="refEntry" id="pump-sensor-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Pump Sensor Alarm</h2>
-        <p>The line pressure/turbine sensor reading is out of range. Action: check the pressure transducer and its wiring at the STP.</p>
+        <p>A sensor in the submersible pump sump has detected liquid. Action: open the sump and identify the liquid, product, water or a mix; if it is product, stop the source and follow the site spill procedure, then report within 24 hours; check the usual sources in order, the pump packer and discharge seal, the line and riser connections, the functional element, and any filter or fitting in the sump; if it is water, check the sump lid seal, conduit entries and the riser penetration; pump the sump out, then re inspect with the STP running and the line pressurised, since a slow leak only shows under pressure; repair before clearing the alarm.</p>
       </div>
       <div class="refEntry" id="vapor-pressure-sensor-out">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Vapor Pressure Sensor Out</h2>
-        <p>Vapor/ullage pressure sensor not communicating. Action: check the pressure sensor and its module/wiring.</p>
+        <p>The console has lost the vapour pressure sensor used for vapour recovery monitoring. Action: check the sensor wiring and terminations at the console and at the sensor; check the sensor for damage or contamination; confirm the sensor type and position are programmed correctly; check the sensor is not blocked or liquid filled; vapour recovery monitoring is enforced locally rather than federally, so check what your jurisdiction requires while it is out of service.</p>
       </div>
       <div class="refEntry" id="gross-pressure-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Gross Pressure Warning</h2>
-        <p>Ullage pressure is outside the normal range (Stage II/ORVR/PV monitoring). Action: inspect P/V vents and vapor lines for blockage or leaks.</p>
+        <p>The line pressure readings are outside the range the gross test expects. This is usually a measurement or venting problem rather than a leak. Action: print the 3.0 diagnostic and read Pon, P1 and P2; fit a gauge in the line and confirm the transducer reads within 5 psi of actual; check the check valve seating pressure is 17 to 25 psi; confirm the line vents on shutdown with at least 2 psi between Pon and Poff, and check for a stuck relay holding the STP on; check the pressure relief path is not restricted; verify line length and line type programming; on FE Petro, check the siphon jet assembly, part 400562901, since air in the line shifts the leak thresholds and must be purged if the jet is defective.</p>
       </div>
       <div class="refEntry" id="vapor-sensor-fuel-alarm">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Vapor Sensor Fuel Alarm</h2>
-        <p>A vapor-well sensor detected liquid hydrocarbons. Action: investigate vapor recovery piping and well.</p>
+        <p>A vapour sensor in a monitoring well has detected hydrocarbon vapour in the area it monitors. Action: identify the well and go and check it, including for liquid product as well as vapour; check whether a surface spill, a recent delivery or nearby site work could explain vapour without a tank release; check the sensor position and that the well cap is sealed; check the well for water level changes that could have moved product; if vapour is genuine and unexplained, treat it as a suspected release and confirm reporting within 24 hours, then arrange investigation of the tank and line system.</p>
       </div>
       <div class="refEntry" id="vapor-processor-warning">
         <div class="refTag">Veeder-Root · TLS-450 PLUS</div>
         <h2>Vapor Processor Warning</h2>
-        <p>Membrane/vapor processor reported a fault or degraded performance. Action: review processor diagnostics and maintenance.</p>
+        <p>The vapour processor has reported a condition outside its normal operating range. Action: read the specific condition at the processor itself as well as at the console, since the unit reports more detail locally; confirm power and that the unit is not locked out; check the processor is not in a normal regeneration or standby state being reported as a warning; check the manufacturer documentation for the exact code, since processors differ considerably; check what your local air district requires for downtime and record keeping.</p>
       </div>
       <div class="refToc mt-4"><strong>More reference</strong><br>
         <a href="/droptubebuilder/reference/gilbarco-500-series.html">Gilbarco 500 Series Dispenser Error Codes</a>

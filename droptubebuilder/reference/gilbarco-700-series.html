@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gilbarco 700 Series Dispenser Error Codes | DropTubeBuilder field reference</title>
-  <meta name="description" content="Gilbarco 700 Series Dispenser Error Codes for fuel system and underground storage tank technicians. Database corrupted" />
+  <meta name="description" content="Gilbarco 700 Series Dispenser Error Codes for fuel system and underground storage tank technicians. The dispenser database failed its integrity check. Data the dispenser relies on cannot be trusted. Action: record the current totals and configuration" />
   <link rel="canonical" href="https://thrasherapps.com/droptubebuilder/reference/gilbarco-700-series.html" />
   <link rel="stylesheet" href="/assets/site.css">
   <style>
@@ -103,272 +103,272 @@
       <div class="refEntry" id="e1">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E1</h2>
-        <p>Database corrupted</p>
+        <p>The dispenser database failed its integrity check. Data the dispenser relies on cannot be trusted. Action: record the current totals and configuration before doing anything, because recovery may clear them; power cycle and see whether the fault clears on a clean start; check for an unstable supply or repeated power interruptions, which is the usual root cause of corruption; check for a recent interrupted software download; reload the database from the site controller if the dispenser supports it; verify every price, grade and configuration value afterwards rather than assuming the reload was complete; if it recurs the board is suspect, so escalate rather than repeatedly reloading; check calibration and metrological settings survived, since a database rebuild can restore defaults</p>
       </div>
       <div class="refEntry" id="e2">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E2</h2>
-        <p>Flash corrupted</p>
+        <p>Flash memory has failed its integrity check. The dispenser&#x27;s stored program or data is not reliable. Action: record configuration and totals before attempting recovery; power cycle and see whether the fault repeats on a clean start; check the supply for instability or repeated interruptions, which corrupts flash during writes; check whether a software download was interrupted, since that is the most common single cause; reload the software using the correct version for this dispenser and let it finish without interruption; if flash fails again after a clean reload, the board is failing and needs replacing; verify calibration and configuration after any recovery</p>
       </div>
       <div class="refEntry" id="e3">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E3</h2>
-        <p>LON configuration error</p>
+        <p>The internal LON network configuration does not match what the dispenser expects. Nodes are either missing, duplicated or addressed wrongly. Action: check which nodes are expected for this dispenser build and which are actually reporting; check node addressing for duplicates, which is common after a board swap; check the LON wiring and terminations between nodes, including anything disturbed by recent work; check node software versions are compatible with the main board; reseat each node and its connectors; power cycle and let the network re enumerate; if a node was deliberately removed, correct the configuration to match</p>
       </div>
       <div class="refEntry" id="e4">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E4</h2>
-        <p>One or more task not started</p>
+        <p>One or more internal software tasks did not start. The dispenser has come up incomplete rather than failed outright, which is why some functions may appear to work. Action: power cycle and see whether it comes up clean; check for an interrupted or partial software download; check the supply is stable and adequate, since a brownout during boot causes this; check for a hardware fault preventing a subsystem initialising, particularly a node that is not responding; reload the software if it repeats; escalate if it persists after a clean reload, since this points at the board</p>
       </div>
       <div class="refEntry" id="e5">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E5</h2>
-        <p>Cold start was forced</p>
+        <p>A cold start was forced, so the dispenser restarted and cleared its working state. Action: establish whether the cold start was deliberate, since a technician performing one is normal and needs no action; if nobody forced it, check the supply for interruptions, brownouts or a failing power supply; check the incoming voltage under load rather than at rest; check for loose or corroded supply terminations in the dispenser; verify configuration, prices and calibration survived, and re enter anything lost; if cold starts repeat without cause, treat the power supply as suspect</p>
       </div>
       <div class="refEntry" id="e6">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E6</h2>
-        <p>Redundant data storage error</p>
+        <p>The redundant copies of stored data do not agree. The dispenser keeps a second copy specifically so it can detect this. Action: record the current configuration and totals; power cycle and see whether it resolves to a consistent copy; check the supply for instability, which is the usual cause of a write completing to one copy and not the other; check for an interrupted software download or a cold start during a write; verify all values against your records afterwards rather than trusting whichever copy won; if it recurs, the memory or the board is failing</p>
       </div>
       <div class="refEntry" id="e7">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E7</h2>
-        <p>Calibration switch was not engaged when performing a firmware upgrade</p>
+        <p>A firmware upgrade was attempted with the calibration switch not engaged. The dispenser blocks this deliberately, because firmware affects metrology and the switch is what proves a sealed setting was opened knowingly. Action: this is a procedural block rather than a fault, so nothing is broken; confirm you are authorised to break the Weights and Measures seal before proceeding; engage the calibration switch, repeat the upgrade, and let it complete without interruption; verify calibration and configuration after the upgrade; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="e8">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E8</h2>
-        <p>Database changed, set as default the new values</p>
+        <p>The database changed and the dispenser has applied default values in place of what was there. Anything not explicitly reconfigured is now at default, including values that matter for billing. Action: treat every configurable value as suspect and check it, do not spot check; verify unit prices, grade mapping, volume units and flow settings before allowing sales; verify calibration and ATC settings, since defaults here have metrological consequences; establish what caused the change, commonly a software update, a cold start or a corrupted database; check the supply if this followed a power event; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="e9">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E9</h2>
-        <p>RAM corrupted</p>
+        <p>RAM has failed its integrity check. Nothing the dispenser reports can be relied on while this is present. Action: power cycle and see whether it comes up clean; record what configuration can still be read; check the supply for instability and check for overheating in the electronics enclosure; check the board for physical damage, corrosion or water ingress, which is common in coastal and high wash sites; if RAM fails again after a clean restart the board needs replacing, so do not keep clearing it; verify configuration and calibration fully after any recovery</p>
       </div>
       <div class="refEntry" id="e10">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E10</h2>
-        <p>Hardware configuration error</p>
+        <p>The hardware present does not match the hardware the configuration describes. Action: list what the configuration expects and compare it against what is physically fitted; check whether a board, node or module was recently swapped for a different variant; check part numbers and software versions of any replaced component, since a superficially identical board can be a different variant; correct either the configuration or the hardware so they agree; power cycle and confirm the dispenser enumerates everything it expects</p>
       </div>
       <div class="refEntry" id="e12">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>E12</h2>
-        <p>Restore calibration factors from door node</p>
+        <p>Calibration factors were restored from door node storage. The dispenser has recovered metrological data from its backup copy rather than from its own memory. Action: verify the restored calibration is actually correct rather than assuming the backup was current; check the restored values against your records and the last calibration certificate; run a meter proving test before returning the dispenser to sale, since restored calibration has not been proven on this hardware; establish why the primary copy was lost, usually a board swap, a corrupted database or a power event; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="11">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>11</h2>
-        <p>Two wire communication error</p>
+        <p>Two wire communication between the dispenser and the site controller has failed. Corroded or damaged two wire cabling causes most of these, not the boards at either end. Action: check the two wire cable and its terminations at both ends for corrosion, water and loose screws, starting at the dispenser junction box; check for water in the junction box, which is the single most common cause; check polarity, since a reversed pair after recent work will not communicate; check the cable for damage where it passes through the island and conduit, including anything crushed during construction; check the site controller is powered and that other dispensers on the same loop are working, which tells you whether the fault is site wide or local; check for a shorted or grounded conductor, and megger the pair if the fault is intermittent; only suspect the interface board once the cable is proven</p>
       </div>
       <div class="refEntry" id="20">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>20</h2>
-        <p>Pulser connected and product not mapped or pulser disconnected and product is mapped</p>
+        <p>The pulser and product mapping disagree, so either a pulser is connected and its product is not mapped, or a product is mapped and its pulser is not connected. Action: check the pulser is connected and its harness is seated at both ends; check the product mapping in programming against what is physically plumbed to that meter; check the pulser harness for damage, chafing or a pinched conductor; check whether a recent meter or pulser replacement was left unmapped; confirm the pulser type matches what the configuration expects; correct whichever side is wrong and power cycle to confirm</p>
       </div>
       <div class="refEntry" id="24">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>24</h2>
-        <p>Volume unit type not set</p>
+        <p>The volume unit type has not been set. The dispenser does not know what unit it is measuring in, which makes everything it reports meaningless. Action: set the volume unit correctly for the jurisdiction before allowing any sale; verify the setting against what the site is required to sell in; check whether the value was lost rather than never set, which points at a database or power problem; verify calibration and totals after setting it; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="26">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>26</h2>
-        <p>Pump not calibrated</p>
+        <p>The pump is not calibrated. It cannot legally be used for sale in this state. Action: do not return the dispenser to sale until it is calibrated and proven; establish whether calibration was lost or never performed, since lost calibration points at a database, board or power problem that will recur; check whether a recent board swap or software update cleared it; calibrate and prove the meter using the correct test measure procedure; record the calibration and arrange resealing; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="27">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>27</h2>
-        <p>Two wire ID changed side A</p>
+        <p>The two wire ID for side A has changed. The dispenser is presenting a different address than it was. Action: establish whether the change was deliberate, since an ID is normally set by a technician; check for a duplicate ID on the loop, which makes two dispensers fight and produces intermittent faults at both; check the ID matches what the site controller expects for this fuelling position; check whether a board swap brought a different stored ID with it; correct the ID and confirm the controller sees the correct position; verify pricing and grade mapping afterwards, because an ID change can attach the wrong prices to the wrong position</p>
       </div>
       <div class="refEntry" id="28">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>28</h2>
-        <p>Two wire ID changed side B</p>
+        <p>The two wire ID for side B has changed. The dispenser is presenting a different address than it was. Action: establish whether the change was deliberate, since an ID is normally set by a technician; check for a duplicate ID on the loop, which makes two dispensers fight and produces intermittent faults at both; check the ID matches what the site controller expects for this fuelling position; check whether a board swap brought a different stored ID with it; correct the ID and confirm the controller sees the correct position; verify pricing and grade mapping afterwards, because an ID change can attach the wrong prices to the wrong position</p>
       </div>
       <div class="refEntry" id="29">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>29</h2>
-        <p>Valve not open</p>
+        <p>The valve did not open when commanded. Action: check the valve is receiving its drive signal, which separates an electrical fault from a mechanical one; check the valve coil for an open or shorted winding; check the harness and connector at the valve, including water in the connector; check the valve mechanically for debris, seizure or a failed return spring; check the shear valve below is open, since a closed shear valve gives no flow and can be mistaken for a valve fault; check the dispenser filter, since a blocked filter starves the valve and looks similar; replace the valve only once the drive signal is proven present</p>
       </div>
       <div class="refEntry" id="30">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>30</h2>
-        <p>Catastrophic error has occurred on the VaporVac</p>
+        <p>A catastrophic error has occurred on the VaporVac system. Vapour recovery is not functioning. Action: check the vapour hose and connections first, including for kinks, blockage and damage; check the VaporVac motor for power and for mechanical seizure; check the motor harness and connector; check the VaporVac board for power, communication and water ingress; check for liquid in the vapour path, which is a common cause of repeated failures; vapour recovery is enforced by your local air district rather than federally, so check what downtime and reporting your jurisdiction requires; record the outage, because vapour recovery has its own compliance record separate from the tank</p>
       </div>
       <div class="refEntry" id="33">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>33</h2>
-        <p>E-stop button activated or VaporVac failure on one side</p>
+        <p>Either the emergency stop was activated, or the VaporVac failed on one side. These are very different situations, so establish which before doing anything. Action: check whether the emergency stop is actually latched in, and if so find out why it was pressed before resetting it; do not reset an E stop without establishing the reason, since it may have been pressed for a real emergency; if the E stop is clear, work it as a single side VaporVac failure; check the vapour hose, motor and harness on the affected side; compare the failed side against the working side, which is the fastest diagnostic available on a two sided unit; check the E stop switch and wiring if it reports pressed when it is not</p>
       </div>
       <div class="refEntry" id="35">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>35</h2>
-        <p>Configuration data error</p>
+        <p>A configuration data error. The stored configuration is not valid. Action: print or record what configuration can still be read; check every value rather than spot checking, since a partly valid configuration will run and give wrong results; verify prices, grade mapping, volume units and calibration; establish the cause, commonly a power event, an interrupted software download or a failing board; reload configuration if the dispenser supports it, then verify it completely; if it recurs, treat the board or the supply as the underlying fault</p>
       </div>
       <div class="refEntry" id="37">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>37</h2>
-        <p>Pin code one changed</p>
+        <p>Event log entry recording that PIN code one was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="38">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>38</h2>
-        <p>Pin code two changed</p>
+        <p>Event log entry recording that PIN code two was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="39">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>39</h2>
-        <p>Cash/credit option changed</p>
+        <p>Event log entry recording that the cash and credit option was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; verify the cash and credit prices now shown are correct, since this directly affects what customers pay; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="41">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>41</h2>
-        <p>Side exist option changed</p>
+        <p>Event log entry recording that the side exist option was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; confirm the dispenser is configured for the number of sides actually fitted; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="42">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>42</h2>
-        <p>PPU option changed or valve stuck/timeout</p>
+        <p>Either the price per unit option changed, or a valve is stuck or has timed out. Treat the valve possibility first, because it has consequences and the option change does not. Action: check whether a valve is stuck or failed to operate within its expected time, and if so work it as a valve fault; check the valve drive signal and the coil; check the valve mechanically for debris and seizure; if no valve fault exists, check whether the PPU option was changed and by whom; verify current pricing is correct before allowing sales; check the event log timestamps to separate the two causes</p>
       </div>
       <div class="refEntry" id="44">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>44</h2>
-        <p>PPU board pump handle on at power up</p>
+        <p>The PPU board saw the pump handle on at power up. The dispenser will not authorise with a handle already lifted, which is a safety behaviour rather than a fault. Action: check whether a nozzle is genuinely left up, which is the usual explanation; return the handle to the hung position and power cycle; if no handle is up, check the hang up switch for sticking, damage or water; check the switch harness for a short to ground; check the switch adjustment, since a maladjusted switch reads as lifted; test the switch directly before replacing anything</p>
       </div>
       <div class="refEntry" id="50">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>50</h2>
-        <p>POS communications lost (disconnected)</p>
+        <p>Communication with the point of sale has been lost, so the dispenser is disconnected from the site system. Action: check whether other dispensers are also disconnected, which separates a site fault from a dispenser fault immediately; check the two wire or network cable and terminations at the dispenser junction box, looking for water and corrosion; check the site controller and its interface board are powered and running; check whether the POS system was restarted or updated, which is a common cause; check the dispenser&#x27;s address matches what the POS expects; check for a duplicate address on the loop causing intermittent dropouts</p>
       </div>
       <div class="refEntry" id="4307">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4307</h2>
-        <p>Blends not programmed</p>
+        <p>Blend ratios have not been programmed. The dispenser cannot deliver a blended grade without them. Action: programme the blend ratios for each blended grade against the site&#x27;s product specification; confirm the low and high octane feeds are mapped to the correct meters before setting ratios; verify the resulting blend by proving each blended grade, not just the straight grades; check whether the ratios were lost rather than never entered, which points at a database or power problem; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="4311">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4311</h2>
-        <p>Blender - low octane product low flow</p>
+        <p>The low octane product is flowing but below the rate the blend needs. A blend cannot be held accurately when one leg is starved, so the delivered grade may be off specification. Action: check the dispenser filter on that leg first, since a partially blocked filter is the most common cause; check the shear valve on that leg is fully open, not partly closed; check the STP for that product is running and making normal pressure; check the meter and the blend valve on that leg for debris or partial seizure; check the tank has adequate product and no water at the intake; prove the blend after correcting, because the grade delivered while this was active may not have met specification</p>
       </div>
       <div class="refEntry" id="4312">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4312</h2>
-        <p>Blender - high octane product low flow</p>
+        <p>The high octane product is flowing but below the rate the blend needs. A blend cannot be held accurately when one leg is starved, so the delivered grade may be off specification. Action: check the dispenser filter on that leg first, since a partially blocked filter is the most common cause; check the shear valve on that leg is fully open, not partly closed; check the STP for that product is running and making normal pressure; check the meter and the blend valve on that leg for debris or partial seizure; check the tank has adequate product and no water at the intake; prove the blend after correcting, because the grade delivered while this was active may not have met specification</p>
       </div>
       <div class="refEntry" id="4313">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4313</h2>
-        <p>Blender - low octane product no flow</p>
+        <p>No flow at all on the low octane leg. The dispenser cannot blend. Action: check the shear valve on that leg, which is very commonly left closed after service; check the STP for that product is running and the tank has product; check the dispenser filter for complete blockage; check the blend valve is opening, electrically and mechanically; check the meter is not seized; check the pulser on that leg is reporting, since a dead pulser reads as no flow; work from the tank forward rather than starting at the blend valve</p>
       </div>
       <div class="refEntry" id="4314">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4314</h2>
-        <p>Blender - high octane product no flow</p>
+        <p>No flow at all on the high octane leg. The dispenser cannot blend. Action: check the shear valve on that leg, which is very commonly left closed after service; check the STP for that product is running and the tank has product; check the dispenser filter for complete blockage; check the blend valve is opening, electrically and mechanically; check the meter is not seized; check the pulser on that leg is reporting, since a dead pulser reads as no flow; work from the tank forward rather than starting at the blend valve</p>
       </div>
       <div class="refEntry" id="4320">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4320</h2>
-        <p>Valve configured for, but not responding</p>
+        <p>A valve the configuration expects is not responding. Action: check the valve is physically fitted at that position; check the harness and connector at the valve and at the valve board; check the coil for an open circuit; check the valve board is powered and communicating; if that valve does not exist on this dispenser, correct the configuration; swap the harness with a working position to separate the valve from the drive</p>
       </div>
       <div class="refEntry" id="4321">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4321</h2>
-        <p>Valve stuck</p>
+        <p>A valve is stuck. Depending on which way it is stuck this means no flow, or flow that should not be happening. Action: determine which way it is stuck before anything else, since stuck open is a safety and loss issue and stuck closed is only an outage; if it is stuck open, take the position out of service immediately; check the valve mechanically for debris, scoring or a failed spring; check for contamination in the product, which is the usual cause of repeat sticking; check the dispenser filter condition, since a collapsing filter sheds material into the valve; check the drive is not holding the valve energised through a shorted driver; clean or replace the valve, and address the contamination or the filter will do it again</p>
       </div>
       <div class="refEntry" id="4322">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>4322</h2>
-        <p>Valve board not responding</p>
+        <p>The valve board is not responding. Every valve it drives is unavailable. Action: check the board has power and its indicators behave normally; check the board&#x27;s network connection and connectors; check its addressing and software version; reseat the board and its harnesses; power cycle and see whether it enumerates; check for water ingress or corrosion on the board, which is common in the hydraulic area; swap with a known good board to confirm before ordering</p>
       </div>
       <div class="refEntry" id="5000">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5000</h2>
-        <p>Meter 0 calibration changed</p>
+        <p>Event log entry recording that the calibration for meter 0 was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; prove the meter against a certified test measure before returning it to sale, since this entry means billed volume may have changed; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="5001">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5001</h2>
-        <p>Meter 1 calibration changed</p>
+        <p>Event log entry recording that the calibration for meter 1 was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; prove the meter against a certified test measure before returning it to sale, since this entry means billed volume may have changed; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="5002">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5002</h2>
-        <p>Meter 2 calibration changed</p>
+        <p>Event log entry recording that the calibration for meter 2 was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; prove the meter against a certified test measure before returning it to sale, since this entry means billed volume may have changed; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="5003">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5003</h2>
-        <p>Meter 3 calibration changed</p>
+        <p>Event log entry recording that the calibration for meter 3 was changed. This is an audit record, not a fault. It exists because the setting is metrologically significant and Weights and Measures requires the change to be traceable. Action: check the date and time of the entry against your own service records; if you or another agent made the change, this is expected and needs no repair, just documentation; if nobody can account for it, treat it as unauthorised access to sealed settings and investigate who had the door open; prove the meter against a certified test measure before returning it to sale, since this entry means billed volume may have changed; verify the current value is correct before returning the dispenser to service; Breaking a Weights and Measures seal to reach calibration is restricted to a registered service agent in most states, so confirm you are permitted before opening it, and arrange resealing and any required W&amp;M notification afterwards</p>
       </div>
       <div class="refEntry" id="5041">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5041</h2>
-        <p>Power fail - power circuit register a power loss</p>
+        <p>The power circuit registered a power loss. Action: check whether this coincides with a known site power event, which makes it informational; check the incoming supply and breaker; check terminations for looseness and corrosion under load; check the power supply board; verify configuration and calibration survived; if these repeat without an external cause, the supply or the power board is failing</p>
       </div>
       <div class="refEntry" id="5047">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5047</h2>
-        <p>Reverse flow detect</p>
+        <p>Reverse flow has been detected. Product moved backwards through the meter. Action: stop using the position until this is understood, since reverse flow can mean product is moving between grades; check the check valve in the meter or the dispenser inlet, which is the usual mechanical cause; check for a leaking or stuck valve allowing back feed from another line; on blenders check the blend valves for leakage between products; check the pulser wiring and direction sensing, since a miswired quadrature pulser reports reverse flow that is not happening; check for a siphon condition pulling product back toward the tank; confirm with an actual dispense once the mechanical cause is cleared</p>
       </div>
       <div class="refEntry" id="5048">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5048</h2>
-        <p>No flow detect</p>
+        <p>No flow was detected when flow was expected. Action: check the obvious first, whether the tank has product and the STP is running; check the shear valve is open, which is very commonly left closed after service; check the dispenser filter for blockage; check the solenoid or flow control valve is opening, both electrically and mechanically; check the pulser is reporting, since a dead pulser reads as no flow even when product is moving; check the meter for seizure or debris; work from the tank forward rather than starting at the dispenser</p>
       </div>
       <div class="refEntry" id="5049">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5049</h2>
-        <p>Unauthorized flow detected</p>
+        <p>Flow was detected when the dispenser had not authorised it. Product moved without a sale. Action: treat this as both a loss and a safety issue, and take the position out of service until it is understood; check the solenoid or flow control valve for leakage past the seat, which is the usual cause; check the valve is not stuck open mechanically or held open electrically by a shorted driver; check the nozzle and hose for leakage; check the pulser for false pulses from electrical noise, which reports flow that never happened; check the hang up switch is reporting correctly, since a stuck switch can leave the position live; reconcile against tank inventory to find out whether product actually left</p>
       </div>
       <div class="refEntry" id="5050">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5050</h2>
-        <p>Invalid pulser - pulser pattern does not fit profiled meter</p>
+        <p>The pulse pattern coming from the pulser does not match the profile the configuration expects for that meter. Either the wrong pulser is fitted, or the pulser is failing, or the meter profile is wrong. Action: confirm the fitted pulser is the correct type and part for this meter, which is the most common cause after a replacement; check the meter profile programmed for this position; check the pulser harness and connector for damage, water and loose pins; check the pulser is correctly mounted and driven, since a slipping or misaligned coupling produces a corrupt pattern; check for electrical noise on the pulser wiring, particularly where it runs alongside power conductors; swap in a known good pulser to separate the pulser from the wiring</p>
       </div>
       <div class="refEntry" id="5094">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5094</h2>
-        <p>Main board communication lost</p>
+        <p>Communication with the main board has been lost. Action: check the main board has power and its indicators behave normally; check the internal network wiring and connectors, including anything disturbed by recent work; check for water ingress and corrosion in the electronics enclosure; reseat the board and its harnesses; power cycle and see whether it comes back; check whether other nodes are also down, which points at wiring or power rather than the board; swap with a known good board to confirm before ordering</p>
       </div>
       <div class="refEntry" id="5095">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5095</h2>
-        <p>Main board power failure</p>
+        <p>The main board has recorded a power failure. Action: check the incoming supply and the breaker feeding the dispenser; check terminations in the dispenser for looseness and corrosion, measuring under load rather than at rest; check the power supply board output; check whether the event was site wide, which points at the supply rather than the dispenser; verify configuration, prices and calibration survived the event; if power failures repeat without an external cause, treat the power supply as suspect</p>
       </div>
       <div class="refEntry" id="5096">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5096</h2>
-        <p>Board temperature too high</p>
+        <p>A main board fault has been recorded. Action: read the surrounding event log entries to identify what actually failed; check the board has power and its indicators behave normally; check internal network wiring and connectors; check for water ingress and corrosion; reseat the board and its harnesses; power cycle and note what does not come back; swap with a known good board only once wiring and power are proven</p>
       </div>
       <div class="refEntry" id="5150">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5150</h2>
-        <p>PPUs not addressed correctly</p>
+        <p>The price per unit displays are not addressed correctly. Action: check each PPU display&#x27;s address against the position it occupies; check for duplicate addresses, which is common after a display swap; check the harness and connectors to each display; correct the addressing and power cycle; confirm each display shows the correct grade and price afterwards, since wrong addressing shows the wrong price to customers</p>
       </div>
       <div class="refEntry" id="5151">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5151</h2>
-        <p>PPUs communication lost</p>
+        <p>The PPU is not communicating with the main board over the internal network. Anything that node controls is unavailable until the link is restored. Action: check the node has power and that its indicator behaves normally; check the network wiring and connectors to that node, including anything disturbed by recent work; check the node is correctly addressed and has not been duplicated with another node; check the node&#x27;s software version matches what the main board expects; reseat the node and its connectors; power cycle the dispenser and see whether it enumerates; swap the node with a known good one of the same type to separate a node fault from a wiring fault</p>
       </div>
       <div class="refEntry" id="5152">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5152</h2>
-        <p>PPU configuration mismatch</p>
+        <p>The PPU configuration does not match. The programming and the fitted displays disagree. Action: check how many PPU displays are fitted against how many are configured; check the display types match what the configuration expects; check addressing for duplicates or gaps; check whether a display was replaced with a different variant; correct whichever side is wrong and confirm every price displays correctly</p>
       </div>
       <div class="refEntry" id="5153">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5153</h2>
-        <p>PPU reset failed</p>
+        <p>A PPU reset failed. Action: power cycle the dispenser and retry; check the PPU board has power and is communicating; check the display harnesses and connectors; check addressing and software versions; reseat the board and its connections; verify displayed prices are correct afterwards before allowing sales</p>
       </div>
       <div class="refEntry" id="5200">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5200</h2>
-        <p>Display initialization failure</p>
+        <p>A display failed to initialise. Action: check the display harness and connector at both ends, since a loose connector is reported as a failed display far more often than the display has actually failed; check the display has power; check for water ingress behind the display, which is common on outdoor units; reseat the connector and power cycle; check the display type matches the configuration; swap with a known good display only after the connector and harness are proven</p>
       </div>
       <div class="refEntry" id="5201">
         <div class="refTag">Gilbarco · 700s</div>
         <h2>5201</h2>
-        <p>Display data corruption detected</p>
+        <p>Display data corruption has been detected. What the customer sees may not match what the dispenser is doing, which matters when it is showing price or volume. Action: take the position out of sale if price or volume is displaying wrongly; power cycle and see whether the display comes up clean; check the display harness and connector for damage and water; check for electrical noise on the display wiring; check the display and controller software versions are compatible; verify the displayed price and volume against an actual dispense before returning to sale</p>
       </div>
       <div class="refToc mt-4"><strong>More reference</strong><br>
         <a href="/droptubebuilder/reference/gilbarco-500-series.html">Gilbarco 500 Series Dispenser Error Codes</a>
