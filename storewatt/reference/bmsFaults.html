@@ -62,12 +62,16 @@
         <p>The battery management system monitors cell and module voltage, current, temperature, SOC, SOH, cell balance, insulation resistance, and contactor state. The usual architecture is layered: a slave BMS on each module reads cells, a master BMS per rack aggregates modules and drives the rack contactors, and a system BMS coordinates racks and talks to the PCS and EMS.
 
 When chasing any BMS fault, find which layer raised it first. A cell level alarm points at one module; a rack level alarm can be a rack controller or its feed from the slaves; a system level alarm is often communication or coordination, not chemistry.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Find which layer raised the alarm first, because that is the whole diagnosis: a cell level alarm points at one module, a rack level alarm can be the rack controller rather than the cells; read the first fault in the log rather than the loudest one, since everything after it is usually a consequence; check whether the reporting layer still has good data from the layer below it, because a comm loss makes healthy hardware look faulty; compare the affected rack against its peers under the same duty before concluding anything about cells</p>
       </div>
       <div class="refEntry" id="bms-candiagnostics">
         <h2>CAN bus is the primary diagnostic path</h2>
         <p>Module and rack BMS layers almost always talk over CAN. Reading the CAN traffic localizes a fault fast: a missing message identifier tells you which module went quiet, and a garbled bus points at wiring, termination, or a failing transceiver.
 
 Basics that solve most CAN problems: 120 ohm termination at both physical ends only, matched bit rate on every node, twisted pair with the shield grounded at one end, and no star stubs. A healthy bus measures about 60 ohms across CAN high to CAN low with power off.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Measure across CAN high to CAN low with power off; a healthy bus reads about 60 ohms, which tells you both terminators are present and nothing is shorted; confirm 120 ohm termination at both physical ends only, since a third terminator or a missing one both corrupt the bus; check every node is on the same bit rate, because one mismatched node can take the whole segment down; check the shield is grounded at one end only, and look for star stubs, which are the usual cause of intermittent garbling; identify which message identifier went missing, since that names the module that went quiet; suspect the transceiver on a node only after the wiring, termination and bit rate are proven</p>
         <div class="refLabel">Verify against</div>
         <p>Message identifier maps are proprietary. Pull the CAN database file or the manual for the installed BMS version before decoding.</p>
       </div>
@@ -77,7 +81,7 @@ Basics that solve most CAN problems: 120 ohm termination at both physical ends o
 
 Check whether it is one cell or many. A single repeating cell points to that cell or its sense lead; a whole module near the top of charge points to SOC calibration or an aggressive charge profile.</p>
         <div class="refLabel">Safe response</div>
-        <p>Let the BMS protect. Do not raise limits or reset repeatedly to force a charge. If the same cell trips repeatedly, log the cell position and escalate to the manufacturer.</p>
+        <p>Let the BMS protect, and do not raise limits or reset repeatedly to force a charge through; establish first whether it is one cell or many, because that single question splits the diagnosis: one repeating cell is that cell or its sense lead, a whole module near top of charge is SOC calibration or balancing; log the cell position and trend it across charges rather than judging on one event; check the sense harness at the reporting cell, since a loose or corroded sense connection reads high and is a common false trigger; check whether balancing is keeping up at high SOC, and run the manufacturer balancing procedure if the spread is widening; escalate to the manufacturer with the cell position if the same cell trips repeatedly, because a cell racing its neighbours near full is degrading</p>
       </div>
       <div class="refEntry" id="bms-cellundervoltage">
         <h2>Cell under voltage</h2>
@@ -85,7 +89,7 @@ Check whether it is one cell or many. A single repeating cell points to that cel
 
 A rack that sat de powered for weeks can drift under the floor on self discharge alone. Recovery charging below the normal window is a manufacturer controlled procedure, not a field improvisation.</p>
         <div class="refLabel">Safe response</div>
-        <p>Stop discharging. Follow the manufacturer recovery procedure for deeply discharged cells; charging a cell that spent time below its absolute floor can be hazardous.</p>
+        <p>Stop discharging, and do not attempt to charge a cell that has been below its absolute floor without the manufacturer procedure, because that can be hazardous; establish whether it is one cell sagging under load or a whole rack drifting, since a rack that sat de powered for weeks can fall below the floor on self discharge alone; check the sense connection at the reporting cell, because a bad sense lead reads low and looks identical to a weak cell; check for parasitic loads if the system was idle, and find what was drawing from it; follow the manufacturer recovery procedure for deeply discharged cells rather than improvising a recovery charge; trend the cell after recovery, since one that sags first under load will do it again</p>
       </div>
       <div class="refEntry" id="bms-overtemperature">
         <h2>Cell or module over temperature</h2>
@@ -93,7 +97,7 @@ A rack that sat de powered for weeks can drift under the floor on self discharge
 
 Look at the spread. Every cell warm together points at cooling or duty; one cell hot alone is a red flag for a cell problem and deserves escalation, not a reset.</p>
         <div class="refLabel">Safe response</div>
-        <p>If temperature keeps climbing after the system derates or trips, or one cell runs away from its neighbors, treat it as a possible thermal event: do not open the enclosure, follow the Emergency Response Plan, and notify the qualified person.</p>
+        <p>If temperature keeps climbing after the system derates or trips, or one cell runs away from its neighbours, treat it as a possible thermal event: do not open the enclosure, follow the Emergency Response Plan and notify the qualified person; otherwise look at the spread first, because every cell warm together is cooling or duty, while one cell hot alone is a cell problem and deserves escalation rather than a reset; check the thermal management before the chemistry: pumps and fans running, coolant level, filters clear, radiator not fouled; check the setpoints against the manufacturer specification, since a wrong setpoint derates a healthy system; check ambient temperature and the C rate being asked of the system, because high ambient plus hard duty is a capacity question rather than a fault; restore cooling before restoring load, since repeated thermal excursions age cells permanently</p>
       </div>
       <div class="refEntry" id="bms-imbalance">
         <h2>Cell voltage imbalance</h2>
@@ -101,7 +105,7 @@ Look at the spread. Every cell warm together points at cooling or duty; one cell
 
 Trend it. Imbalance that grows steadily on the same cells is degradation; imbalance that appears after commissioning or a long outage often just needs a supervised balancing cycle at high SOC.</p>
         <div class="refLabel">Safe response</div>
-        <p>Run the manufacturer balancing procedure and re trend. Escalate a spread that keeps widening on the same cells.</p>
+        <p>Trend it before acting, because imbalance that grows steadily on the same cells is degradation while imbalance after commissioning or a long outage often just needs a balancing cycle; run the manufacturer balancing procedure at high SOC, where balancing hardware actually has headroom to work; check temperature spread across the rack, since uneven temperatures produce imbalance that is not a cell problem; check whether the balancing hardware is keeping up, because a system that cannot balance faster than it drifts will never converge; re trend after the balancing cycle rather than assuming it worked; escalate a spread that keeps widening on the same cells, since that is a weak cell rather than a balancing shortfall</p>
       </div>
       <div class="refEntry" id="bms-insulationfault">
         <h2>Insulation or isolation fault</h2>
@@ -109,7 +113,7 @@ Trend it. Imbalance that grows steadily on the same cells is degradation; imbala
 
 This is the classic wet weekend fault: moisture drops insulation readings plantwide, then readings recover as things dry. A single rack that stays low while others recover is a real fault in that rack.</p>
         <div class="refLabel">Safe response</div>
-        <p>Stop work. Treat every conductive surface as live. Do not bypass or reset the insulation monitor to restore operation. Isolate the affected rack under the qualified person&#x27;s direction and locate the fault with the manufacturer procedure before returning to service.</p>
+        <p>Stop work. Treat every conductive surface as live, because until the fault is located any grounded surface can sit at pack potential; do not bypass or reset the insulation monitor to restore operation; check whether the whole plant dropped or a single rack did, since moisture drops readings plantwide and they recover as things dry, while one rack that stays low while others recover is a real fault in that rack; note the weather and whether readings are recovering, because that distinguishes a wet weekend from a failure; isolate the affected rack under the qualified person&#x27;s direction; look for the usual paths in order: coolant intrusion into a module, damaged cable insulation, moisture in a connector, then a failed component; locate the fault with the manufacturer procedure and prove insulation before returning to service</p>
       </div>
       <div class="refEntry" id="bms-contactorweld">
         <h2>Contactor welded or failed to open</h2>
@@ -117,7 +121,7 @@ This is the classic wet weekend fault: moisture drops insulation readings plantw
 
 Never trust the HMI state for isolation. The only proof is a zero energy verification at the conductors with a CAT III or CAT IV DC rated tester.</p>
         <div class="refLabel">Safe response</div>
-        <p>Treat the bus as energized regardless of indicated state. Verify absence of voltage at the point of work with a DC rated tester before touching anything. Replace, never file or reuse, a welded contactor.</p>
+        <p>Treat the bus as energised regardless of what the HMI indicates, because the system believing it isolated is exactly the failure being reported; verify absence of voltage at the point of work with a CAT III or CAT IV DC rated tester, since that is the only proof of isolation; establish what welded it, because closing into a fault, repeated closing under load and end of mechanical life are different problems with different fixes; check the fault history for what the rack was doing when it closed, since a contactor that welded closing into a fault means there is also a fault to find; replace the contactor, never file or reuse a welded one; confirm the replacement opens and the feedback agrees before returning the rack to service</p>
         <div class="refLabel">Verify against</div>
         <p>Contactor feedback logic differs by vendor. Confirm which signal the fault uses in the installed BMS manual.</p>
       </div>
@@ -127,7 +131,7 @@ Never trust the HMI state for isolation. The only proof is a zero energy verific
 
 Coil supply, drive circuit, and auxiliary feedback wiring come next. A rack that closes when bus voltage is matched manually points at precharge; one that never picks the coil points at supply or drive.</p>
         <div class="refLabel">Safe response</div>
-        <p>Work the interlock list before condemning hardware. Precharge circuits store and dissipate real energy; follow the isolation procedure before touching them.</p>
+        <p>Work the interlock list before condemning any hardware, because the contactor is usually innocent; check precharge completed, since a precharge resistor opened by repeated cycling is a frequent culprit and often reports as a precharge timeout; check pack and bus voltage match within the required window, because a rack that closes when bus voltage is matched manually is telling you precharge is the problem; check insulation is healthy and no cell alarm is active, since either will block closing by design; check coil supply and the drive circuit next; check auxiliary feedback wiring last, because a contactor that closes but reports open is a feedback fault rather than a power fault; follow the isolation procedure before touching precharge circuits, which store and dissipate real energy</p>
       </div>
       <div class="refEntry" id="bms-commfault">
         <h2>BMS communication fault</h2>
@@ -135,13 +139,15 @@ Coil supply, drive circuit, and auxiliary feedback wiring come next. A rack that
 
 Localize by layer: one module missing is that module&#x27;s node or its stub; a whole rack silent is the rack master, its power, or the backbone segment; everything missing at once is the head end, a power supply, or a broken backbone near the head end.</p>
         <div class="refLabel">Safe response</div>
-        <p>Restore communication before chasing phantom electrical faults; stale data makes healthy racks look sick.</p>
+        <p>Restore communication before chasing electrical faults, because stale data makes healthy racks look sick and sends you to the wrong rack; localise by layer, since that names the fault: one module missing is that node or its stub, a whole rack silent is the rack master or its power or the backbone segment, everything missing at once is the head end; check power to the silent layer before its wiring; check the bus basics if it is a CAN segment: 60 ohms across the pair with power off, termination at both ends only, matched bit rate; check for a connector disturbed by recent work, which is the most common cause after commissioning; expect derating or open contactors while supervision is lost, because most systems fail safe that way by design</p>
       </div>
       <div class="refEntry" id="bms-socdrift">
         <h2>SOC estimate drift</h2>
         <p>Reported SOC wanders from reality because SOC is an estimate built on current integration plus voltage models. Flat voltage chemistries like LFP drift more between full charge references. Symptoms: the system hits the voltage limit before reported SOC says it should, or dispatch shortfalls near the window edges.
 
 The fix is usually a calibration cycle to a full charge reference per the manufacturer, and checking current sensor zero offsets. Persistent drift on one rack against its peers is a sensor problem.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Run a calibration cycle to a full charge reference per the manufacturer, which is the normal fix rather than a repair; check current sensor zero offsets, since an offset integrates into drift over time; expect more drift on flat voltage chemistries such as LFP between full charge references, because that is the chemistry rather than a fault; compare the drifting rack against its peers, since persistent drift on one rack alone is a sensor problem rather than an estimation limit; re trend after calibration before concluding anything</p>
       </div>
       <div class="refToc mt-4"><strong>More reference</strong><br>
         <a href="/storewatt/reference/brandLibrary.html">Brand Library</a>

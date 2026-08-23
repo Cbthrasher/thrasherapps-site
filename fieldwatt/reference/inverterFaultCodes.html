@@ -38,7 +38,7 @@
     <div class="container">
       <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
       <h1 class="h2">Inverter Fault Codes</h1>
-      <p class="lead">Field reference for utility scale solar technicians. 20 entries, taken from the FieldWatt app.</p>
+      <p class="lead">Field reference for utility scale solar technicians. 38 entries, taken from the FieldWatt app.</p>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#family-insulation">Fault family: insulation or ground fault</a>
         <a href="#family-dcvoltage">Fault family: DC over or under voltage</a>
@@ -60,6 +60,24 @@
         <a href="#sungrow-015">Grid underfrequency</a>
         <a href="#tmeic-gatewaylatency">PVS series: false comms faults from gateway latency</a>
         <a href="#tmeic-families">PVS series: fault family overview</a>
+        <a href="#ingeteam-0001">Grid frequency out of range</a>
+        <a href="#ingeteam-0002">Grid voltage out of range</a>
+        <a href="#ingeteam-0004">Internal current loop fault</a>
+        <a href="#ingeteam-0008">Inverter reset, firmware fault</a>
+        <a href="#ingeteam-0010">Effective grid current too high</a>
+        <a href="#ingeteam-0020">Over temperature</a>
+        <a href="#ingeteam-0040">Internal hardware fault</a>
+        <a href="#ingeteam-0080">Instantaneous grid current out of range</a>
+        <a href="#ingeteam-0100">AC protection fault</a>
+        <a href="#ingeteam-0200">DC protection fault</a>
+        <a href="#ingeteam-0400">AC insulation fault</a>
+        <a href="#ingeteam-0800">Branch fault</a>
+        <a href="#ingeteam-1000">Manual shutdown</a>
+        <a href="#ingeteam-2000">Configuration change shutdown</a>
+        <a href="#ingeteam-4000">High DC input voltage</a>
+        <a href="#ingeteam-8000">Low DC input voltage</a>
+        <a href="#pe-gfdi">Freesun HEC: GFDI grounding and ground fault warning</a>
+        <a href="#pe-insulationmonitor">Freesun HEC: insulation monitor testing and replacement life</a>
       </div>
       <div class="refCta">
         <strong>These notes come from FieldWatt</strong>
@@ -245,6 +263,168 @@
         <p>Apply the per family posture from this library and always confirm at the unit before resetting anything.</p>
         <div class="refLabel">Verify against</div>
         <p>Verify exact code lists against the current TMEIC manual for the installed model and firmware.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0001">
+        <div class="refTag">Ingeteam Ingecon Sun · 0001H</div>
+        <h2>Grid frequency out of range</h2>
+        <p>The inverter shut down because measured grid frequency left its permitted window. On a utility scale plant this is usually the grid doing something rather than the inverter failing, and it should appear across multiple units at the same timestamp.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Correlate the timestamp across every inverter on the plant before touching anything; a single unit tripping alone points at the unit, all units tripping together points at the grid. Check the AC side connections and terminations at the inverter. Confirm grid frequency at the point of connection against the permitted window in the settings. Check whether the utility logged an event at that time. Do not widen the trip window to stop the alarm, since those limits are set by the interconnection agreement.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0002">
+        <div class="refTag">Ingeteam Ingecon Sun · 0002H</div>
+        <h2>Grid voltage out of range</h2>
+        <p>Measured grid voltage left the permitted window. Like the frequency alarm this is usually external, but a single unit tripping alone can indicate a connection problem on that unit&#x27;s AC run.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Correlate across the plant first, because one unit alone means something different from all of them. Check AC side connections, terminations and torque at the inverter and at the transformer. Measure grid voltage at the point of connection and compare it against the configured window. Check for a loose or high resistance connection heating under load, which raises local voltage drop. Check transformer tap settings if one unit or one skid is consistently different. Do not widen the window to silence it.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0004">
+        <div class="refTag">Ingeteam Ingecon Sun · 0004H</div>
+        <h2>Internal current loop fault</h2>
+        <p>An internal current control loop fault. This is inside the power electronics rather than out in the field, and it is not a condition to clear and walk away from.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Do not repeatedly reset to see whether it clears, because a control loop fault can indicate a failing power stage. Record the exact timestamp and any alarms active alongside it, since Ingeteam reports several bits at once. Check for over temperature or a branch fault in the same event, which changes the diagnosis. Inspect for physical damage, discoloration or smell at the power modules with the unit isolated and proven dead by a qualified person. Escalate to Ingeteam technical support with the full alarm word rather than swapping parts.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0008">
+        <div class="refTag">Ingeteam Ingecon Sun · 0008H</div>
+        <h2>Inverter reset, firmware fault</h2>
+        <p>The inverter reset itself. Ingeteam attributes this to a firmware fault. An isolated reset after a grid disturbance is different from a unit resetting repeatedly.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Establish whether this was a single event or is recurring, because that decides everything that follows. Check what else was active in the same alarm word. Check the auxiliary supply for interruptions or brownouts. Check the installed firmware version against Ingeteam&#x27;s current release for the model. Record the pattern, time of day and whether it correlates with load or temperature, before contacting support. Do not simply keep restarting a unit that resets repeatedly.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0010">
+        <div class="refTag">Ingeteam Ingecon Sun · 0010H</div>
+        <h2>Effective grid current too high</h2>
+        <p>RMS output current exceeded the maximum allowed. Either the inverter is being asked for more than it can deliver, or the measurement is wrong.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Check the irradiance and DC input conditions at the time of the trip, since a cold clear day drives peak output. Check the configured power limit and any curtailment setpoint from the plant controller. Check the AC connections for a high resistance joint that would distort current sharing. Check current transducer wiring if one phase reads differently from the others. Correlate against neighbouring inverters on the same feeder. Escalate if the trip repeats under normal conditions.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0020">
+        <div class="refTag">Ingeteam Ingecon Sun · 0020H</div>
+        <h2>Over temperature</h2>
+        <p>Power electronics temperature exceeded 80 degrees Celsius, or an auxiliary temperature sensor triggered. Heat is the most common cause of inverter derating and long term failure, so this is worth chasing to root cause rather than waiting for it to cool.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Check the air path first: filters, intakes, exhausts and anything stacked against the enclosure. Check every cooling fan is running and turning the right way, and listen for bearing noise. Check the heatsinks for dust, pollen or seed fluff, which is the usual culprit on rural sites. Check ambient temperature and whether the trip only happens on the hottest part of the day. Check for a loose power connection generating local heat. Verify the temperature sensor itself against a known reference if the reading looks implausible. Clean and retest rather than raising the threshold.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0040">
+        <div class="refTag">Ingeteam Ingecon Sun · 0040H</div>
+        <h2>Internal hardware fault</h2>
+        <p>Ingeteam reports this as an internal shutdown due to hardware failure. The unit has taken itself offline deliberately.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Do not clear and restart repeatedly. Record the complete alarm word, because other bits set at the same time are what identify the subsystem. Check whether a branch fault, over temperature or current loop fault appeared alongside it. Isolate and prove dead before any inspection, and inspect for visible damage or thermal marking. Escalate to Ingeteam technical support with the alarm word, firmware version and event history rather than replacing parts speculatively.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0080">
+        <div class="refTag">Ingeteam Ingecon Sun · 0080H</div>
+        <h2>Instantaneous grid current out of range</h2>
+        <p>An instantaneous current value went outside its permitted range. This tends to point at a transient event rather than a steady condition.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Check for a grid disturbance or switching event at that timestamp and correlate across the plant. Check AC connections and terminations. Check for a fault downstream on the same feeder. Review whether it coincides with transformer energisation or capacitor bank switching on site. Look at the alarm word for anything set alongside it. Escalate if it recurs without an identifiable external event.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0100">
+        <div class="refTag">Ingeteam Ingecon Sun · 0100H</div>
+        <h2>AC protection fault</h2>
+        <p>An error in the AC protective devices: protectors, surge arresters or fuses. Protection being faulted means the unit is not protected, which is why this is treated as safety critical rather than an inconvenience.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Isolate and prove dead before opening the AC compartment. Inspect the AC fuses, and check them rather than trusting appearance, because a blown fuse is not always visually obvious. Inspect the surge arresters for the end of life indicator, which is the most common finding in this family after a storm. Check whether the site took a lightning or switching surge recently. Check protective device auxiliary contacts and their wiring, since a failed contact reports a fault that is not there. Replace failed arresters and fuses with the correct rating, never a substitute.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0200">
+        <div class="refTag">Ingeteam Ingecon Sun · 0200H</div>
+        <h2>DC protection fault</h2>
+        <p>A blown DC input fuse or a fault in the DC surge arresters. The DC side stays live whenever there is light on the array, so this is not a compartment to open casually.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Treat the DC field and racking as energised regardless of what the inverter is doing. Qualified person only, with DC rated PPE. Check the DC input fuses per string or per combiner input, and identify which one has cleared before replacing anything. Find out why it cleared, because a fuse that blew has usually been told to by something. Inspect the DC surge arresters for their end of life indicator, particularly after a storm. Check the combiner and string wiring for damage, water ingress or animal damage on the runs feeding the affected input. Replace with the correct DC rated fuse only, never an AC fuse of similar appearance.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0400">
+        <div class="refTag">Ingeteam Ingecon Sun · 0400H</div>
+        <h2>AC insulation fault</h2>
+        <p>An insulation fault detected in the PV array or within the inverter. Current is finding a path to ground somewhere it should not.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Stop work. Treat the array, the racking and normally grounded conductors as energised, because on a ground faulted system a conductor that is normally at earth potential may not be. Qualified person only, with DC rated PPE. Do not reset to see whether it clears; a fault that appears in damp early morning and disappears by midday is still a real fault. Locate it with ground referenced voltage measurements and an insulation resistance tester, working from the inverter back through the combiners to the strings. Check the usual entry points for water: junction boxes, connectors, damaged jacket where cable crosses racking, and failed surge protective devices. Repair before restoring, and record the insulation resistance reading achieved.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-0800">
+        <div class="refTag">Ingeteam Ingecon Sun · 0800H</div>
+        <h2>Branch fault</h2>
+        <p>A fault in one of the power electronics branches, reported per branch. Ingeteam escalates consecutive branch failures to a fatal error, so a repeating branch fault is heading somewhere worse.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Note which branch is reporting, because that is the single most useful piece of information here. Check whether the same branch repeats or whether it moves, since a moving fault points at something shared rather than at one module. Check for over temperature in the same event, because heat and branch faults travel together. Do not keep resetting; consecutive branch failures escalate to a fatal error and can damage the unit further. Isolate and prove dead, then inspect the branch for thermal marking or damage. Escalate to Ingeteam technical support with the branch number and full alarm history.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-1000">
+        <div class="refTag">Ingeteam Ingecon Sun · 1000H</div>
+        <h2>Manual shutdown</h2>
+        <p>The unit was stopped deliberately, by the emergency stop, the display, or over communications. This is not a fault.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Establish who stopped it and why before restarting anything. Check whether an emergency stop is physically latched in, and never reset one without knowing why it was pressed. Check the plant controller and SCADA for a commanded stop, since curtailment and maintenance commands land here. Check the event log for the source. Restart only once the reason is understood and the site is confirmed safe.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-2000">
+        <div class="refTag">Ingeteam Ingecon Sun · 2000H</div>
+        <h2>Configuration change shutdown</h2>
+        <p>The inverter stopped because of a firmware or configuration change. Expected during commissioning or an update, and worth investigating at any other time.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Establish whether an update or configuration change was actually performed. If it was, verify every setting afterwards rather than assuming the change was clean, paying attention to grid protection settings and power limits. If nobody changed anything, treat it as unexplained and check who has access to the unit and the plant controller. Confirm the firmware version against Ingeteam&#x27;s current release. Verify the unit returns to normal production and matches its neighbours before leaving.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-4000">
+        <div class="refTag">Ingeteam Ingecon Sun · 4000H</div>
+        <h2>High DC input voltage</h2>
+        <p>DC input voltage went above the permitted maximum. On a utility scale plant this classically appears on cold clear mornings, when string open circuit voltage rises with falling temperature.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Note the ambient temperature and time of day, because the pattern is the diagnosis. Check whether it occurs only on cold mornings, which points at string sizing against the record low temperature rather than a fault. Measure string open circuit voltage and compare against the inverter maximum input. Check the string configuration actually installed against the design, since an extra module in a string is a common as built error. Escalate for a string sizing review before continued operation if it recurs, and do not simply keep restarting, because repeated overvoltage events damage the DC input stage.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="ingeteam-8000">
+        <div class="refTag">Ingeteam Ingecon Sun · 8000H</div>
+        <h2>Low DC input voltage</h2>
+        <p>Shutdown due to low DC input voltage. At the start and end of the day this is normal behaviour, not a fault.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Check the time of day and irradiance first, because dawn and dusk shutdowns are expected. Treat it as a fault only if it occurs in good light or if this unit behaves differently from its neighbours. Check for tripped DC fuses or an open combiner feeding this input. Check string voltages against neighbouring inverters under the same conditions. Check for soiling, shading or snow if the whole array is producing below expectation. Check the DC disconnect position.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Ingeteam Ingecon Sun manual for the installed model and firmware. Ingeteam reports alarms as hexadecimal bit flags, so more than one may be active at once.</p>
+      </div>
+      <div class="refEntry" id="pe-gfdi">
+        <div class="refTag">Power Electronics</div>
+        <h2>Freesun HEC: GFDI grounding and ground fault warning</h2>
+        <p>On a Freesun HEC installation with a grounded PV pole, the ONLY point where the positive or negative pole should be earthed is inside the inverter, through the Ground Fault Detector Interrupter fitted for that purpose. If any other grounded connection exists anywhere in the installation, at the modules, in a string supervisor or elsewhere, the protection the GFDI provides is NOT effective. The inverter also carries a caution label stating that normally grounded conductors may be ungrounded and energised when a ground fault is indicated, which is the single most important thing to understand before opening anything on a faulted system.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Treat every normally grounded conductor as potentially energised whenever a ground fault is indicated. Qualified person only, with DC rated PPE. Confirm there is no second grounded pole anywhere in the installation, because a second earth defeats the GFDI silently and the plant will look protected when it is not. Inspect the insulation between the grounded pole and earth as part of scheduled maintenance, which is what prevents uncontrolled leakage from making the GFDI ineffective. After a trip, reset the insulation monitor manually at the button once the cause is found and corrected.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Power Electronics Freesun HEC-UL service manual for the installed model.</p>
+      </div>
+      <div class="refEntry" id="pe-insulationmonitor">
+        <div class="refTag">Power Electronics</div>
+        <h2>Freesun HEC: insulation monitor testing and replacement life</h2>
+        <p>The Freesun HEC insulation monitor has a defined service life expressed in trips, not in years. Power Electronics specifies replacement after at least 100 ground faults that tripped the monitor, and also if the mechanical or optical check fails or falls outside the maintenance protocol. The monitor has a pulse test mode for verifying it still performs correctly, which is the check that catches a monitor that has quietly stopped protecting the plant.</p>
+        <div class="refLabel">Safe response</div>
+        <p>Run the pulse test mode to verify the monitor still performs, rather than assuming a quiet monitor is a healthy one. Perform the mechanical and optical checks against the maintenance protocol. Track the cumulative count of ground faults that tripped the monitor, because 100 trips is a replacement trigger regardless of how the unit looks. Replace the monitor if any check fails or the trip count is reached. Carry out soft grounding maintenance only after the monitor has been checked. Reset manually at the button after a trip, once the underlying fault is corrected.</p>
+        <div class="refLabel">Verify against</div>
+        <p>Verify against the current Power Electronics Freesun HEC-UL service manual and the site maintenance protocol.</p>
       </div>
       <div class="refToc mt-4"><strong>More reference</strong><br>
         <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>

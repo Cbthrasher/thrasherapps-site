@@ -38,11 +38,27 @@
     <div class="container">
       <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
       <h1 class="h2">EV Charger Brand and Equipment Library</h1>
-      <p class="lead">Field reference for EV charging technicians. 8 entries, taken from the PlugWatt app.</p>
+      <p class="lead">Field reference for EV charging technicians. 24 entries, taken from the PlugWatt app.</p>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#chargepoint">ChargePoint</a>
         <a href="#abb">ABB</a>
+        <a href="#abb-0x0102">0x0102 — Residual current error, DC 6 mA</a>
+        <a href="#abb-0x0104">0x0104 — Residual current error, AC 30 mA</a>
+        <a href="#abb-0x0106">0x0106 — Residual current monitor self test error</a>
+        <a href="#abb-0x0108">0x0108 — Relay stuck error</a>
+        <a href="#abb-0x0112">0x0112 — Missing earth error</a>
+        <a href="#abb-0x0114">0x0114 — L and N reverse error</a>
+        <a href="#abb-0x0118">0x0118 — Missing phase</a>
+        <a href="#abb-0x0004">0x0004 — Overcurrent</a>
+        <a href="#abb-0x0116">0x0116 — Overheat</a>
+        <a href="#abb-0x0110">0x0110 — Cable undercapacity</a>
+        <a href="#abb-0x0100">0x0100 — Internal board to board communication error</a>
+        <a href="#abb-0x0008">0x0008 — Overvoltage</a>
+        <a href="#abb-0x0010">0x0010 — Undervoltage</a>
         <a href="#tritium">Tritium</a>
+        <a href="#tritium-32">32 — Regulation issue while charging a CCS vehicle</a>
+        <a href="#tritium-39">39 — 480 V three phase supply outside limits</a>
+        <a href="#tritium-353">353 — Bayonet removed abruptly while charging</a>
         <a href="#alpitronic">Alpitronic</a>
         <a href="#tesla">Tesla Supercharger and NACS</a>
         <a href="#btcpower">BTC Power</a>
@@ -78,6 +94,155 @@
         <p>Power modules are hot swap by procedure on larger Terra models</p>
         <p>Terra HP liquid cooled cable loops need coolant checks on PM visits</p>
       </div>
+      <div class="refEntry" id="abb-0x0102">
+        <div class="refTag">ABB · 0x0102</div>
+        <h2>0x0102 — Residual current error, DC 6 mA</h2>
+        <p>The charger detected DC residual current leaking to ground above 6 mA. On a Level 2 unit this is the DC leakage detection required so that an upstream AC residual current device is not blinded by DC.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Treat it as a real leakage path until proven otherwise rather than resetting to see whether it clears</p>
+        <p>Check the vehicle first by trying a different EV, since a failing on board charger is a common source of DC leakage and the charger is reporting correctly</p>
+        <p>Check for moisture in the enclosure, the cable gland and the connector, which is the usual cause after weather</p>
+        <p>Inspect the output cable for damage where it is driven over or pulled</p>
+        <p>Check the connector pins for corrosion or debris bridging to earth</p>
+        <p>If it repeats on multiple vehicles the fault is the charger side; escalate rather than resetting repeatedly</p>
+      </div>
+      <div class="refEntry" id="abb-0x0104">
+        <div class="refTag">ABB · 0x0104</div>
+        <h2>0x0104 — Residual current error, AC 30 mA</h2>
+        <p>AC residual current above 30 mA leaking to ground. Same family as the DC detection but on the AC side, and the threshold where personnel protection acts.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Treat as a live earth fault and do not reset repeatedly</p>
+        <p>Try a different vehicle to separate the EV from the charger</p>
+        <p>Check for water ingress at the enclosure, gland and connector</p>
+        <p>Inspect the output cable along its full length for damage</p>
+        <p>Check the AC supply wiring and terminations inside the unit for a conductor touching earth</p>
+        <p>Check whether it correlates with rain or wash down, which points at ingress rather than electronics</p>
+      </div>
+      <div class="refEntry" id="abb-0x0106">
+        <div class="refTag">ABB · 0x0106</div>
+        <h2>0x0106 — Residual current monitor self test error</h2>
+        <p>The residual current monitor failed its own self test, so the protection cannot be relied on. The unit is reporting that its safety device is not trustworthy.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Take the unit out of service, because personnel protection is what is reporting faulty</p>
+        <p>Power cycle once to rule out a transient self test failure</p>
+        <p>Check the monitor module connections and its wiring</p>
+        <p>Do not disable or bypass the monitor to keep the charger earning</p>
+        <p>Replace the monitor if the self test keeps failing, and retest before returning to service</p>
+      </div>
+      <div class="refEntry" id="abb-0x0108">
+        <div class="refTag">ABB · 0x0108</div>
+        <h2>0x0108 — Relay stuck error</h2>
+        <p>A relay contact is overheated or damaged and is not behaving as commanded. A welded relay means the output may stay energised when the charger believes it is off.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Treat the output as potentially live regardless of what the unit indicates</p>
+        <p>Isolate and verify absence of voltage before touching the output</p>
+        <p>Inspect the relay for heat damage, discoloration and pitting</p>
+        <p>Establish what damaged it, because closing into a fault or a high resistance connection will destroy the replacement the same way</p>
+        <p>Check the output cable and connector for a fault that caused the overload</p>
+        <p>Replace the relay rather than attempting to clean or reuse it</p>
+      </div>
+      <div class="refEntry" id="abb-0x0112">
+        <div class="refTag">ABB · 0x0112</div>
+        <h2>0x0112 — Missing earth error</h2>
+        <p>The unit is not earthed correctly. Everything protective on a charger depends on a solid earth reference, so nothing else can be trusted while this is present.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Take the unit out of service; without earth the protection functions cannot work</p>
+        <p>Check the earth conductor termination at the charger</p>
+        <p>Check earth continuity back to the panel, measuring rather than looking</p>
+        <p>Check the earth connection at the supply end and at any junction in between</p>
+        <p>Check for a corroded or loose earth lug, which is the common failure outdoors</p>
+        <p>Do not return the unit to service until earth continuity is proven</p>
+      </div>
+      <div class="refEntry" id="abb-0x0114">
+        <div class="refTag">ABB · 0x0114</div>
+        <h2>0x0114 — L and N reverse error</h2>
+        <p>Line and neutral are reversed on the AC input. The unit works out that the supply is wired the wrong way round.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Isolate before touching anything, since the wiring is by definition not what the labels say</p>
+        <p>Confirm the reversal at the charger terminals with a meter rather than trusting colours</p>
+        <p>Trace back to the supplying breaker, because the error is usually made at the panel or a junction</p>
+        <p>Correct the wiring and verify polarity at the charger before re energising</p>
+        <p>Check any other outlets or equipment on the same circuit, since a reversal usually affects more than one thing</p>
+      </div>
+      <div class="refEntry" id="abb-0x0118">
+        <div class="refTag">ABB · 0x0118</div>
+        <h2>0x0118 — Missing phase</h2>
+        <p>A phase is missing or reversed on the supply. On a three phase unit that means it cannot deliver rated output and may not start at all.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the supply breaker, since a single pole tripped on a three phase breaker is the usual cause</p>
+        <p>Measure all three phases at the charger input rather than at the panel</p>
+        <p>Check for a blown fuse on one phase</p>
+        <p>Check phase rotation if the unit reports reversal rather than absence</p>
+        <p>Check terminations at the charger and at the panel for a loose or burnt conductor</p>
+        <p>Look for a utility side issue if all three are low or one is absent at the service</p>
+      </div>
+      <div class="refEntry" id="abb-0x0004">
+        <div class="refTag">ABB · 0x0004</div>
+        <h2>0x0004 — Overcurrent</h2>
+        <p>There is an overload on the vehicle side. The charger is limiting because the EV is drawing more than the session allows.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check whether it happens with one vehicle or several, because one vehicle points at that EV&#x27;s on board charger</p>
+        <p>Check the configured maximum current against the cable rating and the circuit</p>
+        <p>Check the vehicle&#x27;s own charge settings, since some EVs allow a current limit to be set on board</p>
+        <p>Check the connector and cable for heat damage, which both causes and results from overcurrent</p>
+        <p>Do not raise the current limit to stop the alarm</p>
+      </div>
+      <div class="refEntry" id="abb-0x0116">
+        <div class="refTag">ABB · 0x0116</div>
+        <h2>0x0116 — Overheat</h2>
+        <p>Charging current is too high for the conditions and the unit is protecting itself. Thermal management on a charger is mostly airflow and connection quality.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the connector and cable for heat damage first, because a high resistance connection generates heat exactly where this trips</p>
+        <p>Check the ambient temperature and whether the unit is in direct sun</p>
+        <p>Check ventilation openings and any filter for blockage</p>
+        <p>Check the terminations inside the unit for a loose connection, which heats under load</p>
+        <p>Check whether it derates at the same time each day, which points at ambient rather than a fault</p>
+        <p>Let it cool and retest under load rather than assuming the reset fixed it</p>
+      </div>
+      <div class="refEntry" id="abb-0x0110">
+        <div class="refTag">ABB · 0x0110</div>
+        <h2>0x0110 — Cable undercapacity</h2>
+        <p>The attached cable is rated below the device&#x27;s rated current. The charger is refusing to deliver more than the cable can carry, which is correct behaviour.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the cable rating against the unit&#x27;s configured output</p>
+        <p>Check whether the cable was replaced with a lower rated assembly</p>
+        <p>Check the proximity pilot resistor, since that is how the cable declares its rating and a wrong or damaged resistor misreports it</p>
+        <p>Fit the correct cable rather than raising the configured current</p>
+        <p>Inspect the connector for damage that may have altered the proximity circuit</p>
+      </div>
+      <div class="refEntry" id="abb-0x0100">
+        <div class="refTag">ABB · 0x0100</div>
+        <h2>0x0100 — Internal board to board communication error</h2>
+        <p>Internal boards are not communicating with each other. This is inside the unit rather than out on the installation.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Power cycle once, since a single internal comm fault is often transient</p>
+        <p>Check internal ribbon and harness connections are seated, especially after any service work</p>
+        <p>Check for moisture or corrosion inside the enclosure</p>
+        <p>Check firmware versions across the boards if any were replaced</p>
+        <p>Escalate to ABB rather than swapping boards speculatively</p>
+      </div>
+      <div class="refEntry" id="abb-0x0008">
+        <div class="refTag">ABB · 0x0008</div>
+        <h2>0x0008 — Overvoltage</h2>
+        <p>Supply voltage above the permitted window. The charger stops rather than passing it to the vehicle.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Measure the supply voltage at the charger input under load, not at rest</p>
+        <p>Check whether other equipment on the same supply is also seeing high voltage, which points upstream</p>
+        <p>Check the neutral connection, since a poor neutral produces high voltage on one leg and low on another</p>
+        <p>Check transformer tap settings if the site is consistently high</p>
+        <p>Contact the utility if the supply itself is out of range</p>
+      </div>
+      <div class="refEntry" id="abb-0x0010">
+        <div class="refTag">ABB · 0x0010</div>
+        <h2>0x0010 — Undervoltage</h2>
+        <p>Supply voltage below the permitted window, which the charger will not work through.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Measure at the charger input under load, since voltage drop only shows when current flows</p>
+        <p>Check the conductor size against the run length, because a long undersized run is the classic cause</p>
+        <p>Check terminations at both ends for a high resistance joint</p>
+        <p>Check whether other loads on the circuit pull it down when they start</p>
+        <p>Check the supply at the panel to separate the branch circuit from the service</p>
+      </div>
       <div class="refEntry" id="tritium">
         <h2>Tritium</h2>
         <p>Veefil heritage; RTM and PKM families. Distinctive liquid cooled power electronics in a slim IP65 package.</p>
@@ -89,6 +254,41 @@
         <p>Coolant loop service requires the documented bleed procedure; air pockets cause phantom thermal derates</p>
         <p>IP65 sealing means enclosure openings must be resealed to specification after service</p>
         <p>Older Veefil units may need firmware updates before newer vehicles negotiate cleanly</p>
+      </div>
+      <div class="refEntry" id="tritium-32">
+        <div class="refTag">Tritium · 32</div>
+        <h2>32 — Regulation issue while charging a CCS vehicle</h2>
+        <p>The charger could not respond to changing grid conditions during a session and stopped regulating within limits.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Return the plug to the charger, which is the documented first step</p>
+        <p>Perform a remote charger reset rather than a local power cycle</p>
+        <p>Check whether the site grid is weak or fluctuating at that time of day, since the fault is about responding to grid change</p>
+        <p>Check whether it recurs with one vehicle or several</p>
+        <p>Collect the session timestamp before resetting, because the log around it is the diagnosis</p>
+        <p>Escalate to Tritium with the timestamps if it repeats</p>
+      </div>
+      <div class="refEntry" id="tritium-39">
+        <div class="refTag">Tritium · 39</div>
+        <h2>39 — 480 V three phase supply outside limits</h2>
+        <p>The supply left the permitted window: below 432 V or above 528 V, or below 55 Hz or above 65 Hz. Tritium names a short power glitch, three phase loss, an internal RCD trip and an internal breaker trip as causes.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the internal RCD and the internal breakers first, because both are listed causes and both are inside the unit</p>
+        <p>Measure all three phases at the input and compare against 432 V and 528 V</p>
+        <p>Check frequency if the site has generation or a weak supply</p>
+        <p>Check whether the utility logged an event at that timestamp, since a short glitch leaves no other trace</p>
+        <p>Check for a lost phase upstream at the panel</p>
+        <p>Correlate across other chargers on site, because all of them tripping together is a supply event</p>
+      </div>
+      <div class="refEntry" id="tritium-353">
+        <div class="refTag">Tritium · 353</div>
+        <h2>353 — Bayonet removed abruptly while charging</h2>
+        <p>The safety system detected the connector being pulled during an active session, outside normal operating parameters. The charger locks itself deliberately.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Do not power cycle and do not press the emergency stop, because Tritium specifically says not to</p>
+        <p>Do not attempt to clear it locally; the unit stays locked until serviced by design</p>
+        <p>Contact the station owner to arrange Tritium service</p>
+        <p>Record what happened before the lock, since a pulled connector under load may have damaged the cable or connector</p>
+        <p>Inspect the cable and connector for damage while waiting on service</p>
       </div>
       <div class="refEntry" id="alpitronic">
         <h2>Alpitronic</h2>

@@ -38,10 +38,55 @@
     <div class="container">
       <div class="crumb"><a href="/loopwatt/reference/">LoopWatt reference</a></div>
       <h1 class="h2">Fire Alarm Panel Library</h1>
-      <p class="lead">Field reference for fire alarm and life safety technicians. 11 entries, taken from the LoopWatt app.</p>
+      <p class="lead">Field reference for fire alarm and life safety technicians. 56 entries, taken from the LoopWatt app.</p>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#notifier">Notifier</a>
+        <a href="#notifier-notifier-noans">NO ANS</a>
+        <a href="#notifier-notifier-invrep">INVREP</a>
+        <a href="#notifier-notifier-dirty1">DIRTY 1</a>
+        <a href="#notifier-notifier-dirty2">DIRTY 2</a>
+        <a href="#notifier-notifier-open">OPEN</a>
+        <a href="#notifier-notifier-short">SHORT</a>
+        <a href="#notifier-notifier-gndflt">GNDFLT</a>
+        <a href="#notifier-notifier-disabl">DISABL</a>
+        <a href="#notifier-notifier-adrflt">ADRFLT</a>
+        <a href="#notifier-notifier-psfail">PSFAIL</a>
+        <a href="#notifier-notifier-chgflt">CHGFLT</a>
+        <a href="#notifier-notifier-lobat">LO BAT</a>
+        <a href="#notifier-notifier-hibat">HI BAT</a>
+        <a href="#notifier-notifier-prloss">PRLOSS</a>
+        <a href="#notifier-notifier-loval">LO VAL</a>
+        <a href="#notifier-notifier-block">BLOCK</a>
+        <a href="#notifier-notifier-coexp">CO EXP</a>
+        <a href="#notifier-notifier-lotemp">LO TEMP</a>
+        <a href="#notifier-notifier-acfailure">AC FAILURE</a>
+        <a href="#notifier-notifier-sysacfail">AC FAIL</a>
+        <a href="#notifier-notifier-sysbattery">BATTERY</a>
+        <a href="#notifier-notifier-syschargerfail">CHARGER FAIL</a>
+        <a href="#notifier-notifier-sysannunnoans">ANNUN x NO ANSWER</a>
+        <a href="#notifier-notifier-sysauxtrouble">AUXILIARY TROUBLE</a>
+        <a href="#notifier-notifier-sysbatbackupram">BAT.BACKUP RAM</a>
+        <a href="#notifier-notifier-syscorruptlogic">CORRUPT LOGIC EQUAT</a>
+        <a href="#notifier-notifier-sysbasicwalktest">BASIC WALK TEST</a>
+        <a href="#notifier-notifier-sysdrill">DRILL ACTIVATED</a>
         <a href="#simplex">Simplex</a>
+        <a href="#simplex-simplex-noanswer">No answer</a>
+        <a href="#simplex-simplex-duplicate">Duplicate device</a>
+        <a href="#simplex-simplex-wrongdevice">Wrong device</a>
+        <a href="#simplex-simplex-extradevice">Extra Device</a>
+        <a href="#simplex-simplex-shortcircuit">Short Circuit</a>
+        <a href="#simplex-simplex-earthfault">Earth fault</a>
+        <a href="#simplex-simplex-earthfaultsearch">Earth Fault Search</a>
+        <a href="#simplex-simplex-commsfailure">Communications Failure</a>
+        <a href="#simplex-simplex-controllerfailure">Controller failure</a>
+        <a href="#simplex-simplex-mainovercurrent">Main Overcurrent</a>
+        <a href="#simplex-simplex-channelovercurrent">Channel Overcurrent</a>
+        <a href="#simplex-simplex-idnacsigunpowered">IDNAC Sig Unpowered</a>
+        <a href="#simplex-simplex-idnacpowertrouble">IDNAC Power Trouble</a>
+        <a href="#simplex-simplex-dirty">Smoke Detector Dirty</a>
+        <a href="#simplex-simplex-excessivelydirty">Smoke Detector Excessively Dirty</a>
+        <a href="#simplex-simplex-almostdirty">Almost Dirty</a>
+        <a href="#simplex-simplex-expiredtrouble">Expired Trouble</a>
         <a href="#est">EST and Edwards</a>
         <a href="#silentknight">Silent Knight</a>
         <a href="#firelite">Fire Lite</a>
@@ -70,6 +115,391 @@
         <div class="refLabel">Families</div>
         <p>NFS and NFW series addressable panels; ONYX line. FlashScan and CLIP polling protocols.</p>
       </div>
+      <div class="refEntry" id="notifier-notifier-noans">
+        <div class="refTag">Notifier</div>
+        <h2>NO ANS</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The device, module or detector, is not answering the panel&#x27;s poll. The panel is calling that address and nothing is coming back.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Note the loop and address from the point label; that tells you where to walk before you touch anything</p>
+        <p>Check the device is physically present and seated in its base, since a detector twisted loose during cleaning is the single most common cause</p>
+        <p>Check the address setting on the device matches what is programmed, particularly if it was recently replaced</p>
+        <p>Check for a break in the SLC between the last answering address and this one; devices downstream failing together points at the wire rather than the device</p>
+        <p>Check terminations at the device and at the previous device on the loop for a loose or backed out screw</p>
+        <p>Swap in a known good device of the same type at the same address to separate device from wiring</p>
+        <p>If several addresses in a run go quiet together, treat it as an open circuit on the SLC rather than device failures</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-invrep">
+        <div class="refTag">Notifier</div>
+        <h2>INVREP</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The device answered, but with a reply the panel did not expect. Something is on the loop talking out of turn or answering wrongly.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check for a duplicate address first, because two devices answering the same poll is the classic cause and it produces intermittent, moving faults</p>
+        <p>Check the device type programmed against the device actually installed; a photo head in a slot programmed for a heat will reply wrongly</p>
+        <p>Check whether the device was recently replaced with a different model or FlashScan generation</p>
+        <p>Check the panel is in the correct polling protocol for the devices fitted, FlashScan against CLIP</p>
+        <p>Check for water or corrosion at the device and its base, which can corrupt the reply</p>
+        <p>Remove the suspect device and see whether the trouble follows it or stays at the address</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-dirty1">
+        <div class="refTag">Notifier</div>
+        <h2>DIRTY 1</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The detector is dirty and needs cleaning. This is an early warning, not a failure, and the panel is telling you before it becomes a false alarm.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Note the address and get it on the maintenance list rather than treating it as an emergency</p>
+        <p>Check what is around that detector: recent construction, drywall dust, a kitchen, a loading dock, or a return air path</p>
+        <p>Clean the detector per the manufacturer procedure rather than blowing it out with compressed air</p>
+        <p>Run a sensitivity report after cleaning to confirm it came back into range</p>
+        <p>If the same head dirties repeatedly, the location is the problem, not the detector; consider whether the device type suits the environment</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-dirty2">
+        <div class="refTag">Notifier</div>
+        <h2>DIRTY 2</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The detector requires cleaning immediately and is a false alarm risk. Notifier escalates to this when the compensation has run out of headroom.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Treat this as needing action now, because the next event may be an unwanted alarm at three in the morning</p>
+        <p>Clean or replace the head per the manufacturer procedure</p>
+        <p>Run a sensitivity report and confirm the reading is back within the listed range, since NFPA 72 requires sensitivity to be within the listed range</p>
+        <p>Record the sensitivity result, because that record is what an inspection asks for</p>
+        <p>If it returns to DIRTY 2 quickly, replace the head rather than cleaning it again</p>
+        <p>Check the environment before reinstalling, since a head that dirties fast is usually telling you about the room</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-open">
+        <div class="refTag">Notifier</div>
+        <h2>OPEN</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A module has an open circuit on its supervised wiring. The supervision current cannot complete its path on that module&#x27;s circuit.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Identify which module and which circuit from the point label</p>
+        <p>Check the end of line resistor is present and the correct value, because a missing or wrong EOL is the most common cause</p>
+        <p>Check terminations at the module and at the last device on that circuit</p>
+        <p>Check for a device removed for service and not put back</p>
+        <p>Measure the circuit from the module with the panel connection lifted and compare against the expected EOL value</p>
+        <p>Walk the circuit for damaged cable, especially anywhere recent trade work has happened above ceilings</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-short">
+        <div class="refTag">Notifier</div>
+        <h2>SHORT</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A module has a short circuit on its supervised wiring. On a notification circuit this means the appliances will not sound when called.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Identify the module and circuit from the point label</p>
+        <p>Lift the circuit at the module and measure; a dead short with the circuit lifted puts the fault in the field wiring</p>
+        <p>Check for a pinched or skinned conductor at a back box, which is where most shorts are found</p>
+        <p>Check for water in a box or device, particularly on exterior or parking structure circuits</p>
+        <p>Split the circuit at a midpoint device and measure each half to halve the search area, and once a half is disconnected leave it disconnected</p>
+        <p>Check any device added or replaced recently on that circuit</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-gndflt">
+        <div class="refTag">Notifier</div>
+        <h2>GNDFLT</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A ground fault on the main or auxiliary power supply. Fire alarm circuits use two conductors with no dedicated ground, so a conductor has found an unintended path to a grounded surface.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Do not leave the system impaired: notify the authority having jurisdiction and the monitoring company, place the system on test, and post a fire watch if required</p>
+        <p>Check the panel event history first to see when it started and what else happened at that time</p>
+        <p>Rule out the panel itself by disconnecting field circuits one at a time; if the trouble clears, the fault is out on that circuit</p>
+        <p>Walk the suspect circuit against the usual suspects: water at a ceiling detector, a pinched conductor at a back box, a screw driven through cable, exterior devices after rain</p>
+        <p>Split the faulted circuit at a reachable midpoint, and once a section is removed leave it removed, because faults can sit on more than one section and restoring as you go makes it look like it never clears</p>
+        <p>With the section fully isolated and all electronics removed, measure each conductor to ground with an ohmmeter before reaching for an insulation tester</p>
+        <p>Never megger a circuit with devices connected</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-disabl">
+        <div class="refTag">Notifier</div>
+        <h2>DISABL</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The point has been disabled. Somebody took it out of service deliberately, and it is not protecting anything while it stays that way.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Find out who disabled it and why before enabling anything, because it may be disabled for a reason such as construction dust</p>
+        <p>Check the panel history for when it was disabled</p>
+        <p>Check whether a fire watch or impairment procedure is in place if the point covers a required area</p>
+        <p>Enable the point once the reason is resolved and confirm it returns to normal</p>
+        <p>Record the disable and enable, since points left disabled are a common inspection finding</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-adrflt">
+        <div class="refTag">Notifier</div>
+        <h2>ADRFLT</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>An address fault: a detector or sounder base address mismatch, or an incorrect addressable power supply address.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the address set on the device against what the panel expects for that point</p>
+        <p>Check the sounder base address against its detector, since base and head addressing is a frequent source of this</p>
+        <p>Check for a duplicate address elsewhere on the loop</p>
+        <p>Check whether the device was recently swapped and the rotary switches or programming not set</p>
+        <p>Confirm the addressable power supply address if the fault points at an ACPS</p>
+        <p>Re address and confirm the point reports normally</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-psfail">
+        <div class="refTag">Notifier</div>
+        <h2>PSFAIL</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The power supply is not working properly. Anything it feeds is at risk of dropping out.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Establish what that supply feeds before anything else, because that is the scope of the impairment</p>
+        <p>Check the AC feed to the supply and the branch circuit breaker</p>
+        <p>Check the supply&#x27;s own indicators and any onboard fuses</p>
+        <p>Measure the output against its rated voltage under load rather than at rest</p>
+        <p>Check for a downstream short pulling the supply down; disconnect loads one at a time</p>
+        <p>Notify the authority having jurisdiction and the monitoring company if the affected area loses protection</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-chgflt">
+        <div class="refTag">Notifier</div>
+        <h2>CHGFLT</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The power supply&#x27;s battery charger is not working properly. The batteries will not be maintained, so the system&#x27;s standby capability is degrading even while everything looks normal.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Measure the charging voltage at the battery terminals against the manufacturer specification</p>
+        <p>Check the battery age and date code, because a failed battery can present as a charger fault</p>
+        <p>Check battery terminals and leads for corrosion and tightness</p>
+        <p>Load test or replace the batteries if they are beyond their service life, typically around five years</p>
+        <p>Recheck charging voltage with known good batteries fitted before condemning the charger</p>
+        <p>Record the battery replacement date, since standby calculations depend on it</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-lobat">
+        <div class="refTag">Notifier</div>
+        <h2>LO BAT</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The auxiliary power supply&#x27;s battery charge is low. Standby time is reduced or gone.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Measure the battery voltage at the terminals and compare against specification</p>
+        <p>Check whether AC was recently lost, since batteries take time to recover after a discharge</p>
+        <p>Check the charger output, because a low battery with a healthy charger points at the battery and the reverse points at the charger</p>
+        <p>Check battery age, terminals and leads</p>
+        <p>Replace batteries as a matched pair, never one of two</p>
+        <p>Confirm the trouble clears after the charge recovers, and recheck the next day</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-hibat">
+        <div class="refTag">Notifier</div>
+        <h2>HI BAT</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The auxiliary power supply&#x27;s battery charge is too high. Overcharging cooks batteries and shortens their life considerably.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Measure the charging voltage at the battery terminals against the manufacturer specification</p>
+        <p>Check the charger setting or jumper for the battery type fitted, since a setting intended for a different chemistry overcharges</p>
+        <p>Check ambient temperature at the battery location, because heat raises voltage and accelerates damage</p>
+        <p>Inspect the batteries for swelling or heat damage and replace any that are distorted</p>
+        <p>Correct the charger before fitting new batteries, or the new ones will fail the same way</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-prloss">
+        <div class="refTag">Notifier</div>
+        <h2>PRLOSS</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>An output module or sounder base has lost its power. The device is present on the loop but has no power to do its job.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Identify the point and what supplies its power, which is often a separate circuit from the SLC</p>
+        <p>Check the power circuit feeding that device and its fuse or breaker</p>
+        <p>Check terminations at the device power terminals</p>
+        <p>Check whether other devices on the same power circuit are also affected, which localises it quickly</p>
+        <p>Check the supplying power supply for its own trouble</p>
+        <p>Confirm the device operates after power is restored rather than assuming it</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-loval">
+        <div class="refTag">Notifier</div>
+        <h2>LO VAL</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The detector chamber reading is too low, which Notifier treats as a detector malfunction rather than a clean detector.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Replace or clean the head per the manufacturer procedure</p>
+        <p>Check for a head fitted to the wrong base type</p>
+        <p>Run a sensitivity report and confirm the reading returns within the listed range</p>
+        <p>Check whether the device was recently disturbed during other work</p>
+        <p>Record the sensitivity result for the inspection file</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-block">
+        <div class="refTag">Notifier</div>
+        <h2>BLOCK</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>Something has come between a beam detector and its reflector. Beam detectors are line of sight devices and anything crossing the path breaks them.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Look along the beam path before touching the detector, because the answer is usually visible from the floor</p>
+        <p>Check for recently installed ductwork, signage, racking, decorations or a stacked pallet</p>
+        <p>Check for a lift, scaffold or scissor lift left parked in the path</p>
+        <p>Check the reflector is still square and has not been knocked or fogged</p>
+        <p>Check for condensation or dust film on the lens or reflector</p>
+        <p>Realign per the manufacturer procedure only after the obstruction is cleared</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-coexp">
+        <div class="refTag">Notifier</div>
+        <h2>CO EXP</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The carbon monoxide sensing element in a detector has reached its expiration date. CO elements have a fixed service life and stop being listed once past it.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Replace the detector or its CO element; a CO element cannot be cleaned back into service</p>
+        <p>Check the whole site for other CO heads approaching expiry, since they were usually installed together</p>
+        <p>Note that CO 6MN is the same message six months earlier and is your chance to order ahead</p>
+        <p>Record the replacement date so the next expiry is not a surprise</p>
+        <p>Confirm the point returns to normal and test per the manufacturer procedure</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-lotemp">
+        <div class="refTag">Notifier</div>
+        <h2>LO TEMP</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A Heat or Acclimate detector is reading a temperature below its rated range. Common in unheated spaces in winter.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the actual temperature at the device location, because the message is usually accurate</p>
+        <p>Check whether the space is unheated, a freezer, a loading dock, or an attic in cold weather</p>
+        <p>Check whether heating in that area has failed, since the detector may be reporting a real building problem</p>
+        <p>Confirm the detector type is rated for the environment; a standard head in a cold space is a design issue rather than a fault</p>
+        <p>Consider a low temperature rated device if the location is legitimately cold</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-acfailure">
+        <div class="refTag">Notifier</div>
+        <h2>AC FAILURE</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>An auxiliary power supply has lost its AC feed and is running on battery. The clock is now running on standby capacity.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the branch circuit breaker feeding that supply, and check it is a dedicated circuit that has not been repurposed</p>
+        <p>Check the AC connections at the supply</p>
+        <p>Establish whether the building lost power generally or only this circuit; only this circuit points at a local fault</p>
+        <p>Check the battery condition, because standby time is only as good as the batteries</p>
+        <p>Notify the monitoring company if the outage will be prolonged</p>
+        <p>Confirm the charger begins recovering the batteries once AC returns</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-sysacfail">
+        <div class="refTag">Notifier</div>
+        <h2>AC FAIL</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The main power supply has lost AC. The panel is running on battery and standby time is finite.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the dedicated branch circuit breaker for the panel first</p>
+        <p>Confirm whether the building has lost power generally or just the panel circuit</p>
+        <p>Check AC terminations at the panel</p>
+        <p>Note the time, because NFPA 72 standby requirements are expressed in hours and you need to know how long you have</p>
+        <p>Check the battery condition and age, since a panel with weak batteries will not make its rated standby</p>
+        <p>Notify the monitoring company and the authority having jurisdiction if the outage will exceed standby capacity</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-sysbattery">
+        <div class="refTag">Notifier</div>
+        <h2>BATTERY</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The panel reports the battery charge as either excessive or insufficient. It is one message covering both ends.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Measure the battery voltage at the terminals and determine which end of the range you are at, because the fix is opposite in each direction</p>
+        <p>If low, check the charger output and whether AC was recently lost</p>
+        <p>If high, check the charger setting for the battery type fitted and the ambient temperature</p>
+        <p>Check battery age and date code; replace beyond service life rather than chasing the symptom</p>
+        <p>Replace as a matched pair and record the date</p>
+        <p>Recalculate standby capacity if the battery size has changed from the original design</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-syschargerfail">
+        <div class="refTag">Notifier</div>
+        <h2>CHARGER FAIL</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The main power supply&#x27;s battery charger has malfunctioned. The panel will run normally on AC and fail when it matters.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Measure charging voltage at the battery terminals against specification</p>
+        <p>Check the batteries themselves, since a shorted cell can present as a charger fault</p>
+        <p>Check terminals, leads and fuses in the battery circuit</p>
+        <p>Fit known good batteries and recheck before condemning the charger</p>
+        <p>Treat this as urgent despite the system looking normal, because standby protection is gone</p>
+        <p>Notify the monitoring company if the fault cannot be corrected the same visit</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-sysannunnoans">
+        <div class="refTag">Notifier</div>
+        <h2>ANNUN x NO ANSWER</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The annunciator at address x is not responding. Remote annunciators are how responding fire crews read the system, so this matters beyond the panel room.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Note the annunciator address and its physical location</p>
+        <p>Check power to the annunciator</p>
+        <p>Check the communication wiring and terminations at both the annunciator and the panel</p>
+        <p>Check the address setting on the annunciator matches what is programmed</p>
+        <p>Check for a duplicate address if more than one annunciator is fitted</p>
+        <p>Check whether the run passes through an area with recent construction work</p>
+        <p>Tell the fire department contact if the annunciator serving their entry point is out</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-sysauxtrouble">
+        <div class="refTag">Notifier</div>
+        <h2>AUXILIARY TROUBLE</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>A device connected at J6 is malfunctioning or its cable is disconnected.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check what is actually landed on J6 for this installation, since it varies by site</p>
+        <p>Check the cable is connected at both ends and undamaged</p>
+        <p>Check power to the connected device</p>
+        <p>Disconnect the device to determine whether the trouble follows it or stays at the panel</p>
+        <p>Check the panel history for when it started and what else changed</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-sysbatbackupram">
+        <div class="refTag">Notifier</div>
+        <h2>BAT.BACKUP RAM</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The RAM battery backup is low. That battery preserves the panel&#x27;s programming and history when power is removed.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Print or export the current programming and history before doing anything, because that is what you stand to lose</p>
+        <p>Replace the RAM backup battery with the correct part</p>
+        <p>Verify programming and the event history survived the replacement</p>
+        <p>Check the date and time afterwards</p>
+        <p>Record the replacement date, since these have a predictable life</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-syscorruptlogic">
+        <div class="refTag">Notifier</div>
+        <h2>CORRUPT LOGIC EQUAT</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The database holding the panel&#x27;s logic equations is corrupt. Logic equations drive cross zoning, releasing and sequence of operation, so this is not cosmetic.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Do not assume the system will operate as designed, because the logic that makes it do so is the thing reporting corrupt</p>
+        <p>Notify the authority having jurisdiction and the monitoring company, and consider whether a fire watch is required</p>
+        <p>Retrieve the current programming file and compare it against your record copy</p>
+        <p>Check whether a recent programming change or download preceded it</p>
+        <p>Reload the verified programming from a known good file rather than editing around the corruption</p>
+        <p>Test the sequence of operation after reloading, not just that the trouble cleared</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-sysbasicwalktest">
+        <div class="refTag">Notifier</div>
+        <h2>BASIC WALK TEST</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>A basic walk test is in progress. This is a status message rather than a fault, but the system is not providing normal protection while it runs.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Confirm somebody is actually testing, because a panel left in walk test is a real impairment</p>
+        <p>Check the monitoring company knows the system is on test</p>
+        <p>Check how long it has been running; a walk test left on overnight means the building was unprotected</p>
+        <p>Take the panel out of walk test when testing finishes and confirm it returns to normal</p>
+        <p>Record the test in the inspection documentation</p>
+      </div>
+      <div class="refEntry" id="notifier-notifier-sysdrill">
+        <div class="refTag">Notifier</div>
+        <h2>DRILL ACTIVATED</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>A drill has been activated. Notification appliances are sounding by command rather than because of an alarm.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Confirm a drill is genuinely intended before silencing anything</p>
+        <p>Check the monitoring company was notified beforehand so the fire department is not dispatched</p>
+        <p>Check the occupants have been informed if the building requires it</p>
+        <p>Restore the panel to normal when the drill ends and confirm all appliances stop</p>
+        <p>Record the drill, since evacuation drills carry their own documentation requirements</p>
+      </div>
       <div class="refEntry" id="simplex">
         <h2>Simplex</h2>
         <div class="refLabel">Trouble notes</div>
@@ -82,6 +512,234 @@
         <p>Walk test by group with or without notification</p>
         <div class="refLabel">Families</div>
         <p>4007ES, 4010ES, 4100ES addressable platforms; IDNet and MAPNET device protocols; TrueAlarm analog sensing.</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-noanswer">
+        <div class="refTag">Simplex</div>
+        <h2>No answer</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The device is not responding on its channel. The panel is polling that address and nothing comes back.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Note the channel and address from the point label before walking anywhere</p>
+        <p>Check the device is present and fully seated in its base</p>
+        <p>Check the address matches what is programmed, especially after a replacement</p>
+        <p>Check whether consecutive addresses went quiet together, because that is a wiring break rather than several device failures</p>
+        <p>Check terminations at the device and at the previous device on the channel</p>
+        <p>Swap a known good device of the same type into the address to separate device from wiring</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-duplicate">
+        <div class="refTag">Simplex</div>
+        <h2>Duplicate device</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>Two devices on the channel have the same address. Both answer the same poll and the panel cannot tell them apart.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Treat this as the cause of any intermittent or wandering faults on that channel, because duplicates present exactly that way</p>
+        <p>Check any device installed or replaced recently, since a new device left at a default address is the usual source</p>
+        <p>Pull one suspect device and see whether the duplicate clears, which identifies the pair</p>
+        <p>Re address the incorrect device and confirm both points report independently</p>
+        <p>Walk the channel and verify the as built address list against what is actually installed</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-wrongdevice">
+        <div class="refTag">Simplex</div>
+        <h2>Wrong device</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The channel detects a device programmed as the wrong device type. The panel expects one thing and something else answered.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the device physically installed against what the point is programmed as</p>
+        <p>Check whether a head was swapped for a different type, a photo for a heat or a standard for a TrueAlarm</p>
+        <p>Check the base type matches the head, since sounder and relay bases change what the panel sees</p>
+        <p>Either fit the correct device or reprogram the point, but do not leave them disagreeing</p>
+        <p>Test the point after correcting, since device type drives how it alarms</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-extradevice">
+        <div class="refTag">Simplex</div>
+        <h2>Extra Device</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>One or more devices are present on the channel that have not been configured for it. Something is answering that the programming does not know about.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Identify which address is answering unexpectedly</p>
+        <p>Check whether a device was added during other trade work and never programmed</p>
+        <p>Check whether a device was moved from another channel and kept its address</p>
+        <p>Either add it to the programming or remove it, since an unconfigured device is not supervised or annunciated</p>
+        <p>Update the as built documentation, because this usually means the record is wrong</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-shortcircuit">
+        <div class="refTag">Simplex</div>
+        <h2>Short Circuit</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A short is detected on the channel. Simplex clears this automatically once the short is removed, which makes it useful for confirming a repair.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Lift the channel at the card and measure to confirm the short is in the field wiring rather than the card</p>
+        <p>Check for a pinched or skinned conductor at a back box, which is where most shorts live</p>
+        <p>Check for water in a box or device, particularly exterior and parking structure runs</p>
+        <p>Split the channel at a reachable midpoint and measure each half, and leave a disconnected half disconnected while you work</p>
+        <p>Check any device added or disturbed recently</p>
+        <p>The message clearing by itself confirms the repair, so use that rather than guessing</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-earthfault">
+        <div class="refTag">Simplex</div>
+        <h2>Earth fault</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A positive or negative earth fault on the channel. Fire alarm wiring has no dedicated ground, so a conductor has found an unintended path to a grounded surface.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Do not leave the system impaired: notify the authority having jurisdiction and the monitoring company, place the system on test, and post a fire watch if required</p>
+        <p>Note whether it is the positive or negative side, since Simplex tells you and that halves the search</p>
+        <p>Check the panel history for when it started and what else happened at that time</p>
+        <p>Disconnect field channels one at a time to establish whether the fault is on a channel or in the panel</p>
+        <p>Walk the suspect channel against the usual causes: water at a ceiling device, a pinched conductor, a screw through cable, exterior devices after rain</p>
+        <p>Split the channel and leave each removed section removed, because faults can sit on more than one section at once</p>
+        <p>Measure conductor to ground with an ohmmeter before reaching for an insulation tester, and never megger with devices connected</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-earthfaultsearch">
+        <div class="refTag">Simplex</div>
+        <h2>Earth Fault Search</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The earth fault search diagnostic is running. This is the panel hunting the fault for you, and system processes are suspended while it does.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Let it finish and read the progress on the display, because interrupting it wastes the diagnostic</p>
+        <p>Understand that system processes are suspended during the search, so the system is impaired while it runs</p>
+        <p>Confirm the monitoring company knows if the search is being run deliberately</p>
+        <p>Use the result to target the walk rather than starting a manual hunt</p>
+        <p>Confirm the system returns to normal processing when the search completes</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-commsfailure">
+        <div class="refTag">Simplex</div>
+        <h2>Communications Failure</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>None of the devices configured on the channel are communicating. The whole channel is dark rather than one device.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the channel wiring at the card first, because losing every device at once points at the head end</p>
+        <p>Check the card is seated and powered</p>
+        <p>Check for a short or open right at the start of the run</p>
+        <p>Check whether recent work disturbed the channel wiring</p>
+        <p>Treat the entire channel as unprotected and notify accordingly while it is down</p>
+        <p>Swap the card only after the wiring is proven</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-controllerfailure">
+        <div class="refTag">Simplex</div>
+        <h2>Controller failure</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The channel cannot detect its controller. Everything on that channel is unavailable.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check the controller card is seated and powered</p>
+        <p>Check the card indicators against the manual for the installed firmware</p>
+        <p>Check the panel history for when the controller dropped out</p>
+        <p>Power cycle per the manufacturer procedure rather than pulling cards live</p>
+        <p>Treat the channel as impaired and notify the authority having jurisdiction and the monitoring company</p>
+        <p>Escalate to Simplex support rather than swapping cards speculatively</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-mainovercurrent">
+        <div class="refTag">Simplex</div>
+        <h2>Main Overcurrent</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The IDNAC card is drawing more current than it should. Simplex directs you to check for faults on the circuit.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Check for faults on the circuits fed by that card, which is the manufacturer&#x27;s own first instruction</p>
+        <p>Check for a short on any notification circuit, since appliances draw hard into a fault</p>
+        <p>Disconnect circuits one at a time to find which one is pulling the current</p>
+        <p>Check for water in an appliance back box on exterior or wet location circuits</p>
+        <p>Recalculate the load if appliances were added, because an overloaded circuit is a design problem rather than a fault</p>
+        <p>Correct the overcurrent before attempting to restore power</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-channelovercurrent">
+        <div class="refTag">Simplex</div>
+        <h2>Channel Overcurrent</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>A single signaling line circuit is drawing above its rating.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Identify the channel and what is on it</p>
+        <p>Check for a short or partial short on that channel</p>
+        <p>Check for water ingress at devices on the run</p>
+        <p>Check whether devices were added to the channel without recalculating the load</p>
+        <p>Disconnect sections progressively to find the section drawing the current</p>
+        <p>Correct the cause rather than resetting, because the card is protecting itself</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-idnacsigunpowered">
+        <div class="refTag">Simplex</div>
+        <h2>IDNAC Sig Unpowered</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The IDNAC card is not receiving signal power. Simplex is explicit about the fix: correct the overcurrent, then perform a hardware reset to restore power.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Find and correct the overcurrent condition first, because the card will not restore while the fault is present</p>
+        <p>Check the circuits the card feeds for shorts</p>
+        <p>Perform a hardware reset once the fault is cleared, which is the manufacturer&#x27;s stated procedure</p>
+        <p>Confirm the card powers up and the circuits report normal</p>
+        <p>Test the notification appliances afterwards rather than assuming they came back</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-idnacpowertrouble">
+        <div class="refTag">Simplex</div>
+        <h2>IDNAC Power Trouble</h2>
+        <div class="refLabel">Scope</div>
+        <p>System</p>
+        <p>The IDNAC card has been damaged, affecting its ability to communicate and power field appliances. Simplex states plainly that the card must be replaced.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Accept that this one is a replacement rather than a repair, because the manufacturer says so</p>
+        <p>Treat every notification circuit on that card as out of service and notify the authority having jurisdiction and the monitoring company</p>
+        <p>Establish whether a fault on the circuits damaged the card, so the replacement does not fail the same way</p>
+        <p>Check the circuits for shorts or water before fitting a new card</p>
+        <p>Fully test notification on that card after replacement</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-dirty">
+        <div class="refTag">Simplex</div>
+        <h2>Smoke Detector Dirty</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A TrueAlarm sensor&#x27;s average value has reached the dirty threshold. TrueAlarm compensates for gradual contamination and reports when the compensation runs low.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Note the address and schedule the clean rather than treating it as an emergency</p>
+        <p>Check what is around that sensor: construction dust, a kitchen, a dock door, or a return air path</p>
+        <p>Clean per the manufacturer procedure rather than using compressed air</p>
+        <p>Run a sensitivity report afterwards and confirm the sensor is back within its listed range</p>
+        <p>Record the sensitivity result, because that record is what an inspection asks to see</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-excessivelydirty">
+        <div class="refTag">Simplex</div>
+        <h2>Smoke Detector Excessively Dirty</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>The sensor&#x27;s average value has reached the higher threshold. Compensation has run out and the sensor is now a false alarm risk.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Treat this as needing action now, since the next event is likely an unwanted alarm out of hours</p>
+        <p>Clean or replace the sensor per the manufacturer procedure</p>
+        <p>Run a sensitivity report and confirm the reading is back within the listed range</p>
+        <p>Replace rather than clean again if it returns quickly</p>
+        <p>Look hard at the environment, because a sensor that dirties fast is reporting the room rather than itself</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-almostdirty">
+        <div class="refTag">Simplex</div>
+        <h2>Almost Dirty</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A TrueAlarm sensor close to the dirty threshold can be made to report as though it were already dirty. This exists so you can see what is coming while you are already on site.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Use this deliberately before a maintenance visit to pull up every sensor approaching dirty, so one trip covers them all</p>
+        <p>Clean the sensors it identifies during the same visit rather than returning later</p>
+        <p>Run sensitivity reports and record the readings</p>
+        <p>Remember to turn the feature off afterwards if it was enabled only for planning</p>
+        <p>Treat a long almost dirty list as an environment question rather than a cleaning schedule question</p>
+      </div>
+      <div class="refEntry" id="simplex-simplex-expiredtrouble">
+        <div class="refTag">Simplex</div>
+        <h2>Expired Trouble</h2>
+        <div class="refLabel">Scope</div>
+        <p>Device</p>
+        <p>A CO sensor has reached its expiration. CO sensing elements have a fixed service life and are not listed past it.</p>
+        <div class="refLabel">What to check, in order</div>
+        <p>Replace the sensor or its CO element, since an expired element cannot be cleaned or reset back into service</p>
+        <p>Check the rest of the site for CO sensors of the same vintage, because they were usually installed together</p>
+        <p>Record the replacement date so the next expiry is planned rather than discovered</p>
+        <p>Test the replacement per the manufacturer procedure and confirm the point returns to normal</p>
       </div>
       <div class="refEntry" id="est">
         <h2>EST and Edwards</h2>

@@ -147,6 +147,8 @@ FIELD_LABELS = [
     ("points", "Points"),
     ("sections", "Sections"),
     ("models", "Models"),
+    ("meaning", None),
+    ("checks", "What to check, in order"),
     ("safeResponse", "Safe response"),
     ("notes", "Notes"),
     ("brands", "Brands"),
@@ -217,6 +219,42 @@ def normalize(raw):
     }
 
 
+# Some libraries nest the actual codes one level down, inside a panel or a
+# brand. LoopWatt keeps troubleCodes on each panel and PlugWatt keeps
+# faultCodes on each brand. Those are the exact strings a technician types
+# into a search box, so they each need their own indexable entry rather than
+# being buried inside the parent.
+NESTED_CODE_FIELDS = ("troubleCodes", "faultCodes")
+
+
+def expand_nested_codes(raw):
+    parent = raw.get("name") or raw.get("title") or ""
+    out = []
+    for field in NESTED_CODE_FIELDS:
+        codes = raw.get(field)
+        if not isinstance(codes, list):
+            continue
+        for code in codes:
+            if not isinstance(code, dict):
+                continue
+            shown = code.get("display") or code.get("code") or ""
+            label = code.get("title") or ""
+            if shown and label and shown != label:
+                title = f"{shown} — {label}"
+            else:
+                title = shown or label
+            if not title:
+                continue
+            flat = dict(code)
+            flat["title"] = title
+            flat["brand"] = parent
+            flat["id"] = f"{raw.get('id', parent)}-{code.get('id') or code.get('code') or title}"
+            entry = normalize(flat)
+            if entry:
+                out.append(entry)
+    return out
+
+
 def load_groups(app):
     """Return [(stem, human_title, [entries])] for an app."""
     lib = app["library"]
@@ -243,7 +281,14 @@ def load_groups(app):
             raws = None
         if not isinstance(raws, list):
             continue
-        entries = [e for e in (normalize(r) for r in raws if isinstance(r, dict)) if e]
+        entries = []
+        for raw in raws:
+            if not isinstance(raw, dict):
+                continue
+            top = normalize(raw)
+            if top:
+                entries.append(top)
+            entries.extend(expand_nested_codes(raw))
         if entries:
             groups.append((stem, nice_title(stem), entries))
     return groups

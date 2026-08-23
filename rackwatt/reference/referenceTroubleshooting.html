@@ -38,7 +38,7 @@
     <div class="container">
       <div class="crumb"><a href="/rackwatt/reference/">RackWatt reference</a></div>
       <h1 class="h2">Troubleshooting Reference</h1>
-      <p class="lead">Field reference for data center critical facilities technicians. 6 entries, taken from the RackWatt app.</p>
+      <p class="lead">Field reference for data center critical facilities technicians. 18 entries, taken from the RackWatt app.</p>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#ups-overview">Uninterruptible power supply warning signs</a>
         <a href="#generators-failtostart">Generator fails to start on utility loss</a>
@@ -46,6 +46,18 @@
         <a href="#aircooling-overview">Air cooling degradation and failure</a>
         <a href="#liquidcooling-overview">Liquid cooling field reference</a>
         <a href="#monitoring-overview">Monitoring systems and false alarms</a>
+        <a href="#ups-batterystring">UPS battery string failure</a>
+        <a href="#ups-onbypass">UPS transferred to bypass</a>
+        <a href="#ups-capacitoraging">Capacitor aging and fan wear</a>
+        <a href="#generators-runningfailure">Generator starts then shuts down</a>
+        <a href="#generators-atstransfer">Automatic transfer switch fails to transfer</a>
+        <a href="#distribution-breakertrip">Breaker trip on a critical circuit</a>
+        <a href="#distribution-harmonics">Neutral heating and harmonic loading</a>
+        <a href="#aircooling-shortcycling">CRAC or CRAH short cycling and fighting</a>
+        <a href="#aircooling-airflowcontainment">Hot spots and airflow bypass</a>
+        <a href="#liquidcooling-leakdetection">Coolant leak detected</a>
+        <a href="#liquidcooling-cdupressure">CDU pressure or flow out of range</a>
+        <a href="#monitoring-alarmstorm">Alarm storm and nuisance alarms</a>
       </div>
       <div class="refCta">
         <strong>These notes come from RackWatt</strong>
@@ -234,6 +246,352 @@
         <p>Trellis</p>
         <p>Modius</p>
         <p>Niagara</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="ups-batterystring">
+        <div class="refTag">ups</div>
+        <h2>UPS battery string failure</h2>
+        <p>A weak or failed cell drags the whole string down, and the UPS may not tell you until it needs the battery.</p>
+        <div class="refLabel">Method</div>
+        <p>Record the alarm and the string voltage before clearing anything</p>
+        <p>Find whether it is one jar or the whole string, because that decides between a replacement and a string end of life</p>
+        <p>Take individual jar voltages and impedance readings and compare against the last set rather than against the datasheet</p>
+        <p>Check terminal torque and look for corrosion at the links, which raises impedance and looks like a failing jar</p>
+        <p>Check the battery room or cabinet temperature, since every 10 degrees C above 25 roughly halves VRLA life</p>
+        <p>Check the charger float voltage against specification before condemning cells</p>
+        <p>Replace as a matched set within a string, never a single jar into an aged string</p>
+        <p>Run a discharge test after replacement rather than trusting the float reading</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Runtime falling short of the design figure on test</p>
+        <p>A single jar or bloc reading low on the string</p>
+        <p>Swelling, bulging, or electrolyte weeping</p>
+        <p>Heat at one point in the string</p>
+        <p>Battery alarm that clears itself and returns</p>
+        <div class="refLabel">Notes</div>
+        <p>VRLA strings usually reach end of life between three and five years depending on temperature and cycling.</p>
+        <p>Impedance trending catches a failing jar long before a runtime test does.</p>
+        <p>A string that passed last quarter can fail this quarter; the failure is not gradual once it starts.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv Liebert</p>
+        <p>Schneider APC</p>
+        <p>Eaton</p>
+        <p>Mitsubishi</p>
+        <p>ABB</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="ups-onbypass">
+        <div class="refTag">ups</div>
+        <h2>UPS transferred to bypass</h2>
+        <p>The load is running on raw utility with no protection. Everything the UPS exists to do is currently not happening.</p>
+        <div class="refLabel">Method</div>
+        <p>Treat this as urgent regardless of the load being up, because the critical load is unprotected right now</p>
+        <p>Establish whether it went to bypass on overload, on an internal fault, or because someone put it there for maintenance</p>
+        <p>Check percent loaded against unit capacity, since an overload transfer is the UPS behaving correctly</p>
+        <p>Check for a recent load addition, which is the usual cause of a first time overload transfer</p>
+        <p>Read the event log for what preceded the transfer rather than the bypass alarm itself</p>
+        <p>Do not transfer back to inverter until the cause is understood, because transferring into the same fault repeats it</p>
+        <p>Confirm utility quality before relying on bypass for any length of time</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Bypass indication on the display or panel</p>
+        <p>Loss of the inverter running indication</p>
+        <p>Alarm coinciding with a load step</p>
+        <p>Repeated transfers to and from bypass</p>
+        <div class="refLabel">Notes</div>
+        <p>Static bypass is designed to protect the load, so a transfer is usually the unit working rather than failing.</p>
+        <p>Maintenance bypass and static bypass are different paths; know which one you are on before working.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv Liebert</p>
+        <p>Schneider APC</p>
+        <p>Eaton</p>
+        <p>Mitsubishi</p>
+        <p>ABB</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="ups-capacitoraging">
+        <div class="refTag">ups</div>
+        <h2>Capacitor aging and fan wear</h2>
+        <p>The two consumables inside a UPS that fail on a schedule rather than at random, and both give warning if anyone is looking.</p>
+        <div class="refLabel">Method</div>
+        <p>Check fan operation on every visit, because a stopped fan cooks the components around it</p>
+        <p>Check DC bus and AC capacitors against their service life rather than waiting for failure</p>
+        <p>Compare cabinet temperature at a known load against previous readings</p>
+        <p>Check air filters and intake paths, since restricted airflow shortens both capacitor and fan life</p>
+        <p>Plan replacement into a maintenance window rather than reacting to a failure</p>
+        <p>Record the install date of both, since the interval is the diagnosis</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Increasing cabinet temperature at the same load</p>
+        <p>Fan noise change or a fan not turning</p>
+        <p>Bulging or vented capacitor cans</p>
+        <p>Ripple or output quality drifting on test</p>
+        <div class="refLabel">Notes</div>
+        <p>Electrolytic capacitors typically carry a service life around seven to ten years, shorter when run hot.</p>
+        <p>Fans are usually five to seven years and are the cheapest preventive replacement in the room.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv Liebert</p>
+        <p>Schneider APC</p>
+        <p>Eaton</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="generators-runningfailure">
+        <div class="refTag">generators</div>
+        <h2>Generator starts then shuts down</h2>
+        <p>Different problem from a no start. The engine ran, so fuel, battery and starting are proven, and something shut it down deliberately.</p>
+        <div class="refLabel">Method</div>
+        <p>Read the controller shutdown code before resetting, because the controller knows why and the reset erases the display</p>
+        <p>Check coolant level and temperature, since high coolant temperature is the most common running shutdown</p>
+        <p>Check oil level and pressure</p>
+        <p>Check the radiator and louvres for blockage, and confirm the louvres actually opened</p>
+        <p>Check the jacket water heater has been maintaining temperature, since a cold start under load runs hot</p>
+        <p>Check for a load step beyond the set&#x27;s capability at the moment it dropped</p>
+        <p>Check the fuel supply under load rather than at rest, because a partly blocked filter passes at idle and starves under load</p>
+        <p>Do not repeatedly restart into the same shutdown</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Engine cranks, starts, runs briefly, then stops</p>
+        <p>Shutdown alarm on the controller</p>
+        <p>High coolant temperature or low oil pressure alarm</p>
+        <p>Overspeed or overcrank indication</p>
+        <div class="refLabel">Notes</div>
+        <p>A shutdown is protection working. Resetting without reading the code discards the only diagnosis you had.</p>
+        <p>Load bank testing exposes cooling and fuel problems that a monthly no load exercise never will.</p>
+        <div class="refLabel">Brands</div>
+        <p>Caterpillar</p>
+        <p>Cummins</p>
+        <p>Kohler</p>
+        <p>Generac</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="generators-atstransfer">
+        <div class="refTag">generators</div>
+        <h2>Automatic transfer switch fails to transfer</h2>
+        <p>The generator may be running perfectly while the load stays dark, because the switch between them did not operate.</p>
+        <div class="refLabel">Method</div>
+        <p>Confirm the generator is actually up to voltage and frequency, because the switch will not transfer to a source that is not ready</p>
+        <p>Check the ATS controller for a sensing fault or a locked out condition</p>
+        <p>Check control power to the switch, which is separate from the power it switches</p>
+        <p>Check the time delay settings, since a long delay looks identical to a failure to someone watching</p>
+        <p>Verify the position indication against the physical position rather than trusting the display</p>
+        <p>Check the operator mechanism and linkage for binding, which is common on switches that rarely operate</p>
+        <p>Exercise the switch on a schedule, because most ATS failures are found only when they are needed</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Generator running with load still on utility or dead</p>
+        <p>No transfer on a test</p>
+        <p>Transfer in one direction only</p>
+        <p>Position indication disagreeing with reality</p>
+        <div class="refLabel">Notes</div>
+        <p>A transfer switch that never operates between tests is the most likely component to fail when it matters.</p>
+        <p>Bypass isolation switches let the ATS be serviced without dropping load; know whether the site has one.</p>
+        <div class="refLabel">Brands</div>
+        <p>ASCO</p>
+        <p>Russelectric</p>
+        <p>Generac</p>
+        <p>Eaton</p>
+        <p>Schneider</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="distribution-breakertrip">
+        <div class="refTag">distribution</div>
+        <h2>Breaker trip on a critical circuit</h2>
+        <p>Something drew more than the breaker allows or a fault occurred. The breaker did its job and the question is what it protected against.</p>
+        <div class="refLabel">Method</div>
+        <p>Do not reset into an unknown fault; establish whether it was overload or a fault first</p>
+        <p>Check the load on the circuit against its rating and against what it was before, since a rack build out is the usual cause</p>
+        <p>Check whether it trips immediately on reset or holds, because instant retrip means a fault rather than overload</p>
+        <p>Inspect the circuit for damage, heat or a compromised connection before energising</p>
+        <p>Check the breaker itself for heat damage, since a breaker that has interrupted a fault may not be reusable</p>
+        <p>Check torque on terminations, because a loose connection heats and nuisance trips</p>
+        <p>Confirm the circuit is not shared with anything that was added without a load calculation</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Load dropped on one circuit or rack</p>
+        <p>Breaker in the tripped position</p>
+        <p>Burning smell or discoloration at the panel</p>
+        <p>Repeated trips at the same load point</p>
+        <div class="refLabel">Notes</div>
+        <p>Reset once only. A breaker that trips twice is telling you something and the second reset risks equipment and people.</p>
+        <p>Trip curves matter: an instantaneous trip and a long time overload look the same on the handle.</p>
+        <div class="refLabel">Brands</div>
+        <p>Schneider Square D</p>
+        <p>Eaton</p>
+        <p>ABB</p>
+        <p>Vertiv</p>
+        <p>Starline busway</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="distribution-harmonics">
+        <div class="refTag">distribution</div>
+        <h2>Neutral heating and harmonic loading</h2>
+        <p>Nonlinear IT loads produce triplen harmonics that add rather than cancel in the neutral, so the neutral can carry more than any phase.</p>
+        <div class="refLabel">Method</div>
+        <p>Measure neutral current and compare it against the phase currents rather than assuming it is the difference</p>
+        <p>Check transformer temperature at its actual load, since a standard transformer derates badly on harmonic load</p>
+        <p>Check whether the transformer is K rated for the load it is actually feeding</p>
+        <p>Take a power quality reading rather than a clamp reading, because harmonic content does not show on a basic meter</p>
+        <p>Check for a shared neutral serving multiple phases of nonlinear load</p>
+        <p>Check conductor sizing against the neutral current found, not against phase current</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Neutral conductor hotter than the phases</p>
+        <p>Transformer running hot at moderate load</p>
+        <p>Higher than expected THD on a power quality reading</p>
+        <p>Nuisance tripping with no obvious overload</p>
+        <div class="refLabel">Notes</div>
+        <p>Third harmonic and its multiples add arithmetically in the shared neutral of a three phase four wire system.</p>
+        <p>A neutral sized to phase current can be undersized in a data hall full of switching power supplies.</p>
+        <div class="refLabel">Brands</div>
+        <p>Schneider</p>
+        <p>Eaton</p>
+        <p>Vertiv</p>
+        <p>ABB</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="aircooling-shortcycling">
+        <div class="refTag">airCooling</div>
+        <h2>CRAC or CRAH short cycling and fighting</h2>
+        <p>Units switching on and off rapidly, or working against each other with one cooling while another humidifies.</p>
+        <div class="refLabel">Method</div>
+        <p>Compare setpoints and deadbands across every unit in the room, because units fighting is nearly always a setpoint disagreement</p>
+        <p>Check whether the units are on a shared control or running independently, since independent units in one room will fight</p>
+        <p>Check return air sensor placement and calibration, since a sensor in the wrong place drives the wrong behaviour</p>
+        <p>Check for a failed unit forcing the others to overwork</p>
+        <p>Widen the deadband before adjusting setpoints, because a narrow band causes cycling on its own</p>
+        <p>Check refrigerant charge and airflow if one unit alone is cycling</p>
+        <p>Verify the humidity setpoints are identical across the room, since humidity fighting wastes more energy than cooling fighting</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Compressors starting and stopping within minutes</p>
+        <p>One unit heating while another cools</p>
+        <p>One unit humidifying while another dehumidifies</p>
+        <p>Rising energy use with no load change</p>
+        <p>Temperature swinging rather than holding</p>
+        <div class="refLabel">Notes</div>
+        <p>Units fighting each other is one of the most common and most expensive faults in a legacy data hall.</p>
+        <p>Short cycling destroys compressors faster than continuous running does.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv Liebert</p>
+        <p>Schneider Uniflair</p>
+        <p>Stulz</p>
+        <p>Data Aire</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="aircooling-airflowcontainment">
+        <div class="refTag">airCooling</div>
+        <h2>Hot spots and airflow bypass</h2>
+        <p>Cooling capacity is adequate but the air is not reaching the equipment, which is an airflow problem rather than a cooling problem.</p>
+        <div class="refLabel">Method</div>
+        <p>Measure at the rack inlet rather than in the aisle, because the room can be cold while a server inlet is hot</p>
+        <p>Check for missing blanking panels, which let hot air recirculate through the rack front to back</p>
+        <p>Check floor tile placement, since perforated tiles in the hot aisle actively make things worse</p>
+        <p>Check for unsealed cable cutouts under racks, which is where most bypass air escapes</p>
+        <p>Check containment doors and panels are closed and intact</p>
+        <p>Check underfloor obstruction from accumulated cabling before adding capacity</p>
+        <p>Only consider more cooling once airflow is proven, because more cold air into a bypass path changes nothing</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Hot spots at the top of racks while the room is cool</p>
+        <p>Inlet temperature varying widely between racks</p>
+        <p>High return air temperature with low supply temperature</p>
+        <p>Adding cooling not fixing the hot spot</p>
+        <div class="refLabel">Notes</div>
+        <p>Most hot spots are airflow management rather than insufficient cooling capacity.</p>
+        <p>Blanking panels and sealed cutouts are the cheapest thermal fix available in any hall.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv</p>
+        <p>Schneider</p>
+        <p>Stulz</p>
+        <p>Upsite</p>
+        <p>Subzero</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="liquidcooling-leakdetection">
+        <div class="refTag">liquidCooling</div>
+        <h2>Coolant leak detected</h2>
+        <p>Liquid near energised IT and power. The alarm must be treated as real until objectively established otherwise.</p>
+        <div class="refLabel">Method</div>
+        <p>Treat the alarm as real until objectively established otherwise, and never clear it on the absence of visible liquid alone</p>
+        <p>Notify operations before intervening, because liquid near energised equipment affects more than the cooling system</p>
+        <p>Inspect the triggered detection point and the fittings, manifolds and quick disconnects adjacent to it</p>
+        <p>Check reservoir level against its last recorded value rather than against the sight glass alone</p>
+        <p>Check whether the system is holding pressure or vacuum, since a slow loss confirms a leak that inspection may miss</p>
+        <p>Trace along the path rather than only at the sensor, because coolant runs before it pools</p>
+        <p>Do not restore cooling to a suspected leaking loop without the vendor procedure</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Leak detection alarm at a zone</p>
+        <p>Coolant level falling in the reservoir</p>
+        <p>Damp or residue at a fitting or quick disconnect</p>
+        <p>Vacuum or pressure not holding</p>
+        <div class="refLabel">Notes</div>
+        <p>This practice is not yet standardised across the industry; the vendor manual and the project designers are the authority.</p>
+        <p>Take maximum and minimum coolant loop pressures from the facility RMP and PSM documentation, not from memory.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv</p>
+        <p>Schneider</p>
+        <p>Motivair</p>
+        <p>CoolIT</p>
+        <p>Boyd</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="liquidcooling-cdupressure">
+        <div class="refTag">liquidCooling</div>
+        <h2>CDU pressure or flow out of range</h2>
+        <p>The coolant distribution unit cannot hold its pressure or flow band, which derates or drops the racks it feeds.</p>
+        <div class="refLabel">Method</div>
+        <p>Take the pressure limits from the facility RMP and PSM documentation and the CDU manual rather than from a remembered figure</p>
+        <p>Check the filter or strainer first, since a loading filter is the most common cause of falling flow</p>
+        <p>Check pump operation and whether it is running at maximum to hold setpoint, which indicates restriction</p>
+        <p>Check for air in the loop, which produces unstable pressure and noisy pumps</p>
+        <p>Check quick disconnects at the rack manifolds for partial engagement</p>
+        <p>Check the secondary loop for a closed or partly closed isolation valve after any maintenance</p>
+        <p>Prioritise seal inspection on higher pressure loops, since mechanical seal life scales with discharge pressure</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Pressure differential outside the band</p>
+        <p>Flow rate below setpoint</p>
+        <p>Pump running at maximum with no result</p>
+        <p>Rack level thermal alarms downstream</p>
+        <div class="refLabel">Notes</div>
+        <p>Mechanical seal intervals come from the vendor manual and trended condition, not from a fixed number.</p>
+        <p>A seal that lasted years on a low pressure chilled water loop can fail far sooner on a high pressure cold plate loop.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv</p>
+        <p>Schneider</p>
+        <p>Motivair</p>
+        <p>CoolIT</p>
+        <p>Boyd</p>
+        <div class="refLabel">Verify against the manual</div>
+        <p>True</p>
+      </div>
+      <div class="refEntry" id="monitoring-alarmstorm">
+        <div class="refTag">monitoring</div>
+        <h2>Alarm storm and nuisance alarms</h2>
+        <p>So many alarms that the real one is invisible. The failure is the monitoring system rather than the plant.</p>
+        <div class="refLabel">Method</div>
+        <p>Find the first alarm in the sequence, because the rest are usually consequences of it</p>
+        <p>Check whether a single failed sensor or comm path is generating the cascade</p>
+        <p>Check thresholds against real operating ranges, since a threshold set inside normal variation alarms forever</p>
+        <p>Check for a device alarming and clearing on a cycle, which points at a threshold sitting exactly on the operating point</p>
+        <p>Widen deadbands and add delays on points that chatter rather than disabling them</p>
+        <p>Never disable an alarm to quiet a storm without recording it, because a disabled point protects nothing</p>
+        <p>Review the alarm list quarterly, since alarm quality degrades quietly as a site changes</p>
+        <div class="refLabel">Warning signs</div>
+        <p>Hundreds of alarms in a short window</p>
+        <p>The same point alarming and clearing repeatedly</p>
+        <p>Staff routinely acknowledging without reading</p>
+        <p>Real events missed inside the noise</p>
+        <div class="refLabel">Notes</div>
+        <p>Alarm fatigue is a real failure mode; a system nobody trusts is worse than no system.</p>
+        <p>A point that alarms daily and is always ignored is not monitoring, it is noise.</p>
+        <div class="refLabel">Brands</div>
+        <p>Vertiv</p>
+        <p>Schneider EcoStruxure</p>
+        <p>Nlyte</p>
+        <p>Sunbird</p>
+        <p>Modius</p>
         <div class="refLabel">Verify against the manual</div>
         <p>True</p>
       </div>
