@@ -103,6 +103,19 @@
       padding:2px 7px;border-radius:4px;background:#FEF3C7;color:#92400E;
       border:1px solid #FDE68A;margin-right:8px;vertical-align:middle}
     .audit-row td{background:#FFFBEB}
+
+    .jump{display:flex;flex-direction:column;gap:8px}
+    .jump-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .jump-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+      color:var(--text-muted);min-width:74px}
+    .jump-sym{background:var(--color-primary);color:#fff;border:1px solid var(--color-primary)}
+    .jump-sym:hover{filter:brightness(1.08);color:#fff}
+    .mini-hero{position:sticky;top:0;z-index:40}
+    @media (max-width:640px){
+      .jump-label{min-width:100%;margin-bottom:-2px}
+      .mini-hero{position:static}
+    }
+    @media print{.jump{display:none}.mini-hero{position:static}}
 </style>
 </head>
 
@@ -126,20 +139,30 @@
     <div class="container">
       <h1>Dispenser Field Guide</h1>
       <p class="lead">Observation first. Simple to complex. Safety always.</p>
-      <div class="stack mt-2">
-        <a class="btn btn-secondary" href="#safety">Safety</a>
-        <a class="btn btn-secondary" href="#observation">Observe First</a>
-        <a class="btn btn-secondary" href="#no-display">No Display</a>
-        <a class="btn btn-secondary" href="#slow-no-flow">Slow / No Flow</a>
-        <a class="btn btn-secondary" href="#leaks">Leaks</a>
-        <a class="btn btn-secondary" href="#hang-ups">Hang-Ups</a>
-        <a class="btn btn-secondary" href="#filters">Filters</a>
-        <a class="btn btn-secondary" href="#electrical">Electrical</a>
-        <a class="btn btn-secondary" href="#gilbarco">Gilbarco</a>
-        <a class="btn btn-secondary" href="#wayne">Wayne</a>
-        <a class="btn btn-secondary" href="#error-codes">Error Codes</a>
-        <a class="btn btn-secondary" href="#fuel-return">Tested Fuel</a>
-        <button class="btn btn-secondary" onclick="window.print()">Print</button>
+      <div class="jump mt-2">
+        <div class="jump-row">
+          <span class="jump-label">Symptom</span>
+          <a class="btn jump-sym" href="#no-display">No Display</a>
+          <a class="btn jump-sym" href="#slow-no-flow">Slow / No Flow</a>
+          <a class="btn jump-sym" href="#leaks">Leaks</a>
+          <a class="btn jump-sym" href="#hang-ups">Hang-Ups</a>
+        </div>
+        <div class="jump-row">
+          <span class="jump-label">Look up</span>
+          <a class="btn btn-secondary" href="#error-codes">Error Codes</a>
+          <a class="btn btn-secondary" href="#gilbarco">Gilbarco</a>
+          <a class="btn btn-secondary" href="#wayne">Wayne</a>
+          <a class="btn btn-secondary" href="#electrical">Electrical</a>
+          <a class="btn btn-secondary" href="#filters">Filters</a>
+        </div>
+        <div class="jump-row">
+          <span class="jump-label">Every job</span>
+          <a class="btn btn-secondary" href="#safety">Safety</a>
+          <a class="btn btn-secondary" href="#observation">Observe First</a>
+          <a class="btn btn-secondary" href="#fuel-return">Tested Fuel</a>
+          <a class="btn btn-secondary" href="#closeout">Closeout</a>
+          <button class="btn btn-secondary" onclick="window.print()">Print</button>
+        </div>
       </div>
     </div>
   </section>
