@@ -98,7 +98,12 @@
       vertical-align:middle;
       margin-right:6px;
     }
-  </style>
+  
+    .audit-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.02em;
+      padding:2px 7px;border-radius:4px;background:#FEF3C7;color:#92400E;
+      border:1px solid #FDE68A;margin-right:8px;vertical-align:middle}
+    .audit-row td{background:#FFFBEB}
+</style>
 </head>
 
 <body>
@@ -669,6 +674,10 @@
         <span class="badge">Diagnostics</span>
         <h2 class="mt-2">Error Codes — Quick Lookup</h2>
         <p class="note">Search by code number or keyword. Codes sourced from Gilbarco and Wayne service documentation.</p>
+        <div class="callout" style="margin-top:10px;padding:12px 14px;border-radius:10px;background:#FFFBEB;border:1px solid #FDE68A">
+          <p style="margin:0;font-size:14px"><strong>Not every code is a fault.</strong> Rows marked <span class="audit-tag">AUDIT ENTRY, NOT A FAULT</span> are event log records written when somebody changed a setting. The dispenser is telling you what was done, not reporting a failure. Do not chase them as repairs. If one appears unexpectedly, the question is who changed the setting and why, not what broke.</p>
+        </div>
+        <p class="note" style="margin-top:10px">This table is a quick lookup covering the codes seen most often. The full reference, 594 codes across Veeder Root, Gilbarco, Wayne and Franklin with the likely cause and the checks to make in order, is at <a href="https://thrasherapps.com/droptubebuilder/reference/" target="_blank" rel="noopener">thrasherapps.com/droptubebuilder/reference</a>. It is kept current there, so use it when this page does not have the code in front of you.</p>
 
         <!-- Search box -->
         <div style="margin-top:12px">
@@ -702,10 +711,10 @@
                 <tr><td><strong>30</strong></td><td>Catastrophic error has occurred on the VaporVac</td></tr>
                 <tr><td><strong>33</strong></td><td>E-stop button activated or VaporVac failure on one side</td></tr>
                 <tr><td><strong>35</strong></td><td>Configuration data error</td></tr>
-                <tr><td><strong>37</strong></td><td>Pin code one changed</td></tr>
-                <tr><td><strong>38</strong></td><td>Pin code two changed</td></tr>
-                <tr><td><strong>39</strong></td><td>Cash/credit option changed</td></tr>
-                <tr><td><strong>41</strong></td><td>Side exist option changed</td></tr>
+                <tr class="audit-row"><td><strong>37</strong></td><td><span class="audit-tag">AUDIT ENTRY, NOT A FAULT</span> Pin code one changed</td></tr>
+                <tr class="audit-row"><td><strong>38</strong></td><td><span class="audit-tag">AUDIT ENTRY, NOT A FAULT</span> Pin code two changed</td></tr>
+                <tr class="audit-row"><td><strong>39</strong></td><td><span class="audit-tag">AUDIT ENTRY, NOT A FAULT</span> Cash/credit option changed</td></tr>
+                <tr class="audit-row"><td><strong>41</strong></td><td><span class="audit-tag">AUDIT ENTRY, NOT A FAULT</span> Side exist option changed</td></tr>
                 <tr><td><strong>42</strong></td><td>PPU option changed</td></tr>
                 <tr><td><strong>44</strong></td><td>PPU board pump handle on at power up</td></tr>
                 <tr><td><strong>4307</strong></td><td>Blends not programmed</td></tr>
