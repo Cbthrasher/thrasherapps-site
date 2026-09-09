@@ -18,6 +18,17 @@
     .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
     .refCta a.btn{background:#007AFF;color:#fff;border:0}
     .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .refTop{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between;
+      background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:14px 16px;margin:14px 0}
+    .refTop p{margin:4px 0 0 0;font-size:.93em;color:#1E3A5F}
+    .refTop strong{font-size:.78em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1D4ED8}
+    .refTop .refTopText{flex:1 1 380px;min-width:260px}
+    .refTop a.btn{flex:0 0 auto;background:#007AFF;color:#fff;border:0}
+    .refSiblings,.refCross{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px;margin:16px 0}
+    .refSiblings strong,.refCross strong{display:block;font-size:.78em;font-weight:800;letter-spacing:.05em;
+      text-transform:uppercase;color:#475569;margin-bottom:6px}
+    .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
+    @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
   </style>
 </head>
@@ -39,6 +50,13 @@
       <div class="crumb"><a href="/droptubebuilder/reference/">DropTubeBuilder reference</a></div>
       <h1 class="h2">Franklin INCON EVO 550 and EVO 5000 Alarms</h1>
       <p class="lead">Field reference for fuel system and underground storage tank technicians. 93 entries, taken from the DropTubeBuilder app.</p>
+      <div class="refTop">
+        <div class="refTopText">
+          <strong>Free offline app</strong>
+          <p>These notes are the web copy of the DropTubeBuilder reference, built for fuel system and underground storage tank technicians. The same library is free inside the app, with no time limit and no account, and it works with no signal.</p>
+        </div>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#2-wire-sensor-module-setup-error">2-Wire Sensor Module Setup Error</a>
         <a href="#3-wire-sensor-module-is-offline">3-Wire Sensor Module is Offline</a>
@@ -616,6 +634,28 @@
         <a href="/droptubebuilder/reference/veeder-root-tls4.html">Veeder-Root TLS4 and TLS-4i Alarm Codes</a>
         <a href="/droptubebuilder/reference/fe-petro-magvfc.html">FE Petro MagVFC Fault and Status Codes</a>
         <a href="/droptubebuilder/reference/guardian-spgc-220-single-phase.html">Guardian SPGC-220 (single-phase) Fault and Status Codes</a>
+      </div>
+      <div class="refSiblings">
+        <strong>More in the DropTubeBuilder reference</strong>
+        <a href="/droptubebuilder/reference/fe-petro-magvfc.html">FE Petro MagVFC Fault and Status Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-500-series.html">Gilbarco 500 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-700-series.html">Gilbarco 700 Series Dispenser Error Codes</a>
+        <a href="/droptubebuilder/reference/gilbarco-encore-300.html">Gilbarco Encore 300 Error Codes</a>
+        <a href="/droptubebuilder/reference/guardian-spgc-220-single-phase.html">Guardian SPGC-220 (single-phase) Fault and Status Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-300.html">Veeder-Root TLS-300 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-350.html">Veeder-Root TLS-350 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450-plus.html">Veeder-Root TLS-450 PLUS Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450.html">Veeder-Root TLS-450 Alarm Codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls4.html">Veeder-Root TLS4 and TLS-4i Alarm Codes</a>
+        <a href="/droptubebuilder/reference/wayne-ovation.html">Wayne Ovation Dispenser Error Codes</a>
+      </div>
+      <div class="refCross">
+        <strong>Field references for other trades</strong>
+        <a href="/loopwatt/reference/">Fire alarm</a>
+        <a href="/fieldwatt/reference/">Solar PV</a>
+        <a href="/plugwatt/reference/">EV charging</a>
+        <a href="/storewatt/reference/">Battery storage</a>
+        <a href="/rackwatt/reference/">Data center</a>
       </div>
       <div class="refCta">
         <strong>These notes come from DropTubeBuilder</strong>

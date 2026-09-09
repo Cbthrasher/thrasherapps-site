@@ -18,6 +18,17 @@
     .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
     .refCta a.btn{background:#007AFF;color:#fff;border:0}
     .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .refTop{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between;
+      background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:14px 16px;margin:14px 0}
+    .refTop p{margin:4px 0 0 0;font-size:.93em;color:#1E3A5F}
+    .refTop strong{font-size:.78em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1D4ED8}
+    .refTop .refTopText{flex:1 1 380px;min-width:260px}
+    .refTop a.btn{flex:0 0 auto;background:#007AFF;color:#fff;border:0}
+    .refSiblings,.refCross{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px;margin:16px 0}
+    .refSiblings strong,.refCross strong{display:block;font-size:.78em;font-weight:800;letter-spacing:.05em;
+      text-transform:uppercase;color:#475569;margin-bottom:6px}
+    .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
+    @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
   </style>
 </head>
@@ -39,6 +50,13 @@
       <div class="crumb"><a href="/fieldwatt/reference/">FieldWatt reference</a></div>
       <h1 class="h2">Solar Tracker Procedures</h1>
       <p class="lead">Field reference for utility scale solar technicians. 7 entries, taken from the FieldWatt app.</p>
+      <div class="refTop">
+        <div class="refTopText">
+          <strong>Free offline app</strong>
+          <p>These notes are the web copy of the FieldWatt reference, built for utility scale solar commissioning and service technicians. The same library is free inside the app, with no time limit and no account, and it works with no signal.</p>
+        </div>
+        <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
+      </div>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#nextracker-architecture">Row architecture</a>
         <a href="#nextracker-cleaningstow">Stow and cleaning sequence</a>
@@ -122,6 +140,30 @@
         <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
         <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
         <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+      </div>
+      <div class="refSiblings">
+        <strong>More in the FieldWatt reference</strong>
+        <a href="/fieldwatt/reference/codeTables.html">NEC and IEC Tables</a>
+        <a href="/fieldwatt/reference/combinerOm.html">DC Combiner Operations and Maintenance</a>
+        <a href="/fieldwatt/reference/commsProtocols.html">Communications and Protocols</a>
+        <a href="/fieldwatt/reference/inverterFaultCodes.html">Inverter Fault Codes</a>
+        <a href="/fieldwatt/reference/metStation.html">Meteorological Station</a>
+        <a href="/fieldwatt/reference/meteringCheatSheet.html">Field Metering Cheat Sheet</a>
+        <a href="/fieldwatt/reference/modbusFunctionCodes.html">Modbus Function and Exception Codes</a>
+        <a href="/fieldwatt/reference/planSets.html">Plan Sets</a>
+        <a href="/fieldwatt/reference/plcNotes.html">PLC Notes</a>
+        <a href="/fieldwatt/reference/powerPlantController.html">Power Plant Controller</a>
+        <a href="/fieldwatt/reference/protectionAnsi.html">Protection and ANSI Device Numbers</a>
+        <a href="/fieldwatt/reference/safetyContent.html">Field Safety</a>
+        <a href="/fieldwatt/reference/scadaNotes.html">SCADA Notes</a>
+      </div>
+      <div class="refCross">
+        <strong>Field references for other trades</strong>
+        <a href="/droptubebuilder/reference/">Fuel and tanks</a>
+        <a href="/loopwatt/reference/">Fire alarm</a>
+        <a href="/plugwatt/reference/">EV charging</a>
+        <a href="/storewatt/reference/">Battery storage</a>
+        <a href="/rackwatt/reference/">Data center</a>
       </div>
       <div class="refCta">
         <strong>These notes come from FieldWatt</strong>

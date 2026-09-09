@@ -18,6 +18,17 @@
     .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
     .refCta a.btn{background:#007AFF;color:#fff;border:0}
     .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .refTop{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between;
+      background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:14px 16px;margin:14px 0}
+    .refTop p{margin:4px 0 0 0;font-size:.93em;color:#1E3A5F}
+    .refTop strong{font-size:.78em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1D4ED8}
+    .refTop .refTopText{flex:1 1 380px;min-width:260px}
+    .refTop a.btn{flex:0 0 auto;background:#007AFF;color:#fff;border:0}
+    .refSiblings,.refCross{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px;margin:16px 0}
+    .refSiblings strong,.refCross strong{display:block;font-size:.78em;font-weight:800;letter-spacing:.05em;
+      text-transform:uppercase;color:#475569;margin-bottom:6px}
+    .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
+    @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
   </style>
 </head>
@@ -39,6 +50,13 @@
       <div class="crumb"><a href="/plugwatt/reference/">PlugWatt reference</a></div>
       <h1 class="h2">EV Charger Brand and Equipment Library</h1>
       <p class="lead">Field reference for EV charging technicians. 24 entries, taken from the PlugWatt app.</p>
+      <div class="refTop">
+        <div class="refTopText">
+          <strong>Free offline app</strong>
+          <p>These notes are the web copy of the PlugWatt reference, built for electric vehicle charging installation and service technicians. The same library is free inside the app, with no time limit and no account, and it works with no signal.</p>
+        </div>
+        <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
+      </div>
       <div class="refToc mt-3"><strong>On this page</strong><br>
         <a href="#chargepoint">ChargePoint</a>
         <a href="#abb">ABB</a>
@@ -354,6 +372,22 @@
         <a href="/plugwatt/reference/faultfamilies.html">EV Charger Fault Codes and Fault Families</a>
         <a href="/plugwatt/reference/safety.html">EV Charging Field Safety</a>
         <a href="/plugwatt/reference/standards.html">EV Charging Standards and NEC 625</a>
+      </div>
+      <div class="refSiblings">
+        <strong>More in the PlugWatt reference</strong>
+        <a href="/plugwatt/reference/anatomy.html">EV Charging Station Anatomy</a>
+        <a href="/plugwatt/reference/comms.html">OCPP and EV Charger Communications</a>
+        <a href="/plugwatt/reference/faultfamilies.html">EV Charger Fault Codes and Fault Families</a>
+        <a href="/plugwatt/reference/safety.html">EV Charging Field Safety</a>
+        <a href="/plugwatt/reference/standards.html">EV Charging Standards and NEC 625</a>
+      </div>
+      <div class="refCross">
+        <strong>Field references for other trades</strong>
+        <a href="/droptubebuilder/reference/">Fuel and tanks</a>
+        <a href="/loopwatt/reference/">Fire alarm</a>
+        <a href="/fieldwatt/reference/">Solar PV</a>
+        <a href="/storewatt/reference/">Battery storage</a>
+        <a href="/rackwatt/reference/">Data center</a>
       </div>
       <div class="refCta">
         <strong>These notes come from PlugWatt</strong>
