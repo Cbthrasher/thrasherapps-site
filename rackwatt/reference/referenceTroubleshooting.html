@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -84,7 +88,7 @@
       </div>
       <div class="refEntry" id="ups-overview">
         <div class="refTag">ups</div>
-        <h2>Uninterruptible power supply warning signs</h2>
+        <h2>Uninterruptible power supply warning signs<a class="refPermalink" href="#ups-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>How to read early failure signals on a static double conversion UPS before it drops the critical load.</p>
         <div class="refLabel">Method</div>
         <p>Read the display and record the exact alarm code before clearing anything</p>
@@ -114,7 +118,7 @@
       </div>
       <div class="refEntry" id="generators-failtostart">
         <div class="refTag">generators</div>
-        <h2>Generator fails to start on utility loss</h2>
+        <h2>Generator fails to start on utility loss<a class="refPermalink" href="#generators-failtostart" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The most common critical failure: utility power drops and the standby generator does not start.</p>
         <div class="refLabel">Method</div>
         <p>Confirm the automatic transfer switch is calling for the generator</p>
@@ -146,7 +150,7 @@
       </div>
       <div class="refEntry" id="distribution-overview">
         <div class="refTag">distribution</div>
-        <h2>Electrical distribution warning signs</h2>
+        <h2>Electrical distribution warning signs<a class="refPermalink" href="#distribution-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Switchgear, breakers, power distribution units, remote power panels, and busway degrade with detectable signals.</p>
         <div class="refLabel">Method</div>
         <p>Thermal imaging of connections and terminations under load</p>
@@ -177,7 +181,7 @@
       </div>
       <div class="refEntry" id="aircooling-overview">
         <div class="refTag">airCooling</div>
-        <h2>Air cooling degradation and failure</h2>
+        <h2>Air cooling degradation and failure<a class="refPermalink" href="#aircooling-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Cooling failures cause roughly nineteen percent of major outages and rarely start dramatically.</p>
         <div class="refLabel">Method</div>
         <p>Trend supply and return air temperature and the delta T across the unit</p>
@@ -210,7 +214,7 @@
       </div>
       <div class="refEntry" id="liquidcooling-overview">
         <div class="refTag">liquidCooling</div>
-        <h2>Liquid cooling field reference</h2>
+        <h2>Liquid cooling field reference<a class="refPermalink" href="#liquidcooling-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The underserved edge. Artificial intelligence racks drive liquid cooling and the field practice is genuinely not written down yet. Treat this section as orientation only. It depends on the vendor manuals and the site specific documentation, and the real source for any given plant is the designers and installers of that project.</p>
         <div class="refLabel">Method</div>
         <p>Log coolant flow, pressure, temperature, reservoir level, and leak detection</p>
@@ -243,7 +247,7 @@
       </div>
       <div class="refEntry" id="monitoring-overview">
         <div class="refTag">monitoring</div>
-        <h2>Monitoring systems and false alarms</h2>
+        <h2>Monitoring systems and false alarms<a class="refPermalink" href="#monitoring-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Building management system, data center infrastructure management, and electrical power monitoring system basics.</p>
         <div class="refLabel">Method</div>
         <p>Corroborate an alarm with an independent reading or a local gauge before acting</p>
@@ -269,7 +273,7 @@
       </div>
       <div class="refEntry" id="ups-batterystring">
         <div class="refTag">ups</div>
-        <h2>UPS battery string failure</h2>
+        <h2>UPS battery string failure<a class="refPermalink" href="#ups-batterystring" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A weak or failed cell drags the whole string down, and the UPS may not tell you until it needs the battery.</p>
         <div class="refLabel">Method</div>
         <p>Record the alarm and the string voltage before clearing anything</p>
@@ -301,7 +305,7 @@
       </div>
       <div class="refEntry" id="ups-onbypass">
         <div class="refTag">ups</div>
-        <h2>UPS transferred to bypass</h2>
+        <h2>UPS transferred to bypass<a class="refPermalink" href="#ups-onbypass" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The load is running on raw utility with no protection. Everything the UPS exists to do is currently not happening.</p>
         <div class="refLabel">Method</div>
         <p>Treat this as urgent regardless of the load being up, because the critical load is unprotected right now</p>
@@ -330,7 +334,7 @@
       </div>
       <div class="refEntry" id="ups-capacitoraging">
         <div class="refTag">ups</div>
-        <h2>Capacitor aging and fan wear</h2>
+        <h2>Capacitor aging and fan wear<a class="refPermalink" href="#ups-capacitoraging" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The two consumables inside a UPS that fail on a schedule rather than at random, and both give warning if anyone is looking.</p>
         <div class="refLabel">Method</div>
         <p>Check fan operation on every visit, because a stopped fan cooks the components around it</p>
@@ -356,7 +360,7 @@
       </div>
       <div class="refEntry" id="generators-runningfailure">
         <div class="refTag">generators</div>
-        <h2>Generator starts then shuts down</h2>
+        <h2>Generator starts then shuts down<a class="refPermalink" href="#generators-runningfailure" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Different problem from a no start. The engine ran, so fuel, battery and starting are proven, and something shut it down deliberately.</p>
         <div class="refLabel">Method</div>
         <p>Read the controller shutdown code before resetting, because the controller knows why and the reset erases the display</p>
@@ -385,7 +389,7 @@
       </div>
       <div class="refEntry" id="generators-atstransfer">
         <div class="refTag">generators</div>
-        <h2>Automatic transfer switch fails to transfer</h2>
+        <h2>Automatic transfer switch fails to transfer<a class="refPermalink" href="#generators-atstransfer" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The generator may be running perfectly while the load stays dark, because the switch between them did not operate.</p>
         <div class="refLabel">Method</div>
         <p>Confirm the generator is actually up to voltage and frequency, because the switch will not transfer to a source that is not ready</p>
@@ -414,7 +418,7 @@
       </div>
       <div class="refEntry" id="distribution-breakertrip">
         <div class="refTag">distribution</div>
-        <h2>Breaker trip on a critical circuit</h2>
+        <h2>Breaker trip on a critical circuit<a class="refPermalink" href="#distribution-breakertrip" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Something drew more than the breaker allows or a fault occurred. The breaker did its job and the question is what it protected against.</p>
         <div class="refLabel">Method</div>
         <p>Do not reset into an unknown fault; establish whether it was overload or a fault first</p>
@@ -443,7 +447,7 @@
       </div>
       <div class="refEntry" id="distribution-harmonics">
         <div class="refTag">distribution</div>
-        <h2>Neutral heating and harmonic loading</h2>
+        <h2>Neutral heating and harmonic loading<a class="refPermalink" href="#distribution-harmonics" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Nonlinear IT loads produce triplen harmonics that add rather than cancel in the neutral, so the neutral can carry more than any phase.</p>
         <div class="refLabel">Method</div>
         <p>Measure neutral current and compare it against the phase currents rather than assuming it is the difference</p>
@@ -470,7 +474,7 @@
       </div>
       <div class="refEntry" id="aircooling-shortcycling">
         <div class="refTag">airCooling</div>
-        <h2>CRAC or CRAH short cycling and fighting</h2>
+        <h2>CRAC or CRAH short cycling and fighting<a class="refPermalink" href="#aircooling-shortcycling" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Units switching on and off rapidly, or working against each other with one cooling while another humidifies.</p>
         <div class="refLabel">Method</div>
         <p>Compare setpoints and deadbands across every unit in the room, because units fighting is nearly always a setpoint disagreement</p>
@@ -499,7 +503,7 @@
       </div>
       <div class="refEntry" id="aircooling-airflowcontainment">
         <div class="refTag">airCooling</div>
-        <h2>Hot spots and airflow bypass</h2>
+        <h2>Hot spots and airflow bypass<a class="refPermalink" href="#aircooling-airflowcontainment" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Cooling capacity is adequate but the air is not reaching the equipment, which is an airflow problem rather than a cooling problem.</p>
         <div class="refLabel">Method</div>
         <p>Measure at the rack inlet rather than in the aisle, because the room can be cold while a server inlet is hot</p>
@@ -528,7 +532,7 @@
       </div>
       <div class="refEntry" id="liquidcooling-leakdetection">
         <div class="refTag">liquidCooling</div>
-        <h2>Coolant leak detected</h2>
+        <h2>Coolant leak detected<a class="refPermalink" href="#liquidcooling-leakdetection" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Liquid near energised IT and power. The alarm must be treated as real until objectively established otherwise.</p>
         <div class="refLabel">Method</div>
         <p>Treat the alarm as real until objectively established otherwise, and never clear it on the absence of visible liquid alone</p>
@@ -557,7 +561,7 @@
       </div>
       <div class="refEntry" id="liquidcooling-cdupressure">
         <div class="refTag">liquidCooling</div>
-        <h2>CDU pressure or flow out of range</h2>
+        <h2>CDU pressure or flow out of range<a class="refPermalink" href="#liquidcooling-cdupressure" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The coolant distribution unit cannot hold its pressure or flow band, which derates or drops the racks it feeds.</p>
         <div class="refLabel">Method</div>
         <p>Take the pressure limits from the facility RMP and PSM documentation and the CDU manual rather than from a remembered figure</p>
@@ -586,7 +590,7 @@
       </div>
       <div class="refEntry" id="monitoring-alarmstorm">
         <div class="refTag">monitoring</div>
-        <h2>Alarm storm and nuisance alarms</h2>
+        <h2>Alarm storm and nuisance alarms<a class="refPermalink" href="#monitoring-alarmstorm" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>So many alarms that the real one is invisible. The failure is the monitoring system rather than the plant.</p>
         <div class="refLabel">Method</div>
         <p>Find the first alarm in the sequence, because the rest are usually consequences of it</p>

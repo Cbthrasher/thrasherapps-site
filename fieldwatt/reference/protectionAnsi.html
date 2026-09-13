@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -80,7 +84,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
       </div>
       <div class="refEntry" id="ansi-overview">
-        <h2>Substation and protection layer overview</h2>
+        <h2>Substation and protection layer overview<a class="refPermalink" href="#ansi-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Between the inverters and the grid sit medium voltage collection circuits, the substation transformer, breakers and reclosers, capacitor banks where fitted, protective relays, and the revenue meter. SEL relays dominate US solar substations, with GE Multilin, Siemens, and Basler also common. Relays watch currents and voltages and trip breakers on abnormal conditions; the relay front panel targets (LEDs and event records) tell you why a trip happened, which is the single most useful thing a field tech can photograph for the protection engineer.</p>
         <div class="refLabel">Safe response</div>
         <p>All medium voltage work is qualified person territory with arc flash PPE and LOTO. Field technicians do not operate substation equipment without explicit authorization and a switching order.</p>
@@ -88,7 +92,7 @@
         <p>The site single line diagram and relay settings files are the authority.</p>
       </div>
       <div class="refEntry" id="ansi-relaytargets">
-        <h2>Reading relay targets after a trip</h2>
+        <h2>Reading relay targets after a trip<a class="refPermalink" href="#ansi-relaytargets" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>After any substation trip, photograph the relay front panel before anything is reset: lit targets show which protective elements operated (for example 51 time overcurrent phase A, or 87 differential). Modern SEL relays also store event reports with waveforms; the protection engineer will want the event number and time. Resetting targets without recording them destroys the primary evidence of what happened.</p>
         <div class="refLabel">Safe response</div>
         <p>Do not re close a tripped breaker until the cause is understood and a qualified person authorizes it. A trip on a differential or lockout relay means equipment damage is possible; closing back into a fault can be catastrophic.</p>
@@ -97,47 +101,47 @@
       </div>
       <div class="refEntry" id="ansi-25">
         <div class="refTag">25</div>
-        <h2>Sync check</h2>
+        <h2>Sync check<a class="refPermalink" href="#ansi-25" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 25 supervises breaker closing: it permits a close only when the voltage magnitude, frequency, and phase angle on both sides of the breaker match within limits. A breaker that refuses to close after an outage while everything looks normal often has an unsatisfied sync check because the plant side is dead or drifting.</p>
       </div>
       <div class="refEntry" id="ansi-27">
         <div class="refTag">27</div>
-        <h2>Undervoltage</h2>
+        <h2>Undervoltage<a class="refPermalink" href="#ansi-27" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 27 trips or alarms when voltage falls below a setpoint for its time delay. At solar plants it appears in inverter grid protection, feeder relays, and auxiliary power monitoring. Plant wide 27 operations mean a real grid sag; a single relay seeing undervoltage alone suggests a blown voltage transformer fuse or measurement problem.</p>
       </div>
       <div class="refEntry" id="ansi-32">
         <div class="refTag">32</div>
-        <h2>Reverse power (directional power)</h2>
+        <h2>Reverse power (directional power)<a class="refPermalink" href="#ansi-32" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 32 responds to power flowing the wrong direction. At solar plants directional elements coordinate protection on collection feeders where fault current can flow from either direction, and a 32 element may guard the station service transformer against backfeed conditions it was not designed for.</p>
       </div>
       <div class="refEntry" id="ansi-46">
         <div class="refTag">46</div>
-        <h2>Negative sequence (current unbalance)</h2>
+        <h2>Negative sequence (current unbalance)<a class="refPermalink" href="#ansi-46" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 46 measures negative sequence current, which appears when the three phases are unbalanced: an open phase, a downed conductor, unbalanced load, or a single phase fault. A 46 alarm on a collection feeder with no obvious fault deserves a physical patrol; an open jumper or failing cable elbow can sit at the edge of detection for weeks.</p>
       </div>
       <div class="refEntry" id="ansi-50">
         <div class="refTag">50</div>
-        <h2>Instantaneous overcurrent</h2>
+        <h2>Instantaneous overcurrent<a class="refPermalink" href="#ansi-50" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 50 trips with no intentional delay when current exceeds its pickup: the response to a close in, high current fault. A 50 target means a serious fault happened electrically close to the relay location.</p>
       </div>
       <div class="refEntry" id="ansi-51">
         <div class="refTag">51</div>
-        <h2>Time overcurrent</h2>
+        <h2>Time overcurrent<a class="refPermalink" href="#ansi-51" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 51 trips on overcurrent with an inverse time curve: the higher the current, the faster the trip. It provides coordinated backup protection along the feeder so the device nearest the fault operates first. A 51 target with a long operate time suggests a lower magnitude fault or overload further down the circuit.</p>
       </div>
       <div class="refEntry" id="ansi-59">
         <div class="refTag">59</div>
-        <h2>Overvoltage</h2>
+        <h2>Overvoltage<a class="refPermalink" href="#ansi-59" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 59 operates when voltage exceeds a setpoint for its delay. At solar plants, sustained high POI voltage often traces to the plant exporting full power into a weak grid with the AVR at its limit, or to incorrect reactive power settings, before it is a relay problem.</p>
       </div>
       <div class="refEntry" id="ansi-81">
         <div class="refTag">81</div>
-        <h2>Frequency (over and under)</h2>
+        <h2>Frequency (over and under)<a class="refPermalink" href="#ansi-81" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 81 covers overfrequency (81O) and underfrequency (81U) elements. Frequency is a system wide quantity: real events show up everywhere at once, including at every inverter. Frequency elements implement the disconnect boundaries that IEEE 1547 and the interconnection agreement define after ride through obligations are exhausted.</p>
       </div>
       <div class="refEntry" id="ansi-86">
         <div class="refTag">86</div>
-        <h2>Lockout relay</h2>
+        <h2>Lockout relay<a class="refPermalink" href="#ansi-86" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 86 is the lockout: when a serious protective element (commonly the 87 differential) operates, the 86 trips the breakers and mechanically latches, preventing any close, local or remote, until it is deliberately reset by hand. A tripped 86 means protection concluded that equipment damage is possible.</p>
         <div class="refLabel">Safe response</div>
         <p>Never reset an 86 lockout to restore service without a protection engineer determining the cause. Resetting and closing into a damaged transformer or cable can cause catastrophic failure and arc flash injury.</p>
@@ -146,13 +150,13 @@
       </div>
       <div class="refEntry" id="ansi-87">
         <div class="refTag">87</div>
-        <h2>Differential</h2>
+        <h2>Differential<a class="refPermalink" href="#ansi-87" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Device 87 compares current entering and leaving a protected zone (transformer, bus, cable). Any meaningful difference means current is escaping inside the zone: an internal fault. Differential protection is fast and definitive; an 87 operation almost always drives an 86 lockout because internal faults imply damaged equipment.</p>
         <div class="refLabel">Safe response</div>
         <p>Treat an 87 target as evidence of internal equipment damage. No re energization without testing and protection engineering signoff.</p>
       </div>
       <div class="refEntry" id="ansi-reclosers">
-        <h2>Reclosers and breakers</h2>
+        <h2>Reclosers and breakers<a class="refPermalink" href="#ansi-reclosers" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Distribution style reclosers on collection circuits trip on faults and automatically reclose after a delay, betting the fault was temporary. On underground solar collection systems, faults are rarely temporary, so many sites disable reclosing: every trip is treated as a real cable or equipment fault requiring patrol before restoration. Know the site philosophy before assuming a recloser will restore itself.</p>
         <div class="refLabel">Safe response</div>
         <p>Treat every downstream conductor as energized until the recloser or breaker position and absence of voltage are verified. Reclosing equipment can close at any moment.</p>
@@ -160,11 +164,11 @@
         <p>The site protection philosophy document states whether reclosing is enabled.</p>
       </div>
       <div class="refEntry" id="ansi-meter">
-        <h2>Revenue meter</h2>
+        <h2>Revenue meter<a class="refPermalink" href="#ansi-meter" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The revenue meter at the POI is the financial ground truth for plant output and usually the most trustworthy measurement on site. When SCADA sums of inverter output disagree with the meter, believe the meter and go find the telemetry problem. Meter maintenance, testing, and sealing are governed by the interconnection agreement and usually involve the utility.</p>
       </div>
       <div class="refEntry" id="ansi-brands">
-        <h2>Relay brands in the field</h2>
+        <h2>Relay brands in the field<a class="refPermalink" href="#ansi-brands" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>SEL (Schweitzer Engineering Laboratories) relays dominate US solar substations: the 351 family on feeders, 387 or 487 for differential, 421 for line protection. GE Multilin (SR and UR families), Siemens SIPROTEC, and Basler appear regionally and at utility owned stations. Interfaces differ but the concepts transfer: targets show what operated, event records hold the waveforms, and settings files are engineering controlled documents.</p>
         <div class="refLabel">Verify against</div>
         <p>Site relay models and settings are in the protection one line and settings files.</p>

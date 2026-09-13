@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -72,43 +76,43 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6788153038">Get StoreWatt on the App Store</a>
       </div>
       <div class="refEntry" id="ems-overview">
-        <h2>What the EMS decides and why it matters</h2>
+        <h2>What the EMS decides and why it matters<a class="refPermalink" href="#ems-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The energy management system decides when to charge, discharge, hold reserve, firm solar, shave peaks, and respond to grid or market commands. It sits above the plant controller and below the market or offtaker.
 
 The single most useful troubleshooting posture on a BESS: a plant that is not dispatching or not at setpoint is often following EMS strategy or a grid command, not suffering a battery fault. Prove the command chain before condemning hardware.</p>
       </div>
       <div class="refEntry" id="ems-notdispatching">
-        <h2>Not charging or discharging: start here</h2>
+        <h2>Not charging or discharging: start here<a class="refPermalink" href="#ems-notdispatching" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Before opening a single cabinet, answer four questions in order. One: what setpoint is the EMS actually sending right now, and does the schedule or market award say it should be nonzero? Two: is a grid or utility command curtailing the plant? Three: are SOC limits or reserve requirements blocking the move the EMS wants? Four: is the PCS receiving the setpoint and acknowledging it?
 
 Only after those four check out is this an equipment problem, and by then the chain has told you which device to look at.</p>
       </div>
       <div class="refEntry" id="ems-applications">
-        <h2>Applications that change expected behavior</h2>
+        <h2>Applications that change expected behavior<a class="refPermalink" href="#ems-applications" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Frequency regulation looks like constant small wiggles around zero and rarely moves much energy. Energy arbitrage charges cheap and discharges dear in one or two big daily blocks. Peak shaving and demand charge management waits idle for a trigger and then hits hard. Solar smoothing and firming follows a plant output signal. Capacity and ancillary awards can require holding SOC at a floor for hours doing nothing.
 
 Know which application is active before judging behavior; an idle plant holding 60 percent SOC all afternoon may be exactly what the market award requires.</p>
       </div>
       <div class="refEntry" id="ems-soclimits">
-        <h2>SOC limits and reserves</h2>
+        <h2>SOC limits and reserves<a class="refPermalink" href="#ems-soclimits" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The EMS enforces operating SOC limits that are tighter than the BMS protection limits: a floor for capacity obligations or black start reserve, a ceiling for headroom obligations or cell longevity. A plant sitting at its EMS floor will refuse discharge commands and look broken while being perfectly healthy.
 
 Check the effective limits in the EMS, not the design document; operators and market systems change them.</p>
       </div>
       <div class="refEntry" id="ems-gridcommands">
-        <h2>Grid commands and curtailment</h2>
+        <h2>Grid commands and curtailment<a class="refPermalink" href="#ems-gridcommands" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The utility, ISO, or offtaker can command the plant down through AGC signals, curtailment orders, or interconnection limits enforced by the power plant controller. These arrive above the EMS or at the plant controller and override the schedule.
 
 When output is capped at a suspicious round number, look for an active curtailment or a POI limit before anything else.</p>
       </div>
       <div class="refEntry" id="ems-setpointmismatch">
-        <h2>At setpoint versus at the meter</h2>
+        <h2>At setpoint versus at the meter<a class="refPermalink" href="#ems-setpointmismatch" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The EMS commands power at the point of interconnection, but the batteries deliver power at their terminals. Auxiliary loads, transformer losses, and collection system losses sit in between, so PCS output normally exceeds POI output by the loss stack. A persistent mismatch beyond the expected losses points at a meter, a scaling factor, or a unit stuck offline while the rest compensate.
 
 Know the plant&#x27;s loss budget; chasing a two percent gap that is just transformer losses wastes an afternoon.</p>
       </div>
       <div class="refEntry" id="ems-dataquality">
-        <h2>Stale data and quality flags</h2>
+        <h2>Stale data and quality flags<a class="refPermalink" href="#ems-dataquality" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>EMS decisions are only as good as the telemetry underneath. A stuck SOC value, a frozen meter, or a bad quality flag can make the EMS hold or refuse dispatch with no equipment fault anywhere. Most platforms mark stale or bad quality points; alarms on data quality deserve the same respect as alarms on hardware.
 
 Timestamps are the tell: a value that has not changed in hours on a live plant is a communication problem wearing a process disguise.</p>

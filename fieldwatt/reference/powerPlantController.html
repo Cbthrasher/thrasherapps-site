@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -73,49 +77,49 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
       </div>
       <div class="refEntry" id="ppc-overview">
-        <h2>What the power plant controller does</h2>
+        <h2>What the power plant controller does<a class="refPermalink" href="#ppc-overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The PPC is the brain that makes a field of inverters behave as one power plant at the point of interconnection. It receives grid operator commands (active power limits, reactive power or voltage setpoints, frequency response requirements), measures conditions at the POI, and continuously dispatches setpoints to every inverter to hold the plant at its targets. It also enforces ramp rate limits so plant output changes gradually even when clouds move fast. When plant output does not match irradiance, the PPC command chain is the first place to look.</p>
         <div class="refLabel">Verify against</div>
         <p>PPC vendor and logic vary by site: dedicated controllers, Ovation, or PLC based designs. Verify against site documentation.</p>
       </div>
       <div class="refEntry" id="ppc-curtailment">
-        <h2>Active power control and curtailment</h2>
+        <h2>Active power control and curtailment<a class="refPermalink" href="#ppc-curtailment" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Grid operators routinely cap plant output below available power: congestion management, negative pricing, or system events. The PPC receives the limit (often via DNP3 from the operator or an automatic generation control signal) and lowers inverter setpoints to comply. A curtailed plant looks exactly like an underperforming plant unless you check the active power setpoint: inverters idling below capacity in clear sun with a plant setpoint below available power is curtailment, not a fault.</p>
         <div class="refLabel">Verify against</div>
         <p>Log curtailment periods; they matter for performance ratio math and for revenue accounting.</p>
       </div>
       <div class="refEntry" id="ppc-avr">
-        <h2>Reactive power and voltage regulation at the POI</h2>
+        <h2>Reactive power and voltage regulation at the POI<a class="refPermalink" href="#ppc-avr" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The interconnection agreement obligates the plant to hold a voltage schedule or power factor at the POI. The PPC runs automatic voltage regulation: it measures POI voltage and dispatches reactive power setpoints to the inverters (and capacitor banks where fitted), absorbing or injecting VARs as needed. Inverters near their reactive limits on hot low sun days, or a plant bumping against grid overvoltage trips, often trace back to AVR settings or an incorrect voltage reference measurement.</p>
         <div class="refLabel">Verify against</div>
         <p>Voltage schedules and power factor ranges come from the interconnection agreement.</p>
       </div>
       <div class="refEntry" id="ppc-frequencyresponse">
-        <h2>Frequency response</h2>
+        <h2>Frequency response<a class="refPermalink" href="#ppc-frequencyresponse" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Modern interconnection rules require plants to respond to grid frequency deviations: reduce output on overfrequency and, if headroom is held, increase on underfrequency. The response must be fast, often beginning within about 200 milliseconds, so the logic typically runs in the PPC with droop settings from the interconnection agreement. During a frequency event the plant deliberately deviates from its normal setpoint; production dips that align with grid frequency excursions are the plant doing its job.</p>
         <div class="refLabel">Verify against</div>
         <p>Droop, deadband, and response times are contractual; verify against the interconnection agreement.</p>
       </div>
       <div class="refEntry" id="ppc-ramprate">
-        <h2>Ramp rate limits</h2>
+        <h2>Ramp rate limits<a class="refPermalink" href="#ppc-ramprate" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The PPC limits how fast plant output may rise or fall, commonly a few megawatts per minute per the interconnection agreement. On a morning with fast moving clouds, output that climbs in smooth slow ramps while irradiance jumps around is ramp limiting, not equipment lag. Ramp limits also shape plant startup after an outage: a plant that takes many minutes to return to full output after a trip may be exactly on schedule.</p>
         <div class="refLabel">Verify against</div>
         <p>Ramp limits are in the interconnection agreement and PPC settings file.</p>
       </div>
       <div class="refEntry" id="ppc-ridethrough">
-        <h2>Voltage and frequency ride through</h2>
+        <h2>Voltage and frequency ride through<a class="refPermalink" href="#ppc-ridethrough" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>During grid faults, inverters follow their own grid code ride through curves directly and bypass the PPC; the control loop through the PPC is far too slow for fault time scales. The PPC resumes command after the disturbance clears. So for a plant that tripped during a grid event, the questions are: did the disturbance exceed the ride through envelope (a legitimate trip), and did every unit behave the same way? A handful of units tripping while the rest rode through points at settings drift on those units. IEEE 1547 and the interconnection agreement define the envelopes.</p>
         <div class="refLabel">Verify against</div>
         <p>Ride through curves live in the inverter grid code settings; audit them against the interconnection agreement after any firmware work.</p>
       </div>
       <div class="refEntry" id="ppc-curtailedorfault">
-        <h2>Is the plant curtailed or faulted?</h2>
+        <h2>Is the plant curtailed or faulted?<a class="refPermalink" href="#ppc-curtailedorfault" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The five minute check before declaring a plant problem: read the active power setpoint at the PPC versus available power; if setpoint is below available, the plant is curtailed by the operator or a PPC limit and nothing is broken. If the setpoint is at full and output is low, count inverters online; a shortfall localized to specific units is an equipment problem, while uniform shortfall across all units in clear sun points at the irradiance measurement, soiling, or a plant wide derate. The underperformance decision tree in this app walks the full sequence.</p>
         <div class="refLabel">Verify against</div>
         <p>Confirm curtailment with the control room or grid operator dispatch records.</p>
       </div>
       <div class="refEntry" id="ansi-ieee1547">
-        <h2>IEEE 1547 in one paragraph</h2>
+        <h2>IEEE 1547 in one paragraph<a class="refPermalink" href="#ansi-ieee1547" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>IEEE 1547 is the interconnection standard for distributed energy resources. It defines when a plant must disconnect (loss of a phase, faults in the area electric power system, voltage or frequency outside limits) and, in its modern revision, when it must ride through and support the grid instead of tripping. Inverter grid code settings, PPC response functions, and the substation protection scheme all implement pieces of it. The interconnection agreement tailors the exact numbers per site.</p>
         <div class="refLabel">Verify against</div>
         <p>The site interconnection agreement overrides general standard values everywhere they differ.</p>

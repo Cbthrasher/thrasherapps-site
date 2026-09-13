@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -80,14 +84,14 @@
       </div>
       <div class="refEntry" id="overview">
         <div class="refTag">Guardian SPGC-220 (single-phase)</div>
-        <h2>Overview</h2>
+        <h2>Overview<a class="refPermalink" href="#overview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Smart fixed-speed controller for single-phase 200–250 VAC FE Petro (and similar) STPs; also runs DEF-PMA150A/B in DEF Mode (SW2 P6, firmware 0.3.8+). MUST be calibrated before use: close the STP valve, hold Silence/Calibrate ~10 s until &#x27;CAL&#x27;/kW alternates, lift a dispenser handle, ~16 s snapshot → &#x27;run&#x27;/~100±5%. Reset = hold ~3 s until display blanks. Rotary SW5 stays at 0 unless FE Tech Support says otherwise. With TPI/EVO ATG control, leave Auto Restart, Fault Shutdown, Primary-Secondary and Alternating Circuit switches OFF — the FMS handles them.</p>
         <div class="refLabel">Source</div>
         <p>Franklin Fueling Systems Single-Phase Guardian Series Controller Installation Guide, doc 223987103</p>
       </div>
       <div class="refEntry" id="fault-ul">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code UL</h2>
+        <h2>Fault code UL<a class="refPermalink" href="#fault-ul" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Underload (dry run)</p>
         <div class="refLabel">Likely cause</div>
         <p>Motor watts below the calibration value — typically dry running from an empty tank or clogged intake, or a bad calibration.</p>
@@ -96,7 +100,7 @@
       </div>
       <div class="refEntry" id="fault-lr">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code Lr</h2>
+        <h2>Fault code Lr<a class="refPermalink" href="#fault-lr" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Locked rotor (at startup)</p>
         <div class="refLabel">Likely cause</div>
         <p>Motor watts above range at start — debris or a damaged PMA rotor, or bad calibration.</p>
@@ -105,7 +109,7 @@
       </div>
       <div class="refEntry" id="fault-ol">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code OL</h2>
+        <h2>Fault code OL<a class="refPermalink" href="#fault-ol" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Overload (while running)</p>
         <div class="refLabel">Likely cause</div>
         <p>Motor watts above range while running — same causes as Lr.</p>
@@ -114,7 +118,7 @@
       </div>
       <div class="refEntry" id="fault-li">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code LI</h2>
+        <h2>Fault code LI<a class="refPermalink" href="#fault-li" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Low incoming voltage</p>
         <div class="refLabel">Likely cause</div>
         <p>Supply below 185 V on L1/L2.</p>
@@ -123,7 +127,7 @@
       </div>
       <div class="refEntry" id="fault-hi">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code HI</h2>
+        <h2>Fault code HI<a class="refPermalink" href="#fault-hi" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>High incoming voltage</p>
         <div class="refLabel">Likely cause</div>
         <p>Supply above 260 V on L1/L2.</p>
@@ -132,7 +136,7 @@
       </div>
       <div class="refEntry" id="fault-oc">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code OC</h2>
+        <h2>Fault code OC<a class="refPermalink" href="#fault-oc" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Open circuit</p>
         <div class="refLabel">Likely cause</div>
         <p>Hook signal present but no motor load — broken output wiring/relay, or the PMA thermal overload opened after a locked-rotor event.</p>
@@ -141,7 +145,7 @@
       </div>
       <div class="refEntry" id="fault-er">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code Er</h2>
+        <h2>Fault code Er<a class="refPermalink" href="#fault-er" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Extended run</p>
         <div class="refLabel">Likely cause</div>
         <p>Ran 60 consecutive minutes with no change in power consumption (stuck hook signal or genuine long-run use).</p>
@@ -150,7 +154,7 @@
       </div>
       <div class="refEntry" id="fault-rel">
         <div class="refTag">Guardian SPGC-220 (single-phase) · fault</div>
-        <h2>Fault code rEL</h2>
+        <h2>Fault code rEL<a class="refPermalink" href="#fault-rel" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Relay fault</p>
         <div class="refLabel">Likely cause</div>
         <p>PMA is running without a proper hook signal — typically a failed Smart Controller relay contact.</p>
@@ -159,27 +163,27 @@
       </div>
       <div class="refEntry" id="status-idle">
         <div class="refTag">Guardian SPGC-220 (single-phase) · status</div>
-        <h2>Status IdLE Power on, pump off</h2>
+        <h2>Status IdLE Power on, pump off<a class="refPermalink" href="#status-idle" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Idle. If IdLE shows while a dispenser is on, check the hook terminals (120–240 VAC expected) and switch settings; if correct, contact FE Tech Support.</p>
       </div>
       <div class="refEntry" id="status-run">
         <div class="refTag">Guardian SPGC-220 (single-phase) · status</div>
-        <h2>Status run Pump running</h2>
+        <h2>Status run Pump running<a class="refPermalink" href="#status-run" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Alternates &#x27;run&#x27; and percent-of-calibration. If it shows run with all dispensers off, power may be present at the hook terminal — contact FE Tech Support.</p>
       </div>
       <div class="refEntry" id="status-unc">
         <div class="refTag">Guardian SPGC-220 (single-phase) · status</div>
-        <h2>Status unc Uncalibrated</h2>
+        <h2>Status unc Uncalibrated<a class="refPermalink" href="#status-unc" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Controller has not been calibrated — perform the calibration procedure before use.</p>
       </div>
       <div class="refEntry" id="status-cal">
         <div class="refTag">Guardian SPGC-220 (single-phase) · status</div>
-        <h2>Status CAL Calibrating</h2>
+        <h2>Status CAL Calibrating<a class="refPermalink" href="#status-cal" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Alternates &#x27;CAL&#x27; and the kW reading of the attached motor during calibration.</p>
       </div>
       <div class="refEntry" id="dip-switches">
         <div class="refTag">Guardian SPGC-220 (single-phase) · configuration</div>
-        <h2>DIP switch settings</h2>
+        <h2>DIP switch settings<a class="refPermalink" href="#dip-switches" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>SW1 pole 1–5. ON: Address bits 1/2/4/8/16 for Primary-Secondary or Alternating Circuit sets. OFF: —. Factory: OFF. Each controller in a set needs a unique address.</p>
         <p>SW1 pole 6. ON: Fault Readout Mode — display steps through the last five faults. OFF: Normal operation. Factory: OFF</p>
         <p>SW1 pole 7. ON: Bypass — diagnostics bypassed for 10 minutes (testing only). OFF: Normal operation. Factory: OFF</p>

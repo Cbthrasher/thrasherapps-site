@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -104,7 +108,7 @@
       </div>
       <div class="refEntry" id="family-insulation">
         <div class="refTag">All brands</div>
-        <h2>Fault family: insulation or ground fault</h2>
+        <h2>Fault family: insulation or ground fault<a class="refPermalink" href="#family-insulation" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Every central inverter measures insulation resistance (often shown as Riso) between the PV array and ground before and during operation. A trip in this family means current is leaking to ground somewhere in the DC field: damaged module, chafed or rodent damaged cable, water in a connector or combiner, or a failed surge protective device. The faulted conductor can energize racking and enclosures.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop work. Treat the array and racking as energized. Do not reset and restart to see if it clears. A qualified person locates the fault with DC rated PPE using ground referenced voltage measurements and an insulation resistance test.</p>
@@ -113,7 +117,7 @@
       </div>
       <div class="refEntry" id="family-dcvoltage">
         <div class="refTag">All brands</div>
-        <h2>Fault family: DC over or under voltage</h2>
+        <h2>Fault family: DC over or under voltage<a class="refPermalink" href="#family-dcvoltage" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>DC overvoltage usually appears on cold clear mornings when string open circuit voltage rises above the inverter maximum input. It can indicate a string sizing error against the record low temperature. DC undervoltage during daylight points to open strings, blown combiner fuses, or a contactor that did not close.</p>
         <div class="refLabel">Safe response</div>
         <p>Log ambient temperature and time of the trip. If overvoltage recurs on cold mornings, escalate for a string sizing review before further operation. Repeated resets can damage the DC input stage.</p>
@@ -122,7 +126,7 @@
       </div>
       <div class="refEntry" id="family-grid">
         <div class="refTag">All brands</div>
-        <h2>Fault family: grid voltage or frequency</h2>
+        <h2>Fault family: grid voltage or frequency<a class="refPermalink" href="#family-grid" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Inverters must disconnect when grid voltage or frequency leaves the protection window, per IEEE 1547 and the interconnection agreement. A plant wide burst of grid faults at the same timestamp usually means a real utility event, a substation switching operation, or a plant controller setpoint excursion rather than an inverter problem. A single unit tripping alone points at its own AC connection, breaker, or measurement.</p>
         <div class="refLabel">Safe response</div>
         <p>Compare timestamps across the block before touching anything. If the whole plant tripped together, check with the control room and the utility before restarting units.</p>
@@ -131,7 +135,7 @@
       </div>
       <div class="refEntry" id="family-overtemperature">
         <div class="refTag">All brands</div>
-        <h2>Fault family: over temperature</h2>
+        <h2>Fault family: over temperature<a class="refPermalink" href="#family-overtemperature" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Central inverters derate and then trip on internal temperature. Common causes are blocked or dirty air filters, failed cooling fans or pumps, blocked heat exchanger fins, and door filters caked with dust after mowing season. Repeated thermal derating on hot afternoons costs real energy even when no hard fault is logged.</p>
         <div class="refLabel">Safe response</div>
         <p>Inspect and replace filters and confirm fan operation on the next maintenance visit. Persistent trips with clean cooling need manufacturer support.</p>
@@ -140,7 +144,7 @@
       </div>
       <div class="refEntry" id="family-comms">
         <div class="refTag">All brands</div>
-        <h2>Fault family: communications</h2>
+        <h2>Fault family: communications<a class="refPermalink" href="#family-comms" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A communication fault means the inverter lost its link to SCADA or the plant controller. The unit may still be producing normally. Before rolling a truck, check whether production telemetry from neighboring devices on the same switch, gateway, or fiber run dropped at the same time. Loss of comms to many devices at once is a network problem, not an inverter problem.</p>
         <div class="refLabel">Safe response</div>
         <p>Confirm production locally at the unit display before assuming an outage. Never reset power electronics just to clear a comms alarm.</p>
@@ -149,7 +153,7 @@
       </div>
       <div class="refEntry" id="sma-3510">
         <div class="refTag">SMA Sunny Central · 3510</div>
-        <h2>Insulation error</h2>
+        <h2>Insulation error<a class="refPermalink" href="#sma-3510" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The insulation monitoring on the inverter bridge measured insulation resistance below the trip threshold. Indicates a ground fault or severe insulation degradation in the connected DC field or within the inverter DC section. Moisture intrusion after rain, damaged string cabling, and failed surge protective devices are frequent causes. A fault that appears in early morning damp conditions and clears by midday still requires investigation.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop work. Treat the DC field and racking as energized. Qualified person only, with DC rated PPE. Locate the fault with ground referenced voltage checks and insulation resistance testing before any restart.</p>
@@ -158,7 +162,7 @@
       </div>
       <div class="refEntry" id="sma-3511">
         <div class="refTag">SMA Sunny Central · 3511</div>
-        <h2>Temporary ground fault</h2>
+        <h2>Temporary ground fault<a class="refPermalink" href="#sma-3511" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A ground fault was detected and then cleared on its own. Typical of moisture related leakage: dew, rain intrusion into a connector, conduit, or combiner, or a cable with damaged insulation lying against grounded steel that dries out during the day. Temporary faults reliably become permanent faults; find the cause while it is still intermittent.</p>
         <div class="refLabel">Safe response</div>
         <p>Treat as a real ground fault, not a nuisance alarm. Schedule insulation resistance testing of the associated DC field. Qualified person with DC rated PPE.</p>
@@ -167,7 +171,7 @@
       </div>
       <div class="refEntry" id="sma-3512">
         <div class="refTag">SMA Sunny Central · 3512</div>
-        <h2>Permanent ground fault</h2>
+        <h2>Permanent ground fault<a class="refPermalink" href="#sma-3512" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A sustained ground fault is present in the DC field or inverter DC section and the unit will not operate. The faulted circuit can place hazardous voltage on racking, enclosures, and conductors that are normally at ground potential, and the fault current path may not blow any fuse.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop work. Do not reset. Isolate per the site LOTO procedure, then locate the fault: measure positive to ground and negative to ground voltage at the DC input, compare against expected values, and section the array with insulation resistance tests until the faulted string or feeder is found. Qualified person only, DC rated PPE.</p>
@@ -176,7 +180,7 @@
       </div>
       <div class="refEntry" id="sma-3403">
         <div class="refTag">SMA Sunny Central · 3403</div>
-        <h2>PV generator voltage too high</h2>
+        <h2>PV generator voltage too high<a class="refPermalink" href="#sma-3403" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Instantaneous DC input voltage exceeded the permitted operating limit while running. On 1500 volt plants this most often appears near record low ambient temperatures, when string open circuit voltage rises above design assumptions. Can also follow a sudden load rejection.</p>
         <div class="refLabel">Safe response</div>
         <p>Record ambient temperature and time. If trips cluster on cold mornings, escalate for a string sizing review against NEC 690.7 before continuing normal operation.</p>
@@ -185,7 +189,7 @@
       </div>
       <div class="refEntry" id="sma-3404">
         <div class="refTag">SMA Sunny Central · 3404</div>
-        <h2>Open circuit voltage too high</h2>
+        <h2>Open circuit voltage too high<a class="refPermalink" href="#sma-3404" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Measured array open circuit voltage before connection exceeded the maximum permitted DC input voltage, so the inverter refuses to connect. Points directly at string sizing versus the record low temperature, or at a metering fault. The unit is protecting its DC stage from damage.</p>
         <div class="refLabel">Safe response</div>
         <p>Do not bypass or repeatedly force reconnection. Measure string Voc with a DC rated meter, compare to the temperature corrected expected value, and escalate for design review if the array really is over voltage.</p>
@@ -194,7 +198,7 @@
       </div>
       <div class="refEntry" id="sungrow-012">
         <div class="refTag">Sungrow · 012</div>
-        <h2>Low insulation resistance</h2>
+        <h2>Low insulation resistance<a class="refPermalink" href="#sungrow-012" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Array insulation resistance to ground measured below the trip threshold at startup. Part of the Sungrow insulation and leakage fault family (see also 039, 041, 056). Morning dew and water intrusion are common causes, along with damaged DC cabling and failed surge protective devices.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop work. Treat the DC field as energized and faulted. Qualified person locates the fault with DC rated PPE and an insulation resistance tester. Never bridge or lower the trip threshold to force a start.</p>
@@ -203,7 +207,7 @@
       </div>
       <div class="refEntry" id="sungrow-039">
         <div class="refTag">Sungrow · 039</div>
-        <h2>Leakage current fault</h2>
+        <h2>Leakage current fault<a class="refPermalink" href="#sungrow-039" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Residual or leakage current to ground exceeded the permitted level during operation. Same underlying causes as the insulation family: a ground fault path somewhere in the DC field, moisture, or damaged cabling. Distinct from a metering artifact only after the measurement chain is verified.</p>
         <div class="refLabel">Safe response</div>
         <p>Treat as a live ground fault until proven otherwise. Qualified person, DC rated PPE, insulation resistance testing to localize.</p>
@@ -212,7 +216,7 @@
       </div>
       <div class="refEntry" id="sungrow-041">
         <div class="refTag">Sungrow · 041</div>
-        <h2>Insulation monitoring alarm</h2>
+        <h2>Insulation monitoring alarm<a class="refPermalink" href="#sungrow-041" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The insulation monitoring circuit itself raised an alarm: either degraded array insulation near the threshold or a problem in the monitoring path. Frequently precedes a hard insulation trip by days or weeks as moisture damage develops.</p>
         <div class="refLabel">Safe response</div>
         <p>Investigate promptly rather than waiting for the hard trip. Schedule insulation resistance testing of the associated array section. Qualified person, DC rated PPE.</p>
@@ -221,7 +225,7 @@
       </div>
       <div class="refEntry" id="sungrow-056">
         <div class="refTag">Sungrow · 056</div>
-        <h2>Ground fault protection trip</h2>
+        <h2>Ground fault protection trip<a class="refPermalink" href="#sungrow-056" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The ground fault protective function operated and locked the unit out. On large Sungrow central inverters this family latches and requires investigation; the fault path may energize racking and enclosures in the affected subarray.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop work. Do not reset to test. Isolate per site LOTO, localize with ground referenced voltage measurements and insulation resistance tests, repair, retest, and only then restore.</p>
@@ -230,7 +234,7 @@
       </div>
       <div class="refEntry" id="sungrow-002">
         <div class="refTag">Sungrow · 002</div>
-        <h2>Grid overvoltage</h2>
+        <h2>Grid overvoltage<a class="refPermalink" href="#sungrow-002" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>AC grid voltage rose above the protection window, so the unit disconnected per its grid code settings. Plant wide occurrences point to a utility event or a plant controller reactive power or voltage setpoint problem. A single unit alone points to its AC connection or local measurement.</p>
         <div class="refLabel">Safe response</div>
         <p>Compare timestamps across units and check plant controller voltage setpoints before restarting. Coordinate with the control room.</p>
@@ -239,7 +243,7 @@
       </div>
       <div class="refEntry" id="sungrow-004">
         <div class="refTag">Sungrow · 004</div>
-        <h2>Grid undervoltage</h2>
+        <h2>Grid undervoltage<a class="refPermalink" href="#sungrow-004" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>AC grid voltage fell below the protection window. During real grid disturbances the ride through function should carry the unit through short sags; a disconnect means the sag exceeded the configured ride through envelope, or ride through settings are wrong for the site.</p>
         <div class="refLabel">Safe response</div>
         <p>Check whether neighboring units logged the same event. Review ride through settings against the interconnection agreement if trips seem too sensitive.</p>
@@ -248,7 +252,7 @@
       </div>
       <div class="refEntry" id="sungrow-014">
         <div class="refTag">Sungrow · 014</div>
-        <h2>Grid overfrequency</h2>
+        <h2>Grid overfrequency<a class="refPermalink" href="#sungrow-014" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Grid frequency rose above the permitted band. Overfrequency events are system wide by nature: if one unit logs it, every unit and the substation relays should have seen it too. A lone unit reporting frequency trips has a measurement or settings problem.</p>
         <div class="refLabel">Safe response</div>
         <p>Correlate with substation relay records and the plant controller event log before treating the inverter as faulty.</p>
@@ -257,7 +261,7 @@
       </div>
       <div class="refEntry" id="sungrow-015">
         <div class="refTag">Sungrow · 015</div>
-        <h2>Grid underfrequency</h2>
+        <h2>Grid underfrequency<a class="refPermalink" href="#sungrow-015" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Grid frequency fell below the permitted band, indicating generation loss somewhere on the system. Units should ride through per the site grid code settings and may be asked for frequency response by the plant controller.</p>
         <div class="refLabel">Safe response</div>
         <p>Correlate across the plant and with the utility. Verify frequency ride through and response settings if units disconnect during events they should ride through.</p>
@@ -266,7 +270,7 @@
       </div>
       <div class="refEntry" id="tmeic-gatewaylatency">
         <div class="refTag">TMEIC</div>
-        <h2>PVS series: false comms faults from gateway latency</h2>
+        <h2>PVS series: false comms faults from gateway latency<a class="refPermalink" href="#tmeic-gatewaylatency" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>TMEIC PVS central inverters communicate through a gateway that introduces roughly 200 milliseconds of response latency. SCADA masters and plant controllers polling with a default timeout near 50 milliseconds will flag the units offline or log communication faults even though the inverters are healthy and producing. The classic symptom is a plant full of intermittent comms alarms with zero production impact.</p>
         <div class="refLabel">Safe response</div>
         <p>Configure the Modbus master with an inter frame delay and response timeout of at least 250 milliseconds for TMEIC devices before treating any comms alarm as real. Never restart producing inverters to chase comms alarms.</p>
@@ -275,7 +279,7 @@
       </div>
       <div class="refEntry" id="tmeic-families">
         <div class="refTag">TMEIC</div>
-        <h2>PVS series: fault family overview</h2>
+        <h2>PVS series: fault family overview<a class="refPermalink" href="#tmeic-families" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>TMEIC PVS units group faults the same way as other central inverters: insulation and ground fault, DC over and under voltage, grid voltage and frequency, over temperature, and communications. Treat insulation and ground faults as safety critical lockouts requiring a qualified person. Communications alarms on TMEIC deserve extra skepticism because of the gateway latency issue.</p>
         <div class="refLabel">Safe response</div>
         <p>Apply the per family posture from this library and always confirm at the unit before resetting anything.</p>
@@ -284,7 +288,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0001">
         <div class="refTag">Ingeteam Ingecon Sun · 0001H</div>
-        <h2>Grid frequency out of range</h2>
+        <h2>Grid frequency out of range<a class="refPermalink" href="#ingeteam-0001" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The inverter shut down because measured grid frequency left its permitted window. On a utility scale plant this is usually the grid doing something rather than the inverter failing, and it should appear across multiple units at the same timestamp.</p>
         <div class="refLabel">Safe response</div>
         <p>Correlate the timestamp across every inverter on the plant before touching anything; a single unit tripping alone points at the unit, all units tripping together points at the grid. Check the AC side connections and terminations at the inverter. Confirm grid frequency at the point of connection against the permitted window in the settings. Check whether the utility logged an event at that time. Do not widen the trip window to stop the alarm, since those limits are set by the interconnection agreement.</p>
@@ -293,7 +297,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0002">
         <div class="refTag">Ingeteam Ingecon Sun · 0002H</div>
-        <h2>Grid voltage out of range</h2>
+        <h2>Grid voltage out of range<a class="refPermalink" href="#ingeteam-0002" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Measured grid voltage left the permitted window. Like the frequency alarm this is usually external, but a single unit tripping alone can indicate a connection problem on that unit&#x27;s AC run.</p>
         <div class="refLabel">Safe response</div>
         <p>Correlate across the plant first, because one unit alone means something different from all of them. Check AC side connections, terminations and torque at the inverter and at the transformer. Measure grid voltage at the point of connection and compare it against the configured window. Check for a loose or high resistance connection heating under load, which raises local voltage drop. Check transformer tap settings if one unit or one skid is consistently different. Do not widen the window to silence it.</p>
@@ -302,7 +306,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0004">
         <div class="refTag">Ingeteam Ingecon Sun · 0004H</div>
-        <h2>Internal current loop fault</h2>
+        <h2>Internal current loop fault<a class="refPermalink" href="#ingeteam-0004" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>An internal current control loop fault. This is inside the power electronics rather than out in the field, and it is not a condition to clear and walk away from.</p>
         <div class="refLabel">Safe response</div>
         <p>Do not repeatedly reset to see whether it clears, because a control loop fault can indicate a failing power stage. Record the exact timestamp and any alarms active alongside it, since Ingeteam reports several bits at once. Check for over temperature or a branch fault in the same event, which changes the diagnosis. Inspect for physical damage, discoloration or smell at the power modules with the unit isolated and proven dead by a qualified person. Escalate to Ingeteam technical support with the full alarm word rather than swapping parts.</p>
@@ -311,7 +315,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0008">
         <div class="refTag">Ingeteam Ingecon Sun · 0008H</div>
-        <h2>Inverter reset, firmware fault</h2>
+        <h2>Inverter reset, firmware fault<a class="refPermalink" href="#ingeteam-0008" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The inverter reset itself. Ingeteam attributes this to a firmware fault. An isolated reset after a grid disturbance is different from a unit resetting repeatedly.</p>
         <div class="refLabel">Safe response</div>
         <p>Establish whether this was a single event or is recurring, because that decides everything that follows. Check what else was active in the same alarm word. Check the auxiliary supply for interruptions or brownouts. Check the installed firmware version against Ingeteam&#x27;s current release for the model. Record the pattern, time of day and whether it correlates with load or temperature, before contacting support. Do not simply keep restarting a unit that resets repeatedly.</p>
@@ -320,7 +324,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0010">
         <div class="refTag">Ingeteam Ingecon Sun · 0010H</div>
-        <h2>Effective grid current too high</h2>
+        <h2>Effective grid current too high<a class="refPermalink" href="#ingeteam-0010" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>RMS output current exceeded the maximum allowed. Either the inverter is being asked for more than it can deliver, or the measurement is wrong.</p>
         <div class="refLabel">Safe response</div>
         <p>Check the irradiance and DC input conditions at the time of the trip, since a cold clear day drives peak output. Check the configured power limit and any curtailment setpoint from the plant controller. Check the AC connections for a high resistance joint that would distort current sharing. Check current transducer wiring if one phase reads differently from the others. Correlate against neighbouring inverters on the same feeder. Escalate if the trip repeats under normal conditions.</p>
@@ -329,7 +333,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0020">
         <div class="refTag">Ingeteam Ingecon Sun · 0020H</div>
-        <h2>Over temperature</h2>
+        <h2>Over temperature<a class="refPermalink" href="#ingeteam-0020" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Power electronics temperature exceeded 80 degrees Celsius, or an auxiliary temperature sensor triggered. Heat is the most common cause of inverter derating and long term failure, so this is worth chasing to root cause rather than waiting for it to cool.</p>
         <div class="refLabel">Safe response</div>
         <p>Check the air path first: filters, intakes, exhausts and anything stacked against the enclosure. Check every cooling fan is running and turning the right way, and listen for bearing noise. Check the heatsinks for dust, pollen or seed fluff, which is the usual culprit on rural sites. Check ambient temperature and whether the trip only happens on the hottest part of the day. Check for a loose power connection generating local heat. Verify the temperature sensor itself against a known reference if the reading looks implausible. Clean and retest rather than raising the threshold.</p>
@@ -338,7 +342,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0040">
         <div class="refTag">Ingeteam Ingecon Sun · 0040H</div>
-        <h2>Internal hardware fault</h2>
+        <h2>Internal hardware fault<a class="refPermalink" href="#ingeteam-0040" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Ingeteam reports this as an internal shutdown due to hardware failure. The unit has taken itself offline deliberately.</p>
         <div class="refLabel">Safe response</div>
         <p>Do not clear and restart repeatedly. Record the complete alarm word, because other bits set at the same time are what identify the subsystem. Check whether a branch fault, over temperature or current loop fault appeared alongside it. Isolate and prove dead before any inspection, and inspect for visible damage or thermal marking. Escalate to Ingeteam technical support with the alarm word, firmware version and event history rather than replacing parts speculatively.</p>
@@ -347,7 +351,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0080">
         <div class="refTag">Ingeteam Ingecon Sun · 0080H</div>
-        <h2>Instantaneous grid current out of range</h2>
+        <h2>Instantaneous grid current out of range<a class="refPermalink" href="#ingeteam-0080" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>An instantaneous current value went outside its permitted range. This tends to point at a transient event rather than a steady condition.</p>
         <div class="refLabel">Safe response</div>
         <p>Check for a grid disturbance or switching event at that timestamp and correlate across the plant. Check AC connections and terminations. Check for a fault downstream on the same feeder. Review whether it coincides with transformer energisation or capacitor bank switching on site. Look at the alarm word for anything set alongside it. Escalate if it recurs without an identifiable external event.</p>
@@ -356,7 +360,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0100">
         <div class="refTag">Ingeteam Ingecon Sun · 0100H</div>
-        <h2>AC protection fault</h2>
+        <h2>AC protection fault<a class="refPermalink" href="#ingeteam-0100" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>An error in the AC protective devices: protectors, surge arresters or fuses. Protection being faulted means the unit is not protected, which is why this is treated as safety critical rather than an inconvenience.</p>
         <div class="refLabel">Safe response</div>
         <p>Isolate and prove dead before opening the AC compartment. Inspect the AC fuses, and check them rather than trusting appearance, because a blown fuse is not always visually obvious. Inspect the surge arresters for the end of life indicator, which is the most common finding in this family after a storm. Check whether the site took a lightning or switching surge recently. Check protective device auxiliary contacts and their wiring, since a failed contact reports a fault that is not there. Replace failed arresters and fuses with the correct rating, never a substitute.</p>
@@ -365,7 +369,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0200">
         <div class="refTag">Ingeteam Ingecon Sun · 0200H</div>
-        <h2>DC protection fault</h2>
+        <h2>DC protection fault<a class="refPermalink" href="#ingeteam-0200" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A blown DC input fuse or a fault in the DC surge arresters. The DC side stays live whenever there is light on the array, so this is not a compartment to open casually.</p>
         <div class="refLabel">Safe response</div>
         <p>Treat the DC field and racking as energised regardless of what the inverter is doing. Qualified person only, with DC rated PPE. Check the DC input fuses per string or per combiner input, and identify which one has cleared before replacing anything. Find out why it cleared, because a fuse that blew has usually been told to by something. Inspect the DC surge arresters for their end of life indicator, particularly after a storm. Check the combiner and string wiring for damage, water ingress or animal damage on the runs feeding the affected input. Replace with the correct DC rated fuse only, never an AC fuse of similar appearance.</p>
@@ -374,7 +378,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0400">
         <div class="refTag">Ingeteam Ingecon Sun · 0400H</div>
-        <h2>AC insulation fault</h2>
+        <h2>AC insulation fault<a class="refPermalink" href="#ingeteam-0400" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>An insulation fault detected in the PV array or within the inverter. Current is finding a path to ground somewhere it should not.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop work. Treat the array, the racking and normally grounded conductors as energised, because on a ground faulted system a conductor that is normally at earth potential may not be. Qualified person only, with DC rated PPE. Do not reset to see whether it clears; a fault that appears in damp early morning and disappears by midday is still a real fault. Locate it with ground referenced voltage measurements and an insulation resistance tester, working from the inverter back through the combiners to the strings. Check the usual entry points for water: junction boxes, connectors, damaged jacket where cable crosses racking, and failed surge protective devices. Repair before restoring, and record the insulation resistance reading achieved.</p>
@@ -383,7 +387,7 @@
       </div>
       <div class="refEntry" id="ingeteam-0800">
         <div class="refTag">Ingeteam Ingecon Sun · 0800H</div>
-        <h2>Branch fault</h2>
+        <h2>Branch fault<a class="refPermalink" href="#ingeteam-0800" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A fault in one of the power electronics branches, reported per branch. Ingeteam escalates consecutive branch failures to a fatal error, so a repeating branch fault is heading somewhere worse.</p>
         <div class="refLabel">Safe response</div>
         <p>Note which branch is reporting, because that is the single most useful piece of information here. Check whether the same branch repeats or whether it moves, since a moving fault points at something shared rather than at one module. Check for over temperature in the same event, because heat and branch faults travel together. Do not keep resetting; consecutive branch failures escalate to a fatal error and can damage the unit further. Isolate and prove dead, then inspect the branch for thermal marking or damage. Escalate to Ingeteam technical support with the branch number and full alarm history.</p>
@@ -392,7 +396,7 @@
       </div>
       <div class="refEntry" id="ingeteam-1000">
         <div class="refTag">Ingeteam Ingecon Sun · 1000H</div>
-        <h2>Manual shutdown</h2>
+        <h2>Manual shutdown<a class="refPermalink" href="#ingeteam-1000" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The unit was stopped deliberately, by the emergency stop, the display, or over communications. This is not a fault.</p>
         <div class="refLabel">Safe response</div>
         <p>Establish who stopped it and why before restarting anything. Check whether an emergency stop is physically latched in, and never reset one without knowing why it was pressed. Check the plant controller and SCADA for a commanded stop, since curtailment and maintenance commands land here. Check the event log for the source. Restart only once the reason is understood and the site is confirmed safe.</p>
@@ -401,7 +405,7 @@
       </div>
       <div class="refEntry" id="ingeteam-2000">
         <div class="refTag">Ingeteam Ingecon Sun · 2000H</div>
-        <h2>Configuration change shutdown</h2>
+        <h2>Configuration change shutdown<a class="refPermalink" href="#ingeteam-2000" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The inverter stopped because of a firmware or configuration change. Expected during commissioning or an update, and worth investigating at any other time.</p>
         <div class="refLabel">Safe response</div>
         <p>Establish whether an update or configuration change was actually performed. If it was, verify every setting afterwards rather than assuming the change was clean, paying attention to grid protection settings and power limits. If nobody changed anything, treat it as unexplained and check who has access to the unit and the plant controller. Confirm the firmware version against Ingeteam&#x27;s current release. Verify the unit returns to normal production and matches its neighbours before leaving.</p>
@@ -410,7 +414,7 @@
       </div>
       <div class="refEntry" id="ingeteam-4000">
         <div class="refTag">Ingeteam Ingecon Sun · 4000H</div>
-        <h2>High DC input voltage</h2>
+        <h2>High DC input voltage<a class="refPermalink" href="#ingeteam-4000" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>DC input voltage went above the permitted maximum. On a utility scale plant this classically appears on cold clear mornings, when string open circuit voltage rises with falling temperature.</p>
         <div class="refLabel">Safe response</div>
         <p>Note the ambient temperature and time of day, because the pattern is the diagnosis. Check whether it occurs only on cold mornings, which points at string sizing against the record low temperature rather than a fault. Measure string open circuit voltage and compare against the inverter maximum input. Check the string configuration actually installed against the design, since an extra module in a string is a common as built error. Escalate for a string sizing review before continued operation if it recurs, and do not simply keep restarting, because repeated overvoltage events damage the DC input stage.</p>
@@ -419,7 +423,7 @@
       </div>
       <div class="refEntry" id="ingeteam-8000">
         <div class="refTag">Ingeteam Ingecon Sun · 8000H</div>
-        <h2>Low DC input voltage</h2>
+        <h2>Low DC input voltage<a class="refPermalink" href="#ingeteam-8000" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Shutdown due to low DC input voltage. At the start and end of the day this is normal behaviour, not a fault.</p>
         <div class="refLabel">Safe response</div>
         <p>Check the time of day and irradiance first, because dawn and dusk shutdowns are expected. Treat it as a fault only if it occurs in good light or if this unit behaves differently from its neighbours. Check for tripped DC fuses or an open combiner feeding this input. Check string voltages against neighbouring inverters under the same conditions. Check for soiling, shading or snow if the whole array is producing below expectation. Check the DC disconnect position.</p>
@@ -428,7 +432,7 @@
       </div>
       <div class="refEntry" id="pe-gfdi">
         <div class="refTag">Power Electronics</div>
-        <h2>Freesun HEC: GFDI grounding and ground fault warning</h2>
+        <h2>Freesun HEC: GFDI grounding and ground fault warning<a class="refPermalink" href="#pe-gfdi" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>On a Freesun HEC installation with a grounded PV pole, the ONLY point where the positive or negative pole should be earthed is inside the inverter, through the Ground Fault Detector Interrupter fitted for that purpose. If any other grounded connection exists anywhere in the installation, at the modules, in a string supervisor or elsewhere, the protection the GFDI provides is NOT effective. The inverter also carries a caution label stating that normally grounded conductors may be ungrounded and energised when a ground fault is indicated, which is the single most important thing to understand before opening anything on a faulted system.</p>
         <div class="refLabel">Safe response</div>
         <p>Treat every normally grounded conductor as potentially energised whenever a ground fault is indicated. Qualified person only, with DC rated PPE. Confirm there is no second grounded pole anywhere in the installation, because a second earth defeats the GFDI silently and the plant will look protected when it is not. Inspect the insulation between the grounded pole and earth as part of scheduled maintenance, which is what prevents uncontrolled leakage from making the GFDI ineffective. After a trip, reset the insulation monitor manually at the button once the cause is found and corrected.</p>
@@ -437,7 +441,7 @@
       </div>
       <div class="refEntry" id="pe-insulationmonitor">
         <div class="refTag">Power Electronics</div>
-        <h2>Freesun HEC: insulation monitor testing and replacement life</h2>
+        <h2>Freesun HEC: insulation monitor testing and replacement life<a class="refPermalink" href="#pe-insulationmonitor" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The Freesun HEC insulation monitor has a defined service life expressed in trips, not in years. Power Electronics specifies replacement after at least 100 ground faults that tripped the monitor, and also if the mechanical or optical check fails or falls outside the maintenance protocol. The monitor has a pulse test mode for verifying it still performs correctly, which is the check that catches a monitor that has quietly stopped protecting the plant.</p>
         <div class="refLabel">Safe response</div>
         <p>Run the pulse test mode to verify the monitor still performs, rather than assuming a quiet monitor is a healthy one. Perform the mechanical and optical checks against the maintenance protocol. Track the cumulative count of ground faults that tripped the monitor, because 100 trips is a replacement trigger regardless of how the unit looks. Replace the monitor if any check fails or the trip count is reached. Carry out soft grounding maintenance only after the monitor has been checked. Reset manually at the button after a trip, once the underlying fault is corrected.</p>

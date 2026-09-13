@@ -1,108 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thrasherapps.com/</loc>
-    <lastmod>2025-08-25</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://thrasherapps.com/about.html</loc>
-    <lastmod>2025-08-25</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/apps.html</loc>
-    <lastmod>2025-08-25</lastmod>
+    <lastmod>2026-05-03</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/ai.html</loc>
-    <lastmod>2025-08-25</lastmod>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/apps.html</loc>
+    <lastmod>2026-09-13</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/blockthrasher/</loc>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/contact.html</loc>
-    <lastmod>2025-08-25</lastmod>
+    <lastmod>2026-05-03</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/privacy.html</loc>
-    <lastmod>2025-08-25</lastmod>
+    <loc>https://thrasherapps.com/convert.html</loc>
+    <lastmod>2026-05-03</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/storewatt/</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/support.html</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/privacy.html</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/terms.html</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/</loc>
-    <lastmod>2026-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/support.html</loc>
-    <lastmod>2026-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/privacy.html</loc>
-    <lastmod>2026-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/terms.html</loc>
-    <lastmod>2026-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/support.html</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/sitelogguide.html</loc>
-    <lastmod>2026-07-15</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/crewdashboard.html</loc>
-    <lastmod>2026-07-15</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/privacy.html</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/terms.html</loc>
-    <lastmod>2026-07-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/winnow/</loc>
-    <lastmod>2026-07-05</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/winnow/support.html</loc>
-    <lastmod>2026-07-05</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/winnow/privacy.html</loc>
-    <lastmod>2026-07-05</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/winnow/terms.html</loc>
-    <lastmod>2026-07-05</lastmod>
+    <loc>https://thrasherapps.com/dashboard.html</loc>
+    <lastmod>2026-05-03</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/droptubebuilder/</loc>
-    <lastmod>2026-06-06</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/droptubebuilder/terms.html</loc>
     <lastmod>2026-08-22</lastmod>
   </url>
   <url>
@@ -110,12 +38,156 @@
     <lastmod>2026-08-22</lastmod>
   </url>
   <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/fe-petro-magvfc.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/franklin-incon-evo.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/gilbarco-500-series.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/gilbarco-700-series.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/gilbarco-encore-300.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/guardian-spgc-220-single-phase.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-300.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-350.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-450-plus.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-450.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls4.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/droptubebuilder/reference/wayne-ovation.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
     <loc>https://thrasherapps.com/droptubebuilder/support.html</loc>
     <lastmod>2026-08-22</lastmod>
   </url>
   <url>
+    <loc>https://thrasherapps.com/droptubebuilder/terms.html</loc>
+    <lastmod>2026-08-22</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/crewdashboard.html</loc>
+    <lastmod>2026-07-15</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/</loc>
+    <lastmod>2026-08-23</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/privacy.html</loc>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/codeTables.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/combinerOm.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/commsProtocols.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/inverterFaultCodes.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/metStation.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/meteringCheatSheet.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/modbusFunctionCodes.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/planSets.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/plcNotes.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/powerPlantController.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/protectionAnsi.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/safetyContent.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/scadaNotes.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/reference/trackerProcedures.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/sitelogguide.html</loc>
+    <lastmod>2026-08-02</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/support.html</loc>
+    <lastmod>2026-08-02</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/fieldwatt/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/grc-lab.html</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
     <loc>https://thrasherapps.com/headpainjournal/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/headpainjournal/privacy.html</loc>
@@ -127,247 +199,323 @@
   </url>
   <url>
     <loc>https://thrasherapps.com/headpainjournal/terms.html</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-08-21</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/codeTables.html</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://thrasherapps.com/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/combinerOm.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/commsProtocols.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/inverterFaultCodes.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/metStation.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/meteringCheatSheet.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/modbusFunctionCodes.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/plcNotes.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/powerPlantController.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/protectionAnsi.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/safetyContent.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/scadaNotes.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/trackerProcedures.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/loopwatt/reference/</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/loopwatt/reference/necArticle760.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/loopwatt/reference/panelLibrary.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/loopwatt/reference/troubleFamilies.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/reference/calcReference.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/reference/</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/reference/proceduresLibrary.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/reference/referenceTroubleshooting.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/rackwatt/reference/safetyTopics.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/bmsFaults.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/brandLibrary.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/commsProtocols.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/controlsScada.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/emsNotes.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/modbusFunctionCodes.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/pcsFaults.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/protectionAnsi.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/safetyContent.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/standardsSummaries.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/storewatt/reference/thermalManagement.html</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/trialmate/</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/trialmate/support.html</loc>
-    <lastmod>2026-08-22</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/streakquest/</loc>
-    <lastmod>2026-08-08</lastmod>
-  </url>
-  <url>
-    <loc>https://thrasherapps.com/blockthrasher/</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://thrasherapps.com/journey.html</loc>
+    <lastmod>2026-06-06</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/lavadash/</loc>
     <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/fe-petro-magvfc.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/lido/</loc>
+    <lastmod>2026-04-12</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/franklin-incon-evo.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/</loc>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/gilbarco-500-series.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/privacy.html</loc>
+    <lastmod>2026-07-12</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/gilbarco-700-series.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/reference/</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/gilbarco-encore-300.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/reference/necArticle760.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/guardian-spgc-220-single-phase.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/reference/panelLibrary.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/reference/troubleFamilies.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-300.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/support.html</loc>
+    <lastmod>2026-07-12</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-350.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/loopwatt/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-450-plus.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/markets.html</loc>
+    <lastmod>2026-05-03</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls-450.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/offcut/</loc>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/veeder-root-tls4.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/offcut/privacy.html</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/droptubebuilder/reference/wayne-ovation.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/offcut/support.html</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/fieldwatt/reference/planSets.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <loc>https://thrasherapps.com/offcut/terms.html</loc>
+    <lastmod>2026-09-12</lastmod>
   </url>
   <url>
-    <loc>https://thrasherapps.com/plugwatt/reference/</loc>
+    <loc>https://thrasherapps.com/paidup/</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/paidup/privacy.html</loc>
+    <lastmod>2026-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/paidup/support.html</loc>
+    <lastmod>2026-06-28</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/paidup/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/pausemeno/</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/pausemeno/privacy.html</loc>
+    <lastmod>2026-07-03</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/pausemeno/support.html</loc>
+    <lastmod>2026-07-03</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/pausemeno/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/plugwatt/</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/plugwatt/privacy.html</loc>
+    <lastmod>2026-07-12</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/plugwatt/reference/anatomy.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/plugwatt/reference/brands.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/plugwatt/reference/comms.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/plugwatt/reference/faultfamilies.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/plugwatt/reference/</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/plugwatt/reference/safety.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
   <url>
     <loc>https://thrasherapps.com/plugwatt/reference/standards.html</loc>
+    <lastmod>2026-09-09</lastmod>
   </url>
-  <url><loc>https://thrasherapps.com/offcut/</loc></url>
-  <url><loc>https://thrasherapps.com/offcut/privacy.html</loc></url>
-  <url><loc>https://thrasherapps.com/offcut/terms.html</loc></url>
-  <url><loc>https://thrasherapps.com/offcut/support.html</loc></url>
+  <url>
+    <loc>https://thrasherapps.com/plugwatt/support.html</loc>
+    <lastmod>2026-07-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/plugwatt/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/privacy.html</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/privacy.html</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/reference/calcReference.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/reference/</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/reference/proceduresLibrary.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/reference/referenceTroubleshooting.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/reference/safetyTopics.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/support.html</loc>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/rackwatt/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/reference/</loc>
+    <lastmod>2026-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/sideworktax/</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/sideworktax/privacy.html</loc>
+    <lastmod>2026-06-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/sideworktax/support.html</loc>
+    <lastmod>2026-06-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/sideworktax/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/privacy.html</loc>
+    <lastmod>2026-07-06</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/bmsFaults.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/brandLibrary.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/commsProtocols.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/controlsScada.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/emsNotes.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/modbusFunctionCodes.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/pcsFaults.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/protectionAnsi.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/safetyContent.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/standardsSummaries.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/reference/thermalManagement.html</loc>
+    <lastmod>2026-09-09</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/support.html</loc>
+    <lastmod>2026-07-06</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/storewatt/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/streakquest/</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/streakquest/privacy.html</loc>
+    <lastmod>2026-04-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/streakquest/support.html</loc>
+    <lastmod>2026-04-12</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/streakquest/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/trialmate/</loc>
+    <lastmod>2026-09-06</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/trialmate/privacy.html</loc>
+    <lastmod>2026-09-06</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/trialmate/support.html</loc>
+    <lastmod>2026-08-22</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/trialmate/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/winnow/</loc>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/winnow/privacy.html</loc>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/winnow/support.html</loc>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://thrasherapps.com/winnow/terms.html</loc>
+    <lastmod>2026-08-21</lastmod>
+  </url>
 </urlset>

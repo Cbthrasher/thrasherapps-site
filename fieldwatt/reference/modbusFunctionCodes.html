@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -76,58 +80,58 @@
       </div>
       <div class="refEntry" id="modbus-fc01">
         <div class="refTag">01</div>
-        <h2>Read Coils</h2>
+        <h2>Read Coils<a class="refPermalink" href="#modbus-fc01" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Reads discrete outputs (coils), one bit each. Traditional reference range 00001 to 09999. Used for on and off states the master may also write.</p>
       </div>
       <div class="refEntry" id="modbus-fc02">
         <div class="refTag">02</div>
-        <h2>Read Discrete Inputs</h2>
+        <h2>Read Discrete Inputs<a class="refPermalink" href="#modbus-fc02" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Reads read only discrete inputs, one bit each. Traditional reference range 10001 to 19999. Typical for status contacts: breaker position, door switches, alarm contacts.</p>
       </div>
       <div class="refEntry" id="modbus-fc03">
         <div class="refTag">03</div>
-        <h2>Read Holding Registers</h2>
+        <h2>Read Holding Registers<a class="refPermalink" href="#modbus-fc03" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Reads 16 bit holding registers, traditional reference range 40001 and up. The workhorse function code: most inverter, meter, and tracker data lives in holding registers even when it is read only. If a device returns wrong or zero values with function code 03, try 04; vendors disagree about which table their data lives in.</p>
       </div>
       <div class="refEntry" id="modbus-fc04">
         <div class="refTag">04</div>
-        <h2>Read Input Registers</h2>
+        <h2>Read Input Registers<a class="refPermalink" href="#modbus-fc04" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Reads 16 bit read only input registers, traditional reference range 30001 to 39999. Measurement style data. The holding versus input register mixup (function code 03 versus 04) is one of the most common causes of a device that connects but returns nothing useful.</p>
       </div>
       <div class="refEntry" id="modbus-fc05">
         <div class="refTag">05</div>
-        <h2>Write Single Coil</h2>
+        <h2>Write Single Coil<a class="refPermalink" href="#modbus-fc05" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Writes one discrete output on or off (0xFF00 on, 0x0000 off). On plant equipment a coil write can start, stop, or reset a device.</p>
         <div class="refLabel">Safe response</div>
         <p>Writes to plant equipment are control actions: coordinate with the control room and follow site change control.</p>
       </div>
       <div class="refEntry" id="modbus-fc06">
         <div class="refTag">06</div>
-        <h2>Write Single Register</h2>
+        <h2>Write Single Register<a class="refPermalink" href="#modbus-fc06" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Writes one 16 bit holding register. Setpoints, mode selections, and scale factors travel this way. Some devices only accept function code 16 even for single registers; a device that rejects 06 with an illegal function exception may still accept the same write as a one register 16.</p>
         <div class="refLabel">Safe response</div>
         <p>Writes to plant equipment are control actions: coordinate with the control room and follow site change control.</p>
       </div>
       <div class="refEntry" id="modbus-fc15">
         <div class="refTag">15</div>
-        <h2>Write Multiple Coils</h2>
+        <h2>Write Multiple Coils<a class="refPermalink" href="#modbus-fc15" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Writes a contiguous block of discrete outputs in one transaction.</p>
         <div class="refLabel">Safe response</div>
         <p>Writes to plant equipment are control actions: coordinate with the control room and follow site change control.</p>
       </div>
       <div class="refEntry" id="modbus-fc16">
         <div class="refTag">16</div>
-        <h2>Write Multiple Registers</h2>
+        <h2>Write Multiple Registers<a class="refPermalink" href="#modbus-fc16" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Writes a contiguous block of 16 bit holding registers in one transaction. Required for 32 bit values that must land atomically (both halves in one write), and the only write some devices accept.</p>
         <div class="refLabel">Safe response</div>
         <p>Writes to plant equipment are control actions: coordinate with the control room and follow site change control.</p>
       </div>
       <div class="refEntry" id="modbus-exceptions">
-        <h2>Exception codes</h2>
+        <h2>Exception codes<a class="refPermalink" href="#modbus-exceptions" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>When a slave rejects a request it echoes the function code with the high bit set plus an exception code. 01 Illegal Function: the device does not support that function code; try the other read family. 02 Illegal Data Address: the register does not exist at that address; check zero versus one based addressing and the map version. 03 Illegal Data Value: quantity or payload out of range for that register. 04 Slave Device Failure: the device faulted internally while answering. 05 Acknowledge: request accepted, long processing underway. 06 Slave Device Busy: retry later. 0A Gateway Path Unavailable and 0B Gateway Target Failed to Respond: the gateway could not reach the serial device behind it, so troubleshoot the serial side, not the Ethernet side.</p>
       </div>
       <div class="refEntry" id="modbus-addressing">
-        <h2>Addressing conventions</h2>
+        <h2>Addressing conventions<a class="refPermalink" href="#modbus-addressing" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Two layers cause endless confusion. First, the table prefix convention: references like 40001 encode the table (4 means holding registers) plus a one based index, while the actual address on the wire is zero based, so 40001 transmits as address 0. Second, vendor documents may list either the reference (40001) or the raw address (0), and some list raw addresses in hex. When a read returns data shifted by exactly one register, the off by one between conventions is almost always the cause.</p>
       </div>
       <div class="refToc mt-4"><strong>More reference</strong><br>

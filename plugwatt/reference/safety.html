@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -72,7 +76,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
       </div>
       <div class="refEntry" id="highvoltagedc">
-        <h2>High voltage DC and why it is different</h2>
+        <h2>High voltage DC and why it is different<a class="refPermalink" href="#highvoltagedc" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>DC fast chargers carry up to 1000 V DC with high available fault current. DC arcs have no current zero crossing, so they sustain instead of self extinguishing.</p>
         <div class="refLabel">Points</div>
         <p>An AC arc gets 120 chances a second to extinguish at a current zero. A DC arc gets none: once struck it burns until the circuit opens or the gap grows</p>
@@ -85,7 +89,7 @@
         <p>NFPA 70E Annex D DC methods</p>
       </div>
       <div class="refEntry" id="arcflashdc">
-        <h2>DC arc flash assessment</h2>
+        <h2>DC arc flash assessment<a class="refPermalink" href="#arcflashdc" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Arc flash PPE for DC work comes from the site arc flash study, not from a field estimate. This app deliberately does not compute incident energy.</p>
         <div class="refLabel">Points</div>
         <p>Use the site arc flash study and equipment labels for incident energy and PPE category</p>
@@ -98,7 +102,7 @@
         <p>Site arc flash study</p>
       </div>
       <div class="refEntry" id="ppe">
-        <h2>PPE for EV charging work</h2>
+        <h2>PPE for EV charging work<a class="refPermalink" href="#ppe" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Class 0 insulating gloves, arc rated face protection where the study requires it, and insulated DC rated tools are the working baseline for energized diagnostics.</p>
         <div class="refLabel">Points</div>
         <p>Class 0 insulating gloves are rated for 1000 V maximum use, matching the DC fast charging voltage class</p>
@@ -113,7 +117,7 @@
         <p>NFPA 70E 130.7</p>
       </div>
       <div class="refEntry" id="gloveprogram">
-        <h2>Glove certification and in service rules</h2>
+        <h2>Glove certification and in service rules<a class="refPermalink" href="#gloveprogram" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Insulating gloves live on a test clock. An expired or damaged glove is not PPE, it is a costume.</p>
         <div class="refLabel">Points</div>
         <p>Electrical test every 6 months by an accredited lab; the stamp on the cuff carries the test date</p>
@@ -128,7 +132,7 @@
         <p>ASTM F496</p>
       </div>
       <div class="refEntry" id="loto">
-        <h2>Lockout tagout for EV charging equipment</h2>
+        <h2>Lockout tagout for EV charging equipment<a class="refPermalink" href="#loto" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Personalized locks and tags on the disconnecting means, verification of absence of voltage, and respect for stored energy in DC link capacitors.</p>
         <div class="refLabel">Points</div>
         <p>One lock, one tag, one person: everyone working applies their own lock</p>
@@ -143,7 +147,7 @@
         <p>Manufacturer service manual</p>
       </div>
       <div class="refEntry" id="storedenergy">
-        <h2>Stored energy: DC link capacitors</h2>
+        <h2>Stored energy: DC link capacitors<a class="refPermalink" href="#storedenergy" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The DC bus capacitor bank holds lethal charge after every isolation. Discharge time is a manufacturer number, not a guess.</p>
         <div class="refLabel">Points</div>
         <p>Bleed resistors take minutes, not seconds; the manual states the wait time</p>
@@ -155,7 +159,7 @@
         <p>Manufacturer service manual</p>
       </div>
       <div class="refEntry" id="sitehazards">
-        <h2>Site hazards beyond electricity</h2>
+        <h2>Site hazards beyond electricity<a class="refPermalink" href="#sitehazards" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Charging sites are live parking lots. Traffic, heat, weather, and awkward lifts injure more techs than arcs do.</p>
         <div class="refLabel">Points</div>
         <p>Work near live traffic: cones, high visibility wear, and vehicle positioning as a barrier</p>

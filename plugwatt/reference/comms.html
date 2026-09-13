@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -74,7 +78,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
       </div>
       <div class="refEntry" id="controlpilot">
-        <h2>Control pilot signaling</h2>
+        <h2>Control pilot signaling<a class="refPermalink" href="#controlpilot" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The J1772 pilot is a 1 kHz square wave between plus 12 V and minus 12 V. Its DC level names the state; its duty cycle advertises available current. Every AC session and the front door of every DC session runs on it.</p>
         <div class="refLabel">Sections</div>
         <p>heading: Pilot states</p>
@@ -82,20 +86,20 @@
         <p>heading: Field checks</p>
       </div>
       <div class="refEntry" id="iec61851modes">
-        <h2>IEC 61851 charging modes</h2>
+        <h2>IEC 61851 charging modes<a class="refPermalink" href="#iec61851modes" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>International mode language for how a vehicle takes power. North American equipment maps cleanly onto it, and European built chargers report faults in these terms.</p>
         <div class="refLabel">Sections</div>
         <p>heading: The four modes</p>
       </div>
       <div class="refEntry" id="ccshandshake">
-        <h2>The CCS and NACS DC handshake</h2>
+        <h2>The CCS and NACS DC handshake<a class="refPermalink" href="#ccshandshake" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A DC session is a staged negotiation. Knowing which stage died localizes the fault faster than any other single fact.</p>
         <div class="refLabel">Sections</div>
         <p>heading: Stages in order</p>
         <p>heading: Reading the stage from behavior</p>
       </div>
       <div class="refEntry" id="iso15118primer">
-        <h2>ISO 15118 and Plug and Charge</h2>
+        <h2>ISO 15118 and Plug and Charge<a class="refPermalink" href="#iso15118primer" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The high level language on top of the pilot. Plug and Charge signs the session with certificates so authorization is automatic; vehicle to grid rides the same protocol.</p>
         <div class="refLabel">Sections</div>
         <p>heading: Certificate chain in one breath</p>
@@ -103,14 +107,14 @@
         <p>heading: Vehicle to grid</p>
       </div>
       <div class="refEntry" id="ocppoverview">
-        <h2>OCPP versions and what they change</h2>
+        <h2>OCPP versions and what they change<a class="refPermalink" href="#ocppoverview" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>OCPP is the charger to backend protocol. Version and profile agreement between charger and backend is a commissioning item, not an afterthought.</p>
         <div class="refLabel">Sections</div>
         <p>heading: Version comparison</p>
         <p>heading: Field notes</p>
       </div>
       <div class="refEntry" id="ocppmessages">
-        <h2>OCPP message quick reference</h2>
+        <h2>OCPP message quick reference<a class="refPermalink" href="#ocppmessages" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The dozen messages that explain almost every log line a field tech reads, with the 1.6 names networks still speak.</p>
         <div class="refLabel">Sections</div>
         <p>heading: Charger to backend</p>
@@ -118,21 +122,21 @@
         <p>heading: Common error codes in StatusNotification</p>
       </div>
       <div class="refEntry" id="networkconfig">
-        <h2>Network configuration essentials</h2>
+        <h2>Network configuration essentials<a class="refPermalink" href="#networkconfig" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The handful of settings that connect a charger to its operator. Record them at commissioning; they answer most NOC questions.</p>
         <div class="refLabel">Sections</div>
         <p>heading: The record that matters</p>
         <p>heading: Connectivity hygiene</p>
       </div>
       <div class="refEntry" id="offlinebehavior">
-        <h2>Offline and degraded network behavior</h2>
+        <h2>Offline and degraded network behavior<a class="refPermalink" href="#offlinebehavior" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Well configured chargers keep serving drivers through network trouble. What that looks like is operator policy, and knowing the policy prevents wrong diagnoses.</p>
         <div class="refLabel">Sections</div>
         <p>heading: What good offline behavior looks like</p>
         <p>heading: Diagnosis implications</p>
       </div>
       <div class="refEntry" id="localizefailure">
-        <h2>Backend timeout or vehicle handshake? Localize it</h2>
+        <h2>Backend timeout or vehicle handshake? Localize it<a class="refPermalink" href="#localizefailure" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The defining skill: an EV charger is a two sided communication node. Down to the car, up to the backend. Decide which side is sick before touching anything.</p>
         <div class="refLabel">Sections</div>
         <p>heading: The two sided model</p>

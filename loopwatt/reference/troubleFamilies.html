@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -76,7 +80,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6790129179">Get LoopWatt on the App Store</a>
       </div>
       <div class="refEntry" id="groundfault">
-        <h2>Ground fault</h2>
+        <h2>Ground fault<a class="refPermalink" href="#groundfault" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Fire alarm wiring uses two conductors with no dedicated ground. When one conductor finds an unintended path to a grounded surface (conduit, back box, structural steel), the panel reports it immediately.</p>
         <div class="refLabel">Common causes</div>
         <p>Water ingress at a field device, very often a ceiling mounted smoke or heat detector</p>
@@ -94,7 +98,7 @@
         <p>Panel manual; NFPA 72 Chapter 12 circuit classes</p>
       </div>
       <div class="refEntry" id="opencircuit">
-        <h2>Open circuit or open loop</h2>
+        <h2>Open circuit or open loop<a class="refPermalink" href="#opencircuit" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A break in the circuit: the panel supervision current cannot complete its path, so the panel shows an open or a missing device trouble.</p>
         <div class="refLabel">Common causes</div>
         <p>Loose connection at a device terminal</p>
@@ -112,7 +116,7 @@
         <p>Panel manual; Class A vs Class B behavior differs</p>
       </div>
       <div class="refEntry" id="shortcircuit">
-        <h2>Short circuit</h2>
+        <h2>Short circuit<a class="refPermalink" href="#shortcircuit" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Conductor to conductor contact. On a conventional initiating zone a short reads as an alarm; on a notification circuit or signaling line circuit it reads as a trouble and may shut the circuit down.</p>
         <div class="refLabel">Common causes</div>
         <p>Crushed or stapled cable</p>
@@ -127,7 +131,7 @@
         <p>Panel manual</p>
       </div>
       <div class="refEntry" id="slctrouble">
-        <h2>Signaling line circuit trouble (addressable)</h2>
+        <h2>Signaling line circuit trouble (addressable)<a class="refPermalink" href="#slctrouble" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The SLC is the communication highway to the panel. Trouble means an open, a short, a device failing to respond to poll, or electrical noise corrupting communication.</p>
         <div class="refLabel">Common causes</div>
         <p>Open or short on the loop</p>
@@ -145,7 +149,7 @@
         <p>Panel manual; NFPA 72 Chapter 12</p>
       </div>
       <div class="refEntry" id="acloss">
-        <h2>AC power loss</h2>
+        <h2>AC power loss<a class="refPermalink" href="#acloss" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Primary power failed or was turned off. The system runs on batteries and reports the loss; delayed transmission to the supervising station is normal by design.</p>
         <div class="refLabel">Common causes</div>
         <p>Breaker turned off or tripped, often mislabeled</p>
@@ -160,7 +164,7 @@
         <p>NFPA 72 10.6.5; NEC 760.41 and 760.121 branch circuit rules</p>
       </div>
       <div class="refEntry" id="batterytrouble">
-        <h2>Low or failed battery</h2>
+        <h2>Low or failed battery<a class="refPermalink" href="#batterytrouble" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Battery voltage below threshold, failed charger, or batteries past service life.</p>
         <div class="refLabel">Common causes</div>
         <p>Batteries past their service life (typically 3 to 5 years)</p>
@@ -177,7 +181,7 @@
         <p>Table 14.4.3.2 battery tests; 10.6.7 capacity</p>
       </div>
       <div class="refEntry" id="nactrouble">
-        <h2>Notification circuit trouble</h2>
+        <h2>Notification circuit trouble<a class="refPermalink" href="#nactrouble" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Open, short, or overload on a NAC. The panel supervises the circuit through the end of line resistor with reversed polarity in standby.</p>
         <div class="refLabel">Common causes</div>
         <p>Missing or wrong EOL resistor</p>
@@ -194,7 +198,7 @@
         <p>Panel manual; NFPA 72 Chapter 18</p>
       </div>
       <div class="refEntry" id="missingdevice">
-        <h2>Missing or extra device</h2>
+        <h2>Missing or extra device<a class="refPermalink" href="#missingdevice" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>An addressable point the panel expects does not answer, or a device answers at an address the program does not expect.</p>
         <div class="refLabel">Common causes</div>
         <p>Device removed and not replaced (painting, remodeling)</p>
@@ -209,7 +213,7 @@
         <p>Panel manual; program changes may require re acceptance testing per 14.4.1</p>
       </div>
       <div class="refEntry" id="dirtydetector">
-        <h2>Dirty detector, sensitivity out of range</h2>
+        <h2>Dirty detector, sensitivity out of range<a class="refPermalink" href="#dirtydetector" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Dust and contamination shift a smoke detector&#x27;s operating point. Modern panels report a dirty or almost dirty condition before it becomes a nuisance alarm source.</p>
         <div class="refLabel">Common causes</div>
         <p>Dust accumulation, construction activity without protective covers</p>
@@ -225,7 +229,7 @@
         <p>14.4.4.3 sensitivity testing; manufacturer cleaning instructions</p>
       </div>
       <div class="refEntry" id="commfail">
-        <h2>Communicator or network failure</h2>
+        <h2>Communicator or network failure<a class="refPermalink" href="#commfail" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The path to the supervising station failed: phone line, cellular, IP, or radio.</p>
         <div class="refLabel">Common causes</div>
         <p>POTS line removed or migrated to VoIP without notice</p>
@@ -242,7 +246,7 @@
         <p>NFPA 72 Chapter 26 transmission technologies</p>
       </div>
       <div class="refEntry" id="signaltypes">
-        <h2>Alarm vs supervisory vs trouble</h2>
+        <h2>Alarm vs supervisory vs trouble<a class="refPermalink" href="#signaltypes" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Three distinct signal classes that demand different responses.</p>
         <div class="refLabel">Common causes</div>
         <p>ALARM: fire is indicated; devices such as smoke detectors, pull stations, waterflow. Requires immediate evacuation response and dispatch</p>

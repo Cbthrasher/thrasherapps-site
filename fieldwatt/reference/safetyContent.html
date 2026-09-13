@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -74,7 +78,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
       </div>
       <div class="refEntry" id="safety-arcflash">
-        <h2>Arc flash and NFPA 70E</h2>
+        <h2>Arc flash and NFPA 70E<a class="refPermalink" href="#safety-arcflash" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>NFPA 70E engages at 50 volts. Work on or near exposed energized parts at 50 volts or more requires justification for working energized, an energized electrical work permit, and a shock risk assessment. There is no voltage above which the arc flash risk assessment starts and below which the hazard simply disappears, so treat no figure as a floor.
 
 The part that matters most on a 1500 volt plant: the PPE category tables do not cover you. The NFPA 70E arc flash PPE category table for DC systems spans 100 volts to 600 volts. A 1500 volt DC array sits above that range, so the PPE category method does not apply and the required protection has to come from an incident energy analysis, which is what the site arc flash study is. The same holds for the medium voltage equipment on the plant. If someone hands you a PPE category for a 1500 volt DC or a medium voltage task that was read off a table, that is the wrong method and the number is not trustworthy.
@@ -86,7 +90,7 @@ The framework otherwise: an arc flash risk assessment for each task, incident en
         <p>Arc flash rules differ by NFPA 70E edition and the site program document states the edition in force. The equipment arc flash label and the site study govern over any general guidance. Above the range the PPE category tables cover, an incident energy analysis is required.</p>
       </div>
       <div class="refEntry" id="safety-loto">
-        <h2>LOTO for PV: the array never turns off</h2>
+        <h2>LOTO for PV: the array never turns off<a class="refPermalink" href="#safety-loto" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Lockout tagout on a solar plant has a property unlike any other industry: PV modules produce full voltage whenever light hits them, so shutting down the inverter does not de energize the DC field. Strings, combiner line side terminals, and DC feeders stay live all day, every day. Batteries and capacitors hold stored energy after isolation, and medium voltage equipment can be back fed. LOTO therefore isolates and locks every source feeding the work zone, and the zero energy verification is the step that actually protects you.</p>
         <div class="refLabel">Safe response</div>
         <p>Always verify absence of voltage with a DC rated meter, testing the meter on a known source before and after. Assume every DC conductor is energized during daylight regardless of switch positions. Locks and tags go on every isolation point, one lock per worker.</p>
@@ -94,7 +98,7 @@ The framework otherwise: an arc flash risk assessment for each task, incident en
         <p>The Site Forms module includes a LOTO permit that walks these steps.</p>
       </div>
       <div class="refEntry" id="safety-eewp">
-        <h2>Energized Electrical Work Permit</h2>
+        <h2>Energized Electrical Work Permit<a class="refPermalink" href="#safety-eewp" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>NFPA 70E permits energized work above 50 volts only when de energizing creates greater hazard or is infeasible, and it requires a written Energized Electrical Work Permit: the task, the justification, the shock and arc flash risk assessment, required PPE, boundaries, and management authorization signatures. Diagnostic measurement by qualified persons with proper PPE is generally allowed without a full permit, but repair and modification work energized is not.</p>
         <div class="refLabel">Safe response</div>
         <p>If the task can be done de energized, de energize. Convenience and schedule are not valid justifications for energized work.</p>
@@ -102,7 +106,7 @@ The framework otherwise: an arc flash risk assessment for each task, incident en
         <p>The Site Forms module includes an EEWP template.</p>
       </div>
       <div class="refEntry" id="safety-dcppe">
-        <h2>DC rated PPE, meters, and tools</h2>
+        <h2>DC rated PPE, meters, and tools<a class="refPermalink" href="#safety-dcppe" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Working the 1500 volt DC field requires equipment actually rated for it: meters and leads rated CAT III 1500 V DC or better, insulated tools rated for the voltage, voltage rated gloves with leather protectors inspected before each use, and arc rated clothing per the site study. Common 1000 volt rated meters and leads are not adequate on 1500 volt strings. DC arcs sustain themselves and do not zero cross like AC; the burn and blast hazard from opening a loaded DC circuit is severe.</p>
         <div class="refLabel">Safe response</div>
         <p>Check the printed rating on every meter and lead before use. Inspect gloves and leads for damage. Never break a loaded DC circuit with anything other than a load rated switching device.</p>
@@ -110,7 +114,7 @@ The framework otherwise: an arc flash risk assessment for each task, incident en
         <p>Glove testing intervals and equipment inspection rules come from the site electrical safety program.</p>
       </div>
       <div class="refEntry" id="safety-heat">
-        <h2>Heat illness</h2>
+        <h2>Heat illness<a class="refPermalink" href="#safety-heat" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Solar sites are open fields with zero shade, reflective modules, and summer work at height on steel. Heat illness progresses from cramps through exhaustion (heavy sweating, weakness, nausea, headache) to heat stroke (confusion, loss of coordination, hot dry skin), which kills. Acclimatization matters: new workers and workers returning from time off carry the highest risk in their first week.</p>
         <div class="refLabel">Safe response</div>
         <p>Water before thirst, shade breaks on a schedule during heat advisories, watch your crew for early signs, and treat confusion or collapse as a medical emergency: cool aggressively and call for help immediately.</p>
@@ -118,13 +122,13 @@ The framework otherwise: an arc flash risk assessment for each task, incident en
         <p>Follow the site heat illness prevention plan and local regulatory triggers.</p>
       </div>
       <div class="refEntry" id="safety-wildlife">
-        <h2>Wildlife and site hazards</h2>
+        <h2>Wildlife and site hazards<a class="refPermalink" href="#safety-wildlife" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Solar farms are wildlife habitat: snakes shelter under modules and in combiner shade, wasps nest in enclosures and torque tubes, fire ants colonize cable trenches, and rodents chew insulation (then attract the snakes). Look before reaching under modules or into enclosures, open cabinet doors deliberately, and wear gloves and boots appropriate to the region. Report and document animal damage to cabling; it recurs in the same areas.</p>
         <div class="refLabel">Safe response</div>
         <p>Never reach blind into an enclosure or under racking. Carry a snake bite plan appropriate to the region and know the nearest medical facility.</p>
       </div>
       <div class="refEntry" id="safety-weather">
-        <h2>Weather, lightning, and stow awareness</h2>
+        <h2>Weather, lightning, and stow awareness<a class="refPermalink" href="#safety-weather" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>An open field of grounded steel is the last place to be in a thunderstorm: apply the 30 second rule (thunder within 30 seconds of lightning means seek proper shelter) and wait 30 minutes after the last thunder. High wind drives tracker stow; know the site stow wind speed and expect rows to move without warning when the anemometer commands it. Wet grass hides holes and hardware; mud bogs vehicles far from help.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop elevated and electrical work when storms approach. Vehicles are acceptable lightning shelter; module rows are not. Stay clear of tracker rows during commanded stow events.</p>
@@ -132,7 +136,7 @@ The framework otherwise: an arc flash risk assessment for each task, incident en
         <p>Site stow thresholds are in the tracker control settings.</p>
       </div>
       <div class="refEntry" id="safety-loneworker">
-        <h2>Lone worker and remote site check in</h2>
+        <h2>Lone worker and remote site check in<a class="refPermalink" href="#safety-loneworker" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Solar plants sit far from cell coverage and farther from ambulances. A lone worker with heat stroke, a fall, or a snake bite cannot call for help. Effective controls: a check in schedule with a named contact and defined escalation when a check in is missed, satellite communicators where cell coverage fails, and a posted plan with the site address, gate codes, and GPS coordinates for emergency responders.</p>
         <div class="refLabel">Safe response</div>
         <p>No energized electrical work alone, ever. Set the check in schedule before starting work, not after something happens.</p>
@@ -140,7 +144,7 @@ The framework otherwise: an arc flash risk assessment for each task, incident en
         <p>The field safety checklist form includes a lone worker section.</p>
       </div>
       <div class="refEntry" id="safety-criticalfaults">
-        <h2>Safety critical faults: stop work posture</h2>
+        <h2>Safety critical faults: stop work posture<a class="refPermalink" href="#safety-criticalfaults" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Arc fault, ground fault, and insulation fault alarms mean the equipment detected a condition that can injure whoever touches it next. The faulted circuit may energize racking, enclosures, and conductors that are normally safe. Resetting the fault to see if it clears does not remove the hazard; it re energizes it, and repeated resets into a fault can start fires.</p>
         <div class="refLabel">Safe response</div>
         <p>Stop work. Isolate per site procedure. A qualified person with DC rated PPE investigates and localizes the fault before any reset or restart. This app never advises resetting an arc or ground fault.</p>

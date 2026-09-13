@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -70,7 +74,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6790170168">Get RackWatt on the App Store</a>
       </div>
       <div class="refEntry" id="rackdensity">
-        <h2>Rack power density benchmarks</h2>
+        <h2>Rack power density benchmarks<a class="refPermalink" href="#rackdensity" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Bands</div>
         <p>label: Traditional enterprise. value: 3 to 8 kW per rack</p>
         <p>label: Modern environments. value: 8 to 15 kW per rack</p>
@@ -79,7 +83,7 @@
         <p>Density is climbing quickly. Size cooling and distribution for the design target, not today only.</p>
       </div>
       <div class="refEntry" id="deltattargets">
-        <h2>Delta T targets</h2>
+        <h2>Delta T targets<a class="refPermalink" href="#deltattargets" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Bands</div>
         <p>label: Modern high density target. value: about 20 to 30 F, 11 to 17 C</p>
         <p>label: Below band. value: over cooling or airflow bypass</p>
@@ -88,7 +92,7 @@
         <p>An out of band delta T is a symptom. Confirm airflow and containment before adjusting setpoints.</p>
       </div>
       <div class="refEntry" id="airflowbydensity">
-        <h2>Airflow needs by density</h2>
+        <h2>Airflow needs by density<a class="refPermalink" href="#airflowbydensity" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Bands</div>
         <p>label: High density racks. value: 1,500 to 2,500 cfm</p>
         <p>label: Low density racks. value: 500 to 1,000 cfm</p>
@@ -97,7 +101,7 @@
         <p>Use the rule of thumb to sanity check a calculated airflow figure.</p>
       </div>
       <div class="refEntry" id="arcflash">
-        <h2>Arc flash awareness</h2>
+        <h2>Arc flash awareness<a class="refPermalink" href="#arcflash" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Bands</div>
         <p>label: AI ready facilities. value: available fault current can exceed 100,000 A</p>
         <p>label: Authority. value: the site arc flash study governs</p>
@@ -105,7 +109,7 @@
         <p>This tool raises awareness only. Incident energy and boundaries come from the site arc flash study, never from an estimate.</p>
       </div>
       <div class="refEntry" id="generatordaytank">
-        <h2>Generator fuel notes</h2>
+        <h2>Generator fuel notes<a class="refPermalink" href="#generatordaytank" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Bands</div>
         <p>label: Day tank. value: about 8 hours typical</p>
         <p>label: Refuel. value: can be refueled while running</p>

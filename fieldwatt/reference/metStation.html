@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -68,13 +72,13 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
       </div>
       <div class="refEntry" id="met-sensors">
-        <h2>What the met station measures and why it matters</h2>
+        <h2>What the met station measures and why it matters<a class="refPermalink" href="#met-sensors" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The meteorological station is the reference for everything performance related: pyranometers measure plane of array irradiance (tilted with the modules) and global horizontal irradiance; back of module temperature sensors and ambient temperature feed performance models and derate logic; the anemometer feeds tracker wind stow. Performance ratio calculations stand or fall on these instruments, and tracker weather protection depends on them, so met station health is plant health.</p>
         <div class="refLabel">Verify against</div>
         <p>Calibration intervals for pyranometers are typically annual or biennial; check the site O&amp;M agreement.</p>
       </div>
       <div class="refEntry" id="met-pyranometerfaults">
-        <h2>Pyranometer faults skew performance ratio</h2>
+        <h2>Pyranometer faults skew performance ratio<a class="refPermalink" href="#met-pyranometerfaults" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A soiled pyranometer reads low, which inflates apparent performance ratio and hides real production problems; clean the dome on every visit. A miswired or wrongly scaled pyranometer (millivolt sensors need the right multiplier) shifts every performance number and typically shows as a plant that always over or under performs by a fixed factor. Compare POA against GHI and against neighboring sites on clear days: a sensor that diverges from clear sky expectations is suspect. Two pyranometers that disagree persistently mean at least one needs cleaning or calibration.</p>
         <div class="refLabel">Safe response</div>
         <p>Never scale production expectations from a sensor you have not verified against a reference or a clear sky check.</p>
@@ -82,7 +86,7 @@
         <p>Record the sensor serial and calibration constant when swapping pyranometers.</p>
       </div>
       <div class="refEntry" id="met-tempwindfaults">
-        <h2>Temperature and wind sensor faults</h2>
+        <h2>Temperature and wind sensor faults<a class="refPermalink" href="#met-tempwindfaults" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A failed back of module temperature sensor (unbonded from the module, cable damage, open RTD) corrupts temperature corrected performance math and can misdrive inverter or tracker derate logic. Flatlined, railed, or physically impossible values (module temperature below ambient at noon) are the giveaways. A stuck or failed anemometer is a safety issue, not just a data issue: without wind data the trackers cannot stow on wind, so treat anemometer faults as urgent.</p>
         <div class="refLabel">Safe response</div>
         <p>Report anemometer failures to the control room the same day; confirm what the tracker system does when wind data goes invalid.</p>

@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -73,7 +77,7 @@
       </div>
       <div class="refEntry" id="brand-sungrowpowertitan">
         <div class="refTag">Sungrow</div>
-        <h2>Sungrow PowerTitan</h2>
+        <h2>Sungrow PowerTitan<a class="refPermalink" href="#brand-sungrowpowertitan" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Liquid cooled containerized BESS line. The PowerTitan 3.0 class packs roughly 7.14 MWh into a 20 foot container with an integrated 1.78 MW silicon carbide PCS, tightening the DC block into a single vendor unit. Cell level liquid cooling and integrated fire suppression per container.
 
 Common fault families in the field: thermal loop alarms (pump, flow, level), cell voltage and temperature alarms from the string BMS, PCS grid side trips, and communication loss between container controllers and the plant EMS. The integrated design means most work happens through the vendor service interface rather than component by component.</p>
@@ -84,7 +88,7 @@ Common fault families in the field: thermal loop alarms (pump, flow, level), cel
       </div>
       <div class="refEntry" id="brand-teslamegapack">
         <div class="refTag">Tesla</div>
-        <h2>Tesla Megapack 3</h2>
+        <h2>Tesla Megapack 3<a class="refPermalink" href="#brand-teslamegapack" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Integrated AC block: batteries, PCS, thermal management, and controls ship in one enclosure of roughly 5 MWh class. Plant integration is through Tesla&#x27;s site controller stack, with telemetry and control heavily software defined.
 
 Field posture: hands on component service is limited by design; diagnostics flow through the Tesla service tooling and support channels. Common field issues cluster around thermal system alarms, communication and software version mismatches with the site controller, and AC side protection interactions.</p>
@@ -95,7 +99,7 @@ Field posture: hands on component service is limited by design; diagnostics flow
       </div>
       <div class="refEntry" id="brand-teslamegablock">
         <div class="refTag">Tesla</div>
-        <h2>Tesla Megablock</h2>
+        <h2>Tesla Megablock<a class="refPermalink" href="#brand-teslamegablock" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Tesla&#x27;s larger plant building unit: Megapacks pre integrated with medium voltage equipment into a block that cuts field wiring and commissioning scope. The tradeoff is the same as all deep integration: faster install, less field serviceability, and diagnostics that live in the vendor stack.
 
 For troubleshooting, think in layers: block level MV protection, then the site controller&#x27;s view of each pack, then Tesla service for anything inside the enclosures.</p>
@@ -106,7 +110,7 @@ For troubleshooting, think in layers: block level MV protection, then the site c
       </div>
       <div class="refEntry" id="brand-fluencegridstack">
         <div class="refTag">Fluence</div>
-        <h2>Fluence Gridstack Pro</h2>
+        <h2>Fluence Gridstack Pro<a class="refPermalink" href="#brand-fluencegridstack" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Utility scale platform aimed at heavy duty cycles like frequency regulation, delivered with Fluence&#x27;s OS and analytics stack, and commonly paired with the Mosaic market bidding platform where merchant revenue is in scope. Hardware is modular cubes with vendor managed integration.
 
 Field issues cluster around thermal management, node communication, and software stack coordination between the Fluence OS layers and site SCADA. Because dispatch may be driven by Mosaic bidding, always check the market layer before calling an idle plant faulted.</p>
@@ -117,7 +121,7 @@ Field issues cluster around thermal management, node communication, and software
       </div>
       <div class="refEntry" id="brand-smastorage">
         <div class="refTag">SMA</div>
-        <h2>SMA storage PCS</h2>
+        <h2>SMA storage PCS<a class="refPermalink" href="#brand-smastorage" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>SMA supplies utility scale storage inverters and MV stations frequently paired with third party batteries. That split architecture means integration seams are the troubleshooting hot spots: PCS to BMS interlocks, Modbus register maps between vendors, and who trips first on a shared fault.
 
 SMA units carry deep event logs with numbered codes; pull the sequence with timestamps and match against the battery side log before judging which side started an event.</p>
@@ -128,7 +132,7 @@ SMA units carry deep event logs with numbered codes; pull the sequence with time
       </div>
       <div class="refEntry" id="brand-powerelectronics">
         <div class="refTag">Power Electronics</div>
-        <h2>Power Electronics storage PCS</h2>
+        <h2>Power Electronics storage PCS<a class="refPermalink" href="#brand-powerelectronics" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A dominant PCS supplier in North American solar plus storage. Freemaq class units pair with third party DC blocks, so the same integration seam logic applies: interlocks, register maps, and trip coordination between the PCS and the battery vendor&#x27;s controls.
 
 Field reputation centers on serviceable modular power stages. Watch cooling system alarms and DC side configuration mismatches after battery augmentation changes the DC characteristics.</p>
@@ -139,7 +143,7 @@ Field reputation centers on serviceable modular power stages. Watch cooling syst
       </div>
       <div class="refEntry" id="brand-epcpower">
         <div class="refTag">EPC Power</div>
-        <h2>EPC Power PCS</h2>
+        <h2>EPC Power PCS<a class="refPermalink" href="#brand-epcpower" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>North American PCS manufacturer common in storage retrofits and new builds, known for bidirectional units built for battery duty. Same integration seams as any split architecture: BMS permissives, register maps, and protection coordination.
 
 When commissioning against a new battery vendor, walk the interlock chain end to end and prove the PCS honors the BMS current limits dynamically, not just at startup.</p>

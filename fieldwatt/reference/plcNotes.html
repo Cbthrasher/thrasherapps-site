@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -74,7 +78,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
       </div>
       <div class="refEntry" id="plc-livecaution">
-        <h2>Working on a live plant PLC</h2>
+        <h2>Working on a live plant PLC<a class="refPermalink" href="#plc-livecaution" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Plant PLCs run tracker stow, inverter coordination, breaker interlocks, and grid compliance functions. Clearing faults, forcing I/O, downloading programs, or power cycling a processor on an operating plant can move equipment, drop protection, or violate the interconnection agreement. FieldWatt informs; it never directs anyone to override or force controls on a live plant.</p>
         <div class="refLabel">Safe response</div>
         <p>Program and force operations are for qualified controls personnel under the site change control process, with the control room and asset owner informed. Field technicians observe, document status LEDs and fault codes, and escalate.</p>
@@ -82,26 +86,26 @@
         <p>Follow the site management of change procedure.</p>
       </div>
       <div class="refEntry" id="plc-readingleds">
-        <h2>Reading PLC status LEDs</h2>
+        <h2>Reading PLC status LEDs<a class="refPermalink" href="#plc-readingleds" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Across brands the pattern holds: a steady RUN or OK light means the processor is executing; a flashing or absent RUN with a solid or flashing FAULT light means a stopped or faulted processor; I/O or COMM lights flag module and network state. Photograph the LED states before anyone touches the cabinet; the pattern at time of failure is diagnostic gold and is lost after a power cycle.</p>
         <div class="refLabel">Verify against</div>
         <p>LED names and blink codes are model specific. Verify against the installed controller manual.</p>
       </div>
       <div class="refEntry" id="plc-majorminor">
-        <h2>Major versus minor faults</h2>
+        <h2>Major versus minor faults<a class="refPermalink" href="#plc-majorminor" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Most platforms distinguish recoverable minor faults (a low clock battery, a math overflow the program tolerates, a removable module hiccup) from major faults that stop the program (corrupt program, failed hardware, watchdog timeout, incompatible firmware). A minor fault logs and runs on; a major fault stops scanning and drops outputs to their configured safe states, which on a solar plant can mean rows stowing or breakers holding their last state.</p>
         <div class="refLabel">Verify against</div>
         <p>The fault code tables in the controller manual map each code to recoverable or not.</p>
       </div>
       <div class="refEntry" id="plc-commoncauses">
-        <h2>Common PLC fault causes in the field</h2>
+        <h2>Common PLC fault causes in the field<a class="refPermalink" href="#plc-commoncauses" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The usual suspects at solar plants: communications loss to remote I/O or devices (fiber, media converters, switches); an I/O module fault from moisture, surge, or a wiring short; a dead real time clock battery after years in service (timestamps go wrong, some processors fault on power up); and power supply problems including brownouts from a failing UPS. Environmental stress (heat, dust, condensation in outdoor cabinets) drives most of it.</p>
         <div class="refLabel">Verify against</div>
         <p>Check cabinet heaters, filters, and door seals during PM visits.</p>
       </div>
       <div class="refEntry" id="plc-controllogix">
         <div class="refTag">Allen Bradley</div>
-        <h2>ControlLogix and CompactLogix</h2>
+        <h2>ControlLogix and CompactLogix<a class="refPermalink" href="#plc-controllogix" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Rockwell Logix controllers are the most common plant controller platform at US solar sites. Status LEDs: RUN (solid green running), FORCE (amber when forces exist; forces on a plant controller deserve immediate questions), I/O (green solid healthy, flashing green no I/O configured or some unreachable, red faulted), OK (solid green healthy, solid red hard fault, flashing red recoverable fault or firmware issue). A flashing red OK often clears with a fault clear from the programming software; a solid red OK is hardware. EtherNet IP module LEDs show link and network health separately.</p>
         <div class="refLabel">Safe response</div>
         <p>Note LED states and escalate. Clearing faults or removing forces is a controls engineer action under change control.</p>
@@ -110,7 +114,7 @@
       </div>
       <div class="refEntry" id="plc-micrologix">
         <div class="refTag">Allen Bradley</div>
-        <h2>MicroLogix 1400</h2>
+        <h2>MicroLogix 1400<a class="refPermalink" href="#plc-micrologix" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The MicroLogix 1400 shows up in tracker network control units, met stations, and small auxiliary panels. It speaks Modbus RTU and TCP, DF1, and DH 485, which makes it a common protocol bridge in older sites. FAULT LED flashing red means a recoverable application fault (often clearable from the LCD menu); solid red means hardware. The onboard LCD can display fault codes and toggle the mode switch without a laptop. Its real time clock battery is a known age related failure.</p>
         <div class="refLabel">Safe response</div>
         <p>Even on a small controller, clearing faults on live equipment follows the same change control expectations.</p>
@@ -119,7 +123,7 @@
       </div>
       <div class="refEntry" id="plc-gerx3i">
         <div class="refTag">GE</div>
-        <h2>GE RX3i (PACSystems)</h2>
+        <h2>GE RX3i (PACSystems)<a class="refPermalink" href="#plc-gerx3i" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>GE (now Emerson) PACSystems RX3i controllers appear in plant control and substation cabinets. The CPU OK LED solid green is healthy; RUN indicates executing; a fault table (viewable in the programming software) splits controller faults from I/O faults with timestamps, which is the fastest way to see what actually happened first. Energy Pack capacitor modules replace batteries on newer CPUs; a failed Energy Pack means the controller loses its program on power loss and boots faulted.</p>
         <div class="refLabel">Safe response</div>
         <p>Record the fault tables before any power cycle; they are the event history.</p>
@@ -128,7 +132,7 @@
       </div>
       <div class="refEntry" id="plc-ovation">
         <div class="refTag">Emerson</div>
-        <h2>Emerson Ovation controllers</h2>
+        <h2>Emerson Ovation controllers<a class="refPermalink" href="#plc-ovation" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Ovation is a distributed control system: redundant controller pairs with automatic failover, remote I/O, and an integrated operator and historian environment. At solar plants it often serves as both SCADA and power plant controller. A failover event (backup takes over) is logged system wide and is usually the first clue in a plant behavior mystery. Controller and I/O health lives in the Ovation system status displays rather than on cabinet LEDs alone.</p>
         <div class="refLabel">Safe response</div>
         <p>Ovation configuration changes are engineering actions on the engineering workstation, under change control.</p>
@@ -137,7 +141,7 @@
       </div>
       <div class="refEntry" id="plc-siemenss7">
         <div class="refTag">Siemens</div>
-        <h2>Siemens S7</h2>
+        <h2>Siemens S7<a class="refPermalink" href="#plc-siemenss7" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>S7 controllers (S7 300, S7 400, S7 1200, S7 1500) appear at sites with European EPC heritage. LEDs: RUN green executing, STOP amber halted, SF or ERROR red for system fault, BF or a flashing bus LED for Profibus or Profinet communication faults. The diagnostic buffer, read with the TIA Portal or Step 7 software, holds a timestamped event history that survives most faults and is the S7 equivalent of a fault table.</p>
         <div class="refLabel">Safe response</div>
         <p>Same rule as every platform: observe and document; program and memory operations belong to controls engineering.</p>

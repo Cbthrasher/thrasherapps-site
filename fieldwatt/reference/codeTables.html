@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -73,13 +77,13 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
       </div>
       <div class="refEntry" id="table-690vs691">
-        <h2>NEC 690 versus 691</h2>
+        <h2>NEC 690 versus 691<a class="refPermalink" href="#table-690vs691" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Article 690 carries the prescriptive PV rules: string voltage calculation, conductor sizing, overcurrent protection, disconnects. Article 691 covers large scale PV electric supply stations, generally 5 megawatts and larger, not open to the public, under qualified supervision: there the plant is designed under engineering supervision and documented practices can replace some prescriptive 690 requirements. Utility scale technicians live under 691 plants designed by a PE, which is why the stamped drawings and site engineering documents always govern over generic calculations. FieldWatt calculators follow 690 math and flag when 691 likely applies.</p>
         <div class="refLabel">Verify against</div>
         <p>The authority having jurisdiction and the stamped drawings govern. Code cycles 2017, 2020, 2023, and 2026 differ in detail.</p>
       </div>
       <div class="refEntry" id="table-6907a">
-        <h2>NEC Table 690.7(A) voltage correction factors</h2>
+        <h2>NEC Table 690.7(A) voltage correction factors<a class="refPermalink" href="#table-6907a" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Multiply rated module Voc by the factor for the lowest expected ambient temperature. Applies to crystalline and multicrystalline silicon when the manufacturer temperature coefficient is not used.
 
 Ambient 24 to 20 C: 1.02
@@ -101,7 +105,7 @@ Using the module Voc temperature coefficient with the record low ambient gives a
         <p>Confirm the factor against the code year adopted at the site.</p>
       </div>
       <div class="refEntry" id="table-ambientcorrection">
-        <h2>Ambient temperature correction (90 C conductors, 30 C base)</h2>
+        <h2>Ambient temperature correction (90 C conductors, 30 C base)<a class="refPermalink" href="#table-ambientcorrection" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Multiply conductor ampacity by the factor for the design ambient.
 
 10 C or less: 1.15
@@ -124,7 +128,7 @@ Using the module Voc temperature coefficient with the record low ambient gives a
         <p>From the NEC ambient correction table for 90 C insulation on a 30 C base; verify against the adopted code year.</p>
       </div>
       <div class="refEntry" id="table-conduitfill">
-        <h2>Conduit fill adjustment factors</h2>
+        <h2>Conduit fill adjustment factors<a class="refPermalink" href="#table-conduitfill" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>When more than three current carrying conductors share a raceway or cable, multiply ampacity by:
 
 4 to 6 conductors: 0.80
@@ -139,7 +143,7 @@ On DC source circuits both polarities count as current carrying. Stacking many s
         <p>Verify against the adopted code year and any engineering supervision provisions under Article 691.</p>
       </div>
       <div class="refEntry" id="table-ampacity">
-        <h2>Conductor ampacity, 90 C column</h2>
+        <h2>Conductor ampacity, 90 C column<a class="refPermalink" href="#table-ampacity" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Base ampacities before correction and adjustment (90 C insulation such as PV wire, in raceway):
 
 Copper: 14 AWG 25 A, 12 AWG 30 A, 10 AWG 40 A, 8 AWG 55 A, 6 AWG 75 A, 4 AWG 95 A, 3 AWG 115 A, 2 AWG 130 A, 1 AWG 145 A, 1/0 170 A, 2/0 195 A, 3/0 225 A, 4/0 260 A, 250 kcmil 290 A, 300 kcmil 320 A, 350 kcmil 350 A, 400 kcmil 380 A, 500 kcmil 430 A, 600 kcmil 475 A, 750 kcmil 535 A, 1000 kcmil 615 A
@@ -149,7 +153,7 @@ Aluminum: 6 AWG 60 A, 4 AWG 75 A, 3 AWG 85 A, 2 AWG 100 A, 1 AWG 115 A, 1/0 135 
         <p>Small conductor overcurrent limits and terminal temperature ratings still apply; verify against the adopted code year.</p>
       </div>
       <div class="refEntry" id="table-resistance">
-        <h2>Conductor DC resistance (ohms per 1000 feet, 75 C)</h2>
+        <h2>Conductor DC resistance (ohms per 1000 feet, 75 C)<a class="refPermalink" href="#table-resistance" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Stranded conductors, for voltage drop estimates.
 
 Copper: 14 AWG 3.14, 12 AWG 1.98, 10 AWG 1.24, 8 AWG 0.778, 6 AWG 0.491, 4 AWG 0.308, 3 AWG 0.245, 2 AWG 0.194, 1 AWG 0.154, 1/0 0.122, 2/0 0.0967, 3/0 0.0766, 4/0 0.0608, 250 kcmil 0.0515, 300 kcmil 0.0429, 350 kcmil 0.0367, 400 kcmil 0.0321, 500 kcmil 0.0258, 600 kcmil 0.0214, 750 kcmil 0.0171, 1000 kcmil 0.0129
@@ -159,7 +163,7 @@ Aluminum: 12 AWG 3.25, 10 AWG 2.04, 8 AWG 1.28, 6 AWG 0.808, 4 AWG 0.508, 2 AWG 
         <p>From NEC Chapter 9 Table 8 values; the Voltage Drop calculator uses these.</p>
       </div>
       <div class="refEntry" id="table-iec62446">
-        <h2>IEC 62446 1 insulation resistance minimums</h2>
+        <h2>IEC 62446 1 insulation resistance minimums<a class="refPermalink" href="#table-iec62446" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Minimum insulation resistance by system voltage, with the matching test voltage:
 
 System voltage under 120 V: test at 250 V, minimum 0.5 megohm
@@ -171,7 +175,7 @@ These are pass or fail floors, not health targets: dry healthy utility scale cir
         <p>From the IEC 62446 1 test method table; site O&amp;M agreements may impose stricter targets.</p>
       </div>
       <div class="refEntry" id="table-torque">
-        <h2>Torque reference</h2>
+        <h2>Torque reference<a class="refPermalink" href="#table-torque" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The manufacturer label on the enclosure or the lug is always the authority. Use it whenever it is legible.
 
 Correct the common mistake first: tightening torque is set by the DRIVE SIZE, not by the conductor size. UL 486A and 486B key their tables to the screw, measured as the socket size across the flats for a hex or Allen drive, or the slot dimensions for a slotted screw. Two lugs sized for the same conductor can call for very different torque if they take different screws, so measure the drive rather than inferring a value from the wire.

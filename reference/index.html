@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fault Code Search — free field reference for technicians | ThrasherApps</title>
+  <meta name="description" content="Search over a thousand fault and alarm codes across fuel dispensers, tank gauges, solar inverters, battery storage, EV chargers and fire alarm panels. Free, no account, links straight to the code." />
+  <link rel="canonical" href="https://thrasherapps.com/reference/" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <meta property="og:title" content="Fault Code Search — free field reference for technicians" />
+  <meta property="og:description" content="Over a thousand fault and alarm codes across six trades. Free, no account, no app required." />
+  <meta property="og:url" content="https://thrasherapps.com/reference/" />
+  <style>
+    .rsWrap{max-width:60rem}
+    .rsBox{position:sticky;top:0;background:#fff;padding:1rem 0;z-index:5;border-bottom:1px solid #E5E7EB}
+    .rsInput{width:100%;font-size:1.15rem;padding:.85rem 1rem;border:2px solid #CBD5E1;border-radius:10px}
+    .rsInput:focus{outline:none;border-color:#2563EB}
+    .rsMeta{font-size:.88em;color:#64748B;margin:.6rem 0 0}
+    .rsHit{display:block;padding:.9rem 1rem;border:1px solid #E5E7EB;border-radius:10px;
+      margin:.6rem 0;text-decoration:none;color:inherit;background:#fff}
+    .rsHit:hover{border-color:#2563EB;background:#F8FAFF}
+    .rsCode{font-weight:700;font-size:1.05rem;color:#0F172A}
+    .rsWhere{font-size:.8em;color:#2563EB;margin-top:.15rem}
+    .rsSnip{font-size:.9em;color:#475569;margin-top:.35rem}
+    mark{background:#FEF08A;padding:0 .1em}
+    .rsTrades{display:flex;flex-wrap:wrap;gap:.4rem;margin:.8rem 0 0}
+    .rsTrade{font-size:.8em;padding:.3rem .7rem;border:1px solid #CBD5E1;border-radius:999px;
+      background:#fff;cursor:pointer}
+    .rsTrade[aria-pressed="true"]{background:#0F172A;color:#fff;border-color:#0F172A}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/ai.html">AI Solutions</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container rsWrap">
+      <h1 class="h2">Fault code search</h1>
+      <p class="lead">Type the code, the alarm text, or what the equipment is doing. Every result links
+      straight to that one code. Free, no account, and nothing to install.</p>
+
+      <div class="rsBox">
+        <input class="rsInput" id="q" type="search" autocomplete="off"
+               placeholder="TLS-350 probe out, E7, ground fault, 5602, sudden loss..." />
+        <div class="rsTrades" id="trades"></div>
+        <p class="rsMeta" id="meta">Loading the reference...</p>
+      </div>
+
+      <div id="results"></div>
+
+      <p class="mt-4" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute
+      for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer
+      manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>&copy; 2026 ThrasherApps.com &mdash; Built by Chris Thrasher</div>
+      <div class="mt-2">
+        <a href="mailto:cbthrasher2020@gmail.com">Email</a> &middot;
+        <a href="/privacy.html">Privacy</a> &middot;
+        <a href="/apps.html">Apps</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function () {
+  var DATA = [], trade = null;
+  var q = document.getElementById('q'),
+      out = document.getElementById('results'),
+      meta = document.getElementById('meta'),
+      tradesEl = document.getElementById('trades');
+
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function mark(text, terms) {
+    var s = esc(text);
+    terms.forEach(function (t) {
+      if (t.length < 2) return;
+      s = s.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>');
+    });
+    return s;
+  }
+
+  function render() {
+    var raw = q.value.trim();
+    var terms = raw.toLowerCase().split(/\s+/).filter(Boolean);
+    var pool = trade ? DATA.filter(function (d) { return d.a === trade; }) : DATA;
+
+    if (!terms.length) {
+      out.innerHTML = '';
+      meta.textContent = pool.length.toLocaleString() + ' codes ready. Start typing.';
+      return;
+    }
+
+    var hits = pool.filter(function (d) {
+      var hay = (d.t + ' ' + d.p + ' ' + d.s).toLowerCase();
+      return terms.every(function (t) { return hay.indexOf(t) !== -1; });
+    }).sort(function (a, b) {
+      var at = a.t.toLowerCase(), bt = b.t.toLowerCase();
+      var as = terms.some(function (t) { return at.indexOf(t) === 0; }) ? 0 : 1;
+      var bs = terms.some(function (t) { return bt.indexOf(t) === 0; }) ? 0 : 1;
+      return as - bs || at.length - bt.length;
+    });
+
+    meta.textContent = hits.length
+      ? hits.length.toLocaleString() + ' match' + (hits.length === 1 ? '' : 'es')
+      : 'Nothing matched. Try the code on its own, or a word from the alarm text.';
+
+    out.innerHTML = hits.slice(0, 80).map(function (d) {
+      return '<a class="rsHit" href="' + esc(d.u) + '">' +
+             '<div class="rsCode">' + mark(d.t, terms) + '</div>' +
+             '<div class="rsWhere">' + esc(d.p) + ' &middot; ' + esc(d.a) + '</div>' +
+             '<div class="rsSnip">' + mark(d.s, terms) + '</div></a>';
+    }).join('');
+  }
+
+  fetch('/assets/reference-index.json').then(function (r) { return r.json(); }).then(function (j) {
+    DATA = j;
+    var seen = [];
+    j.forEach(function (d) { if (seen.indexOf(d.a) === -1) seen.push(d.a); });
+    seen.sort().forEach(function (a) {
+      var b = document.createElement('button');
+      b.className = 'rsTrade'; b.textContent = a; b.setAttribute('aria-pressed', 'false');
+      b.onclick = function () {
+        trade = (trade === a) ? null : a;
+        [].forEach.call(tradesEl.children, function (c) {
+          c.setAttribute('aria-pressed', String(c.textContent === trade)); });
+        render();
+      };
+      tradesEl.appendChild(b);
+    });
+    render();
+    var hash = decodeURIComponent(location.hash.slice(1));
+    if (hash) { q.value = hash; render(); }
+  }).catch(function () { meta.textContent = 'The reference could not be loaded. Please try again.'; });
+
+  q.addEventListener('input', render);
+})();
+</script>
+</body>
+</html>

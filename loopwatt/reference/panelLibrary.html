@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -121,7 +125,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6790129179">Get LoopWatt on the App Store</a>
       </div>
       <div class="refEntry" id="notifier">
-        <h2>Notifier</h2>
+        <h2>Notifier<a class="refPermalink" href="#notifier" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>Device troubles report by loop and address with a point label</p>
         <p>Invalid reply usually means a device answered incorrectly: check for duplicate addresses or a swapped device type</p>
@@ -135,7 +139,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-noans">
         <div class="refTag">Notifier</div>
-        <h2>NO ANS</h2>
+        <h2>NO ANS<a class="refPermalink" href="#notifier-notifier-noans" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The device, module or detector, is not answering the panel&#x27;s poll. The panel is calling that address and nothing is coming back.</p>
@@ -150,7 +154,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-invrep">
         <div class="refTag">Notifier</div>
-        <h2>INVREP</h2>
+        <h2>INVREP<a class="refPermalink" href="#notifier-notifier-invrep" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The device answered, but with a reply the panel did not expect. Something is on the loop talking out of turn or answering wrongly.</p>
@@ -164,7 +168,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-dirty1">
         <div class="refTag">Notifier</div>
-        <h2>DIRTY 1</h2>
+        <h2>DIRTY 1<a class="refPermalink" href="#notifier-notifier-dirty1" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The detector is dirty and needs cleaning. This is an early warning, not a failure, and the panel is telling you before it becomes a false alarm.</p>
@@ -177,7 +181,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-dirty2">
         <div class="refTag">Notifier</div>
-        <h2>DIRTY 2</h2>
+        <h2>DIRTY 2<a class="refPermalink" href="#notifier-notifier-dirty2" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The detector requires cleaning immediately and is a false alarm risk. Notifier escalates to this when the compensation has run out of headroom.</p>
@@ -191,7 +195,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-open">
         <div class="refTag">Notifier</div>
-        <h2>OPEN</h2>
+        <h2>OPEN<a class="refPermalink" href="#notifier-notifier-open" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A module has an open circuit on its supervised wiring. The supervision current cannot complete its path on that module&#x27;s circuit.</p>
@@ -205,7 +209,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-short">
         <div class="refTag">Notifier</div>
-        <h2>SHORT</h2>
+        <h2>SHORT<a class="refPermalink" href="#notifier-notifier-short" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A module has a short circuit on its supervised wiring. On a notification circuit this means the appliances will not sound when called.</p>
@@ -219,7 +223,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-gndflt">
         <div class="refTag">Notifier</div>
-        <h2>GNDFLT</h2>
+        <h2>GNDFLT<a class="refPermalink" href="#notifier-notifier-gndflt" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A ground fault on the main or auxiliary power supply. Fire alarm circuits use two conductors with no dedicated ground, so a conductor has found an unintended path to a grounded surface.</p>
@@ -234,7 +238,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-disabl">
         <div class="refTag">Notifier</div>
-        <h2>DISABL</h2>
+        <h2>DISABL<a class="refPermalink" href="#notifier-notifier-disabl" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The point has been disabled. Somebody took it out of service deliberately, and it is not protecting anything while it stays that way.</p>
@@ -247,7 +251,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-adrflt">
         <div class="refTag">Notifier</div>
-        <h2>ADRFLT</h2>
+        <h2>ADRFLT<a class="refPermalink" href="#notifier-notifier-adrflt" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>An address fault: a detector or sounder base address mismatch, or an incorrect addressable power supply address.</p>
@@ -261,7 +265,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-psfail">
         <div class="refTag">Notifier</div>
-        <h2>PSFAIL</h2>
+        <h2>PSFAIL<a class="refPermalink" href="#notifier-notifier-psfail" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The power supply is not working properly. Anything it feeds is at risk of dropping out.</p>
@@ -275,7 +279,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-chgflt">
         <div class="refTag">Notifier</div>
-        <h2>CHGFLT</h2>
+        <h2>CHGFLT<a class="refPermalink" href="#notifier-notifier-chgflt" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The power supply&#x27;s battery charger is not working properly. The batteries will not be maintained, so the system&#x27;s standby capability is degrading even while everything looks normal.</p>
@@ -289,7 +293,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-lobat">
         <div class="refTag">Notifier</div>
-        <h2>LO BAT</h2>
+        <h2>LO BAT<a class="refPermalink" href="#notifier-notifier-lobat" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The auxiliary power supply&#x27;s battery charge is low. Standby time is reduced or gone.</p>
@@ -303,7 +307,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-hibat">
         <div class="refTag">Notifier</div>
-        <h2>HI BAT</h2>
+        <h2>HI BAT<a class="refPermalink" href="#notifier-notifier-hibat" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The auxiliary power supply&#x27;s battery charge is too high. Overcharging cooks batteries and shortens their life considerably.</p>
@@ -316,7 +320,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-prloss">
         <div class="refTag">Notifier</div>
-        <h2>PRLOSS</h2>
+        <h2>PRLOSS<a class="refPermalink" href="#notifier-notifier-prloss" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>An output module or sounder base has lost its power. The device is present on the loop but has no power to do its job.</p>
@@ -330,7 +334,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-loval">
         <div class="refTag">Notifier</div>
-        <h2>LO VAL</h2>
+        <h2>LO VAL<a class="refPermalink" href="#notifier-notifier-loval" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The detector chamber reading is too low, which Notifier treats as a detector malfunction rather than a clean detector.</p>
@@ -343,7 +347,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-block">
         <div class="refTag">Notifier</div>
-        <h2>BLOCK</h2>
+        <h2>BLOCK<a class="refPermalink" href="#notifier-notifier-block" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>Something has come between a beam detector and its reflector. Beam detectors are line of sight devices and anything crossing the path breaks them.</p>
@@ -357,7 +361,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-coexp">
         <div class="refTag">Notifier</div>
-        <h2>CO EXP</h2>
+        <h2>CO EXP<a class="refPermalink" href="#notifier-notifier-coexp" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The carbon monoxide sensing element in a detector has reached its expiration date. CO elements have a fixed service life and stop being listed once past it.</p>
@@ -370,7 +374,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-lotemp">
         <div class="refTag">Notifier</div>
-        <h2>LO TEMP</h2>
+        <h2>LO TEMP<a class="refPermalink" href="#notifier-notifier-lotemp" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A Heat or Acclimate detector is reading a temperature below its rated range. Common in unheated spaces in winter.</p>
@@ -383,7 +387,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-acfailure">
         <div class="refTag">Notifier</div>
-        <h2>AC FAILURE</h2>
+        <h2>AC FAILURE<a class="refPermalink" href="#notifier-notifier-acfailure" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>An auxiliary power supply has lost its AC feed and is running on battery. The clock is now running on standby capacity.</p>
@@ -397,7 +401,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-sysacfail">
         <div class="refTag">Notifier</div>
-        <h2>AC FAIL</h2>
+        <h2>AC FAIL<a class="refPermalink" href="#notifier-notifier-sysacfail" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The main power supply has lost AC. The panel is running on battery and standby time is finite.</p>
@@ -411,7 +415,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-sysbattery">
         <div class="refTag">Notifier</div>
-        <h2>BATTERY</h2>
+        <h2>BATTERY<a class="refPermalink" href="#notifier-notifier-sysbattery" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The panel reports the battery charge as either excessive or insufficient. It is one message covering both ends.</p>
@@ -425,7 +429,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-syschargerfail">
         <div class="refTag">Notifier</div>
-        <h2>CHARGER FAIL</h2>
+        <h2>CHARGER FAIL<a class="refPermalink" href="#notifier-notifier-syschargerfail" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The main power supply&#x27;s battery charger has malfunctioned. The panel will run normally on AC and fail when it matters.</p>
@@ -439,7 +443,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-sysannunnoans">
         <div class="refTag">Notifier</div>
-        <h2>ANNUN x NO ANSWER</h2>
+        <h2>ANNUN x NO ANSWER<a class="refPermalink" href="#notifier-notifier-sysannunnoans" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The annunciator at address x is not responding. Remote annunciators are how responding fire crews read the system, so this matters beyond the panel room.</p>
@@ -454,7 +458,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-sysauxtrouble">
         <div class="refTag">Notifier</div>
-        <h2>AUXILIARY TROUBLE</h2>
+        <h2>AUXILIARY TROUBLE<a class="refPermalink" href="#notifier-notifier-sysauxtrouble" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>A device connected at J6 is malfunctioning or its cable is disconnected.</p>
@@ -467,7 +471,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-sysbatbackupram">
         <div class="refTag">Notifier</div>
-        <h2>BAT.BACKUP RAM</h2>
+        <h2>BAT.BACKUP RAM<a class="refPermalink" href="#notifier-notifier-sysbatbackupram" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The RAM battery backup is low. That battery preserves the panel&#x27;s programming and history when power is removed.</p>
@@ -480,7 +484,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-syscorruptlogic">
         <div class="refTag">Notifier</div>
-        <h2>CORRUPT LOGIC EQUAT</h2>
+        <h2>CORRUPT LOGIC EQUAT<a class="refPermalink" href="#notifier-notifier-syscorruptlogic" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The database holding the panel&#x27;s logic equations is corrupt. Logic equations drive cross zoning, releasing and sequence of operation, so this is not cosmetic.</p>
@@ -494,7 +498,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-sysbasicwalktest">
         <div class="refTag">Notifier</div>
-        <h2>BASIC WALK TEST</h2>
+        <h2>BASIC WALK TEST<a class="refPermalink" href="#notifier-notifier-sysbasicwalktest" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>A basic walk test is in progress. This is a status message rather than a fault, but the system is not providing normal protection while it runs.</p>
@@ -507,7 +511,7 @@
       </div>
       <div class="refEntry" id="notifier-notifier-sysdrill">
         <div class="refTag">Notifier</div>
-        <h2>DRILL ACTIVATED</h2>
+        <h2>DRILL ACTIVATED<a class="refPermalink" href="#notifier-notifier-sysdrill" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>A drill has been activated. Notification appliances are sounding by command rather than because of an alarm.</p>
@@ -519,7 +523,7 @@
         <p>Record the drill, since evacuation drills carry their own documentation requirements</p>
       </div>
       <div class="refEntry" id="simplex">
-        <h2>Simplex</h2>
+        <h2>Simplex<a class="refPermalink" href="#simplex" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>TrueAlarm sensors report almost dirty and dirty service conditions before nuisance level</p>
         <p>Card level troubles (loop card, NAC card) list separately from point troubles</p>
@@ -533,7 +537,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-noanswer">
         <div class="refTag">Simplex</div>
-        <h2>No answer</h2>
+        <h2>No answer<a class="refPermalink" href="#simplex-simplex-noanswer" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The device is not responding on its channel. The panel is polling that address and nothing comes back.</p>
@@ -547,7 +551,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-duplicate">
         <div class="refTag">Simplex</div>
-        <h2>Duplicate device</h2>
+        <h2>Duplicate device<a class="refPermalink" href="#simplex-simplex-duplicate" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>Two devices on the channel have the same address. Both answer the same poll and the panel cannot tell them apart.</p>
@@ -560,7 +564,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-wrongdevice">
         <div class="refTag">Simplex</div>
-        <h2>Wrong device</h2>
+        <h2>Wrong device<a class="refPermalink" href="#simplex-simplex-wrongdevice" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The channel detects a device programmed as the wrong device type. The panel expects one thing and something else answered.</p>
@@ -573,7 +577,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-extradevice">
         <div class="refTag">Simplex</div>
-        <h2>Extra Device</h2>
+        <h2>Extra Device<a class="refPermalink" href="#simplex-simplex-extradevice" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>One or more devices are present on the channel that have not been configured for it. Something is answering that the programming does not know about.</p>
@@ -586,7 +590,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-shortcircuit">
         <div class="refTag">Simplex</div>
-        <h2>Short Circuit</h2>
+        <h2>Short Circuit<a class="refPermalink" href="#simplex-simplex-shortcircuit" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A short is detected on the channel. Simplex clears this automatically once the short is removed, which makes it useful for confirming a repair.</p>
@@ -600,7 +604,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-earthfault">
         <div class="refTag">Simplex</div>
-        <h2>Earth fault</h2>
+        <h2>Earth fault<a class="refPermalink" href="#simplex-simplex-earthfault" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A positive or negative earth fault on the channel. Fire alarm wiring has no dedicated ground, so a conductor has found an unintended path to a grounded surface.</p>
@@ -615,7 +619,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-earthfaultsearch">
         <div class="refTag">Simplex</div>
-        <h2>Earth Fault Search</h2>
+        <h2>Earth Fault Search<a class="refPermalink" href="#simplex-simplex-earthfaultsearch" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The earth fault search diagnostic is running. This is the panel hunting the fault for you, and system processes are suspended while it does.</p>
@@ -628,7 +632,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-commsfailure">
         <div class="refTag">Simplex</div>
-        <h2>Communications Failure</h2>
+        <h2>Communications Failure<a class="refPermalink" href="#simplex-simplex-commsfailure" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>None of the devices configured on the channel are communicating. The whole channel is dark rather than one device.</p>
@@ -642,7 +646,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-controllerfailure">
         <div class="refTag">Simplex</div>
-        <h2>Controller failure</h2>
+        <h2>Controller failure<a class="refPermalink" href="#simplex-simplex-controllerfailure" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The channel cannot detect its controller. Everything on that channel is unavailable.</p>
@@ -656,7 +660,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-mainovercurrent">
         <div class="refTag">Simplex</div>
-        <h2>Main Overcurrent</h2>
+        <h2>Main Overcurrent<a class="refPermalink" href="#simplex-simplex-mainovercurrent" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The IDNAC card is drawing more current than it should. Simplex directs you to check for faults on the circuit.</p>
@@ -670,7 +674,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-channelovercurrent">
         <div class="refTag">Simplex</div>
-        <h2>Channel Overcurrent</h2>
+        <h2>Channel Overcurrent<a class="refPermalink" href="#simplex-simplex-channelovercurrent" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>A single signaling line circuit is drawing above its rating.</p>
@@ -684,7 +688,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-idnacsigunpowered">
         <div class="refTag">Simplex</div>
-        <h2>IDNAC Sig Unpowered</h2>
+        <h2>IDNAC Sig Unpowered<a class="refPermalink" href="#simplex-simplex-idnacsigunpowered" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The IDNAC card is not receiving signal power. Simplex is explicit about the fix: correct the overcurrent, then perform a hardware reset to restore power.</p>
@@ -697,7 +701,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-idnacpowertrouble">
         <div class="refTag">Simplex</div>
-        <h2>IDNAC Power Trouble</h2>
+        <h2>IDNAC Power Trouble<a class="refPermalink" href="#simplex-simplex-idnacpowertrouble" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>System</p>
         <p>The IDNAC card has been damaged, affecting its ability to communicate and power field appliances. Simplex states plainly that the card must be replaced.</p>
@@ -710,7 +714,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-dirty">
         <div class="refTag">Simplex</div>
-        <h2>Smoke Detector Dirty</h2>
+        <h2>Smoke Detector Dirty<a class="refPermalink" href="#simplex-simplex-dirty" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A TrueAlarm sensor&#x27;s average value has reached the dirty threshold. TrueAlarm compensates for gradual contamination and reports when the compensation runs low.</p>
@@ -723,7 +727,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-excessivelydirty">
         <div class="refTag">Simplex</div>
-        <h2>Smoke Detector Excessively Dirty</h2>
+        <h2>Smoke Detector Excessively Dirty<a class="refPermalink" href="#simplex-simplex-excessivelydirty" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>The sensor&#x27;s average value has reached the higher threshold. Compensation has run out and the sensor is now a false alarm risk.</p>
@@ -736,7 +740,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-almostdirty">
         <div class="refTag">Simplex</div>
-        <h2>Almost Dirty</h2>
+        <h2>Almost Dirty<a class="refPermalink" href="#simplex-simplex-almostdirty" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A TrueAlarm sensor close to the dirty threshold can be made to report as though it were already dirty. This exists so you can see what is coming while you are already on site.</p>
@@ -749,7 +753,7 @@
       </div>
       <div class="refEntry" id="simplex-simplex-expiredtrouble">
         <div class="refTag">Simplex</div>
-        <h2>Expired Trouble</h2>
+        <h2>Expired Trouble<a class="refPermalink" href="#simplex-simplex-expiredtrouble" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Scope</div>
         <p>Device</p>
         <p>A CO sensor has reached its expiration. CO sensing elements have a fixed service life and are not listed past it.</p>
@@ -760,7 +764,7 @@
         <p>Test the replacement per the manufacturer procedure and confirm the point returns to normal</p>
       </div>
       <div class="refEntry" id="est">
-        <h2>EST and Edwards</h2>
+        <h2>EST and Edwards<a class="refPermalink" href="#est" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>Signature devices self diagnose; dirty and internal fault states report per device</p>
         <p>Map faults occur when the wired layout no longer matches the learned circuit map: look for added, removed, or rewired devices</p>
@@ -773,7 +777,7 @@
         <p>EST3, EST4, iO series; Signature series intelligent devices.</p>
       </div>
       <div class="refEntry" id="silentknight">
-        <h2>Silent Knight</h2>
+        <h2>Silent Knight<a class="refPermalink" href="#silentknight" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>Loop troubles report by SLC and point; JumpStart auto programming can mask address mistakes, verify point labels</p>
         <p>Ground fault indicated at the main board; isolate by unplugging field circuits</p>
@@ -785,7 +789,7 @@
         <p>6000 and IFP series addressable; SK and SD device protocols; part of Honeywell.</p>
       </div>
       <div class="refEntry" id="firelite">
-        <h2>Fire Lite</h2>
+        <h2>Fire Lite<a class="refPermalink" href="#firelite" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>Addressable troubles list address and type mismatch separately: type mismatch means the wrong device model answered at that address</p>
         <p>NAC troubles per circuit; check the EOL value first (4.7k typical)</p>
@@ -797,7 +801,7 @@
         <p>MS series conventional, ES and MS addressable (LiteSpeed protocol); Honeywell family, shares concepts with Notifier.</p>
       </div>
       <div class="refEntry" id="honeywell">
-        <h2>Honeywell</h2>
+        <h2>Honeywell<a class="refPermalink" href="#honeywell" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>Identify the actual sub brand and model first; concepts follow the sub brand&#x27;s line</p>
         <p>Shared device protocols exist across sub brands but devices are usually brand locked</p>
@@ -807,7 +811,7 @@
         <p>Parent of Notifier, Silent Knight, Fire Lite, Gamewell FCI; also Vista and commercial combo panels.</p>
       </div>
       <div class="refEntry" id="siemens">
-        <h2>Siemens</h2>
+        <h2>Siemens<a class="refPermalink" href="#siemens" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>Device events carry a detailed fault reason (no answer, wrong type, contamination level)</p>
         <p>ASA detectors report application specific sensitivity states; contamination reporting is built in</p>
@@ -818,7 +822,7 @@
         <p>Cerberus PRO and Desigo Fire (FC and FV series), legacy MXL and XLS; FDnet and HNET device buses.</p>
       </div>
       <div class="refEntry" id="potter">
-        <h2>Potter</h2>
+        <h2>Potter<a class="refPermalink" href="#potter" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>EOL 5.1k on many circuits, different from the 4.7k many techs assume</p>
         <p>SLC troubles report per point; check polarity on retrofits, some devices are polarity sensitive</p>
@@ -829,7 +833,7 @@
         <p>PFC and IPA addressable series; AFC conventional; also known for sprinkler supervision products.</p>
       </div>
       <div class="refEntry" id="gamewellfci">
-        <h2>Gamewell FCI</h2>
+        <h2>Gamewell FCI<a class="refPermalink" href="#gamewellfci" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>E3 networks distribute intelligence; a network trouble can mimic many point troubles, check network nodes first</p>
         <p>Velociti devices share behavior with Notifier FlashScan generation</p>
@@ -840,7 +844,7 @@
         <p>E3 Series, 7100 legacy; S3 Series; Honeywell family, Velociti and CLIP protocols.</p>
       </div>
       <div class="refEntry" id="mircom">
-        <h2>Mircom</h2>
+        <h2>Mircom<a class="refPermalink" href="#mircom" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>Dual language displays common; troubles list per loop and address</p>
         <p>EOL 3.9k typical; verify per model</p>
@@ -851,7 +855,7 @@
         <p>FX series addressable, FA conventional; common in Canada, uses AP and CLIP compatible protocols on some lines.</p>
       </div>
       <div class="refEntry" id="bosch">
-        <h2>Bosch</h2>
+        <h2>Bosch<a class="refPermalink" href="#bosch" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <div class="refLabel">Trouble notes</div>
         <p>LSN bus faults report per segment; loop topology matters (T taps limited)</p>
         <p>EOL values differ across product generations; check the manual before condemning a circuit</p>

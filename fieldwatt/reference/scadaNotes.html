@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -75,47 +79,47 @@
       </div>
       <div class="refEntry" id="scada-ignition">
         <div class="refTag">Ignition</div>
-        <h2>Ignition platform overview</h2>
+        <h2>Ignition platform overview<a class="refPermalink" href="#scada-ignition" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Ignition by Inductive Automation is the dominant SCADA platform at US solar plants. The architecture in one breath: a central gateway server runs device connections (drivers for Modbus, DNP3, Allen Bradley, OPC UA and more), which feed tags, which feed the historian and the operator screens (Vision or Perspective). Everything a technician sees on a screen traces back through tag, then device connection, then network, then field device; troubleshoot in that order from the gateway web page (Status section shows device connection health and tag counts).</p>
         <div class="refLabel">Verify against</div>
         <p>Site Ignition versions and module sets vary; verify against the site system documentation.</p>
       </div>
       <div class="refEntry" id="scada-tags">
         <div class="refTag">Ignition</div>
-        <h2>Tags and tag quality</h2>
+        <h2>Tags and tag quality<a class="refPermalink" href="#scada-tags" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Every Ignition tag carries a value, a timestamp, and a quality. Good quality means the driver read the point recently. Bad or Bad_NotConnected means the device connection is down. Stale means the subscription stopped updating. Uncertain often means the device answered with a flagged or substituted value. Quality propagates: one dead device connection turns every tag under it bad at the same moment, which is the signature to look for. A single bad tag among good siblings on the same device points at that one register or address, not at the network.</p>
         <div class="refLabel">Verify against</div>
         <p>Quality names vary slightly across Ignition versions.</p>
       </div>
       <div class="refEntry" id="scada-opcua">
         <div class="refTag">Ignition</div>
-        <h2>OPC UA connections</h2>
+        <h2>OPC UA connections<a class="refPermalink" href="#scada-opcua" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Ignition talks to many PLCs through OPC UA, either its own internal server fronting the native drivers or an external OPC UA server. A faulted OPC UA connection shows every downstream tag bad while the underlying PLC is fine; the gateway Status page distinguishes the OPC connection state from the device state. Certificate expiry is the classic silent killer: OPC UA connections authenticate with certificates that expire years after commissioning, taking the connection down on a seemingly random day.</p>
         <div class="refLabel">Verify against</div>
         <p>Check OPC UA certificate validity dates during annual maintenance.</p>
       </div>
       <div class="refEntry" id="scada-historian">
         <div class="refTag">Ignition</div>
-        <h2>Historian</h2>
+        <h2>Historian<a class="refPermalink" href="#scada-historian" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The tag historian stores tag values in a database for trends and reports. Gaps in trends mean either the tag went bad quality (comms problem) or the historian pipeline stalled (database disk full, database connection down, store and forward buffering). Store and forward matters in the field: when the database link drops, the gateway buffers history and backfills later, so a trend that fills itself in hours later indicates a database side problem, not a field problem.</p>
         <div class="refLabel">Verify against</div>
         <p>Database disk space is the first check for plant wide historian gaps.</p>
       </div>
       <div class="refEntry" id="scada-stalequality">
-        <h2>Why a tag shows stale or bad quality</h2>
+        <h2>Why a tag shows stale or bad quality<a class="refPermalink" href="#scada-stalequality" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A stale or bad tag is almost never the SCADA server itself; it is the messenger. The chain, from most to least likely: the field device stopped answering (power, fault, address change); the network path broke (fiber, media converter, switch); the polling configuration flags a slow but healthy device as timed out; the device connection in SCADA is misconfigured after a device swap; or the tag itself points at a register that no longer exists in new firmware. Correlation is the diagnostic tool: all tags on one device bad means the device or its path; all devices on one segment bad means network; scattered single tags bad means register map drift.</p>
         <div class="refLabel">Verify against</div>
         <p>Check the timestamp of last good value; it usually marks exactly when the field event happened.</p>
       </div>
       <div class="refEntry" id="scada-ovation">
         <div class="refTag">Emerson</div>
-        <h2>Ovation as SCADA and plant controller</h2>
+        <h2>Ovation as SCADA and plant controller<a class="refPermalink" href="#scada-ovation" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>At utility owned plants, Emerson Ovation often runs the whole control room: operator graphics, historian, alarm system, and the power plant controller logic in the same redundant DCS. Point quality and alarm behavior follow DCS conventions rather than Ignition conventions, and configuration lives with the site engineering group. For a field technician the working interface is usually the Ovation operator station: point detail displays show quality, scan status, and the controller that owns each point.</p>
         <div class="refLabel">Verify against</div>
         <p>Ovation configurations are site specific; work through the site engineering owner.</p>
       </div>
       <div class="refEntry" id="scada-independentconfirmation">
-        <h2>Independent confirmation: proving a device is really down</h2>
+        <h2>Independent confirmation: proving a device is really down<a class="refPermalink" href="#scada-independentconfirmation" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Read the scope note in Real fault or comms artifact first: this matters for autonomous devices, far less for a device that cannot act without its controller.
 
 The flaw in judging a device by its own telemetry is circular. When the channel is down, the thing reporting that the device is fine is the same thing that is broken.
@@ -139,7 +143,7 @@ Protocol level counters. Most protocols expose retry, timeout, and frame error c
         <p>Thresholds and dwell times vary by utility, vendor, and I/O server; confirm the values configured on your own system. Contributed by substation practitioners.</p>
       </div>
       <div class="refEntry" id="scada-switchsidechecks">
-        <h2>Switch side checks: is the path down, or the device?</h2>
+        <h2>Switch side checks: is the path down, or the device?<a class="refPermalink" href="#scada-switchsidechecks" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Most of the evidence in a device offline call sits on the network equipment, not on the device, and most of it can be read without leaving the control room.
 
 Pathing, before anything else. Look at the box the device hangs off and ask whether everything downstream of it went quiet at the same moment. If every device on that switch, media converter or radio dropped together, the device is almost certainly fine and the shared path is not. One device quiet while its neighbours on the same switch keep reporting points the other way. This check costs nothing, takes seconds, and reorders the entire job.
@@ -159,7 +163,7 @@ CUTTING POWER TO FORCE CERTAINTY, and the limit that decides whether it works. R
         <p>Switch management access, log detail and counter names vary by vendor and by site policy. On many plants the network equipment is not yours to log into; follow the site cyber security procedures and ask the person who owns it.</p>
       </div>
       <div class="refEntry" id="scada-realvscomms">
-        <h2>Real fault or comms artifact? Scope it first</h2>
+        <h2>Real fault or comms artifact? Scope it first<a class="refPermalink" href="#scada-realvscomms" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>SCOPE THIS FIRST. The distinction only earns its keep for AUTONOMOUS devices: equipment that keeps doing its job whether or not anything is talking to it. A central inverter, a tracker controller, a protective relay and a revenue meter all carry on regardless of who is listening, so down versus merely unreachable is a real difference and it changes what you do about it.
 
 For a device that cannot act without its controller, the question largely dissolves. A VFD taking speed commands from a PLC is the common example: with the command path gone it is not doing useful work either way, and a correctly configured drive should already have initiated its own reaction to loss of command, whether that is a controlled stop, a hold, or a fail safe state. If it did not, that is the finding. Practitioners have challenged this entire framing on exactly that ground and they are right to, so establish which kind of device you are looking at before spending any effort on the rest.

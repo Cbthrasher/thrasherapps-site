@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -89,7 +93,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6788584092">Get PlugWatt on the App Store</a>
       </div>
       <div class="refEntry" id="chargepoint">
-        <h2>ChargePoint</h2>
+        <h2>ChargePoint<a class="refPermalink" href="#chargepoint" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Large public and fleet network; Express series DC fast chargers plus widespread Level 2.</p>
         <div class="refLabel">Models</div>
         <p>name: Express 250. powerRange: 62.5 kW per cabinet, paired to 125 kW. notes: Modular Power Blocks feed dispensers; power sharing across paired units.</p>
@@ -101,7 +105,7 @@
         <p>Network side management runs through ChargePoint cloud; offline behavior follows operator policy</p>
       </div>
       <div class="refEntry" id="abb">
-        <h2>ABB</h2>
+        <h2>ABB<a class="refPermalink" href="#abb" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Terra family DC fast chargers from 24 kW wallboxes to 350 kW high power cabinets.</p>
         <div class="refLabel">Models</div>
         <p>name: Terra 54. powerRange: 50 kW. notes: Workhorse corridor unit; CCS plus CHAdeMO variants common.</p>
@@ -114,7 +118,7 @@
       </div>
       <div class="refEntry" id="abb-0x0102">
         <div class="refTag">ABB · 0x0102</div>
-        <h2>0x0102 — Residual current error, DC 6 mA</h2>
+        <h2>0x0102 — Residual current error, DC 6 mA<a class="refPermalink" href="#abb-0x0102" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The charger detected DC residual current leaking to ground above 6 mA. On a Level 2 unit this is the DC leakage detection required so that an upstream AC residual current device is not blinded by DC.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Treat it as a real leakage path until proven otherwise rather than resetting to see whether it clears</p>
@@ -126,7 +130,7 @@
       </div>
       <div class="refEntry" id="abb-0x0104">
         <div class="refTag">ABB · 0x0104</div>
-        <h2>0x0104 — Residual current error, AC 30 mA</h2>
+        <h2>0x0104 — Residual current error, AC 30 mA<a class="refPermalink" href="#abb-0x0104" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>AC residual current above 30 mA leaking to ground. Same family as the DC detection but on the AC side, and the threshold where personnel protection acts.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Treat as a live earth fault and do not reset repeatedly</p>
@@ -138,7 +142,7 @@
       </div>
       <div class="refEntry" id="abb-0x0106">
         <div class="refTag">ABB · 0x0106</div>
-        <h2>0x0106 — Residual current monitor self test error</h2>
+        <h2>0x0106 — Residual current monitor self test error<a class="refPermalink" href="#abb-0x0106" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The residual current monitor failed its own self test, so the protection cannot be relied on. The unit is reporting that its safety device is not trustworthy.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Take the unit out of service, because personnel protection is what is reporting faulty</p>
@@ -149,7 +153,7 @@
       </div>
       <div class="refEntry" id="abb-0x0108">
         <div class="refTag">ABB · 0x0108</div>
-        <h2>0x0108 — Relay stuck error</h2>
+        <h2>0x0108 — Relay stuck error<a class="refPermalink" href="#abb-0x0108" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A relay contact is overheated or damaged and is not behaving as commanded. A welded relay means the output may stay energised when the charger believes it is off.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Treat the output as potentially live regardless of what the unit indicates</p>
@@ -161,7 +165,7 @@
       </div>
       <div class="refEntry" id="abb-0x0112">
         <div class="refTag">ABB · 0x0112</div>
-        <h2>0x0112 — Missing earth error</h2>
+        <h2>0x0112 — Missing earth error<a class="refPermalink" href="#abb-0x0112" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The unit is not earthed correctly. Everything protective on a charger depends on a solid earth reference, so nothing else can be trusted while this is present.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Take the unit out of service; without earth the protection functions cannot work</p>
@@ -173,7 +177,7 @@
       </div>
       <div class="refEntry" id="abb-0x0114">
         <div class="refTag">ABB · 0x0114</div>
-        <h2>0x0114 — L and N reverse error</h2>
+        <h2>0x0114 — L and N reverse error<a class="refPermalink" href="#abb-0x0114" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Line and neutral are reversed on the AC input. The unit works out that the supply is wired the wrong way round.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Isolate before touching anything, since the wiring is by definition not what the labels say</p>
@@ -184,7 +188,7 @@
       </div>
       <div class="refEntry" id="abb-0x0118">
         <div class="refTag">ABB · 0x0118</div>
-        <h2>0x0118 — Missing phase</h2>
+        <h2>0x0118 — Missing phase<a class="refPermalink" href="#abb-0x0118" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A phase is missing or reversed on the supply. On a three phase unit that means it cannot deliver rated output and may not start at all.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Check the supply breaker, since a single pole tripped on a three phase breaker is the usual cause</p>
@@ -196,7 +200,7 @@
       </div>
       <div class="refEntry" id="abb-0x0004">
         <div class="refTag">ABB · 0x0004</div>
-        <h2>0x0004 — Overcurrent</h2>
+        <h2>0x0004 — Overcurrent<a class="refPermalink" href="#abb-0x0004" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>There is an overload on the vehicle side. The charger is limiting because the EV is drawing more than the session allows.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Check whether it happens with one vehicle or several, because one vehicle points at that EV&#x27;s on board charger</p>
@@ -207,7 +211,7 @@
       </div>
       <div class="refEntry" id="abb-0x0116">
         <div class="refTag">ABB · 0x0116</div>
-        <h2>0x0116 — Overheat</h2>
+        <h2>0x0116 — Overheat<a class="refPermalink" href="#abb-0x0116" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Charging current is too high for the conditions and the unit is protecting itself. Thermal management on a charger is mostly airflow and connection quality.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Check the connector and cable for heat damage first, because a high resistance connection generates heat exactly where this trips</p>
@@ -219,7 +223,7 @@
       </div>
       <div class="refEntry" id="abb-0x0110">
         <div class="refTag">ABB · 0x0110</div>
-        <h2>0x0110 — Cable undercapacity</h2>
+        <h2>0x0110 — Cable undercapacity<a class="refPermalink" href="#abb-0x0110" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The attached cable is rated below the device&#x27;s rated current. The charger is refusing to deliver more than the cable can carry, which is correct behaviour.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Check the cable rating against the unit&#x27;s configured output</p>
@@ -230,7 +234,7 @@
       </div>
       <div class="refEntry" id="abb-0x0100">
         <div class="refTag">ABB · 0x0100</div>
-        <h2>0x0100 — Internal board to board communication error</h2>
+        <h2>0x0100 — Internal board to board communication error<a class="refPermalink" href="#abb-0x0100" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Internal boards are not communicating with each other. This is inside the unit rather than out on the installation.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Power cycle once, since a single internal comm fault is often transient</p>
@@ -241,7 +245,7 @@
       </div>
       <div class="refEntry" id="abb-0x0008">
         <div class="refTag">ABB · 0x0008</div>
-        <h2>0x0008 — Overvoltage</h2>
+        <h2>0x0008 — Overvoltage<a class="refPermalink" href="#abb-0x0008" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Supply voltage above the permitted window. The charger stops rather than passing it to the vehicle.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Measure the supply voltage at the charger input under load, not at rest</p>
@@ -252,7 +256,7 @@
       </div>
       <div class="refEntry" id="abb-0x0010">
         <div class="refTag">ABB · 0x0010</div>
-        <h2>0x0010 — Undervoltage</h2>
+        <h2>0x0010 — Undervoltage<a class="refPermalink" href="#abb-0x0010" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Supply voltage below the permitted window, which the charger will not work through.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Measure at the charger input under load, since voltage drop only shows when current flows</p>
@@ -262,7 +266,7 @@
         <p>Check the supply at the panel to separate the branch circuit from the service</p>
       </div>
       <div class="refEntry" id="tritium">
-        <h2>Tritium</h2>
+        <h2>Tritium<a class="refPermalink" href="#tritium" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Veefil heritage; RTM and PKM families. Distinctive liquid cooled power electronics in a slim IP65 package.</p>
         <div class="refLabel">Models</div>
         <p>name: RTM75. powerRange: 75 kW. notes: Compact unit; liquid cooled electronics, air cooled cables.</p>
@@ -275,7 +279,7 @@
       </div>
       <div class="refEntry" id="tritium-32">
         <div class="refTag">Tritium · 32</div>
-        <h2>32 — Regulation issue while charging a CCS vehicle</h2>
+        <h2>32 — Regulation issue while charging a CCS vehicle<a class="refPermalink" href="#tritium-32" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The charger could not respond to changing grid conditions during a session and stopped regulating within limits.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Return the plug to the charger, which is the documented first step</p>
@@ -287,7 +291,7 @@
       </div>
       <div class="refEntry" id="tritium-39">
         <div class="refTag">Tritium · 39</div>
-        <h2>39 — 480 V three phase supply outside limits</h2>
+        <h2>39 — 480 V three phase supply outside limits<a class="refPermalink" href="#tritium-39" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The supply left the permitted window: below 432 V or above 528 V, or below 55 Hz or above 65 Hz. Tritium names a short power glitch, three phase loss, an internal RCD trip and an internal breaker trip as causes.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Check the internal RCD and the internal breakers first, because both are listed causes and both are inside the unit</p>
@@ -299,7 +303,7 @@
       </div>
       <div class="refEntry" id="tritium-353">
         <div class="refTag">Tritium · 353</div>
-        <h2>353 — Bayonet removed abruptly while charging</h2>
+        <h2>353 — Bayonet removed abruptly while charging<a class="refPermalink" href="#tritium-353" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The safety system detected the connector being pulled during an active session, outside normal operating parameters. The charger locks itself deliberately.</p>
         <div class="refLabel">What to check, in order</div>
         <p>Do not power cycle and do not press the emergency stop, because Tritium specifically says not to</p>
@@ -309,7 +313,7 @@
         <p>Inspect the cable and connector for damage while waiting on service</p>
       </div>
       <div class="refEntry" id="alpitronic">
-        <h2>Alpitronic</h2>
+        <h2>Alpitronic<a class="refPermalink" href="#alpitronic" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Hypercharger family, 50 kW to 1 MW class, known for power density and high uptime in European and US networks.</p>
         <div class="refLabel">Models</div>
         <p>name: HYC50. powerRange: 50 kW. notes: Compact wall or pedestal unit.</p>
@@ -322,7 +326,7 @@
         <p>Remote diagnostics through the operator backend resolve many calls without a truck roll</p>
       </div>
       <div class="refEntry" id="tesla">
-        <h2>Tesla Supercharger and NACS</h2>
+        <h2>Tesla Supercharger and NACS<a class="refPermalink" href="#tesla" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The largest reliable DC network; V2, V3, and V4 posts. NACS (standardized as SAE J3400) opens the connector to other networks and vehicles.</p>
         <div class="refLabel">Models</div>
         <p>name: Supercharger V2. powerRange: Up to 150 kW paired. notes: Power sharing between paired stalls.</p>
@@ -335,7 +339,7 @@
         <p>Magic Dock issues usually present as adapter latch or comm faults</p>
       </div>
       <div class="refEntry" id="btcpower">
-        <h2>BTC Power</h2>
+        <h2>BTC Power<a class="refPermalink" href="#btcpower" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>US manufacturer of Level 2 and DC fast equipment common in retail and municipal deployments.</p>
         <div class="refLabel">Models</div>
         <p>name: Gen 4 DCFC. powerRange: 50 to 200 kW. notes: Modular rectifier shelves; CCS and CHAdeMO options.</p>
@@ -345,7 +349,7 @@
         <p>Retail sites often share service transformers; input sag under store load can masquerade as charger faults</p>
       </div>
       <div class="refEntry" id="kempower">
-        <h2>Kempower</h2>
+        <h2>Kempower<a class="refPermalink" href="#kempower" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Distributed satellite architecture: a power cabinet feeds multiple lightweight dispensers with dynamic power routing.</p>
         <div class="refLabel">Models</div>
         <p>name: S Series satellite. powerRange: Dispenser fed up to 400 kW. notes: Slim dispensers; cable management arms common.</p>
@@ -356,7 +360,7 @@
         <p>Satellite comm cables between cabinet and dispensers are a distinct failure point worth checking early</p>
       </div>
       <div class="refEntry" id="signet">
-        <h2>Signet (SK Signet)</h2>
+        <h2>Signet (SK Signet)<a class="refPermalink" href="#signet" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>High power DC fast chargers common in major US charging networks, including 350 kW corridor units.</p>
         <div class="refLabel">Models</div>
         <p>name: FC100K to FC200K. powerRange: 100 to 200 kW. notes: Dual connector units in retail networks.</p>

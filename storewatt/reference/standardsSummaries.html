@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -76,7 +80,7 @@
       </div>
       <div class="refEntry" id="std-nfpa855">
         <div class="refTag">NFPA 855</div>
-        <h2>NFPA 855: the ESS installation standard</h2>
+        <h2>NFPA 855: the ESS installation standard<a class="refPermalink" href="#std-nfpa855" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>NFPA 855 governs how stationary energy storage systems are installed: separation distances, maximum stored energy per unit and per area, fire detection and suppression requirements, ventilation and explosion control, signage, and the Emergency Response Plan. It leans on UL 9540 for system listing and on UL 9540A test data to justify designs that exceed default limits.
 
 The 2026 edition tightens the tie between the qualified person concept and ESS work and strengthens Emergency Response Plan and fire and explosion testing expectations. For a technician, the practical touchpoints are the ERP, the signage, the detection and suppression systems, and the commissioning documentation the standard expects to exist.</p>
@@ -85,56 +89,56 @@ The 2026 edition tightens the tie between the qualified person concept and ESS w
       </div>
       <div class="refEntry" id="std-ul9540">
         <div class="refTag">UL 9540</div>
-        <h2>UL 9540: system certification</h2>
+        <h2>UL 9540: system certification<a class="refPermalink" href="#std-ul9540" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>UL 9540 is the safety listing for the energy storage system as a system: batteries, PCS, controls, and enclosure evaluated together. Codes and AHJs generally require ESS equipment to carry this listing.
 
 Field relevance: the listing binds the system to its documented configuration and operating parameters. Substituting components or operating outside the listed parameters undermines the listing, which is one reason unauthorized modifications are a compliance problem and not just a warranty problem.</p>
       </div>
       <div class="refEntry" id="std-ul9540a">
         <div class="refTag">UL 9540A</div>
-        <h2>UL 9540A: thermal runaway test data</h2>
+        <h2>UL 9540A: thermal runaway test data<a class="refPermalink" href="#std-ul9540a" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>UL 9540A is a test method, not a pass or fail certification. It characterizes thermal runaway from cell to module to unit to installation level: what gases are released, how much, how fast, whether propagation occurs, and what the fire looks like.
 
 That data feeds real decisions: NFPA 855 spacing and suppression design, ventilation and explosion control sizing, and the fire department&#x27;s pre incident plan. When someone asks what the batteries do in a fire, the honest answer lives in the site&#x27;s 9540A reports.</p>
       </div>
       <div class="refEntry" id="std-nec706">
         <div class="refTag">NEC 706</div>
-        <h2>NEC Article 706: energy storage systems</h2>
+        <h2>NEC Article 706: energy storage systems<a class="refPermalink" href="#std-nec706" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Article 706 covers permanently installed ESS above threshold sizes: disconnecting means and their marking, circuit sizing and overcurrent protection, and installation requirements for the DC side. It is the code home for the rule that battery circuits are sized for continuous duty and for disconnect visibility and labeling requirements that matter to first responders.
 
 Use it together with Article 480, which still covers stationary battery installations themselves.</p>
       </div>
       <div class="refEntry" id="std-nec480">
         <div class="refTag">NEC 480</div>
-        <h2>NEC Article 480: stationary batteries</h2>
+        <h2>NEC Article 480: stationary batteries<a class="refPermalink" href="#std-nec480" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Article 480 is the legacy battery article: terminal protection, intercell and intertier connections, battery rooms, ventilation for gassing chemistries, and working space around battery systems. Lithium plants inherit its working space and disconnect concepts alongside 706.
 
 Working clearances around energized battery equipment come from the general working space rules; crowded container aisles are a code issue as well as a rescue issue.</p>
       </div>
       <div class="refEntry" id="std-nfpa70e">
         <div class="refTag">NFPA 70E</div>
-        <h2>NFPA 70E: electrical safety in the workplace</h2>
+        <h2>NFPA 70E: electrical safety in the workplace<a class="refPermalink" href="#std-nfpa70e" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>NFPA 70E is the how of electrical safety: qualified person requirements, the energized work permit, arc flash risk assessment, PPE categories, boundaries, and the annual program elements. For BESS the DC sections matter most: DC arc flash assessment, DC rated PPE and tools, and the recognition that batteries cannot be de energized for work the way feeders can.
 
 The Energized Electrical Work Permit form in this app implements the 70E permit concept for ESS work.</p>
       </div>
       <div class="refEntry" id="std-ieee1547">
         <div class="refTag">IEEE 1547</div>
-        <h2>IEEE 1547: interconnection behavior</h2>
+        <h2>IEEE 1547: interconnection behavior<a class="refPermalink" href="#std-ieee1547" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>IEEE 1547 defines how distributed resources behave at the grid interface: voltage and frequency ride through, trip settings, reconnection delays, and reactive power capability. The plant&#x27;s specific settings live in the interconnection agreement and the plant controller and PCS configurations.
 
 Field relevance: ride through settings explain why the plant held on or tripped during a grid event, and disconnect conditions define when the plant must separate. Changes are an interconnection matter, never a field adjustment.</p>
       </div>
       <div class="refEntry" id="std-ifc1207">
         <div class="refTag">IFC 1207</div>
-        <h2>IFC Section 1207: fire code requirements</h2>
+        <h2>IFC Section 1207: fire code requirements<a class="refPermalink" href="#std-ifc1207" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The International Fire Code addresses ESS in section 1207: permits, location restrictions, size limits, fire detection and suppression, gas detection and ventilation, signage, and emergency planning. It is the enforcement hook many fire marshals use, alongside or instead of NFPA 855, so commissioning documentation packages routinely cite both.
 
 Expect the AHJ walkthrough to check signage, access, detection, suppression, and the Emergency Response Plan against this section.</p>
       </div>
       <div class="refEntry" id="std-nfpa13">
         <div class="refTag">NFPA 13</div>
-        <h2>NFPA 13: sprinkler design baseline</h2>
+        <h2>NFPA 13: sprinkler design baseline<a class="refPermalink" href="#std-nfpa13" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Where sprinklers protect ESS installations, NFPA 13 provides the design basis; the commonly cited baseline for ESS areas is a density around 0.3 gallons per minute per square foot over the most remote 2500 square feet or the room area. Water remains the preferred agent for lithium battery fires because the real objective is cooling adjacent cells and structures.
 
 Suppression strategy varies by design: some containers rely on sprinklers in buildings, others on internal clean agent or aerosol plus external water application per the pre incident plan.</p>
@@ -143,7 +147,7 @@ Suppression strategy varies by design: some containers rely on sprinklers in bui
       </div>
       <div class="refEntry" id="std-osha">
         <div class="refTag">OSHA</div>
-        <h2>OSHA touchpoints for BESS work</h2>
+        <h2>OSHA touchpoints for BESS work<a class="refPermalink" href="#std-osha" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The general industry rules apply on a storage site like anywhere else: lockout tagout (1910.147) with the ESS caveat that batteries cannot be fully de energized, electrical safe work practices (1910 Subpart S), PPE, and walking working surfaces. OSHA recognizes NFPA 70E practices as evidence of compliance for electrical safety programs.
 
 The commissioning and O&amp;M forms in this app create the documentation trail these programs expect.</p>

@@ -30,6 +30,10 @@
     .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
   </style>
 </head>
 <body>
@@ -72,7 +76,7 @@
         <a class="btn" href="https://apps.apple.com/us/app/id6787932579">Get FieldWatt on the App Store</a>
       </div>
       <div class="refEntry" id="combiner-hazard">
-        <h2>Combiner boxes are energized equipment</h2>
+        <h2>Combiner boxes are energized equipment<a class="refPermalink" href="#combiner-hazard" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>A DC combiner on a 1500 volt plant carries lethal voltage whenever the sun is up, on both the line and load side, regardless of inverter state. Opening the combiner disconnect does not de energize the string side terminals. Fuses can be energized from both directions. Arc flash is a live hazard here, not a formality: NFPA 70E engages at 50 volts, and a 1500 volt array sits above the range its PPE category tables cover, so the protection required comes from the site incident energy analysis and the label on the equipment.</p>
         <div class="refLabel">Safe response</div>
         <p>Qualified person only. Open the combiner disconnect, verify absence of voltage with a DC rated meter on every circuit you will touch, and wear DC rated PPE per the site arc flash study. Strings cannot be turned off; work them as energized or cover the modules.</p>
@@ -80,7 +84,7 @@
         <p>Follow the site specific switching and LOTO procedures.</p>
       </div>
       <div class="refEntry" id="combiner-blownfuse">
-        <h2>Blown fuse localization</h2>
+        <h2>Blown fuse localization<a class="refPermalink" href="#combiner-blownfuse" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Symptoms of a blown string fuse: the string reads near zero current while neighbors under the same irradiance carry normal current, and the combiner output current runs low by one string. With the disconnect open, a blown fuse shows string Voc across the fuse holder (source on one side, bus at a different potential on the other) while a good fuse shows near zero volts across it. Find why the fuse blew before replacing it: ground fault, damaged cable, reversed polarity from construction, or a fuse undersized against NEC 690.9.</p>
         <div class="refLabel">Safe response</div>
         <p>Never pull or insert fuses under load. Open the disconnect, verify absence of current, then handle fuses. Replace with the exact class and rating from the design documents.</p>
@@ -88,7 +92,7 @@
         <p>Verify replacement fuse rating against the module maximum series fuse rating and the design documents.</p>
       </div>
       <div class="refEntry" id="combiner-stringcompare">
-        <h2>Parallel string Voc and Isc comparison</h2>
+        <h2>Parallel string Voc and Isc comparison<a class="refPermalink" href="#combiner-stringcompare" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Identical strings on the same combiner should measure nearly identical open circuit voltage and, under stable sun, nearly identical current. A string more than 5 percent off its neighbors in current, with at least 600 watts per square meter of irradiance, indicates a fault: shading, soiling, a failed module, a bad connector, or a blown bypass diode. Size any Voc shortfall to tell those apart: a typical crystalline module carries three bypass diodes, one per substring, so one shorted diode costs roughly a third of a module Voc, while a full module Voc missing points at a whole module shorted out or bypassed. Meaningful current and voltage curve tracing needs at least 500 watts per square meter.</p>
         <div class="refLabel">Safe response</div>
         <p>Measure with a DC rated clamp meter and voltmeter. Compare like to like under the same conditions and record irradiance with every reading.</p>
@@ -96,7 +100,7 @@
         <p>Record module temperature and irradiance so comparisons hold up later.</p>
       </div>
       <div class="refEntry" id="combiner-insulationtest">
-        <h2>Insulation resistance testing from the combiner</h2>
+        <h2>Insulation resistance testing from the combiner<a class="refPermalink" href="#combiner-insulationtest" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>The combiner is the natural sectioning point for insulation resistance testing: lift or isolate strings and test each circuit to ground, comparing against the IEC 62446 minimum for the system voltage. Test dry when possible; a circuit that fails wet and passes dry has a moisture path that will return. Halve the search space each test to localize a fault fast.</p>
         <div class="refLabel">Safe response</div>
         <p>Isolate the circuit under test from the inverter and from parallel strings before applying test voltage. Surge protective devices must be disconnected or they will read as faults and may be damaged.</p>
@@ -104,7 +108,7 @@
         <p>Use the test voltage class appropriate to the circuit per IEC 62446 1.</p>
       </div>
       <div class="refEntry" id="combiner-thermal">
-        <h2>Thermal scan</h2>
+        <h2>Thermal scan<a class="refPermalink" href="#combiner-thermal" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Scan combiners under load with an infrared camera at least annually and after any fuse event. A fuse holder, lug, or breaker running visibly hotter than its neighbors at similar current indicates a loose or corroded connection on its way to failure. Compare like to like: same current, same sun, same enclosure.</p>
         <div class="refLabel">Safe response</div>
         <p>Scan through the open door only with PPE appropriate to the site arc flash study, or use an infrared window if fitted.</p>
@@ -112,7 +116,7 @@
         <p>Trend images over time; absolute temperatures depend on load and ambient.</p>
       </div>
       <div class="refEntry" id="combiner-torque">
-        <h2>Torque verification</h2>
+        <h2>Torque verification<a class="refPermalink" href="#combiner-torque" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Loose terminations are the leading cause of combiner fires. Verify torque on line and load lugs, fuse holders, and ground bars with a calibrated torque tool to the values on the enclosure label or in the manufacturer sheet, and mark verified terminations with a paint pen. Aluminum conductors relax and deserve rechecking in the first year.</p>
         <div class="refLabel">Safe response</div>
         <p>Torque work is dead work: isolate and verify absence of voltage first.</p>
@@ -120,7 +124,7 @@
         <p>Use manufacturer torque values, not generic tables, whenever the label is legible.</p>
       </div>
       <div class="refEntry" id="combiner-spd">
-        <h2>Surge protective device status</h2>
+        <h2>Surge protective device status<a class="refPermalink" href="#combiner-spd" aria-label="Link to this code" title="Copy a link to this code">#</a></h2>
         <p>Most combiner surge protective devices carry a status window or remote contact. A failed SPD can leak to ground and trip inverter insulation monitoring, so check SPD status early when chasing insulation faults. Replace failed cartridges with the identical part; SPD ratings are matched to the 1500 volt system.</p>
         <div class="refLabel">Safe response</div>
         <p>Isolate before replacing cartridges. Confirm the ground lead is intact and torqued; an SPD without a solid ground bond protects nothing.</p>
