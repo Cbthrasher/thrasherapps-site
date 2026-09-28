@@ -446,7 +446,7 @@ FOOT = """    </div>
   </section>
   <footer class="site-footer">
     <div class="container">
-      <div>© {year} ThrasherApps.com — Built by Chris Thrasher</div>
+      <div>© {year} ThrasherApps.com</div>
       <div class="mt-2">
         <a href="/{key}/">{name}</a> ·
         <a href="/{key}/privacy.html">Privacy</a> ·

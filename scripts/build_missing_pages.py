@@ -119,7 +119,7 @@ TEMPLATE = """<!doctype html>
 
   <footer class="site-footer">
     <div class="container">
-      <div>© 2026 ThrasherApps.com — Built by Chris Thrasher</div>
+      <div>© 2026 ThrasherApps.com</div>
       <div class="mt-2">
         <a href="/apps.html">All apps</a>{extra} ·
         <a href="/contact.html">Contact</a>
@@ -159,7 +159,7 @@ def main():
             "url": f"https://thrasherapps.com/{key}/",
             "downloadUrl": f"https://apps.apple.com/us/app/id{spec['appid']}",
             "description": desc,
-            "author": {"@type": "Person", "name": "Chris Thrasher"},
+            "author": {"@type": "Organization", "name": "ThrasherApps", "url": "https://thrasherapps.com"},
             "offers": {"@type": "Offer", "price": f"{meta.get('price', 0.0):.2f}", "priceCurrency": "USD"},
         }, separators=(",", ":"))
 

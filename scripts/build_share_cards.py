@@ -148,7 +148,7 @@ def inject(key, meta):
             "url": page_url,
             "downloadUrl": f"https://apps.apple.com/us/app/id{meta['trackId']}",
             "description": desc,
-            "author": {"@type": "Person", "name": "Chris Thrasher"},
+            "author": {"@type": "Organization", "name": "ThrasherApps", "url": "https://thrasherapps.com"},
             "offers": {"@type": "Offer", "price": f"{price:.2f}", "priceCurrency": "USD"},
         }
         add.append('  <script type="application/ld+json">'
