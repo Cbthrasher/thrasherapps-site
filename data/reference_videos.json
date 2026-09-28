@@ -1,3 +1,13 @@
 {
- "videos": []
+ "videos": [
+  {
+   "page": "droptubebuilder/reference/veeder-root-tls-300.html",
+   "anchor": "fuel-alarm",
+   "youtube": "nzWHwyq-5Ho",
+   "title": "Veeder-Root TLS-300 Fuel Alarm: what it means and how to fix it",
+   "description": "A sensor has detected fuel in the area it monitors. Where a fuel systems technician starts on a Veeder-Root TLS-300 Fuel Alarm.",
+   "uploaded": "2026-09-28",
+   "shape": "short"
+  }
+ ]
 }
