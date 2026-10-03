@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tank Chart Builder for Horizontal Tanks | DropTubeBuilder</title>
+  <meta name="description" content="Free tank chart builder for horizontal cylindrical tanks. Enter the diameter, length and capacity to get a gallons by inch chart in 1/8 inch steps, plus the 95% and 90% overfill heights. Print or download it." />
+  <link rel="canonical" href="https://thrasherapps.com/droptubebuilder/tank-chart.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <meta property="og:title" content="Tank Chart Builder for Horizontal Tanks" />
+  <meta property="og:description" content="Gallons by inch in 1/8 inch steps, with the 95% and 90% overfill heights. The same tank chart builder as the DropTubeBuilder app, free on the web." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thrasherapps.com/droptubebuilder/tank-chart.html" />
+  <meta property="og:image" content="https://thrasherapps.com/assets/share/droptubebuilder.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Tank Chart Builder","url":"https://thrasherapps.com/droptubebuilder/tank-chart.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"Builds a tank volume chart for a horizontal cylindrical tank from its diameter, length and capacity, in 1/8 inch steps, with the liquid heights at 95% and 90% of volume.","offers":{"@type":"Offer","price":"0.00","priceCurrency":"USD"},"author":{"@type":"Organization","name":"ThrasherApps","url":"https://thrasherapps.com"}}</script>
+  <style>
+    .tc-head{padding:var(--space-5) 0 var(--space-3)}
+    .tc-head .eyebrow{font-size:.78em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#1D4ED8}
+    .tc-head h1{font-size:clamp(28px,4.4vw,40px);margin:var(--space-1) 0 var(--space-2);text-wrap:balance}
+    .tc-head p{color:var(--text-muted);max-width:68ch;margin:0}
+    .tc{display:grid;gap:var(--space-4);grid-template-columns:1fr;align-items:start}
+    @media (min-width:900px){.tc{grid-template-columns:minmax(0,380px) minmax(0,1fr)}}
+    .tc-card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm);padding:var(--space-4)}
+    .tc-card h2{font-size:18px;margin:0 0 var(--space-3)}
+    .tc-field{display:grid;gap:6px;margin-bottom:var(--space-3)}
+    .tc-field label{font-weight:600;font-size:.95em}
+    .tc-field .unit{position:relative}
+    .tc-field input{width:100%;box-sizing:border-box;font:inherit;font-size:17px;padding:11px 56px 11px 12px;border:1px solid #CBD5E1;border-radius:10px;background:#fff;color:var(--text-strong);font-variant-numeric:tabular-nums}
+    .tc-field input:focus{outline:2px solid var(--color-primary);outline-offset:1px;border-color:transparent}
+    .tc-field .unit span{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.9em;pointer-events:none}
+    .tc-field small{color:var(--text-muted);font-size:.84em}
+    .tc-actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+    .tc-actions .btn{border:0;cursor:pointer;font:inherit;font-weight:600}
+    .tc-actions .btn-secondary{border:1px solid var(--border);cursor:pointer;font:inherit;font-weight:600}
+    .tc-err{color:#B91C1C;font-size:.9em;margin:var(--space-2) 0 0;min-height:1.2em}
+    .tc-levels{display:grid;gap:var(--space-2);margin-top:var(--space-4)}
+    .tc-level{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-radius:10px;padding:12px 14px}
+    .tc-level.l95{background:#EFF6FF;border:1px solid #BFDBFE}
+    .tc-level.l90{background:#FFF7ED;border:1px solid #FED7AA}
+    .tc-level span{font-size:.9em;color:#334155}
+    .tc-level b{font-size:22px;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .tc-note{color:var(--text-muted);font-size:.86em;line-height:1.55;margin:var(--space-2) 0 0}
+    .tc-fit{border-radius:10px;padding:12px 14px;margin-bottom:var(--space-3);font-size:.94em;line-height:1.5}
+    .tc-fit.ok{background:#F0FDF4;border:1px solid #BBF7D0;color:#14532D}
+    .tc-fit.adjust{background:#FFFBEB;border:1px solid #FDE68A;color:#713F12}
+    .tc-tablewrap{max-height:70vh;overflow:auto;border:1px solid var(--border);border-radius:10px}
+    .tc-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+    .tc-table th{position:sticky;top:0;background:#0F172A;color:#fff;text-align:right;font-size:.85em;letter-spacing:.03em;padding:10px 14px}
+    .tc-table th:first-child,.tc-table td:first-child{text-align:left}
+    .tc-table td{padding:7px 14px;text-align:right;border-top:1px solid #F1F5F9}
+    .tc-table tr:nth-child(even) td{background:#F8FAFC}
+    .tc-table tr.whole td{font-weight:700}
+    .tc-empty{color:var(--text-muted);padding:var(--space-5) var(--space-3);text-align:center;border:1px dashed #CBD5E1;border-radius:10px}
+    .tc-chartbar{display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:space-between;align-items:center;margin-bottom:var(--space-3)}
+    .tc-chartbar h2{margin:0}
+    .tc-filter{display:flex;gap:6px;align-items:center;font-size:.9em;color:var(--text-muted)}
+    .tc-filter select{font:inherit;padding:6px 8px;border-radius:8px;border:1px solid #CBD5E1;background:#fff}
+    .tc-guide{max-width:72ch}
+    .tc-guide h2{margin:var(--space-5) 0 var(--space-2)}
+    .tc-guide p,.tc-guide li{color:var(--text-muted);line-height:1.65}
+    .tc-guide ol{padding-left:1.3em}
+    .tc-app{background:#0F172A;color:#fff;border-radius:14px;padding:var(--space-4);margin-top:var(--space-5);display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between}
+    .tc-app p{color:#CBD5E1;margin:4px 0 0;max-width:60ch}
+    .tc-app .btn{background:#007AFF;color:#fff}
+    .print-only{display:none}
+    @media print{
+      .site-header,.site-footer,.tc-inputs,.tc-guide,.tc-app,.tc-actions,.tc-filter,.tc-fit,.tc-head p,.no-print{display:none !important}
+      .print-only{display:block}
+      body{background:#fff}
+      .tc{display:block}
+      .tc-card{box-shadow:none;border:0;padding:0}
+      .tc-tablewrap{max-height:none;overflow:visible;border:0}
+      .tc-table th{position:static;background:#fff;color:#000;border-bottom:1px solid #000}
+      .tc-table td{padding:2px 10px}
+      .tc-table tr:nth-child(even) td{background:#fff}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/droptubebuilder/">DropTubeBuilder</a>
+        <a href="/droptubebuilder/reference/">Reference</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="tc-head">
+      <span class="eyebrow">DropTubeBuilder on the web</span>
+      <h1>Tank Chart Builder</h1>
+      <p>Build a gallons by inch chart for a horizontal cylindrical tank in 1/8 inch steps, with the liquid heights at 95% and 90% of volume. It is the same builder that is in the DropTubeBuilder app. Nothing you enter leaves this page.</p>
+      <div class="print-only" id="printHead"></div>
+    </section>
+
+    <div class="tc">
+      <div>
+        <form class="tc-card tc-inputs" id="tcForm" novalidate>
+          <h2>Measurements</h2>
+          <div class="tc-field">
+            <label for="dia">Tank diameter</label>
+            <div class="unit"><input id="dia" inputmode="decimal" autocomplete="off" placeholder="96" /><span>inches</span></div>
+            <small>Inside diameter, from the tank monitor or the tank label.</small>
+          </div>
+          <div class="tc-field">
+            <label for="cap">Total capacity</label>
+            <div class="unit"><input id="cap" inputmode="decimal" autocomplete="off" placeholder="10000" /><span>gallons</span></div>
+          </div>
+          <div class="tc-field">
+            <label for="len">Tank length</label>
+            <div class="unit"><input id="len" inputmode="decimal" autocomplete="off" placeholder="29.5" /><span>feet</span></div>
+            <small>Your best estimate. You will adjust it until the chart fits.</small>
+          </div>
+          <div class="tc-actions">
+            <button class="btn" type="submit">Recalculate</button>
+            <button class="btn btn-secondary" type="button" id="fitBtn" title="Sets the length so a perfect cylinder of this diameter holds the full capacity">Fit length to capacity</button>
+          </div>
+          <p class="tc-err" id="err" role="alert"></p>
+
+          <div class="tc-levels" id="levels" hidden>
+            <h2 style="margin:0">Key overfill levels</h2>
+            <div class="tc-level l95"><span>Liquid height at 95% of volume</span><b id="h95"></b></div>
+            <div class="tc-level l90"><span>Liquid height at 90% of volume</span><b id="h90"></b></div>
+            <p class="tc-note"><strong>These two heights follow the tank diameter alone.</strong> They will not change when you adjust the length, because length cancels out of the volume fraction.</p>
+            <p class="tc-note">95% is the overfill shutoff level; 90% applies to the flapper when a ball float shares the tank. Estimated for an ideal cylinder. Verify against the manufacturer's chart.</p>
+          </div>
+        </form>
+      </div>
+
+      <section class="tc-card" aria-labelledby="chartTitle">
+        <div class="tc-chartbar">
+          <h2 id="chartTitle">Tank volume chart</h2>
+          <div class="tc-filter no-print">
+            <label for="step">Show every</label>
+            <select id="step">
+              <option value="1">1/8 inch</option>
+              <option value="2">1/4 inch</option>
+              <option value="4">1/2 inch</option>
+              <option value="8" selected>1 inch</option>
+            </select>
+          </div>
+        </div>
+        <div id="fit" class="tc-fit" hidden></div>
+        <div id="chartEmpty" class="tc-empty">Enter the diameter, capacity and length, then press Recalculate.</div>
+        <div class="tc-tablewrap" id="chartWrap" hidden>
+          <table class="tc-table">
+            <thead><tr><th scope="col">Height (in)</th><th scope="col">Volume (gal)</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <div class="tc-actions" style="margin-top:var(--space-3)" id="outActions" hidden>
+          <button class="btn" type="button" id="printBtn">Print or save as PDF</button>
+          <button class="btn btn-secondary" type="button" id="csvBtn">Download CSV</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="tc-guide">
+      <h2>How to build a tank chart</h2>
+      <p>You need two numbers off the tank monitor before you start: the tank diameter in inches, and the total capacity in gallons.</p>
+      <ol>
+        <li>Enter the diameter.</li>
+        <li>Enter the total capacity.</li>
+        <li>Enter your best estimate of the tank length in feet.</li>
+        <li>Press Recalculate.</li>
+        <li>Look at the last row of the chart. Adjust the length and recalculate again until that last row reaches both the full tank diameter and the total gallons. Fit length to capacity does this in one step.</li>
+      </ol>
+      <p>When the bottom of the chart lands on the diameter and the capacity together, the chart is fitted to your tank.</p>
+
+      <h2>Why the length has to be adjusted</h2>
+      <p>The chart is built from a perfect cylinder. A real underground tank has dished heads, so the ends bulge outward and hold volume a straight cylinder does not. Stretching the length is how you make the cylinder hold the same gallons as the real tank.</p>
+      <p>That gets the total and the overfill heights right. It also means the middle of the chart can drift from the manufacturer's strapping chart, most noticeably toward the ends. Treat this as a working field chart, and verify against the manufacturer's chart before anything goes on a compliance record. For published manufacturer charts, see the tank charts at <a href="https://ustexguide.com/" target="_blank" rel="noopener">USTex Guide</a>.</p>
+
+      <h2>About the 95 and 90 percent heights</h2>
+      <p>Those two follow the diameter alone and will not move when you change the length. That is correct, not a fault. Volume is cross sectional area times length, so the length cancels out when you ask what height holds 95 percent of the volume. On a horizontal cylinder, 95% of the volume sits at roughly 90% of the diameter, not 95% of it, which is why the overfill shutoff point has to be read from a chart.</p>
+
+      <div class="tc-app">
+        <div>
+          <strong>The full toolkit is in the app</strong>
+          <p>DropTubeBuilder adds drop tube cut lengths for OPW, Franklin Defender and EMCO, dispenser and tank monitor fault codes, and PDF export, all offline on iPhone and iPad.</p>
+        </div>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>&copy; 2026 ThrasherApps.com</div>
+      <div class="mt-2">
+        <a href="/droptubebuilder/">DropTubeBuilder</a> &middot;
+        <a href="/droptubebuilder/reference/">Fault code reference</a> &middot;
+        <a href="/droptubebuilder/support.html">Support</a> &middot;
+        <a href="/apps.html">All Apps</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    // Same math as DropTubeBuilder's TankChartBuilderView and DropTubeCalculator.
+    var GAL_PER_CUFT = 7.48052;
+    var $ = function (id) { return document.getElementById(id); };
+    var chart = [], inputs = null;
+
+    function num(id) {
+      var v = parseFloat(String($(id).value).replace(/,/g, ''));
+      return isFinite(v) && v > 0 ? v : null;
+    }
+
+    // Circular segment area (sq ft) for liquid height h (ft) in a circle of radius r (ft).
+    function segArea(r, h) {
+      return r * r * Math.acos((r - h) / r) - (r - h) * Math.sqrt(Math.max(0, 2 * r * h - h * h));
+    }
+
+    function buildChart(lengthFt, diaIn, totalGal) {
+      var r = (diaIn / 2) / 12, out = [];
+      // 1/8 inch steps, stopping at the diameter or at the first row that reaches the capacity.
+      var steps = Math.floor(diaIn * 8 + 1e-9);
+      for (var i = 0; i <= steps; i++) {
+        var h = i / 8;
+        var v = segArea(r, h / 12) * lengthFt * GAL_PER_CUFT;
+        out.push([h, v]);
+        if (v >= totalGal) break;
+      }
+      return out;
+    }
+
+    // Liquid height (in) at which the tank is `f` full by volume. Bisection, as in the app.
+    function heightForFraction(d, f) {
+      var r = d / 2, target = f * Math.PI * r * r, lo = 0, hi = d;
+      function area(h) { var hh = Math.min(Math.max(h, 0), d); return r * r * Math.acos((r - hh) / r) - (r - hh) * Math.sqrt(Math.max(0, 2 * r * hh - hh * hh)); }
+      for (var k = 0; k < 60; k++) { var mid = (lo + hi) / 2; if (area(mid) < target) lo = mid; else hi = mid; }
+      return (lo + hi) / 2;
+    }
+
+    function fmt(n, dp) { return n.toLocaleString('en-US', { minimumFractionDigits: dp, maximumFractionDigits: dp }); }
+
+    function render() {
+      var step = parseInt($('step').value, 10);
+      var rows = [];
+      for (var i = 0; i < chart.length; i++) {
+        var last = i === chart.length - 1;
+        if (i % step !== 0 && !last) continue;
+        var whole = chart[i][0] % 1 === 0;
+        rows.push('<tr' + (whole && step < 8 ? ' class="whole"' : '') + '><td>' + chart[i][0].toFixed(3) + '</td><td>' + fmt(chart[i][1], 1) + '</td></tr>');
+      }
+      $('rows').innerHTML = rows.join('');
+    }
+
+    function showFit() {
+      var last = chart[chart.length - 1], el = $('fit');
+      var reachedDia = Math.abs(last[0] - inputs.dia) < 0.0625 + 1e-9;
+      var gal = last[1], cap = inputs.cap, diff = Math.abs(gal - cap) / cap;
+      el.hidden = false;
+      if (reachedDia && diff <= 0.005) {
+        el.className = 'tc-fit ok';
+        el.textContent = 'Fitted. The last row reaches the full ' + fmt(inputs.dia, 2) + ' in diameter at ' + fmt(gal, 1) + ' gallons.';
+      } else if (!reachedDia) {
+        el.className = 'tc-fit adjust';
+        el.textContent = 'The chart reaches ' + fmt(cap, 0) + ' gallons at ' + last[0].toFixed(3) + ' in, before the full ' + fmt(inputs.dia, 2) + ' in diameter. The length is too long: shorten it and recalculate.';
+      } else {
+        el.className = 'tc-fit adjust';
+        el.textContent = 'At the full ' + fmt(inputs.dia, 2) + ' in diameter the chart holds ' + fmt(gal, 1) + ' gallons, ' + fmt(cap - gal, 1) + ' short of ' + fmt(cap, 0) + '. The length is too short: lengthen it and recalculate.';
+      }
+    }
+
+    function recalc() {
+      var dia = num('dia'), len = num('len'), cap = num('cap');
+      if (!dia || !len || !cap) {
+        $('err').textContent = 'Enter a diameter, a capacity and a length, each greater than zero.';
+        return false;
+      }
+      if (dia > 240) { $('err').textContent = 'That diameter is over 20 feet. Check it is in inches.'; return false; }
+      $('err').textContent = '';
+      inputs = { dia: dia, len: len, cap: cap };
+      chart = buildChart(len, dia, cap);
+      $('h95').textContent = heightForFraction(dia, 0.95).toFixed(2) + ' in';
+      $('h90').textContent = heightForFraction(dia, 0.90).toFixed(2) + ' in';
+      $('levels').hidden = false;
+      $('chartEmpty').hidden = true;
+      $('chartWrap').hidden = false;
+      $('outActions').hidden = false;
+      render(); showFit();
+      $('printHead').innerHTML = '<p><strong>Tank Volume Chart</strong> &middot; generated ' + new Date().toLocaleDateString() + '</p><p>Tank diameter: ' + fmt(dia, 2) + ' in &middot; Length: ' + fmt(len, 2) + ' ft &middot; Nominal capacity: ' + fmt(cap, 0) + ' gal</p><p>Liquid height at 95% of volume: ' + $('h95').textContent + ' &middot; at 90% of volume: ' + $('h90').textContent + '</p><p>(95% is the overfill shutoff level; 90% applies to the flapper when a ball float shares the tank. Ideal cylinder estimate. Verify against the manufacturer\'s chart.)</p>';
+      try { localStorage.setItem('tcInputs', JSON.stringify(inputs)); } catch (e) {}
+      return true;
+    }
+
+    $('tcForm').addEventListener('submit', function (e) { e.preventDefault(); recalc(); });
+    $('step').addEventListener('change', function () { if (chart.length) render(); });
+    $('fitBtn').addEventListener('click', function () {
+      var dia = num('dia'), cap = num('cap');
+      if (!dia || !cap) { $('err').textContent = 'Enter the diameter and the capacity first.'; return; }
+      var r = (dia / 2) / 12;
+      $('len').value = (cap / (Math.PI * r * r * GAL_PER_CUFT)).toFixed(2);
+      recalc();
+    });
+    $('printBtn').addEventListener('click', function () {
+      var keep = $('step').value; $('step').value = '1'; render();
+      window.print();
+      $('step').value = keep; render();
+    });
+    $('csvBtn').addEventListener('click', function () {
+      var lines = ['Height (in),Volume (gal)'];
+      chart.forEach(function (r) { lines.push(r[0].toFixed(3) + ',' + r[1].toFixed(1)); });
+      var name = 'Tank-Chart-' + Math.round(inputs.dia) + 'in-x-' + Math.round(inputs.len) + 'ft.csv';
+      var blob = new Blob([lines.join('\n') + '\n'], { type: 'text/csv' });
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+    });
+
+    try {
+      var saved = JSON.parse(localStorage.getItem('tcInputs') || 'null');
+      if (saved && saved.dia) { $('dia').value = saved.dia; $('len').value = saved.len; $('cap').value = saved.cap; recalc(); }
+    } catch (e) {}
+  })();
+  </script>
+</body>
+</html>
