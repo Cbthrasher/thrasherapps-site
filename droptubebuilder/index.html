@@ -31,6 +31,13 @@
     .partner__side .btn{background:#007AFF;color:#fff;text-align:center}
     .partner__by{color:#94A3B8;font-size:.85em;margin:0}
     @media (max-width:760px){.partner{grid-template-columns:1fr}.partner__body,.partner__side{padding:var(--space-4)}}
+    .tcbanner{background:#0F172A;color:#fff}
+    .tcbanner .container{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between;padding-top:var(--space-4);padding-bottom:var(--space-4)}
+    .tcbanner__text{flex:1 1 420px;min-width:260px}
+    .tcbanner__eyebrow{font-size:.78em;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#93C5FD}
+    .tcbanner h2{margin:4px 0 6px;font-size:clamp(22px,3.2vw,28px);color:#fff}
+    .tcbanner p{margin:0;color:#CBD5E1;max-width:62ch}
+    .tcbanner .btn{background:#007AFF;color:#fff;flex:0 0 auto;font-size:1.05em;padding:14px 22px}
   </style>
 </head>
 <body>
@@ -49,6 +56,18 @@
       </nav>
     </div>
   </header>
+
+  <!-- Tank chart builder, top of page -->
+  <section class="tcbanner" aria-label="Free tank chart builder">
+    <div class="container">
+      <div class="tcbanner__text">
+        <span class="tcbanner__eyebrow">Free on the web, no app needed</span>
+        <h2>Tank Chart Builder</h2>
+        <p>Enter the tank diameter, capacity and length and get a gallons by inch chart in 1/8 inch steps, plus the liquid heights at 95% and 90% of volume for the overfill shutoff. Print it or download it.</p>
+      </div>
+      <a class="btn" href="/droptubebuilder/tank-chart.html">Build a tank chart</a>
+    </div>
+  </section>
 
   <!-- Hero -->
   <section class="hero">
