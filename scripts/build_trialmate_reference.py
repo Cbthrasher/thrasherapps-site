@@ -229,6 +229,55 @@ def amendment_box(r):
       </div>"""
 
 
+
+# ---- "At a glance" (added 9 Oct 2026 so each page carries original, factual structure Google can
+# index: the rule's parts, its amendment record and its cross references, all read mechanically from
+# the official text. Still no commentary or interpretation.)
+MONTHS = {"Jan": "January", "Feb": "February", "Mar": "March", "Apr": "April", "May": "May", "June": "June",
+          "July": "July", "Aug": "August", "Sept": "September", "Oct": "October", "Nov": "November", "Dec": "December"}
+
+
+def cited_rules(r, numbers):
+    """Rule numbers this rule's own text names ("Rule 104(a)", "Rules 413 and 414")."""
+    t = re.sub(r"\s+", " ", (r.get("text") or "") + " " + (r.get("preamble") or ""))
+    out = set()
+    for m in re.finditer(r"\bRules?\s", t):
+        seg = re.split(r"[.;:]\s|\bof\b|\bthe\b|\bthat\b|\bif\b", t[m.end():m.end() + 60])[0]
+        for n in re.findall(r"\b(\d{3,4})\b", seg):
+            if n in numbers and n != str(r["number"]):
+                out.add(n)
+    return sorted(out, key=int)
+
+
+def amendment_record(history):
+    effs = re.findall(r"eff\.\s+([A-Z][a-z]+)\.?\s+(\d{1,2}),\s+(\d{4})", history or "")
+    if not effs:
+        return ""
+    mon, day, year = effs[-1]
+    n = len(effs)
+    return (f"Amended {n} time{'s' if n != 1 else ''} since enactment; the most recent amendment took effect "
+            f"{MONTHS.get(mon, mon)} {day}, {year}.")
+
+
+def glance_box(r, position, article_size, cites, cited_by):
+    parts = [html.escape("(" + n["label"] + ") " + n["heading"]) for n in (r.get("nodes") or [])
+             if n.get("label") and n.get("heading")]
+    rows = [f"<li>{html.escape(art_name(r['article']))}: rule {position} of {article_size} in this article.</li>"]
+    if parts:
+        rows.append("<li>Parts: " + " · ".join(parts) + ".</li>")
+    rec = amendment_record(r.get("history"))
+    if rec:
+        rows.append(f"<li>{html.escape(rec)}</li>")
+    link = lambda n: f'<a href="/trialmate/reference/{slug(n)}">Rule {n}</a>'
+    if cites:
+        rows.append("<li>Its text refers to " + ", ".join(link(n) for n in cites) + ".</li>")
+    if cited_by:
+        rows.append("<li>Referred to by " + ", ".join(link(n) for n in cited_by) + ".</li>")
+    rows.append("<li>In TrialMate: the Rules tab, searchable with no signal.</li>")
+    return ('      <div class="refSiblings">\n        <strong>At a glance</strong>\n        <ul style="margin:4px 0 0 18px;padding:0;line-height:1.6">'
+            + "".join(rows) + "</ul>\n      </div>")
+
+
 def build():
     rules = CORPUS["rules"]
     if len(rules) != CORPUS["ruleCount"]:
@@ -237,6 +286,9 @@ def build():
     by_article = {}
     for r in rules:
         by_article.setdefault(r["article"], []).append(r)
+    numbers = {str(r["number"]) for r in rules}
+    cites = {str(r["number"]): cited_rules(r, numbers) for r in rules}
+    cited_by = {n: sorted((m for m, c in cites.items() if n in c), key=int) for n in numbers}
 
     for i, r in enumerate(rules):
         prev_r = rules[i - 1] if i else None
@@ -266,6 +318,7 @@ def build():
         <p class="ruleMeta">{html.escape(r['history'])}</p>
         <p class="ruleMeta">Source: Federal Rules of Evidence, December 1, 2024, Administrative Office of the United States Courts, <a href="{SOURCE_PDF}">uscourts.gov</a>.</p>
       </div>
+{glance_box(r, by_article[r["article"]].index(r) + 1, len(by_article[r["article"]]), cites[str(r["number"])], cited_by[str(r["number"])])}
 {nav}
       <div class="refSiblings">
         <strong>More in {html.escape(art_name(r['article']))}</strong>
