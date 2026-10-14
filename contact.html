@@ -87,7 +87,7 @@
 
         <div class="mt-3">
           <button class="btn" type="submit">Send message</button>
-          <span class="note">or email me directly: <a href="mailto:cbthrasher2020@gmail.com">cbthrasher2020@gmail.com</a></span>
+          <span class="note">or email me directly: <a href="mailto:support@thrasherapps.com">support@thrasherapps.com</a></span>
         </div>
 
         <p class="note mt-2">No spam ever. I’ll only use your info to respond to your message.</p>
@@ -99,7 +99,7 @@
     <div class="container">
       <div>© 2025 ThrasherApps.com</div>
       <div class="mt-2">
-        <a href="mailto:cbthrasher2020@gmail.com">Email</a> ·
+        <a href="mailto:support@thrasherapps.com">Email</a> ·
         <a href="privacy.html">Privacy</a> ·
         <a target="_blank" href="https://christhrasher.wordpress.com/2025/08/02/trialmate-end-user-license-agreement-eula/">EULA</a>
       </div>
@@ -139,10 +139,10 @@
             } else {
               const json = await res.json().catch(()=>null);
               const msg = json && json.errors ? json.errors.map(x=>x.message).join('\n') : 'Something went wrong.';
-              alert(msg + '\n\nYou can also email me: cbthrasher2020@gmail.com');
+              alert(msg + '\n\nYou can also email me: support@thrasherapps.com');
             }
           } catch (err) {
-            alert('Network error. Please email me: cbthrasher2020@gmail.com');
+            alert('Network error. Please email me: support@thrasherapps.com');
           }
         });
       }
