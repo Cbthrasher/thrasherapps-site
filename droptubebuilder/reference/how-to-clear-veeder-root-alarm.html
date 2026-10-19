@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How to Clear a Veeder-Root Alarm (TLS-350, TLS-450PLUS, TLS4)</title>
+  <meta name="description" content="How to silence and clear an alarm on a Veeder-Root TLS-350, TLS-450PLUS or TLS4 console, why it comes back, and what actually clears the common alarms. From Veeder-Root&#x27;s own manual, by a fuel systems tech with 25 years in the field." />
+  <link rel="canonical" href="https://thrasherapps.com/droptubebuilder/reference/how-to-clear-veeder-root-alarm.html" />
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .refEntry{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;margin:16px 0}
+    .refEntry h2{margin:0 0 4px 0;font-size:1.15em}
+    .refTag{display:inline-block;font-size:.78em;font-weight:700;color:#007AFF;background:#EFF6FF;border-radius:999px;padding:2px 10px;margin-bottom:8px}
+    .refLabel{font-size:.75em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475569;margin-top:10px}
+    .refEntry p{margin:4px 0;white-space:pre-wrap}
+    .refToc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px}
+    .refToc a{display:inline-block;margin:3px 12px 3px 0;font-size:.92em}
+    .refCta{background:#0F172A;color:#fff;border-radius:12px;padding:18px;margin:24px 0}
+    .refCta a.btn{background:#007AFF;color:#fff;border:0}
+    .refCta p{color:#CBD5E1;margin:6px 0 12px}
+    .refTop{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:space-between;
+      background:#EFF6FF;border:1px solid #BFDBFE;border-radius:12px;padding:14px 16px;margin:14px 0}
+    .refTop p{margin:4px 0 0 0;font-size:.93em;color:#1E3A5F}
+    .refTop strong{font-size:.78em;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#1D4ED8}
+    .refTop .refTopText{flex:1 1 380px;min-width:260px}
+    .refTop a.btn{flex:0 0 auto;background:#007AFF;color:#fff;border:0}
+    .refSiblings,.refCross{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:14px 18px;margin:16px 0}
+    .refSiblings strong,.refCross strong{display:block;font-size:.78em;font-weight:800;letter-spacing:.05em;
+      text-transform:uppercase;color:#475569;margin-bottom:6px}
+    .refSiblings a,.refCross a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
+    @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}}
+    .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+  
+    .refPermalink{margin-left:.5rem;font-weight:400;text-decoration:none;opacity:0;
+      transition:opacity .12s;color:#2563EB;font-size:.8em}
+    .refEntry:hover .refPermalink,.refPermalink:focus{opacity:1}
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you clear an alarm on a Veeder-Root TLS-350?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Press the red ALARM/TEST key on the front panel. That silences the beeper and acknowledges the alarm. The alarm light and the message stay on until the cause of the condition is corrected; Veeder-Root says the warning and alarm lights cannot be turned off until then."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you acknowledge an alarm on a TLS-450PLUS or TLS4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Touch the warning or alarm bar at the top of the touch screen. It opens Reports, Alarms, Active, where you can see the cause. Touch the bar again to acknowledge the alarm and shut off the beeper. Consoles without a display have a red ALARM RESET button on the front panel instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the Veeder-Root alarm keep coming back after I silence it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Silencing only acknowledges the alarm. Every warning and alarm stays active until its cause is fixed: liquid removed from a sump, a probe reconnected, a delivery made, or a leak test passed. A test fail alarm clears when the tank or line passes a test."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you turn off a Veeder-Root fuel alarm or liquid alarm without fixing it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A fuel, high liquid or liquid warning alarm means liquid reached a sensor in a sump, a dispenser pan or an interstitial space. Veeder-Root says to follow the alarm reporting procedures established for your site. Under federal UST rules a suspected release has to be reported to the implementing agency, usually within 24 hours."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">ThrasherApps</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/apps.html">Apps</a>
+        <a href="/droptubebuilder/">DropTubeBuilder</a>
+        <a href="/droptubebuilder/reference/">Reference</a>
+        <a href="/droptubebuilder/support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <div class="crumb"><a href="/droptubebuilder/reference/">DropTubeBuilder reference</a></div>
+      <h1 class="h2">How to clear a Veeder-Root alarm</h1>
+      <p class="lead">The short answer: a button silences the alarm, but only fixing the cause clears it. Here is the button on each console, and what actually clears the alarms techs get called for most.</p>
+
+      <div class="refEntry"><h2>TLS-350 and other TLS-3XX consoles</h2>
+        <p>Press the red <strong>ALARM/TEST</strong> key on the front panel. That silences the beeper and acknowledges the alarm.</p>
+        <p>The warning and alarm lights stay on, and the message stays on the display, until the cause of the condition is corrected. If more than one alarm is active, the display flashes the messages one after another.</p>
+      </div>
+      <div class="refEntry"><h2>TLS-450PLUS and TLS4 with a touch screen</h2>
+        <p>Touch anywhere on the warning or alarm bar at the top of the screen. It opens <strong>Reports &gt; Alarms &gt; Active</strong>, which shows the cause.</p>
+        <p>While you are on that screen, touch the bar again to acknowledge the alarm and shut off the beeper. The alarm stays on the active report, and the bar stays red, until the condition is corrected.</p>
+      </div>
+      <div class="refEntry"><h2>TLS-450PLUS and TLS4 without a display</h2>
+        <p>Press the red <strong>ALARM RESET</strong> button on the front panel to acknowledge the alarm and shut off the beeper. The alarm stays active until the cause is corrected.</p>
+      </div>
+
+      <h2 class="mt-3">Why it keeps coming back</h2>
+      <p>Silencing is acknowledging, not clearing. Every Veeder-Root warning and alarm stays active until its cause is fixed, so an alarm that returns after you press the button is still telling you something. Veeder-Root's own manual puts it in capitals: do not ignore alarms.</p>
+
+      <h2 class="mt-3">What clears the common alarms</h2>
+      <div class="refEntry"><h2>Fuel Alarm</h2><div class="refLabel">What it means</div><p>Fuel is present in the area a sensor watches (sump, dispenser pan or interstitial space).</p><div class="refLabel">What clears it</div><p>Find and fix the source, remove the fuel, then the sensor clears. Follow your site&#x27;s alarm reporting procedure. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#fuel-alarm">Full checks</a></p></div><div class="refEntry"><h2>High Liquid Alarm</h2><div class="refLabel">What it means</div><p>Liquid reached 8 inches on a dispenser pan sensor or 10 inches on a containment sump sensor.</p><div class="refLabel">What clears it</div><p>Remove the liquid and find where it came from. Veeder-Root: immediately follow the site&#x27;s alarm reporting procedure. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#high-liquid-alarm">Full checks</a></p></div><div class="refEntry"><h2>Liquid Warning</h2><div class="refLabel">What it means</div><p>Liquid reached 1 inch on a dispenser pan or containment sump sensor.</p><div class="refLabel">What clears it</div><p>Remove the liquid and find the source. Same reporting procedure as a high liquid alarm. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#liquid-warning">Full checks</a></p></div><div class="refEntry"><h2>Probe Out</h2><div class="refLabel">What it means</div><p>Hardware failure: the probe or the wiring between the probe and the console.</p><div class="refLabel">What clears it</div><p>Clears when the console hears the probe again: check the probe cable, splices and the probe itself, then call for service. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#probe-out-alarm">Full checks</a></p></div><div class="refEntry"><h2>Sudden Loss Alarm</h2><div class="refLabel">What it means</div><p>The console saw fuel leave the tank during an idle period.</p><div class="refLabel">What clears it</div><p>Check for a gross leak before anything else. Clears after the cause is found and the level is stable. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#sudden-loss-alarm">Full checks</a></p></div><div class="refEntry"><h2>Overfill Alarm</h2><div class="refLabel">What it means</div><p>Fuel level passed the programmed overfill limit.</p><div class="refLabel">What clears it</div><p>Stop the delivery and check for spillage. Clears when the level drops back below the limit. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#overfill-alarm">Full checks</a></p></div><div class="refEntry"><h2>Gross or Periodic Leak Test Fail (tank)</h2><div class="refLabel">What it means</div><p>An in-tank leak test failed (3.0 gph gross or 0.2 gph periodic).</p><div class="refLabel">What clears it</div><p>Rerun the in-tank leak test. If the second test fails, call for service. Clears when a test passes. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#gross-test-fail">Full checks</a></p></div><div class="refEntry"><h2>Gross or Periodic Test Fail (line)</h2><div class="refLabel">What it means</div><p>A pressurized line leak test failed (3 gph or 0.2 gph). Dispensing halts if programmed to.</p><div class="refLabel">What clears it</div><p>Work through the PLLD alarm quick help and the line diagnostic screens. Clears when the line passes a test.</p></div><div class="refEntry"><h2>Fuel Out Alarm</h2><div class="refLabel">What it means</div><p>Product level is below 10 inches; the pump cannot run.</p><div class="refLabel">What clears it</div><p>Schedule a delivery. Clears when product is back above the limit.</p></div><div class="refEntry"><h2>Periodic Test Needed</h2><div class="refLabel">What it means</div><p>A 0.2 gph in-tank leak test has not passed within the required period.</p><div class="refLabel">What clears it</div><p>Schedule and pass a 0.2 gph test. <a href="/droptubebuilder/reference/veeder-root-tls-350.html#periodic-test-needed">Full checks</a></p></div>
+
+      <div class="refEntry"><h2>Leak and liquid alarms: report before you reset</h2>
+        <p>A fuel alarm, a high liquid alarm, a sudden loss or a failed leak test can mean a release. Follow the alarm response and reporting procedures set for your site. Under the federal underground storage tank rules (40 CFR 280.50), a suspected release has to be reported to the implementing agency within 24 hours or the period it sets, so check your state's program before anyone writes the alarm off.</p>
+      </div>
+
+      <div class="refSiblings">
+        <strong>Every alarm, with the checks in order</strong>
+        <a href="/droptubebuilder/reference/veeder-root-tls-350.html">TLS-350 alarm codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450-plus.html">TLS-450 PLUS alarm codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-450.html">TLS-450 alarm codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls4.html">TLS4 and TLS-4i alarm codes</a>
+        <a href="/droptubebuilder/reference/veeder-root-tls-300.html">TLS-300 alarm codes</a>
+      </div>
+      <p style="font-size:.85em;color:#475569">Source: Veeder-Root, TLS System Warnings and Alarms Troubleshooting Guide, Manual No. 577014-243, Revision A. ThrasherApps is not affiliated with Veeder-Root; Veeder-Root and TLS are its trademarks.</p>
+      <div class="refCross">
+        <strong>Field references for other trades</strong>
+        <a href="/loopwatt/reference/">Fire alarm</a>
+        <a href="/fieldwatt/reference/">Solar PV</a>
+        <a href="/plugwatt/reference/">EV charging</a>
+        <a href="/storewatt/reference/">Battery storage</a>
+        <a href="/rackwatt/reference/">Data center</a>
+      </div>
+      <div class="refCta">
+        <strong>These notes come from DropTubeBuilder</strong>
+        <p>Reference notes from DropTubeBuilder, the offline field tool for fuel system technicians who cut overfill drop tubes, build tank charts and chase dispenser faults. It works with no cell signal, because the sites do not have any.</p>
+        <a class="btn" href="https://apps.apple.com/us/app/id6740597739">Get DropTubeBuilder on the App Store</a>
+      </div>
+      <p class="mt-3" style="font-size:.85em;color:#475569">These notes are a field aid, not a substitute for the governing codes, the stamped drawings, the authority having jurisdiction, or manufacturer manuals. Verify against the current documentation for your installed equipment.</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="container">
+      <div>© 2026 ThrasherApps.com</div>
+      <div class="mt-2">
+        <a href="/droptubebuilder/">DropTubeBuilder</a> ·
+        <a href="/droptubebuilder/privacy.html">Privacy</a> ·
+        <a href="/droptubebuilder/terms.html">Terms</a> ·
+        <a href="/droptubebuilder/support.html">Support</a>
+      </div>
+    </div>
+  </footer>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b89f3a0b9dd94ecb991c6e31aae799f8"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
