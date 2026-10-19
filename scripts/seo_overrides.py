@@ -58,6 +58,49 @@ PAGES = {
         "FRE 501: Privilege in General (Full Text)",
         "Federal Rule of Evidence 501, privilege in general, in its official text, with Rule 502 on attorney client "
         "privilege and work product. Current, free, no account."),
+    # 19 Oct 2026: the next pages by impressions (Search Console, 28 days: TLS-450 103, rules 614 113, 1001 104,
+    # 805 104, 605 76, 606 71). Searches are "fre 614", "rule 805", "federal rule of evidence 611", so the title leads
+    # with "FRE nnn" and stays short enough that Google does not cut it.
+    "droptubebuilder/reference/veeder-root-tls-450.html": (
+        "Veeder-Root TLS-450 Alarm Codes: Meanings and Fixes",
+        "What each Veeder-Root TLS-450 alarm means, the most likely cause first, and the checks to make on site. "
+        "All 51 alarms, free, from a fuel systems tech with 25 years in the field."),
+    "droptubebuilder/reference/index.html": (
+        "Fuel System Fault Codes: Veeder-Root, Gilbarco, Wayne, Franklin",
+        "Free fault and alarm code reference for fuel system techs: Veeder-Root TLS consoles, Gilbarco and Wayne "
+        "dispensers, Franklin Fueling and pump controllers. Likely cause first, then the checks in order."),
+    "trialmate/reference/rule-614.html": (
+        "FRE 614: Court's Calling or Examining a Witness (Full Text)",
+        "Federal Rule of Evidence 614, the court calling or examining a witness and objecting to it, in its official "
+        "text with its amendment history. Current, free, no account."),
+    "trialmate/reference/rule-1001.html": (
+        "FRE 1001: Definitions for Writings, Recordings and Photos",
+        "Federal Rule of Evidence 1001, the definitions behind the best evidence rule: writing, recording, photograph, "
+        "original and duplicate, in its official text. Current, free, no account."),
+    "trialmate/reference/rule-805.html": (
+        "FRE 805: Hearsay Within Hearsay (Full Text)",
+        "Federal Rule of Evidence 805, hearsay within hearsay, in its official text, with links to Rules 801 to 807. "
+        "Current, free, no account."),
+    "trialmate/reference/rule-605.html": (
+        "FRE 605: Judge's Competency as a Witness (Full Text)",
+        "Federal Rule of Evidence 605, the presiding judge may not testify as a witness, in its official text with its "
+        "amendment history. Current, free, no account."),
+    "trialmate/reference/rule-606.html": (
+        "FRE 606: Juror's Competency as a Witness (Full Text)",
+        "Federal Rule of Evidence 606, juror testimony at trial and about a verdict, in its official text with its "
+        "amendment history. Current, free, no account."),
+    "trialmate/reference/rule-1003.html": (
+        "FRE 1003: Admissibility of Duplicates (Full Text)",
+        "Federal Rule of Evidence 1003, when a duplicate is admissible like the original, in its official text with "
+        "the definitions in Rule 1001. Current, free, no account."),
+    "trialmate/reference/rule-406.html": (
+        "FRE 406: Habit; Routine Practice (Full Text)",
+        "Federal Rule of Evidence 406, evidence of a person's habit or an organization's routine practice, in its "
+        "official text with its amendment history. Current, free, no account."),
+    "trialmate/reference/rule-611.html": (
+        "FRE 611: Mode and Order of Examining Witnesses (Full Text)",
+        "Federal Rule of Evidence 611, control of the mode and order of examining witnesses, scope of cross and "
+        "leading questions, in its official text. Current, free, no account."),
 }
 
 
