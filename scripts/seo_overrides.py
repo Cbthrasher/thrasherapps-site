@@ -19,9 +19,8 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PAGES = {
     "droptubebuilder/reference/veeder-root-tls-450-plus.html": (
-        "Veeder-Root TLS-450 PLUS Alarm Codes: Meanings and Fixes",
-        "What each Veeder-Root TLS-450 PLUS alarm means, the most likely cause first, and the checks to make on site. "
-        "All 51 alarms, free, from a fuel systems tech with 25 years in the field."),
+        "TLS-450 PLUS Alarms: CSLD, Probe Out, Sudden Loss, Line Leak",
+        "Veeder-Root TLS-450 PLUS alarm meanings and fixes: CSLD Rate Increase Warning, CSLD Idle Time Warning, Gross Test Needed, Probe Out, Sudden Loss and Pressure Line Leak, each with the most likely cause first. All 51 alarms, free, from a fuel tech with 25 years in the field."),
     "droptubebuilder/reference/fe-petro-magvfc.html": (
         "FE Petro MagVFC Fault Codes (UL, LI, Er, OC, SC) and Fixes",
         "Every FE Petro MagVFC fault and status code, what it means, the likely cause and what to check, plus the DIP "
@@ -62,9 +61,8 @@ PAGES = {
     # 805 104, 605 76, 606 71). Searches are "fre 614", "rule 805", "federal rule of evidence 611", so the title leads
     # with "FRE nnn" and stays short enough that Google does not cut it.
     "droptubebuilder/reference/veeder-root-tls-450.html": (
-        "Veeder-Root TLS-450 Alarm Codes: Meanings and Fixes",
-        "What each Veeder-Root TLS-450 alarm means, the most likely cause first, and the checks to make on site. "
-        "All 51 alarms, free, from a fuel systems tech with 25 years in the field."),
+        "TLS-450 Alarms: CSLD Rate Increase, Probe Out, Sudden Loss",
+        "Veeder-Root TLS-450 alarm meanings and fixes: CSLD Rate Increase Warning, CSLD Idle Time Warning, Gross Test Needed, Probe Out, Sudden Loss and Pressure Line Leak, each with the most likely cause first. All 51 alarms, free, from a fuel tech with 25 years in the field."),
     "droptubebuilder/reference/index.html": (
         "Fuel System Fault Codes: Veeder-Root, Gilbarco, Wayne, Franklin",
         "Free fault and alarm code reference for fuel system techs: Veeder-Root TLS consoles, Gilbarco and Wayne "
@@ -104,8 +102,33 @@ PAGES = {
 }
 
 
+def rule_pages():
+    """25 Oct 2026: every Federal Rules of Evidence page, not just the top dozen. Searches are "fre 105", "fre 610",
+    "federal rule of evidence 501", "rule 406", so the title leads with "FRE nnn" and the description with the full
+    "Federal Rule of Evidence nnn". Pages already tuned by hand in PAGES keep their own wording."""
+    out = {}
+    folder = os.path.join(SITE, "trialmate", "reference")
+    for name in sorted(os.listdir(folder)):
+        m = re.fullmatch(r"rule-(\d+)\.html", name)
+        path = f"trialmate/reference/{name}"
+        if not m or path in PAGES:
+            continue
+        s = open(os.path.join(folder, name), encoding="utf-8").read()
+        h = re.search(r"<h1[^>]*>\s*Rule\s+\d+\.\s*([^<]+)", s)
+        if not h:
+            continue
+        n, rule = m.group(1), html.unescape(h.group(1)).strip().rstrip(".")
+        title = f"FRE {n}: {rule} (Full Text)"
+        if len(title) > 62:
+            title = f"FRE {n}: {rule}"
+        desc = (f"Federal Rule of Evidence {n}, {rule}, in its official current text with its amendment notes. "
+                f"Free to read, no account, from the TrialMate rules reference.")
+        out[path] = (title, desc)
+    return out
+
+
 def main():
-    for path, (title, desc) in PAGES.items():
+    for path, (title, desc) in {**PAGES, **rule_pages()}.items():
         full = os.path.join(SITE, path)
         s = open(full, encoding="utf-8").read()
         new = re.sub(r"<title>.*?</title>", f"<title>{html.escape(title)}</title>", s, count=1, flags=re.S)
