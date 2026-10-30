@@ -121,7 +121,7 @@ def rule_pages():
         title = f"FRE {n}: {rule} (Full Text)"
         if len(title) > 62:
             title = f"FRE {n}: {rule}"
-        desc = (f"Federal Rule of Evidence {n}, {rule}, in its official current text with its amendment notes. "
+        desc = (f"Federal Rule of Evidence {n}, {rule}, in its official current text with the official committee notes. "
                 f"Free to read, no account, from the TrialMate rules reference.")
         out[path] = (title, desc)
     return out

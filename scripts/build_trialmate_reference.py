@@ -15,6 +15,13 @@ hand), plus the Rule 801 amendment from the Supreme Court order of April 8, 2026
 They carry NO commentary, summaries or explanations of what a rule means. ThrasherApps
 is not a law firm, and the official text is the authority, not us.
 
+Since 30 Oct 2026 each page also carries the rule's official committee notes (the
+Advisory Committee notes and the congressional reports, from the United States Code,
+2024 Edition, via govinfo.gov), fetched by scripts/fetch_fre_committee_notes.py into
+scripts/data/fre_committee_notes.json. They are the drafters' own words, reproduced, so
+the no commentary rule holds. Each lettered or numbered part of a rule also has its own
+anchor (rule-801.html#d-2), because people search for parts: "801(d)(2)", "803(6)".
+
 Every page is checked before it is written: the text shown, with spacing
 normalised, must equal the corpus text exactly. If a single word is lost or
 changed, the build stops.
@@ -38,6 +45,21 @@ SOURCE_PDF = "https://www.uscourts.gov/rules-policies/current-rules-practice-pro
 CORPUS = json.loads((TM / "FRE.json").read_text())
 AMEND = json.loads((TM / "FRE_amendments.json").read_text())
 AMENDED = {r["number"]: (a, r) for a in AMEND["amendments"] for r in a["rules"]}
+NOTES = json.loads((SITE / "scripts" / "data" / "fre_committee_notes.json").read_text())
+
+
+def fix_corpus(rules):
+    """Known defect in FRE.json (found 30 Oct 2026 against govinfo): the Rule 412 title broke at
+    "Pre-" and "disposition" opened the rule text. Repaired here only in that exact broken form."""
+    for r in rules:
+        if str(r["number"]) == "412" and r["title"].endswith("Pre-") and r["text"].startswith("disposition\n"):
+            r["title"] = r["title"][:-len("Pre-")] + "Predisposition"
+            r["text"] = r["text"][len("disposition\n"):]
+            if r.get("preamble", "").startswith("disposition\n"):
+                r["preamble"] = r["preamble"][len("disposition\n"):]
+
+
+fix_corpus(CORPUS["rules"])
 TODAY = date.today().isoformat()
 
 LABEL = re.compile(r"^\(([0-9]+|[a-z]+|[A-Z]+)\)")
@@ -91,15 +113,34 @@ def levels(paras):
     return lv
 
 
+def part_ids(paras, lvls):
+    """Anchor per labelled part: (d) is "d", (d)(2) is "d-2", (d)(2)(A) is "d-2-A"; 803(6) is "6"."""
+    path, out = {}, []
+    for p, lvl in zip(paras, lvls):
+        m = LABEL.match(p)
+        if not m:
+            out.append(None)
+            continue
+        path = {k: v for k, v in path.items() if k < lvl}
+        path[lvl] = m.group(1)
+        out.append("-".join(path[k] for k in sorted(path)))
+    return out
+
+
 def render_text(text):
     paras = paragraphs(text)
     shown = " ".join(paras)
     if norm(shown) != norm(text):
         raise SystemExit("text changed while laying it out; refusing to build")
-    rows = []
-    for p, lvl in zip(paras, levels(paras)):
-        rows.append(f'<p class="fre l{lvl}">{html.escape(p)}</p>')
-    return "\n".join(rows)
+    lvls = levels(paras)
+    rows, seen = [], set()
+    for p, lvl, pid in zip(paras, lvls, part_ids(paras, lvls)):
+        anchor = ""
+        if pid and pid not in seen:
+            seen.add(pid)
+            anchor = f' id="{pid}"'
+        rows.append(f'<p class="fre l{lvl}"{anchor}>{html.escape(p)}</p>')
+    return "\n".join(rows), seen
 
 
 SMALL = {"and", "or", "of", "the", "to", "in", "for", "a", "an", "by", "on"}
@@ -140,9 +181,21 @@ STYLE = """
     .refSiblings strong{display:block;font-size:.78em;font-weight:800;letter-spacing:.05em;
       text-transform:uppercase;color:#475569;margin-bottom:6px}
     .refSiblings a{display:inline-block;margin:3px 14px 3px 0;font-size:.92em}
+    .refSiblings li a{display:inline;margin:0;font-size:inherit}
     .article{margin-top:22px}
     .article a{display:block;margin:4px 0}
     .crumb{font-size:.9em;color:#475569;margin-bottom:6px}
+    .fre[id]{scroll-margin-top:72px}
+    .fre:target{background:#FEF9C3;border-radius:6px}
+    .notes{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;margin:16px 0}
+    .notes h2{font-size:1.15em;margin:0 0 6px}
+    .notes h3{font-size:1em;margin:26px 0 8px;padding-top:14px;border-top:1px solid #E5E7EB;scroll-margin-top:72px}
+    .notes p{margin:8px 0;line-height:1.6;max-width:72ch}
+    .notes .n1{margin-left:1.4em}.notes .n2{margin-left:2.8em}.notes .n3{margin-left:4.2em}
+    .notes .sub{font-weight:700;margin-top:16px}
+    .notes .brk{text-align:center;color:#64748B}
+    .notes .fn{font-size:.85em;color:#475569}
+    .notes ol{margin:6px 0 0 20px;padding:0;line-height:1.7;font-size:.93em}
     @media (max-width:520px){.refTop{flex-direction:column;align-items:stretch}.refTop a.btn{width:100%;text-align:center}
       .fre.l1{margin-left:.9em}.fre.l2{margin-left:1.8em}.fre.l3{margin-left:2.7em}}
 """
@@ -180,7 +233,7 @@ TOP = f"""      <div class="refTop">
         <a class="btn" href="{APP}">Get TrialMate on the App Store</a>
       </div>"""
 
-NOTICE = """      <p class="mt-3" style="font-size:.85em;color:#475569">This page reproduces the official text of the Federal Rules of Evidence for reference. It is not legal advice and adds no commentary. It does not replace the official publication, local rules, or the law that applies in your court. Check the current official text before relying on it.</p>"""
+NOTICE = """      <p class="mt-3" style="font-size:.85em;color:#475569">This page reproduces the official text of the Federal Rules of Evidence and the committee notes printed with it in the United States Code, for reference. It is not legal advice and adds no commentary. It does not replace the official publication, local rules, or the law that applies in your court. Check the current official text before relying on it.</p>"""
 
 
 def page(title, desc, canonical, body, extra_head=""):
@@ -259,12 +312,18 @@ def amendment_record(history):
             f"{MONTHS.get(mon, mon)} {day}, {year}.")
 
 
-def glance_box(r, position, article_size, cites, cited_by):
-    parts = [html.escape("(" + n["label"] + ") " + n["heading"]) for n in (r.get("nodes") or [])
-             if n.get("label") and n.get("heading")]
+def glance_box(r, position, article_size, cites, cited_by, ids=frozenset()):
+    def part(n):
+        label = html.escape("(" + n["label"] + ") " + n["heading"])
+        return f'<a href="#{n["label"]}">{label}</a>' if n["label"] in ids else label
+    parts = [part(n) for n in (r.get("nodes") or []) if n.get("label") and n.get("heading")]
     rows = [f"<li>{html.escape(art_name(r['article']))}: rule {position} of {article_size} in this article.</li>"]
     if parts:
         rows.append("<li>Parts: " + " · ".join(parts) + ".</li>")
+    notes = NOTES["rules"][str(r["number"])]["notes"]
+    if notes:
+        rows.append(f'<li><a href="#committee-notes">Committee notes</a>: {len(notes)} official note'
+                    f'{"s" if len(notes) != 1 else ""}, from the proposed rules to the latest amendment.</li>')
     rec = amendment_record(r.get("history"))
     if rec:
         rows.append(f"<li>{html.escape(rec)}</li>")
@@ -276,6 +335,37 @@ def glance_box(r, position, article_size, cites, cited_by):
     rows.append("<li>In TrialMate: the Rules tab, searchable with no signal.</li>")
     return ('      <div class="refSiblings">\n        <strong>At a glance</strong>\n        <ul style="margin:4px 0 0 18px;padding:0;line-height:1.6">'
             + "".join(rows) + "</ul>\n      </div>")
+
+
+def note_id(heading, used):
+    base = re.sub(r"[^a-z0-9]+", "-", heading.lower()).strip("-")
+    base = re.sub(r"^(notes-of-|committee-notes-on-)", "", base)
+    nid, i = "note-" + base, 2
+    while nid in used:
+        nid, i = f"note-{base}-{i}", i + 1
+    used.add(nid)
+    return nid
+
+
+def notes_box(r):
+    """The official committee notes, word for word from the JSON the fetch script checked."""
+    entry = NOTES["rules"][str(r["number"])]
+    if not entry["notes"]:
+        return ""
+    used, toc, parts = set(), [], []
+    for nt in entry["notes"]:
+        nid = note_id(nt["heading"], used)
+        toc.append(f'<li><a href="#{nid}">{html.escape(nt["heading"])}</a></li>')
+        parts.append(f'        <h3 id="{nid}">{html.escape(nt["heading"])}</h3>')
+        for b in nt["blocks"]:
+            cls = {"subhead": "sub", "break": "brk", "footnote": "fn"}.get(b["kind"], f'n{b.get("indent", 0)}')
+            parts.append(f'        <p class="{cls}">{b["html"]}</p>')
+    return f"""      <div class="notes" id="committee-notes">
+        <h2>Official committee notes</h2>
+        <p class="ruleMeta" style="margin-top:0">The notes the drafting committees and Congress published with this rule and with each amendment, as printed in the {html.escape(NOTES["source"])}. Reproduced word for word; nothing here is ThrasherApps commentary. Source: <a href="{html.escape(entry["url"])}">govinfo.gov</a>.</p>
+        <ol>{"".join(toc)}</ol>
+{chr(10).join(parts)}
+      </div>"""
 
 
 def build():
@@ -300,6 +390,10 @@ def build():
             (f'<a href="/trialmate/reference/{slug(next_r["number"])}">Rule {next_r["number"]} &rarr;</a>' if next_r else "<span></span>") + \
             "</div>"
         first = norm(paragraphs(r["text"])[0]) if r["text"].strip() else r["title"]
+        if r["text"].strip():
+            text_html, ids = render_text(r["text"])
+        else:
+            text_html, ids = '<p class="fre">' + html.escape(r["preamble"] or "[Reserved]") + "</p>", set()
         desc = f"Federal Rule of Evidence {r['number']}, {r['title']}. Official text: {first}"[:300]
         ld = json.dumps({
             "@context": "https://schema.org", "@type": "Legislation",
@@ -314,12 +408,13 @@ def build():
 {TOP}
 {amendment_box(r)}
       <div class="ruleBox">
-{render_text(r['text']) if r['text'].strip() else '<p class="fre">' + html.escape(r['preamble'] or '[Reserved]') + '</p>'}
+{text_html}
         <p class="ruleMeta">{html.escape(r['history'])}</p>
         <p class="ruleMeta">Source: Federal Rules of Evidence, December 1, 2024, Administrative Office of the United States Courts, <a href="{SOURCE_PDF}">uscourts.gov</a>.</p>
       </div>
-{glance_box(r, by_article[r["article"]].index(r) + 1, len(by_article[r["article"]]), cites[str(r["number"])], cited_by[str(r["number"])])}
+{glance_box(r, by_article[r["article"]].index(r) + 1, len(by_article[r["article"]]), cites[str(r["number"])], cited_by[str(r["number"])], ids)}
 {nav}
+{notes_box(r)}
       <div class="refSiblings">
         <strong>More in {html.escape(art_name(r['article']))}</strong>
         {siblings or '<span>This is the only rule in this article.</span>'}
@@ -336,13 +431,13 @@ def build():
         "</div>" for art, rs in by_article.items())
     body = f"""      <div class="crumb"><a href="/trialmate/">TrialMate</a></div>
       <h1 class="h2">Federal Rules of Evidence</h1>
-      <p class="lead">The official text of all {len(rules)} rules, as in effect December 1, 2024, with the amendment to Rule 801 that takes effect December 1, 2026. One page per rule, no commentary.</p>
+      <p class="lead">The official text of all {len(rules)} rules, as in effect December 1, 2024, with the amendment to Rule 801 that takes effect December 1, 2026. One page per rule, each with its official committee notes. No commentary from us.</p>
 {TOP}
       <div class="ruleBox">{arts}</div>
 {NOTICE}"""
     (OUT / "index.html").write_text(page(
         "Federal Rules of Evidence, full text by rule | TrialMate reference",
-        f"The official text of all {len(rules)} Federal Rules of Evidence, one page per rule, with the Rule 801 amendment effective December 1, 2026. Free to read, no account.",
+        f"The official text of all {len(rules)} Federal Rules of Evidence, one page per rule with the official committee notes, and the Rule 801 amendment effective December 1, 2026. Free to read, no account.",
         "https://thrasherapps.com/trialmate/reference/", body))
     print(f"built {len(rules)} rule pages and the index in {OUT.relative_to(SITE)}")
 
