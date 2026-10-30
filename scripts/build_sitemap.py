@@ -12,6 +12,7 @@ Hand maintained sitemaps drift. This one is generated, so it cannot.
     python3 scripts/build_sitemap.py
 """
 
+import re
 import subprocess
 from datetime import date
 from pathlib import Path
@@ -69,6 +70,11 @@ def main() -> None:
         if rel.split("/")[0] in EXCLUDE_DIRS:
             continue
         if p.name in EXCLUDE_FILES:
+            continue
+        # A noindex page in the sitemap is a contradiction Google reports as an
+        # error (26 Oct 2026: offcut/ and trialmate/702/, both redirect stubs).
+        if re.search(r'<meta[^>]*name=["\']robots["\'][^>]*noindex',
+                     p.read_text(errors="ignore"), re.I):
             continue
         urls.append((url_for(p), git_date(p)))
 
