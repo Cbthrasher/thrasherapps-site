@@ -30,6 +30,7 @@ APPS = {
     "plugwatt":        ("6788584092", "Offline toolkit for EV charging technicians"),
     "winnow":          ("6787541045", "Find duplicates and free up space, all on device"),
     "plainqr":         ("6821741458", "See where a QR code really goes before you open it"),
+    "plainread":       ("6824189689", "Listen to your PDFs and articles, no subscription"),
     "paidup":          ("6785131011", "Clean invoices in seconds, private and on device"),
     "pausemeno":       ("6785331336", "Track menopause symptoms and see your patterns"),
     "headpainjournal": ("6785294370", "Track migraines in one tap, find your triggers"),
