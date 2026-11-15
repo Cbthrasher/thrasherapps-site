@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-11-08T06:49:14+00:00",
+  "generated_at": "2026-11-15T07:21:44+00:00",
   "rates": {
     "us_2y": {
       "series": "2 Yr",
-      "latest_date": "11/06/2026",
-      "latest_value": "4.51",
-      "prev_value": "4.46",
-      "change": 0.05,
+      "latest_date": "11/13/2026",
+      "latest_value": "4.88",
+      "prev_value": "4.86",
+      "change": 0.02,
       "source": "US Treasury",
       "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
     },
     "us_10y": {
       "series": "10 Yr",
-      "latest_date": "11/06/2026",
-      "latest_value": "4.86",
-      "prev_value": "4.84",
-      "change": 0.02,
+      "latest_date": "11/13/2026",
+      "latest_value": "5.15",
+      "prev_value": "5.10",
+      "change": 0.05,
       "source": "US Treasury",
       "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
     },
     "us_30y": {
       "series": "30 Yr",
-      "latest_date": "11/06/2026",
-      "latest_value": "5.26",
-      "prev_value": "5.25",
-      "change": 0.01,
+      "latest_date": "11/13/2026",
+      "latest_value": "5.47",
+      "prev_value": "5.43",
+      "change": 0.04,
       "source": "US Treasury",
       "source_url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
     }
