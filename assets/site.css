@@ -38,6 +38,7 @@ body{
   background:var(--bg);
   line-height:1.6;
   text-rendering:optimizeLegibility;
+  overflow-wrap:break-word;       /* a long web address wraps instead of widening the page */
 }
 img{max-width:100%;display:block}
 a{color:var(--color-primary);text-decoration:none}
@@ -74,6 +75,18 @@ a:hover{text-decoration:underline}
 }
 .nav-links a:hover{background:#f1f5f9}
 .nav-links a.active{color:var(--color-primary); font-weight:600;}
+/* Phones: name on top, links on their own row underneath. The bar is about
+   as tall as before, so links that jump to a section still land clear of it. */
+@media (max-width:640px){
+  .nav:has(> .nav-links){flex-direction:column; align-items:stretch; justify-content:center; height:auto; padding-top:4px; padding-bottom:2px}
+  .nav:has(> .nav-links) .brand{line-height:26px}
+  .nav-links{gap:0; justify-content:space-between; margin:0 -6px; overflow-x:auto; scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{padding:8px 6px; font-size:clamp(13.5px, 4vw, 15px); line-height:22px; white-space:nowrap}
+  .nav-links a[href="/"], .nav-links a[href="index.html"]{display:none} /* the name above already goes home */
+}
+/* Stacked on phones, the reference pages' App Store box is only as tall as its text. */
+@media (max-width:520px){ div.refTop .refTopText{flex-basis:auto} }
 
 /* ---------- Hero ---------- */
 .hero{
@@ -82,7 +95,7 @@ a:hover{text-decoration:underline}
   background:linear-gradient(180deg,#ffffff, #f6f9ff);
 }
 .hero-inner{
-  padding:64px 0;
+  padding:64px var(--space-3); /* keep the side gutter .container gives */
   position:relative;
   z-index:1; /* keep content above gradient blob */
 }
